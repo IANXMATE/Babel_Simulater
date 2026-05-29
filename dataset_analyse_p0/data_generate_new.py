@@ -1,201 +1,162 @@
-import os
-import math
 import torch
+import torch.nn.functional as F
+import math
+import matplotlib.pyplot as plt
 import numpy as np
 
-# ==========================================
-# 1. 核心数学拟合引擎 (Curve Fitting)
-# ==========================================
-def normalize_angle(angle):
-    """将角度强制映射到 [-pi, pi]"""
-    return (angle + math.pi) % (2 * math.pi) - math.pi
+# 确保从你的 train.py 导入正确的类
+from train import ParametricStrokeTransformer, ModelConfig 
 
-def extract_stroke_parameters(stroke_points, prev_end_x, prev_end_y):
-    """
-    【核心黑魔法】将一堆散点压缩为 1 个高阶 7 维 Token
-    返回: [dx, dy, L, theta, kappa, W, P]
-    """
-    if len(stroke_points) < 2:
-        return None # 忽略无意义的点
-
-    # 1. 提取起点与终点
-    start_x, start_y = stroke_points[0]
-    end_x, end_y = stroke_points[-1]
-
-    # 2. 计算悬空位移 (dx, dy)
-    dx = start_x - prev_end_x
-    dy = start_y - prev_end_y
-
-    # 3. 计算弧长 (Length: L)
-    # 通过累加相邻两点的欧氏距离
-    length = 0.0
-    angles = [] # 记录每一小段的方向，为计算曲率做准备
+def generate_cyberpunk_character(
+    model_path="parametric_transformer.pth", 
+    max_steps=50, 
+    temperature=1.0,
+    min_steps=10,       # 🛡️ 至少生成的笔画数 (保底打工)
+    force_steps=None,   # 🎯 强制精准笔画数 (绝对指令)
+    min_length=5.0      # 📏 强制最小物理长度 (防止 AI 画小点摸鱼)
+):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    cfg = ModelConfig()
+    model = ParametricStrokeTransformer(cfg).to(device)
     
-    for i in range(1, len(stroke_points)):
-        x1, y1 = stroke_points[i-1]
-        x2, y2 = stroke_points[i]
-        seg_dx = x2 - x1
-        seg_dy = y2 - y1
-        dist = math.hypot(seg_dx, seg_dy)
+    try:
+        model.load_state_dict(torch.load(model_path, map_location=device))
+        model.eval()
+        print(f"✅ 成功加载大脑: {model_path}")
+    except Exception as e:
+        print(f"❌ 权重加载失败: {e}")
+        return
+
+    current_seq = [torch.zeros(cfg.input_dim, device=device)]
+    generated_data = []
+    
+    mode_text = f"FORCE:{force_steps}" if force_steps else f"MIN:{min_steps}"
+    print(f"🛰️ 启动赛博生成引擎 | 温度: {temperature} | 协议: [{mode_text}] | 最小长度: {min_length}")
+
+    # ==========================================
+    # 1. 强制指令自回归生成 (Override Engine)
+    # ==========================================
+    with torch.no_grad():
+        for step in range(max_steps):
+            inputs = torch.stack(current_seq).unsqueeze(0)
+            pred_cont, pred_state_logits = model(inputs)
+            
+            # 物理量预测与创造力注入 (防均值坍缩)
+            next_cont = pred_cont[0, -1, :] 
+            noise_scale = 0.5 * temperature
+            next_cont_noisy = next_cont + torch.randn_like(next_cont) * noise_scale
+            dx, dy, L, theta, kappa, W = next_cont_noisy.tolist()
+            
+            # 🛡️ 终极物理约束：长度不仅要是正数，还必须大于设定的最小阈值！
+            L = max(abs(L), min_length)
+            W = abs(W) 
+            
+            # 原始 AI 意图采样
+            probs = F.softmax(pred_state_logits[0, -1, :] / temperature, dim=-1)
+            p_ai = torch.multinomial(probs, 1).item()
+            
+            # 🎯 核心逻辑：上帝视角的协议覆盖 (Override)
+            p_final = float(p_ai)
+            
+            if force_steps is not None:
+                # 绝对指令模式
+                if step < force_steps - 1:
+                    p_final = 0.0  
+                elif step == force_steps - 1:
+                    p_final = 1.0  
+            else:
+                # 保底限制模式
+                if step < min_steps - 1:
+                    p_final = 0.0
+                    
+            new_token = torch.tensor([dx, dy, L, theta, kappa, W, p_final], device=device)
+            generated_data.append(new_token.cpu().numpy())
+            current_seq.append(new_token)
+            
+            if p_final == 1.0:
+                print(f"🏁 指令完成，模型在第 {step+1} 步收笔。")
+                break
+
+    # ==========================================
+    # 2. 赛博全息渲染 (Cyber-Holographic Engine)
+    # ==========================================
+    fig, ax = plt.subplots(figsize=(7, 7))
+    bg_color = '#030613' 
+    fig.patch.set_facecolor(bg_color)
+    ax.set_facecolor(bg_color)
+    ax.grid(True, color='#0a192f', linestyle='-', linewidth=0.5, alpha=0.8)
+    
+    prev_end_x, prev_end_y = 0.0, 0.0 
+    CORE_COLOR = '#FFFFFF'
+    GLOW_COLOR = '#00F0FF'
+    MAX_ENERGY = 3.0
+    MIN_ENERGY = 0.5
+
+    for i, token in enumerate(generated_data):
+        dx, dy, L, theta, kappa, W, P = token
+        if P == 1.0: break
+            
+        start_x = prev_end_x + dx
+        start_y = prev_end_y + dy
         
-        if dist > 1e-4: # 忽略原地抖动
-            length += dist
-            angles.append(math.atan2(seg_dy, seg_dx))
+        steps = 100 
+        t_vals = np.linspace(0, 1.0, steps)
+        pts_x, pts_y = [], []
+        
+        for t in t_vals:
+            if abs(kappa) < 1e-4:
+                x = start_x + L * t * math.cos(theta)
+                y = start_y + L * t * math.sin(theta)
+            else:
+                x = start_x + (L / kappa) * (math.sin(theta + kappa * t) - math.sin(theta))
+                y = start_y - (L / kappa) * (math.cos(theta + kappa * t) - math.cos(theta))
+            pts_x.append(x)
+            pts_y.append(y)
 
-    if length < 1.0 or not angles:
-        return None # 长度太短的杂乱笔画直接丢弃
-
-    # 4. 计算初始射出角 (Theta: θ)
-    # 取前一段有效位移的角度，避免手抖
-    theta = angles[0]
-
-    # 5. 计算曲率 (Curvature: κ)
-    # 策略：累加所有角度的变化量。如果是直线，变化量接近0；如果是圆，变化量接近 2π 或 -2π。
-    curvature = 0.0
-    for i in range(1, len(angles)):
-        delta_angle = normalize_angle(angles[i] - angles[i-1])
-        curvature += delta_angle
-
-    # 6. 基础宽度 (Width: W)
-    # 作为一个初始常数，后续可以让 Transformer 自己去学习生成带有压感的宽度
-    width = 1.0 
-
-    # 7. 状态机 (State: P)
-    # 0 代表正常笔画，后续会添加专门的 EOS Token
-    p_state = 0.0
-
-    return [dx, dy, length, theta, curvature, width, p_state], (end_x, end_y)
-
-
-# ==========================================
-# 2. 复杂度过滤器 (沿用经典逻辑)
-# ==========================================
-def is_complex_enough(strokes, min_strokes=3):
-    # 在参数化模型中，我们不再关心总点数，因为它们全会被压缩！
-    # 我们只关心它由多少“笔”组成。
-    return len(strokes) >= min_strokes
-
-# ==========================================
-# 3. 主处理流程
-# ==========================================
-def process_omniglot_parametric(input_dir, output_file, min_strokes=3):
-    if not os.path.exists(input_dir):
-        print(f"[致命错误] 找不到文件夹 '{input_dir}'")
-        return
-
-    all_sequences = []
-    total_files = 0
-    
-    print(f"🚀 正在启动矢量拟合引擎，扫描 '{input_dir}'...")
-    print("✨ 目标架构: 7维高阶参数化 Token [dx, dy, L, θ, κ, W, P]\n")
-
-    for root, _, files in os.walk(input_dir):
-        for filename in files:
-            if not filename.endswith('.txt'):
-                continue
-                
-            total_files += 1
-            filepath = os.path.join(root, filename)
+        for j in range(1, len(pts_x)):
+            x1, y1 = pts_x[j-1], pts_y[j-1]
+            x2, y2 = pts_x[j], pts_y[j]
             
-            strokes = []
-            current_stroke = []
+            progress = j / steps
+            energy_width = MAX_ENERGY - progress * (MAX_ENERGY - MIN_ENERGY)
             
-            with open(filepath, 'r', encoding='utf-8') as f:
-                for line in f:
-                    line = line.strip()
-                    if not line or line == "START":
-                        continue
-                    elif line == "BREAK":
-                        if current_stroke:
-                            strokes.append(current_stroke)
-                            current_stroke = []
-                    else:
-                        parts = line.replace(',', ' ').split()
-                        if len(parts) >= 2:
-                            try:
-                                current_stroke.append((float(parts[0]), float(parts[1])))
-                            except ValueError:
-                                continue
-            
-            if current_stroke:
-                strokes.append(current_stroke)
+            # 辉光叠加效应
+            ax.plot([x1, x2], [y1, y2], color=GLOW_COLOR, linewidth=energy_width * 4, alpha=0.10, solid_capstyle='round')
+            ax.plot([x1, x2], [y1, y2], color=GLOW_COLOR, linewidth=energy_width * 1.5, alpha=0.40, solid_capstyle='round')
+            ax.plot([x1, x2], [y1, y2], color=CORE_COLOR, linewidth=energy_width * 0.4, alpha=1.0, solid_capstyle='round')
 
-            if not strokes or not is_complex_enough(strokes, min_strokes):
-                continue
-
-            # ==========================================
-            # 🎯 执行点云到方程的压缩 (Point Cloud to Parametric)
-            # ==========================================
-            sequence = []
-            prev_end_x, prev_end_y = strokes[0][0][0], strokes[0][0][1] # 假设以第一笔起点为基准
-
-            for stroke in strokes:
-                result = extract_stroke_parameters(stroke, prev_end_x, prev_end_y)
-                if result:
-                    token, (prev_end_x, prev_end_y) = result
-                    sequence.append(token)
-
-            if not sequence:
-                continue
-
-            # 添加结束符 EOS (P=1)
-            sequence.append([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]) 
-            
-            seq_tensor = torch.tensor(sequence, dtype=torch.float32)
-            
-            path_parts = os.path.normpath(root).split(os.sep)
-            label = f"{path_parts[-2]}_{path_parts[-1]}" if len(path_parts) >= 2 else "Unknown"
-
-            all_sequences.append({
-                "label": label,
-                "filename": filename,
-                "sequence": seq_tensor
-            })
+        prev_end_x, prev_end_y = pts_x[-1], pts_y[-1]
 
     # ==========================================
-    # 4. 空间参数的防爆归一化
+    # 3. HUD UI 动态更新 (加入了 MIN_LEN 显示)
     # ==========================================
-    kept_files = len(all_sequences)
-    print("-" * 45)
-    print(f"📊 扫描总计: {total_files} 个字符")
-    print(f"✅ 成功提取方程: {kept_files} 个")
-    print("-" * 45)
-
-    if kept_files == 0:
-        return
-
-    # 🚨 极度关键：只对空间尺度 (dx, dy, L) 进行缩放，绝不能碰角度 θ 和曲率 κ！
-    all_dx = torch.cat([item["sequence"][:-1, 0] for item in all_sequences])
-    all_dy = torch.cat([item["sequence"][:-1, 1] for item in all_sequences])
-    all_L = torch.cat([item["sequence"][:-1, 2] for item in all_sequences])
+    ax.text(0.03, 0.97, 'SYS.OVERRIDE // ACTIVE', 
+            transform=ax.transAxes, color=GLOW_COLOR, fontsize=8, fontfamily='monospace', va='top', alpha=0.7)
     
-    spatial_data = torch.cat([all_dx, all_dy, all_L])
-    global_scale = spatial_data.abs().max().item() + 1e-6
+    # 动态显示强制指令的配置，增加了 L 参数监控
+    ui_mode = f"EXACT_{force_steps}" if force_steps else f"MIN_{min_steps}"
+    ui_text = f'PROTOCOL: [{ui_mode}]\nSTROKES:  [{len(generated_data)}]\nMIN_LEN:  [{min_length:.1f}]'
     
-    print(f"计算得出全局空间缩放因子 (Max Absolute): {global_scale:.4f}")
+    ax.text(0.03, 0.88, ui_text, 
+            transform=ax.transAxes, color='#FFFFFF', fontsize=10, fontfamily='monospace', fontweight='bold', va='top')
+            
+    ax.text(0.97, 0.03, 'SCALE: 7D-TENSOR', 
+            transform=ax.transAxes, color=GLOW_COLOR, fontsize=8, fontfamily='monospace', ha='right', va='bottom', alpha=0.7)
 
-    for item in all_sequences:
-        seq = item["sequence"]
-        # 对 dx, dy, Length 进行统一缩放，保持几何比例完美不变
-        seq[:, 0] = seq[:, 0] / global_scale
-        seq[:, 1] = seq[:, 1] / global_scale
-        seq[:, 2] = seq[:, 2] / global_scale
-        item["sequence"] = seq
+    for spine in ax.spines.values():
+        spine.set_edgecolor(GLOW_COLOR)
+        spine.set_linewidth(1.5)
+        spine.set_alpha(0.5)
+        
+    ax.tick_params(axis='both', colors=GLOW_COLOR, labelsize=6)
+    ax.set_xticklabels([])
+    ax.set_yticklabels([])
 
-    torch.save(all_sequences, output_file)
-    print(f"🎉 参数化 7 维字库已完美保存至: {output_file}")
-    
-    # 展示恐怖的序列压缩率
-    demo_seq = all_sequences[0]["sequence"]
-    print(f"\n[降维打击展示] 序列长度暴降为: {len(demo_seq)} 步！(以前通常需要 200+ 步)")
-    print(f"第一笔方程 [dx, dy, L, θ, κ, W, P]:\n  {demo_seq[0].tolist()}")
+    ax.invert_yaxis() 
+    ax.axis('equal')
+    plt.subplots_adjust(left=0.08, right=0.92, top=0.92, bottom=0.08)
+    plt.show()
 
 if __name__ == "__main__":
-    INPUT_DIR = "strokes_background"  
-    OUTPUT_FILE = "omniglot_parametric_7d.pt"
-    
-    process_omniglot_parametric(
-        input_dir=INPUT_DIR, 
-        output_file=OUTPUT_FILE, 
-        min_strokes=3
-    )
+    # 测试绝对指令模式：必须画 15 笔，且每一笔不能短于 3.0 的物理单位
+    generate_cyberpunk_character(force_steps=5, min_length=10.0, temperature=1.0)

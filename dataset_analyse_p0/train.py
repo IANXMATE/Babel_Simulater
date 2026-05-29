@@ -27,9 +27,9 @@ class ModelConfig:
     dropout: float = 0.01
 
     # --- 训练超参数 ---
-    batch_size: int = 256      # 序列大幅缩短，Batch 可以尽情开大！
+    batch_size: int = 1024     # 序列大幅缩短，Batch 可以尽情开大！
     epochs: int = 100
-    lr: float = 5e-3           # 参数化模型比较稳，可以稍微调高学习率
+    lr: float = 5e-3           
     weight_decay: float = 1e-4
 
 cfg = ModelConfig()
@@ -128,32 +128,48 @@ class ParametricStrokeTransformer(nn.Module):
         return self.continuous_head(out), self.state_head(out)
 
 # ==========================================
-# 4. 🚀 训练主循环 (含几何感知 Loss)
+# 4. 🚀 训练主循环 (终极破局版)
 # ==========================================
 def train_model():
     device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
     print(f"Using device: {device} (启用 AMP 混合精度)")
     
     dataset = ParametricStrokeDataset("omniglot_parametric_7d.pt")
+    
+    # 工业级多进程 DataLoader
     dataloader = DataLoader(
-        dataset, batch_size=cfg.batch_size, shuffle=True, 
-        collate_fn=collate_fn, num_workers=4, pin_memory=True
+        dataset, 
+        batch_size=cfg.batch_size, 
+        shuffle=True, 
+        collate_fn=collate_fn,
+        num_workers=10,            
+        pin_memory=True,           
+        persistent_workers=True,   
+        prefetch_factor=8          
     )
     
     model = ParametricStrokeTransformer(cfg).to(device)
     optimizer = optim.AdamW(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
     
-    ce_loss_fn = nn.CrossEntropyLoss(ignore_index=-100)
-    mse_loss_fn = nn.MSELoss(reduction='none') 
+    # 🌟 破局猛药 1：余弦退火调度器 (强制跨越平台期)
+    scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=cfg.epochs, eta_min=1e-5)
     
-    scaler = torch.cuda.amp.GradScaler() # 显存救星
+    # 🌟 破局猛药 2：20 倍不对称惩罚 (专治“交白卷”和“停不下来”)
+    class_weights = torch.tensor([1.0, 20.0], device=device)
+    ce_loss_fn = nn.CrossEntropyLoss(weight=class_weights, ignore_index=-100)
+    
+    # 🌟 破局猛药 3：SmoothL1 替代 MSE (专治均值坍缩)
+    smooth_l1_fn = nn.SmoothL1Loss(reduction='none') 
+    
+    # ✅ 顺手修掉的 FutureWarning: 统一使用新版 torch.amp
+    scaler = torch.amp.GradScaler('cuda') 
 
     model.train()
     print(f"🚀 开始训练 Parametric 架构！(输入维度: {cfg.input_dim})")
 
     try:
         for epoch in range(cfg.epochs):
-            epoch_loss, total_mse, total_geo, total_cat = 0.0, 0.0, 0.0, 0.0
+            epoch_loss, total_base, total_geo, total_cat = 0.0, 0.0, 0.0, 0.0
             
             for inputs, targets_cont, targets_state, padding_mask in dataloader:
                 inputs, targets_cont = inputs.to(device), targets_cont.to(device)
@@ -161,46 +177,42 @@ def train_model():
                 
                 optimizer.zero_grad()
                 
-                with torch.cuda.amp.autocast():
+                # ✅ 顺手修掉的 FutureWarning: 新版 autocast API
+                with torch.amp.autocast('cuda'):
                     pred_cont, pred_state_logits = model(inputs, padding_mask=padding_mask)
                     
-                    # 1. 状态 Loss (结束符判断)
+                    # 1. 状态 Loss 
                     loss_cat = ce_loss_fn(pred_state_logits.view(-1, cfg.num_states), targets_state.view(-1))
                     
-                    # 2. 基础数值 MSE Loss
-                    loss_mse_matrix = mse_loss_fn(pred_cont, targets_cont)
+                    # 2. 基础数值误差 (切换到 SmoothL1)
+                    loss_base_matrix = smooth_l1_fn(pred_cont, targets_cont)
                     
                     # ==========================================
-                    # 🎯 3. 核心黑魔法：几何感知补偿 (Geometry-Aware Loss)
+                    # 🎯 3. 几何感知补偿 (Geometry-Aware Loss) - 保持不变
                     # ==========================================
-                    # 提取参数: [dx, dy, L, θ, κ, W]
                     pred_dx, pred_dy = pred_cont[:,:,0], pred_cont[:,:,1]
                     pred_L, pred_theta = pred_cont[:,:,2], pred_cont[:,:,3]
                     
                     targ_dx, targ_dy = targets_cont[:,:,0], targets_cont[:,:,1]
                     targ_L, targ_theta = targets_cont[:,:,2], targets_cont[:,:,3]
                     
-                    # 近似计算这笔画的“真实终点坐标”
-                    # End_X = 起点偏移量(dx) + 长度(L) * cos(射出角θ)
                     pred_end_x = pred_dx + pred_L * torch.cos(pred_theta)
                     pred_end_y = pred_dy + pred_L * torch.sin(pred_theta)
                     
                     targ_end_x = targ_dx + targ_L * torch.cos(targ_theta)
                     targ_end_y = targ_dy + targ_L * torch.sin(targ_theta)
                     
-                    # 计算端点漂移误差
                     loss_geo_matrix = (pred_end_x - targ_end_x)**2 + (pred_end_y - targ_end_y)**2
                     
                     # --- Mask 与归一化 ---
-                    loss_mse_matrix[padding_mask] = 0.0
+                    loss_base_matrix[padding_mask] = 0.0
                     loss_geo_matrix[padding_mask] = 0.0
                     
                     valid_elements = (~padding_mask).sum()
-                    loss_mse = loss_mse_matrix.sum() / (valid_elements * cfg.cont_out_dim + 1e-8)
+                    loss_base = loss_base_matrix.sum() / (valid_elements * cfg.cont_out_dim + 1e-8)
                     loss_geo = loss_geo_matrix.sum() / (valid_elements + 1e-8)
                     
-                    # 损失加权组合：几何补偿占据 50% 的重要性
-                    loss = loss_mse + 0.5 * loss_geo + loss_cat
+                    loss = loss_base + 0.5 * loss_geo + loss_cat
                 
                 # 混合精度反向传播
                 scaler.scale(loss).backward()
@@ -211,14 +223,18 @@ def train_model():
                 scaler.update()
                 
                 epoch_loss += loss.item()
-                total_mse += loss_mse.item()
+                total_base += loss_base.item()
                 total_geo += loss_geo.item()
                 total_cat += loss_cat.item()
                 
+            # 🌟 调整 4：Epoch 结束后让调度器更新学习率
+            scheduler.step()
+            current_lr = optimizer.param_groups[0]['lr']
+                
             num_batches = len(dataloader)
-            print(f"Epoch [{epoch+1}/{cfg.epochs}] | "
+            print(f"Epoch [{epoch+1}/{cfg.epochs}] | LR: {current_lr:.6f} | "
                   f"Total: {epoch_loss/num_batches:.4f} | "
-                  f"MSE: {total_mse/num_batches:.4f} | "
+                  f"BaseL1: {total_base/num_batches:.4f} | "
                   f"Geo: {total_geo/num_batches:.4f} | "
                   f"State: {total_cat/num_batches:.4f}")
 
