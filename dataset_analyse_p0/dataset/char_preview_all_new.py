@@ -59,7 +59,7 @@ def get_filtered_glyphs(ttf_path, valid_ranges, is_fallback):
                         break
             else:
                 # 🪓 盲切模式：抛弃 0~0x02AF 范围内的所有人类高频字符 (拉丁、数字、标点)
-                if codepoint > 0x02AF:
+                if codepoint > -1:
                     keep = True
                     
             if keep:
