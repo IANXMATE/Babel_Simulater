@@ -15,7 +15,8 @@ WHITELIST_FILE = "font_whitelist.json"
 
 # 🔑 [关键配置] 在这里填入你的 GitHub Token (ghp_xxxxxx)
 # 如果为空，每小时限额 60 次；填入后额度提升至 5000 次/小时！
-GITHUB_TOKEN = "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" 
+#### "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" 
+GITHUB_TOKEN = "" 
 
 # ==========================================
 # 🛠️ 核心功能引擎
