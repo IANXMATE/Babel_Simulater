@@ -1,0 +1,44 @@
+{
+    "Megrim.ttf": {
+        "primary_script": "UNKNOWN",
+        "valuable_subsets": [],
+        "all_subsets": [
+            "menu",
+            "latin"
+        ]
+    },
+    "NotoSansNabataean-Regular.ttf": {
+        "primary_script": "Nbat",
+        "valuable_subsets": [
+            "nabataean"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "nabataean"
+        ]
+    },
+    "NotoSansPhagsPa-Regular.ttf": {
+        "primary_script": "Phag",
+        "valuable_subsets": [
+            "math",
+            "phags-pa",
+            "symbols"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "math",
+            "menu",
+            "phags-pa",
+            "symbols"
+        ]
+    },
+    "Daedriccalligraphy-Regular.ttf": {
+        "primary_script": "PUA",
+        "valuable_subsets": [
+            "Private Use Area"
+        ]
+    }
+}
