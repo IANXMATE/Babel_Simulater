@@ -6,7 +6,12 @@
         button { background: #238636; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
         .grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
         .card { height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid #30363d; border-radius: 6px; background: #161b22; }
-        .label { font-size: 12px; color: #58a6ff; margin-top: 5px; }
+        
+        /* 核心修复：强制标签使用标准代码字体，不继承外星字体 */
+        .label { font-size: 14px; color: #58a6ff; margin-top: 10px; font-family: monospace, sans-serif !important; font-weight: bold; }
+        /* 将外星字体仅限制在符文展示区域 */
+        .glyph-display { font-size: 40px; }
+        
     </style></head>
     <body>
         <h1>🛸 Full Raw Glyph Preview</h1>
@@ -23,8 +28,10 @@
             names.forEach((n, i) => sel.appendChild(new Option(n + ' (' + data[n].length + ')', i)));
             function render() {
                 sel.value = idx;
-                grid.innerHTML = data[names[idx]].map(i => `<div class="card" style="font-family:'${names[idx]}'">
-                    <div style="font-size:40px">${i.char}</div><div class="label">U+${i.hex}</div>
+                // 注意这里：我们将内联样式移动到了 glyph-display 的 div 上，不再污染外层卡片
+                grid.innerHTML = data[names[idx]].map(i => `<div class="card">
+                    <div class="glyph-display" style="font-family:'${names[idx]}'">${i.char}</div>
+                    <div class="label">U+${i.hex}</div>
                 </div>`).join('');
             }
             function prev() { idx = (idx - 1 + names.length) % names.length; render(); }

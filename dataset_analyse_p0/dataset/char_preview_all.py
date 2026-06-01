@@ -14,7 +14,6 @@ def get_all_glyphs(ttf_path):
         items = []
         cmap = font.getBestCmap()
         for codepoint, glyph_name in cmap.items():
-            # 直接提取所有可映射字符及其 Unicode 地址
             items.append({
                 'char': chr(codepoint), 
                 'hex': hex(codepoint)[2:].upper().zfill(4)
@@ -39,20 +38,17 @@ def generate_html_dashboard():
             filepath = os.path.join(TARGET_DIR, filename)
             font_name = os.path.splitext(filename)[0]
             
-            # 获取所有字符
             all_items = get_all_glyphs(filepath)
             
             if all_items:
                 font_data[font_name] = all_items
-                
-                # Base64 加载
                 with open(filepath, "rb") as f:
                     encoded = base64.b64encode(f.read()).decode("utf-8")
                 fmt = "truetype" if filename.lower().endswith('.ttf') else "opentype"
                 font_faces_css += f"@font-face {{ font-family: '{font_name}'; src: url(data:font/{fmt};base64,{encoded}); }}"
                 print(f"  ✅ {font_name}: 加载了 {len(all_items)} 个字符")
 
-    # 生成 HTML
+    # 生成 HTML (修复了 label 的字体继承问题)
     html_content = f"""<!DOCTYPE html>
     <html lang="en"><head><meta charset="UTF-8"><style>
         body {{ background: #0d1117; color: #c9d1d9; font-family: sans-serif; padding: 20px; }}
@@ -61,7 +57,12 @@ def generate_html_dashboard():
         button {{ background: #238636; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }}
         .grid {{ display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }}
         .card {{ height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid #30363d; border-radius: 6px; background: #161b22; }}
-        .label {{ font-size: 12px; color: #58a6ff; margin-top: 5px; }}
+        
+        /* 核心修复：强制标签使用标准代码字体，不继承外星字体 */
+        .label {{ font-size: 14px; color: #58a6ff; margin-top: 10px; font-family: monospace, sans-serif !important; font-weight: bold; }}
+        /* 将外星字体仅限制在符文展示区域 */
+        .glyph-display {{ font-size: 40px; }}
+        
     </style></head>
     <body>
         <h1>🛸 Full Raw Glyph Preview</h1>
@@ -78,8 +79,10 @@ def generate_html_dashboard():
             names.forEach((n, i) => sel.appendChild(new Option(n + ' (' + data[n].length + ')', i)));
             function render() {{
                 sel.value = idx;
-                grid.innerHTML = data[names[idx]].map(i => `<div class="card" style="font-family:'${{names[idx]}}'">
-                    <div style="font-size:40px">${{i.char}}</div><div class="label">U+${{i.hex}}</div>
+                // 注意这里：我们将内联样式移动到了 glyph-display 的 div 上，不再污染外层卡片
+                grid.innerHTML = data[names[idx]].map(i => `<div class="card">
+                    <div class="glyph-display" style="font-family:'${{names[idx]}}'">${{i.char}}</div>
+                    <div class="label">U+${{i.hex}}</div>
                 </div>`).join('');
             }}
             function prev() {{ idx = (idx - 1 + names.length) % names.length; render(); }}
@@ -91,6 +94,5 @@ def generate_html_dashboard():
     
     with open(OUTPUT_HTML, "w", encoding="utf-8") as f: f.write(html_content)
     webbrowser.open('file://' + os.path.abspath(OUTPUT_HTML))
-    print(f"\n🎉 RAW 预览面板生成完毕: {OUTPUT_HTML}")
 
 if __name__ == "__main__": generate_html_dashboard()
