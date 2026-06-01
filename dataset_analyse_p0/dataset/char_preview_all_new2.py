@@ -10,29 +10,64 @@ from fontTools.ttLib import TTFont
 TARGET_DIR = "alien_tensors_raw"
 OUTPUT_HTML = "rune_viewer.html"
 WHITELIST_FILE = "font_whitelist.json"
-SCRIPTS_FILE = "scripts.txt"
+SCRIPTS_FILE = "Scripts.txt"
 RULES_FILE = "rules.json"
 
 def load_and_parse_rules():
+    """解析双向规则库：包含全局兜底黑名单 (排除) 和 字体专属白名单 (保留)"""
     if not os.path.exists(RULES_FILE):
-        demo_rules = {"人类基础拉丁字母及标点": ["0000", "02AF"]}
+        demo_rules = {
+            "DEFAULT_BLACKLIST": {
+                "人类基础拉丁字母及标点": ["0000", "02AF"]
+            },
+            "CUSTOM_WHITELIST": {
+                "Daedriccalligraphy-Regular": [
+                    ["E000", "F8FF"]
+                ],
+                "Demo-Wildcard-Font": []
+            }
+        }
         with open(RULES_FILE, "w", encoding="utf-8") as f:
             json.dump(demo_rules, f, ensure_ascii=False, indent=4)
-        print(f"📝 未找到 {RULES_FILE}，已自动生成默认防御黑名单。")
+        print(f"📝 未找到 {RULES_FILE}，已自动生成 [双向控制] 规则模板。")
         rules_dict = demo_rules
     else:
         with open(RULES_FILE, "r", encoding="utf-8") as f:
             rules_dict = json.load(f)
             
-    parsed_ranges = []
-    for rule_name, bounds in rules_dict.items():
+    # 1. 解析兜底黑名单 (排除区间)
+    fallback_exclude_ranges = []
+    print("🛡️ 正在装载全局兜底黑名单 (DEFAULT_BLACKLIST):")
+    for rule_name, bounds in rules_dict.get("DEFAULT_BLACKLIST", {}).items():
         if len(bounds) == 2:
-            parsed_ranges.append((int(bounds[0], 16), int(bounds[1], 16)))
-    return parsed_ranges
+            start_dec, end_dec = int(bounds[0], 16), int(bounds[1], 16)
+            fallback_exclude_ranges.append((start_dec, end_dec))
+            print(f"  - [{rule_name}]: 拦截 U+{bounds[0]} 到 U+{bounds[1]}")
+
+    # 2. 解析字体专属白名单 (保留区间)
+    custom_include_rules = {}
+    print("🎛️ 正在装载字体专属白名单 (CUSTOM_WHITELIST):")
+    for font_key, ranges in rules_dict.get("CUSTOM_WHITELIST", {}).items():
+        # 💡 核心升级：如果 value 为空列表，转化为全量通配符 (0 到 10FFFF)
+        if not ranges:
+            custom_include_rules[font_key] = [(0, 0x10FFFF)]
+            print(f"  - [{font_key}]: 🔓 免检通道开启 (全量无差别提取)")
+        else:
+            parsed_ranges = []
+            for bounds in ranges:
+                if len(bounds) == 2:
+                    parsed_ranges.append((int(bounds[0], 16), int(bounds[1], 16)))
+            custom_include_rules[font_key] = parsed_ranges
+            print(f"  - [{font_key}]: 强制定制保留 {len(parsed_ranges)} 个区间")
+            
+    return fallback_exclude_ranges, custom_include_rules
 
 def parse_unicode_scripts(filepath):
+    """加载 Unicode 官方字典"""
     script_ranges = {}
-    if not os.path.exists(filepath): return script_ranges
+    if not os.path.exists(filepath):
+        print(f"⚠️ 警告: 找不到 {filepath}。")
+        return script_ranges
         
     with open(filepath, 'r', encoding='utf-8') as f:
         for line in f:
@@ -56,6 +91,7 @@ def parse_unicode_scripts(filepath):
     return script_ranges
 
 def get_filtered_glyphs(ttf_path, valid_ranges, is_fallback, fallback_exclude_ranges):
+    """核心过滤器：处理保留或剔除逻辑"""
     try:
         font = TTFont(ttf_path)
         items = []
@@ -63,18 +99,19 @@ def get_filtered_glyphs(ttf_path, valid_ranges, is_fallback, fallback_exclude_ra
         for codepoint, glyph_name in cmap.items():
             keep = False
             if not is_fallback:
-                # 🎯 白名单制导 (命中 Unicode 专属区间)
+                # 🎯 白名单模式 (命中区间则保留)
                 for start, end in valid_ranges:
                     if start <= codepoint <= end:
                         keep = True
                         break
             else:
-                # 🛡️ 黑名单拦截 (命中 rules.json 予以剔除)
+                # 🛡️ 黑名单模式 (默认保留，命中区间则剔除)
                 keep = True
                 for start, end in fallback_exclude_ranges:
                     if start <= codepoint <= end:
                         keep = False
                         break
+                        
             if keep:
                 items.append({'char': chr(codepoint), 'hex': hex(codepoint)[2:].upper().zfill(4)})
         return items
@@ -83,13 +120,14 @@ def get_filtered_glyphs(ttf_path, valid_ranges, is_fallback, fallback_exclude_ra
         return []
 
 def generate_html_dashboard():
-    print("🚀 启动全息浏览器流水线 (子集联合制导版)...")
+    print("\n🚀 启动全息浏览器流水线 (三级瀑布流 + 全量通配版)...")
     
     if not os.path.exists(TARGET_DIR): 
         return print(f"❌ 找不到文件夹: {TARGET_DIR}")
 
+    # 装载三大防线
+    fallback_exclude_ranges, custom_include_rules = load_and_parse_rules()
     unicode_rules = parse_unicode_scripts(SCRIPTS_FILE)
-    fallback_exclude_ranges = load_and_parse_rules()
     
     whitelist_meta = {}
     if os.path.exists(WHITELIST_FILE):
@@ -98,44 +136,66 @@ def generate_html_dashboard():
     
     font_data = {}
     font_faces_css = ""
-    
+    cnt = 0
     for filename in os.listdir(TARGET_DIR):
         if filename.lower().endswith(('.ttf', '.otf')):
+            cnt += 1
             filepath = os.path.join(TARGET_DIR, filename)
             font_name = os.path.splitext(filename)[0]
             
-            # 读取元数据字典
-            meta = whitelist_meta.get(filename, {"primary_script": "UNKNOWN", "valuable_subsets": []})
-            
+            is_fallback = False
             valid_ranges = []
-            matched_subsets = []
-            
-            # 🎯 核心修复：遍历 valuable_subsets 而不是 primary_script
-            for subset in meta.get('valuable_subsets', []):
-                subset_norm = subset.replace('_', '').replace('-', '').replace(' ', '').lower()
-                if subset_norm in unicode_rules:
-                    valid_ranges.extend(unicode_rules[subset_norm])
-                    matched_subsets.append(subset)
-            
-            is_fallback = len(valid_ranges) == 0
             mode_str = ""
             
-            if not is_fallback:
-                mode_str = f"🎯 子集精准定位 ({', '.join(matched_subsets)})"
-            else:
-                # 🧠 文件名嗅探兜底 (处理 PUA 或没有 metadata 的情况)
-                clean_filename = font_name.replace('_', '').replace('-', '').replace(' ', '').lower()
-                for known_script in unicode_rules.keys():
-                    if len(known_script) > 3 and known_script in clean_filename:
-                        valid_ranges.extend(unicode_rules[known_script])
-                        is_fallback = False
-                        mode_str = f"🧠 文件名嗅探匹配 ({known_script})"
-                        break
-                        
-            if is_fallback:
-                mode_str = f"🛡️ 自定义规则拦截 ({meta['primary_script']})"
+            # ===============================================
+            # 🚦 核心路由逻辑：三级瀑布流 (Waterfall Pipeline)
+            # ===============================================
+            
+            # [Tier 1] 最高优先级：rules.json 里的定制白名单
+            if font_name in custom_include_rules:
+                valid_ranges = custom_include_rules[font_name]
+                is_fallback = False
+                if valid_ranges == [(0, 0x10FFFF)]:
+                    mode_str = f"🔓 rules.json 免检通道 (全量解析)"
+                else:
+                    mode_str = f"🎛️ rules.json 强制定制保留"
                 
-            # 执行提纯
+            else:
+                # [Tier 2] 官方字典查阅 (元数据 -> 文件名嗅探)
+                meta = whitelist_meta.get(filename, {"primary_script": "UNKNOWN", "valuable_subsets": []})
+                matched_subsets = []
+                
+                # 尝试用 subsets 去 Scripts.txt 里查
+                for subset in meta.get('valuable_subsets', []):
+                    subset_norm = subset.replace('_', '').replace('-', '').replace(' ', '').lower()
+                    if subset_norm in unicode_rules:
+                        valid_ranges.extend(unicode_rules[subset_norm])
+                        matched_subsets.append(subset)
+                
+                if len(valid_ranges) > 0:
+                    is_fallback = False
+                    mode_str = f"🎯 子集精准定位 ({', '.join(matched_subsets)})"
+                    
+                else:
+                    # 尝试用 文件名 去 Scripts.txt 里嗅探兜底
+                    clean_filename = font_name.replace('_', '').replace('-', '').replace(' ', '').lower()
+                    sniffed = False
+                    for known_script in unicode_rules.keys():
+                        if len(known_script) > 3 and known_script in clean_filename:
+                            valid_ranges.extend(unicode_rules[known_script])
+                            is_fallback = False
+                            mode_str = f"🧠 文件名嗅探匹配 ({known_script})"
+                            sniffed = True
+                            break
+                            
+                    if not sniffed:
+                        # [Tier 3] 最低优先级：触发 rules.json 兜底黑名单
+                        is_fallback = True
+                        mode_str = f"🛡️ 默认黑名单拦截 ({meta.get('primary_script', 'UNKNOWN')})"
+                        
+            # ===============================================
+
+            # 执行提取
             filtered_items = get_filtered_glyphs(filepath, valid_ranges, is_fallback, fallback_exclude_ranges)
             
             if filtered_items:
@@ -147,7 +207,7 @@ def generate_html_dashboard():
                 font_faces_css += f"@font-face {{ font-family: '{font_name}'; src: url(data:font/{fmt};base64,{encoded}); }}\n        "
                 
                 print(f"  ✅ {font_name} [{mode_str}]: 提纯保留了 {len(filtered_items)} 个异星字形")
-
+    print(f"共有{cnt}个文件")
     # 生成 HTML
     html_content = f"""<!DOCTYPE html>
     <html lang="en"><head><meta charset="UTF-8"><style>

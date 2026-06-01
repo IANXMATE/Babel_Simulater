@@ -1,0 +1,415 @@
+{
+    "Megrim.ttf": {
+        "primary_script": "UNKNOWN",
+        "valuable_subsets": [],
+        "all_subsets": [
+            "menu",
+            "latin"
+        ]
+    },
+    "NotoSansNabataean-Regular.ttf": {
+        "primary_script": "Nbat",
+        "valuable_subsets": [
+            "nabataean"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "nabataean"
+        ]
+    },
+    "NotoSansPhagsPa-Regular.ttf": {
+        "primary_script": "Phag",
+        "valuable_subsets": [
+            "math",
+            "phags-pa",
+            "symbols"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "math",
+            "menu",
+            "phags-pa",
+            "symbols"
+        ]
+    },
+    "NotoSansKhmer[wdth,wght].ttf": {
+        "primary_script": "Khmr",
+        "valuable_subsets": [
+            "khmer"
+        ],
+        "all_subsets": [
+            "khmer",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "NotoSansTamil[wdth,wght].ttf": {
+        "primary_script": "Taml",
+        "valuable_subsets": [
+            "tamil"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "tamil"
+        ]
+    },
+    "NotoSansHebrew[wdth,wght].ttf": {
+        "primary_script": "Hebr",
+        "valuable_subsets": [
+            "cyrillic-ext",
+            "greek-ext",
+            "hebrew"
+        ],
+        "all_subsets": [
+            "cyrillic-ext",
+            "greek-ext",
+            "hebrew",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "NotoSansBengali[wdth,wght].ttf": {
+        "primary_script": "Beng",
+        "valuable_subsets": [
+            "bengali"
+        ],
+        "all_subsets": [
+            "bengali",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "NotoSansBatak-Regular.ttf": {
+        "primary_script": "Batk",
+        "valuable_subsets": [
+            "batak"
+        ],
+        "all_subsets": [
+            "batak",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "NotoSerifBengali[wdth,wght].ttf": {
+        "primary_script": "Beng",
+        "valuable_subsets": [
+            "bengali"
+        ],
+        "all_subsets": [
+            "bengali",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "NotoSansMalayalam[wdth,wght].ttf": {
+        "primary_script": "Mlym",
+        "valuable_subsets": [
+            "malayalam"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "malayalam",
+            "menu"
+        ]
+    },
+    "NotoSansInscriptionalPahlavi-Regular.ttf": {
+        "primary_script": "Phli",
+        "valuable_subsets": [
+            "inscriptional-pahlavi"
+        ],
+        "all_subsets": [
+            "inscriptional-pahlavi",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "NotoSansGujarati[wdth,wght].ttf": {
+        "primary_script": "Gujr",
+        "valuable_subsets": [
+            "gujarati",
+            "math",
+            "symbols"
+        ],
+        "all_subsets": [
+            "gujarati",
+            "latin",
+            "latin-ext",
+            "math",
+            "menu",
+            "symbols"
+        ]
+    },
+    "NotoSansOriya[wdth,wght].ttf": {
+        "primary_script": "Orya",
+        "valuable_subsets": [
+            "oriya"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "oriya"
+        ]
+    },
+    "NotoSansMeeteiMayek[wght].ttf": {
+        "primary_script": "Mtei",
+        "valuable_subsets": [
+            "meetei-mayek"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "meetei-mayek",
+            "menu"
+        ]
+    },
+    "NotoSansGurmukhi[wdth,wght].ttf": {
+        "primary_script": "Guru",
+        "valuable_subsets": [
+            "gurmukhi"
+        ],
+        "all_subsets": [
+            "gurmukhi",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "NotoSansOlChiki[wght].ttf": {
+        "primary_script": "Olck",
+        "valuable_subsets": [
+            "ol-chiki"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "ol-chiki"
+        ]
+    },
+    "NotoSansGeorgian[wdth,wght].ttf": {
+        "primary_script": "Geor",
+        "valuable_subsets": [
+            "cyrillic-ext",
+            "georgian",
+            "greek-ext",
+            "math",
+            "symbols"
+        ],
+        "all_subsets": [
+            "cyrillic-ext",
+            "georgian",
+            "greek-ext",
+            "latin",
+            "latin-ext",
+            "math",
+            "menu",
+            "symbols"
+        ]
+    },
+    "NotoSansWarangCiti-Regular.ttf": {
+        "primary_script": "Wara",
+        "valuable_subsets": [
+            "warang-citi"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "warang-citi"
+        ]
+    },
+    "NotoSansArmenian[wdth,wght].ttf": {
+        "primary_script": "Armn",
+        "valuable_subsets": [
+            "armenian"
+        ],
+        "all_subsets": [
+            "armenian",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "NotoSansEthiopic[wdth,wght].ttf": {
+        "primary_script": "Ethi",
+        "valuable_subsets": [
+            "ethiopic"
+        ],
+        "all_subsets": [
+            "ethiopic",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "NotoSansOsmanya-Regular.ttf": {
+        "primary_script": "Osma",
+        "valuable_subsets": [
+            "osmanya"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "osmanya"
+        ]
+    },
+    "NotoTraditionalNushu[wght].ttf": {
+        "primary_script": "Nshu",
+        "valuable_subsets": [
+            "nushu"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "nushu"
+        ]
+    },
+    "NotoSansSunuwar-Regular.ttf": {
+        "primary_script": "Sunu",
+        "valuable_subsets": [
+            "sunuwar"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "sunuwar"
+        ]
+    },
+    "NotoSansInscriptionalParthian-Regular.ttf": {
+        "primary_script": "Prti",
+        "valuable_subsets": [
+            "inscriptional-parthian"
+        ],
+        "all_subsets": [
+            "inscriptional-parthian",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "Prompt-Regular.ttf": {
+        "primary_script": "Thai",
+        "valuable_subsets": [
+            "thai",
+            "vietnamese"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "thai",
+            "vietnamese"
+        ]
+    },
+    "Heebo[wght].ttf": {
+        "primary_script": "Hebr",
+        "valuable_subsets": [
+            "hebrew",
+            "math",
+            "symbols"
+        ],
+        "all_subsets": [
+            "hebrew",
+            "latin",
+            "latin-ext",
+            "math",
+            "menu",
+            "symbols"
+        ]
+    },
+    "NotoSansTelugu[wdth,wght].ttf": {
+        "primary_script": "Telu",
+        "valuable_subsets": [
+            "telugu"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "telugu"
+        ]
+    },
+    "HindMadurai-Regular.ttf": {
+        "primary_script": "Taml",
+        "valuable_subsets": [
+            "tamil"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "tamil"
+        ]
+    },
+    "BJCree-Regular.ttf": {
+        "primary_script": "Cans",
+        "valuable_subsets": [
+            "canadian-aboriginal"
+        ],
+        "all_subsets": [
+            "canadian-aboriginal",
+            "latin",
+            "menu"
+        ]
+    },
+    "Padauk-Regular.ttf": {
+        "primary_script": "Mymr",
+        "valuable_subsets": [
+            "myanmar"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "myanmar"
+        ]
+    },
+    "Maname-Regular.ttf": {
+        "primary_script": "Sinh",
+        "valuable_subsets": [
+            "sinhala",
+            "vietnamese"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "sinhala",
+            "vietnamese"
+        ]
+    },
+    "MuktaMalar-Regular.ttf": {
+        "primary_script": "Taml",
+        "valuable_subsets": [
+            "tamil"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "menu",
+            "tamil"
+        ]
+    },
+    "Daedriccalligraphy-Regular.ttf": {
+        "primary_script": "PUA",
+        "valuable_subsets": [
+            "Private Use Area"
+        ]
+    }
+}

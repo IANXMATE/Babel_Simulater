@@ -22,6 +22,30 @@ https://fonts.google.com/noto/specimen/Noto+Sans+Inscriptional+Pahlavi?query=not
 
 https://fonts.google.com/noto/specimen/Noto+Sans+Gujarati?query=noto
 
+https://fonts.google.com/noto/specimen/Noto+Sans+Oriya?query=noto&preview.script=Orya
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Meetei+Mayek?query=noto
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Gurmukhi?query=noto&preview.script=Guru&preview.lang=pa_Guru
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Ol+Chiki?query=noto&preview.script=Olck&preview.lang=sat_Olck
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Georgian?query=noto&preview.script=Geor
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Warang+Citi?query=noto&preview.script=Wara
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Armenian?query=noto&preview.script=Armn
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Ethiopic?query=noto&preview.script=Ethi
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Osmanya?query=noto&preview.script=Osma&preview.lang=so_Osma
+
+https://fonts.google.com/noto/specimen/Noto+Traditional+Nushu?query=noto&preview.script=Nshu&preview.lang=mis_Nshu
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Sunuwar?query=noto&preview.script=Sunu&preview.lang=suz_Sunu
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Inscriptional+Parthian?query=noto&preview.script=Prti
+
 ###############
 
 
