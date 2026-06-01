@@ -20,9 +20,9 @@ class ModelConfig:
     num_states: int = 2        
 
     # --- Transformer 架构 (极其轻量) ---
-    d_model: int = 256
-    nhead: int = 8
-    num_layers: int = 6
+    d_model: int = 512
+    nhead: int = 4
+    num_layers: int = 3
     dim_feedforward: int = 1024
     dropout: float = 0.01
 
