@@ -9,12 +9,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw, ImageFont
 from scipy.ndimage import distance_transform_edt
+import json
 
 TARGET_DIR = "../alien_tensors_raw"
 CANVAS_SIZE = 256
-NUM_STROKES = 12
+NUM_STROKES = 15      # 稍微增加笔画数，因为贴边缘初始化后，单根线覆盖面积会变小
 NUM_SAMPLES = 60
 
+# 自动检测 MPS / CUDA
 if torch.backends.mps.is_available():
     DEVICE = torch.device("mps")
 elif torch.cuda.is_available():
@@ -44,17 +46,37 @@ def get_random_glyph_target(font_dir, size=CANVAS_SIZE):
 
 
 class GaussianStroke(nn.Module):
-    def __init__(self, init_points):
+    def __init__(self, contour_points):
         super().__init__()
-        # 🌟 核心修改 1：精准空投！直接出生在字体的像素上
-        idx = torch.randperm(init_points.shape[0])[:4]
-        self.P = nn.Parameter(init_points[idx]) 
+        # 🌟 核心修改 1：局部轮廓追踪初始化！
+        num_pts = contour_points.shape[0]
         
-        # 宽度曲线：初始化为适中的固定宽度 (比如 6 个像素)
-        self.Q = nn.Parameter(torch.tensor([[0.0, 0.0], [5.0, 6.0], [15.0, 6.0], [20.0, 0.0]]))
+        # 1. 在轮廓上随机选一个起点
+        start_idx = torch.randint(0, num_pts, (1,), device=DEVICE).item()
+        p0 = contour_points[start_idx]
         
-        # 存在概率：初始值极高(>99%)，杜绝摆烂
-        self.alpha_logit = nn.Parameter(torch.tensor(5.0)) 
+        # 2. 计算轮廓上所有点到起点的欧氏距离
+        dists = torch.norm(contour_points - p0, dim=1)
+        
+        # 3. 按距离排序，获取起点的“局部邻居”
+        sorted_indices = torch.argsort(dists)
+        
+        # 4. 按步长取 4 个点。步长决定了初始曲线的长度 (比如取第 0, 10, 20, 30 近的点)
+        step = max(1, num_pts // 80) 
+        # 确保索引不越界
+        idx0 = sorted_indices[0]
+        idx1 = sorted_indices[min(step, num_pts-1)]
+        idx2 = sorted_indices[min(step*2, num_pts-1)]
+        idx3 = sorted_indices[min(step*3, num_pts-1)]
+        
+        idx = torch.stack([idx0, idx1, idx2, idx3])
+        self.P = nn.Parameter(contour_points[idx].clone()) 
+        
+        # 宽度曲线：因为母线已经在边缘了，初始化宽度给稍微大一点点，让它向内侧探索
+        self.Q = nn.Parameter(torch.tensor([[0.0, 0.0], [5.0, 8.0], [15.0, 8.0], [20.0, 0.0]], device=DEVICE))
+        
+        # 存在概率：初始值极高
+        self.alpha_logit = nn.Parameter(torch.tensor(5.0, device=DEVICE)) 
 
     def cubic_bezier(self, pts, t):
         mt = 1 - t
@@ -69,10 +91,8 @@ class GaussianStroke(nn.Module):
         radii = torch.abs(torch.matmul(W_t - self.Q[0], torch.stack([-base[1], base[0]]) / (torch.norm(base)+1e-6)))
         
         dist_sq = (grid_x.unsqueeze(-1) - M_t[:, 0])**2 + (grid_y.unsqueeze(-1) - M_t[:, 1])**2
-        
-        # 🌟 核心修改 2：使用 sum 代替 max，释放所有采样点的梯度！
         img_sum = torch.sum(torch.exp(-dist_sq / (radii.unsqueeze(0)**2 + 1e-2)), dim=-1)
-        img = torch.clamp(img_sum, 0, 1) # 防止发光过度
+        img = torch.clamp(img_sum, 0, 1) 
         
         return img * torch.sigmoid(self.alpha_logit)
 
@@ -81,9 +101,16 @@ def train_pure_pytorch():
     target_img, _, char = get_random_glyph_target(TARGET_DIR)
     target_mask = (1.0 - target_img[:,:,0]).to(DEVICE)
     
-    # 提取目标图像中所有为黑色的像素坐标，用于初始化“空投”
-    y_idx, x_idx = torch.where(target_mask > 0.5)
-    valid_points = torch.stack([x_idx, y_idx], dim=1).float()
+    # 🌟 核心修改 2：利用形态学提取 TTF 图像的单像素边界轮廓
+    # 膨胀 - 腐蚀 = 边缘
+    tm_unsqueeze = target_mask.unsqueeze(0).unsqueeze(0)
+    dilated = F.max_pool2d(tm_unsqueeze, kernel_size=3, stride=1, padding=1)
+    eroded = -F.max_pool2d(-tm_unsqueeze, kernel_size=3, stride=1, padding=1)
+    contour_mask = (dilated - eroded).squeeze()
+    
+    # 获取所有的轮廓像素坐标
+    y_idx, x_idx = torch.where(contour_mask > 0.5)
+    contour_points = torch.stack([x_idx, y_idx], dim=1).float()
     
     bg_mask_np = (target_img[:,:,0] > 0.5).cpu().numpy() 
     dt_map_np = distance_transform_edt(bg_mask_np)
@@ -94,11 +121,10 @@ def train_pure_pytorch():
     y = torch.linspace(0, CANVAS_SIZE, CANVAS_SIZE, device=DEVICE)
     grid_y, grid_x = torch.meshgrid(y, x, indexing='ij')
 
-    strokes = nn.ModuleList([GaussianStroke(valid_points).to(DEVICE) for _ in range(NUM_STROKES)])
-    # 使用较小的学习率，让模型慢慢理顺打结的线条
+    strokes = nn.ModuleList([GaussianStroke(contour_points).to(DEVICE) for _ in range(NUM_STROKES)])
     optimizer = optim.Adam(strokes.parameters(), lr=0.5)
     
-    print(f"🎯 训练字符: {char} | 设备: {DEVICE}")
+    print(f"🎯 训练字符: {char} | 设备: {DEVICE} | 轮廓像素总数: {contour_points.shape[0]}")
 
     for epoch in range(1500):
         optimizer.zero_grad()
@@ -106,7 +132,6 @@ def train_pure_pytorch():
         stroke_imgs = []
         total_alpha = 0
         for s in strokes:
-            # 🌟 核心修改 3：前 300 轮冻结 alpha 的梯度，强迫它去扭曲曲线，而不是降 alpha 隐身
             if epoch < 300:
                 s.alpha_logit.requires_grad = False
             else:
@@ -119,40 +144,35 @@ def train_pure_pytorch():
         stroke_imgs_tensor = torch.stack(stroke_imgs)
         pred_img = torch.clamp(torch.sum(stroke_imgs_tensor, dim=0), 0, 1)
         
-        # ==================== 🌟 终极 Loss 组合 ====================
-        
-        # 1. Soft-IoU Loss & MSE Loss
+        # 1. Soft-IoU & MSE
         intersection = torch.sum(pred_img * target_mask)
         union = torch.sum(pred_img) + torch.sum(target_mask) - intersection
         loss_iou = 1.0 - (intersection + 1e-5) / (union + 1e-5)
         loss_mse = F.mse_loss(pred_img, target_mask)
         
-        # 2. Gravity Loss
+        # 2. Gravity
         loss_gravity = torch.sum(pred_img * gravity_field) / (CANVAS_SIZE * CANVAS_SIZE)
         
-        # 3. 互斥重叠惩罚 (防止多根线挤在同一个像素上)
+        # 3. Overlap (归一化 + 退火)
         flat_strokes = stroke_imgs_tensor.view(NUM_STROKES, -1) 
         overlaps = torch.matmul(flat_strokes, flat_strokes.T)   
         areas = torch.sum(flat_strokes, dim=1) + 1e-5
         ratios = overlaps / areas.unsqueeze(1)
         mask = ~torch.eye(NUM_STROKES, dtype=torch.bool, device=DEVICE)
         
-        # 🌟 修复1：归一化！除以线条对的数量，防止数值爆炸
         num_pairs = NUM_STROKES * (NUM_STROKES - 1)
         base_overlap = ratios[mask].sum() / num_pairs
         
-        # 🌟 修复2：退火算法 (Annealing)
         if epoch < 400:
             lambda_overlap = 0.0
         elif epoch < 800:
-            # 在 400~800 轮之间，缓慢地、线性地把权重从 0 增加到 25.0
             lambda_overlap = 25.0 * ((epoch - 400) / 400.0) 
         else:
             lambda_overlap = 25.0
             
         loss_overlap = base_overlap * lambda_overlap
         
-        # 4. Sparsity Loss (裁撤冗余笔画，同样使用平滑退火)
+        # 4. Sparsity (退火)
         if epoch < 800:
             lambda_sparse = 0.0
         elif epoch < 1200:
@@ -162,21 +182,15 @@ def train_pure_pytorch():
             
         loss_sparse = lambda_sparse * total_alpha
         
-        # ==========================================================
-
         loss = loss_mse * 20.0 + loss_iou * 5.0 + loss_gravity * 10.0 + loss_overlap + loss_sparse
-        
         loss.backward()
         optimizer.step()
         
         if epoch % 50 == 0:
-            # 打印时我们看看原始的 base_overlap 是多少
-            print(f"Epoch {epoch:04d} | IoU: {loss_iou.item():.3f} | Overlap_Loss: {loss_overlap.item():.3f} (Weight: {lambda_overlap:.1f}) | Sparsity: {loss_sparse.item():.3f}")
+            print(f"Epoch {epoch:04d} | IoU: {loss_iou.item():.3f} | Overlap: {loss_overlap.item():.3f} | Sparsity: {loss_sparse.item():.3f}")
 
-    # ================== 🧹 终极清洗：NMS 非极大值抑制 ==================
-    print("\n🚀 开始执行 NMS 提取纯净骨架张量...")
-
-    # 1. 第一层过滤：提高置信度门槛
+    # ================== 🧹 NMS 清洗与最终展示 ==================
+    print("\n🚀 执行 NMS 提取...")
     ALPHA_THRESHOLD = 0.85  
     candidate_strokes = []
 
@@ -186,33 +200,24 @@ def train_pure_pytorch():
             candidate_strokes.append({
                 "stroke_id": i,
                 "confidence": alpha_prob,
-                "P": s.P.detach().cpu(), # 母线控制点张量
-                "Q": s.Q.detach().cpu()  # 宽度控制点张量
+                "P": s.P.detach().cpu(), 
+                "Q": s.Q.detach().cpu()  
             })
 
-    # 2. 第二层过滤：按置信度从高到低排序，准备 NMS
     candidate_strokes = sorted(candidate_strokes, key=lambda x: x["confidence"], reverse=True)
-
     final_tensors = []
-    NMS_DISTANCE_THRESHOLD = 15.0 # 如果两条线控制点的平均距离小于 15 像素，视为重复
+    NMS_DISTANCE_THRESHOLD = 15.0 
 
     for candidate in candidate_strokes:
         is_redundant = False
-        
-        # 和已经确认保留的线进行对比
         for kept_stroke in final_tensors:
-            # 计算两条母线对应控制点之间的平均欧氏距离
             dist = torch.mean(torch.norm(candidate["P"] - kept_stroke["P"], dim=-1)).item()
-            
-            # 如果距离太近，说明它们挤在一起了，而且当前 candidate 的置信度更低，直接抛弃！
             if dist < NMS_DISTANCE_THRESHOLD:
                 is_redundant = True
                 break
-                
         if not is_redundant:
             final_tensors.append(candidate)
 
-    # 3. 组装最终可导出的 JSON 数据
     export_data = []
     for item in final_tensors:
         export_data.append({
@@ -222,22 +227,24 @@ def train_pure_pytorch():
             "width_bezier": item["Q"].numpy().tolist()
         })
 
-    print(f"✅ 清洗完成！初始 {NUM_STROKES} 根线 -> 初筛保留 {len(candidate_strokes)} 根 -> NMS去重后最终保留 {len(export_data)} 根。")
-
+    print(f"✅ 清洗完成！保留 {len(export_data)} 根。")
     # with open("alien_skeleton_tensors.json", "w") as f:
     #     json.dump(export_data, f, indent=4)
 
-    print("💾 绝对纯净的张量数据已保存至 alien_skeleton_tensors.json")
-
-    # ================== 🧹 终极可视化验证 ==================
-    # 我们只把 NMS 保留存活下来的线画出来，看看是否完美！
+    # 可视化
     clean_pred_img = torch.zeros(CANVAS_SIZE, CANVAS_SIZE, device=DEVICE)
     t_plot = torch.linspace(0, 1, 100, device=DEVICE).unsqueeze(1)
 
     plt.figure(figsize=(15, 5))
     plt.subplot(1, 3, 1)
-    plt.imshow(target_mask.cpu().detach(), cmap='gray')
-    plt.title("Target Glyph")
+    
+    # 画出原始轮廓线以作对比 (用彩色标出轮廓)
+    target_disp = target_mask.cpu().detach().numpy().copy()
+    contour_disp = contour_mask.cpu().detach().numpy()
+    target_disp[contour_disp > 0.5] = 0.5 # 轮廓处标灰
+    
+    plt.imshow(target_disp, cmap='gray')
+    plt.title("Target & Contours (Grey)")
 
     ax3 = plt.subplot(1, 3, 3)
     ax3.set_xlim(0, CANVAS_SIZE); ax3.set_ylim(CANVAS_SIZE, 0); ax3.set_aspect('equal')
@@ -247,7 +254,6 @@ def train_pure_pytorch():
         P_tensor = item["P"].to(DEVICE)
         Q_tensor = item["Q"].to(DEVICE)
         
-        # 重建清理后的图像
         mt = 1 - t_plot
         M_t = mt**3*P_tensor[0] + 3*mt**2*t_plot*P_tensor[1] + 3*mt*t_plot**2*P_tensor[2] + t_plot**3*P_tensor[3]
         W_t = mt**3*Q_tensor[0] + 3*mt**2*t_plot*Q_tensor[1] + 3*mt*t_plot**2*Q_tensor[2] + t_plot**3*Q_tensor[3]
@@ -258,7 +264,6 @@ def train_pure_pytorch():
         img = torch.max(torch.exp(-dist_sq / (radii.unsqueeze(0)**2 + 1e-2)), dim=-1)[0]
         clean_pred_img += img
         
-        # 绘制清理后的骨架
         m_pts = M_t.detach().cpu().numpy()
         ax3.plot(m_pts[:, 0], m_pts[:, 1], linewidth=3.0, marker='.', markersize=2)
 
