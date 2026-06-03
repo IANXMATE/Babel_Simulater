@@ -7,7 +7,10 @@ from fontTools.ttLib import TTFont
 # ==========================================
 # ⚙️ 全局配置
 # ==========================================
-TARGET_DIR = "alien_tensors_raw"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DIR = "alien_tensors_raw"
+TARGET_DIR = os.path.join(SCRIPT_DIR + '/', DIR)
 OUTPUT_HTML = "rune_viewer.html"
 WHITELIST_FILE = "font_whitelist.json"
 SCRIPTS_FILE = "Scripts.txt"
