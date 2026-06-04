@@ -24,6 +24,7 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt
 from fontTools.ttLib import TTFont
+import qdarktheme
 
 from skimage.filters import threshold_otsu
 from skimage.morphology import medial_axis
@@ -56,10 +57,6 @@ if not os.path.exists(FONT_PATH):
     FONT_PATH = "arial.ttf"
 
 # 🌟 NEW: Data Persistence Directories
-# ANNOTATIONS_DIR = os.path.join(SCRIPT_DIR, "annotations")
-# METADATA_DIR = os.path.join(SCRIPT_DIR, "metadata")
-# os.makedirs(ANNOTATIONS_DIR, exist_ok=True)
-# os.makedirs(METADATA_DIR, exist_ok=True)
 
 
 # ==========================================
@@ -73,12 +70,6 @@ class ModernAnnotationApp(QMainWindow):
         self.setWindowTitle(f"AI Vector Router - Data Factory ({self.font_filename})")
         self.setGeometry(50, 50, 1500, 750) 
         
-        # 🌟 Data Management 
-        # self.anno_json_path = os.path.join(ANNOTATIONS_DIR, f"{self.font_filename}.json")
-        # self.meta_json_path = os.path.join(METADATA_DIR, f"{self.font_filename}_meta.json")
-        # self.db.annotated_outlines = {}
-        # self.db.meta_data = {"banned": [], "raw_edges": {}}
-        # self.load_data()
         # 🌟 实例化数据中枢
         self.db = DatasetManager(SCRIPT_DIR, self.font_filename)
 
@@ -358,32 +349,6 @@ class ModernAnnotationApp(QMainWindow):
             self.save_data()
             self.go_to_banned() # refresh gallery
 
-    # def action_complete_annotation(self):
-    #     if not self.edges: return
-        
-    #     final_tokens = []
-    #     for edge in self.edges:
-    #         eid = edge['id']
-    #         if eid in self.bezier_cache:
-    #             p_opt, w_opt = self.bezier_cache[eid]
-    #             final_tokens.append({
-    #                 "bezier_id": eid,
-    #                 "mother_bezier": p_opt.tolist(), 
-    #                 "width_bezier": w_opt
-    #             })
-                
-    #     # Save exact output JSON
-    #     self.db.annotated_outlines[self.char] = final_tokens
-        
-    #     # Save raw edges to metadata for Re-annotation
-    #     raw_edges_serializable = []
-    #     for e in self.edges:
-    #         raw_edges_serializable.append({"id": e['id'], "path": e['path'].tolist()})
-    #     self.db.meta_data["raw_edges"][self.char] = raw_edges_serializable
-        
-    #     self.save_data()
-    #     self.thumbnail_cache.pop(f"{self.char}_completed", None) # Clear cache to regenerate
-    #     self.action_next_char()
     def action_complete_annotation(self):
         if not self.edges: return
         
@@ -586,25 +551,6 @@ class ModernAnnotationApp(QMainWindow):
         elif key == 'n': self.action_next_char()
         elif key == 'enter': self.action_complete_annotation()
 
-    # def action_merge(self):
-    #     if len(self.selected_edge_ids) == 2:
-    #         self.save_state()
-    #         id_a, id_b = self.selected_edge_ids
-    #         paths_to_stitch = [e['path'] for e in self.edges if e['id'] in (id_a, id_b)]
-    #         new_unified_path = stitch_paths(paths_to_stitch)
-    #         _, error = fit_bezier_basic_with_error(new_unified_path)
-            
-    #         sub_paths = []
-    #         if error > MAX_BEZIER_ERROR:
-    #             sub_paths = split_pixel_path_adaptively(new_unified_path)
-    #         else: sub_paths = [new_unified_path]
-            
-    #         self.edges = [e for e in self.edges if e['id'] not in (id_a, id_b)]
-    #         new_id = max([e['id'] for e in self.edges] + [0]) + 1
-    #         for sp in sub_paths:
-    #             self.edges.append({'id': new_id, 'path': sp})
-    #             new_id += 1
-    #         self.selected_edge_ids.clear(); self.bezier_cache.clear(); self.update_canvas(); self.update_palette()
 
     def action_merge(self):
         if len(self.selected_edge_ids) == 2:
@@ -696,6 +642,12 @@ class ModernAnnotationApp(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+
+    # 🌟 2. 施展魔法：一键应用主题
+    qdarktheme.setup_theme("dark") 
+    # "auto" 会跟随你的系统设置。
+    # 你也可以强制指定为暗色："dark" 或亮色现代风："light"
+
     window = ModernAnnotationApp(FONT_PATH)
     window.show()
     sys.exit(app.exec_())
