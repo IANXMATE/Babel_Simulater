@@ -194,12 +194,16 @@ class AnnotationWorkspace(QWidget):
         scroll_area.setWidgetResizable(True); scroll_area.setWidget(self.palette_container)
         scroll_area.setMaximumHeight(60) 
         
-        self.fig, (self.ax_ref, self.ax_main, self.ax_prev) = plt.subplots(1, 3, figsize=(15, 6))
-        self.fig.patch.set_facecolor('#1E1E1E') # 适配暗黑主题
-        for ax in (self.ax_ref, self.ax_main, self.ax_prev):
-            ax.set_facecolor('#1E1E1E')
+        # 🌟 修改为 4 个子图，并加大画布宽度
+        self.fig, (self.ax_ref, self.ax_main, self.ax_prev, self.ax_final) = plt.subplots(1, 4, figsize=(18, 5))
+        
+        # 🌟 画布和子图背景改为纯白
+        self.fig.patch.set_facecolor('#FFFFFF') 
+        for ax in (self.ax_ref, self.ax_main, self.ax_prev, self.ax_final):
+            ax.set_facecolor('#FFFFFF')
             
         self.canvas = FigureCanvas(self.fig)
+
         self.canvas.mpl_connect('pick_event', self.on_pick)
         self.canvas.mpl_connect('button_press_event', self.on_click_canvas)
         self.canvas.mpl_connect('key_press_event', self.on_key)
@@ -329,37 +333,79 @@ class AnnotationWorkspace(QWidget):
 
     # --- 交互与画布刷新 (略过重复的冗长代码，直接复用你之前的完美逻辑) ---
     def update_canvas(self):
-        self.ax_ref.clear(); self.ax_ref.imshow(self.binary, cmap='gray'); self.ax_ref.set_title("1. Original", color='white'); self.ax_ref.axis('off')
-        self.ax_main.clear(); self.ax_main.imshow(self.binary, cmap='gray', alpha=0.15)
-        self.stroke_info_label.setText(f"Bezier Strokes: {len(self.edges)}")
-        for i, edge in enumerate(self.edges):
-            eid = edge['id']
-            is_sel = eid in self.selected_edge_ids
-            color = self.cmap((eid % 20))
-            lw = 6 if is_sel else 3; alpha = 1.0 if is_sel else 0.6
-            line, = self.ax_main.plot(edge['path'][:, 0], edge['path'][:, 1], c=color, lw=lw, alpha=alpha, picker=5)
-            line.edge_idx = i 
-        if self.last_click_coord: self.ax_main.plot(self.last_click_coord[0], self.last_click_coord[1], 'rX', markersize=10)
-        self.ax_main.set_title("2. Topology", color='white'); self.ax_main.axis('off')
+            # --- 1. 原始图 ---
+            self.ax_ref.clear(); self.ax_ref.imshow(self.binary, cmap='gray'); self.ax_ref.set_title("1. Original", color='black'); self.ax_ref.axis('off')
+            
+            # --- 2. 拓扑图 ---
+            self.ax_main.clear(); self.ax_main.imshow(self.binary, cmap='gray', alpha=0.15)
+            self.stroke_info_label.setText(f"Bezier Strokes: {len(self.edges)}")
+            for i, edge in enumerate(self.edges):
+                eid = edge['id']
+                is_sel = eid in self.selected_edge_ids
+                color = self.cmap((eid % 20))
+                lw = 6 if is_sel else 3; alpha = 1.0 if is_sel else 0.6
+                line, = self.ax_main.plot(edge['path'][:, 0], edge['path'][:, 1], c=color, lw=lw, alpha=alpha, picker=5)
+                line.edge_idx = i 
+            if self.last_click_coord: self.ax_main.plot(self.last_click_coord[0], self.last_click_coord[1], 'rX', markersize=10)
+            self.ax_main.set_title("2. Topology", color='black'); self.ax_main.axis('off')
 
-        self.ax_prev.clear(); self.ax_prev.imshow(self.binary, cmap='gray', alpha=0.05); self.ax_prev.set_title("3. Bezier", color='white'); self.ax_prev.axis('off')
-        for edge in self.edges:
-            eid = edge['id']
-            is_sel = eid in self.selected_edge_ids
-            color = self.cmap((eid % 20))
-            if eid not in self.bezier_cache:
-                p_opt, _ = fit_bezier_basic_with_error(edge['path'])
-                w_opt = regress_width_dt_fast(p_opt, self.dt_map)
-                self.bezier_cache[eid] = (p_opt, w_opt)
-            p_opt, w_opt = self.bezier_cache[eid]
-            mean_w = max(np.mean(w_opt), 1.0)
-            ts = np.linspace(0, 1, 50)[:, None]
-            curve = cubic_bezier_np(p_opt, ts)
-            final_lw = mean_w * 2 * (1.5 if is_sel else 1.0)
-            final_alpha = 0.9 if is_sel else 0.4
-            self.ax_prev.plot(curve[:, 0], curve[:, 1], color=color, linewidth=final_lw, solid_capstyle='round', alpha=final_alpha)
-            self.ax_prev.plot(curve[:, 0], curve[:, 1], color='white', linewidth=1.5, alpha=final_alpha+0.1)
-        self.canvas.draw()
+            # --- 3. 贝塞尔单线预览 ---
+            self.ax_prev.clear(); self.ax_prev.imshow(self.binary, cmap='gray', alpha=0.05); self.ax_prev.set_title("3. Bezier", color='black'); self.ax_prev.axis('off')
+            
+            # --- 🌟 4. 新增：物理轮廓反解渲染 ---
+            self.ax_final.clear()
+            self.ax_final.imshow(np.ones_like(self.binary), cmap='gray', vmin=0, vmax=1) # 撑开空白的等大底板
+            self.ax_final.set_title("4. Reconstructed TTF", color='black')
+            self.ax_final.axis('off')
+
+            for edge in self.edges:
+                eid = edge['id']
+                is_sel = eid in self.selected_edge_ids
+                color = self.cmap((eid % 20))
+                if eid not in self.bezier_cache:
+                    p_opt, _ = fit_bezier_basic_with_error(edge['path'])
+                    w_opt = regress_width_dt_fast(p_opt, self.dt_map)
+                    self.bezier_cache[eid] = (p_opt, w_opt)
+                p_opt, w_opt = self.bezier_cache[eid]
+                
+                # --- 画第三张图 ---
+                mean_w = max(np.mean(w_opt), 1.0)
+                ts = np.linspace(0, 1, 50)[:, None]
+                curve = cubic_bezier_np(p_opt, ts)
+                final_lw = mean_w * 2 * (1.5 if is_sel else 1.0)
+                final_alpha = 0.9 if is_sel else 0.4
+                self.ax_prev.plot(curve[:, 0], curve[:, 1], color=color, linewidth=final_lw, solid_capstyle='round', alpha=final_alpha)
+                self.ax_prev.plot(curve[:, 0], curve[:, 1], color='black', linewidth=1.5, alpha=final_alpha+0.1)
+
+                # ====================================================
+                # 🌟 画第四张图：从张量反解为真实闭合轮廓
+                # ====================================================
+                ts_dense = np.linspace(0, 1, 100)[:, None] # 提升点密度保证边缘平滑
+                curve_dense = cubic_bezier_np(p_opt, ts_dense)
+
+                # 1. 解算宽度方程 W(t)
+                mt = 1 - ts_dense
+                w_vals = mt**3 * w_opt[0] + 3*mt**2*ts_dense * w_opt[1] + 3*mt*ts_dense**2 * w_opt[2] + ts_dense**3 * w_opt[3]
+
+                # 2. 计算当前路径上每个点的“法向量 (Normal Vector)”
+                dp = np.gradient(curve_dense, axis=0) # 求导获取切线
+                n = np.zeros_like(dp)
+                n[:, 0], n[:, 1] = -dp[:, 1], dp[:, 0] # 切线顺时针转90度即为法线
+                n_norm = np.linalg.norm(n, axis=1, keepdims=True) + 1e-5
+                n = n / n_norm # 归一化为单位法向量
+
+                # 3. 沿法向量向外扩张，生成上下边缘，合并为闭合多边形
+                upper = curve_dense + n * w_vals
+                lower = curve_dense - n * w_vals
+                poly = np.vstack([upper, lower[::-1]]) # 尾部需要反转拼接，形成一个环
+
+                # 4. 在画布上使用无边框的多边形填充
+                # 选中时高亮为粉红色，否则为纯黑色，模拟真实墨水叠加
+                fill_color = '#E91E63' if is_sel else '#000000'
+                fill_alpha = 0.8 if is_sel else 1.0
+                self.ax_final.fill(poly[:, 0], poly[:, 1], color=fill_color, alpha=fill_alpha, linewidth=0)
+
+            self.canvas.draw()
         
     def update_palette(self):
         while self.palette_layout.count():
@@ -497,7 +543,7 @@ class AnnotationWorkspace(QWidget):
         for idx, hex_key in enumerate(key_list):
             char = chr(int(hex_key[2:], 16))
             card = QFrame()
-            card.setStyleSheet("background-color: #2D2D2D; border: 1px solid #444; border-radius: 8px;")
+            card.setStyleSheet("background-color: #FFFFFF; border: 1px solid #CCC; border-radius: 8px;")
             card_layout = QVBoxLayout(card)
             
             if f"{hex_key}_{mode}" not in self.thumbnail_cache:
@@ -522,7 +568,7 @@ class AnnotationWorkspace(QWidget):
 
     def generate_thumbnail(self, char, hex_key, mode):
         fig = plt.figure(figsize=(2, 2), dpi=80)
-        fig.patch.set_facecolor('#2D2D2D')
+        fig.patch.set_facecolor('#FFFFFF')
         binary = render_unicode_glyph(self.font_path, char, CANVAS_SIZE)
         ax = fig.add_subplot(111)
         ax.imshow(binary, cmap='gray')
@@ -642,7 +688,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     
     # 🌟 极速换肤魔法！应用暗黑主题
-    qdarktheme.setup_theme("dark", custom_colors={"primary": "#673AB7"})
+    qdarktheme.setup_theme("light", custom_colors={"primary": "#2196F3"})
     
     window = FontFactoryApp()
     window.show()
