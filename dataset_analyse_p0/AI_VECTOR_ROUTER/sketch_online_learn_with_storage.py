@@ -36,6 +36,9 @@ from geometry_vision import (
     split_pixel_path_adaptively, regress_width_dt_fast
 )
 
+from ml_engine import StrokeRouterMLP, ReplayBuffer, extract_pairwise_features
+from data_manager import DatasetManager
+
 warnings.filterwarnings("ignore")
 mpl.rcParams['axes.unicode_minus'] = False 
 
@@ -53,51 +56,11 @@ if not os.path.exists(FONT_PATH):
     FONT_PATH = "arial.ttf"
 
 # 🌟 NEW: Data Persistence Directories
-ANNOTATIONS_DIR = os.path.join(SCRIPT_DIR, "annotations")
-METADATA_DIR = os.path.join(SCRIPT_DIR, "metadata")
-os.makedirs(ANNOTATIONS_DIR, exist_ok=True)
-os.makedirs(METADATA_DIR, exist_ok=True)
+# ANNOTATIONS_DIR = os.path.join(SCRIPT_DIR, "annotations")
+# METADATA_DIR = os.path.join(SCRIPT_DIR, "metadata")
+# os.makedirs(ANNOTATIONS_DIR, exist_ok=True)
+# os.makedirs(METADATA_DIR, exist_ok=True)
 
-# ==========================================
-# 🧠 Active Learning Model & Geometry Engine
-# (保持不变的底层逻辑)
-# ==========================================
-class StrokeRouterMLP(nn.Module):
-    def __init__(self, input_dim=4):
-        super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(input_dim, 16), nn.ReLU(),
-            nn.Linear(16, 8), nn.ReLU(),
-            nn.Linear(8, 1), nn.Sigmoid()
-        )
-    def forward(self, x): return self.net(x)
-
-class ReplayBuffer:
-    def __init__(self):
-        self.features, self.labels = [], []
-    def add(self, feature, label):
-        self.features.append(feature)
-        self.labels.append(label)
-
-def extract_pairwise_features(path_a, path_b, dt_map):
-    ends_a, ends_b = [path_a[0], path_a[-1]], [path_b[0], path_b[-1]]
-    min_dist, best_a_idx, best_b_idx = float('inf'), 0, 0
-    for i, ea in enumerate(ends_a):
-        for j, eb in enumerate(ends_b):
-            dist = np.linalg.norm(ea - eb)
-            if dist < min_dist: min_dist, best_a_idx, best_b_idx = dist, i, j
-    dist_feat = np.clip(min_dist / 10.0, 0, 1)
-    step = min(4, len(path_a)-1, len(path_b)-1)
-    if step < 1: step = 1
-    vec_a = path_a[step] - path_a[0] if best_a_idx == 0 else path_a[-1-step] - path_a[-1]
-    vec_b = path_b[step] - path_b[0] if best_b_idx == 0 else path_b[-1-step] - path_b[-1]
-    norm_a, norm_b = np.linalg.norm(vec_a), np.linalg.norm(vec_b)
-    cos_theta = 0 if norm_a < 1e-5 or norm_b < 1e-5 else np.dot(vec_a, vec_b) / (norm_a * norm_b)
-    len_ratio = min(len(path_a), len(path_b)) / max(len(path_a), len(path_b))
-    w_a = dt_map[int(ends_a[best_a_idx][0]), int(ends_a[best_a_idx][1])]
-    w_b = dt_map[int(ends_b[best_b_idx][0]), int(ends_b[best_b_idx][1])]
-    w_ratio = min(w_a, w_b) / (max(w_a, w_b) + 1e-5)
-    return [dist_feat, cos_theta, len_ratio, w_ratio]
 
 # ==========================================
 # 🖥️ Multi-Page Annotation Application V12
@@ -111,11 +74,13 @@ class ModernAnnotationApp(QMainWindow):
         self.setGeometry(50, 50, 1500, 750) 
         
         # 🌟 Data Management 
-        self.anno_json_path = os.path.join(ANNOTATIONS_DIR, f"{self.font_filename}.json")
-        self.meta_json_path = os.path.join(METADATA_DIR, f"{self.font_filename}_meta.json")
-        self.annotated_outlines = {}
-        self.meta_data = {"banned": [], "raw_edges": {}}
-        self.load_data()
+        # self.anno_json_path = os.path.join(ANNOTATIONS_DIR, f"{self.font_filename}.json")
+        # self.meta_json_path = os.path.join(METADATA_DIR, f"{self.font_filename}_meta.json")
+        # self.db.annotated_outlines = {}
+        # self.db.meta_data = {"banned": [], "raw_edges": {}}
+        # self.load_data()
+        # 🌟 实例化数据中枢
+        self.db = DatasetManager(SCRIPT_DIR, self.font_filename)
 
         self.font_charset = extract_all_real_chars(self.font_path)
         self.history_stack = [] 
@@ -147,16 +112,16 @@ class ModernAnnotationApp(QMainWindow):
     def load_data(self):
         if os.path.exists(self.anno_json_path):
             with open(self.anno_json_path, 'r', encoding='utf-8') as f:
-                self.annotated_outlines = json.load(f)
+                self.db.annotated_outlines = json.load(f)
         if os.path.exists(self.meta_json_path):
             with open(self.meta_json_path, 'r', encoding='utf-8') as f:
-                self.meta_data = json.load(f)
+                self.db.meta_data = json.load(f)
 
     def save_data(self):
         with open(self.anno_json_path, 'w', encoding='utf-8') as f:
-            json.dump(self.annotated_outlines, f, indent=2, ensure_ascii=False)
+            json.dump(self.db.annotated_outlines, f, indent=2, ensure_ascii=False)
         with open(self.meta_json_path, 'w', encoding='utf-8') as f:
-            json.dump(self.meta_data, f, indent=2, ensure_ascii=False)
+            json.dump(self.db.meta_data, f, indent=2, ensure_ascii=False)
 
     # ---------------- Layout Setup ----------------
     def init_page_annotation(self):
@@ -300,11 +265,11 @@ class ModernAnnotationApp(QMainWindow):
 
     # ---------------- Multi-Page Navigation ----------------
     def go_to_completed(self):
-        self.refresh_gallery(self.completed_grid, list(self.annotated_outlines.keys()), mode="completed")
+        self.refresh_gallery(self.completed_grid, list(self.db.annotated_outlines.keys()), mode="completed")
         self.stacked_widget.setCurrentIndex(1)
 
     def go_to_banned(self):
-        self.refresh_gallery(self.banned_grid, self.meta_data["banned"], mode="banned")
+        self.refresh_gallery(self.banned_grid, self.db.meta_data["banned"], mode="banned")
         self.stacked_widget.setCurrentIndex(2)
 
     def refresh_gallery(self, grid_layout, char_list, mode):
@@ -360,7 +325,7 @@ class ModernAnnotationApp(QMainWindow):
             ax1.axis('off')
             ax2 = fig.add_subplot(122)
             ax2.imshow(binary, cmap='gray', alpha=0.1)
-            raw_edges = self.meta_data["raw_edges"].get(char, [])
+            raw_edges = self.db.meta_data["raw_edges"].get(char, [])
             
             try:
                 for e in raw_edges:
@@ -382,14 +347,14 @@ class ModernAnnotationApp(QMainWindow):
     # ---------------- Actions for DB / Persistence ----------------
     def action_ban_char(self):
         if self.char:
-            if self.char not in self.meta_data["banned"]:
-                self.meta_data["banned"].append(self.char)
+            if self.char not in self.db.meta_data["banned"]:
+                self.db.meta_data["banned"].append(self.char)
             self.save_data()
             self.action_next_char()
 
     def action_unban(self, char):
-        if char in self.meta_data["banned"]:
-            self.meta_data["banned"].remove(char)
+        if char in self.db.meta_data["banned"]:
+            self.db.meta_data["banned"].remove(char)
             self.save_data()
             self.go_to_banned() # refresh gallery
 
@@ -408,13 +373,13 @@ class ModernAnnotationApp(QMainWindow):
     #             })
                 
     #     # Save exact output JSON
-    #     self.annotated_outlines[self.char] = final_tokens
+    #     self.db.annotated_outlines[self.char] = final_tokens
         
     #     # Save raw edges to metadata for Re-annotation
     #     raw_edges_serializable = []
     #     for e in self.edges:
     #         raw_edges_serializable.append({"id": e['id'], "path": e['path'].tolist()})
-    #     self.meta_data["raw_edges"][self.char] = raw_edges_serializable
+    #     self.db.meta_data["raw_edges"][self.char] = raw_edges_serializable
         
     #     self.save_data()
     #     self.thumbnail_cache.pop(f"{self.char}_completed", None) # Clear cache to regenerate
@@ -435,13 +400,13 @@ class ModernAnnotationApp(QMainWindow):
                 })
                 
         # 外部依然使用 UXXXX 作为 Key 来保存，但内部已经没有文本属性了
-        self.annotated_outlines[self.char] = final_tokens
+        self.db.annotated_outlines[self.char] = final_tokens
         
         # 记录高精度拓扑历史，用于回滚
         raw_edges_serializable = []
         for e in self.edges:
             raw_edges_serializable.append({"id": e['id'], "path": e['path'].tolist()})
-        self.meta_data["raw_edges"][self.char] = raw_edges_serializable
+        self.db.meta_data["raw_edges"][self.char] = raw_edges_serializable
         
         # 写入磁盘并清理缓存刷新页面
         self.save_data()
@@ -457,7 +422,7 @@ class ModernAnnotationApp(QMainWindow):
         self.dt_map = distance_transform_edt(self.binary)
         
         # Load raw edges from metadata
-        raw = self.meta_data["raw_edges"].get(self.char, [])
+        raw = self.db.meta_data["raw_edges"].get(self.char, [])
         self.edges = [{"id": r["id"], "path": np.array(r["path"])} for r in raw]
         
         self.bezier_cache.clear()
@@ -476,7 +441,7 @@ class ModernAnnotationApp(QMainWindow):
             candidate = random.choice(self.font_charset)
             
             # 🌟 NEW: Skip if already Banned or Completed!
-            if candidate in self.meta_data["banned"] or candidate in self.annotated_outlines:
+            if candidate in self.db.meta_data["banned"] or candidate in self.db.annotated_outlines:
                 continue
                 
             b_mask = render_unicode_glyph(self.font_path, candidate)
