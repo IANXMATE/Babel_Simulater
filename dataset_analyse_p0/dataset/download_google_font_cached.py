@@ -11,9 +11,18 @@ import json
 # ==========================================
 DATASET_FILE = "dataset.txt"
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DATASET_FILE = os.path.join(SCRIPT_DIR,  DATASET_FILE)
+
 TARGET_DIR = "alien_tensors_raw"       # 【临时收件箱】爬虫只能往这里写数据（每次启动清空）
 STORAGE_DIR = "alien_tensors_storage"  # 【归档区】爬虫只在这里判断是否有 .otf / .ttf
+
+TARGET_DIR = os.path.join(SCRIPT_DIR, TARGET_DIR)
+STORAGE_DIR = os.path.join(SCRIPT_DIR, STORAGE_DIR)
 WHITELIST_FILE = os.path.join(TARGET_DIR, "font_whitelist.json") # 供下游脚本使用的元数据也写在 raw 里
+
+
 
 # 🔑 GitHub Token https://github.com/settings/tokens
 GITHUB_TOKEN = "" 
@@ -182,6 +191,7 @@ def main():
         file_path = os.path.join(TARGET_DIR, f)
         if os.path.isfile(file_path):
             os.remove(file_path)
+            print(f"🗑 已删除文件: {f}")
     print(f"🧹 已清空临时收件箱 ({TARGET_DIR})。")
     
     whitelist_data = {}

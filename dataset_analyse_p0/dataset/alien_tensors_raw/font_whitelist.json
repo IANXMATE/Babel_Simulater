@@ -333,6 +333,18 @@
             "symbols"
         ]
     },
+    "Assistant[wght].ttf": {
+        "primary_script": "Hebr",
+        "valuable_subsets": [
+            "hebrew"
+        ],
+        "all_subsets": [
+            "hebrew",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
     "NotoSansTelugu[wdth,wght].ttf": {
         "primary_script": "Telu",
         "valuable_subsets": [
