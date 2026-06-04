@@ -159,35 +159,13 @@ def stitch_paths(paths):
     return stitched
 
 def get_random_valid_char(font_path):
-    # font = ImageFont.truetype(font_path, int(CANVAS_SIZE * 0.8))
-    # # 包含了双引号等容易产生平头毛刺的标点符号
-    # candidates = [chr(c) for c in range(33, 126)] + ['"', "'"] 
-    # random.shuffle(candidates)
-    # for char in candidates:
-    #     if font.getbbox(char): return char
-    # return 'Q'
-    """🌟 工业级解析：从 TTF/OTF 底层 CMAP 表中提取所有真实字符"""
-    print(f"⏳ 正在深度解析字体文件 CMAP 表: {font_path}...")
-    ttfont = TTFont(font_path)
-    valid_chars = set()
-    
-    # 遍历 cmap 表获取所有支持的 Unicode
-    for table in ttfont['cmap'].tables:
-        for codepoint, glyph_name in table.cmap.items():
-            char = chr(codepoint)
-            # 过滤掉不可见字符（如空格、控制字符）
-            if char.isprintable() and not char.isspace():
-                valid_chars.add(char)
-                
-    # 进一步用 Pillow 验证是否真的能渲染出有面积的黑白像素（过滤掉空包围盒）
-    pil_font = ImageFont.truetype(font_path, int(CANVAS_SIZE * 0.8))
-    final_chars = []
-    for c in valid_chars:
-        if pil_font.getbbox(c):
-            final_chars.append(c)
-            
-    print(f"✅ 解析完毕！该字体共包含 {len(final_chars)} 个有效实体字符。")
-    return final_chars
+    font = ImageFont.truetype(font_path, int(CANVAS_SIZE * 0.8))
+    # 包含了双引号等容易产生平头毛刺的标点符号
+    candidates = [chr(c) for c in range(33, 126)] + ['"', "'"] 
+    random.shuffle(candidates)
+    for char in candidates:
+        if font.getbbox(char): return char
+    return 'Q'
 
 def render_unicode_glyph(font_path, char):
     font = ImageFont.truetype(font_path, int(CANVAS_SIZE * 0.8))
