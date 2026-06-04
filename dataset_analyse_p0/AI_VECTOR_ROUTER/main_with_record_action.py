@@ -35,6 +35,10 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 FONTS_DIR = os.path.join(SCRIPT_DIR, "../dataset/alien_tensors_raw")
 os.makedirs(FONTS_DIR, exist_ok=True)
 
+# 🌟 新增：独立存放测试录像带的文件夹
+ACTION_LOG_DIR = os.path.join(SCRIPT_DIR, "action_logs")
+os.makedirs(ACTION_LOG_DIR, exist_ok=True)
+
 import logging
 logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 
@@ -106,6 +110,19 @@ class AnnotationWorkspace(QWidget):
         self.stacked_widget.addWidget(self.page_annotation)
         self.stacked_widget.addWidget(self.page_completed)
         self.stacked_widget.addWidget(self.page_banned)
+    
+    def save_state(self):
+        self.history_stack.append(copy.deepcopy(self.edges))
+        if len(self.history_stack) > 30: self.history_stack.pop(0)
+
+    # 👇👇👇 在下方新增这个函数
+    def record_step(self, action_name):
+        """🌟 将当前动作和结果追加到录像带中"""
+        if hasattr(self, 'action_log'):
+            self.action_log.append({
+                "action": action_name, 
+                "edges": copy.deepcopy(self.edges)
+            })
     
     def update_stats_display(self):
         """🌟 实时计算并刷新右上角的进度仪表盘"""
@@ -265,6 +282,9 @@ class AnnotationWorkspace(QWidget):
         self.update_canvas()
         self.update_palette()
 
+        # 👇👇👇 在这里加上：初始化动作录像带，记录第0步(初始状态)
+        self.action_log = [{"action": "Init (Raw)", "edges": copy.deepcopy(self.edges)}]
+
     def action_next_char(self):
         max_attempts = 500
         valid_char_found = False
@@ -318,6 +338,33 @@ class AnnotationWorkspace(QWidget):
             
         self.db.save_data()
         self.thumbnail_cache.pop(f"{hex_key}_completed", None) 
+
+        # ==========================================
+        # 🌟 新增隔离版录像带保存逻辑：只写独立文件，绝不污染 db
+        # ==========================================
+        if hasattr(self, 'action_log'):
+            serialized_log = []
+            for step in self.action_log:
+                step_edges = [{"id": e['id'], "path": e['path'].tolist()} for e in step["edges"]]
+                serialized_log.append({"action": step["action"], "edges": step_edges})
+            
+            # 定义独立的 json 路径
+            action_file_path = os.path.join(ACTION_LOG_DIR, f"{self.font_filename}_actions.json")
+            action_data = {}
+            
+            # 读取旧录像带（如果有）
+            if os.path.exists(action_file_path):
+                import json
+                with open(action_file_path, 'r', encoding='utf-8') as f:
+                    action_data = json.load(f)
+            
+            # 覆写当前字符的录像带并保存
+            action_data[hex_key] = serialized_log
+            import json
+            with open(action_file_path, 'w', encoding='utf-8') as f:
+                json.dump(action_data, f, indent=2, ensure_ascii=False)
+        # ==========================================
+
         self.update_stats_display()
         self.action_next_char()
 
@@ -478,11 +525,17 @@ class AnnotationWorkspace(QWidget):
                 new_id += 1
             self.selected_edge_ids.clear(); self.bezier_cache.clear(); self.update_canvas(); self.update_palette()
 
+            # 👇 新增这行
+            self.record_step("Merge (M)")
+
     def action_delete(self):
         if self.selected_edge_ids:
             self.save_state()
             self.edges = [e for e in self.edges if e['id'] not in self.selected_edge_ids]
             self.selected_edge_ids.clear(); self.bezier_cache.clear(); self.update_canvas(); self.update_palette()
+
+            # 👇 新增这行
+            self.record_step("Delete (D)")
 
     def action_prune_parallel(self):
         if len(self.selected_edge_ids) == 2:
@@ -494,6 +547,9 @@ class AnnotationWorkspace(QWidget):
             len_b = np.sum(np.linalg.norm(np.diff(edge_b['path'], axis=0), axis=1))
             self.edges = [e for e in self.edges if e['id'] != (id_a if len_a < len_b else id_b)]
             self.selected_edge_ids.clear(); self.bezier_cache.clear(); self.update_canvas(); self.update_palette()
+
+            # 👇 新增这行
+            self.record_step("Prune (C)")
 
     def action_breakpoint(self):
         if len(self.selected_edge_ids) == 1 and self.last_click_coord:
@@ -515,6 +571,9 @@ class AnnotationWorkspace(QWidget):
                 self.edges.append({'id': new_id+1, 'path': path2})
                 self.last_click_coord = None; self.selected_edge_ids.clear(); self.bezier_cache.clear(); self.update_canvas(); self.update_palette()
 
+                # 👇 新增这行
+                self.record_step("Split (B)")
+
     def action_add_dot(self):
         if not self.last_click_coord: return
         cx, cy = self.last_click_coord; x, y = int(cx), int(cy)
@@ -523,12 +582,20 @@ class AnnotationWorkspace(QWidget):
         self.edges.append({'id': max([e['id'] for e in self.edges] + [-1]) + 1, 'path': np.array([[cx, cy-1], [cx, cy], [cx, cy+1]])})
         self.last_click_coord = None; self.update_canvas(); self.update_palette()
 
+        # 👇 新增这行
+        self.record_step("Add Dot (A)")
+
     def action_undo(self):
         if len(self.history_stack) > 1:
             self.history_stack.pop() 
             self.edges = copy.deepcopy(self.history_stack[-1])
             self.selected_edge_ids.clear(); self.last_click_coord = None; self.bezier_cache.clear()
             self.update_canvas(); self.update_palette()
+
+            # 👇👇👇 🌟 核心修改：让录像带也跟着“物理回退”
+            # 直接剪掉最后一帧废片，不记录任何撤销痕迹
+            if hasattr(self, 'action_log') and len(self.action_log) > 1:
+                self.action_log.pop()
 
     def action_reset_char(self):
         self.load_char_topology()
