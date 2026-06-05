@@ -673,6 +673,9 @@ class AnnotationWorkspace(QWidget):
         self.selected_edge_ids.clear()
         self.history_stack.clear()
         self.save_state()
+
+        self.action_log = [{"action": "Re-edit Init", "edges": copy.deepcopy(self.edges)}]
+        
         self.update_canvas()
         self.update_palette()
         self.switch_tab(0)
