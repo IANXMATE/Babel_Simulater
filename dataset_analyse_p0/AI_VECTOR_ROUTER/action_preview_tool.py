@@ -193,13 +193,8 @@ class PreviewWorkspace(QWidget):
             
         char = chr(int(hex_key[2:], 16))
         # 🌟 核心修改：从独立的 JSON 文件中读取时光机数据
-        action_log = []
-        action_file_path = os.path.join(ACTION_LOG_DIR, f"{self.font_filename}_actions.json")
-        if os.path.exists(action_file_path):
-            import json
-            with open(action_file_path, 'r', encoding='utf-8') as f:
-                action_data = json.load(f)
-                action_log = action_data.get(hex_key, [])
+        action_log = self.db.action_data.get(hex_key, [])
+
         
         # 2. 顶部导航栏
         top_bar = QHBoxLayout()

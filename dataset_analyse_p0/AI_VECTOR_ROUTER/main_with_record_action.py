@@ -27,6 +27,8 @@ from geometry_vision import (
     split_pixel_path_adaptively, regress_width_dt_fast
 )
 
+from PyQt5.QtWidgets import QMessageBox
+
 # 常量
 CANVAS_SIZE = 400
 MAX_BEZIER_ERROR = 2
@@ -138,6 +140,28 @@ class AnnotationWorkspace(QWidget):
         self.stats_label.setText(
             f"📊 Remaining: {remaining}   |   ✅ Completed: {completed}   |   🚫 Banned: {banned}"
         )
+    
+    def action_delete_character(self, hex_key):
+        char = chr(int(hex_key[2:], 16))
+        # 弹出二次确认框，防止手滑痛失好局
+        reply = QMessageBox.question(self, 'Confirm Deletion', 
+                                     f"Are you sure you want to completely erase the annotation history for '{char}' ({hex_key})?",
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        
+        if reply == QMessageBox.Yes:
+            # 1. 物理删除
+            self.db.delete_character(hex_key)
+            # 2. 清理内存缩略图缓存
+            self.thumbnail_cache.pop(f"{hex_key}_completed", None)
+            
+            # 3. 🌟 修复报错：传入必须的三个参数 (网格布局, 最新的键值列表, 模式)
+            completed_keys = list(self.db.annotated_outlines.keys())
+            
+            # 【注意】：这里假设你存放 Completed 卡片的网格布局变量名叫 self.grid_completed。
+            # 如果你在初始化UI时起的名字不一样（比如叫 self.completed_grid），请把下面这行的第一个参数改对！
+            self.refresh_gallery(self.completed_grid, completed_keys, "completed")
+            
+            self.update_stats_display()
     
 
     def switch_tab(self, index):
@@ -339,31 +363,18 @@ class AnnotationWorkspace(QWidget):
         self.db.save_data()
         self.thumbnail_cache.pop(f"{hex_key}_completed", None) 
 
-        # ==========================================
-        # 🌟 新增隔离版录像带保存逻辑：只写独立文件，绝不污染 db
-        # ==========================================
+        
+        # 👇👇👇 🌟 替换为极简调用
         if hasattr(self, 'action_log'):
             serialized_log = []
             for step in self.action_log:
                 step_edges = [{"id": e['id'], "path": e['path'].tolist()} for e in step["edges"]]
                 serialized_log.append({"action": step["action"], "edges": step_edges})
             
-            # 定义独立的 json 路径
-            action_file_path = os.path.join(ACTION_LOG_DIR, f"{self.font_filename}_actions.json")
-            action_data = {}
-            
-            # 读取旧录像带（如果有）
-            if os.path.exists(action_file_path):
-                import json
-                with open(action_file_path, 'r', encoding='utf-8') as f:
-                    action_data = json.load(f)
-            
-            # 覆写当前字符的录像带并保存
-            action_data[hex_key] = serialized_log
-            import json
-            with open(action_file_path, 'w', encoding='utf-8') as f:
-                json.dump(action_data, f, indent=2, ensure_ascii=False)
-        # ==========================================
+            # 这一行，底层自动搞定分块、清理、合并和紧凑压缩！
+            self.db.save_action_log(hex_key, serialized_log)
+        # 👆👆👆
+
 
         self.update_stats_display()
         self.action_next_char()
@@ -601,6 +612,7 @@ class AnnotationWorkspace(QWidget):
         self.load_char_topology()
 
     # --- 渲染缩略图逻辑 ---
+    # --- 渲染缩略图逻辑 ---
     def refresh_gallery(self, grid_layout, key_list, mode):
         while grid_layout.count():
             item = grid_layout.takeAt(0)
@@ -620,33 +632,114 @@ class AnnotationWorkspace(QWidget):
             img_label.setPixmap(self.thumbnail_cache[f"{hex_key}_{mode}"])
             img_label.setAlignment(Qt.AlignCenter)
             
-            title = QLabel(f"Char: '{char}'\n({hex_key})")
+            # 🌟 新增逻辑：动态获取并显示笔画数量
+            if mode == "completed":
+                raw_edges = self.db.meta_data.get("raw_edges", {}).get(hex_key, [])
+                stroke_count = len(raw_edges)
+                title_text = f"'{char}' ({hex_key})\nStrokes: {stroke_count}"
+            else:
+                title_text = f"'{char}' ({hex_key})"
+            
+            title = QLabel(title_text)
             title.setAlignment(Qt.AlignCenter)
             title.setStyleSheet("font-weight: bold; border: none;")
 
+            # 🌟 新增：创建一个水平布局来容纳多个按钮
+            btn_layout = QHBoxLayout()
+            btn_layout.setContentsMargins(0, 0, 0, 0)
+
+            # 原有的操作按钮 (Re-annotate 或 Unban)
             btn_action = QPushButton("Re-annotate" if mode == "completed" else "Unban")
-            btn_action.setStyleSheet("background-color: #2196F3; color: white;" if mode == "completed" else "background-color: #4CAF50; color: white;")
+            btn_action.setStyleSheet("background-color: #2196F3; color: white; padding: 5px;" if mode == "completed" else "background-color: #4CAF50; color: white; padding: 5px;")
             btn_action.clicked.connect(lambda checked, hk=hex_key: self.action_unban(hk) if mode == "banned" else self.action_reannotate(hk))
+            btn_layout.addWidget(btn_action)
+
+            # 🌟 新增：只在“已完成”列表中加入彻底删除按钮
+            if mode == "completed":
+                btn_delete = QPushButton("🗑️ Delete")
+                btn_delete.setStyleSheet("background-color: #F44336; color: white; padding: 5px;")
+                btn_delete.clicked.connect(lambda checked, hk=hex_key: self.action_delete_character(hk))
+                btn_layout.addWidget(btn_delete)
 
             card_layout.addWidget(img_label)
             card_layout.addWidget(title)
-            card_layout.addWidget(btn_action)
+            card_layout.addLayout(btn_layout) # 把整个按钮布局加进去
             grid_layout.addWidget(card, idx // cols, idx % cols)
 
     def generate_thumbnail(self, char, hex_key, mode):
-        fig = plt.figure(figsize=(2, 2), dpi=80)
-        fig.patch.set_facecolor('#FFFFFF')
+        import io
+        from PyQt5.QtGui import QImage, QPixmap
+        import numpy as np
+        import matplotlib.pyplot as plt
+        from scipy.ndimage import distance_transform_edt
+        from geometry_vision import render_unicode_glyph, fit_bezier_basic_with_error, regress_width_dt_fast, cubic_bezier_np
+
+        # 获取原始二值图
         binary = render_unicode_glyph(self.font_path, char, CANVAS_SIZE)
-        ax = fig.add_subplot(111)
-        ax.imshow(binary, cmap='gray')
-        if mode == "completed" and hex_key in self.db.meta_data.get("raw_edges", {}):
-            for e in self.db.meta_data["raw_edges"][hex_key]:
-                path = np.array(e["path"])
-                if len(path) > 1: ax.plot(path[:, 0], path[:, 1], linewidth=2, alpha=0.8)
-        ax.axis('off')
-        plt.tight_layout()
+
+        if mode == "banned":
+            # 封禁名单：只画一张原始图即可
+            fig = plt.figure(figsize=(2, 2), dpi=80)
+            fig.patch.set_facecolor('#FFFFFF')
+            ax = fig.add_subplot(111)
+            ax.imshow(binary, cmap='gray')
+            ax.axis('off')
+            
+        else:
+            # ✅ 已完成名单：绘制“上中下”三联堆叠图
+            fig, (ax_top, ax_mid, ax_bot) = plt.subplots(3, 1, figsize=(2.5, 7.5), dpi=80)
+            fig.patch.set_facecolor('#FFFFFF')
+            
+            # --- 上：原始形态 ---
+            ax_top.imshow(binary, cmap='gray')
+            ax_top.set_title("1. Original", fontsize=10, pad=2)
+            ax_top.axis('off')
+
+            # 获取该字符保存的线条数据
+            edges = self.db.meta_data.get("raw_edges", {}).get(hex_key, [])
+            dt_map = distance_transform_edt(binary)
+
+            # --- 中：带颜色的拓扑骨架 ---
+            ax_mid.imshow(binary, cmap='gray', alpha=0.15)
+            ax_mid.set_title("2. Topology", fontsize=10, pad=2)
+            for e in edges:
+                color = self.cmap((e['id'] % 20))
+                path = np.array(e['path'])
+                if len(path) > 1:
+                    ax_mid.plot(path[:, 0], path[:, 1], c=color, lw=3, alpha=0.8)
+            ax_mid.axis('off')
+
+            # --- 下：物理反解纯黑填充 ---
+            ax_bot.imshow(np.ones_like(binary), cmap='gray', vmin=0, vmax=1)
+            ax_bot.set_title("3. Reconstructed", fontsize=10, pad=2)
+            for e in edges:
+                path = np.array(e['path'])
+                if len(path) < 2: continue
+                p_opt, _ = fit_bezier_basic_with_error(path)
+                w_opt = regress_width_dt_fast(p_opt, dt_map)
+                
+                ts_dense = np.linspace(0, 1, 50)[:, None]
+                curve_dense = cubic_bezier_np(p_opt, ts_dense)
+                mt = 1 - ts_dense
+                w_vals = mt**3 * w_opt[0] + 3*mt**2*ts_dense * w_opt[1] + 3*mt*ts_dense**2 * w_opt[2] + ts_dense**3 * w_opt[3]
+                
+                dp = np.gradient(curve_dense, axis=0)
+                n = np.zeros_like(dp)
+                n[:, 0], n[:, 1] = -dp[:, 1], dp[:, 0]
+                n_norm = np.linalg.norm(n, axis=1, keepdims=True) + 1e-5
+                n = n / n_norm
+                
+                upper = curve_dense + n * w_vals
+                lower = curve_dense - n * w_vals
+                poly = np.vstack([upper, lower[::-1]])
+                ax_bot.fill(poly[:, 0], poly[:, 1], color='#000000', alpha=0.9, linewidth=0)
+            ax_bot.axis('off')
+
+            plt.tight_layout(pad=0.5)
+
+        # 将 matplotlib 图像转换为 QPixmap 缓存
         buf = io.BytesIO()
-        plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0)
+        plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0.1)
         plt.close(fig)
         buf.seek(0)
         qimg = QImage()
@@ -693,7 +786,9 @@ class FontFactoryApp(QMainWindow):
         self.splitter = QSplitter(Qt.Horizontal)
         self.setCentralWidget(self.splitter)
         
-        # --- 左侧边栏 (字体列表) ---
+        # ==========================================
+        # 🌟 第一步修改：左侧边栏 (三段式流水线)
+        # ==========================================
         sidebar = QWidget()
         sidebar_layout = QVBoxLayout(sidebar)
         sidebar_layout.setContentsMargins(10, 10, 10, 10)
@@ -702,14 +797,42 @@ class FontFactoryApp(QMainWindow):
         sidebar_title.setStyleSheet("font-size: 18px; font-weight: bold;")
         sidebar_layout.addWidget(sidebar_title)
         
-        self.font_list_widget = QListWidget()
-        self.font_list_widget.itemClicked.connect(self.on_font_selected)
-        sidebar_layout.addWidget(self.font_list_widget)
+        # 1. 顶部：进行中 (In Progress)
+        lbl_progress = QLabel("🔄 In Progress")
+        lbl_progress.setStyleSheet("font-size: 14px; font-weight: bold; color: #2196F3; margin-top: 5px;")
+        sidebar_layout.addWidget(lbl_progress)
         
+        self.list_progress = QListWidget()
+        self.list_progress.itemClicked.connect(self.on_font_selected)
+        self.list_progress.setStyleSheet("background-color: #E3F2FD; border: 1px solid #BBDEFB; border-radius: 4px;")
+        sidebar_layout.addWidget(self.list_progress, 2) # 分配空间比例
+        
+        # 2. 中间：未开工 (Untouched)
+        lbl_untouched = QLabel("⏳ Untouched")
+        lbl_untouched.setStyleSheet("font-size: 14px; font-weight: bold; color: #FF9800; margin-top: 5px;")
+        sidebar_layout.addWidget(lbl_untouched)
+        
+        self.list_untouched = QListWidget()
+        self.list_untouched.itemClicked.connect(self.on_font_selected)
+        self.list_untouched.setStyleSheet("background-color: #FFF3E0; border: 1px solid #FFE0B2; border-radius: 4px;")
+        sidebar_layout.addWidget(self.list_untouched, 3) 
+        
+        # 3. 底部：已竣工 (Fully Completed)
+        lbl_completed = QLabel("✅ Fully Completed")
+        lbl_completed.setStyleSheet("font-size: 14px; font-weight: bold; color: #4CAF50; margin-top: 5px;")
+        sidebar_layout.addWidget(lbl_completed)
+        
+        self.list_completed = QListWidget()
+        self.list_completed.itemClicked.connect(self.on_font_selected)
+        self.list_completed.setStyleSheet("background-color: #F1F8E9; border: 1px solid #C8E6C9; border-radius: 4px;")
+        sidebar_layout.addWidget(self.list_completed, 1)
+        
+        # ✅ 完美保留你原有的刷新按钮，放在三个列表的最下方
         btn_refresh = QPushButton("🔄 Refresh Fonts")
         btn_refresh.clicked.connect(self.load_font_list)
-        btn_refresh.setStyleSheet("padding: 8px; background-color: #2196F3; color: white;")
+        btn_refresh.setStyleSheet("padding: 8px; background-color: #78909C; color: white; border-radius: 4px; margin-top: 5px; font-weight: bold;")
         sidebar_layout.addWidget(btn_refresh)
+        # ==========================================
         
         # --- 右侧容器 (用于装载 Workspace) ---
         self.workspace_container = QStackedWidget()
@@ -723,20 +846,88 @@ class FontFactoryApp(QMainWindow):
         self.splitter.addWidget(sidebar)
         self.splitter.addWidget(self.workspace_container)
         
-        # 设置左右比例 1:5
+        # 设置左右比例
         self.splitter.setSizes([250, 1350]) 
         
         self.load_font_list()
 
     def load_font_list(self):
-        self.font_list_widget.clear()
+        self.list_progress.clear()
+        self.list_untouched.clear()
+        self.list_completed.clear()
+        
         if not os.path.exists(FONTS_DIR): return
         
+        # 确保数据文件夹存在
+        anno_dir = os.path.join(SCRIPT_DIR, "annotations")
+        meta_dir = os.path.join(SCRIPT_DIR, "metadata")
+        os.makedirs(anno_dir, exist_ok=True)
+        os.makedirs(meta_dir, exist_ok=True)
+
         for file in os.listdir(FONTS_DIR):
             if file.lower().endswith(('.ttf', '.otf')):
-                self.font_list_widget.addItem(file)
+                font_filename = os.path.splitext(file)[0]
+                anno_file = os.path.join(anno_dir, f"{font_filename}.json")
+                meta_file = os.path.join(meta_dir, f"{font_filename}_meta.json")
+                
+                # 获取该字体目前的处理进度
+                annotated_count = 0
+                banned_count = 0
+                
+                if os.path.exists(anno_file):
+                    try:
+                        import json
+                        with open(anno_file, 'r', encoding='utf-8') as f:
+                            annotated_count = len(json.load(f))
+                    except: pass
+                    
+                if os.path.exists(meta_file):
+                    try:
+                        import json
+                        with open(meta_file, 'r', encoding='utf-8') as f:
+                            meta = json.load(f)
+                            banned_count = len(meta.get("banned", []))
+                    except: pass
+                
+                processed_count = annotated_count + banned_count
+                
+                # 🌟 状态分发逻辑
+                if processed_count == 0:
+                    # 没有任何记录 -> 未开工
+                    self.list_untouched.addItem(file)
+                else:
+                    # 动态读取该字体究竟有多少个字符
+                    total_chars = 999999 # 默认极大值，防止意外
+                    try:
+                        from fontTools.ttLib import TTFont
+                        font_path = os.path.join(FONTS_DIR, file)
+                        ttfont = TTFont(font_path)
+                        cmap = ttfont.getBestCmap()
+                        total_chars = len(cmap) if cmap else 0
+                        ttfont.close()
+                    except Exception as e:
+                        print(f"Warning reading cmap for {file}: {e}")
+                    
+                    # ⚠️ [自定义提示]：如果你的流水线只要求标注 3500 个常用字，
+                    # 请把上面的 total_chars = ... 删掉，直接写死 total_chars = 3500
+                    
+                    if processed_count >= total_chars:
+                        # 处理数达到或超过字体总字符数 -> 已竣工
+                        self.list_completed.addItem(file)
+                    else:
+                        # 有记录，但没处理完 -> 进行中
+                        self.list_progress.addItem(file)
+
 
     def on_font_selected(self, item):
+        # 🌟 互斥体验：只保留当前被点击列表的选中状态，清空另外两个
+        sender = self.sender()
+        if sender != self.list_progress: self.list_progress.clearSelection()
+        if sender != self.list_untouched: self.list_untouched.clearSelection()
+        if sender != self.list_completed: self.list_completed.clearSelection()
+
+        ####
+
         font_filename = item.text()
         full_font_path = os.path.join(FONTS_DIR, font_filename)
         
