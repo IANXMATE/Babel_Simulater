@@ -8,7 +8,6 @@ https://fonts.google.com/specimen/Noto+Sans+Khmer?preview.script=Latn
 
 https://fonts.google.com/noto/specimen/Noto+Sans+Tamil
 
-https://fonts.google.com/noto/specimen/Noto+Sans+Hebrew?preview.script=Hebr
 
 https://fonts.google.com/noto/specimen/Noto+Sans+Bengali?preview.script=Beng
 
@@ -46,13 +45,43 @@ https://fonts.google.com/noto/specimen/Noto+Sans+Sunuwar?query=noto&preview.scri
 
 https://fonts.google.com/noto/specimen/Noto+Sans+Inscriptional+Parthian?query=noto&preview.script=Prti
 
+
 ###############
 
+https://fonts.google.com/noto/specimen/Noto+Sans+Phoenician?preview.script=Phnx
 
+https://fonts.google.com/noto/specimen/Noto+Sans+Old+Turkic?preview.script=Orkh&preview.lang=otk_Orkh
 
-https://fonts.google.com/specimen/Prompt
+https://fonts.google.com/noto/specimen/Noto+Sans+Old+Hungarian?preview.script=Hung&preview.lang=ohu_Hung
 
-https://fonts.google.com/specimen/Heebo
+https://fonts.google.com/noto/specimen/Noto+Sans+Inscriptional+Pahlavi?preview.script=Nbat&preview.lang=pal_Phli&lang=pal_Phli
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Inscriptional+Parthian?preview.script=Prti
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Elymaic?preview.script=Elym
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Osmanya?preview.script=Osma&preview.lang=so_Osma
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Warang+Citi?preview.script=Wara
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Ol+Chiki?preview.script=Olck&preview.lang=sat_Olck
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Sunuwar?preview.script=Sunu&preview.lang=suz_Sunu
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Meetei+Mayek?preview.script=Mtei
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Lepcha?preview.script=Lepc&preview.lang=lep_Lepc
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Limbu?preview.script=Limb&preview.lang=lif_Limb
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Malayalam?preview.script=Mlym&preview.lang=ml_Mlym
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Tamil?preview.script=Taml
+
+https://fonts.google.com/noto/specimen/Noto+Sans+Telugu?preview.script=Telu
+
+###############
+
 
 https://fonts.google.com/specimen/Assistant
 
@@ -63,7 +92,6 @@ https://fonts.google.com/specimen/Noto+Sans+Telugu
 
 https://fonts.google.com/specimen/Hind+Madurai
 
-https://fonts.google.com/specimen/BJCree
 
 https://fonts.google.com/specimen/Padauk
 
@@ -77,4 +105,3 @@ https://fonts.google.com/specimen/Mukta+Malar
 
 %%%%%%%%%%%%%%
 
-https://www.dafont.com/daedriccalligraphy.font

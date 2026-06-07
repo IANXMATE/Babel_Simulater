@@ -5,6 +5,21 @@
     "CUSTOM_WHITELIST": {
         "Megrim": [
             ["0041", "005A"]
+        ],
+        "Assistant[wght]": [
+            ["05D0", "05EA"]
+        ],
+        "HindMadurai-Regular" : [
+            [
+             "0B85", "0BFA"
+            ]
+        ],
+        "Maname-Regular" : [
+            ["0D85", "0DE9"]
+        ],
+        "Padauk-Regular" : [
+            ["1000", "109F"]
         ]
-    }
+        
+}
 }

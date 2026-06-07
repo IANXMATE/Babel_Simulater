@@ -10,11 +10,16 @@ from fontTools.ttLib import TTFont
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DIR = "alien_tensors_raw"
-TARGET_DIR = os.path.join(SCRIPT_DIR + '/', DIR)
+TARGET_DIR = os.path.join(SCRIPT_DIR, DIR)
 OUTPUT_HTML = "rune_viewer.html"
+
 WHITELIST_FILE = "font_whitelist.json"
 SCRIPTS_FILE = "Scripts.txt"
 RULES_FILE = "rules.json"
+
+WHITELIST_FILE = os.path.join(SCRIPT_DIR, WHITELIST_FILE)
+SCRIPTS_FILE = os.path.join(SCRIPT_DIR, SCRIPTS_FILE)
+RULES_FILE = os.path.join(SCRIPT_DIR, RULES_FILE)
 
 def load_and_parse_rules():
     """解析双向规则库：包含全局兜底黑名单 (排除) 和 字体专属白名单 (保留)"""
