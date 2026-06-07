@@ -12,6 +12,7 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import networkx as nx
+import traceback
 from PIL import Image, ImageDraw, ImageFont
 from skimage import morphology
 from skan import Skeleton, summarize
@@ -38,6 +39,32 @@ from geometry_vision import (
 )
 
 from data_manager import DatasetManager
+
+
+# ==========================================
+# 🕵️ 终极侦探雷达：查出到底是谁在阻止 AI 启动！
+# ==========================================
+print("\n" + "="*40)
+print("🔍 [诊断系统] 正在检查 AI 引擎状态...")
+
+# 1. 检查物理文件
+_script_dir = os.path.dirname(os.path.abspath(__file__))
+_model_path = os.path.join(_script_dir, "ml_engine", "graph_editor_best.pth")
+print(f"📍 寻找权重文件: {_model_path}")
+print(f"   -> 物理文件存在吗？: {os.path.exists(_model_path)}")
+
+# 2. 检查代码导入
+HAS_AI_MODULE = False
+try:
+    from ml_engine.ai_auto_initializer import UICompatibleAIExecutor
+    HAS_AI_MODULE = True
+    print("✅ AI 代码模块导入成功！")
+except Exception as e:
+    # 🌟 这里是关键：如果是代码导入报错，它会把真实的错误原因打印出来！
+    print(f"❌ AI 代码模块导入彻底失败！真实报错原因如下：\n   >>> {type(e).__name__}: {e}")
+
+print("="*40 + "\n")
+# ==========================================
 
 warnings.filterwarnings("ignore")
 mpl.rcParams['axes.unicode_minus'] = False 
@@ -69,20 +96,51 @@ class ModernAnnotationApp(QMainWindow):
         self.setWindowTitle(f"AI Vector Router - Data Factory ({self.font_filename})")
         self.setGeometry(50, 50, 1500, 750) 
         
-        # 🌟 实例化数据中枢
+        # 实例化数据中枢
         self.db = DatasetManager(SCRIPT_DIR, self.font_filename)
-
         self.font_charset = extract_all_real_chars(self.font_path)
         self.history_stack = [] 
         self.selected_edge_ids = [] 
         self.last_click_coord = None 
         self.char = None
-        self.thumbnail_cache = {} # Cache for fast gallery loading
+        self.thumbnail_cache = {} 
         
         try: self.cmap = plt.colormaps['tab20']
         except AttributeError: self.cmap = plt.get_cmap('tab20')
         
         self.bezier_cache = {}
+        
+        # ==========================================
+        # 🛡️ 严苛模式：AI 初始化逻辑
+        # ==========================================
+        self.init_mode = "raw" 
+        self.pure_raw_edges = []
+        self.ai_executor = None
+        
+        model_dir = os.path.join(SCRIPT_DIR, "ml_engine")
+        model_path = os.path.join(model_dir, "graph_editor_best.pth")
+        
+        # 强制检查
+        path_exists = os.path.exists(model_path)
+        print(f"DEBUG: 正在寻找模型路径: {model_path}")
+        print(f"DEBUG: 检查结果 (os.path.exists): {path_exists}")
+        
+        # 只有当模块导入成功且模型物理存在时，才标记为 has_ai
+        self.has_ai = HAS_AI_MODULE and path_exists
+        
+        if self.has_ai:
+            try:
+                print("DEBUG: 正在尝试实例化 UICompatibleAIExecutor...")
+                self.ai_executor = UICompatibleAIExecutor(model_filename="graph_editor_best.pth")
+                print("DEBUG: AI 引擎已成功挂载。")
+            except Exception as e:
+                self.has_ai = False
+                print(f"❌ AI 引擎实例化失败: {str(e)}")
+                # 打印详细堆栈以供排查
+                traceback.print_exc()
+        else:
+            print(f"DEBUG: 无法启用 AI 功能。模块存在: {HAS_AI_MODULE}, 文件存在: {path_exists}")
+        # ==========================================
         
         # Build UI
         self.stacked_widget = QStackedWidget()
@@ -98,6 +156,115 @@ class ModernAnnotationApp(QMainWindow):
         
         self.action_next_char()
 
+    # ==========================================
+    # 🌟 NEW: AI 与 Raw 模式切换逻辑
+    # ==========================================
+    def action_toggle_init(self):
+        if not self.has_ai or self.ai_executor is None:
+            QMessageBox.warning(self, "AI Offline", "AI 模型未就绪")
+            return
+
+        # ==========================================
+        # 🛡️ 终极自愈：如果快照为空但画板有线，强制原地同步！
+        # ==========================================
+        if len(self.pure_raw_edges) == 0 and len(self.edges) > 0:
+            print("DEBUG: 🚨 检测到快照脱节！自动从当前画板同步纯净数据...")
+            self.pure_raw_edges = copy.deepcopy(self.edges)
+        # ==========================================
+
+        # 备份当前画板快照
+        backup_edges = copy.deepcopy(self.edges)
+        
+        try:
+            if self.init_mode == "raw":
+                # 1. 尝试执行 AI 预初始化 (现在绝对不可能传进去空数组了！)
+                ai_output = self.ai_executor.generate_ai_init_graph(copy.deepcopy(self.pure_raw_edges))
+                
+                if not ai_output:
+                    raise ValueError("AI 返回了空路径集，拒绝应用！")
+                
+                self.edges = ai_output
+                self.init_mode = "ai"
+                self.btn_toggle_init.setText("🔄 Revert to Raw Init")
+            
+            else:
+                # 2. 物理还原
+                self.edges = copy.deepcopy(self.pure_raw_edges)
+                self.init_mode = "raw"
+                self.btn_toggle_init.setText("🧠 Use AI Init")
+                
+            # 3. 强制重构渲染环境
+            self.selected_edge_ids.clear()
+            self.bezier_cache.clear()
+            self.history_stack.clear()
+            self.save_state()
+            
+            self.ax_main.clear()
+            self.ax_prev.clear()
+            self.update_canvas()
+            self.update_palette()
+
+        except Exception as e:
+            print(f"DEBUG: 发生严重渲染/处理错误: {e}")
+            self.edges = backup_edges
+            self.init_mode = "raw"
+            self.btn_toggle_init.setText("🧠 Use AI Init")
+            self.update_canvas()
+            QMessageBox.critical(self, "渲染错误", f"操作已撤销。\n原因: {e}")
+
+    # ==========================================
+    # 🌟 MODIFIED: 修改原有的图扑加载逻辑，使其感知当前模式
+    # ==========================================
+    def load_char_topology(self):
+        skel, distance = medial_axis(self.binary, return_distance=True)
+        skel_obj = Skeleton(skel)
+        branch_data = summarize(skel_obj)
+        G = nx.MultiGraph()
+        
+        # ... (保留你原来的图构建和减枝逻辑不变) ...
+        for index, row in branch_data.iterrows():
+            coords = skel_obj.path_coordinates(index)
+            if len(coords) > 2:
+                path = np.column_stack([coords[:, 1], coords[:, 0]])
+                src, dst = int(row['node-id-src']), int(row['node-id-dst'])
+                if np.linalg.norm(path[0] - skel_obj.coordinates[src][::-1]) > 1.0: path = path[::-1]
+                G.add_edge(src, dst, key=index, path=path)
+                
+        G = prune_spurs(G, max_length=MAX_SPUR_LENGTH) 
+        G = collapse_degree2_nodes(G)
+        
+        # 填充 edges...
+        self.edges = []
+        global_id = 0
+        for u, v, k, d in G.edges(keys=True, data=True):
+            path = d['path']
+            sub_paths = split_pixel_path_adaptively(path)
+            for sp in sub_paths:
+                # 🛡️ 核心修复：在这里进行深层拷贝，确保没有任何引用残留
+                # 必须复制 path 数组，否则 sp 仍会指向原始引用
+                self.edges.append({'id': global_id, 'path': sp.copy()})
+                global_id += 1
+        
+        # 🛡️ 最终极防线：将这块内存彻底深拷贝给 pure_raw_edges
+        # 这一步之后，无论你对 self.edges 怎么折腾，pure_raw_edges 都会纹丝不动
+        self.pure_raw_edges = copy.deepcopy(self.edges)
+        
+        # 🌟 关键修改点 2：如果当前处于 AI 模式，自动顺延给下一个字进行 AI 初始化
+        if self.init_mode == "ai" and self.has_ai:
+            if self.ai_executor is None:
+                self.title_label.setText("Waking up AI...")
+                QApplication.processEvents()
+                self.ai_executor = UICompatibleAIExecutor()
+            self.edges = self.ai_executor.generate_ai_init_graph(self.pure_raw_edges)
+
+        self.bezier_cache.clear() 
+        self.selected_edge_ids = []
+        self.history_stack.clear()
+        self.last_click_coord = None
+        self.save_state()
+        self.update_canvas()
+        self.update_palette()
+    
     # ---------------- Data Persistence ----------------
     def load_data(self):
         if os.path.exists(self.anno_json_path):
@@ -148,6 +315,24 @@ class ModernAnnotationApp(QMainWindow):
         
         line1 = QFrame(); line1.setFrameShape(QFrame.HLine); control_panel.addWidget(line1)
         
+        # ==========================================
+        # 🌟 NEW: AI 状态指示器与切换按钮
+        # ==========================================
+        ai_status_layout = QHBoxLayout()
+        
+        self.lbl_ai_status = QLabel("🟢 AI Active" if self.has_ai else "🔴 AI Offline")
+        self.lbl_ai_status.setStyleSheet(f"font-size: 14px; font-weight: bold; color: {'#4CAF50' if self.has_ai else '#F44336'};")
+        
+        self.btn_toggle_init = QPushButton("🧠 Use AI Init")
+        self.btn_toggle_init.clicked.connect(self.action_toggle_init)
+        self.btn_toggle_init.setStyleSheet("padding: 10px; background-color: #673AB7; color: white; font-weight: bold;")
+        
+        ai_status_layout.addWidget(self.lbl_ai_status)
+        ai_status_layout.addWidget(self.btn_toggle_init)
+        control_panel.addLayout(ai_status_layout)
+        # ==========================================
+
+
         btn_merge = QPushButton("Merge Strokes (M)"); btn_merge.clicked.connect(self.action_merge)
         btn_merge.setStyleSheet("padding: 10px; background-color: #4CAF50; color: white; font-weight: bold;")
         
@@ -388,6 +573,9 @@ class ModernAnnotationApp(QMainWindow):
         # Load raw edges from metadata
         raw = self.db.meta_data["raw_edges"].get(self.char, [])
         self.edges = [{"id": r["id"], "path": np.array(r["path"])} for r in raw]
+        
+        # 🌟 补上这一句，保证重新标注时快照也是满的！
+        self.pure_raw_edges = copy.deepcopy(self.edges)
         
         self.bezier_cache.clear()
         self.selected_edge_ids.clear()

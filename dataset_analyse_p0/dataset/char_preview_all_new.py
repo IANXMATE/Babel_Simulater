@@ -7,10 +7,17 @@ from fontTools.ttLib import TTFont
 # ==========================================
 # ⚙️ 全局配置
 # ==========================================
-TARGET_DIR = "alien_tensors_raw"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+TARGET_DIR = "alien_tensors_storage"
 OUTPUT_HTML = "rune_viewer.html"
 WHITELIST_FILE = "font_whitelist.json"
 SCRIPTS_FILE = "scripts.txt"
+
+TARGET_DIR = os.path.join(SCRIPT_DIR, TARGET_DIR)
+OUTPUT_HTML = os.path.join(SCRIPT_DIR, OUTPUT_HTML)
+WHITELIST_FILE = os.path.join(SCRIPT_DIR, WHITELIST_FILE)
+SCRIPTS_FILE = os.path.join(SCRIPT_DIR, SCRIPTS_FILE)
 
 def parse_unicode_scripts(filepath):
     """解析官方 Scripts.txt，生成 {标准化语种名: [(start_hex, end_hex), ...]} 的映射表"""
