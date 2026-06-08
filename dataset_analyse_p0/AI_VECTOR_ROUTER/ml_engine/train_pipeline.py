@@ -7,8 +7,10 @@ import numpy as np
 import pickle
 
 # 🌟 1. 无缝导入咱们刚刚写的 data_builder
-from ml_engine.data_builder import build_dataset_from_logs, ACTION_VOCAB
-
+try :
+    from ml_engine.data_builder import build_dataset_from_logs, ACTION_VOCAB
+except :
+    from data_builder import build_dataset_from_logs, ACTION_VOCAB
 # ==========================================
 # 📊 步骤一：PyTorch Dataset 与动态 Padding
 # ==========================================
@@ -63,7 +65,7 @@ class GraphEditingDataset(Dataset):
 # 🧠 步骤二：Graph Editor Foundation Model
 # ==========================================
 class GraphEditorTransformer(nn.Module):
-    def __init__(self, feature_dim=8, hidden_dim=128, n_heads=4, n_layers=3):
+    def __init__(self, feature_dim=8, hidden_dim=512, n_heads=4, n_layers=3):
         super().__init__()
         self.hidden_dim = hidden_dim
         
@@ -146,7 +148,7 @@ def train():
     model = GraphEditorTransformer(feature_dim=8).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3)
     
-    epochs = 50
+    epochs = 100
     best_loss = float('inf') # 🌟 新增：用来记录历史最低 Loss
     MODEL_SAVE_PATH = os.path.join(CURRENT_DIR, "graph_editor_best.pth")
     print("\n🚀 Starting Training...")
