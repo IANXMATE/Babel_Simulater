@@ -77,7 +77,7 @@ MAX_BEZIER_ERROR = 3
 MAX_SPUR_LENGTH = 20.0    
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-FONT_PATH = os.path.join(SCRIPT_DIR, '../dataset/alien_tensors_raw/NotoSansTamil[wdth,wght].ttf')
+FONT_PATH = os.path.join(SCRIPT_DIR, '../dataset/alien_tensors_storage/NotoSansTamil[wdth,wght].ttf')
 
 if not os.path.exists(FONT_PATH):
     FONT_PATH = "arial.ttf"

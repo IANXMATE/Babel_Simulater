@@ -59,22 +59,6 @@
             "tamil"
         ]
     },
-    "NotoSansHebrew[wdth,wght].ttf": {
-        "primary_script": "Hebr",
-        "valuable_subsets": [
-            "cyrillic-ext",
-            "greek-ext",
-            "hebrew"
-        ],
-        "all_subsets": [
-            "cyrillic-ext",
-            "greek-ext",
-            "hebrew",
-            "latin",
-            "latin-ext",
-            "menu"
-        ]
-    },
     "NotoSansBengali[wdth,wght].ttf": {
         "primary_script": "Beng",
         "valuable_subsets": [
@@ -303,45 +287,75 @@
             "menu"
         ]
     },
-    "Prompt-Regular.ttf": {
-        "primary_script": "Thai",
+    "NotoSansPhoenician-Regular.ttf": {
+        "primary_script": "Phnx",
         "valuable_subsets": [
-            "thai",
-            "vietnamese"
+            "phoenician"
         ],
         "all_subsets": [
             "latin",
             "latin-ext",
             "menu",
-            "thai",
-            "vietnamese"
+            "phoenician"
         ]
     },
-    "Heebo[wght].ttf": {
-        "primary_script": "Hebr",
+    "NotoSansOldTurkic-Regular.ttf": {
+        "primary_script": "Orkh",
         "valuable_subsets": [
-            "hebrew",
-            "math",
-            "symbols"
+            "old-turkic"
         ],
         "all_subsets": [
-            "hebrew",
             "latin",
             "latin-ext",
-            "math",
             "menu",
-            "symbols"
+            "old-turkic"
         ]
     },
-    "Assistant[wght].ttf": {
-        "primary_script": "Hebr",
+    "NotoSansOldHungarian-Regular.ttf": {
+        "primary_script": "Hung",
         "valuable_subsets": [
-            "hebrew"
+            "old-hungarian"
         ],
         "all_subsets": [
-            "hebrew",
             "latin",
             "latin-ext",
+            "menu",
+            "old-hungarian"
+        ]
+    },
+    "NotoSansElymaic-Regular.ttf": {
+        "primary_script": "Elym",
+        "valuable_subsets": [
+            "elymaic"
+        ],
+        "all_subsets": [
+            "elymaic",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
+    "NotoSansLepcha-Regular.ttf": {
+        "primary_script": "Lepc",
+        "valuable_subsets": [
+            "lepcha"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "lepcha",
+            "menu"
+        ]
+    },
+    "NotoSansLimbu-Regular.ttf": {
+        "primary_script": "Limb",
+        "valuable_subsets": [
+            "limbu"
+        ],
+        "all_subsets": [
+            "latin",
+            "latin-ext",
+            "limbu",
             "menu"
         ]
     },
@@ -357,6 +371,18 @@
             "telugu"
         ]
     },
+    "Assistant[wght].ttf": {
+        "primary_script": "Hebr",
+        "valuable_subsets": [
+            "hebrew"
+        ],
+        "all_subsets": [
+            "hebrew",
+            "latin",
+            "latin-ext",
+            "menu"
+        ]
+    },
     "HindMadurai-Regular.ttf": {
         "primary_script": "Taml",
         "valuable_subsets": [
@@ -367,17 +393,6 @@
             "latin-ext",
             "menu",
             "tamil"
-        ]
-    },
-    "BJCree-Regular.ttf": {
-        "primary_script": "Cans",
-        "valuable_subsets": [
-            "canadian-aboriginal"
-        ],
-        "all_subsets": [
-            "canadian-aboriginal",
-            "latin",
-            "menu"
         ]
     },
     "Padauk-Regular.ttf": {
@@ -416,12 +431,6 @@
             "latin-ext",
             "menu",
             "tamil"
-        ]
-    },
-    "Daedriccalligraphy-Regular.ttf": {
-        "primary_script": "PUA",
-        "valuable_subsets": [
-            "Private Use Area"
         ]
     }
 }
