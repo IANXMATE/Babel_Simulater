@@ -287,9 +287,12 @@ class AnnotationWorkspace(QWidget):
         # 物理隔离快照
         self.pure_raw_edges = copy.deepcopy(self.edges)
         
-        # 顺延 AI 模式
-        if self.init_mode == "ai" and self.has_ai and self.ai_executor:
-            self.edges = self.ai_executor.generate_ai_init_graph(copy.deepcopy(self.pure_raw_edges))
+        # ==========================================
+        # 🌟 修复点：取消跨字顺延，强制重置为 Raw 模式
+        # ==========================================
+        self.init_mode = "raw"
+        if hasattr(self, 'btn_toggle_init'):
+            self.btn_toggle_init.setText("🧠 Use AI Init")
 
         self.bezier_cache.clear() 
         self.selected_edge_ids.clear()
@@ -299,6 +302,7 @@ class AnnotationWorkspace(QWidget):
         self.update_canvas()
         self.update_palette()
         self.action_log = [{"action": "Init (Raw)", "edges": copy.deepcopy(self.edges)}]
+    
 
     def action_toggle_init(self):
         if not self.has_ai or self.ai_executor is None:
@@ -640,7 +644,7 @@ class AnnotationWorkspace(QWidget):
             self.switch_tab(2)
             main_window = self.window()
             if hasattr(main_window, 'load_font_list'): main_window.load_font_list()
-
+    
     def action_reannotate(self, hex_key):
         self.char = chr(int(hex_key[2:], 16))
         self.title_label.setText(f"[RE-EDIT] Target: '{self.char}' ({hex_key})")
@@ -651,6 +655,13 @@ class AnnotationWorkspace(QWidget):
         self.edges = [{"id": r["id"], "path": np.array(r["path"])} for r in raw]
         self.pure_raw_edges = copy.deepcopy(self.edges)
         
+        # ==========================================
+        # 🌟 修复点：打回重造时，同样强制重置为 Raw 模式
+        # ==========================================
+        self.init_mode = "raw"
+        if hasattr(self, 'btn_toggle_init'):
+            self.btn_toggle_init.setText("🧠 Use AI Init")
+            
         self.bezier_cache.clear(); self.selected_edge_ids.clear(); self.history_stack.clear()
         self.save_state()
         self.action_log = [{"action": "Re-edit Init", "edges": copy.deepcopy(self.edges)}]

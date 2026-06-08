@@ -8,6 +8,25 @@ import sys
 from ml_engine.train_pipeline import GraphEditorTransformer
 from ml_engine.data_builder import GraphReplayEnvironment, ACTION_VOCAB
 
+from scipy.spatial import cKDTree
+
+# ==========================================
+# 🌟 新增：极速重叠度计算函数
+# ==========================================
+def calculate_overlap_ratio(target_path, other_paths, distance_thresh=2.0):
+    if not other_paths or len(target_path) == 0:
+        return 0.0
+    valid_others = [p for p in other_paths if len(p) > 0]
+    if not valid_others:
+        return 0.0
+        
+    all_other_pts = np.vstack(valid_others)
+    tree = cKDTree(all_other_pts)
+    dists, _ = tree.query(target_path, k=1, workers=-1)
+    overlap_count = np.sum(dists < distance_thresh)
+    return float(overlap_count) / len(target_path)
+
+
 # 🌟 核心新增：引入主程序的贝塞尔拟合器作为 AI 的“物理法则裁判”
 try:
     from geometry_vision import fit_bezier_basic_with_error
@@ -24,7 +43,7 @@ class UICompatibleAIExecutor:
         current_dir = os.path.dirname(os.path.abspath(__file__))
         model_file = os.path.join(current_dir, model_filename)
         
-        self.model = GraphEditorTransformer(feature_dim=8).to(self.device)
+        self.model = GraphEditorTransformer(feature_dim=9).to(self.device)
         self.model.load_state_dict(torch.load(model_file, map_location=torch.device('cpu')))
         self.model.to(self.device)
         self.model.eval()
@@ -81,7 +100,20 @@ class UICompatibleAIExecutor:
             
             with torch.no_grad():
                 type_logits, pointer_logits = self.model(x_feat_t, padding_mask)
-                
+            
+            # ==========================================
+            # 🌟 新增补丁：强力护栏 - 读心术与防偷懒机制
+            # ==========================================
+            probs = torch.softmax(type_logits[0], dim=0)
+            prob_str = ", ".join([f"{self.vocab_inv[i]}:{probs[i]:.2f}" for i in range(len(probs))])
+            print(f"[AI 脑电波] Step {step} 决策概率 -> {prob_str}")
+
+            # 绝对物理拦截：如果还没走几步，或者画板上线条还很多，强行剥夺 Done 的权利！
+            if step < 3 or len(current_edges) > 4:
+                done_idx = ACTION_VOCAB["Done"]
+                type_logits[0, done_idx] = -1e9  # 强行扣至负无穷，逼它去干活
+            # ==========================================
+
             # ==========================================
             # 🌟 动作掩码 (Action Masking): 物理剥夺 AI 对死胡同节点的点击权
             # ==========================================
@@ -103,10 +135,56 @@ class UICompatibleAIExecutor:
             target_idx = pointer_logits[0].argmax().item()
             if target_idx >= len(current_edges): break
             
+            # if action_name == "Delete":
+            #     if len(current_edges) > 3:
+            #         target_edge = current_edges[target_idx]
+            #         other_paths = [e['path'] for i, e in enumerate(current_edges) if i != target_idx]
+                    
+            #         # 🌟 修复 1：把物理探伤的视野从 2.0 像素放大到 6.0 像素，兼容视觉上的笔画厚度
+            #         overlap_ratio = calculate_overlap_ratio(target_edge['path'], other_paths, distance_thresh=6.0)
+                    
+            #         # 🌟 修复 2：把要求 75% 重合的严苛条件降到 40%
+            #         SAFE_DELETE_THRESHOLD = 0.40 
+                    
+            #         # 🌟 修复 3：新增“微小噪点特权”
+            #         # 如果这根线长度不到 15 个像素（典型的交叉口碎线），无需重叠，直接批准删除！
+            #         edge_length = len(target_edge['path'])
+            #         is_tiny_noise = (edge_length < 15)
+                    
+            #         if overlap_ratio >= SAFE_DELETE_THRESHOLD or is_tiny_noise:
+            #             # 物理裁判绿灯
+            #             deleted = current_edges.pop(target_idx)
+            #             reason = f"重叠度达标 {overlap_ratio*100:.1f}%" if not is_tiny_noise else f"清理交叉口微小碎线 (长度:{edge_length})"
+            #             print(f"[AI黑匣子] -> ✅ 允许 Delete: 删除了 ID {deleted['id']} ({reason})")
+            #         else:
+            #             # 物理裁判红灯
+            #             print(f"[AI黑匣子] -> ⛔ 拦截 Delete: ID {target_edge['id']} 是承重骨架，禁止删除！(重叠度仅: {overlap_ratio*100:.1f}%, 长度: {edge_length})")
+            #             locked_nodes.add(target_edge['id'])
+            #     else:
+            #         break
+
             if action_name == "Delete":
                 if len(current_edges) > 3:
-                    deleted = current_edges.pop(target_idx)
-                    print(f"[AI黑匣子] -> Delete: 删除了 ID {deleted['id']}")
+                    target_edge = current_edges[target_idx]
+                    other_paths = [e['path'] for i, e in enumerate(current_edges) if i != target_idx]
+                    
+                    # 🌟 贯彻你的覆盖率判定法：
+                    # distance_thresh=5.0 模拟了笔画的平均覆盖半径。
+                    # 如果原字体极粗，可以调大；如果极细，可以调小。
+                    overlap_ratio = calculate_overlap_ratio(target_edge['path'], other_paths, distance_thresh=5.0)
+                    
+                    # 🌟 核心阈值：如果删掉这根线，它至少要有 60% 的面积被其他线“代为覆盖”。
+                    # 否则，一旦删除就会导致原图覆盖率严重下降（漏风/缺口）！
+                    MIN_COVERAGE_RETAINED = 0.60 
+                    
+                    if overlap_ratio >= MIN_COVERAGE_RETAINED:
+                        # 覆盖率不会下降，放心删除
+                        deleted = current_edges.pop(target_idx)
+                        print(f"[AI黑匣子] -> ✅ 允许 Delete: 删掉不影响覆盖率 (冗余度: {overlap_ratio*100:.1f}%)")
+                    else:
+                        # 覆盖率将严重下降，强行锁定
+                        print(f"[AI黑匣子] -> ⛔ 拦截 Delete: ID {target_edge['id']} 若删除会导致覆盖率严重下降！(冗余度仅: {overlap_ratio*100:.1f}%)")
+                        locked_nodes.add(target_edge['id'])
                 else:
                     break
                     

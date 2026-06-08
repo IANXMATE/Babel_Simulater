@@ -65,12 +65,15 @@ class GraphEditingDataset(Dataset):
 # 🧠 步骤二：Graph Editor Foundation Model
 # ==========================================
 class GraphEditorTransformer(nn.Module):
-    def __init__(self, feature_dim=8, hidden_dim=512, n_heads=4, n_layers=3):
+    def __init__(self, feature_dim=8, hidden_dim=128, n_heads=4, n_layers=3):
         super().__init__()
         self.hidden_dim = hidden_dim
         
         self.edge_embedding = nn.Linear(feature_dim, hidden_dim)
         
+        # 🌟 强力补丁：在这里加入 LayerNorm，专治各种特征数值爆炸
+        self.input_norm = nn.LayerNorm(hidden_dim)
+
         encoder_layer = nn.TransformerEncoderLayer(
             d_model=hidden_dim, 
             nhead=n_heads, 
@@ -96,6 +99,10 @@ class GraphEditorTransformer(nn.Module):
         
         # 1. 特征升维
         tokens = self.edge_embedding(x_feat) 
+
+        # 🌟 强力补丁：升维后，立刻进行 LayerNorm 归一化！
+        # 这一步能让送进 Transformer 的特征变得极度平滑和稳定
+        tokens = self.input_norm(tokens)
         
         # 2. 全局交互 (此处利用 src_key_padding_mask 屏蔽掉 padding 的边)
         # TODO 后期升级：这里可以手写 Attention 加上传入的 x_bias 拓扑偏置
@@ -104,6 +111,7 @@ class GraphEditorTransformer(nn.Module):
         # 3. 提取全局图状态 (屏蔽掉 padding 求平均)
         active_tokens = encoded_tokens.masked_fill(padding_mask.unsqueeze(-1), 0.0)
         valid_counts = (~padding_mask).sum(dim=1, keepdim=True).clamp(min=1)
+        
         global_context = active_tokens.sum(dim=1) / valid_counts
             
         # 4. 预测 Action Type
@@ -145,10 +153,18 @@ def train():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"⚙️ Using device: {device}")
     
-    model = GraphEditorTransformer(feature_dim=8).to(device)
+    # 🌟 修复 1：把 feature_dim 改为 9
+    model = GraphEditorTransformer(feature_dim=9).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3)
     
-    epochs = 100
+    # 🌟 修复 2：设置类别权重 (Class Weights) 以压制泛滥的 Delete
+    # ACTION_VOCAB 顺序: Merge:0, Delete:1, Split:2, Add_Dot:3, Done:4
+    class_weights = torch.ones(len(ACTION_VOCAB), device=device)
+    class_weights[ACTION_VOCAB["Delete"]] = 1.0  # 极度打压 Delete 的比重
+    class_weights[ACTION_VOCAB["Merge"]] = 5.0   # 极度拔高 Merge 的比重
+    class_weights[ACTION_VOCAB["Done"]] = 0.2    # 保证模型知道何时停手
+    
+    epochs = 200
     best_loss = float('inf') # 🌟 新增：用来记录历史最低 Loss
     MODEL_SAVE_PATH = os.path.join(CURRENT_DIR, "graph_editor_best.pth")
     print("\n🚀 Starting Training...")
@@ -169,9 +185,13 @@ def train():
             # 前向传播
             type_logits, pointer_logits = model(x_feat, padding_mask)
             
+            # # --- 损失计算 1：动作类型 ---
+            # loss_type = F.cross_entropy(type_logits, y_type)
+
             # --- 损失计算 1：动作类型 ---
-            loss_type = F.cross_entropy(type_logits, y_type)
-            
+            # 🌟 修复 3：加入 weight=class_weights，强行扭转数据不平衡
+            loss_type = F.cross_entropy(type_logits, y_type, weight=class_weights)
+
             # --- 损失计算 2：指针目标 ---
             # 过滤掉不需要预测目标的动作 (y_target1 == -1，比如 Done)
             valid_ptr_mask = y_target1 != -1

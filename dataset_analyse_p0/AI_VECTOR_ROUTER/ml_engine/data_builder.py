@@ -5,6 +5,7 @@ import math
 import numpy as np
 from collections import defaultdict
 from collections import Counter
+from scipy.spatial import cKDTree
 
 # 如果你已经在这个环境里装了 PyTorch，取消下面这行的注释
 # import torch 
@@ -17,6 +18,26 @@ ACTION_VOCAB = {
     "Add_Dot": 3,
     "Done": 4
 }
+def calculate_overlap_ratio(target_path, other_paths, distance_thresh=2.0):
+    """
+    极速重叠度计算：测算 target_path 中有多少比例的点，被其他线条覆盖。
+    """
+    if not other_paths or len(target_path) == 0:
+        return 0.0
+        
+    valid_others = [p for p in other_paths if len(p) > 0]
+    if not valid_others:
+        return 0.0
+        
+    all_other_pts = np.vstack(valid_others)
+    tree = cKDTree(all_other_pts)
+    
+    # 查询 target_path 中每个点到其他所有点的最近距离
+    dists, _ = tree.query(target_path, k=1, workers=-1)
+    
+    # 统计距离小于阈值的点数，除以总长度即为重叠面积比例
+    overlap_count = np.sum(dists < distance_thresh)
+    return float(overlap_count) / len(target_path)
 
 class GraphReplayEnvironment:
     """
@@ -80,32 +101,29 @@ class GraphReplayEnvironment:
         """
         N = len(edges)
         if N == 0:
-            return np.zeros((0, 6)), np.zeros((0, 0))
+            # 🌟 修复点 1：特征维度变为 9 维空数组
+            return np.zeros((0, 9)), np.zeros((0, 0)) 
 
         # 1. 扫描拓扑，计算 Node Degree
         node_degrees = defaultdict(int)
         edge_endpoints = []
         for e in edges:
             path = e['path']
-            # 起点和终点
             p_start, p_end = self._round_pt(path[0]), self._round_pt(path[-1])
             edge_endpoints.append((p_start, p_end))
             node_degrees[p_start] += 1
             node_degrees[p_end] += 1
 
-        # 2. 构建 Edge Token Features (几何 + 拓扑)
+        # 2. 构建 Edge Token Features (几何 + 拓扑 + 重叠度)
         features = []
         for i, e in enumerate(edges):
             path = e['path']
             p_start, p_end = edge_endpoints[i]
             
             # --- 几何特征 ---
-            # 长度
             length = sum(self._euclidean(path[k], path[k+1]) for k in range(len(path)-1)) if len(path)>1 else 0
-            # 中心点 (取绝对坐标，也可以归一化到 0-1)
             center_x = sum(p[0] for p in path) / len(path)
             center_y = sum(p[1] for p in path) / len(path)
-            # 方向角 (首尾向量)
             dx = path[-1][0] - path[0][0]
             dy = path[-1][1] - path[0][1]
             theta = math.atan2(dy, dx)
@@ -113,35 +131,42 @@ class GraphReplayEnvironment:
             # --- 拓扑特征 ---
             deg_start = node_degrees[p_start]
             deg_end = node_degrees[p_end]
-            # 语义标识：是不是孤立线？是不是悬空毛刺？
             is_spur = 1.0 if (deg_start == 1 or deg_end == 1) else 0.0
-            is_isolated = 1.0 if (deg_start == 1 and deg_end == 1) else 0.0
             
-            # D = 8 维特征向量
+            # --- 🌟 新增：重叠度特征 ---
+            target_path = path
+            other_paths = [e2['path'] for j, e2 in enumerate(edges) if j != i]
+            overlap_ratio = calculate_overlap_ratio(target_path, other_paths, distance_thresh=2.0)
+            
+            # D = 9 维特征向量 (增加了 overlap_ratio)
             feat = [
-                length, center_x, center_y, math.sin(theta), math.cos(theta),
-                deg_start, deg_end, is_spur
+                length / 800.0,            
+                center_x / 400.0,          
+                center_y / 400.0,          
+                math.sin(theta),           
+                math.cos(theta),           
+                deg_start / 4.0,           
+                deg_end / 4.0,             
+                is_spur,                   
+                overlap_ratio              
             ]
+            
             features.append(feat)
 
         # 3. 构建 Graphormer Attention Bias 矩阵
-        attn_bias = np.full((N, N), -1.0) # 默认：不相连 (-1)
-        np.fill_diagonal(attn_bias, 0.0)  # 自己对自己 (0)
+        attn_bias = np.full((N, N), -1.0) 
+        np.fill_diagonal(attn_bias, 0.0)  
         
         for i in range(N):
             pts_i = set(edge_endpoints[i])
             for j in range(i + 1, N):
                 pts_j = set(edge_endpoints[j])
-                # 判断是否有交集（共享端点）
                 if len(pts_i.intersection(pts_j)) > 0:
-                    attn_bias[i, j] = 2.0 # 强物理相连 (+2)
+                    attn_bias[i, j] = 2.0 
                     attn_bias[j, i] = 2.0
-                else:
-                    # TODO: 可选 - 增加计算点到点距离，如果很近赋予 +1
-                    pass
                     
         return np.array(features, dtype=np.float32), np.array(attn_bias, dtype=np.float32)
-
+    
     def extract_action_labels(self, edges_t, edges_next, action_str):
         """
         核心引擎 2：通过对比前后帧 (State Diffing)，反推专家操作的目标 Indices
