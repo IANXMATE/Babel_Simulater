@@ -11,6 +11,37 @@ try :
     from ml_engine.data_builder import build_dataset_from_logs, ACTION_VOCAB
 except :
     from data_builder import build_dataset_from_logs, ACTION_VOCAB
+
+
+class MultiClassFocalLoss(nn.Module):
+    """
+    针对多分类图编辑动作的 Focal Loss
+    """
+    def __init__(self, alpha=None, gamma=2.0, reduction='mean'):
+        super(MultiClassFocalLoss, self).__init__()
+        self.gamma = gamma
+        self.reduction = reduction
+        self.alpha = alpha
+
+    def forward(self, inputs, targets):
+        ce_loss = F.cross_entropy(inputs, targets, reduction='none')
+        pt = torch.exp(-ce_loss)
+        focal_factor = (1 - pt) ** self.gamma
+        loss = focal_factor * ce_loss
+        
+        if self.alpha is not None:
+            self.alpha = self.alpha.to(inputs.device)
+            alpha_t = self.alpha[targets]
+            loss = alpha_t * loss
+            
+        if self.reduction == 'mean':
+            return loss.mean()
+        elif self.reduction == 'sum':
+            return loss.sum()
+        else:
+            return loss
+        
+
 # ==========================================
 # 📊 步骤一：PyTorch Dataset 与动态 Padding
 # ==========================================
@@ -162,8 +193,11 @@ def train():
     class_weights = torch.ones(len(ACTION_VOCAB), device=device)
     class_weights[ACTION_VOCAB["Delete"]] = 1.0  # 极度打压 Delete 的比重
     class_weights[ACTION_VOCAB["Merge"]] = 5.0   # 极度拔高 Merge 的比重
-    class_weights[ACTION_VOCAB["Done"]] = 0.2    # 保证模型知道何时停手
+    class_weights[ACTION_VOCAB["Done"]] = 0.1    # 保证模型知道何时停手
     
+    # 🌟 强力补丁：实例化 Focal Loss，将 class_weights 传给 alpha
+    criterion_type = MultiClassFocalLoss(alpha=class_weights, gamma=2.0)
+
     epochs = 200
     best_loss = float('inf') # 🌟 新增：用来记录历史最低 Loss
     MODEL_SAVE_PATH = os.path.join(CURRENT_DIR, "graph_editor_best.pth")
@@ -190,7 +224,8 @@ def train():
 
             # --- 损失计算 1：动作类型 ---
             # 🌟 修复 3：加入 weight=class_weights，强行扭转数据不平衡
-            loss_type = F.cross_entropy(type_logits, y_type, weight=class_weights)
+            # loss_type = F.cross_entropy(type_logits, y_type, weight=class_weights)
+            loss_type = criterion_type(type_logits, y_type)
 
             # --- 损失计算 2：指针目标 ---
             # 过滤掉不需要预测目标的动作 (y_target1 == -1，比如 Done)

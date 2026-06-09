@@ -533,6 +533,36 @@ class AnnotationWorkspace(QWidget):
             id_a, id_b = self.selected_edge_ids
             paths_to_stitch = [e['path'] for e in self.edges if e['id'] in (id_a, id_b)]
             new_unified_path = stitch_paths(paths_to_stitch)
+            
+            # ==========================================
+            # 🌟 核心修复：防止合并拟合出现“拉弓弯曲”效应
+            # ==========================================
+            if len(new_unified_path) > 2:
+                # 1. 计算路径的实际走线长度 (Total Length)
+                diffs = np.diff(new_unified_path, axis=0)
+                dists = np.linalg.norm(diffs, axis=1)
+                total_len = np.sum(dists)
+                
+                # 2. 计算首尾的直线弦长 (Chord Length)
+                chord_len = np.linalg.norm(new_unified_path[-1] - new_unified_path[0])
+                
+                # 3. 鉴定直线意图：如果走线长度和直线弦长相差无几 (小于5%)
+                if chord_len > 1.0 and (total_len / chord_len) < 1.05:
+                    # 强行降维打击！将所有点均匀铺在首尾连线的绝对直线上
+                    # 彻底消除接头处的像素重叠和错位导致的拟合暴走
+                    num_pts = len(new_unified_path)
+                    t_vals = np.linspace(0, 1, num_pts).reshape(-1, 1)
+                    new_unified_path = new_unified_path[0] * (1 - t_vals) + new_unified_path[-1] * t_vals
+                else:
+                    # 如果本来就是弯的，也进行一次均匀重采样，洗掉接头处的脏数据
+                    cum_dist = np.insert(np.cumsum(dists), 0, 0)
+                    t_uniform = np.linspace(0, total_len, max(20, int(total_len)))
+                    new_x = np.interp(t_uniform, cum_dist, new_unified_path[:, 0])
+                    new_y = np.interp(t_uniform, cum_dist, new_unified_path[:, 1])
+                    new_unified_path = np.column_stack([new_x, new_y])
+            # ==========================================
+
+            # 现在送去拟合的路径非常纯净，再也不会出现莫名其妙的弯曲了
             _, error = fit_bezier_basic_with_error(new_unified_path)
             
             sub_paths = []
@@ -546,7 +576,11 @@ class AnnotationWorkspace(QWidget):
             for sp in sub_paths:
                 self.edges.append({'id': new_id, 'path': sp})
                 new_id += 1
-            self.selected_edge_ids.clear(); self.bezier_cache.clear(); self.update_canvas(); self.update_palette()
+                
+            self.selected_edge_ids.clear()
+            self.bezier_cache.clear()
+            self.update_canvas()
+            self.update_palette()
             self.record_step("Merge (M)")
 
     def action_delete(self):
@@ -569,25 +603,59 @@ class AnnotationWorkspace(QWidget):
             self.record_step("Prune (C)")
 
     def action_breakpoint(self):
-        if len(self.selected_edge_ids) == 1 and self.last_click_coord:
-            self.save_state()
-            target_id = self.selected_edge_ids[0]
-            click_pt = np.array(self.last_click_coord)
-            min_dist, best_i, best_split = float('inf'), -1, -1
-            for i, edge in enumerate(self.edges):
-                if edge['id'] == target_id:
-                    dists = np.linalg.norm(edge['path'] - click_pt, axis=1)
-                    idx = np.argmin(dists)
-                    if dists[idx] < min_dist: min_dist, best_i, best_split = dists[idx], i, idx
-            if best_i != -1 and 3 < best_split < len(self.edges[best_i]['path']) - 3:
+        # 🌟 优化：即使不手动去选左侧调色盘，只要你在画布上点了点，就自动去匹配最近的线条！
+        if not self.last_click_coord: 
+            return
+            
+        self.save_state()
+        click_pt = np.array(self.last_click_coord)
+        
+        # 如果用户提前选了某条线，就只在对应线条上切；否则全图扫描最近的线
+        target_id = self.selected_edge_ids[0] if len(self.selected_edge_ids) == 1 else None
+        
+        min_dist, best_i, best_split = float('inf'), -1, -1
+        
+        for i, edge in enumerate(self.edges):
+            if target_id is not None and edge['id'] != target_id:
+                continue
+            
+            dists = np.linalg.norm(edge['path'] - click_pt, axis=1)
+            if len(dists) == 0: continue
+            idx = np.argmin(dists)
+            
+            if dists[idx] < min_dist:
+                min_dist = dists[idx]
+                best_i = i
+                best_split = idx
+
+        # 🌟 核心护栏降级：只要点击距离在合理范围内（例如 15 像素以内），且不是点在绝对端点上，均允许切分！
+        if best_i != -1 and min_dist < 15.0:
+            edge_path = self.edges[best_i]['path']
+            path_len = len(edge_path)
+            
+            # 只要切分点不在绝对的两个端点，就执行打断
+            if 0 < best_split < path_len - 1:
                 edge = self.edges[best_i]
                 path1, path2 = edge['path'][:best_split+1], edge['path'][best_split:]
+                
+                # 产生新的唯一 ID
                 new_id = max([e['id'] for e in self.edges] + [0]) + 1
                 self.edges.pop(best_i)
                 self.edges.append({'id': new_id, 'path': path1})
                 self.edges.append({'id': new_id+1, 'path': path2})
-                self.last_click_coord = None; self.selected_edge_ids.clear(); self.bezier_cache.clear(); self.update_canvas(); self.update_palette()
+                
+                # 清理点击状态并刷新
+                self.last_click_coord = None
+                self.selected_edge_ids.clear()
+                self.bezier_cache.clear()
+                self.update_canvas()
+                self.update_palette()
                 self.record_step("Split (B)")
+                print(f"[打断成功] 成功在第 {best_split}/{path_len} 节点处将线条切分为两段。")
+            else:
+                print("[打断拦截] 点击距离端点太近，拒绝打断。")
+        else:
+            print("[打断失败] 未能在点击位置附近找到有效的线条，请点击更靠近拓扑图骨架的位置。")
 
     def action_add_dot(self):
         if not self.last_click_coord: return
