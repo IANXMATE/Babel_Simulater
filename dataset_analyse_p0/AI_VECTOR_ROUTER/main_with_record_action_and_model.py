@@ -34,7 +34,7 @@ from geometry_vision import (
 # ⚙️ 全局配置与 AI 探测
 # ==========================================
 CANVAS_SIZE = 400
-MAX_BEZIER_ERROR = 3
+MAX_BEZIER_ERROR = 4.5
 MAX_SPUR_LENGTH = 20.0
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 FONTS_DIR = os.path.join(SCRIPT_DIR, "../dataset/alien_tensors_storage") # 你的提纯字体目录
