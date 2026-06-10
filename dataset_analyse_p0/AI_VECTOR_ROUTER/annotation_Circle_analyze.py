@@ -63,7 +63,7 @@ class TopologyOptimizer:
         return ordered_strokes, classes
         
     def _snap_endpoints(self, strokes):
-        """规则 1：动态宽度阈值吸附，处理相交端点"""
+        """规则 1：升级版智能吸附。大幅提高阈值，并基于原图 DT 矩阵逆向寻优，保护字形覆盖率"""
         snapped = copy.deepcopy(strokes)
         eps = []
         for i, s in enumerate(snapped):
@@ -80,8 +80,9 @@ class TopologyOptimizer:
             
             for c in clusters:
                 dist = np.linalg.norm(ep['pos'] - c['center'])
-                # 如果两点距离 < 两者线宽之和的 1.2 倍，强制吸附
-                if dist < (w_ep + c['avg_w']) * 1.2 + 2.0: 
+                # 🌟 强力升级点 1：大幅提升吸附阈值，结合动态线宽，并设定 15 像素强力保底机制
+                snap_threshold = max((w_ep + c['avg_w']) * 2.2, 15.0)
+                if dist < snap_threshold: 
                     c['eps'].append(ep)
                     c['center'] = np.mean([e['pos'] for e in c['eps']], axis=0)
                     c['avg_w'] = (c['avg_w'] * (len(c['eps'])-1) + w_ep) / len(c['eps'])
@@ -90,11 +91,28 @@ class TopologyOptimizer:
             if not placed:
                 clusters.append({'center': ep['pos'], 'eps': [ep], 'avg_w': w_ep})
                 
-        # 覆写吸附后的中心坐标
+        # 🌟 强力升级点 2：拒绝盲目均值！利用原图距离变换（DT）寻找局部骨架中心，确保不破坏覆盖率
+        h, w = self.dt_map.shape
         for c in clusters:
             if len(c['eps']) > 1:
+                center_raw = c['center']
+                cx, cy = int(np.clip(center_raw[0], 0, w-1)), int(np.clip(center_raw[1], 0, h-1))
+                
+                # 在均值坐标周围开启 12 像素雷格搜索圈
+                r = 12
+                x_min, x_max = max(0, cx - r), min(w, cx + r + 1)
+                y_min, y_max = max(0, cy - r), min(h, cy + r + 1)
+                
+                sub_dt = self.dt_map[y_min:y_max, x_min:x_max]
+                if sub_dt.size > 0 and np.max(sub_dt) > 0:
+                    # 寻找该区域内最深处、最属于原图笔画躯干中心的像素点作为绝对锚点
+                    ny, nx = np.unravel_index(np.argmax(sub_dt), sub_dt.shape)
+                    optimized_anchor = np.array([x_min + nx, y_min + ny], dtype=np.float32)
+                else:
+                    optimized_anchor = center_raw
+                
                 for ep in c['eps']:
-                    set_endpoint(snapped[ep['s_idx']], ep['is_start'], c['center'])
+                    set_endpoint(snapped[ep['s_idx']], ep['is_start'], optimized_anchor)
         return snapped
 
     def _reorder_and_classify(self, strokes):
@@ -176,23 +194,22 @@ class TopologyOptimizer:
         def get_intersect_type(curr_idx, prev_idx):
             mb_curr, _ = extract_bezier_and_width(strokes[curr_idx])
             mb_prev, _ = extract_bezier_and_width(strokes[prev_idx])
-            # 生成平滑贝塞尔曲线散点用作高精度几何碰撞检测
             p_curr = cubic_bezier_np(mb_curr, np.linspace(0, 1, 20)[:, None])
             p_prev = cubic_bezier_np(mb_prev, np.linspace(0, 1, 20)[:, None])
             
             d1 = np.min(np.linalg.norm(p_prev[1:-1] - p_curr[0], axis=1))
             d2 = np.min(np.linalg.norm(p_prev[1:-1] - p_curr[-1], axis=1))
-            if d1 < 5.0 or d2 < 5.0: return "Purple" # T型相交
+            if d1 < 5.0 or d2 < 5.0: return "Purple" 
             
             dists = distance.cdist(p_curr[1:-1], p_prev[1:-1])
-            if np.min(dists) < 5.0: return "Brown" # X型横穿
+            if np.min(dists) < 5.0: return "Brown" 
             return "None"
 
         last_s_idx = list(in_cycle)[-1] if in_cycle else None
             
         for chain in paths:
             for i, s_idx in enumerate(chain):
-                cls = "Green" # 默认起点
+                cls = "Green" 
                 if len(chain) > 1:
                     if i == len(chain) - 1: cls = "Red"
                     elif i > 0: cls = "Yellow"
@@ -208,7 +225,7 @@ class TopologyOptimizer:
         return final_strokes, final_classes
 
 # ==========================================
-# 🎨 离线渲染引擎 (完全对齐 main.py 的视觉逻辑)
+# 🎨 离线渲染引擎
 # ==========================================
 class StateRenderer:
     def __init__(self):
@@ -216,22 +233,18 @@ class StateRenderer:
         except AttributeError: self.cmap = plt.get_cmap('tab20')
 
     def render_top_image(self, binary, strokes, dt_map=None, size=(3.5, 3.5)):
-        """对应 main.py 中的图 3: 彩色平滑贝塞尔与黑色骨架线"""
         fig = plt.figure(figsize=size, dpi=90)
         fig.patch.set_facecolor('#FFFFFF')
         ax = fig.add_subplot(111)
-        ax.imshow(binary, cmap='gray', alpha=0.05) # 使用较淡背景
+        ax.imshow(binary, cmap='gray', alpha=0.05) 
         
         for i, e in enumerate(strokes):
             p_opt, w_opt = extract_bezier_and_width(e, dt_map)
             if p_opt is None: continue
-            
             color = self.cmap((i % 20))
             mean_w = max(np.mean(w_opt), 1.0)
             ts = np.linspace(0, 1, 50)[:, None]
             curve = cubic_bezier_np(p_opt, ts)
-            
-            # 对齐 main.py 粗体彩色曲线与内部骨架
             ax.plot(curve[:, 0], curve[:, 1], c=color, lw=mean_w * 2, solid_capstyle='round', alpha=0.6)
             ax.plot(curve[:, 0], curve[:, 1], color='black', linewidth=1.5, alpha=0.5)
             
@@ -239,7 +252,6 @@ class StateRenderer:
         return self._fig_to_pixmap(fig)
 
     def render_bottom_image(self, binary, strokes, dt_map, size=(3.5, 3.5)):
-        """对应 main.py 中的图 4: 高精度多边形 TTF 挤出渲染"""
         fig = plt.figure(figsize=size, dpi=90)
         fig.patch.set_facecolor('#FFFFFF')
         ax = fig.add_subplot(111)
@@ -248,8 +260,6 @@ class StateRenderer:
         for e in strokes:
             p_opt, w_opt = extract_bezier_and_width(e, dt_map)
             if p_opt is None: continue
-            
-            # 高密度 100 采样点完美还原物理法线
             ts_dense = np.linspace(0, 1, 100)[:, None]
             curve_dense = cubic_bezier_np(p_opt, ts_dense)
             mt = 1 - ts_dense
@@ -260,7 +270,6 @@ class StateRenderer:
             n[:, 0], n[:, 1] = -dp[:, 1], dp[:, 0]
             n_norm = np.linalg.norm(n, axis=1, keepdims=True) + 1e-5
             n = n / n_norm
-            
             upper = curve_dense + n * w_vals
             lower = curve_dense - n * w_vals
             poly = np.vstack([upper, lower[::-1]])
@@ -270,7 +279,6 @@ class StateRenderer:
         return self._fig_to_pixmap(fig)
 
     def render_classified_image(self, binary, strokes, classes, size=(3.5, 3.5)):
-        """状态机优化图谱：基于完美贝塞尔曲线着色"""
         fig = plt.figure(figsize=size, dpi=90)
         fig.patch.set_facecolor('#FFFFFF')
         ax = fig.add_subplot(111)
@@ -292,11 +300,8 @@ class StateRenderer:
             color = color_map.get(cls, "#000000")
             ts = np.linspace(0, 1, 50)[:, None]
             curve = cubic_bezier_np(p_opt, ts)
-            
-            # 画线
             ax.plot(curve[:, 0], curve[:, 1], c=color, lw=5, alpha=0.8, solid_capstyle='round')
             
-            # 方向箭头
             dir_vec = curve[-1] - curve[-2]
             norm = np.linalg.norm(dir_vec)
             if norm > 0:
@@ -304,7 +309,6 @@ class StateRenderer:
                 ax.arrow(curve[-2, 0], curve[-2, 1], dir_vec[0], dir_vec[1], 
                          head_width=6, head_length=8, fc=color, ec=color)
                 
-            # 数字标记
             ax.text(curve[len(curve)//2, 0], curve[len(curve)//2, 1], str(i+1), 
                     color='white', fontsize=10, fontweight='bold',
                     bbox=dict(facecolor='black', alpha=0.5, edgecolor='none', pad=1))
@@ -331,7 +335,7 @@ class StateRenderer:
         return QPixmap.fromImage(qimg)
 
 # ==========================================
-# 🏠 后续 UI 及主程序保持不变...
+# 🏠 后续 UI 及主程序保持不变
 # ==========================================
 class PreviewWorkspace(QWidget):
     def __init__(self, font_path):
@@ -402,7 +406,6 @@ class PreviewWorkspace(QWidget):
             if item.widget(): item.widget().deleteLater()
             
         char = chr(int(hex_key[2:], 16))
-        # 直接读取完美标注数据，无需额外转义
         raw_strokes = copy.deepcopy(self.db.annotated_outlines.get(hex_key, []))
         
         top_bar = QHBoxLayout()
@@ -447,11 +450,8 @@ class PreviewWorkspace(QWidget):
             return container
 
         card1 = create_view_card("<b>1. Original Binary Mask</b>", self.renderer.render_thumbnail(binary, size=(3.5, 3.5)))
-        
-        # 传入 dt_map 确保宽度完全还原
         card2 = create_view_card("<b>2. Raw Annotated Strokes</b><br><span style='color:gray'>Without endpoint snapping</span>", 
                                  self.renderer.render_top_image(binary, raw_strokes, dt_map, size=(3.5, 3.5)))
-        
         card3 = create_view_card("<b>3. Reconstructed BW Glyph</b>", 
                                  self.renderer.render_bottom_image(binary, raw_strokes, dt_map, size=(3.5, 3.5)))
         
