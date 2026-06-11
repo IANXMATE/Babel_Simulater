@@ -1064,17 +1064,19 @@ class AnnotationWorkspace(QWidget):
         elif mode == "completed":
             ax_top = fig.add_subplot(311); ax_top.imshow(binary, cmap='gray'); ax_top.set_title("1. Original", fontsize=10); ax_top.axis('off')
             
+            # 🌟 核心修改：从全新的大 JSON 聚合文件中读取该字形的第二阶段完成数据
             topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_topo.json")
             edges = []
             if os.path.exists(topo_file):
                 try:
                     with open(topo_file, 'r', encoding='utf-8') as f:
+                        # 深入结构抓取其中的 strokes 列表
                         edges = json.load(f).get(hex_key, {}).get("strokes", [])
                 except: pass
             
             ax_mid = fig.add_subplot(312); ax_mid.imshow(binary, cmap='gray', alpha=0.15); ax_mid.set_title("2. Topo Skeletons", fontsize=10); ax_mid.axis('off')
             for e in edges:
-                color = self.cmap((e['bezier_id'] % 20))
+                color = self.cmap((e['bezier_id'] % 20)) # 此时的 id 已经是优化后的 1, 2, 3...
                 p_opt = np.array(e['mother_bezier'])
                 curve = cubic_bezier_np(p_opt, np.linspace(0, 1, 50)[:, None])
                 ax_mid.plot(curve[:, 0], curve[:, 1], c=color, lw=3, alpha=0.8)

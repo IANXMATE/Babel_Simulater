@@ -63,6 +63,13 @@ class TopoAnnotationWorkspace(QWidget):
         btn_reset.clicked.connect(self.action_reset)
         btn_reset.setStyleSheet("padding: 10px; background-color: #795548; color: white; font-weight: bold; border-radius: 4px;")
         control_panel.addWidget(btn_reset)
+
+        # 🌟 新增：直接退回第一阶段编辑界面的按钮
+        btn_return_p1 = QPushButton("↩️ Return to Phase 1 Editing")
+        btn_return_p1.clicked.connect(self.action_return_to_phase1)
+        btn_return_p1.setStyleSheet("padding: 10px; background-color: #00BCD4; color: white; font-weight: bold; border-radius: 4px;")
+        control_panel.addWidget(btn_return_p1)
+
         
         control_panel.addStretch()
         
@@ -493,3 +500,7 @@ class TopoAnnotationWorkspace(QWidget):
         if key == 'u': self.action_undo()
         elif key == 'r': self.action_reset()
         elif key == 'enter': self.action_complete_topo()
+    
+    def action_return_to_phase1(self):
+        """🌟 核心新增：不清除当前调整，直接让主工作区的层级堆栈切回第一阶段编辑界面"""
+        self.main_ws.inner_stack.setCurrentIndex(0)
