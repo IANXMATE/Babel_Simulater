@@ -195,12 +195,97 @@ class TopoAnnotationWorkspace(QWidget):
             self.update_canvas()
 
     def on_mouse_release(self, event):
-        if self.dragging_point:
-            self.save_state()
-            self.dragging_point = None
+        if not self.dragging_point:
+            return
+            
+        e_idx, p_idx = self.dragging_point
+        
+        # 🌟 只有拖拽的是贝塞尔曲线的两头端点 (p_idx == 0 或 3) 时，才触发拓扑吸附！
+        # 如果拖拽的是中间的控制杆点 (1 或 2)，就仅仅是调整曲率，不发生物理吸附。
+        if p_idx in [0, 3]:
+            pt = np.array(self.edges[e_idx]['path'][p_idx])
+            
+            min_ep_dist = float('inf')
+            best_ep_pos = None
+            min_curve_dist = float('inf')
+            best_curve_pos = None
+            
+            # 遍历寻找吸附目标
+            for i, edge in enumerate(self.edges):
+                if i == e_idx: continue # 不吸附自己
+                
+                # 1. 探测端点
+                for end_idx in [0, 3]:
+                    ep = np.array(edge['path'][end_idx])
+                    dist = np.linalg.norm(pt - ep)
+                    if dist < min_ep_dist:
+                        min_ep_dist = dist
+                        best_ep_pos = ep.tolist()
+                        
+                # 2. 探测曲线本体 (用于 T型搭接)
+                curve = cubic_bezier_np(np.array(edge['path']), np.linspace(0, 1, 50)[:, None])
+                dists = np.linalg.norm(curve - pt, axis=1)
+                min_idx = np.argmin(dists)
+                if dists[min_idx] < min_curve_dist:
+                    min_curve_dist = dists[min_idx]
+                    best_curve_pos = curve[min_idx].tolist()
+
+            snap_threshold = 12.0 # 吸附触发像素距离
+            
+            # 执行吸附拦截逻辑 (优先级：端点对接 > T型搭接)
+            if min_ep_dist < snap_threshold:
+                if self.confirm_snap('endpoint', best_ep_pos):
+                    self.edges[e_idx]['path'][p_idx] = best_ep_pos
+            elif min_curve_dist < snap_threshold:
+                if self.confirm_snap('t_junction', best_curve_pos):
+                    self.edges[e_idx]['path'][p_idx] = best_curve_pos
+
+        # 完成所有操作后，保存历史记录并刷新
+        self.save_state()
+        self.dragging_point = None
+        self.update_canvas()
             
     def on_key(self, event):
         key = event.key.lower() if event.key else ""
         if key == 'u': self.action_undo()
         elif key == 'r': self.action_reset()
         elif key == 'enter': self.action_complete_topo()
+    
+
+    def get_line_count_at_point(self, target_pos, threshold=2.0):
+        """计算目标位置汇聚了多少个端点"""
+        count = 0
+        target_pt = np.array(target_pos)
+        for edge in self.edges:
+            pts = edge['path']
+            # 判断头尾两个端点 (Bezier的第0个和第3个点)
+            if np.linalg.norm(np.array(pts[0]) - target_pt) < threshold: 
+                count += 1
+            if np.linalg.norm(np.array(pts[3]) - target_pt) < threshold: 
+                count += 1
+        return count
+
+    def confirm_snap(self, snap_type, target_pos):
+        """执行吸附前的弹窗确认"""
+        x = self.get_line_count_at_point(target_pos)
+        
+        if snap_type == 'endpoint':
+            title = "端点吸附确认"
+            msg = f"是否将该点吸附到其他线的端点？\n\n📌 待吸附端点共有 {x} 个线\n"
+            if x == 1:
+                msg += "(正常对接)"
+            elif x > 1:
+                msg += "(⚠️ 提示：x > 1，说明已经是交点了！)"
+                
+        elif snap_type == 't_junction':
+            title = "T型搭接确认"
+            msg = f"是否将该点吸附到其他线上（T型搭接）？\n\n📌 目标位置目前端点数为 {x}\n"
+            if x == 0:
+                msg += "(正常搭接)"
+            elif x > 0:
+                msg += "(⚠️ 提示：x > 0，说明该线段位置已经存在其他交点了！)"
+        else:
+            return True
+            
+        reply = QMessageBox.question(self, title, msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+        return reply == QMessageBox.Yes
