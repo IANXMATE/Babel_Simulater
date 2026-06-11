@@ -299,7 +299,8 @@ class AnnotationWorkspace(QWidget):
             raw = self.db.meta_data["raw_edges"][hex_key]
             self.edges = [{"id": r["id"], "path": np.array(r["path"])} for r in raw]
             
-            log_file = os.path.join(ACTION_LOG_DIR, f"{self.font_filename}_action_log.json")
+            # 使用 _actions.json 读取
+            log_file = os.path.join(ACTION_LOG_DIR, f"{self.font_filename}_actions.json")
             history_logs = []
             if os.path.exists(log_file):
                 try:
@@ -309,8 +310,8 @@ class AnnotationWorkspace(QWidget):
                 except: pass
                 
             if history_logs:
-                self.action_log = history_logs
-                self.record_step("Load Saved Phase 1")
+                # 🌟 核心变化：纯粹继承！不调用 record_step 注入多余的动作
+                self.action_log = history_logs 
             else:
                 self.action_log = [{"action": "Load Saved Phase 1", "edges": copy.deepcopy(self.edges)}]
                 
@@ -458,28 +459,71 @@ class AnnotationWorkspace(QWidget):
     
     def action_proceed_to_phase2(self):
         if not self.edges: return
+        
+        reply = QMessageBox.question(self, 'Auto-Save & Proceed', 
+                                     "System will automatically save your Phase 1 records.\nDo you want to proceed to the Topo Phase?",
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+        if reply == QMessageBox.No:
+            return
+            
         hex_key = f"U+{ord(self.char):04X}"
         
-        raw_edges_serializable = [{"id": e['id'], "path": e['path'].tolist()} for e in self.edges]
-        self.db.meta_data["raw_edges"][hex_key] = raw_edges_serializable
-        self.db.save_data()
+        # ==========================================
+        # 🌟 拦截 1：比对基础几何数据 raw_edges
+        # ==========================================
+        # 安全转换：防止 ndarray 报错
+        raw_edges_serializable = [
+            {
+                "id": e['id'], 
+                "path": e['path'].tolist() if isinstance(e['path'], np.ndarray) else e['path']
+            } 
+            for e in self.edges
+        ]
         
+        # 读取数据库中已存在的老数据
+        current_saved_raw = self.db.meta_data.get("raw_edges", {}).get(hex_key)
+        
+        # 只有新老数据发生实质性差异时，才触发大字典的落盘保存！
+        if current_saved_raw != raw_edges_serializable:
+            self.db.meta_data.setdefault("raw_edges", {})[hex_key] = raw_edges_serializable
+            self.db.save_data()
+        
+        # ==========================================
+        # 🌟 拦截 2：比对操作历史 actions_log
+        # ==========================================
         if hasattr(self, 'action_log'):
-            log_file = os.path.join(ACTION_LOG_DIR, f"{self.font_filename}_action_log.json")
+            log_file = os.path.join(ACTION_LOG_DIR, f"{self.font_filename}_actions.json")
             all_logs = {}
             if os.path.exists(log_file):
                 try:
                     with open(log_file, 'r', encoding='utf-8') as f: all_logs = json.load(f)
                 except: pass
             
+            # 将内存中的历史序列化成标准格式
             serialized_log = []
             for step in self.action_log:
-                step_edges = [{"id": e['id'], "path": e['path'].tolist()} for e in step["edges"]]
+                step_edges = [
+                    {
+                        "id": e['id'], 
+                        "path": e['path'].tolist() if isinstance(e['path'], np.ndarray) else e['path']
+                    } 
+                    for e in step["edges"]
+                ]
                 serialized_log.append({"action": step["action"], "edges": step_edges})
             
-            all_logs[hex_key] = serialized_log
-            with open(log_file, 'w', encoding='utf-8') as f: json.dump(all_logs, f, ensure_ascii=False)
+            # 只有内存里的操作历史和硬盘里的 JSON 不一致时，才触发 open('w') 覆写！
+            if all_logs.get(hex_key) != serialized_log:
+                all_logs[hex_key] = serialized_log
+                # 加入 indent=2 保证原有排版格式不变
+                with open(log_file, 'w', encoding='utf-8') as f: 
+                    json.dump(all_logs, f, ensure_ascii=False, indent=2)
+                print(f"💾 数据已发生修改，成功保存 Phase 1 记录。")
+            else:
+                print(f"🔒 数据空转拦截：当前没有任何修改，已安全跳过硬盘覆写！")
             
+        # ==========================================
+        # 交付阶段 2
+        # ==========================================
         phase2_edges = []
         for edge in self.edges:
             eid = edge['id']
@@ -495,7 +539,7 @@ class AnnotationWorkspace(QWidget):
             self.inner_stack.removeWidget(w)
             w.deleteLater()
         self.inner_stack.addWidget(self.topo_widget)
-        self.inner_stack.setCurrentIndex(1) 
+        self.inner_stack.setCurrentIndex(1)
 
     def save_phase2_topo_data(self, hex_key, final_tokens):
         topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_{hex_key}.json")
