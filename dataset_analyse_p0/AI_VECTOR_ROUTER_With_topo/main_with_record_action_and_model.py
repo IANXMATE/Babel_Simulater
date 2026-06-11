@@ -286,12 +286,17 @@ class AnnotationWorkspace(QWidget):
             
     def update_stats_display(self):
         total = len(self.font_charset)
-        # 真实完成判定：仅根据 annotations_topo 中存在的 JSON
-        completed = len([f for f in os.listdir(TOPO_OUT_DIR) if f.startswith(self.font_filename)])
         banned = len(self.db.meta_data.get("banned", []))
-        p1_only = len([k for k in self.db.meta_data.get("raw_edges", {}).keys() 
-                       if not os.path.exists(os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_{k}.json"))])
         
+        # 读取聚合文件获取已完工数量
+        topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_topo.json")
+        completed = 0
+        if os.path.exists(topo_file):
+            try:
+                with open(topo_file, 'r', encoding='utf-8') as f: completed = len(json.load(f))
+            except: pass
+            
+        p1_only = len([k for k in self.db.meta_data.get("raw_edges", {}).keys() if k not in self.db.annotated_outlines])
         remaining = max(0, total - completed - banned)
         self.stats_label.setText(f"📊 Remaining: {remaining}   |   ⏳ P1 Done: {p1_only}   |   ✅ Full Topo: {completed}   |   🚫 Banned: {banned}")
         
@@ -400,8 +405,15 @@ class AnnotationWorkspace(QWidget):
             candidate = random.choice(self.font_charset)
             hex_key = f"U+{ord(candidate):04X}"
             
-            topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_{hex_key}.json")
-            if hex_key in self.db.meta_data.get("banned", []) or os.path.exists(topo_file): 
+            # 在 action_next_char 函数的循环体内部，找到相关的检测逻辑，替换为：
+            topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_topo.json")
+            has_completed = False
+            if os.path.exists(topo_file):
+                try:
+                    with open(topo_file, 'r', encoding='utf-8') as f: has_completed = hex_key in json.load(f)
+                except: pass
+                
+            if hex_key in self.db.meta_data.get("banned", []) or has_completed: 
                 continue
                 
             b_mask = render_unicode_glyph(self.font_path, candidate, CANVAS_SIZE)
@@ -616,17 +628,31 @@ class AnnotationWorkspace(QWidget):
         self.inner_stack.addWidget(self.topo_widget)
         self.inner_stack.setCurrentIndex(1)
 
-    def save_phase2_topo_data(self, hex_key, final_tokens):
-        topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_{hex_key}.json")
-        with open(topo_file, 'w', encoding='utf-8') as f:
-            json.dump({hex_key: final_tokens}, f, ensure_ascii=False, indent=2)
+    def save_phase2_topo_data(self, hex_key, char_bundle):
+        # 🌟 核心变化：全量聚合到一个大 JSON 文件中
+        topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_topo.json")
+        all_topo_data = {}
+        
+        if os.path.exists(topo_file):
+            try:
+                with open(topo_file, 'r', encoding='utf-8') as f: 
+                    all_topo_data = json.load(f)
+            except: pass
             
-        self.db.annotated_outlines[hex_key] = final_tokens
-        print(f"✅ Topo Annotation for {hex_key} saved successfully!")
+        # 以 U+XXXX 作为 Key 注入字典
+        all_topo_data[hex_key] = char_bundle
+        
+        with open(topo_file, 'w', encoding='utf-8') as f:
+            json.dump(all_topo_data, f, ensure_ascii=False, indent=2)
+            
+        # 同步更新局部快速索引数据库
+        self.db.annotated_outlines[hex_key] = char_bundle["strokes"]
+        print(f"✅ Topo & Geometry Annotation for {hex_key} aggregated successfully!")
         
         self.update_stats_display()
         main_window = self.window()
-        if hasattr(main_window, 'load_font_list'): main_window.load_font_list()
+        if hasattr(main_window, 'load_font_list'): 
+            main_window.load_font_list()
             
         self.inner_stack.setCurrentIndex(0)
         self.action_next_char()
@@ -855,8 +881,13 @@ class AnnotationWorkspace(QWidget):
         self.btn_comp.setChecked(index == 2)
         self.btn_ban.setChecked(index == 3)
         
-        topo_files = [f for f in os.listdir(TOPO_OUT_DIR) if f.startswith(self.font_filename)]
-        completed_keys = [f.split('_')[-1].split('.')[0] for f in topo_files]
+        # 从聚合大文件中拉取完工的清单键值
+        topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_topo.json")
+        completed_keys = []
+        if os.path.exists(topo_file):
+            try:
+                with open(topo_file, 'r', encoding='utf-8') as f: completed_keys = list(json.load(f).keys())
+            except: pass
         
         if index == 1: 
             raw_keys = list(self.db.meta_data.get("raw_edges", {}).keys())
@@ -875,25 +906,27 @@ class AnnotationWorkspace(QWidget):
                                      f"Are you sure you want to completely erase ALL annotation history for '{char}' ({hex_key})?",
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
-            # 删除画廊记录
             self.db.delete_character(hex_key)
-            
-            # 删除 Phase 1 记录
             if hex_key in self.db.meta_data.get("raw_edges", {}):
                 del self.db.meta_data["raw_edges"][hex_key]
                 self.db.save_data()
 
-            # 删除 Phase 2 (Topo) 文件
-            topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_{hex_key}.json")
-            if os.path.exists(topo_file): os.remove(topo_file)
+            # 从聚合的大 JSON 文件中剔除该字形键值
+            topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_topo.json")
+            if os.path.exists(topo_file):
+                try:
+                    with open(topo_file, 'r', encoding='utf-8') as f: big_data = json.load(f)
+                    if hex_key in big_data:
+                        del big_data[hex_key]
+                        with open(topo_file, 'w', encoding='utf-8') as f:
+                            json.dump(big_data, f, ensure_ascii=False, indent=2)
+                except: pass
             
             self.thumbnail_cache.pop(f"{hex_key}_completed", None)
             self.thumbnail_cache.pop(f"{hex_key}_p1_done", None)
             
-            # 刷新当前处于的选项卡
             idx = self.stacked_widget.currentIndex()
             self.switch_tab(idx)
-            
             self.update_stats_display()
             main_window = self.window()
             if hasattr(main_window, 'load_font_list'): main_window.load_font_list()
@@ -951,13 +984,15 @@ class AnnotationWorkspace(QWidget):
             img_label.setAlignment(Qt.AlignCenter)
             
             # 🌟 动态更新显示数量信息
+            # 找到 refresh_gallery 中 mode == "completed" 的判断分支，替换为：
             if mode == "completed":
-                topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_{hex_key}.json")
-                try:
-                    with open(topo_file, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-                        strokes_count = len(data[hex_key])
-                except: strokes_count = "?"
+                topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_topo.json")
+                strokes_count = "?"
+                if os.path.exists(topo_file):
+                    try:
+                        with open(topo_file, 'r', encoding='utf-8') as f:
+                            strokes_count = len(json.load(f).get(hex_key, {}).get("strokes", []))
+                    except: pass
                 title_text = f"'{char}' ({hex_key})\nTopo Strokes: {strokes_count}"
             elif mode == "p1_done":
                 raw_edges = self.db.meta_data.get("raw_edges", {}).get(hex_key, [])
@@ -1029,13 +1064,12 @@ class AnnotationWorkspace(QWidget):
         elif mode == "completed":
             ax_top = fig.add_subplot(311); ax_top.imshow(binary, cmap='gray'); ax_top.set_title("1. Original", fontsize=10); ax_top.axis('off')
             
-            topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_{hex_key}.json")
+            topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_topo.json")
             edges = []
             if os.path.exists(topo_file):
                 try:
                     with open(topo_file, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-                        edges = data.get(hex_key, [])
+                        edges = json.load(f).get(hex_key, {}).get("strokes", [])
                 except: pass
             
             ax_mid = fig.add_subplot(312); ax_mid.imshow(binary, cmap='gray', alpha=0.15); ax_mid.set_title("2. Topo Skeletons", fontsize=10); ax_mid.axis('off')
@@ -1149,8 +1183,16 @@ class FontFactoryApp(QMainWindow):
                 font_filename = os.path.splitext(file)[0]
                 meta_file = os.path.join(meta_dir, f"{font_filename}_meta.json")
                 
-                # 🌟 修复侧边栏统计逻辑，将 Phase 1 数据也纳入总进度考虑
-                topo_count = len([f for f in os.listdir(TOPO_OUT_DIR) if f.startswith(font_filename)])
+                # 🌟 核心修改：不再去列表里扫零散文件，而是去读每个字体的聚合大 JSON 文件
+                topo_file = os.path.join(TOPO_OUT_DIR, f"{font_filename}_topo.json")
+                topo_count = 0
+                if os.path.exists(topo_file):
+                    try:
+                        with open(topo_file, 'r', encoding='utf-8') as f:
+                            # 字典里的键值数（即 U+XXXX 的数量）就是完工的字形数
+                            topo_count = len(json.load(f))
+                    except: pass
+                    
                 banned_count = 0
                 phase1_count = 0
                 
