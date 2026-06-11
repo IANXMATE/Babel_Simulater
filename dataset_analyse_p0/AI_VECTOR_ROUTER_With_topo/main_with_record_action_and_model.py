@@ -942,28 +942,71 @@ class AnnotationWorkspace(QWidget):
     
     def action_reannotate(self, hex_key):
         self.char = chr(int(hex_key[2:], 16))
-        self.title_label.setText(f"[RE-EDIT] Phase 1: Target '{self.char}' ({hex_key})")
         self.binary = render_unicode_glyph(self.font_path, self.char, CANVAS_SIZE)
         self.dt_map = distance_transform_edt(self.binary)
         
-        raw = self.db.meta_data["raw_edges"].get(hex_key, [])
-        self.edges = [{"id": r["id"], "path": np.array(r["path"])} for r in raw]
-        self.pure_raw_edges = copy.deepcopy(self.edges)
-        
-        self.init_mode = "raw"
-        if hasattr(self, 'btn_toggle_init'):
-            self.btn_toggle_init.setText("🧠 Use AI Init")
+        # 🌟 1. 优先探测是否存在第二阶段 (Topo) 聚合大字典数据
+        topo_file = os.path.join(TOPO_OUT_DIR, f"{self.font_filename}_topo.json")
+        has_phase2 = False
+        phase2_data = []
+        if os.path.exists(topo_file):
+            try:
+                with open(topo_file, 'r', encoding='utf-8') as f:
+                    big_data = json.load(f)
+                    if hex_key in big_data:
+                        has_phase2 = True
+                        phase2_data = big_data[hex_key].get("strokes", [])
+            except: pass
+
+        if has_phase2:
+            # ==========================================
+            # 🚀 路由 A：空降第二阶段 (恢复贝塞尔与宽度)
+            # ==========================================
+            self.title_label.setText(f"[RE-EDIT] Phase 2: Target '{self.char}' ({hex_key})")
             
-        self.bezier_cache.clear(); self.selected_edge_ids.clear(); self.history_stack.clear()
-        self.save_state()
-        self.action_log = [{"action": "Re-edit Init", "edges": copy.deepcopy(self.edges)}]
-        
-        self.lbl_p1_status.setText("Phase 1 Data: ✅ Loaded from Record")
-        self.btn_load_p1.show()
-        
-        self.update_canvas(); self.update_palette()
-        self.inner_stack.setCurrentIndex(0)
-        self.switch_tab(0)
+            # 将大 JSON 里的精细数据还原为 Phase 2 需要的格式
+            phase2_edges = []
+            for e in phase2_data:
+                phase2_edges.append({'id': e['bezier_id'], 'path': np.array(e['mother_bezier'])})
+                
+            self.topo_widget = TopoAnnotationWorkspace(self, hex_key, self.char, self.binary, self.dt_map, phase2_edges)
+            
+            # 🌟 强行注入保存过的完美宽度缓存，避免乱动时的突然闪烁
+            for e in phase2_data:
+                self.topo_widget.width_cache[e['bezier_id']] = np.array(e['width_bezier'])
+                
+            # 切换 UI 堆栈到 Phase 2
+            if self.inner_stack.count() > 1:
+                w = self.inner_stack.widget(1)
+                self.inner_stack.removeWidget(w)
+                w.deleteLater()
+            self.inner_stack.addWidget(self.topo_widget)
+            self.inner_stack.setCurrentIndex(1)
+            self.switch_tab(0)
+            
+        else:
+            # ==========================================
+            # 🛠️ 路由 B：回到第一阶段 (常规流程)
+            # ==========================================
+            self.title_label.setText(f"[RE-EDIT] Phase 1: Target '{self.char}' ({hex_key})")
+            raw = self.db.meta_data["raw_edges"].get(hex_key, [])
+            self.edges = [{"id": r["id"], "path": np.array(r["path"])} for r in raw]
+            self.pure_raw_edges = copy.deepcopy(self.edges)
+            
+            self.init_mode = "raw"
+            if hasattr(self, 'btn_toggle_init'):
+                self.btn_toggle_init.setText("🧠 Use AI Init")
+                
+            self.bezier_cache.clear(); self.selected_edge_ids.clear(); self.history_stack.clear()
+            self.save_state()
+            self.action_log = [{"action": "Re-edit Init", "edges": copy.deepcopy(self.edges)}]
+            
+            self.lbl_p1_status.setText("Phase 1 Data: ✅ Loaded from Record")
+            self.btn_load_p1.show()
+            
+            self.update_canvas(); self.update_palette()
+            self.inner_stack.setCurrentIndex(0)
+            self.switch_tab(0)
 
     def refresh_gallery(self, grid_layout, key_list, mode):
         while grid_layout.count():
