@@ -222,6 +222,12 @@ class AnnotationWorkspace(QWidget):
         btn_ban.setStyleSheet("padding: 12px; background-color: #000000; color: white; font-weight: bold;")
         control_panel.addWidget(btn_ban)
 
+        # 🌟 新增：手动保存第一阶段按钮
+        btn_save_p1 = QPushButton("💾 Save Phase 1 Progress")
+        btn_save_p1.clicked.connect(self.action_save_phase1_only)
+        btn_save_p1.setStyleSheet("padding: 12px; background-color: #FF9800; color: white; font-weight: bold;")
+        control_panel.addWidget(btn_save_p1)
+
         btn_go_phase2 = QPushButton("➡️ Proceed to Topo Phase")
         btn_go_phase2.clicked.connect(self.action_proceed_to_phase2)
         btn_go_phase2.setStyleSheet("padding: 14px; background-color: #E91E63; color: white; font-weight: bold; font-size: 14px;")
@@ -457,6 +463,75 @@ class AnnotationWorkspace(QWidget):
                 
             self.action_next_char()
     
+    def action_save_phase1_only(self):
+        if not self.edges: 
+            QMessageBox.warning(self, "Empty", "No annotations to save.")
+            return
+            
+        hex_key = f"U+{ord(self.char):04X}"
+        data_changed = False  # 标志位：记录本次是否真的发生了物理写入
+        
+        # ==========================================
+        # 🌟 拦截 1：比对基础几何数据 raw_edges
+        # ==========================================
+        raw_edges_serializable = [
+            {
+                "id": e['id'], 
+                "path": e['path'].tolist() if isinstance(e['path'], np.ndarray) else e['path']
+            } 
+            for e in self.edges
+        ]
+        
+        current_saved_raw = self.db.meta_data.get("raw_edges", {}).get(hex_key)
+        if current_saved_raw != raw_edges_serializable:
+            self.db.meta_data.setdefault("raw_edges", {})[hex_key] = raw_edges_serializable
+            self.db.save_data()
+            data_changed = True
+        
+        # ==========================================
+        # 🌟 拦截 2：比对操作历史 actions_log
+        # ==========================================
+        if hasattr(self, 'action_log'):
+            log_file = os.path.join(ACTION_LOG_DIR, f"{self.font_filename}_actions.json")
+            all_logs = {}
+            if os.path.exists(log_file):
+                try:
+                    with open(log_file, 'r', encoding='utf-8') as f: all_logs = json.load(f)
+                except: pass
+            
+            serialized_log = []
+            for step in self.action_log:
+                step_edges = [
+                    {
+                        "id": e['id'], 
+                        "path": e['path'].tolist() if isinstance(e['path'], np.ndarray) else e['path']
+                    } 
+                    for e in step["edges"]
+                ]
+                serialized_log.append({"action": step["action"], "edges": step_edges})
+            
+            # 只有内容不一致时，才执行写硬盘操作
+            if all_logs.get(hex_key) != serialized_log:
+                all_logs[hex_key] = serialized_log
+                with open(log_file, 'w', encoding='utf-8') as f: 
+                    json.dump(all_logs, f, ensure_ascii=False, indent=2)
+                data_changed = True
+                
+        # ==========================================
+        # UI 状态反馈
+        # ==========================================
+        self.lbl_p1_status.setText("Phase 1 Data: ✅ Manually Saved")
+        self.btn_load_p1.show()
+        self.update_stats_display()
+        
+        if data_changed:
+            print(f"💾 {hex_key} 第一阶段进度已手动保存并落盘！")
+            QMessageBox.information(self, "Saved", "Phase 1 progress successfully saved!\nYou can safely close the app or continue editing.")
+        else:
+            print(f"🔒 数据空转拦截：当前没有任何修改，已安全跳过手动保存的硬盘覆写！")
+            QMessageBox.information(self, "No Changes", "No modifications detected.\nSave skipped to prevent empty overwrites.")
+
+
     def action_proceed_to_phase2(self):
         if not self.edges: return
         
