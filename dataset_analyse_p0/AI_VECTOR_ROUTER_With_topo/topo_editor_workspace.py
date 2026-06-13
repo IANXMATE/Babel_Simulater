@@ -9,6 +9,32 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 # 导入基础库中的贝塞尔渲染函数
 from geometry_vision import cubic_bezier_np, regress_width_dt_fast
 
+# ==========================================
+# 📐 数学几何辅助函数
+# ==========================================
+def get_bezier_derivative(pts, t):
+    """计算贝塞尔曲线在参数 t 处的切线导数向量"""
+    mt = 1 - t
+    d = 3*mt**2*(pts[1]-pts[0]) + 6*mt*t*(pts[2]-pts[1]) + 3*t**2*(pts[3]-pts[2])
+    return d
+
+def get_angle(v1, v2):
+    """计算两向量之间的夹角 (度数)"""
+    n1, n2 = np.linalg.norm(v1), np.linalg.norm(v2)
+    if n1 < 1e-5 or n2 < 1e-5: return 0.0
+    cos_th = np.clip(np.dot(v1, v2) / (n1 * n2), -1.0, 1.0)
+    return float(np.degrees(np.arccos(cos_th)))
+
+def get_polygon_orientation(pts):
+    """计算多边形的旋向 (基于多边形符号面积)"""
+    area = 0.0
+    n = len(pts)
+    for i in range(n):
+        j = (i + 1) % n
+        area += (pts[i][0] * pts[j][1] - pts[j][0] * pts[i][1])
+    return "ccw" if area > 0 else "cw"
+
+
 class TopoAnnotationWorkspace(QWidget):
     def __init__(self, main_workspace, hex_key, char, binary, dt_map, phase1_edges):
         super().__init__()
@@ -24,11 +50,15 @@ class TopoAnnotationWorkspace(QWidget):
         self.history_stack = []
         self.selected_edge_ids = []
         
-        # 🌟 拖拽与动态约束状态
+        # 拖拽与参数化约束状态
         self.dragging_point = None 
         self.co_dragged_points = [] 
-        self.t_constraints = []     # 专门用于记录 T型搭接的跟随变动 (被拖拽的母线所绑定的其他端点)
+        self.t_constraints = []     
         self.width_cache = {}       
+        
+        # Layer 5: 专家模仿学习数据集 (Action Log)
+        self.edit_history = []
+        self.drag_start_pos = None  
         
         try: self.cmap = plt.colormaps['tab20']
         except AttributeError: self.cmap = plt.get_cmap('tab20')
@@ -38,38 +68,31 @@ class TopoAnnotationWorkspace(QWidget):
         self.force_recompute_all_widths() 
         self.update_canvas()
         self.update_palette()
-        self.update_topology_text() 
+        self.update_topology_text() # 🌟 恢复初始化时的文本渲染
 
+    # ==========================================
+    # 界面初始化
+    # ==========================================
     def init_ui(self):
         layout = QHBoxLayout(self)
         
-        # ==========================================
-        # 左侧控制面板
-        # ==========================================
-        control_panel = QVBoxLayout()
-        control_panel.setSpacing(10)
-        
+        control_panel = QVBoxLayout(); control_panel.setSpacing(10)
         title = QLabel(f"Phase 2: Topo Tune\nTarget: '{self.char}'")
         title.setStyleSheet("font-size: 18px; font-weight: bold; color: #E91E63;")
         control_panel.addWidget(title)
         
         line = QFrame(); line.setFrameShape(QFrame.HLine); control_panel.addWidget(line)
         
-        btn_undo = QPushButton("Undo Last Move (U)")
-        btn_undo.clicked.connect(self.action_undo)
-        btn_undo.setStyleSheet("padding: 10px; background-color: #757575; color: white; font-weight: bold; border-radius: 4px;")
-        control_panel.addWidget(btn_undo)
-        
-        btn_reset = QPushButton("Reset to Phase 1 (R)")
-        btn_reset.clicked.connect(self.action_reset)
-        btn_reset.setStyleSheet("padding: 10px; background-color: #795548; color: white; font-weight: bold; border-radius: 4px;")
-        control_panel.addWidget(btn_reset)
-        
-        btn_return_p1 = QPushButton("↩️ Return to Phase 1 Editing")
-        btn_return_p1.clicked.connect(self.action_return_to_phase1)
-        btn_return_p1.setStyleSheet("padding: 10px; background-color: #00BCD4; color: white; font-weight: bold; border-radius: 4px;")
-        control_panel.addWidget(btn_return_p1)
-        
+        for btn_text, handler, color in [
+            ("Undo Last Move (U)", self.action_undo, "#757575"),
+            ("Reset to Phase 1 (R)", self.action_reset, "#795548"),
+            ("↩️ Return to P1 Editing", self.action_return_to_phase1, "#00BCD4")
+        ]:
+            btn = QPushButton(btn_text)
+            btn.clicked.connect(handler)
+            btn.setStyleSheet(f"padding: 10px; background-color: {color}; color: white; font-weight: bold; border-radius: 4px;")
+            control_panel.addWidget(btn)
+            
         control_panel.addStretch()
         
         btn_complete = QPushButton("✅ FINISH TOPO (Enter)")
@@ -77,31 +100,18 @@ class TopoAnnotationWorkspace(QWidget):
         btn_complete.setStyleSheet("padding: 14px; background-color: #4CAF50; color: white; font-weight: bold; font-size: 14px;")
         control_panel.addWidget(btn_complete)
 
-        # ==========================================
-        # 右侧工作区
-        # ==========================================
         right_panel = QVBoxLayout()
-        
         self.palette_container = QWidget()
         self.palette_layout = QHBoxLayout(self.palette_container)
         self.palette_layout.setContentsMargins(5, 5, 5, 5)
         self.palette_layout.setAlignment(Qt.AlignLeft)
-        scroll_area = QScrollArea()
-        scroll_area.setWidgetResizable(True); scroll_area.setWidget(self.palette_container)
+        scroll_area = QScrollArea(); scroll_area.setWidgetResizable(True); scroll_area.setWidget(self.palette_container)
         scroll_area.setMaximumHeight(60)
         
-        # ==========================================
-        # 🌟 1. 极致压缩边界，强行横向铺满
-        # ==========================================
-        self.fig = plt.figure(figsize=(20, 18)) 
+        self.fig = plt.figure(figsize=(15, 18.5)) 
         self.fig.patch.set_facecolor('#FFFFFF')
-        # left 和 right 压到极限，最大化利用横向屏幕
-        self.fig.subplots_adjust(left=0.01, right=0.99, top=0.95, bottom=0.02)
-        
-        # ==========================================
-        # 🌟 2. 严格遵循高度比例：第一行(1.2), 第二行(1.5), 第三行(1.0)
-        # ==========================================
-        gs = self.fig.add_gridspec(3, 3, height_ratios=[1.2, 1.5, 1.0], hspace=0.15, wspace=0.05)
+        self.fig.subplots_adjust(left=0.01, right=0.99, top=0.96, bottom=0.01)
+        gs = self.fig.add_gridspec(3, 3, height_ratios=[1.2, 1.5, 1.0], hspace=0.1, wspace=0.02)
         
         self.ax_top = self.fig.add_subplot(gs[0, 1])
         self.ax_main = self.fig.add_subplot(gs[1, :])
@@ -111,51 +121,40 @@ class TopoAnnotationWorkspace(QWidget):
         
         for ax in [self.ax_top, self.ax_main, self.ax_orig, self.ax_color, self.ax_bw]:
             ax.set_facecolor('#FFFFFF')
-            ax.set_aspect('equal') # 保证字体永远不被拉伸变形
+            ax.set_aspect('equal')
             ax.axis('off')
             
         self.canvas = FigureCanvas(self.fig)
-        
-        # 🌟 3. 护盾机制：强制赋予一个最小高度，防止被底层文本框垂直压扁！
-        # 只要高度被释放，Matplotlib 就会自动把横向(第三行)撑满全屏
-        self.canvas.setMinimumHeight(950) 
-        
+        self.canvas.setMinimumHeight(1500) 
         self.canvas.mpl_connect('button_press_event', self.on_mouse_press)
         self.canvas.mpl_connect('motion_notify_event', self.on_mouse_move)
         self.canvas.mpl_connect('button_release_event', self.on_mouse_release)
         self.canvas.mpl_connect('key_press_event', self.on_key)
         self.canvas.setFocusPolicy(Qt.StrongFocus)
 
-        # ==========================================
-        # 🌟 4. 使用 QScrollArea 容器包裹画布
-        # ==========================================
         canvas_scroll = QScrollArea()
-        canvas_scroll.setWidgetResizable(True)
-        canvas_scroll.setWidget(self.canvas)
+        canvas_scroll.setWidgetResizable(True); canvas_scroll.setWidget(self.canvas)
         canvas_scroll.setStyleSheet("border: none; background-color: #FFFFFF;")
 
         self.topo_text_box = QTextBrowser()
         self.topo_text_box.setStyleSheet("background-color: #F8F9FA; border: 1px solid #CCC; padding: 10px; font-size: 14px;")
         self.topo_text_box.setMaximumHeight(140)
 
-        right_panel.addWidget(scroll_area) # 顶部的色板
-        right_panel.addWidget(canvas_scroll, stretch=6) # 👈 这里用带滚动条的 canvas 替换原来的 self.canvas
+        right_panel.addWidget(scroll_area)
+        right_panel.addWidget(canvas_scroll, stretch=6)
         right_panel.addWidget(self.topo_text_box, stretch=1)
 
         layout.addLayout(control_panel, 1)
-        layout.addLayout(right_panel, 5) # 适当调大右侧面板的拉伸比例
+        layout.addLayout(right_panel, 5)
 
-    def get_display_map(self):
-        return {edge['id']: str(i + 1) for i, edge in enumerate(self.edges)}
-
-    def get_hex_color(self, eid):
-        c = self.cmap((eid % 20))
-        return f"#{int(c[0]*255):02x}{int(c[1]*255):02x}{int(c[2]*255):02x}"
-
+    def get_display_map(self): return {edge['id']: str(i + 1) for i, edge in enumerate(self.edges)}
+    def get_hex_color(self, eid): c = self.cmap((eid % 20)); return f"#{int(c[0]*255):02x}{int(c[1]*255):02x}{int(c[2]*255):02x}"
     def force_recompute_all_widths(self):
-        for edge in self.edges:
-            self.width_cache[edge['id']] = regress_width_dt_fast(np.array(edge['path']), self.dt_map)
-
+        for edge in self.edges: self.width_cache[edge['id']] = regress_width_dt_fast(np.array(edge['path']), self.dt_map)
+    
+    # ==========================================
+    # 🌟 恢复：实时拓扑文本反馈引擎
+    # ==========================================
     def update_topology_text(self):
         id_map = self.get_display_map()
         G = nx.Graph()
@@ -165,8 +164,6 @@ class TopoAnnotationWorkspace(QWidget):
         t_junctions = []
         x_junctions = []
 
-        # 🌟 精准物理碰撞检测：严格区分 三种 状态
-        # 🌟 精准物理碰撞检测：严格区分 三种 状态 及 主客体关系
         for i, e1 in enumerate(self.edges):
             for j, e2 in enumerate(self.edges):
                 if i >= j: continue
@@ -175,46 +172,39 @@ class TopoAnnotationWorkspace(QWidget):
                 c2 = cubic_bezier_np(p2, np.linspace(0, 1, 50)[:, None])
 
                 is_e2e, is_x = False, False
-                t_relations = [] # 🌟 新增：记录有向的 T 型搭接 (guest_id, host_id)
+                t_relations = []
 
-                # 1. 端点对接 (优先级最高)
+                # 1. 端点对接
                 for end1 in [p1[0], p1[3]]:
                     for end2 in [p2[0], p2[3]]:
                         if np.linalg.norm(end1 - end2) < 2.0: is_e2e = True
 
-                # 2. T型搭接 (明确区分 谁的端点 搭在 谁的身体上)
+                # 2. T型搭接 (主客体判定)
                 if not is_e2e:
-                    # 检查 e1 的端点是否搭在 e2 的身体上 -> e1 是子线(客)，e2 是母线(主，被分割)
                     for end in [p1[0], p1[3]]:
-                        if np.min(np.linalg.norm(c2 - end, axis=1)) < 2.0: 
-                            t_relations.append((e1['id'], e2['id']))
-                    # 检查 e2 的端点是否搭在 e1 的身体上 -> e2 是子线(客)，e1 是母线(主，被分割)
+                        if np.min(np.linalg.norm(c2 - end, axis=1)) < 2.0: t_relations.append((e1['id'], e2['id']))
                     for end in [p2[0], p2[3]]:
-                        if np.min(np.linalg.norm(c1 - end, axis=1)) < 2.0: 
-                            t_relations.append((e2['id'], e1['id']))
+                        if np.min(np.linalg.norm(c1 - end, axis=1)) < 2.0: t_relations.append((e2['id'], e1['id']))
 
-                # 3. X型交叉 (身子和身子打架)
+                # 3. X型交叉
                 if not is_e2e and not t_relations:
                     diff = c1[:, np.newaxis, :] - c2[np.newaxis, :, :]
                     if np.min(np.linalg.norm(diff, axis=2)) < 2.0: is_x = True
 
                 if is_e2e or t_relations or is_x: G.add_edge(e1['id'], e2['id'])
 
-                # 🌟 文本高亮组装器
-                def _get_span(eid):
+                def _span(eid):
                     return f"<span style='color:{self.get_hex_color(eid)}; font-weight:bold;'>{id_map[eid]}</span>"
 
                 if is_e2e: 
-                    end_to_end.append(f"{_get_span(e1['id'])}-{_get_span(e2['id'])}")
+                    end_to_end.append(f"{_span(e1['id'])}-{_span(e2['id'])}")
                 elif t_relations:
-                    # 去重并生成带有方向性的描述
                     for guest_id, host_id in list(set(t_relations)):
-                        t_junctions.append(f"{_get_span(guest_id)} 搭在 {_get_span(host_id)} 上 (被分割)")
+                        t_junctions.append(f"{_span(guest_id)} 搭在 {_span(host_id)} 上 (被分割)")
                 elif is_x: 
-                    x_junctions.append(f"{_get_span(e1['id'])} 交叉 {_get_span(e2['id'])}")
+                    x_junctions.append(f"{_span(e1['id'])} 交叉 {_span(e2['id'])}")
 
-        html_lines = ["<b style='color:#333; font-size:14px;'>📊 拓扑物理状态检测引擎</b><br>"]
-        
+        html_lines = ["<b style='color:#333; font-size:14px;'>📊 实时拓扑状态反馈</b><br>"]
         if end_to_end: html_lines.append(f"<div style='margin-bottom:4px;'><b>[端点对接]：</b> {' 、 '.join(end_to_end)}</div>")
         if t_junctions: html_lines.append(f"<div style='margin-bottom:4px;'><b>[T型搭接]：</b> {' 、 '.join(t_junctions)}</div>")
         if x_junctions: html_lines.append(f"<div style='margin-bottom:4px;'><b>[X型交叉]：</b> {' 、 '.join(x_junctions)}</div>")
@@ -226,7 +216,7 @@ class TopoAnnotationWorkspace(QWidget):
             if cycles:
                 cycle_strs = []
                 for cycle in cycles:
-                    styled_nodes = [f"<span style='color:{self.get_hex_color(n)}; font-weight:bold;'>{id_map[n]}</span>" for n in cycle]
+                    styled_nodes = [_span(n) for n in cycle]
                     cycle_strs.append(f"{' '.join(styled_nodes)} 属同一环")
                 html_lines.append(f"<div style='margin-bottom:4px;'><b>[闭环结构]：</b> {' &nbsp;|&nbsp; '.join(cycle_strs)}</div>")
         except: pass
@@ -243,12 +233,6 @@ class TopoAnnotationWorkspace(QWidget):
         self.ax_orig.imshow(self.binary, cmap='gray')
         self.ax_color.imshow(self.binary, cmap='gray', alpha=0.05)
         self.ax_bw.imshow(np.ones_like(self.binary), cmap='gray', vmin=0, vmax=1)
-
-        self.ax_top.set_title("1. Index Reference (Non-editable)", fontsize=10, fontweight='bold')
-        self.ax_main.set_title("2. Main Editor Canvas", fontsize=12, fontweight='bold')
-        self.ax_orig.set_title("3. Raw Origin", fontsize=10, fontweight='bold')
-        self.ax_color.set_title("4. Width Mesh", fontsize=10, fontweight='bold')
-        self.ax_bw.set_title("5. TTF Preview", fontsize=10, fontweight='bold')
 
         id_map = self.get_display_map()
 
@@ -298,52 +282,25 @@ class TopoAnnotationWorkspace(QWidget):
         self.canvas.draw()
 
     # ==========================================
-    # 🌟 交互与吸附拦截逻辑 (附带高级参数化跟随)
+    # 🌟 轨迹拦截与操作事件记录
     # ==========================================
-    def get_line_count_at_point(self, target_pos, threshold=2.0):
-        count = 0
-        target_pt = np.array(target_pos)
-        for edge in self.edges:
-            pts = edge['path']
-            if np.linalg.norm(np.array(pts[0]) - target_pt) < threshold: count += 1
-            if np.linalg.norm(np.array(pts[3]) - target_pt) < threshold: count += 1
-        return count
-
-    def confirm_snap(self, snap_type, target_pos):
-        x = self.get_line_count_at_point(target_pos)
-        if snap_type == 'endpoint':
-            title = "端点吸附确认"
-            msg = f"是否将该点吸附到其他线的端点？\n\n📌 待吸附端点共有 {x} 个线\n"
-            msg += "(正常对接)" if x == 1 else "(⚠️ 提示：x > 1，说明已经是交点了！)"
-        elif snap_type == 't_junction':
-            title = "T型搭接确认"
-            msg = f"是否将该点吸附到其他线上（T型搭接）？\n\n📌 目标位置目前端点数为 {x}\n"
-            msg += "(正常搭接)" if x == 0 else "(⚠️ 提示：该线段位置已经存在其他交点了！)"
-        else:
-            return True
-        return QMessageBox.question(self, title, msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes) == QMessageBox.Yes
-
     def on_mouse_press(self, event):
         if event.inaxes != self.ax_main or not event.xdata or not event.ydata: return
-        min_dist = 15.0
-        clicked_pt = None
-        
+        min_dist = 15.0; clicked_pt = None
         for i, edge in enumerate(self.edges):
             if edge['id'] not in self.selected_edge_ids: continue
             pts = np.array(edge['path'])
             for p_idx, pt in enumerate(pts):
                 dist = np.hypot(pt[0] - event.xdata, pt[1] - event.ydata)
                 if dist < min_dist:
-                    min_dist = dist
-                    clicked_pt = (i, p_idx)
+                    min_dist, clicked_pt = dist, (i, p_idx)
                     
         if clicked_pt:
             self.dragging_point = clicked_pt
-            self.co_dragged_points = []
-            self.t_constraints = []
+            self.co_dragged_points, self.t_constraints = [], []
             e_idx, p_idx = clicked_pt
+            self.drag_start_pos = copy.deepcopy(self.edges[e_idx]['path'][p_idx])
             
-            # 1. 抓取端点跟随 (End-to-End Bindings)
             if p_idx in [0, 3]:
                 target_pos = np.array(self.edges[e_idx]['path'][p_idx])
                 for j, edge in enumerate(self.edges):
@@ -353,91 +310,257 @@ class TopoAnnotationWorkspace(QWidget):
             else:
                 self.co_dragged_points.append((e_idx, p_idx))
                 
-            # 2. 抓取参数化约束跟随 (T-Junction Bindings)
-            # 寻找到底有哪些其他线段的端点，现在正好“长”在我们要改变形状的母线上
             host_curves = set([e for e, p in self.co_dragged_points])
             for h_idx in host_curves:
-                # 把母线提取成密集骨架矩阵
                 c_host = cubic_bezier_np(np.array(self.edges[h_idx]['path']), np.linspace(0, 1, 50)[:, None])
                 for o_idx, other_edge in enumerate(self.edges):
-                    if o_idx in host_curves: continue # 不计算被自己主导的那些点
+                    if o_idx in host_curves: continue
                     for ep_idx in [0, 3]:
                         ep = np.array(other_edge['path'][ep_idx])
                         dists = np.linalg.norm(c_host - ep, axis=1)
                         min_t = np.argmin(dists)
-                        # 如果你的端点贴在母线上，记录下这根母线、端点是谁、以及你在母线的参数 t 身上
                         if dists[min_t] < 1.5:
                             self.t_constraints.append((o_idx, ep_idx, h_idx, min_t))
 
     def on_mouse_move(self, event):
         if self.dragging_point and event.inaxes == self.ax_main and event.xdata and event.ydata:
             affected_edge_indices = set()
-            
-            # 第一波联动：修改所有物理端点对接的值
             for e_idx, p_idx in self.co_dragged_points:
                 self.edges[e_idx]['path'][p_idx] = [event.xdata, event.ydata]
                 affected_edge_indices.add(e_idx)
-                
-            # 第二波联动 (灵魂逻辑)：将附着于母线 T 型搭接处的端点强制挂载，跟随母线摆动！
             for o_idx, ep_idx, h_idx, min_t in self.t_constraints:
                 c_host_updated = cubic_bezier_np(np.array(self.edges[h_idx]['path']), np.linspace(0, 1, 50)[:, None])
-                new_pos = c_host_updated[min_t].tolist()
-                self.edges[o_idx]['path'][ep_idx] = new_pos
+                self.edges[o_idx]['path'][ep_idx] = c_host_updated[min_t].tolist()
                 affected_edge_indices.add(o_idx)
-                
             for e_idx in affected_edge_indices:
                 p_opt = np.array(self.edges[e_idx]['path'])
                 self.width_cache[self.edges[e_idx]['id']] = regress_width_dt_fast(p_opt, self.dt_map)
-                
             self.update_canvas()
 
     def on_mouse_release(self, event):
         if not self.dragging_point: return
             
         e_idx, p_idx = self.dragging_point
-        # 只有主动释放的主端点才会触发新吸附（跟随的那些只是打工人）
+        id_map = self.get_display_map()
+        guest_strk_id = int(id_map[self.edges[e_idx]['id']])
+        start_p = self.drag_start_pos
+        
+        snapped_action_type = None
+        host_strk_id = None
+        host_t_val = None
+        host_ep_val = None
+        
         if p_idx in [0, 3]:
             pt = np.array(self.edges[e_idx]['path'][p_idx])
-            min_ep_dist, best_ep_pos = float('inf'), None
-            min_curve_dist, best_curve_pos = float('inf'), None
+            min_ep_dist, best_ep_pos, best_ep_host, best_ep_idx = float('inf'), None, None, None
+            min_curve_dist, best_curve_pos, best_curve_host, best_curve_t = float('inf'), None, None, None
             
             for i, edge in enumerate(self.edges):
                 if i == e_idx: continue
                 for end_idx in [0, 3]:
                     ep = np.array(edge['path'][end_idx])
                     dist = np.linalg.norm(pt - ep)
-                    if dist < min_ep_dist: min_ep_dist, best_ep_pos = dist, ep.tolist()
+                    if dist < min_ep_dist:
+                        min_ep_dist, best_ep_pos, best_ep_host, best_ep_idx = dist, ep.tolist(), i, end_idx
                 
                 curve = cubic_bezier_np(np.array(edge['path']), np.linspace(0, 1, 50)[:, None])
                 dists = np.linalg.norm(curve - pt, axis=1)
                 min_idx = np.argmin(dists)
-                if dists[min_idx] < min_curve_dist: min_curve_dist, best_curve_pos = dists[min_idx], curve[min_idx].tolist()
+                if dists[min_idx] < min_curve_dist:
+                    min_curve_dist, best_curve_pos, best_curve_host, best_curve_t = dists[min_idx], curve[min_idx].tolist(), i, min_idx / 49.0
 
             snap_threshold = 12.0
             new_pos = None
-            if min_ep_dist < snap_threshold and self.confirm_snap('endpoint', best_ep_pos):
+            
+            def _confirm_snap(title, msg):
+                return QMessageBox.question(self, title, msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes) == QMessageBox.Yes
+                
+            if min_ep_dist < snap_threshold and _confirm_snap('端点吸附确认', '是否将该点吸附到其他线的端点？'):
                 new_pos = best_ep_pos
-            elif min_curve_dist < snap_threshold and self.confirm_snap('t_junction', best_curve_pos):
+                snapped_action_type = "SNAP"
+                host_strk_id = int(id_map[self.edges[best_ep_host]['id']])
+                host_ep_val = "P3" if best_ep_idx == 3 else "P0"
+                
+            elif min_curve_dist < snap_threshold and _confirm_snap('T型搭接确认', '是否将该点吸附到其他线上（T型搭接）？'):
                 new_pos = best_curve_pos
+                snapped_action_type = "T_ATTACH"
+                host_strk_id = int(id_map[self.edges[best_curve_host]['id']])
+                host_t_val = best_curve_t
 
             if new_pos:
                 for j, ep_idx in self.co_dragged_points:
                     self.edges[j]['path'][ep_idx] = copy.deepcopy(new_pos)
                     self.width_cache[self.edges[j]['id']] = regress_width_dt_fast(np.array(self.edges[j]['path']), self.dt_map)
+                    
+        # Action Log 记录
+        final_p = self.edges[e_idx]['path'][p_idx]
+        if np.linalg.norm(np.array(start_p) - np.array(final_p)) > 0.5:
+            before_coord = [round(float(start_p[0]), 2), round(float(start_p[1]), 2)]
+            after_coord = [round(float(final_p[0]), 2), round(float(final_p[1]), 2)]
+            
+            if snapped_action_type == "SNAP":
+                self.edit_history.append({
+                    "action": "SNAP",
+                    "stroke": guest_strk_id,
+                    "endpoint": f"P{p_idx}",
+                    "host_stroke": host_strk_id,
+                    "host_endpoint": host_ep_val,
+                    "before": before_coord,
+                    "after": after_coord
+                })
+            elif snapped_action_type == "T_ATTACH":
+                self.edit_history.append({
+                    "action": "T_ATTACH",
+                    "guest": guest_strk_id,
+                    "guest_endpoint": f"P{p_idx}",
+                    "host": host_strk_id,
+                    "host_t": round(float(host_t_val), 3),
+                    "before": before_coord,
+                    "after": after_coord
+                })
+            else:
+                self.edit_history.append({
+                    "action": "CONTROL_MOVE",
+                    "stroke": guest_strk_id,
+                    "control": f"P{p_idx}",
+                    "before": before_coord,
+                    "after": after_coord
+                })
 
         self.save_state()
         self.dragging_point = None
         self.co_dragged_points = []
         self.t_constraints = []
         self.update_canvas()
-        self.update_topology_text()
+        self.update_topology_text() # 🌟 恢复：每次拖拽释放后，自动刷新文本！
 
     # ==========================================
-    # 其他历史功能
+    # 🌟 落盘：5 层数据架构 (完全依照你的需求)
     # ==========================================
-    def save_state(self):
-        self.history_stack.append(copy.deepcopy(self.edges))
-        if len(self.history_stack) > 30: self.history_stack.pop(0)
+    def action_complete_topo(self):
+        id_map = self.get_display_map()
+        
+        # 🟢 Layer 1: Geometry & Derived Features
+        strokes_tokens = []
+        for edge in self.edges:
+            eid = edge['id']
+            p_opt = np.array(edge['path'])
+            w_opt = self.width_cache.get(eid, regress_width_dt_fast(p_opt, self.dt_map))
+            
+            c_pts = cubic_bezier_np(p_opt, np.linspace(0, 1, 50)[:, None])
+            length = float(np.sum(np.linalg.norm(np.diff(c_pts, axis=0), axis=1)))
+            xmin, ymin = np.min(c_pts, axis=0)
+            xmax, ymax = np.max(c_pts, axis=0)
+            
+            s_type = "closed" if np.linalg.norm(p_opt[0] - p_opt[3]) < 2.0 else "open"
+            
+            strokes_tokens.append({
+                "bezier_id": int(id_map[eid]), 
+                "stroke_type": s_type,
+                "length": round(length, 2),
+                "bbox": [round(float(xmin), 1), round(float(ymin), 1), round(float(xmax), 1), round(float(ymax), 1)],
+                "mother_bezier": p_opt.tolist(), 
+                "width_bezier": w_opt.tolist() if hasattr(w_opt, 'tolist') else list(w_opt)
+            })
+
+        # 🟢 Layer 2 & 3: Parameter Space & Topology Events
+        topology_events = []
+        G_cycles = nx.Graph()
+        
+        for i, e1 in enumerate(self.edges):
+            G_cycles.add_node(e1['id'])
+            for j, e2 in enumerate(self.edges):
+                if i >= j: continue
+                p1, p2 = np.array(e1['path']), np.array(e2['path'])
+                c1 = cubic_bezier_np(p1, np.linspace(0, 1, 50)[:, None])
+                c2 = cubic_bezier_np(p2, np.linspace(0, 1, 50)[:, None])
+                
+                id1, id2 = int(id_map[e1['id']]), int(id_map[e2['id']])
+                is_e2e = False
+                
+                # --- E2E ---
+                for pt1_idx, t1 in [(0, 0.0), (3, 1.0)]:
+                    for pt2_idx, t2 in [(0, 0.0), (3, 1.0)]:
+                        if np.linalg.norm(p1[pt1_idx] - p2[pt2_idx]) < 2.0:
+                            is_e2e = True
+                            topology_events.append({
+                                "type": "E2E",
+                                "stroke_a": id1, "t_a": t1,
+                                "stroke_b": id2, "t_b": t2,
+                                "position": [round(float(p1[pt1_idx][0]), 1), round(float(p1[pt1_idx][1]), 1)]
+                            })
+                            
+                # --- T 搭接 ---
+                if not is_e2e:
+                    for pt1_idx, t1 in [(0, 0.0), (3, 1.0)]:
+                        dists = np.linalg.norm(c2 - p1[pt1_idx], axis=1)
+                        m_idx = np.argmin(dists)
+                        if dists[m_idx] < 2.0:
+                            t2 = m_idx / 49.0
+                            ang = get_angle(get_bezier_derivative(p1, t1), get_bezier_derivative(p2, t2))
+                            topology_events.append({
+                                "type": "T",
+                                "guest": id1, "guest_t": t1,
+                                "host": id2, "host_t": round(t2, 3),
+                                "angle": round(ang, 1),
+                                "position": [round(float(c2[m_idx][0]), 1), round(float(c2[m_idx][1]), 1)]
+                            })
+                    for pt2_idx, t2 in [(0, 0.0), (3, 1.0)]:
+                        dists = np.linalg.norm(c1 - p2[pt2_idx], axis=1)
+                        m_idx = np.argmin(dists)
+                        if dists[m_idx] < 2.0:
+                            t1 = m_idx / 49.0
+                            ang = get_angle(get_bezier_derivative(p1, t1), get_bezier_derivative(p2, t2))
+                            topology_events.append({
+                                "type": "T",
+                                "guest": id2, "guest_t": t2,
+                                "host": id1, "host_t": round(t1, 3),
+                                "angle": round(ang, 1),
+                                "position": [round(float(c1[m_idx][0]), 1), round(float(c1[m_idx][1]), 1)]
+                            })
+                            
+                # --- X 交叉 ---
+                if not is_e2e and len([ev for ev in topology_events if ev['type'] == 'T' and ev['guest'] in (id1, id2)]) == 0:
+                    diff = c1[:, np.newaxis, :] - c2[np.newaxis, :, :]
+                    min_dist = np.min(np.linalg.norm(diff, axis=2))
+                    if min_dist < 2.0:
+                        m_idx1, m_idx2 = np.unravel_index(np.argmin(np.linalg.norm(diff, axis=2)), diff.shape[:2])
+                        t1, t2 = m_idx1 / 49.0, m_idx2 / 49.0
+                        ang = get_angle(get_bezier_derivative(p1, t1), get_bezier_derivative(p2, t2))
+                        topology_events.append({
+                            "type": "X",
+                            "stroke_a": id1, "t_a": round(t1, 3),
+                            "stroke_b": id2, "t_b": round(t2, 3),
+                            "angle": round(ang, 1),
+                            "position": [round(float(c1[m_idx1][0]), 1), round(float(c1[m_idx1][1]), 1)]
+                        })
+
+        # 🟢 Layer 4: Cycles & Orientations
+        cycles_tokens = []
+        for ev in topology_events:
+            if ev['type'] == 'E2E': G_cycles.add_edge(ev['stroke_a'], ev['stroke_b'])
+            elif ev['type'] == 'T': G_cycles.add_edge(ev['guest'], ev['host'])
+            
+        try:
+            basis = nx.cycle_basis(G_cycles)
+            for c_idx, cycle_nodes in enumerate(basis):
+                members = [int(n) for n in cycle_nodes]
+                pts = [np.mean(next(e['path'] for e in self.edges if int(id_map[e['id']]) == n), axis=0) for n in members]
+                orient = get_polygon_orientation(pts)
+                cycles_tokens.append({
+                    "cycle_id": c_idx, 
+                    "members": members, 
+                    "orientation": orient
+                })
+        except: pass
+
+        self.main_ws.save_phase2_topo_data(self.hex_key, {
+            "glyph_info": {"hex_key": self.hex_key, "char": self.char},
+            "strokes": strokes_tokens,
+            "topology_events": topology_events,
+            "cycles": cycles_tokens,
+            "edit_history": self.edit_history
+        })
 
     def action_undo(self):
         if len(self.history_stack) > 1:
@@ -445,7 +568,7 @@ class TopoAnnotationWorkspace(QWidget):
             self.edges = copy.deepcopy(self.history_stack[-1])
             self.force_recompute_all_widths()
             self.update_canvas()
-            self.update_topology_text()
+            self.update_topology_text() # 🌟 恢复：撤销后更新拓扑文本
 
     def action_reset(self):
         self.edges = copy.deepcopy(self.initial_edges)
@@ -453,86 +576,14 @@ class TopoAnnotationWorkspace(QWidget):
         self.save_state()
         self.force_recompute_all_widths()
         self.update_canvas()
-        self.update_topology_text()
+        self.update_topology_text() # 🌟 恢复：重置后更新拓扑文本
         
     def action_return_to_phase1(self):
         self.main_ws.inner_stack.setCurrentIndex(0)
 
-    def action_complete_topo(self):
-        id_map = self.get_display_map()
-        strokes_tokens = []
-        for edge in self.edges:
-            eid = edge['id']
-            p_opt = np.array(edge['path'])
-            w_opt = self.width_cache.get(eid, regress_width_dt_fast(p_opt, self.dt_map))
-            strokes_tokens.append({
-                "bezier_id": int(id_map[eid]), 
-                "mother_bezier": p_opt.tolist(), 
-                "width_bezier": w_opt.tolist() if hasattr(w_opt, 'tolist') else list(w_opt)
-            })
-
-        # ==========================================
-        # 🌟 这里的计算仅用于【数据持久化保存】，提取纯数字标签存入 JSON
-        # ==========================================
-        G = nx.Graph()
-        for edge in self.edges: G.add_node(edge['id'])
-        
-        end_to_end = []
-        t_junctions = []
-        x_junctions = []
-
-        for i, e1 in enumerate(self.edges):
-            for j, e2 in enumerate(self.edges):
-                if i >= j: continue
-                p1, p2 = np.array(e1['path']), np.array(e2['path'])
-                c1 = cubic_bezier_np(p1, np.linspace(0, 1, 50)[:, None])
-                c2 = cubic_bezier_np(p2, np.linspace(0, 1, 50)[:, None])
-                
-                is_e2e, is_x = False, False
-                t_rels = []
-                
-                # 端点
-                for end1 in [p1[0], p1[3]]:
-                    for end2 in [p2[0], p2[3]]:
-                        if np.linalg.norm(end1 - end2) < 2.0: is_e2e = True
-                        
-                # T 型 (主客关系提取)
-                if not is_e2e:
-                    for end in [p1[0], p1[3]]:
-                        if np.min(np.linalg.norm(c2 - end, axis=1)) < 2.0: t_rels.append((e1['id'], e2['id']))
-                    for end in [p2[0], p2[3]]:
-                        if np.min(np.linalg.norm(c1 - end, axis=1)) < 2.0: t_rels.append((e2['id'], e1['id']))
-                        
-                # X交叉
-                if not is_e2e and not t_rels:
-                    diff = c1[:, np.newaxis, :] - c2[np.newaxis, :, :]
-                    if np.min(np.linalg.norm(diff, axis=2)) < 2.0: is_x = True
-
-                if is_e2e or t_rels or is_x: G.add_edge(e1['id'], e2['id'])
-                
-                # 转换为主数字ID，存入列表
-                id1, id2 = int(id_map[e1['id']]), int(id_map[e2['id']])
-                if is_e2e:
-                    end_to_end.append([id1, id2])
-                elif t_rels:
-                    for guest, host in list(set(t_rels)):
-                        t_junctions.append({"guest": int(id_map[guest]), "host": int(id_map[host])})
-                elif is_x:
-                    x_junctions.append([id1, id2])
-
-        try: cycles = [[int(id_map[n]) for n in cycle] for cycle in nx.cycle_basis(G)]
-        except: cycles = []
-
-        # 🚀 交付给主程序保存，数据结构绝对纯净！
-        self.main_ws.save_phase2_topo_data(self.hex_key, {
-            "strokes": strokes_tokens,
-            "topology": {
-                "end_to_end": end_to_end,
-                "t_junctions": t_junctions,
-                "x_junctions": x_junctions,
-                "cycles": cycles
-            }
-        })
+    def save_state(self):
+        self.history_stack.append(copy.deepcopy(self.edges))
+        if len(self.history_stack) > 30: self.history_stack.pop(0)
 
     def update_palette(self):
         id_map = self.get_display_map()

@@ -379,13 +379,15 @@ class AuditWorkspace(QWidget):
         topo_box.setStyleSheet("background-color: #F8F9FA; border: 1px solid #CCC; padding: 10px; font-size: 15px;")
         
         if hex_key in self.p2_data:
-            # 🌟 核心修改：直接拿 JSON 存的数据，不做任何物理重算！
-            topo_data = self.p2_data[hex_key].get("topology", {})
+            # 🌟 核心修改：适配最新 5 层金字塔的 root 级字段
+            char_data = self.p2_data[hex_key]
+            topology_events = char_data.get("topology_events", [])
+            cycles = char_data.get("cycles", [])
             
-            e2e = topo_data.get("end_to_end", [])
-            t_juncs = topo_data.get("t_junctions", [])
-            x_juncs = topo_data.get("x_junctions", [])
-            cycles = topo_data.get("cycles", [])
+            # 分类提取事件
+            e2e = [ev for ev in topology_events if ev["type"] == "E2E"]
+            t_juncs = [ev for ev in topology_events if ev["type"] == "T"]
+            x_juncs = [ev for ev in topology_events if ev["type"] == "X"]
             
             # 配色高亮辅助函数
             def _hex_col(eid): 
@@ -397,25 +399,27 @@ class AuditWorkspace(QWidget):
             html = ["<b style='color:#333; font-size:16px;'>📊 模型输入数据纯净度校验 (读取自JSON)</b><hr>"]
             
             if e2e:
-                strs = [f"{_span(u)}-{_span(v)}" for u, v in e2e]
+                strs = [f"{_span(ev['stroke_a'])}-{_span(ev['stroke_b'])} (t1: {ev['t_a']}, t2: {ev['t_b']})" for ev in e2e]
                 html.append(f"<div style='margin-bottom:6px;'><b>[端点对接]：</b> {' 、 '.join(strs)}</div>")
                 
             if t_juncs:
-                strs = [f"{_span(tj['guest'])} 搭在 {_span(tj['host'])} 上 (被分割)" for tj in t_juncs]
+                strs = [f"{_span(ev['guest'])} (t:{ev['guest_t']}) 搭在 {_span(ev['host'])} (t:{ev['host_t']}) 上 [夹角:{ev.get('angle',0)}°]" for ev in t_juncs]
                 html.append(f"<div style='margin-bottom:6px;'><b>[T型搭接]：</b> {' 、 '.join(strs)}</div>")
                 
             if x_juncs:
-                strs = [f"{_span(u)} 交叉 {_span(v)}" for u, v in x_juncs]
+                strs = [f"{_span(ev['stroke_a'])} (t:{ev['t_a']}) 交叉 {_span(ev['stroke_b'])} (t:{ev['t_b']}) [夹角:{ev.get('angle',0)}°]" for ev in x_juncs]
                 html.append(f"<div style='margin-bottom:6px;'><b>[X型交叉]：</b> {' 、 '.join(strs)}</div>")
                 
-            if not (e2e or t_juncs or x_juncs): 
-                html.append("<div style='color:#777; margin-bottom:6px;'>该字符 JSON 无任何相交记录。</div>")
+            if not topology_events: 
+                html.append("<div style='color:#777; margin-bottom:6px;'>该字符 JSON 无任何相交事件记录。</div>")
                 
             if cycles:
                 c_strs = []
                 for cycle in cycles:
-                    styled_nodes = [_span(n) for n in cycle]
-                    c_strs.append(f"{' '.join(styled_nodes)} 属同一环")
+                    # 适配新的 cycle 字典格式 (成员 + 旋向)
+                    styled_nodes = [_span(n) for n in cycle.get("members", [])]
+                    orient = "顺时针" if cycle.get("orientation") == "cw" else "逆时针"
+                    c_strs.append(f"{' '.join(styled_nodes)} (旋向: {orient})")
                 html.append(f"<div style='margin-top:5px;'><b>[闭环结构]：</b> {' &nbsp;|&nbsp; '.join(c_strs)}</div>")
                 
             topo_box.setHtml("".join(html))

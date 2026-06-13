@@ -325,7 +325,11 @@ class AnnotationWorkspace(QWidget):
                 self.action_log = history_logs 
             else:
                 self.action_log = [{"action": "Load Saved Phase 1", "edges": copy.deepcopy(self.edges)}]
-                
+            
+            # 👇👇 插入这两行：清空旧的 Bezier 缓存，防止它拿着旧的缩水数据画图！
+            self.bezier_cache.clear()
+            self.selected_edge_ids.clear()
+
             self.save_state()
             self.update_canvas(); self.update_palette()
 
@@ -615,8 +619,14 @@ class AnnotationWorkspace(QWidget):
         for edge in self.edges:
             eid = edge['id']
             if eid not in self.bezier_cache:
-                p_opt, _ = fit_bezier_basic_with_error(edge['path'])
+                path_arr = np.array(edge['path'])
+                # 🌟 加上护盾：保护传给第二阶段的拓扑不缩水
+                if len(path_arr) == 4:
+                    p_opt = path_arr
+                else:
+                    p_opt, _ = fit_bezier_basic_with_error(path_arr)
                 self.bezier_cache[eid] = (p_opt, None)
+                
             p_opt, _ = self.bezier_cache[eid]
             phase2_edges.append({'id': eid, 'path': p_opt.tolist()})
 
@@ -684,7 +694,13 @@ class AnnotationWorkspace(QWidget):
             is_sel = eid in self.selected_edge_ids
             color = self.cmap((eid % 20))
             if eid not in self.bezier_cache:
-                p_opt, _ = fit_bezier_basic_with_error(edge['path'])
+                path_arr = np.array(edge['path'])
+                # 🌟 加上护盾：如果读出来刚好是 4 个点，直接当控制点用，绝对不二次拟合！
+                if len(path_arr) == 4:
+                    p_opt = path_arr
+                else:
+                    p_opt, _ = fit_bezier_basic_with_error(path_arr)
+                    
                 w_opt = regress_width_dt_fast(p_opt, self.dt_map)
                 self.bezier_cache[eid] = (p_opt, w_opt)
             p_opt, w_opt = self.bezier_cache[eid]
@@ -1090,7 +1106,13 @@ class AnnotationWorkspace(QWidget):
             for e in edges:
                 path = np.array(e['path'])
                 if len(path) < 2: continue
-                p_opt, _ = fit_bezier_basic_with_error(path)
+                
+                # 🌟 加上护盾：保护侧边栏缩略图
+                if len(path) == 4:
+                    p_opt = path
+                else:
+                    p_opt, _ = fit_bezier_basic_with_error(path)
+                    
                 w_opt = regress_width_dt_fast(p_opt, dt_map)
                 ts_dense = np.linspace(0, 1, 50)[:, None]
                 curve_dense = cubic_bezier_np(p_opt, ts_dense)
