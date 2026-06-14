@@ -173,25 +173,39 @@ class TopoAnnotationWorkspace(QWidget):
 
                 is_e2e, is_x = False, False
                 t_relations = []
+                intersect_pos = None # 🌟 核心：捕获具体的相交物理坐标
 
                 # 1. 端点对接
-                for end1 in [p1[0], p1[3]]:
-                    for end2 in [p2[0], p2[3]]:
-                        if np.linalg.norm(end1 - end2) < 2.0: is_e2e = True
+                for pt1_idx in [0, 3]:
+                    for pt2_idx in [0, 3]:
+                        if np.linalg.norm(p1[pt1_idx] - p2[pt2_idx]) < 2.0: 
+                            is_e2e = True
+                            intersect_pos = p1[pt1_idx]
 
                 # 2. T型搭接 (主客体判定)
                 if not is_e2e:
-                    for end in [p1[0], p1[3]]:
-                        if np.min(np.linalg.norm(c2 - end, axis=1)) < 2.0: t_relations.append((e1['id'], e2['id']))
-                    for end in [p2[0], p2[3]]:
-                        if np.min(np.linalg.norm(c1 - end, axis=1)) < 2.0: t_relations.append((e2['id'], e1['id']))
+                    for pt1_idx in [0, 3]:
+                        dists = np.linalg.norm(c2 - p1[pt1_idx], axis=1)
+                        if np.min(dists) < 2.0: 
+                            t_relations.append((e1['id'], e2['id']))
+                            intersect_pos = p1[pt1_idx]
+                    for pt2_idx in [0, 3]:
+                        dists = np.linalg.norm(c1 - p2[pt2_idx], axis=1)
+                        if np.min(dists) < 2.0: 
+                            t_relations.append((e2['id'], e1['id']))
+                            intersect_pos = p2[pt2_idx]
 
                 # 3. X型交叉
                 if not is_e2e and not t_relations:
                     diff = c1[:, np.newaxis, :] - c2[np.newaxis, :, :]
-                    if np.min(np.linalg.norm(diff, axis=2)) < 2.0: is_x = True
+                    if np.min(np.linalg.norm(diff, axis=2)) < 2.0: 
+                        is_x = True
+                        m_idx, _ = np.unravel_index(np.argmin(np.linalg.norm(diff, axis=2)), diff.shape[:2])
+                        intersect_pos = c1[m_idx]
 
-                if is_e2e or t_relations or is_x: G.add_edge(e1['id'], e2['id'])
+                # 🌟 将物理相交坐标作为属性存入图中
+                if is_e2e or t_relations or is_x: 
+                    G.add_edge(e1['id'], e2['id'], pos=intersect_pos)
 
                 def _span(eid):
                     return f"<span style='color:{self.get_hex_color(eid)}; font-weight:bold;'>{id_map[eid]}</span>"
@@ -213,9 +227,27 @@ class TopoAnnotationWorkspace(QWidget):
 
         try:
             cycles = nx.cycle_basis(G)
-            if cycles:
+            valid_cycles = []
+            
+            # 🌟 核心拦截器：遍历校验是否为真实闭环
+            for cycle in cycles:
+                k = len(cycle)
+                if k < 3: continue
+                is_valid = True
+                for i in range(k):
+                    u, v, w = cycle[i-1], cycle[i], cycle[(i+1)%k]
+                    pos_in = G[u][v]['pos']
+                    pos_out = G[v][w]['pos']
+                    # 如果一条线在环里的“入口”和“出口”物理坐标重合，说明它是同一点交汇的伪环
+                    if np.linalg.norm(pos_in - pos_out) < 5.0:
+                        is_valid = False
+                        break
+                if is_valid:
+                    valid_cycles.append(cycle)
+
+            if valid_cycles:
                 cycle_strs = []
-                for cycle in cycles:
+                for cycle in valid_cycles:
                     styled_nodes = [_span(n) for n in cycle]
                     cycle_strs.append(f"{' '.join(styled_nodes)} 属同一环")
                 html_lines.append(f"<div style='margin-bottom:4px;'><b>[闭环结构]：</b> {' &nbsp;|&nbsp; '.join(cycle_strs)}</div>")
@@ -536,19 +568,41 @@ class TopoAnnotationWorkspace(QWidget):
                         })
 
         # 🟢 Layer 4: Cycles & Orientations
+        # 🟢 Layer 4: Cycles & Orientations
         cycles_tokens = []
         for ev in topology_events:
-            if ev['type'] == 'E2E': G_cycles.add_edge(ev['stroke_a'], ev['stroke_b'])
-            elif ev['type'] == 'T': G_cycles.add_edge(ev['guest'], ev['host'])
+            # 🌟 核心：构图时必须把 position (相交坐标) 带上
+            if ev['type'] == 'E2E': 
+                G_cycles.add_edge(ev['stroke_a'], ev['stroke_b'], pos=np.array(ev['position']))
+            elif ev['type'] == 'T': 
+                G_cycles.add_edge(ev['guest'], ev['host'], pos=np.array(ev['position']))
+            elif ev['type'] == 'X': 
+                G_cycles.add_edge(ev['stroke_a'], ev['stroke_b'], pos=np.array(ev['position']))
             
         try:
             basis = nx.cycle_basis(G_cycles)
-            for c_idx, cycle_nodes in enumerate(basis):
+            for cycle_nodes in basis:
                 members = [int(n) for n in cycle_nodes]
+                
+                # 🌟 核心拦截器：剔除多线同点交汇产生的“伪环”
+                k = len(members)
+                if k < 3: continue
+                is_valid = True
+                for i in range(k):
+                    u, v, w = members[i-1], members[i], members[(i+1)%k]
+                    pos_in = G_cycles[u][v]['pos']
+                    pos_out = G_cycles[v][w]['pos']
+                    # 出入必须异点 (距离 > 5px)
+                    if np.linalg.norm(pos_in - pos_out) < 5.0:
+                        is_valid = False
+                        break
+                        
+                if not is_valid: continue
+                
                 pts = [np.mean(next(e['path'] for e in self.edges if int(id_map[e['id']]) == n), axis=0) for n in members]
                 orient = get_polygon_orientation(pts)
                 cycles_tokens.append({
-                    "cycle_id": c_idx, 
+                    "cycle_id": len(cycles_tokens), 
                     "members": members, 
                     "orientation": orient
                 })
