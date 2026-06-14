@@ -297,7 +297,7 @@ class TopoAnnotationWorkspace(QWidget):
             poly = np.vstack([upper, lower[::-1]])
 
             fill_color = color_hex if not is_sel else '#FF1744'
-            self.ax_main.fill(poly[:, 0], poly[:, 1], color=fill_color, alpha=0.12, linewidth=0)
+            self.ax_main.fill(poly[:, 0], poly[:, 1], color=fill_color, alpha=0.35, linewidth=0)
             self.ax_main.plot(curve_pts[:, 0], curve_pts[:, 1], color='black', linewidth=1.5 if is_sel else 0.8, alpha=0.8)
             
             if is_sel:
