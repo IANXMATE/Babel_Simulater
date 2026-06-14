@@ -23,7 +23,7 @@ import logging
 logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-FONTS_DIR = os.path.join(SCRIPT_DIR, "../dataset/alien_tensors_raw")
+FONTS_DIR = os.path.join(SCRIPT_DIR, "../dataset/alien_tensors_storage")
 TOPO_OUT_DIR = os.path.join(SCRIPT_DIR, "annotations_topo")
 META_DIR = os.path.join(SCRIPT_DIR, "metadata")
 CANVAS_SIZE = 400
