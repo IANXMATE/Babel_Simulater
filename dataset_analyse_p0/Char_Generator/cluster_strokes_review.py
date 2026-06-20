@@ -21,7 +21,7 @@ def get_bezier_point(pts, t):
     mt = 1 - t
     return (mt**3)*pts[0] + 3*(mt**2)*t*pts[1] + 3*mt*(t**2)*pts[2] + (t**3)*pts[3]
 
-def normalize_and_sample(mother_bezier, N=50):
+def normalize_and_sample(mother_bezier, N=500):
     pts = np.array(mother_bezier)
     p0 = pts[0]
     pts_t = pts - p0
