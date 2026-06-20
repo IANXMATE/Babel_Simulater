@@ -3851,5 +3851,4330 @@
         ]
       }
     ]
+  },
+  "U+10B67": {
+    "glyph_info": {
+      "hex_key": "U+10B67",
+      "char": "𐭧"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 180.64,
+        "bbox": [
+          48.5,
+          184.0,
+          139.9,
+          294.5
+        ],
+        "mother_bezier": [
+          [
+            48.464990253411315,
+            291.37181286549725
+          ],
+          [
+            133.3991033138402,
+            307.62007797270974
+          ],
+          [
+            156.29438596491227,
+            258.87528265107227
+          ],
+          [
+            129.0,
+            184.0
+          ]
+        ],
+        "width_bezier": [
+          10.717851789179985,
+          18.4619651701833,
+          16.938560043830766,
+          17.192445815770114
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 178.5,
+        "bbox": [
+          125.0,
+          100.3,
+          232.0,
+          184.0
+        ],
+        "mother_bezier": [
+          [
+            129.0,
+            184.0
+          ],
+          [
+            105.33391812865497,
+            114.1180116959066
+          ],
+          [
+            193.222261208577,
+            64.63465886939582
+          ],
+          [
+            232.0,
+            133.0
+          ]
+        ],
+        "width_bezier": [
+          16.563401159751503,
+          21.345457577709166,
+          6.289384318127075,
+          18.364970484397872
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 145.36,
+        "bbox": [
+          220.2,
+          133.0,
+          238.3,
+          273.0
+        ],
+        "mother_bezier": [
+          [
+            232.0,
+            133.0
+          ],
+          [
+            256.73820662768037,
+            179.84962962962982
+          ],
+          [
+            197.9802159340424,
+            226.33333332977554
+          ],
+          [
+            230.0,
+            273.0
+          ]
+        ],
+        "width_bezier": [
+          17.609366401670872,
+          16.73657244150151,
+          15.860947673407358,
+          16.995232574241204
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 166.96,
+        "bbox": [
+          230.0,
+          215.3,
+          327.3,
+          296.3
+        ],
+        "mother_bezier": [
+          [
+            230.0,
+            273.0
+          ],
+          [
+            264.0096313931115,
+            325.93443634909556
+          ],
+          [
+            360.1362573099416,
+            281.03200779727115
+          ],
+          [
+            315.82280701754394,
+            215.30038986354793
+          ]
+        ],
+        "width_bezier": [
+          17.16898580179179,
+          8.952326874348689,
+          22.12552578619868,
+          13.500897796297119
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          129.0,
+          184.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 1.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          232.0,
+          133.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 3,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          230.0,
+          273.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P0",
+        "before": [
+          57.0,
+          294.0
+        ],
+        "after": [
+          48.46,
+          291.37
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          121.76,
+          316.93
+        ],
+        "after": [
+          132.66,
+          316.48
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          163.9,
+          232.84
+        ],
+        "after": [
+          158.51,
+          250.75
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          132.66,
+          316.48
+        ],
+        "after": [
+          133.4,
+          312.79
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          158.51,
+          250.75
+        ],
+        "after": [
+          156.29,
+          258.88
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          133.4,
+          312.79
+        ],
+        "after": [
+          133.4,
+          307.62
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          99.09,
+          125.38
+        ],
+        "after": [
+          105.33,
+          114.12
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          197.87,
+          62.95
+        ],
+        "after": [
+          195.44,
+          65.37
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          195.44,
+          65.37
+        ],
+        "after": [
+          193.22,
+          64.63
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P1",
+        "before": [
+          255.79,
+          179.67
+        ],
+        "after": [
+          256.74,
+          179.85
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P3",
+        "before": [
+          323.0,
+          228.0
+        ],
+        "after": [
+          318.04,
+          212.35
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P2",
+        "before": [
+          345.39,
+          278.77
+        ],
+        "after": [
+          360.14,
+          281.03
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P3",
+        "before": [
+          318.04,
+          212.35
+        ],
+        "after": [
+          315.82,
+          215.3
+        ]
+      }
+    ]
+  },
+  "U+10B71": {
+    "glyph_info": {
+      "hex_key": "U+10B71",
+      "char": "𐭱"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 290.6,
+        "bbox": [
+          206.6,
+          103.8,
+          300.2,
+          296.3
+        ],
+        "mother_bezier": [
+          [
+            213.16331384015595,
+            103.77820662768045
+          ],
+          [
+            360.87481481481484,
+            100.08541910331405
+          ],
+          [
+            294.40463937621837,
+            265.522300194932
+          ],
+          [
+            206.55318368079287,
+            296.281821301898
+          ]
+        ],
+        "width_bezier": [
+          12.905238684336952,
+          23.217708556295133,
+          14.582326398231801,
+          14.230887322982289
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 282.85,
+        "bbox": [
+          79.5,
+          104.4,
+          167.8,
+          296.5
+        ],
+        "mother_bezier": [
+          [
+            87.0,
+            105.0
+          ],
+          [
+            215.37898635477583,
+            92.69984405458104
+          ],
+          [
+            174.01976608187138,
+            257.3981676413257
+          ],
+          [
+            79.4844054580897,
+            296.5417153996103
+          ]
+        ],
+        "width_bezier": [
+          14.370178696111148,
+          23.203432620407384,
+          14.499012579792293,
+          13.43237271881096
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 237.08,
+        "bbox": [
+          79.5,
+          296.0,
+          316.6,
+          296.7
+        ],
+        "mother_bezier": [
+          [
+            79.4844054580897,
+            296.5417153996103
+          ],
+          [
+            165.15707602339185,
+            297.2802729044836
+          ],
+          [
+            260.43099415204676,
+            295.0646003898637
+          ],
+          [
+            316.5613645224172,
+            296.5417153996103
+          ]
+        ],
+        "width_bezier": [
+          12.959127051252763,
+          17.952922043989723,
+          14.062445468071441,
+          15.177311783019066
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "T",
+        "guest": 1,
+        "guest_t": 1.0,
+        "host": 3,
+        "host_t": 0.49,
+        "angle": 161.1,
+        "position": [
+          206.6,
+          296.3
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 1.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          79.5,
+          296.5
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P3",
+        "before": [
+          322.0,
+          292.0
+        ],
+        "after": [
+          320.99,
+          298.02
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 3,
+        "endpoint": "P0",
+        "host_stroke": 2,
+        "host_endpoint": "P3",
+        "before": [
+          103.0,
+          289.0
+        ],
+        "after": [
+          87.0,
+          295.0
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P1",
+        "before": [
+          174.79,
+          303.86
+        ],
+        "after": [
+          165.16,
+          297.28
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P3",
+        "before": [
+          320.99,
+          298.02
+        ],
+        "after": [
+          316.56,
+          296.54
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P2",
+        "before": [
+          260.75,
+          293.9
+        ],
+        "after": [
+          260.43,
+          295.06
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 3,
+        "endpoint": "P0",
+        "host_stroke": 2,
+        "host_endpoint": "P3",
+        "before": [
+          87.0,
+          295.0
+        ],
+        "after": [
+          79.48,
+          296.54
+        ]
+      },
+      {
+        "action": "T_ATTACH",
+        "guest": 1,
+        "guest_endpoint": "P3",
+        "host": 3,
+        "host_t": 0.531,
+        "before": [
+          235.0,
+          289.0
+        ],
+        "after": [
+          216.69,
+          296.22
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          326.06,
+          90.25
+        ],
+        "after": [
+          341.67,
+          89.01
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          313.74,
+          231.18
+        ],
+        "after": [
+          316.56,
+          231.55
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          341.67,
+          89.01
+        ],
+        "after": [
+          338.72,
+          94.18
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          316.56,
+          231.55
+        ],
+        "after": [
+          311.39,
+          247.8
+        ]
+      },
+      {
+        "action": "T_ATTACH",
+        "guest": 1,
+        "guest_endpoint": "P3",
+        "host": 3,
+        "host_t": 0.51,
+        "before": [
+          216.69,
+          296.22
+        ],
+        "after": [
+          211.64,
+          296.25
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          311.39,
+          247.8
+        ],
+        "after": [
+          308.44,
+          244.84
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P0",
+        "before": [
+          217.0,
+          106.0
+        ],
+        "after": [
+          213.16,
+          103.78
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          338.72,
+          94.18
+        ],
+        "after": [
+          346.1,
+          92.7
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          308.44,
+          244.84
+        ],
+        "after": [
+          312.87,
+          251.49
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          312.87,
+          251.49
+        ],
+        "after": [
+          291.45,
+          253.71
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          346.1,
+          92.7
+        ],
+        "after": [
+          361.61,
+          93.44
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          291.45,
+          253.71
+        ],
+        "after": [
+          281.85,
+          269.95
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          361.61,
+          93.44
+        ],
+        "after": [
+          368.26,
+          103.78
+        ]
+      },
+      {
+        "action": "T_ATTACH",
+        "guest": 1,
+        "guest_endpoint": "P3",
+        "host": 3,
+        "host_t": 0.49,
+        "before": [
+          211.64,
+          296.25
+        ],
+        "after": [
+          206.55,
+          296.28
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          281.85,
+          269.95
+        ],
+        "after": [
+          284.8,
+          271.43
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          368.26,
+          103.78
+        ],
+        "after": [
+          367.52,
+          97.87
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          284.8,
+          271.43
+        ],
+        "after": [
+          290.71,
+          273.65
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          367.52,
+          97.87
+        ],
+        "after": [
+          360.87,
+          100.09
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          290.71,
+          273.65
+        ],
+        "after": [
+          294.4,
+          265.52
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          206.12,
+          90.34
+        ],
+        "after": [
+          215.38,
+          92.7
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          174.8,
+          254.43
+        ],
+        "after": [
+          174.02,
+          257.4
+        ]
+      }
+    ]
+  },
+  "U+10B64": {
+    "glyph_info": {
+      "hex_key": "U+10B64",
+      "char": "𐭤"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 215.93,
+        "bbox": [
+          214.5,
+          129.6,
+          284.1,
+          290.3
+        ],
+        "mother_bezier": [
+          [
+            214.64042884990258,
+            129.62771929824578
+          ],
+          [
+            222.7645614035088,
+            256.6596101364524
+          ],
+          [
+            186.57524366471736,
+            302.45017543859666
+          ],
+          [
+            284.0648343079922,
+            287.6790253411308
+          ]
+        ],
+        "width_bezier": [
+          16.20385403943338,
+          16.369629460526312,
+          18.54716798567504,
+          10.716581567680139
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 152.88,
+        "bbox": [
+          214.6,
+          106.0,
+          336.1,
+          150.6
+        ],
+        "mother_bezier": [
+          [
+            335.7638596491229,
+            105.99387914230033
+          ],
+          [
+            341.67231968810927,
+            163.60136452241727
+          ],
+          [
+            261.9081091617934,
+            158.43146198830425
+          ],
+          [
+            214.64042884990258,
+            129.62771929824578
+          ]
+        ],
+        "width_bezier": [
+          10.63427457014659,
+          23.680600235153495,
+          5.053893428973318,
+          17.297483301905284
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 293.92,
+        "bbox": [
+          78.7,
+          108.4,
+          214.6,
+          289.2
+        ],
+        "mother_bezier": [
+          [
+            214.64042884990258,
+            129.62771929824578
+          ],
+          [
+            97.20978557504876,
+            59.4647563352828
+          ],
+          [
+            41.81797270955167,
+            176.1568421052633
+          ],
+          [
+            105.33391812865497,
+            289.15614035087737
+          ]
+        ],
+        "width_bezier": [
+          15.158206610345218,
+          6.988095038190863,
+          23.28195103363118,
+          12.600401412739203
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 2,
+        "t_b": 1.0,
+        "position": [
+          214.6,
+          129.6
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          214.6,
+          129.6
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 1.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          214.6,
+          129.6
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P3",
+        "before": [
+          119.0,
+          296.0
+        ],
+        "after": [
+          105.33,
+          289.16
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P2",
+        "before": [
+          24.8,
+          232.17
+        ],
+        "after": [
+          40.34,
+          185.76
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P1",
+        "before": [
+          102.47,
+          38.71
+        ],
+        "after": [
+          97.95,
+          53.56
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P2",
+        "before": [
+          40.34,
+          185.76
+        ],
+        "after": [
+          41.82,
+          176.16
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P0",
+        "host_stroke": 2,
+        "host_endpoint": "P3",
+        "before": [
+          217.0,
+          144.0
+        ],
+        "after": [
+          217.0,
+          134.0
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          217.66,
+          194.4
+        ],
+        "after": [
+          221.29,
+          250.75
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          188.71,
+          310.7
+        ],
+        "after": [
+          189.53,
+          304.67
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P3",
+        "before": [
+          279.0,
+          287.0
+        ],
+        "after": [
+          279.63,
+          287.68
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P0",
+        "host_stroke": 2,
+        "host_endpoint": "P3",
+        "before": [
+          217.0,
+          134.0
+        ],
+        "after": [
+          214.64,
+          133.32
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P1",
+        "before": [
+          97.95,
+          53.56
+        ],
+        "after": [
+          97.21,
+          59.46
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 3,
+        "endpoint": "P0",
+        "host_stroke": 1,
+        "host_endpoint": "P0",
+        "before": [
+          214.64,
+          133.32
+        ],
+        "after": [
+          214.64,
+          129.63
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P0",
+        "before": [
+          350.0,
+          101.0
+        ],
+        "after": [
+          335.76,
+          105.99
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          320.36,
+          167.84
+        ],
+        "after": [
+          341.67,
+          163.6
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          265.49,
+          155.34
+        ],
+        "after": [
+          261.91,
+          158.43
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P3",
+        "before": [
+          279.63,
+          287.68
+        ],
+        "after": [
+          284.06,
+          287.68
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          189.53,
+          304.67
+        ],
+        "after": [
+          186.58,
+          302.45
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          221.29,
+          250.75
+        ],
+        "after": [
+          222.76,
+          256.66
+        ]
+      }
+    ]
+  },
+  "U+10B7D": {
+    "glyph_info": {
+      "hex_key": "U+10B7D",
+      "char": "𐭽"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 287.0,
+        "bbox": [
+          143.7,
+          181.3,
+          249.1,
+          344.2
+        ],
+        "mother_bezier": [
+          [
+            154.8172709551657,
+            181.32674463937633
+          ],
+          [
+            305.4830019493178,
+            226.37875243664735
+          ],
+          [
+            255.99964912280703,
+            370.39746588693976
+          ],
+          [
+            143.73890838206628,
+            340.11660818713466
+          ]
+        ],
+        "width_bezier": [
+          8.87055194166869,
+          26.383463496222014,
+          17.17280032766119,
+          13.79111214296191
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 216.98,
+        "bbox": [
+          153.0,
+          53.9,
+          227.3,
+          181.3
+        ],
+        "mother_bezier": [
+          [
+            153.0,
+            55.0
+          ],
+          [
+            261.9081091617934,
+            41.000818713450485
+          ],
+          [
+            241.22849902534116,
+            161.3856920077974
+          ],
+          [
+            154.8172709551657,
+            181.32674463937633
+          ]
+        ],
+        "width_bezier": [
+          14.884462323263751,
+          21.462513211495146,
+          19.76158840157187,
+          7.749360506958172
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 2,
+        "t_b": 1.0,
+        "position": [
+          154.8,
+          181.3
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          246.0,
+          34.34
+        ],
+        "after": [
+          256.0,
+          41.0
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 2,
+        "endpoint": "P3",
+        "host_stroke": 1,
+        "host_endpoint": "P0",
+        "before": [
+          162.0,
+          189.0
+        ],
+        "after": [
+          176.0,
+          191.0
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 2,
+        "endpoint": "P3",
+        "host_stroke": 1,
+        "host_endpoint": "P0",
+        "before": [
+          176.0,
+          191.0
+        ],
+        "after": [
+          158.51,
+          182.07
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          242.52,
+          151.87
+        ],
+        "after": [
+          241.23,
+          156.95
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 2,
+        "endpoint": "P3",
+        "host_stroke": 1,
+        "host_endpoint": "P0",
+        "before": [
+          158.51,
+          182.07
+        ],
+        "after": [
+          154.82,
+          181.33
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          256.0,
+          41.0
+        ],
+        "after": [
+          261.91,
+          41.0
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P3",
+        "before": [
+          133.0,
+          326.0
+        ],
+        "after": [
+          141.23,
+          338.17
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          227.63,
+          408.43
+        ],
+        "after": [
+          254.52,
+          381.48
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          306.99,
+          213.31
+        ],
+        "after": [
+          304.74,
+          224.9
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P0",
+        "host_stroke": 2,
+        "host_endpoint": "P3",
+        "before": [
+          154.82,
+          181.33
+        ],
+        "after": [
+          157.77,
+          182.07
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          304.74,
+          224.9
+        ],
+        "after": [
+          309.91,
+          229.33
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          309.91,
+          229.33
+        ],
+        "after": [
+          305.48,
+          226.38
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          254.52,
+          381.48
+        ],
+        "after": [
+          256.0,
+          374.09
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P3",
+        "before": [
+          141.23,
+          338.17
+        ],
+        "after": [
+          143.74,
+          340.12
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          256.0,
+          374.09
+        ],
+        "after": [
+          256.0,
+          370.4
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          241.23,
+          156.95
+        ],
+        "after": [
+          241.23,
+          161.39
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 2,
+        "endpoint": "P3",
+        "host_stroke": 1,
+        "host_endpoint": "P0",
+        "before": [
+          157.77,
+          182.07
+        ],
+        "after": [
+          154.82,
+          181.33
+        ]
+      }
+    ]
+  },
+  "U+10B6A": {
+    "glyph_info": {
+      "hex_key": "U+10B6A",
+      "char": "𐭪"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 254.11,
+        "bbox": [
+          150.4,
+          166.6,
+          231.6,
+          344.2
+        ],
+        "mother_bezier": [
+          [
+            150.38592592592593,
+            166.55559454191052
+          ],
+          [
+            258.95387914230025,
+            202.7449122807019
+          ],
+          [
+            258.2153216374269,
+            287.6790253411308
+          ],
+          [
+            151.38948192460091,
+            344.1695166666593
+          ]
+        ],
+        "width_bezier": [
+          11.702813391098655,
+          22.811596698133823,
+          13.66219617404611,
+          16.584427211874704
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 149.78,
+        "bbox": [
+          127.0,
+          343.9,
+          276.7,
+          346.0
+        ],
+        "mother_bezier": [
+          [
+            276.6792592592593,
+            345.28651072124774
+          ],
+          [
+            254.52253411306046,
+            346.7636257309943
+          ],
+          [
+            162.20284600389866,
+            340.855165692008
+          ],
+          [
+            127.0,
+            346.0
+          ]
+        ],
+        "width_bezier": [
+          9.86607343422442,
+          19.241033327324793,
+          14.975773554973605,
+          14.898348048572378
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 109.37,
+        "bbox": [
+          150.4,
+          88.0,
+          218.0,
+          166.6
+        ],
+        "mother_bezier": [
+          [
+            150.38592592592593,
+            166.55559454191052
+          ],
+          [
+            176.6138234941121,
+            142.7636855442263
+          ],
+          [
+            225.718791423002,
+            125.19637426900601
+          ],
+          [
+            217.0,
+            88.0
+          ]
+        ],
+        "width_bezier": [
+          13.93100177317245,
+          14.685985663397096,
+          14.621132661955004,
+          18.629692986098913
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 95.75,
+        "bbox": [
+          138.0,
+          52.5,
+          217.0,
+          88.0
+        ],
+        "mother_bezier": [
+          [
+            217.0,
+            88.0
+          ],
+          [
+            212.11552454100914,
+            52.58893421886089
+          ],
+          [
+            163.1833887892487,
+            48.65991455444936
+          ],
+          [
+            138.0,
+            55.0
+          ]
+        ],
+        "width_bezier": [
+          18.574336329514395,
+          16.433771049023825,
+          13.217511855115102,
+          15.311676962441975
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "T",
+        "guest": 1,
+        "guest_t": 1.0,
+        "host": 2,
+        "host_t": 0.816,
+        "angle": 26.0,
+        "position": [
+          151.4,
+          344.2
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          150.4,
+          166.6
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 3,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          217.0,
+          88.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P0",
+        "host_stroke": 3,
+        "host_endpoint": "P0",
+        "before": [
+          158.0,
+          166.0
+        ],
+        "after": [
+          153.0,
+          171.0
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P0",
+        "host_stroke": 3,
+        "host_endpoint": "P0",
+        "before": [
+          153.0,
+          171.0
+        ],
+        "after": [
+          150.39,
+          166.56
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P2",
+        "before": [
+          225.26,
+          120.76
+        ],
+        "after": [
+          225.72,
+          125.2
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          245.02,
+          199.6
+        ],
+        "after": [
+          258.95,
+          202.74
+        ]
+      },
+      {
+        "action": "T_ATTACH",
+        "guest": 1,
+        "guest_endpoint": "P3",
+        "host": 2,
+        "host_t": 0.816,
+        "before": [
+          175.0,
+          336.0
+        ],
+        "after": [
+          155.82,
+          343.33
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          252.08,
+          283.56
+        ],
+        "after": [
+          258.22,
+          287.68
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P0",
+        "before": [
+          281.0,
+          357.0
+        ],
+        "after": [
+          276.68,
+          345.29
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          236.79,
+          334.79
+        ],
+        "after": [
+          254.52,
+          346.76
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          178.18,
+          341.06
+        ],
+        "after": [
+          162.2,
+          340.86
+        ]
+      }
+    ]
+  },
+  "U+10B62": {
+    "glyph_info": {
+      "hex_key": "U+10B62",
+      "char": "𐭢"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 262.09,
+        "bbox": [
+          176.0,
+          88.0,
+          289.2,
+          323.1
+        ],
+        "mother_bezier": [
+          [
+            176.0,
+            88.0
+          ],
+          [
+            216.85610136452246,
+            159.90857699805088
+          ],
+          [
+            270.7707992202729,
+            238.93423001949333
+          ],
+          [
+            289.23473684210524,
+            323.1297855750489
+          ]
+        ],
+        "width_bezier": [
+          22.995248337584126,
+          22.20706788039217,
+          23.197832665420677,
+          21.671938308484048
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 221.24,
+        "bbox": [
+          68.0,
+          322.8,
+          289.2,
+          323.3
+        ],
+        "mother_bezier": [
+          [
+            68.0,
+            323.0
+          ],
+          [
+            142.26179337231972,
+            322.3912280701756
+          ],
+          [
+            245.65984405458093,
+            323.8683430799222
+          ],
+          [
+            289.23473684210524,
+            323.1297855750489
+          ]
+        ],
+        "width_bezier": [
+          19.86937789266781,
+          20.159687052044486,
+          19.480365899523683,
+          19.79557328877709
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 1.0,
+        "position": [
+          289.2,
+          323.1
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "SNAP",
+        "stroke": 2,
+        "endpoint": "P3",
+        "host_stroke": 1,
+        "host_endpoint": "P3",
+        "before": [
+          301.0,
+          329.0
+        ],
+        "after": [
+          284.0,
+          316.0
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 2,
+        "endpoint": "P3",
+        "host_stroke": 1,
+        "host_endpoint": "P3",
+        "before": [
+          284.0,
+          316.0
+        ],
+        "after": [
+          289.97,
+          325.35
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          223.33,
+          313.03
+        ],
+        "after": [
+          245.66,
+          323.87
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          145.67,
+          328.38
+        ],
+        "after": [
+          142.26,
+          322.39
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 2,
+        "endpoint": "P3",
+        "host_stroke": 1,
+        "host_endpoint": "P3",
+        "before": [
+          289.97,
+          325.35
+        ],
+        "after": [
+          289.23,
+          323.13
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          273.09,
+          240.0
+        ],
+        "after": [
+          270.77,
+          238.93
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          217.04,
+          164.0
+        ],
+        "after": [
+          216.86,
+          159.91
+        ]
+      }
+    ]
+  },
+  "U+10B78": {
+    "glyph_info": {
+      "hex_key": "U+10B78",
+      "char": "𐭸"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 161.01,
+        "bbox": [
+          206.0,
+          172.0,
+          207.0,
+          333.0
+        ],
+        "mother_bezier": [
+          [
+            206.0,
+            172.0
+          ],
+          [
+            207.40445055746733,
+            225.66666666666666
+          ],
+          [
+            205.6042045019201,
+            279.33333333333337
+          ],
+          [
+            207.0,
+            333.0
+          ]
+        ],
+        "width_bezier": [
+          18.0,
+          18.000000000000004,
+          17.999999999999996,
+          18.0
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 158.93,
+        "bbox": [
+          149.0,
+          53.1,
+          207.5,
+          172.0
+        ],
+        "mother_bezier": [
+          [
+            149.0,
+            55.0
+          ],
+          [
+            227.19590643274856,
+            38.7851461988306
+          ],
+          [
+            203.5620662768031,
+            132.58194931773892
+          ],
+          [
+            206.0,
+            172.0
+          ]
+        ],
+        "width_bezier": [
+          13.63152915760518,
+          21.771667696085924,
+          15.973032834189762,
+          18.230709604125664
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 2,
+        "t_b": 1.0,
+        "position": [
+          206.0,
+          172.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          220.64,
+          39.47
+        ],
+        "after": [
+          224.98,
+          32.88
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          207.06,
+          132.1
+        ],
+        "after": [
+          203.56,
+          132.58
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          224.98,
+          32.88
+        ],
+        "after": [
+          227.2,
+          38.79
+        ]
+      }
+    ]
+  },
+  "U+10B7C": {
+    "glyph_info": {
+      "hex_key": "U+10B7C",
+      "char": "𐭼"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 218.45,
+        "bbox": [
+          70.6,
+          71.9,
+          266.0,
+          120.0
+        ],
+        "mother_bezier": [
+          [
+            70.62171539961017,
+            74.23590643274872
+          ],
+          [
+            122.32074074074077,
+            77.92869395711512
+          ],
+          [
+            263.38522417154,
+            50.60206627680327
+          ],
+          [
+            266.0,
+            120.0
+          ]
+        ],
+        "width_bezier": [
+          17.44769381441187,
+          22.75408055461359,
+          17.469641322912377,
+          25.319514247999425
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 204.1,
+        "bbox": [
+          266.0,
+          120.0,
+          269.6,
+          324.0
+        ],
+        "mother_bezier": [
+          [
+            266.0,
+            120.0
+          ],
+          [
+            272.0292622625547,
+            188.0
+          ],
+          [
+            268.55512670565304,
+            255.18249512670582
+          ],
+          [
+            269.0,
+            324.0
+          ]
+        ],
+        "width_bezier": [
+          23.90006227858422,
+          23.574136593221596,
+          23.27578149917925,
+          24.171945663895688
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          266.0,
+          120.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          228.99,
+          41.7
+        ],
+        "after": [
+          267.08,
+          74.97
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          267.08,
+          74.97
+        ],
+        "after": [
+          262.65,
+          46.91
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P0",
+        "before": [
+          76.0,
+          77.0
+        ],
+        "after": [
+          70.62,
+          74.24
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          135.88,
+          79.38
+        ],
+        "after": [
+          122.32,
+          77.93
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          262.65,
+          46.91
+        ],
+        "after": [
+          263.39,
+          50.6
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          266.15,
+          256.0
+        ],
+        "after": [
+          268.56,
+          255.18
+        ]
+      }
+    ]
+  },
+  "U+10B7E": {
+    "glyph_info": {
+      "hex_key": "U+10B7E",
+      "char": "𐭾"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 97.08,
+        "bbox": [
+          183.2,
+          118.5,
+          250.9,
+          162.0
+        ],
+        "mother_bezier": [
+          [
+            183.1915292323018,
+            123.57124517626765
+          ],
+          [
+            224.24167641325536,
+            108.20955165692021
+          ],
+          [
+            259.6924366471735,
+            129.62771929824578
+          ],
+          [
+            249.0,
+            162.0
+          ]
+        ],
+        "width_bezier": [
+          13.095920750772821,
+          7.924893238261198,
+          15.412426238806894,
+          12.999026267058747
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 101.63,
+        "bbox": [
+          170.2,
+          159.3,
+          249.0,
+          188.1
+        ],
+        "mother_bezier": [
+          [
+            249.0,
+            162.0
+          ],
+          [
+            239.01282651072128,
+            196.83645224171562
+          ],
+          [
+            195.4379337231969,
+            197.57500974658888
+          ],
+          [
+            170.22465310357467,
+            159.34723085753313
+          ]
+        ],
+        "width_bezier": [
+          13.888720721585857,
+          11.65304877301201,
+          9.275106281156981,
+          14.638299336600282
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 93.1,
+        "bbox": [
+          149.6,
+          269.2,
+          242.7,
+          270.0
+        ],
+        "mother_bezier": [
+          [
+            242.70561403508773,
+            269.95364522417174
+          ],
+          [
+            221.28744639376222,
+            267.73797270955185
+          ],
+          [
+            181.40534113060428,
+            271.4307602339183
+          ],
+          [
+            149.64736842105262,
+            269.2150877192984
+          ]
+        ],
+        "width_bezier": [
+          9.845692382704476,
+          13.42306504515422,
+          9.937168358184804,
+          13.167564980370413
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 239.53,
+        "bbox": [
+          149.6,
+          45.4,
+          225.7,
+          269.2
+        ],
+        "mother_bezier": [
+          [
+            225.718791423002,
+            45.43216374269025
+          ],
+          [
+            182.8824561403509,
+            100.08541910331405
+          ],
+          [
+            148.17025341130605,
+            213.08471734892805
+          ],
+          [
+            149.64736842105262,
+            269.2150877192984
+          ]
+        ],
+        "width_bezier": [
+          8.529552723481219,
+          14.745952283578525,
+          9.517193257992787,
+          12.807995228585686
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 102.79,
+        "bbox": [
+          182.9,
+          270.0,
+          242.7,
+          353.4
+        ],
+        "mother_bezier": [
+          [
+            182.8824561403509,
+            353.41064327485395
+          ],
+          [
+            197.65360623781677,
+            336.4238206627682
+          ],
+          [
+            220.5488888888889,
+            306.1429629629631
+          ],
+          [
+            242.70561403508773,
+            269.95364522417174
+          ]
+        ],
+        "width_bezier": [
+          8.872589520444613,
+          11.858193406098174,
+          14.296326787670262,
+          10.463482447870565
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          249.0,
+          162.0
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 1,
+        "guest_t": 0.0,
+        "host": 4,
+        "host_t": 0.367,
+        "angle": 132.5,
+        "position": [
+          183.2,
+          123.6
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 2,
+        "guest_t": 1.0,
+        "host": 4,
+        "host_t": 0.51,
+        "angle": 128.7,
+        "position": [
+          170.2,
+          159.3
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 3,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 1.0,
+        "position": [
+          149.6,
+          269.2
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 3,
+        "t_a": 0.0,
+        "stroke_b": 5,
+        "t_b": 1.0,
+        "position": [
+          242.7,
+          270.0
+        ]
+      }
+    ],
+    "cycles": [
+      {
+        "cycle_id": 0,
+        "members": [
+          1,
+          2,
+          4
+        ],
+        "orientation": "ccw"
+      }
+    ],
+    "edit_history": [
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P0",
+        "before": [
+          239.0,
+          40.0
+        ],
+        "after": [
+          225.72,
+          45.43
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P1",
+        "before": [
+          167.97,
+          106.15
+        ],
+        "after": [
+          178.45,
+          104.52
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P2",
+        "before": [
+          170.02,
+          188.3
+        ],
+        "after": [
+          163.68,
+          185.76
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 4,
+        "endpoint": "P3",
+        "host_stroke": 3,
+        "host_endpoint": "P3",
+        "before": [
+          140.9,
+          275.57
+        ],
+        "after": [
+          153.0,
+          269.0
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 4,
+        "endpoint": "P3",
+        "host_stroke": 3,
+        "host_endpoint": "P3",
+        "before": [
+          153.0,
+          269.0
+        ],
+        "after": [
+          148.91,
+          272.17
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P2",
+        "before": [
+          163.68,
+          185.76
+        ],
+        "after": [
+          151.86,
+          207.91
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P1",
+        "before": [
+          178.45,
+          104.52
+        ],
+        "after": [
+          182.88,
+          100.09
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P2",
+        "before": [
+          151.86,
+          207.91
+        ],
+        "after": [
+          148.17,
+          213.08
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 3,
+        "endpoint": "P3",
+        "host_stroke": 4,
+        "host_endpoint": "P3",
+        "before": [
+          148.91,
+          272.17
+        ],
+        "after": [
+          149.65,
+          269.22
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P2",
+        "before": [
+          179.04,
+          275.43
+        ],
+        "after": [
+          182.14,
+          273.65
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P1",
+        "before": [
+          205.14,
+          263.27
+        ],
+        "after": [
+          209.47,
+          261.83
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 3,
+        "endpoint": "P0",
+        "host_stroke": 5,
+        "host_endpoint": "P3",
+        "before": [
+          233.0,
+          276.0
+        ],
+        "after": [
+          242.17,
+          271.32
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 3,
+        "endpoint": "P0",
+        "host_stroke": 5,
+        "host_endpoint": "P3",
+        "before": [
+          242.17,
+          271.32
+        ],
+        "after": [
+          241.23,
+          272.17
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P1",
+        "before": [
+          209.47,
+          261.83
+        ],
+        "after": [
+          221.29,
+          267.74
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 3,
+        "endpoint": "P0",
+        "host_stroke": 5,
+        "host_endpoint": "P3",
+        "before": [
+          241.23,
+          272.17
+        ],
+        "after": [
+          242.71,
+          269.95
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P2",
+        "before": [
+          182.14,
+          273.65
+        ],
+        "after": [
+          181.41,
+          271.43
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 5,
+        "control": "P0",
+        "before": [
+          166.0,
+          357.0
+        ],
+        "after": [
+          179.93,
+          354.15
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 5,
+        "control": "P1",
+        "before": [
+          203.71,
+          350.33
+        ],
+        "after": [
+          201.35,
+          341.59
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 5,
+        "control": "P2",
+        "before": [
+          216.62,
+          304.35
+        ],
+        "after": [
+          220.55,
+          306.14
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 5,
+        "control": "P1",
+        "before": [
+          201.35,
+          341.59
+        ],
+        "after": [
+          199.87,
+          339.38
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 5,
+        "control": "P0",
+        "before": [
+          179.93,
+          354.15
+        ],
+        "after": [
+          182.88,
+          353.41
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 5,
+        "control": "P1",
+        "before": [
+          199.87,
+          339.38
+        ],
+        "after": [
+          197.65,
+          336.42
+        ]
+      },
+      {
+        "action": "T_ATTACH",
+        "guest": 2,
+        "guest_endpoint": "P3",
+        "host": 4,
+        "host_t": 0.51,
+        "before": [
+          174.0,
+          165.0
+        ],
+        "after": [
+          170.22,
+          159.35
+        ]
+      },
+      {
+        "action": "T_ATTACH",
+        "guest": 1,
+        "guest_endpoint": "P0",
+        "host": 4,
+        "host_t": 0.367,
+        "before": [
+          190.0,
+          122.0
+        ],
+        "after": [
+          183.19,
+          123.57
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          213.66,
+          112.07
+        ],
+        "after": [
+          224.24,
+          108.21
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          259.12,
+          127.34
+        ],
+        "after": [
+          259.69,
+          129.63
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          234.58,
+          196.87
+        ],
+        "after": [
+          239.01,
+          196.84
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          195.24,
+          194.9
+        ],
+        "after": [
+          195.44,
+          197.58
+        ]
+      }
+    ]
+  },
+  "U+10B70": {
+    "glyph_info": {
+      "hex_key": "U+10B70",
+      "char": "𐭰"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 170.22,
+        "bbox": [
+          213.9,
+          94.2,
+          306.0,
+          166.8
+        ],
+        "mother_bezier": [
+          [
+            303.2673294346979,
+            94.17695906432766
+          ],
+          [
+            324.68549707602347,
+            179.11107212475645
+          ],
+          [
+            215.37898635477583,
+            190.92799220272923
+          ],
+          [
+            213.90187134502926,
+            122.24214424951288
+          ]
+        ],
+        "width_bezier": [
+          15.767571871829539,
+          15.141832690866867,
+          14.210004829878683,
+          16.890953582036303
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 158.26,
+        "bbox": [
+          100.7,
+          62.0,
+          137.0,
+          201.0
+        ],
+        "mother_bezier": [
+          [
+            127.0,
+            62.0
+          ],
+          [
+            88.34709551656923,
+            82.36003898635488
+          ],
+          [
+            92.77844054580899,
+            162.86280701754401
+          ],
+          [
+            137.0,
+            201.0
+          ]
+        ],
+        "width_bezier": [
+          15.43323046373075,
+          17.940575195550025,
+          18.063212039980204,
+          17.565210887339695
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 137.91,
+        "bbox": [
+          127.0,
+          52.0,
+          214.3,
+          122.2
+        ],
+        "mother_bezier": [
+          [
+            213.90187134502926,
+            122.24214424951288
+          ],
+          [
+            217.59465886939572,
+            74.23590643274872
+          ],
+          [
+            193.96081871345032,
+            32.138128654970956
+          ],
+          [
+            127.0,
+            62.0
+          ]
+        ],
+        "width_bezier": [
+          15.446432853818067,
+          19.468723680997595,
+          11.012967617643978,
+          15.619824747976157
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 179.14,
+        "bbox": [
+          100.5,
+          201.0,
+          168.9,
+          343.7
+        ],
+        "mother_bezier": [
+          [
+            100.50041234497405,
+            343.74534525961883
+          ],
+          [
+            154.8172709551657,
+            286.9404678362575
+          ],
+          [
+            202.82350877192985,
+            247.0583625730996
+          ],
+          [
+            137.0,
+            201.0
+          ]
+        ],
+        "width_bezier": [
+          17.17548497835025,
+          14.58206283183951,
+          18.533252056852486,
+          16.48753865905625
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 143.57,
+        "bbox": [
+          100.5,
+          343.7,
+          244.0,
+          345.0
+        ],
+        "mother_bezier": [
+          [
+            244.0,
+            345.0
+          ],
+          [
+            223.9822908618595,
+            341.5456702952001
+          ],
+          [
+            161.5992660216803,
+            346.28490282163165
+          ],
+          [
+            100.50041234497405,
+            343.74534525961883
+          ]
+        ],
+        "width_bezier": [
+          14.97950180019836,
+          14.89428859564041,
+          14.212085093144047,
+          16.15597064017056
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          213.9,
+          122.2
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 1.0,
+        "position": [
+          127.0,
+          62.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 1.0,
+        "position": [
+          137.0,
+          201.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 4,
+        "t_a": 0.0,
+        "stroke_b": 5,
+        "t_b": 1.0,
+        "position": [
+          100.5,
+          343.7
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          238.86,
+          203.11
+        ],
+        "after": [
+          241.23,
+          204.96
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          241.23,
+          204.96
+        ],
+        "after": [
+          215.38,
+          204.22
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P3",
+        "host_stroke": 3,
+        "host_endpoint": "P0",
+        "before": [
+          216.0,
+          136.0
+        ],
+        "after": [
+          219.07,
+          136.27
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          326.03,
+          149.48
+        ],
+        "after": [
+          319.52,
+          169.51
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P3",
+        "host_stroke": 3,
+        "host_endpoint": "P0",
+        "before": [
+          219.07,
+          136.27
+        ],
+        "after": [
+          216.86,
+          125.93
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          215.38,
+          204.22
+        ],
+        "after": [
+          227.2,
+          197.58
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          319.52,
+          169.51
+        ],
+        "after": [
+          321.73,
+          171.73
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P0",
+        "before": [
+          305.0,
+          98.0
+        ],
+        "after": [
+          303.27,
+          94.18
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          321.73,
+          171.73
+        ],
+        "after": [
+          321.73,
+          175.42
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          227.2,
+          197.58
+        ],
+        "after": [
+          219.07,
+          191.67
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          321.73,
+          175.42
+        ],
+        "after": [
+          324.69,
+          179.11
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P1",
+        "before": [
+          228.44,
+          89.01
+        ],
+        "after": [
+          223.5,
+          77.19
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P3",
+        "host_stroke": 3,
+        "host_endpoint": "P0",
+        "before": [
+          216.86,
+          125.93
+        ],
+        "after": [
+          213.9,
+          122.24
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P1",
+        "before": [
+          223.5,
+          77.19
+        ],
+        "after": [
+          219.07,
+          77.93
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P2",
+        "before": [
+          177.39,
+          25.86
+        ],
+        "after": [
+          193.96,
+          32.14
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          219.07,
+          191.67
+        ],
+        "after": [
+          215.38,
+          190.93
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P1",
+        "before": [
+          219.07,
+          77.93
+        ],
+        "after": [
+          217.59,
+          74.24
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          80.83,
+          104.54
+        ],
+        "after": [
+          88.35,
+          82.36
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          96.06,
+          155.18
+        ],
+        "after": [
+          92.78,
+          162.86
+        ]
+      }
+    ]
+  },
+  "U+10B7F": {
+    "glyph_info": {
+      "hex_key": "U+10B7F",
+      "char": "𐭿"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 212.74,
+        "bbox": [
+          179.9,
+          133.3,
+          182.9,
+          346.0
+        ],
+        "mother_bezier": [
+          [
+            182.8824561403509,
+            346.02506822612105
+          ],
+          [
+            179.92822612085772,
+            284.7247953216376
+          ],
+          [
+            180.66678362573103,
+            218.25461988304113
+          ],
+          [
+            179.92822612085772,
+            133.3205068226123
+          ]
+        ],
+        "width_bezier": [
+          14.500869205128417,
+          11.603696692008077,
+          17.042553805202996,
+          11.867916639070266
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 179.65,
+        "bbox": [
+          115.2,
+          120.6,
+          180.9,
+          196.5
+        ],
+        "mother_bezier": [
+          [
+            179.92822612085772,
+            133.3205068226123
+          ],
+          [
+            96.47122807017544,
+            77.19013645224186
+          ],
+          [
+            90.56276803118911,
+            226.37875243664735
+          ],
+          [
+            180.91696622177278,
+            191.00430941398258
+          ]
+        ],
+        "width_bezier": [
+          9.737531767235385,
+          18.18675955179158,
+          9.32169823741064,
+          12.225788775482215
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 118.16,
+        "bbox": [
+          182.9,
+          346.0,
+          301.0,
+          347.7
+        ],
+        "mother_bezier": [
+          [
+            301.0,
+            347.0
+          ],
+          [
+            261.79479054412354,
+            347.2085289008964
+          ],
+          [
+            224.40015645024084,
+            348.9486577579011
+          ],
+          [
+            182.8824561403509,
+            346.02506822612105
+          ]
+        ],
+        "width_bezier": [
+          11.774412980503689,
+          13.118993513929796,
+          10.125890992630564,
+          13.427807371997055
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 70.79,
+        "bbox": [
+          180.9,
+          191.0,
+          251.6,
+          193.3
+        ],
+        "mother_bezier": [
+          [
+            180.91696622177278,
+            191.00430941398258
+          ],
+          [
+            202.08495126705654,
+            193.1436647173491
+          ],
+          [
+            221.28744639376222,
+            194.62077972709574
+          ],
+          [
+            251.56830409356726,
+            191.66654970760248
+          ]
+        ],
+        "width_bezier": [
+          16.786803344943245,
+          6.547995051817624,
+          13.689186777882007,
+          12.488376989878311
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 138.68,
+        "bbox": [
+          250.0,
+          53.0,
+          251.6,
+          191.7
+        ],
+        "mother_bezier": [
+          [
+            251.56830409356726,
+            191.66654970760248
+          ],
+          [
+            250.9761700206499,
+            136.79877969377242
+          ],
+          [
+            250.74190954226663,
+            101.27418272682769
+          ],
+          [
+            250.0,
+            53.0
+          ]
+        ],
+        "width_bezier": [
+          13.276503227804607,
+          14.40941471320245,
+          13.85132201705825,
+          14.021823601398285
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          179.9,
+          133.3
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 1.0,
+        "position": [
+          182.9,
+          346.0
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 4,
+        "guest_t": 0.0,
+        "host": 1,
+        "host_t": 0.755,
+        "angle": 96.0,
+        "position": [
+          180.3,
+          192.6
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          180.9,
+          191.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 4,
+        "t_a": 1.0,
+        "stroke_b": 5,
+        "t_b": 0.0,
+        "position": [
+          251.6,
+          191.7
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P1",
+        "before": [
+          330.06,
+          185.63
+        ],
+        "after": [
+          205.04,
+          202.01
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 5,
+        "endpoint": "P0",
+        "host_stroke": 4,
+        "host_endpoint": "P3",
+        "before": [
+          195.74,
+          197.08
+        ],
+        "after": [
+          242.0,
+          192.0
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P2",
+        "before": [
+          204.64,
+          194.47
+        ],
+        "after": [
+          221.29,
+          194.62
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P1",
+        "before": [
+          205.04,
+          202.01
+        ],
+        "after": [
+          204.3,
+          193.14
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 4,
+        "endpoint": "P3",
+        "host_stroke": 5,
+        "host_endpoint": "P0",
+        "before": [
+          242.0,
+          192.0
+        ],
+        "after": [
+          251.57,
+          191.67
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 4,
+        "control": "P1",
+        "before": [
+          204.3,
+          193.14
+        ],
+        "after": [
+          202.08,
+          193.14
+        ]
+      },
+      {
+        "action": "T_ATTACH",
+        "guest": 4,
+        "guest_endpoint": "P0",
+        "host": 1,
+        "host_t": 0.694,
+        "before": [
+          180.0,
+          193.0
+        ],
+        "after": [
+          182.83,
+          190.69
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 2,
+        "endpoint": "P3",
+        "host_stroke": 4,
+        "host_endpoint": "P0",
+        "before": [
+          166.0,
+          193.0
+        ],
+        "after": [
+          182.83,
+          190.69
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          100.92,
+          214.74
+        ],
+        "after": [
+          87.61,
+          219.73
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P3",
+        "host_stroke": 2,
+        "host_endpoint": "P0",
+        "before": [
+          166.0,
+          124.0
+        ],
+        "after": [
+          174.02,
+          125.93
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          200.98,
+          195.31
+        ],
+        "after": [
+          192.48,
+          207.18
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          170.47,
+          271.91
+        ],
+        "after": [
+          186.58,
+          280.29
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          192.48,
+          207.18
+        ],
+        "after": [
+          180.67,
+          218.25
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P3",
+        "host_stroke": 2,
+        "host_endpoint": "P0",
+        "before": [
+          174.02,
+          125.93
+        ],
+        "after": [
+          181.41,
+          129.63
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          101.2,
+          93.96
+        ],
+        "after": [
+          97.21,
+          82.36
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          186.58,
+          280.29
+        ],
+        "after": [
+          179.93,
+          284.72
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P0",
+        "host_stroke": 3,
+        "host_endpoint": "P3",
+        "before": [
+          183.0,
+          344.0
+        ],
+        "after": [
+          187.0,
+          346.0
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P0",
+        "host_stroke": 3,
+        "host_endpoint": "P3",
+        "before": [
+          187.0,
+          346.0
+        ],
+        "after": [
+          182.88,
+          346.03
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 2,
+        "endpoint": "P0",
+        "host_stroke": 1,
+        "host_endpoint": "P3",
+        "before": [
+          181.41,
+          129.63
+        ],
+        "after": [
+          181.41,
+          139.97
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          97.21,
+          82.36
+        ],
+        "after": [
+          90.56,
+          69.07
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 2,
+        "endpoint": "P0",
+        "host_stroke": 1,
+        "host_endpoint": "P3",
+        "before": [
+          181.41,
+          139.97
+        ],
+        "after": [
+          179.93,
+          133.32
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          90.56,
+          69.07
+        ],
+        "after": [
+          95.73,
+          84.58
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          87.61,
+          219.73
+        ],
+        "after": [
+          91.3,
+          217.52
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          95.73,
+          84.58
+        ],
+        "after": [
+          92.04,
+          86.05
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P1",
+        "before": [
+          92.04,
+          86.05
+        ],
+        "after": [
+          96.47,
+          77.19
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 2,
+        "control": "P2",
+        "before": [
+          91.3,
+          217.52
+        ],
+        "after": [
+          90.56,
+          226.38
+        ]
+      }
+    ]
+  },
+  "U+10B6D": {
+    "glyph_info": {
+      "hex_key": "U+10B6D",
+      "char": "𐭭"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 157.39,
+        "bbox": [
+          118.6,
+          340.9,
+          276.0,
+          342.4
+        ],
+        "mother_bezier": [
+          [
+            276.0,
+            342.0
+          ],
+          [
+            233.1043664717349,
+            342.33228070175454
+          ],
+          [
+            181.40534113060428,
+            343.07083820662785
+          ],
+          [
+            118.62795321637427,
+            340.855165692008
+          ]
+        ],
+        "width_bezier": [
+          15.154110916797237,
+          14.463815467148095,
+          15.259966163141657,
+          15.879378264120957
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 149.81,
+        "bbox": [
+          118.6,
+          223.0,
+          207.0,
+          340.9
+        ],
+        "mother_bezier": [
+          [
+            207.0,
+            223.0
+          ],
+          [
+            196.75542739864738,
+            262.4209538236941
+          ],
+          [
+            163.81656225635993,
+            306.40814863441545
+          ],
+          [
+            118.62795321637427,
+            340.855165692008
+          ]
+        ],
+        "width_bezier": [
+          16.50525589789804,
+          14.311320192406688,
+          13.569661813018671,
+          15.006646075987286
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 166.66,
+        "bbox": [
+          157.0,
+          65.0,
+          207.0,
+          223.0
+        ],
+        "mother_bezier": [
+          [
+            207.0,
+            223.0
+          ],
+          [
+            180.35382770230282,
+            174.46697989444786
+          ],
+          [
+            165.15707602339185,
+            122.98070175438613
+          ],
+          [
+            157.0,
+            65.0
+          ]
+        ],
+        "width_bezier": [
+          16.342686493148005,
+          17.04881249165613,
+          15.380957493271564,
+          17.50564864643734
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 1.0,
+        "position": [
+          118.6,
+          340.9
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          207.0,
+          223.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 3,
+        "control": "P2",
+        "before": [
+          162.49,
+          122.3
+        ],
+        "after": [
+          165.16,
+          122.98
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P3",
+        "host_stroke": 2,
+        "host_endpoint": "P3",
+        "before": [
+          141.0,
+          338.0
+        ],
+        "after": [
+          120.0,
+          343.0
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P2",
+        "before": [
+          186.0,
+          347.8
+        ],
+        "after": [
+          181.41,
+          343.07
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P3",
+        "host_stroke": 2,
+        "host_endpoint": "P3",
+        "before": [
+          120.0,
+          343.0
+        ],
+        "after": [
+          118.63,
+          343.07
+        ]
+      },
+      {
+        "action": "CONTROL_MOVE",
+        "stroke": 1,
+        "control": "P1",
+        "before": [
+          231.0,
+          340.33
+        ],
+        "after": [
+          233.1,
+          342.33
+        ]
+      },
+      {
+        "action": "SNAP",
+        "stroke": 1,
+        "endpoint": "P3",
+        "host_stroke": 2,
+        "host_endpoint": "P3",
+        "before": [
+          118.63,
+          343.07
+        ],
+        "after": [
+          118.63,
+          340.86
+        ]
+      }
+    ]
   }
 }
