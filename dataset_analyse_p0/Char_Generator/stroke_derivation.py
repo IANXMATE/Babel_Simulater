@@ -51,6 +51,22 @@ def transform_bezier(pts, rot_angle, mirror_x, mirror_y):
         new_pts[i][0], new_pts[i][1] = x * cos_a - y * sin_a + c, x * sin_a + y * cos_a + c
     return new_pts.tolist()
 
+def transform_point(pt, rot_angle, mirror_x, mirror_y):
+    """对单个坐标点进行同步的全局旋转和镜像变换"""
+    if not pt or len(pt) < 2: return pt
+    c = CANVAS_SIZE / 2.0
+    x, y = pt[0], pt[1]
+    
+    if mirror_x: x = CANVAS_SIZE - x
+    if mirror_y: y = CANVAS_SIZE - y
+        
+    rad = math.radians(rot_angle)
+    cos_a, sin_a = math.cos(rad), math.sin(rad)
+    nx = (x - c) * cos_a - (y - c) * sin_a + c
+    ny = (x - c) * sin_a + (y - c) * cos_a + c
+    
+    return [nx, ny]
+
 # ==========================================
 # 🧠 运笔顺序引擎 (基于图与梯度的 DFS)
 # ==========================================
@@ -158,46 +174,35 @@ class StrokeGraph:
 
 
 # ==========================================
-# 🚀 对外接口：执行样本组合派生
+# 🚀 对外接口：执行样本组合派生 (含拓扑坐标同步变换)
 # ==========================================
 def generate_derived_sequences(strokes, topo_events, shape_dict, hex_key, cluster_refs, 
                                max_order_samples, rot_mode, mirror_mode):
-    """
-    根据给定的单个字形数据，生成派生的序列变体集。
-    返回: [ (derivation_name, derived_strokes_list), ... ]
-    """
     if not strokes: return []
     
-    # 1. 获得限制数量内的所有合理运笔顺序
     graph = StrokeGraph(strokes, topo_events)
     valid_orders = graph.generate_stroke_orders(max_orders=max_order_samples)
     stroke_map = {s["bezier_id"]: s for s in strokes}
     
-    # 2. 组装空间变换矩阵 (🌟 核心优化：利用群同构去除冗余状态)
     transforms = [(0, False, False)]
     if rot_mode >= 2: transforms.append((180, False, False))
     if rot_mode == 3: transforms.extend([(90, False, False), (270, False, False)])
-    
     if mirror_mode:
-        # 数学直觉兑现：竖直翻转 = 水平翻转 + 旋转180度
-        # 因此，在已经有完备旋转集的情况下，我们只需要叠加一个单轴翻转(mx=True)，
-        # 就能完美生成 8 种无冗余的独立空间状态 (D4群)，避免产生相同的重复数据。
         mirrored = [(r, True, False) for r, mx, my in transforms]
         transforms.extend(mirrored)
         
-    # 3. 双重叠加生成样本
     results = []
     for o_idx, order in enumerate(valid_orders):
         for rot, mx, my in transforms:
             derived_strokes = []
+            order_set = set(order) # 当前连通图涉及的笔画
+            
+            # 1. 变换贝塞尔曲线
             for bid in order:
                 orig_s = stroke_map[bid]
                 cid = shape_dict[hex_key][bid]
-                
-                # 执行物理坐标派生变换
                 new_bezier = transform_bezier(orig_s["mother_bezier"], rot, mx, my)
                 
-                # 动态逆向求出新的 0123 Variant ID
                 new_Y = normalize_and_sample_function(new_bezier)
                 variant_id = 0
                 if new_Y is not None and cid in cluster_refs:
@@ -212,8 +217,22 @@ def generate_derived_sequences(strokes, topo_events, shape_dict, hex_key, cluste
                     "mother_bezier": new_bezier,
                     "width_mean": float(np.mean(orig_s["width_bezier"]))
                 })
+            
+            # 🌟 2. 同步变换并筛选当前子图的拓扑事件
+            derived_events = []
+            for ev in topo_events:
+                # 只保留存在于当前连通图序列中的拓扑事件
+                involved_strokes = [v for k, v in ev.items() if "stroke" in k or k in ["host", "guest"]]
+                if not any(bid in order_set for bid in involved_strokes): continue
+                
+                new_ev = ev.copy()
+                # 提取并同步旋转镜像相交点坐标 (确保你的 json 中叫 "position")
+                if "position" in new_ev:
+                    new_ev["position"] = transform_point(new_ev["position"], rot, mx, my)
+                
+                derived_events.append(new_ev)
                 
             rule_name = f"order_{o_idx}_rot{rot}_mx{mx}_my{my}"
-            results.append((rule_name, derived_strokes))
+            results.append((rule_name, derived_strokes, derived_events)) # 返回扩增后的事件
             
     return results

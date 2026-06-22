@@ -37,7 +37,7 @@ def get_cell_and_offset(val, max_val=CANVAS_SIZE, bins=GRID_BINS):
     offset = grid_float - (cell + 0.5) 
     return cell, round(offset, 4)
 
-def quantize_width(mean_w, stroke_length, num_bins=64):
+def quantize_width(mean_w, stroke_length, num_bins=4):
     if stroke_length < 1e-5: return 0
     relative_w = mean_w / stroke_length
     norm_w = np.clip(relative_w / 0.5, 0.0, 0.9999)
@@ -106,7 +106,7 @@ def main():
             )
             
             # --- 将每一个派生样本组装为 FontGPT 的 Token 序列 ---
-            for rule_name, stroke_seq in derived_samples:
+            for rule_name, stroke_seq, derived_events in derived_samples: # 🌟 接收 events
                 sequence = []
                 valid_bids = []
                 
@@ -125,7 +125,7 @@ def main():
                     sequence.append({
                         "bezier_id": bid,
                         "shape_code": ds["shape_token"],
-                        "variant_id": ds["variant_id"], # 0,1,2,3 的形态修饰符
+                        "variant_id": ds["variant_id"], 
                         "p0_cell": [p0_cx, p0_cy],
                         "p0_offset": [p0_ox, p0_oy],
                         "p3_cell": [p3_cx, p3_cy],
@@ -136,25 +136,40 @@ def main():
                     
                 if not sequence: continue
                 
-                # --- 构建 Graphormer Topology Bias Matrix ---
-                # 注意：矩阵的索引必须按照当前派生的笔画顺序进行对齐！
+                # --- 构建 Graphormer Topology Bias Matrix & Explicit Junctions ---
                 N = len(sequence)
                 topo_matrix = np.zeros((N, N), dtype=int)
                 bid_to_idx = {bid: idx for idx, bid in enumerate(valid_bids)}
                 
-                for ev in topo_events:
+                # 🌟 显式几何锚点层 (用于 Stage 3 的 MSE Loss)
+                junctions = [] 
+                
+                for ev in derived_events:
                     ev_type = ev.get("type")
+                    
+                    # 记录 Attention Matrix
+                    idx_a, idx_b = -1, -1
                     if ev_type in ["E2E", "X"]:
                         a, b = ev.get("stroke_a"), ev.get("stroke_b")
                         if a in bid_to_idx and b in bid_to_idx:
-                            i_a, i_b = bid_to_idx[a], bid_to_idx[b]
-                            topo_matrix[i_a, i_b] = topo_matrix[i_b, i_a] = 1
+                            idx_a, idx_b = bid_to_idx[a], bid_to_idx[b]
+                            topo_matrix[idx_a, idx_b] = topo_matrix[idx_b, idx_a] = 1
                     elif ev_type == "T":
                         g, h = ev.get("guest"), ev.get("host")
                         if g in bid_to_idx and h in bid_to_idx:
-                            i_g, i_h = bid_to_idx[g], bid_to_idx[h]
-                            topo_matrix[i_g, i_h] = 2 # 客看主
-                            topo_matrix[i_h, i_g] = 3 # 主看客
+                            idx_a, idx_b = bid_to_idx[g], bid_to_idx[h]
+                            topo_matrix[idx_a, idx_b] = 2 
+                            topo_matrix[idx_b, idx_a] = 3 
+                            
+                    # 🌟 提取并记录绝对物理坐标锚点
+                    if idx_a != -1 and idx_b != -1 and "position" in ev:
+                        pt = ev["position"]
+                        junctions.append({
+                            "type": ev_type,
+                            "idx_a": idx_a,          # 在 sequence 中的相对索引
+                            "idx_b": idx_b,          # 在 sequence 中的相对索引
+                            "abs_pos": [round(pt[0], 2), round(pt[1], 2)] # 约束坐标点
+                        })
                             
                 final_dataset.append({
                     "hex_key": hex_key,
@@ -162,7 +177,8 @@ def main():
                     "derivation": rule_name,
                     "sequence_length": N,
                     "sequence": sequence,
-                    "topology_bias_matrix": topo_matrix.tolist()
+                    "topology_bias_matrix": topo_matrix.tolist(),
+                    "junctions": junctions # 🌟 直接将人类微调好的 GT 坐标喂给后续 Loss！
                 })
 
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
