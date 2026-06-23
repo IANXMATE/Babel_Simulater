@@ -181,8 +181,10 @@ def train():
                 if k == "mask": 
                     continue
                 if k == "topo":
-                    # 🌟 核心修复 1: 拓扑矩阵是 NxN 的方阵，必须在两个空间维度上同时切片
-                    inputs[k] = v[:, :-1, :-1].to(device)
+                    # 🌟 核心修复：拓扑错位！
+                    # Row 是 1: (未来的 Target), Col 是 :-1 (当前的 Context)
+                    # 这样在 t 时刻，Query 查到的偏置正好是 Target 节点与已知节点的拓扑关系！
+                    inputs[k] = v[:, 1:, :-1].to(device)
                     targets[k] = v[:, 1:, 1:].to(device)
                 else:
                     inputs[k] = v[:, :-1].to(device)

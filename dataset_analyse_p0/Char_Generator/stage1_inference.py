@@ -110,8 +110,9 @@ def generate_strokes(model, device, prompt_stroke, topo_matrix, target_length):
             cur_len = len(seq["shape"])
             mask = torch.tril(torch.ones(cur_len, cur_len)).unsqueeze(0).unsqueeze(0).to(device)
             
-            # 当前的拓扑矩阵视图截取
-            cur_topo = topo_t[:, :cur_len, :cur_len]
+            # 🌟 推理同步修复：强制读取下一笔的拓扑蓝图！
+            # 行切片为 1 : cur_len+1，列切片为 : cur_len
+            cur_topo = topo_t[:, 1:cur_len+1, :cur_len]
             
             # Forward 推理
             outputs = model(**inputs, topo_matrix=cur_topo, mask=mask)
