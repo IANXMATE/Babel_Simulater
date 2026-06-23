@@ -24,6 +24,68 @@ def get_bezier_curve(pts, num_points=50):
     curve = (mt**3)*pts[0] + 3*(mt**2)*t*pts[1] + 3*mt*(t**2)*pts[2] + (t**3)*pts[3]
     return curve
 
+def normalize_and_flip_bezier(pts, morph_id):
+    """
+    ✨ 核心魔法 1：归一化与空间形态翻转
+    将词表里的参考贝塞尔曲线拉平到起点为(0,0)，终点为(1,0)，长度为 1 的标准空间。
+    然后根据 morph_id (0, 1, 2, 3) 进行极其精准的空间翻转。
+    """
+    pts = np.array(pts)
+    p0 = pts[0]
+    vec = pts[3] - p0
+    L = np.linalg.norm(vec)
+    if L < 1e-5: 
+        return pts.tolist()
+    
+    # 1. 旋转拉平：将 p3 旋转到 X 轴正方向，并缩放长度为 1
+    cos_t, sin_t = vec[0]/L, vec[1]/L
+    # 旋转矩阵 R (-theta)
+    R = np.array([[cos_t, sin_t], [-sin_t, cos_t]]) 
+    pts_norm = (pts - p0) @ R.T / L
+    
+    # 2. 根据 morph_id (0123) 进行曲率朝向翻转
+    # 注意：如果发生了 X 轴镜像(左右翻转)，贝塞尔控制点的顺序 [0,1,2,3] 必须逆转为 [3,2,1,0]，
+    # 否则画出来的线方向会倒流，导致 P0 和 P3 接反。
+    if morph_id == 1:
+        # 上下+左右双翻转 (等价于原点中心对称)
+        pts_norm[:, 0] = 1.0 - pts_norm[::-1, 0]
+        pts_norm[:, 1] = -pts_norm[::-1, 1]
+    elif morph_id == 2:
+        # 仅 Y 轴镜像 (上下翻转，最常见)
+        pts_norm[:, 1] = -pts_norm[:, 1]
+    elif morph_id == 3:
+        # 仅 X 轴镜像 (左右翻转)
+        pts_norm[:, 0] = 1.0 - pts_norm[::-1, 0]
+        pts_norm[:, 1] = pts_norm[::-1, 1]
+        
+    return pts_norm.tolist()
+
+def map_normalized_bezier_to_endpoints(norm_pts, target_p0, target_p3):
+    """
+    ✨ 核心魔法 2：绝对坐标系映射 (仿射变换)
+    将已经翻转好朝向的、长度为 1 的标准曲线，
+    等比例放大，旋转并平移，严丝合缝地镶嵌到模型预测的 P0 和 P3 之间！
+    """
+    pts = np.array(norm_pts)
+    tgt_vec = np.array(target_p3) - np.array(target_p0)
+    tgt_len = np.linalg.norm(tgt_vec)
+    
+    if tgt_len < 1e-5: 
+        return [target_p0] * 4
+    
+    # 1. 等比例缩放到目标长度
+    pts_scaled = pts * tgt_len
+    
+    # 2. 计算目标角度并旋转
+    theta = np.arctan2(tgt_vec[1], tgt_vec[0])
+    cos_t, sin_t = np.cos(theta), np.sin(theta)
+    # 旋转矩阵 R (+theta)
+    R = np.array([[cos_t, -sin_t], [sin_t, cos_t]])
+    
+    # 3. 旋转后平移到目标起点 P0
+    pts_final = (pts_scaled @ R.T) + target_p0
+    return pts_final.tolist()
+
 def map_bezier_to_endpoints(ref_bezier, target_p0, target_p3):
     """
     ✨ 核心几何魔法：仿射变换映射
@@ -82,6 +144,7 @@ def generate_strokes(model, device, prompt_stroke, topo_matrix, target_length):
     # 初始化上下文序列 (Context)
     seq = {
         "shape": [prompt_stroke["shape_code"]],
+        "morph": [prompt_stroke.get("variant_id", 0)],
         "width": [prompt_stroke["width_token"]],
         "p0_cx": [prompt_stroke["p0_cell"][0]], "p0_cy": [prompt_stroke["p0_cell"][1]],
         "p3_cx": [prompt_stroke["p3_cell"][0]], "p3_cy": [prompt_stroke["p3_cell"][1]],
@@ -97,6 +160,7 @@ def generate_strokes(model, device, prompt_stroke, topo_matrix, target_length):
             # 将当前序列转换为 Tensor
             inputs = {
                 "shape_tokens": torch.tensor([seq["shape"]], dtype=torch.long).to(device),
+                "morph_tokens": torch.tensor([seq["morph"]], dtype=torch.long).to(device), # 🌟 构造 Tensor
                 "width_tokens": torch.tensor([seq["width"]], dtype=torch.long).to(device),
                 "p0_cells_x": torch.tensor([seq["p0_cx"]], dtype=torch.long).to(device),
                 "p0_cells_y": torch.tensor([seq["p0_cy"]], dtype=torch.long).to(device),
@@ -132,6 +196,7 @@ def generate_strokes(model, device, prompt_stroke, topo_matrix, target_length):
             # 追加到序列中
             seq["shape"].append(next_shape)
             seq["width"].append(next_width)
+            seq["morph"].append(torch.argmax(outputs["logits_morph"][0, -1, :]).item()) # 🌟 贪婪解码 morph
             seq["p0_cx"].append(next_p0_cx); seq["p0_cy"].append(next_p0_cy)
             seq["p3_cx"].append(next_p3_cx); seq["p3_cy"].append(next_p3_cy)
             seq["p0_off"].append(next_p0_off); seq["p3_off"].append(next_p3_off)
@@ -158,7 +223,37 @@ def main():
         dataset = json.load(f)
         
     # 随便挑一个长一点的字形序列 (比如笔画数 >= 4 的)
-    test_sample = next(s for s in dataset if s["sequence_length"] >= 4)
+    # 🌟 寻找一个笔画较多，且拓扑连接非常紧密（连通图）的汉字进行测试
+    test_sample = None
+    for s in dataset:
+        seq_len = s["sequence_length"]
+        if seq_len < 4: continue
+        
+        topo = np.array(s["topology_bias_matrix"])
+        # 计算图中的有效连接数（大于0的边）
+        edges = np.sum(topo > 0)
+        # 如果边数足够多，说明笔画基本都连在一起，不是孤岛
+        if edges >= (seq_len - 1) * 2: 
+            test_sample = s
+            break
+            
+    if test_sample is None:
+        test_sample = dataset[0] # 保底
+
+    char_name = test_sample.get("char", "Unknown")
+    hex_key = test_sample.get("hex_key", "Unknown") # 🌟 获取原文件编号
+    gt_seq = test_sample["sequence"]
+    topo_matrix = test_sample["topology_bias_matrix"]
+    seq_len = test_sample["sequence_length"]
+    
+    # 🌟 核心修改：在这里加上极其醒目的打印信息！
+    print("\n" + "="*50)
+    print(f"🎯 当前测试字符: '{char_name}'")
+    print(f"📄 原始文件编号 (Hex Key): {hex_key}")
+    print(f"📏 总笔画数: {seq_len}")
+    print("="*50 + "\n")
+
+
     char_name = test_sample.get("char", "Unknown")
     gt_seq = test_sample["sequence"]
     topo_matrix = test_sample["topology_bias_matrix"]
@@ -185,12 +280,14 @@ def main():
             if is_gt:
                 s = seq_dict_or_list[i]
                 shape_id = s["shape_code"]
+                morph_id = s.get("variant_id", 0) # GT 提取
                 p0x = decode_coordinate(s["p0_cell"][0], s["p0_offset"][0])
                 p0y = decode_coordinate(s["p0_cell"][1], s["p0_offset"][1])
                 p3x = decode_coordinate(s["p3_cell"][0], s["p3_offset"][0])
                 p3y = decode_coordinate(s["p3_cell"][1], s["p3_offset"][1])
             else:
                 shape_id = seq_dict_or_list["shape"][i]
+                morph_id = seq_dict_or_list["morph"][i]    # 预测提取
                 p0x = decode_coordinate(seq_dict_or_list["p0_cx"][i], seq_dict_or_list["p0_off"][i][0])
                 p0y = decode_coordinate(seq_dict_or_list["p0_cy"][i], seq_dict_or_list["p0_off"][i][1])
                 p3x = decode_coordinate(seq_dict_or_list["p3_cx"][i], seq_dict_or_list["p3_off"][i][0])
@@ -201,7 +298,8 @@ def main():
             if ref_bezier is None: continue
             
             # 仿射变换映射到 P0, P3
-            final_bezier = map_bezier_to_endpoints(ref_bezier, [p0x, p0y], [p3x, p3y])
+            norm_bezier = normalize_and_flip_bezier(ref_bezier, morph_id)
+            final_bezier = map_normalized_bezier_to_endpoints(norm_bezier, [p0x, p0y], [p3x, p3y])
             if final_bezier is None: continue
             
             # 画线

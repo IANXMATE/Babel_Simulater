@@ -38,8 +38,10 @@ class FontGPTDataset(Dataset):
         topo_matrix = item["topology_bias_matrix"]
         
         return {
-            "shape": torch.tensor(shape_tokens, dtype=torch.long),
-            "width": torch.tensor(width_tokens, dtype=torch.long),
+            "shape": torch.tensor([s["shape_code"] for s in seq], dtype=torch.long),
+            # 🌟 提取形态 ID，命名为 morph
+            "morph": torch.tensor([s.get("variant_id", 0) for s in seq], dtype=torch.long),
+            "width": torch.tensor([s["width_token"] for s in seq], dtype=torch.long),
             "p0_cx": torch.tensor(p0_cx, dtype=torch.long),
             "p0_cy": torch.tensor(p0_cy, dtype=torch.long),
             "p3_cx": torch.tensor(p3_cx, dtype=torch.long),
@@ -59,7 +61,7 @@ def fontgpt_collate_fn(batch):
     max_len = max(lengths)
     
     padded_batch = {}
-    keys_1d = ["shape", "width", "p0_cx", "p0_cy", "p3_cx", "p3_cy"]
+    keys_1d = ["shape", "morph", "width", "p0_cx", "p0_cy", "p3_cx", "p3_cy"] # 加入 morph
     keys_2d = ["p0_off", "p3_off"] # 序列长度 x 2维偏移
     
     # 1. 填充 1D 和 2D 的序列特征
@@ -109,7 +111,9 @@ def compute_fontgpt_loss(outputs, targets, mask):
     # 将预测值展平: [batch * seq_len, num_classes]
     l_shape = ce_loss(outputs["logits_shape"].view(-1, outputs["logits_shape"].size(-1))[active_loss], 
                       targets["shape"].view(-1)[active_loss])
-                      
+    # 🌟 计算独立的形态 Loss
+    l_morph = ce_loss(outputs["logits_morph"].view(-1, outputs["logits_morph"].size(-1))[active_loss], targets["morph"].view(-1)[active_loss])
+
     l_width = ce_loss(outputs["logits_width"].view(-1, outputs["logits_width"].size(-1))[active_loss], 
                       targets["width"].view(-1)[active_loss])
                       
@@ -129,11 +133,11 @@ def compute_fontgpt_loss(outputs, targets, mask):
     # Shape 是字体的灵魂，给最高权重；Offset 只是微调格子内偏移，权重可以稍低
     total_loss = (
         2.0 * l_shape + 
+        1.0 * l_morph +
         1.0 * l_width + 
         1.0 * (l_p0_cx + l_p0_cy + l_p3_cx + l_p3_cy) + 
         5.0 * (l_p0_off + l_p3_off) # Offset 本身值在 [-0.5, 0.5]，MSE 算出来会很小（比如0.01），所以要适当放大系数
     )
-    
     return total_loss, {
         "shape": l_shape.item(), "cell": l_p0_cx.item(), "offset": l_p0_off.item()
     }
@@ -173,7 +177,7 @@ def train():
         
         for batch in pbar:
             optimizer.zero_grad()
-            
+
             # --- 构建 Teacher Forcing 的输入与目标 ---
             inputs = {}
             targets = {}
@@ -200,7 +204,7 @@ def train():
             
             # --- Forward ---
             outputs = model(
-                inputs["shape"], inputs["width"], 
+                inputs["shape"], inputs["morph"], inputs["width"], # 🌟 传入 morph
                 inputs["p0_cx"], inputs["p0_cy"], inputs["p0_off"],
                 inputs["p3_cx"], inputs["p3_cy"], inputs["p3_off"],
                 inputs["topo"], mask=final_mask
