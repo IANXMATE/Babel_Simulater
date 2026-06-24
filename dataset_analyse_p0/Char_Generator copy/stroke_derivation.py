@@ -5,7 +5,7 @@ from collections import defaultdict
 # ==========================================
 # ⚙️ 几何与归一化基础算法
 # ==========================================
-CANVAS_SIZE = 1000.0
+CANVAS_SIZE = 400.0
 
 def get_bezier_point(pts, t):
     mt = 1 - t

@@ -45,9 +45,11 @@ def quantize_width(mean_w, stroke_length, num_bins=4):
     return int(norm_w * num_bins)
 
 def quantize_t(t_val, bins=T_BINS):
-    """🌟 核心新增：将连续的相交比例 t 离散化为 Token ID"""
-    t_val = np.clip(float(t_val), 0.0, 0.9999)
-    return int(t_val * bins)
+    """🌟 终极数学修复：四舍五入映射，确保 0.0, 0.5, 1.0 绝对精准"""
+    # 1. 允许触达真正的 1.0，不再 clip 到 0.9999
+    t_val = np.clip(float(t_val), 0.0, 1.0)
+    # 2. 使用 np.round，产生 0 到 32 的整数 (共 33 个桶)
+    return int(np.round(t_val * bins))
 
 def calculate_stroke_length(bezier_pts):
     pts = np.array(bezier_pts)
