@@ -105,9 +105,41 @@ def draw_skeleton(ax, sequence, with_arrows=False, with_order=False, highlight_s
             lw = 6 if is_highlighted else 3
             
             shape_code = item.get("shape_code", -1)
+            var_id = item.get("variant_id", 0) # 🌟 1. 提取变体 ID (等价于你的 morph_emb)
             
             if shape_code in SHAPE_CODEBOOK:
-                canon_pts = np.array(SHAPE_CODEBOOK[shape_code])
+                canon_pts = np.array(SHAPE_CODEBOOK[shape_code]).copy()
+                c0, c3 = canon_pts[0], canon_pts[3]
+                
+                # ==========================================
+                # 🌟 2. 核心魔法：局部坐标系翻转映射
+                # ==========================================
+                v_c = c3 - c0
+                L_c = np.linalg.norm(v_c)
+                
+                if L_c > 1e-5:
+                    u = v_c / L_c
+                    n = np.array([-u[1], u[0]]) # 法向量，建立“局部 Y 轴”
+                    
+                    local_x = np.dot(canon_pts - c0, u)
+                    local_y = np.dot(canon_pts - c0, n)
+                    
+                    # 根据 var_id 强行干预局部形状
+                    if var_id == 1: # 起终点倒转
+                        local_y = -local_y
+                        local_x = (L_c - local_x)[::-1]
+                        local_y = local_y[::-1]
+                    elif var_id == 2: # 🌟 纯镜像：法线方向直接取反，凹凸性瞬间反转！
+                        local_y = -local_y 
+                    elif var_id == 3: # 中心对称倒转
+                        local_x = (L_c - local_x)[::-1]
+                        local_y = local_y[::-1]
+                    
+                    # 重新将形变后的局部坐标拍回密码本的绝对坐标系
+                    canon_pts = c0 + np.outer(local_x, u) + np.outer(local_y, n)
+                # ==========================================
+                
+                # ------ 形态翻转完毕，接下来执行正常的刚体贴合 (缩放 + 旋转) ------
                 c0, c3 = canon_pts[0], canon_pts[3]
                 v_canon, v_pred = c3 - c0, p3 - p0
                 len_canon, len_pred = np.linalg.norm(v_canon), np.linalg.norm(v_pred)
@@ -125,16 +157,13 @@ def draw_skeleton(ax, sequence, with_arrows=False, with_order=False, highlight_s
                     all_x.extend(curve[:, 0])
                     all_y.extend(curve[:, 1])
                     
-                    # 1. 正常绘制平滑的贝塞尔曲线
                     ax.plot(curve[:, 0], curve[:, 1], color=color, linewidth=lw, alpha=alpha, zorder=1)
                     
-                    # 2. 🌟 优化：如果需要箭头，计算末端切线方向，给一个 1 像素的极小回退，隐藏线身，只留箭头
                     if with_arrows and not is_faded:
                         v_tangent = mapped_pts[3] - mapped_pts[2]
                         len_tangent = np.linalg.norm(v_tangent)
                         if len_tangent > 1e-5:
                             v_norm = v_tangent / len_tangent
-                            # 起点仅回退 1 像素，线身将被箭头根部完全遮挡
                             xy_text = mapped_pts[3] - 1.0 * v_norm 
                             ax.annotate('', xy=mapped_pts[3], xytext=xy_text, 
                                         arrowprops=dict(arrowstyle='->', color=color, lw=lw, alpha=alpha, mutation_scale=20, zorder=3))
@@ -179,7 +208,6 @@ def draw_skeleton(ax, sequence, with_arrows=False, with_order=False, highlight_s
             ax.text(center_pt[0]+20, center_pt[1]+20, f"({int(center_pt[0])}, {int(center_pt[1])})", 
                     color='red', fontsize=12, fontweight='bold', bbox=dict(facecolor='white', alpha=0.8))
 
-    # 摄像机居中逻辑
     if all_x and all_y:
         cx = (np.min(all_x) + np.max(all_x)) / 2
         cy = (np.min(all_y) + np.max(all_y)) / 2

@@ -213,7 +213,7 @@ def generate_derived_sequences(strokes, topo_events, shape_dict, hex_key, cluste
                 derived_strokes.append({
                     "bezier_id": bid,
                     "shape_token": cid,
-                    "variant_id": variant_id,
+                    "variant_id": variant_id,  # 🌟 这一行你原来就有，非常棒！
                     "mother_bezier": new_bezier,
                     "width_mean": float(np.mean(orig_s["width_bezier"]))
                 })
