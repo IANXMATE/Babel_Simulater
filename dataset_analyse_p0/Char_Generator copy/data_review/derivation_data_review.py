@@ -24,12 +24,10 @@ logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATASET_FILE = os.path.abspath(os.path.join(SCRIPT_DIR, "../fontgpt_dataset.json"))
 TOPO_DATA_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "../../AI_VECTOR_ROUTER_With_topo/annotations_topo"))
-CLUSTER_FILE = os.path.abspath(os.path.join(SCRIPT_DIR, "../clustered_results.json")) # 🌟 加载密码本
+CLUSTER_FILE = os.path.abspath(os.path.join(SCRIPT_DIR, "../clustered_results.json"))
 
 CANVAS_SIZE = 400.0
-SHAPE_CODEBOOK = {} # 🌟 全局存储曲线密码本
-
-T_BINS = 32
+SHAPE_CODEBOOK = {}
 
 try: CMAP = plt.colormaps['tab20']
 except AttributeError: CMAP = plt.get_cmap('tab20')
@@ -42,9 +40,6 @@ def cubic_bezier_np(pts, ts):
     mt = 1 - ts
     return (mt**3)*pts[0] + 3*(mt**2)*ts*pts[1] + 3*mt*(ts**2)*pts[2] + (ts**3)*pts[3]
 
-# ==========================================
-# 🎨 绘图引擎 (含 VQ-VAE 曲线还原)
-# ==========================================
 class MatplotlibCanvas(FigureCanvas):
     def __init__(self, width=5, height=5, dpi=80):
         self.fig = Figure(figsize=(width, height), dpi=dpi)
@@ -56,10 +51,8 @@ class MatplotlibCanvas(FigureCanvas):
 
 def draw_original_topo(ax, char_data):
     ax.clear()
-    ax.set_xlim(0, CANVAS_SIZE)
-    ax.set_ylim(CANVAS_SIZE, 0)
     ax.axis('off')
-    ax.grid(True, linestyle='--', alpha=0.3)
+    all_x, all_y = [], []
     if not char_data: return
 
     strokes = char_data.get("strokes", [])
@@ -70,6 +63,8 @@ def draw_original_topo(ax, char_data):
         color = CMAP(eid % 20)
         ts = np.linspace(0, 1, 50)[:, None]
         curve = cubic_bezier_np(pts, ts)
+        all_x.extend(curve[:, 0])
+        all_y.extend(curve[:, 1])
         ax.plot(curve[:, 0], curve[:, 1], color=color, linewidth=4, alpha=0.9)
         ax.scatter(pts[0, 0], pts[0, 1], color='green', s=50, zorder=2)
         ax.scatter(pts[3, 0], pts[3, 1], color='red', s=50, zorder=2)
@@ -77,6 +72,12 @@ def draw_original_topo(ax, char_data):
         ax.text(mid[0], mid[1], f"S{eid}", color=color, fontsize=12, fontweight='bold',
                 bbox=dict(facecolor='white', alpha=0.6, edgecolor='none', pad=0.5))
 
+    if all_x and all_y:
+        cx, cy = (np.min(all_x) + np.max(all_x)) / 2, (np.min(all_y) + np.max(all_y)) / 2
+        size = max(np.max(all_x) - np.min(all_x), np.max(all_y) - np.min(all_y)) / 2 * 1.2
+        if size < 10: size = 50 
+        ax.set_xlim(cx - size, cx + size)
+        ax.set_ylim(cy + size, cy - size)
 
 def draw_skeleton(ax, sequence, with_arrows=False, with_order=False, highlight_strokes=None, junction_mark=None):
     ax.clear()
@@ -105,41 +106,31 @@ def draw_skeleton(ax, sequence, with_arrows=False, with_order=False, highlight_s
             lw = 6 if is_highlighted else 3
             
             shape_code = item.get("shape_code", -1)
-            var_id = item.get("variant_id", 0) # 🌟 1. 提取变体 ID (等价于你的 morph_emb)
+            var_id = item.get("variant_id", 0) 
             
             if shape_code in SHAPE_CODEBOOK:
                 canon_pts = np.array(SHAPE_CODEBOOK[shape_code]).copy()
-                c0, c3 = canon_pts[0], canon_pts[3]
                 
                 # ==========================================
-                # 🌟 2. 核心魔法：局部坐标系翻转映射
-                # ==========================================
-                v_c = c3 - c0
-                L_c = np.linalg.norm(v_c)
+                # 🌟 核心：无损的纯几何形态映射 (Variant ID)
+                # 1. 镜像 (var=2,3): 沿着 P0->P3 线反射控制点 P1 和 P2
+                if var_id in [2, 3]:
+                    u = canon_pts[3] - canon_pts[0]
+                    u_dot_u = np.dot(u, u)
+                    if u_dot_u > 1e-5:
+                        for i in (1, 2):
+                            v = canon_pts[i] - canon_pts[0]
+                            proj = (np.dot(v, u) / u_dot_u) * u
+                            perp = v - proj
+                            # 反射公式：P' = P - 2*perp (或者 P0 + proj - perp)
+                            canon_pts[i] = canon_pts[0] + proj - perp
                 
-                if L_c > 1e-5:
-                    u = v_c / L_c
-                    n = np.array([-u[1], u[0]]) # 法向量，建立“局部 Y 轴”
-                    
-                    local_x = np.dot(canon_pts - c0, u)
-                    local_y = np.dot(canon_pts - c0, n)
-                    
-                    # 根据 var_id 强行干预局部形状
-                    if var_id == 1: # 起终点倒转
-                        local_y = -local_y
-                        local_x = (L_c - local_x)[::-1]
-                        local_y = local_y[::-1]
-                    elif var_id == 2: # 🌟 纯镜像：法线方向直接取反，凹凸性瞬间反转！
-                        local_y = -local_y 
-                    elif var_id == 3: # 中心对称倒转
-                        local_x = (L_c - local_x)[::-1]
-                        local_y = local_y[::-1]
-                    
-                    # 重新将形变后的局部坐标拍回密码本的绝对坐标系
-                    canon_pts = c0 + np.outer(local_x, u) + np.outer(local_y, n)
+                # 2. 颠倒运笔顺序 (var=1,3): 直接翻转控制点序列
+                if var_id in [1, 3]:
+                    canon_pts = canon_pts[::-1]
                 # ==========================================
                 
-                # ------ 形态翻转完毕，接下来执行正常的刚体贴合 (缩放 + 旋转) ------
+                # 形态确定完毕，进行刚体贴合 (仿射变换)
                 c0, c3 = canon_pts[0], canon_pts[3]
                 v_canon, v_pred = c3 - c0, p3 - p0
                 len_canon, len_pred = np.linalg.norm(v_canon), np.linalg.norm(v_pred)
@@ -153,12 +144,12 @@ def draw_skeleton(ax, sequence, with_arrows=False, with_order=False, highlight_s
                     
                     ts = np.linspace(0, 1, 50)[:, None]
                     curve = cubic_bezier_np(mapped_pts, ts)
-                    
                     all_x.extend(curve[:, 0])
                     all_y.extend(curve[:, 1])
                     
                     ax.plot(curve[:, 0], curve[:, 1], color=color, linewidth=lw, alpha=alpha, zorder=1)
                     
+                    # 箭头绘制
                     if with_arrows and not is_faded:
                         v_tangent = mapped_pts[3] - mapped_pts[2]
                         len_tangent = np.linalg.norm(v_tangent)
@@ -203,24 +194,18 @@ def draw_skeleton(ax, sequence, with_arrows=False, with_order=False, highlight_s
             
             all_x.append(center_pt[0])
             all_y.append(center_pt[1])
-            
             ax.plot(center_pt[0], center_pt[1], marker='X', color='red', markersize=20, markeredgecolor='black', zorder=10)
             ax.text(center_pt[0]+20, center_pt[1]+20, f"({int(center_pt[0])}, {int(center_pt[1])})", 
                     color='red', fontsize=12, fontweight='bold', bbox=dict(facecolor='white', alpha=0.8))
 
     if all_x and all_y:
-        cx = (np.min(all_x) + np.max(all_x)) / 2
-        cy = (np.min(all_y) + np.max(all_y)) / 2
+        cx, cy = (np.min(all_x) + np.max(all_x)) / 2, (np.min(all_y) + np.max(all_y)) / 2
         size = max(np.max(all_x) - np.min(all_x), np.max(all_y) - np.min(all_y)) / 2 * 1.2
         if size < 10: size = 50 
         ax.set_xlim(cx - size, cx + size)
         ax.set_ylim(cy + size, cy - size)
 
-# ==========================================
-# 🏠 UI 层 (已省略未修改的 UI 代码以防冗长，只保留核心解析更新)
-# ==========================================
 class InspectionWidget(QWidget):
-    # ... (init_ui 保持完全一致) ...
     def __init__(self, main_app, hex_key, orig_data, data_group):
         super().__init__()
         self.main_app = main_app
@@ -316,12 +301,8 @@ class InspectionWidget(QWidget):
             elif item.get("token_type") == "JUNCTION":
                 idx_a = stroke_count - 1 - item.get("ref_a_dist", 0)
                 idx_b = stroke_count - 1 - item.get("ref_b_dist", 0)
-                
-                # 🌟 恢复为除以 T_BINS (32.0)
-                # 此时 32/32 = 1.0, 16/32 = 0.5, 0/32 = 0.0 完美对称！
-                ta = item.get("ta_bin", 0) / float(T_BINS) if "ta_bin" in item else item.get("ta", 0.0)
-                tb = item.get("tb_bin", 0) / float(T_BINS) if "tb_bin" in item else item.get("tb", 0.0)
-                
+                ta = item.get("ta_bin", 0) / 32.0 if "ta_bin" in item else item.get("ta", 0.0)
+                tb = item.get("tb_bin", 0) / 32.0 if "tb_bin" in item else item.get("tb", 0.0)
                 junctions.append({"u": idx_a, "v": idx_b, "ta": ta, "tb": tb, "type": item.get("j_type", "Unknown")})
         return junctions
 
@@ -337,7 +318,7 @@ class InspectionWidget(QWidget):
         info.append("<div style='margin-bottom:5px;'><b>Sequence 生成流:</b></div>")
         for i, token in enumerate(self.current_seq):
             if token.get("token_type") == "STROKE":
-                info.append(f"<div style='color:{get_hex_color(i)}; font-weight:bold;'>[{i+1}] 生成 Stroke {i} (Shape:{token.get('shape_code')})</div>")
+                info.append(f"<div style='color:{get_hex_color(i)}; font-weight:bold;'>[{i+1}] 生成 Stroke {i} (Shape:{token.get('shape_code')}, Morph:{token.get('variant_id', 0)})</div>")
             elif token.get("token_type") == "JUNCTION":
                 info.append(f"<div style='margin-left:20px; color:#E91E63;'>↳ 触发 {token.get('j_type')} (引用回溯: -{token.get('ref_a_dist')}, -{token.get('ref_b_dist')})</div>")
         self.text2.setHtml("".join(info))
@@ -366,7 +347,6 @@ class InspectionWidget(QWidget):
             html.append(f"<div style='font-size:15px;'><b>参与者：</b> {_span(u)} & {_span(v)}</div>")
             html.append(f"<div style='font-size:15px; margin-top:10px;'><b>Token 预测类型：</b> {j_data['type']}</div>")
             html.append(f"<div style='font-size:15px; margin-top:10px;'><b>解析还原施力点：</b></div>")
-            # 🌟 t值现在会完美显示 1.000 或 0.000 了
             html.append(f"<ul><li>{_span(u)}: t = <b style='color:#E91E63'>{j_data['ta']:.3f}</b></li>")
             html.append(f"<li>{_span(v)}: t = <b style='color:#E91E63'>{j_data['tb']:.3f}</b></li></ul>")
             html.append(f"<div style='margin-top:10px; color:#555;'>* 红色十字 ❌ 代表大模型生成的 1D Token 映射回 2D 空间的绝对坐标落点。对比 Row 1 确认对齐度。</div>")
@@ -374,9 +354,6 @@ class InspectionWidget(QWidget):
             
         self.canvas3.draw()
 
-# ==========================================
-# 🚪 Level 1: 主窗口 (文件分发)
-# ==========================================
 class AuditorAppMain(QMainWindow):
     def __init__(self, dataset, orig_topo):
         super().__init__()
@@ -440,7 +417,6 @@ class AuditorAppMain(QMainWindow):
         cols = 6
         for idx, (hex_key, derivations_dict) in enumerate(file_data.items()):
             orig_char_data = orig_file_data.get(hex_key, {})
-            
             card = QFrame()
             card.setStyleSheet("background-color: #FFF; border: 1px solid #CCC; border-radius: 6px;")
             card_layout = QVBoxLayout(card)
@@ -474,9 +450,6 @@ class AuditorAppMain(QMainWindow):
         self.workspace_stack.addWidget(inspector)
         self.workspace_stack.setCurrentIndex(1)
 
-# ==========================================
-# 🚀 启动入口 (双轨数据装载)
-# ==========================================
 def load_datasets():
     if not os.path.exists(DATASET_FILE):
         print(f"❌ 找不到派生数据集 {DATASET_FILE}")
@@ -507,7 +480,10 @@ def load_datasets():
         with open(CLUSTER_FILE, 'r', encoding='utf-8') as f:
             for item in json.load(f):
                 cid = int(item["cluster_id"])
-                if cid != -1: SHAPE_CODEBOOK[cid] = item["mother_bezier"]
+                # 🌟 致命 Bug 修复：必须加上 not in，确保提取的是整个簇的【第一个】绝对基准！
+                # 这保证了与生成阶段 cluster_refs 提取的母体 100% 同构！
+                if cid != -1 and cid not in SHAPE_CODEBOOK: 
+                    SHAPE_CODEBOOK[cid] = item["mother_bezier"]
     else:
         print("⚠️ 找不到密码本文件，Row 2 将降级为画直线。")
             
