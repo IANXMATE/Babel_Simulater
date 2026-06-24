@@ -85,6 +85,9 @@ def main():
 
     print(f"🧩 正在执行流水线组装 (纯 Token 序列化模式)...")
     for fp in tqdm(topo_files):
+        # 🌟 新增：提取源文件名称作为标识 (例如 "font1_topo.json")
+        source_filename = os.path.basename(fp)
+
         with open(fp, 'r', encoding='utf-8') as f:
             char_data_map = json.load(f)
             
@@ -176,6 +179,7 @@ def main():
                 if not flat_token_sequence: continue
                             
                 final_dataset.append({
+                    "source_file": source_filename,  # 🌟 新增：记录所属文件标识
                     "hex_key": hex_key,
                     "char": char_data.get("glyph_info", {}).get("char", ""),
                     "derivation": rule_name,
