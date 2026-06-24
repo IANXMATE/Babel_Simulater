@@ -97,10 +97,32 @@ def main():
             if hex_key not in shape_dict: continue
             orig_sample_count += 1
 
-            orig_strokes = [s for s in char_data.get("strokes", []) if s["bezier_id"] in shape_dict[hex_key]]
+            # 提取原始笔画并为其注入原生 v_orig 状态
+            orig_strokes = []
+            for s in char_data.get("strokes", []):
+                bid = s["bezier_id"]
+                if bid in shape_dict[hex_key]:
+                    cid = shape_dict[hex_key][bid]
+                    stroke_payload = s.copy()
+                    
+                    # 🌟 计算原生笔画相对于当前桶绝对靶心的初始异构形态
+                    v_orig = 0
+                    if cid in cluster_refs:
+                        Y_raw = normalize_and_sample_function(s["mother_bezier"], N=50)
+                        if Y_raw is not None:
+                            Y0 = Y_raw.copy()
+                            Y1 = -Y_raw[::-1]
+                            Y2 = -Y_raw
+                            Y3 = Y_raw[::-1]
+                            # 算一次初始标签
+                            v_orig = int(np.argmin([np.mean(np.abs(cluster_refs[cid] - v)) for v in [Y0, Y1, Y2, Y3]]))
+                    
+                    stroke_payload["v_orig"] = v_orig # 锁定启动状态
+                    orig_strokes.append(stroke_payload)
+
             topo_events = char_data.get("topology_events", [])
             
-            # --- 调用独立引擎进行样本派生 ---
+            # --- 调用已升级为代数状态机的引擎 ---
             derived_samples = generate_derived_sequences(
                 strokes=orig_strokes, 
                 topo_events=topo_events, 

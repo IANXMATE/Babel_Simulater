@@ -195,44 +195,38 @@ def generate_derived_sequences(strokes, topo_events, shape_dict, hex_key, cluste
     for o_idx, order in enumerate(valid_orders):
         for rot, mx, my in transforms:
             derived_strokes = []
-            order_set = set(order) # 当前连通图涉及的笔画
+            order_set = set(order)
             
-            # 1. 变换贝塞尔曲线
             for bid in order:
                 orig_s = stroke_map[bid]
                 cid = shape_dict[hex_key][bid]
                 new_bezier = transform_bezier(orig_s["mother_bezier"], rot, mx, my)
                 
-                new_Y = normalize_and_sample_function(new_bezier)
-                variant_id = 0
-                if new_Y is not None and cid in cluster_refs:
-                    variants = get_4_isomorphisms_y_only(new_Y)
-                    dists = [np.mean(np.abs(cluster_refs[cid] - v)) for v in variants]
-                    variant_id = int(np.argmin(dists))
+                # 🌟 核心修改 1：获取该笔画未变形前的原生 v_orig (已在 Step 2 传入)
+                v_orig = orig_s.get("v_orig", 0)
+                
+                # 🌟 核心修改 2：纯代数状态机变换，0 次物理重采样，0 次精度损失
+                is_reflected = mx ^ my
+                derived_variant_id = v_orig ^ 2 if is_reflected else v_orig
                     
                 derived_strokes.append({
                     "bezier_id": bid,
                     "shape_token": cid,
-                    "variant_id": variant_id,  # 🌟 这一行你原来就有，非常棒！
+                    "variant_id": int(derived_variant_id), # 绝对准确的整数 Token
                     "mother_bezier": new_bezier,
                     "width_mean": float(np.mean(orig_s["width_bezier"]))
                 })
             
-            # 🌟 2. 同步变换并筛选当前子图的拓扑事件
             derived_events = []
             for ev in topo_events:
-                # 只保留存在于当前连通图序列中的拓扑事件
                 involved_strokes = [v for k, v in ev.items() if "stroke" in k or k in ["host", "guest"]]
                 if not any(bid in order_set for bid in involved_strokes): continue
-                
                 new_ev = ev.copy()
-                # 提取并同步旋转镜像相交点坐标 (确保你的 json 中叫 "position")
                 if "position" in new_ev:
                     new_ev["position"] = transform_point(new_ev["position"], rot, mx, my)
-                
                 derived_events.append(new_ev)
                 
             rule_name = f"order_{o_idx}_rot{rot}_mx{mx}_my{my}"
-            results.append((rule_name, derived_strokes, derived_events)) # 返回扩增后的事件
+            results.append((rule_name, derived_strokes, derived_events))
             
     return results

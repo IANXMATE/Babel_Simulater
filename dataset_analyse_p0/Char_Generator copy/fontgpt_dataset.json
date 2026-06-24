@@ -7080,7 +7080,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           19
@@ -7174,7 +7174,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           10,
           12
@@ -7778,7 +7778,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           19
@@ -7872,7 +7872,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           10,
           12
@@ -10430,7 +10430,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 0,
         "p0_cell": [
           20,
           4
@@ -10712,7 +10712,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           20,
           27
@@ -10806,7 +10806,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           11,
           4
@@ -10900,7 +10900,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           4,
           20
@@ -10994,7 +10994,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           27,
           11
@@ -11128,7 +11128,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 0,
         "p0_cell": [
           20,
           4
@@ -11410,7 +11410,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           20,
           27
@@ -11504,7 +11504,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           11,
           4
@@ -11598,7 +11598,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           4,
           20
@@ -11692,7 +11692,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           27,
           11
@@ -16934,7 +16934,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           23,
           11
@@ -17404,7 +17404,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           11,
           23
@@ -17498,7 +17498,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           20,
           8
@@ -17632,7 +17632,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           23,
           11
@@ -18102,7 +18102,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           11,
           23
@@ -18196,7 +18196,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           20,
           8
@@ -21634,7 +21634,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           17,
           24
@@ -21767,7 +21767,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           14,
           7
@@ -21900,7 +21900,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           14
@@ -22033,7 +22033,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           17
@@ -22166,7 +22166,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           17,
           7
@@ -22299,7 +22299,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           14,
           24
@@ -22698,7 +22698,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           17,
           24
@@ -22831,7 +22831,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           14,
           7
@@ -22964,7 +22964,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           14
@@ -23097,7 +23097,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           17
@@ -23230,7 +23230,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           17,
           7
@@ -23363,7 +23363,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           14,
           24
@@ -23793,7 +23793,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           17,
           24
@@ -23926,7 +23926,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           14,
           7
@@ -24059,7 +24059,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           14
@@ -24192,7 +24192,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           17
@@ -24325,7 +24325,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           17,
           7
@@ -24458,7 +24458,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           14,
           24
@@ -24795,7 +24795,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           17,
           24
@@ -24928,7 +24928,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           14,
           7
@@ -25061,7 +25061,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           14
@@ -25194,7 +25194,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           17
@@ -25327,7 +25327,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           17,
           7
@@ -25460,7 +25460,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           14,
           24
@@ -25921,7 +25921,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           17,
           24
@@ -26054,7 +26054,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           14,
           7
@@ -26187,7 +26187,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           14
@@ -26320,7 +26320,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           17
@@ -26453,7 +26453,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           17,
           7
@@ -26586,7 +26586,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           14,
           24
@@ -26782,7 +26782,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           12,
           27
@@ -27032,7 +27032,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           4,
           12
@@ -27157,7 +27157,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           12,
           4
@@ -27407,7 +27407,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           27,
           12
@@ -27813,7 +27813,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           12,
           27
@@ -28063,7 +28063,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           4,
           12
@@ -28188,7 +28188,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           12,
           4
@@ -28438,7 +28438,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           27,
           12
@@ -30266,7 +30266,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           26
@@ -30422,7 +30422,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           5
@@ -30578,7 +30578,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           5,
           24
@@ -30734,7 +30734,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           26,
           7
@@ -31630,7 +31630,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           26
@@ -31786,7 +31786,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           5
@@ -31942,7 +31942,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           5,
           24
@@ -32098,7 +32098,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           26,
           7
@@ -32567,7 +32567,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           13,
           16
@@ -32739,7 +32739,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           18,
           15
@@ -33255,7 +33255,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           13,
           15
@@ -33427,7 +33427,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           18,
           16
@@ -33974,7 +33974,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           13,
           16
@@ -34146,7 +34146,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           18,
           15
@@ -34662,7 +34662,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           13,
           15
@@ -34834,7 +34834,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           18,
           16
@@ -35288,7 +35288,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           13,
           16
@@ -35460,7 +35460,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           18,
           15
@@ -35976,7 +35976,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           13,
           15
@@ -36148,7 +36148,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           18,
           16
@@ -36664,7 +36664,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           13,
           16
@@ -36836,7 +36836,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           18,
           15
@@ -37352,7 +37352,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           13,
           15
@@ -37524,7 +37524,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           18,
           16
@@ -37917,7 +37917,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           16,
           27
@@ -37980,7 +37980,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           15,
           4
@@ -38106,7 +38106,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           15
@@ -38398,7 +38398,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           16,
           27
@@ -38461,7 +38461,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           15,
           4
@@ -38587,7 +38587,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           15
@@ -39235,7 +39235,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           5,
           27
@@ -39360,7 +39360,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           26,
           4
@@ -39485,7 +39485,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           5
@@ -39610,7 +39610,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           26
@@ -40150,7 +40150,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           5,
           27
@@ -40275,7 +40275,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           26,
           4
@@ -40400,7 +40400,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           5
@@ -40525,7 +40525,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           26
@@ -41235,7 +41235,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           10,
           13
@@ -41360,7 +41360,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           18
@@ -41485,7 +41485,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           18,
           10
@@ -41610,7 +41610,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           13,
           21
@@ -42150,7 +42150,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           10,
           13
@@ -42275,7 +42275,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           18
@@ -42400,7 +42400,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           18,
           10
@@ -42525,7 +42525,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           13,
           21
@@ -46034,7 +46034,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           8,
           9
@@ -46128,7 +46128,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           23,
           22
@@ -46222,7 +46222,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           22,
           8
@@ -46316,7 +46316,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           9,
           23
@@ -46840,7 +46840,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           8,
           9
@@ -46934,7 +46934,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           23,
           22
@@ -47028,7 +47028,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           22,
           8
@@ -47122,7 +47122,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           9,
           23
@@ -49042,7 +49042,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           24,
           4
@@ -49096,7 +49096,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           8,
           19
@@ -49136,7 +49136,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           8,
           27
@@ -49190,7 +49190,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           23,
           12
@@ -49230,7 +49230,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           27,
           24
@@ -49284,7 +49284,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           12,
           8
@@ -49324,7 +49324,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           4,
           8
@@ -49378,7 +49378,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           19,
           23
@@ -49794,7 +49794,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           8,
           19
@@ -49848,7 +49848,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           24,
           4
@@ -49888,7 +49888,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           23,
           12
@@ -49942,7 +49942,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           8,
           27
@@ -49982,7 +49982,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           12,
           8
@@ -50036,7 +50036,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           27,
           24
@@ -50076,7 +50076,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           19,
           23
@@ -50130,7 +50130,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           4,
           8
@@ -54157,7 +54157,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           20,
           8
@@ -54345,7 +54345,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           23,
           11
@@ -54439,7 +54439,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           8,
           20
@@ -54533,7 +54533,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           20,
           23
@@ -54604,7 +54604,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           18,
           8
@@ -54627,7 +54627,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           11,
           8
@@ -54909,7 +54909,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           20,
           8
@@ -55097,7 +55097,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           23,
           11
@@ -55191,7 +55191,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           8,
           20
@@ -55285,7 +55285,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           20,
           23
@@ -55379,7 +55379,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           11,
           8
@@ -55410,7 +55410,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           18,
           8
@@ -56223,7 +56223,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           20,
           10
@@ -56348,7 +56348,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           11,
           21
@@ -57254,7 +57254,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           20,
           10
@@ -57379,7 +57379,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           11,
           21
@@ -58036,7 +58036,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           12,
           15
@@ -58169,7 +58169,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           19,
           16
@@ -58302,7 +58302,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           12
@@ -58435,7 +58435,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           19
@@ -59100,7 +59100,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           12,
           15
@@ -59233,7 +59233,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           19,
           16
@@ -59366,7 +59366,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           12
@@ -59499,7 +59499,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           19
@@ -60195,7 +60195,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           12,
           15
@@ -60328,7 +60328,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           19,
           16
@@ -60461,7 +60461,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           12
@@ -60594,7 +60594,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           19
@@ -61197,7 +61197,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           12,
           15
@@ -61330,7 +61330,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           19,
           16
@@ -61463,7 +61463,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           12
@@ -61596,7 +61596,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           19
@@ -62323,7 +62323,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           12,
           15
@@ -62456,7 +62456,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           19,
           16
@@ -62589,7 +62589,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           12
@@ -62722,7 +62722,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           19
@@ -63230,7 +63230,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           21,
           7
@@ -63270,7 +63270,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           24,
           27
@@ -63355,7 +63355,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           7,
           21
@@ -63395,7 +63395,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           7,
           4
@@ -63480,7 +63480,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           24,
           10
@@ -63520,7 +63520,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           4,
           24
@@ -63605,7 +63605,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           10,
           7
@@ -63645,7 +63645,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           27,
           7
@@ -63730,7 +63730,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           24
@@ -64145,7 +64145,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           21,
           7
@@ -64270,7 +64270,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           7,
           21
@@ -64355,7 +64355,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           24,
           27
@@ -64395,7 +64395,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           24,
           10
@@ -64480,7 +64480,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           7,
           4
@@ -64520,7 +64520,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           10,
           7
@@ -64605,7 +64605,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           4,
           24
@@ -64645,7 +64645,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           24
@@ -64730,7 +64730,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 2,
         "p0_cell": [
           27,
           7
@@ -74756,7 +74756,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           8
@@ -75562,7 +75562,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           8
@@ -76334,7 +76334,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           19,
           18
@@ -76545,7 +76545,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           12,
           13
@@ -77178,7 +77178,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           19,
           13
@@ -77389,7 +77389,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           12,
           18
@@ -78022,7 +78022,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           19,
           18
@@ -78233,7 +78233,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           12,
           13
@@ -78866,7 +78866,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           19,
           13
@@ -79077,7 +79077,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           12,
           18
@@ -79710,7 +79710,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           19,
           18
@@ -79921,7 +79921,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           12,
           13
@@ -80554,7 +80554,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           19,
           13
@@ -80765,7 +80765,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           12,
           18
@@ -81398,7 +81398,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           19,
           18
@@ -81609,7 +81609,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           12,
           13
@@ -82242,7 +82242,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           19,
           13
@@ -82453,7 +82453,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           12,
           18
@@ -83179,7 +83179,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           19,
           18
@@ -83390,7 +83390,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           12,
           13
@@ -84023,7 +84023,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           19,
           13
@@ -84234,7 +84234,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           12,
           18
@@ -86574,7 +86574,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           23,
           27
@@ -86856,7 +86856,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           23,
           4
@@ -86950,7 +86950,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           8,
           27
@@ -87044,7 +87044,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           23
@@ -87138,7 +87138,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           8
@@ -87272,7 +87272,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           23,
           27
@@ -87554,7 +87554,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           23,
           4
@@ -87648,7 +87648,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           8,
           27
@@ -87742,7 +87742,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           23
@@ -87836,7 +87836,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           8
@@ -101052,7 +101052,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           8,
           28
@@ -101451,7 +101451,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           3
@@ -101584,7 +101584,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           28
@@ -101717,7 +101717,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           8
@@ -101850,7 +101850,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           23
@@ -102085,7 +102085,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           8,
           28
@@ -102484,7 +102484,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           3
@@ -102617,7 +102617,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           28
@@ -102750,7 +102750,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           8
@@ -102883,7 +102883,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           23
@@ -103586,7 +103586,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           28
@@ -103898,7 +103898,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           21
@@ -104054,7 +104054,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           10
@@ -104950,7 +104950,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           28
@@ -105262,7 +105262,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           21
@@ -105418,7 +105418,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           10
@@ -105646,7 +105646,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           3,
           24
@@ -105740,7 +105740,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           28,
           7
@@ -105834,7 +105834,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           28
@@ -105928,7 +105928,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           3
@@ -106022,7 +106022,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           7
@@ -106116,7 +106116,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           24
@@ -106452,7 +106452,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           3,
           24
@@ -106546,7 +106546,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           28,
           7
@@ -106640,7 +106640,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           28
@@ -106734,7 +106734,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           3
@@ -106828,7 +106828,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           7
@@ -106922,7 +106922,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           24
@@ -107486,7 +107486,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           4
@@ -107580,7 +107580,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           4,
           15
@@ -107674,7 +107674,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           27,
           16
@@ -108184,7 +108184,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           4
@@ -108278,7 +108278,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           4,
           15
@@ -108372,7 +108372,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           27,
           16
@@ -108746,7 +108746,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           22,
           3
@@ -109238,7 +109238,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           22,
           28
@@ -109402,7 +109402,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           3
@@ -109566,7 +109566,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           22
@@ -109730,7 +109730,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           9
@@ -109965,7 +109965,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           22,
           3
@@ -110457,7 +110457,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           22,
           28
@@ -110621,7 +110621,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           3
@@ -110785,7 +110785,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           22
@@ -110949,7 +110949,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           9
@@ -111308,7 +111308,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           22,
           3
@@ -111800,7 +111800,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           22,
           28
@@ -111964,7 +111964,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           3
@@ -112128,7 +112128,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           22
@@ -112292,7 +112292,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           9
@@ -112651,7 +112651,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           22,
           3
@@ -113143,7 +113143,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           22,
           28
@@ -113307,7 +113307,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           3
@@ -113471,7 +113471,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           22
@@ -113635,7 +113635,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           9
@@ -113878,7 +113878,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           22,
           3
@@ -114370,7 +114370,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           22,
           28
@@ -114534,7 +114534,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           3
@@ -114698,7 +114698,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           22
@@ -114862,7 +114862,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           9
@@ -123135,7 +123135,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           19,
           16
@@ -123166,7 +123166,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           22,
           4
@@ -123307,7 +123307,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           19
@@ -123338,7 +123338,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           22
@@ -123800,7 +123800,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           19,
           16
@@ -123854,7 +123854,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           22,
           4
@@ -123972,7 +123972,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           19
@@ -124026,7 +124026,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           22
@@ -130462,7 +130462,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           7,
           28
@@ -130774,7 +130774,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           7
@@ -130930,7 +130930,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           24
@@ -131594,7 +131594,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           7,
           28
@@ -131906,7 +131906,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           7
@@ -132062,7 +132062,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           24
@@ -133932,7 +133932,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           11,
           6
@@ -134088,7 +134088,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           6,
           20
@@ -134244,7 +134244,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           25,
           11
@@ -134306,7 +134306,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           5,
           24
@@ -135180,7 +135180,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           11,
           6
@@ -135336,7 +135336,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           6,
           20
@@ -135438,7 +135438,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           5,
           24
@@ -135492,7 +135492,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           25,
           11
@@ -136397,7 +136397,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           22,
           3
@@ -136553,7 +136553,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           9
@@ -136709,7 +136709,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           22
@@ -136842,7 +136842,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           22,
           28
@@ -136998,7 +136998,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           9,
           3
@@ -137310,7 +137310,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           9
@@ -137707,7 +137707,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           22,
           3
@@ -137863,7 +137863,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           9
@@ -138019,7 +138019,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           22
@@ -138206,7 +138206,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           22,
           28
@@ -138362,7 +138362,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           9,
           3
@@ -138674,7 +138674,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           9
@@ -138924,7 +138924,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           4
@@ -139049,7 +139049,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           10
@@ -139174,7 +139174,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           21
@@ -139214,7 +139214,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           9,
           14
@@ -139339,7 +139339,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           22,
           17
@@ -139464,7 +139464,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           17,
           9
@@ -139589,7 +139589,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           14,
           22
@@ -139839,7 +139839,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           4
@@ -139964,7 +139964,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           10
@@ -140089,7 +140089,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           21
@@ -140299,7 +140299,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           9,
           14
@@ -140424,7 +140424,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           22,
           17
@@ -140549,7 +140549,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           17,
           9
@@ -140674,7 +140674,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           14,
           22
@@ -140746,7 +140746,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           16,
           3
@@ -140810,7 +140810,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           16
@@ -141064,7 +141064,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           8,
           3
@@ -141087,7 +141087,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           23,
           16
@@ -141252,7 +141252,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           8
@@ -141369,7 +141369,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           15
@@ -141400,7 +141400,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           23,
           28
@@ -141463,7 +141463,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           16
@@ -141494,7 +141494,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           8,
           3
@@ -141588,7 +141588,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           23
@@ -141651,7 +141651,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           8
@@ -141682,7 +141682,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           8
@@ -141839,7 +141839,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           23,
           16
@@ -141870,7 +141870,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           8,
           3
@@ -142058,7 +142058,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           8
@@ -142098,7 +142098,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           23,
           28
@@ -142121,7 +142121,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           15
@@ -142192,7 +142192,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           8,
           3
@@ -142215,7 +142215,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           16
@@ -142286,7 +142286,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           23
@@ -142380,7 +142380,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           8
@@ -142403,7 +142403,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           8
@@ -142537,7 +142537,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           21,
           3
@@ -142749,7 +142749,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           21,
           28
@@ -142812,7 +142812,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           10,
           3
@@ -142875,7 +142875,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           21
@@ -142938,7 +142938,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           10
@@ -143064,7 +143064,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           21,
           3
@@ -143230,7 +143230,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           21,
           28
@@ -143293,7 +143293,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           10,
           3
@@ -143356,7 +143356,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           21
@@ -143419,7 +143419,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           10
@@ -143545,7 +143545,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           9,
           28
@@ -143608,7 +143608,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           22
@@ -143671,7 +143671,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           9
@@ -144072,7 +144072,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           9,
           28
@@ -144135,7 +144135,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           22
@@ -144198,7 +144198,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           9
@@ -144742,7 +144742,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           3
@@ -144765,7 +144765,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           3
@@ -144805,7 +144805,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           28
@@ -144828,7 +144828,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           28
@@ -144868,7 +144868,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           16
@@ -144931,7 +144931,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           15
@@ -144954,7 +144954,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           7
@@ -145246,7 +145246,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           3
@@ -145269,7 +145269,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           3
@@ -145309,7 +145309,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           28
@@ -145332,7 +145332,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           28
@@ -145395,7 +145395,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           16
@@ -145435,7 +145435,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           7
@@ -145458,7 +145458,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           15
@@ -146085,7 +146085,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           9
@@ -146179,7 +146179,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           22
@@ -146837,7 +146837,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           9
@@ -146931,7 +146931,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           22
@@ -147563,7 +147563,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           16,
           12
@@ -147750,7 +147750,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           12,
           16
@@ -147937,7 +147937,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           19,
           15
@@ -148124,7 +148124,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           15,
           12
@@ -148311,7 +148311,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           16,
           19
@@ -149206,7 +149206,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           16,
           12
@@ -149393,7 +149393,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           12,
           16
@@ -149580,7 +149580,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           19,
           15
@@ -149767,7 +149767,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           15,
           12
@@ -149954,7 +149954,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           16,
           19
@@ -150283,7 +150283,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           28,
           24
@@ -150549,7 +150549,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           3
@@ -150682,7 +150682,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           28
@@ -150815,7 +150815,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           7
@@ -150948,7 +150948,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           24
@@ -151347,7 +151347,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           28,
           24
@@ -151613,7 +151613,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           3
@@ -151746,7 +151746,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           28
@@ -151879,7 +151879,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           28,
           7
@@ -152012,7 +152012,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           24
@@ -152746,7 +152746,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           8,
           3
@@ -152769,7 +152769,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           3
@@ -152925,7 +152925,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           28
@@ -153058,7 +153058,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           8
@@ -153214,7 +153214,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           23
@@ -153237,7 +153237,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           23
@@ -154079,7 +154079,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           3
@@ -154110,7 +154110,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           8,
           3
@@ -154235,7 +154235,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           28
@@ -154422,7 +154422,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           8
@@ -154547,7 +154547,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           23
@@ -154578,7 +154578,7 @@
         "token_type": "STROKE",
         "bezier_id": 5,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           23
@@ -174166,7 +174166,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           19,
           16
@@ -174291,7 +174291,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           12
@@ -174416,7 +174416,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           19
@@ -175197,7 +175197,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           19,
           16
@@ -175322,7 +175322,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           12
@@ -175447,7 +175447,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           19
@@ -177456,7 +177456,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           7,
           24
@@ -177550,7 +177550,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           24,
           7
@@ -177644,7 +177644,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           7,
           7
@@ -177738,7 +177738,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           24,
           24
@@ -178154,7 +178154,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           7,
           24
@@ -178248,7 +178248,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           24,
           7
@@ -178342,7 +178342,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           7,
           7
@@ -178436,7 +178436,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           24,
           24
@@ -182422,7 +182422,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           13,
           7
@@ -182516,7 +182516,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           18
@@ -182610,7 +182610,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           13
@@ -183120,7 +183120,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           13,
           7
@@ -183214,7 +183214,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           18
@@ -183308,7 +183308,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           24,
           13
@@ -184269,7 +184269,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           13
@@ -184386,7 +184386,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           18
@@ -184503,7 +184503,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           18,
           8
@@ -184620,7 +184620,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           13,
           23
@@ -185259,7 +185259,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           13
@@ -185376,7 +185376,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           18
@@ -185493,7 +185493,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           18,
           8
@@ -185610,7 +185610,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           13,
           23
@@ -185798,7 +185798,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           10,
           22
@@ -185986,7 +185986,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           10
@@ -186496,7 +186496,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           10,
           22
@@ -186684,7 +186684,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           10
@@ -196407,7 +196407,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           23,
           8
@@ -196532,7 +196532,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           23
@@ -196782,7 +196782,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           8
@@ -196907,7 +196907,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           23
@@ -197376,7 +197376,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           23,
           8
@@ -197501,7 +197501,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           23
@@ -197751,7 +197751,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           8,
           8
@@ -197876,7 +197876,7 @@
         "token_type": "STROKE",
         "bezier_id": 4,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           23
@@ -204393,7 +204393,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           13,
           10
@@ -204487,7 +204487,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           18,
           21
@@ -204581,7 +204581,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           21,
           13
@@ -204675,7 +204675,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           10,
           18
@@ -205145,7 +205145,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           13,
           10
@@ -205239,7 +205239,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           18,
           21
@@ -205333,7 +205333,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           21,
           13
@@ -205427,7 +205427,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           10,
           18
@@ -205592,7 +205592,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           6,
           4
@@ -205780,7 +205780,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           27,
           6
@@ -205897,7 +205897,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           10,
           27
@@ -205991,7 +205991,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           4
@@ -206085,7 +206085,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           10
@@ -206156,7 +206156,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           27,
           25
@@ -206179,7 +206179,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           21
@@ -206398,7 +206398,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           6,
           4
@@ -206586,7 +206586,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           27,
           6
@@ -206649,7 +206649,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           10,
           27
@@ -206743,7 +206743,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           21,
           4
@@ -206837,7 +206837,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           10
@@ -206931,7 +206931,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           21
@@ -206962,7 +206962,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           27,
           25
@@ -208623,7 +208623,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           15,
           28
@@ -209187,7 +209187,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           16
@@ -209375,7 +209375,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 18,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           15,
           28
@@ -209939,7 +209939,7 @@
         "token_type": "STROKE",
         "bezier_id": 2,
         "shape_code": 18,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           3,
           16
@@ -211144,7 +211144,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           23,
           16
@@ -211270,7 +211270,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           8
@@ -211333,7 +211333,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           23
@@ -211396,7 +211396,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           15
@@ -211671,7 +211671,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           23,
           16
@@ -211797,7 +211797,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           15,
           8
@@ -211860,7 +211860,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           16,
           23
@@ -211923,7 +211923,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           23,
           15
@@ -217794,7 +217794,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           24,
           3
@@ -217888,7 +217888,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           7,
           28
@@ -217982,7 +217982,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           24
@@ -218076,7 +218076,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           7
@@ -218600,7 +218600,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           24,
           3
@@ -218694,7 +218694,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           7,
           28
@@ -218788,7 +218788,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           28,
           24
@@ -218882,7 +218882,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           3,
           7
@@ -221663,7 +221663,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           4
@@ -221757,7 +221757,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           4,
           24
@@ -221851,7 +221851,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           27,
           7
@@ -222227,7 +222227,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           27,
           24
@@ -222415,7 +222415,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           7,
           4
@@ -222509,7 +222509,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           4,
           24
@@ -222603,7 +222603,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 1,
+        "variant_id": 2,
         "p0_cell": [
           27,
           7
@@ -222979,7 +222979,7 @@
         "token_type": "STROKE",
         "bezier_id": 3,
         "shape_code": 7,
-        "variant_id": 3,
+        "variant_id": 0,
         "p0_cell": [
           27,
           24
@@ -224953,7 +224953,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           27,
           22
@@ -225086,7 +225086,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           22,
           27
@@ -225219,7 +225219,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           4
@@ -225352,7 +225352,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           22
@@ -225485,7 +225485,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           9
@@ -226017,7 +226017,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           27,
           22
@@ -226150,7 +226150,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           22,
           27
@@ -226283,7 +226283,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           4
@@ -226416,7 +226416,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           22
@@ -226549,7 +226549,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           9
@@ -227104,7 +227104,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           27,
           22
@@ -227237,7 +227237,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           22,
           27
@@ -227370,7 +227370,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           4
@@ -227503,7 +227503,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           22
@@ -227636,7 +227636,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           9
@@ -228230,7 +228230,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           27,
           22
@@ -228363,7 +228363,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           22,
           27
@@ -228496,7 +228496,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           4
@@ -228629,7 +228629,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           22
@@ -228762,7 +228762,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           9
@@ -229232,7 +229232,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 2,
+        "variant_id": 1,
         "p0_cell": [
           27,
           22
@@ -229365,7 +229365,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           22,
           27
@@ -229498,7 +229498,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           9,
           4
@@ -229631,7 +229631,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           4,
           22
@@ -229764,7 +229764,7 @@
         "token_type": "STROKE",
         "bezier_id": 1,
         "shape_code": 7,
-        "variant_id": 0,
+        "variant_id": 3,
         "p0_cell": [
           27,
           9
