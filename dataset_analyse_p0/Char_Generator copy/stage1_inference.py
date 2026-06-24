@@ -15,10 +15,10 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(SCRIPT_DIR, "fontgpt_vector_lm_latest.pth")
 CLUSTER_FILE = os.path.join(SCRIPT_DIR, "clustered_results.json") # 🌟 强制绝对路径
 
-CANVAS_SIZE = 1000.0
+CANVAS_SIZE = 400.0
 GRID_BINS = 32
 T_BINS = 32
-TEMPERATURE = 0.1  # 🌟 强行降温，约束语法
+TEMPERATURE = 0.9  # 🌟 强行降温，约束语法
 
 # ==========================================
 # 📚 核心补丁：强力加载 VQ-VAE 形状密码本
@@ -37,6 +37,9 @@ except Exception as e:
     print(f"⚠️ 报错详情: {e}")
     print("⚠️ 渲染器将强制降级为【画直线模式】。")
 
+# ==========================================
+# 🔍 矢量解码器：Tokens -> 几何对象 (自带语法容错)
+# ==========================================
 # ==========================================
 # 🔍 矢量解码器：Tokens -> 几何对象 (自带语法容错)
 # ==========================================
@@ -65,6 +68,8 @@ def decode_tokens_to_geometry(tokens, tokenizer):
                     sequence.append({
                         "type": "STROKE",
                         "shape_code": int(shape_code),
+                        "variant_id": int(var_id),    # 🌟 修复：保存形态 ID
+                        "width_token": int(w_token),  # 🌟 修复：保存线宽 ID
                         "p0": [(p0_cx + 0.5 + p0_ox) * (CANVAS_SIZE / GRID_BINS), 
                                (p0_cy + 0.5 + p0_oy) * (CANVAS_SIZE / GRID_BINS)],
                         "p3": [(p3_cx + 0.5 + p3_ox) * (CANVAS_SIZE / GRID_BINS), 
@@ -83,8 +88,8 @@ def decode_tokens_to_geometry(tokens, tokenizer):
                     j_type  = j_types[j_idx] if 0 <= j_idx < len(j_types) else "Unknown"
                     dist_a  = max(0, chunk[1] - tokenizer.OFFSET_DIST)
                     dist_b  = max(0, chunk[2] - tokenizer.OFFSET_DIST)
-                    ta_val  = np.clip(chunk[3] - tokenizer.OFFSET_TBIN, 0, 31) / float(T_BINS)
-                    tb_val  = np.clip(chunk[4] - tokenizer.OFFSET_TBIN, 0, 31) / float(T_BINS)
+                    ta_val  = np.clip(chunk[3] - tokenizer.OFFSET_TBIN, 0, 32) / float(T_BINS)
+                    tb_val  = np.clip(chunk[4] - tokenizer.OFFSET_TBIN, 0, 32) / float(T_BINS)
                     sequence.append({
                         "type": f"JUNCTION_{j_type}",
                         "dist_a": int(dist_a),
@@ -106,6 +111,8 @@ def generate_font_sequence(model, tokenizer, device, max_len=200):
     generated_tokens = [tokenizer.BOS]
     expected_queue = []
     
+    current_jtype = -1 # 🌟 新增：用来记住当前正在处理什么类型的交点
+
     print(f"\n🔮 开始自回归推理 (启用强约束状态机, Temperature: {TEMPERATURE})...")
     with torch.no_grad():
         for step in range(max_len):
@@ -127,7 +134,13 @@ def generate_font_sequence(model, tokenizer, device, max_len=200):
                 elif expected_type == "WIDTH": mask[tokenizer.OFFSET_WIDTH : tokenizer.OFFSET_JTYPE] = 0
                 elif expected_type == "JTYPE": mask[tokenizer.OFFSET_JTYPE : tokenizer.OFFSET_DIST] = 0
                 elif expected_type == "DIST":  mask[tokenizer.OFFSET_DIST : tokenizer.OFFSET_TBIN] = 0
-                elif expected_type == "TBIN":  mask[tokenizer.OFFSET_TBIN : tokenizer.OFFSET_TBIN + 1000] = 0
+                elif expected_type == "TBIN":
+                    # 🌟 核心拦截逻辑：物理法则降临！
+                    if current_jtype == 0: # 0 代表 E2E
+                        mask[tokenizer.OFFSET_TBIN + 0] = 0
+                        mask[tokenizer.OFFSET_TBIN + 32] = 0
+                    else:
+                        mask[tokenizer.OFFSET_TBIN : tokenizer.OFFSET_TBIN + 33] = 0
             
             next_token_logits = next_token_logits + mask
             next_token_logits = next_token_logits / TEMPERATURE
@@ -140,8 +153,11 @@ def generate_font_sequence(model, tokenizer, device, max_len=200):
                 elif next_token == tokenizer.CMD_JUNCTION:
                     expected_queue = ["JTYPE", "DIST", "DIST", "TBIN", "TBIN"]
             else:
-                expected_queue.pop(0)
-                
+                completed_type = expected_queue.pop(0)
+                # 🌟 如果刚刚生成的是 JTYPE，立刻把它记下来，留给后面的 TBIN 用！
+                if completed_type == "JTYPE":
+                    current_jtype = next_token - tokenizer.OFFSET_JTYPE
+                    
             generated_tokens.append(next_token)
             if next_token == tokenizer.EOS:
                 print("🏁 接收到 [EOS] 结束符，生成完毕！")
@@ -166,13 +182,35 @@ def render_sequence(sequence):
             p0 = np.array(item["p0"])
             p3 = np.array(item["p3"])
             drawn_strokes.append((p0, p3))
-            shape_code = int(item["shape_code"])
             
-            # 🌟 核心：将 Codebook 里的贝塞尔原型贴合到画布上
+            shape_code = int(item["shape_code"])
+            var_id = int(item.get("variant_id", 0))   # 🌟 获取变体 ID
+            w_token = int(item.get("width_token", 0)) # 🌟 获取线宽 ID
+            
+            # 将粗细 ID 映射为实际渲染的 linewidth (例如 0->2, 1->4, 2->6, 3->8)
+            dynamic_lw = 2 + w_token * 2 
+            
             if shape_code in shape_codebook:
-                canon_pts = np.array(shape_codebook[shape_code])
-                c0, c3 = canon_pts[0], canon_pts[3]
+                canon_pts = np.array(shape_codebook[shape_code]).copy()
                 
+                # ==========================================
+                # 🌟 核心魔法回归：纯几何反射 (解决凹凸错乱)
+                # ==========================================
+                if var_id in [2, 3]:
+                    u = canon_pts[3] - canon_pts[0]
+                    u_dot_u = np.dot(u, u)
+                    if u_dot_u > 1e-5:
+                        for i in (1, 2):
+                            v = canon_pts[i] - canon_pts[0]
+                            proj = (np.dot(v, u) / u_dot_u) * u
+                            perp = v - proj
+                            canon_pts[i] = canon_pts[0] + proj - perp
+                
+                if var_id in [1, 3]:
+                    canon_pts = canon_pts[::-1]
+                # ==========================================
+                
+                c0, c3 = canon_pts[0], canon_pts[3]
                 v_canon = c3 - c0
                 v_pred = p3 - p0
                 len_canon = np.linalg.norm(v_canon)
@@ -187,20 +225,19 @@ def render_sequence(sequence):
                     cos_t, sin_t = np.cos(theta), np.sin(theta)
                     R = np.array([[cos_t, -sin_t], [sin_t, cos_t]])
                     
-                    # 仿射变换求解
                     mapped_pts = (canon_pts - c0) @ R.T * scale + p0
                     
-                    # 渲染曲线
                     ts = np.linspace(0, 1, 50)[:, None]
                     mt = 1 - ts
                     curve = (mt**3)*mapped_pts[0] + 3*(mt**2)*ts*mapped_pts[1] + 3*mt*(ts**2)*mapped_pts[2] + (ts**3)*mapped_pts[3]
                     
-                    plt.plot(curve[:, 0], curve[:, 1], color='blue', linewidth=3, zorder=1)
+                    # 🌟 修复：应用大模型预测出来的动态粗细 (dynamic_lw)
+                    plt.plot(curve[:, 0], curve[:, 1], color='blue', linewidth=dynamic_lw, zorder=1)
                 else:
-                    plt.plot([p0[0], p3[0]], [p0[1], p3[1]], color='blue', linewidth=3, zorder=1)
+                    plt.plot([p0[0], p3[0]], [p0[1], p3[1]], color='blue', linewidth=dynamic_lw, zorder=1)
             else:
                 print(f"⚠️ 未找到 Shape Code: {shape_code}，被迫降级画直线。")
-                plt.plot([p0[0], p3[0]], [p0[1], p3[1]], color='blue', linewidth=3, zorder=1)
+                plt.plot([p0[0], p3[0]], [p0[1], p3[1]], color='blue', linewidth=dynamic_lw, zorder=1)
                 
             plt.scatter(p0[0], p0[1], color='green', s=30, zorder=2)
             plt.scatter(p3[0], p3[1], color='red', s=30, zorder=2)

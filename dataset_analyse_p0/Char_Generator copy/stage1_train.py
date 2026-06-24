@@ -2,6 +2,7 @@ import os
 import json
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 import math
@@ -11,20 +12,17 @@ from tqdm import tqdm
 # ⚙️ 全局配置与超参数
 # ==========================================
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATASET_FILE = "fontgpt_dataset.json"
-DATASET_FILE = os.path.join(SCRIPT_DIR, DATASET_FILE)
-
+DATASET_FILE = os.path.join(SCRIPT_DIR, "fontgpt_dataset.json")
 MODEL_SAVE_PATH = os.path.join(SCRIPT_DIR, "fontgpt_vector_lm_latest.pth")
 
-# 统一词表空间配置 (Token Space)
 VOCAB_SIZE = 10000 
-MAX_SEQ_LEN = 256  # 根据你的序列长度可以适当调大
+MAX_SEQ_LEN = 256 
 
 # Transformer 超参数
 D_MODEL = 256
 N_HEADS = 8
 N_LAYERS = 6
-DROPOUT = 0.01
+DROPOUT = 0.1 # 训练时适当加大防止过拟合
 BATCH_SIZE = 64
 EPOCHS = 10
 LR = 1e-4
@@ -33,32 +31,25 @@ LR = 1e-4
 # 🔠 核心基建：矢量分词器 (Font Tokenizer)
 # ==========================================
 class FontTokenizer:
-    """
-    将 JSON 中的异构字典 (STROKE / JUNCTION)
-    展平并映射为 1D 的全局统一整数 Token 序列。
-    """
     def __init__(self):
-        # 特殊控制 Token
         self.PAD = 0
         self.BOS = 1
         self.EOS = 2
         
-        self.CMD_STROKE = 3     # 宣告：接下来是一笔
-        self.CMD_JUNCTION = 4   # 宣告：接下来是一个交点
+        self.CMD_STROKE = 3     
+        self.CMD_JUNCTION = 4   
         
-        # 物理意义空间的偏移量 (避免不同属性的 ID 冲突)
-        self.OFFSET_SHAPE = 100     # 形状 ID (如 0-500)
-        self.OFFSET_VAR = 1000      # 变体 ID (0-3)
-        self.OFFSET_CELL = 2000     # 网格 ID (0-31)
-        self.OFFSET_OFFSET = 3000   # 偏移量离散化 (0-31)
-        self.OFFSET_WIDTH = 4000    # 宽度 ID (0-4)
+        self.OFFSET_SHAPE = 100    
+        self.OFFSET_VAR = 1000      
+        self.OFFSET_CELL = 2000     
+        self.OFFSET_OFFSET = 3000   
+        self.OFFSET_WIDTH = 4000    
         
-        self.OFFSET_JTYPE = 5000    # 交点类型 (0:E2E, 1:X, 2:T)
-        self.OFFSET_DIST = 6000     # 相对距离引用 (0-99)
-        self.OFFSET_TBIN = 7000     # T 值比例桶 (0-31)
+        self.OFFSET_JTYPE = 5000    
+        self.OFFSET_DIST = 6000     
+        self.OFFSET_TBIN = 7000     
 
     def encode(self, sequence_dicts):
-        """将 [Dict, Dict...] 编码为 [Int, Int...]"""
         tokens = [self.BOS]
         for item in sequence_dicts:
             if item["token_type"] == "STROKE":
@@ -67,7 +58,6 @@ class FontTokenizer:
                 tokens.append(self.OFFSET_VAR + item["variant_id"])
                 tokens.append(self.OFFSET_CELL + item["p0_cell"][0])
                 tokens.append(self.OFFSET_CELL + item["p0_cell"][1])
-                # 将 float 偏移量 (0~1) 临时量化为 32 个 bin 以适应纯 Token 架构
                 tokens.append(self.OFFSET_OFFSET + int(max(0, min(0.999, item["p0_offset"][0])) * 32))
                 tokens.append(self.OFFSET_OFFSET + int(max(0, min(0.999, item["p0_offset"][1])) * 32))
                 tokens.append(self.OFFSET_CELL + item["p3_cell"][0])
@@ -80,7 +70,6 @@ class FontTokenizer:
                 tokens.append(self.CMD_JUNCTION)
                 jmap = {"E2E": 0, "X": 1, "T": 2}
                 tokens.append(self.OFFSET_JTYPE + jmap.get(item["j_type"], 0))
-                # 限制最大向前回溯距离为 99 笔
                 tokens.append(self.OFFSET_DIST + min(item["ref_a_dist"], 99)) 
                 tokens.append(self.OFFSET_DIST + min(item["ref_b_dist"], 99))
                 tokens.append(self.OFFSET_TBIN + item["ta_bin"])
@@ -104,7 +93,6 @@ class FontVectorLanguageDataset(Dataset):
         for d in raw_data:
             tokens = self.tokenizer.encode(d["sequence"])
             if len(tokens) <= MAX_SEQ_LEN:
-                # 补齐 PAD
                 pad_len = MAX_SEQ_LEN - len(tokens)
                 tokens.extend([self.tokenizer.PAD] * pad_len)
                 self.samples.append(torch.tensor(tokens, dtype=torch.long))
@@ -113,12 +101,11 @@ class FontVectorLanguageDataset(Dataset):
         return len(self.samples)
 
     def __getitem__(self, idx):
-        # GPT 训练范式：输入是 [0...N-1], 标签是 [1...N]
         seq = self.samples[idx]
         return seq[:-1], seq[1:]
 
 # ==========================================
-# 🧠 极简大模型：纯 Causal Transformer
+# 🧠 纯粹的 GPT 架构：手写 Decoder Block
 # ==========================================
 class PositionalEncoding(nn.Module):
     def __init__(self, d_model, max_len=1024):
@@ -133,66 +120,161 @@ class PositionalEncoding(nn.Module):
     def forward(self, x):
         return x + self.pe[:, :x.size(1), :]
 
+class GPTBlock(nn.Module):
+    """🌟 修复1：最纯正的自回归 GPT 块，彻底抛弃 Encoder 歧义"""
+    def __init__(self, d_model, n_heads, dropout=0.1):
+        super().__init__()
+        self.ln_1 = nn.LayerNorm(d_model)
+        self.attn = nn.MultiheadAttention(d_model, n_heads, dropout=dropout, batch_first=True)
+        self.ln_2 = nn.LayerNorm(d_model)
+        self.mlp = nn.Sequential(
+            nn.Linear(d_model, 4 * d_model),
+            nn.GELU(),
+            nn.Linear(4 * d_model, d_model),
+            nn.Dropout(dropout)
+        )
+
+    def forward(self, x, causal_mask, padding_mask=None):
+        # 严格遵守 Pre-LN 架构，对梯度的流动极其友好
+        x_norm = self.ln_1(x)
+        attn_out, _ = self.attn(x_norm, x_norm, x_norm, 
+                                attn_mask=causal_mask, 
+                                key_padding_mask=padding_mask,
+                                need_weights=False)
+        x = x + attn_out
+        x = x + self.mlp(self.ln_2(x))
+        return x
+
 class FontVectorLM(nn.Module):
     def __init__(self):
         super().__init__()
-        # 全局统一 Embedding
+        self.tokenizer = FontTokenizer()
         self.embedding = nn.Embedding(VOCAB_SIZE, D_MODEL, padding_idx=0)
         self.pos_encoder = PositionalEncoding(D_MODEL)
         
-        # 核心大脑：标准的自回归编码器层
-        encoder_layer = nn.TransformerEncoderLayer(
-            d_model=D_MODEL, 
-            nhead=N_HEADS, 
-            dim_feedforward=D_MODEL * 4, 
-            dropout=DROPOUT,
-            batch_first=True
-        )
-        self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=N_LAYERS)
-        
-        # 语言模型头 (LM Head)：预测下一个 Token 的概率分布
+        # 🌟 修复1：使用 ModuleList 堆叠手写的 GPTBlock
+        self.blocks = nn.ModuleList([GPTBlock(D_MODEL, N_HEADS, DROPOUT) for _ in range(N_LAYERS)])
+        self.ln_f = nn.LayerNorm(D_MODEL) # GPT 必须有一个 final layernorm
         self.lm_head = nn.Linear(D_MODEL, VOCAB_SIZE)
 
-    def generate_square_subsequent_mask(self, sz):
-        """生成因果掩码 (Causal Mask)，确保模型看不见未来"""
+    def generate_causal_mask(self, sz):
         mask = (torch.triu(torch.ones(sz, sz)) == 1).transpose(0, 1)
         mask = mask.float().masked_fill(mask == 0, float('-inf')).masked_fill(mask == 1, float(0.0))
         return mask
 
     def forward(self, x, padding_mask=None):
-        # x shape: [Batch, Seq_len]
         seq_len = x.size(1)
+        x = self.embedding(x) * math.sqrt(D_MODEL)
+        x = self.pos_encoder(x)
         
-        # 1. 词嵌入 + 位置编码
-        x_emb = self.embedding(x) * math.sqrt(D_MODEL)
-        x_emb = self.pos_encoder(x_emb)
+        causal_mask = self.generate_causal_mask(seq_len).to(x.device)
         
-        # 2. 生成因果掩码 (Causal Mask)
-        causal_mask = self.generate_square_subsequent_mask(seq_len).to(x.device)
-        
-        # 3. Transformer 推理
-        # 注意：在 PyTorch 中，src_key_padding_mask 控制 PAD 不参与计算
-        out = self.transformer(x_emb, mask=causal_mask, src_key_padding_mask=padding_mask)
-        
-        # 4. 投影回全局词表空间
-        logits = self.lm_head(out)
-        return logits
+        for block in self.blocks:
+            x = block(x, causal_mask, padding_mask)
+            
+        x = self.ln_f(x)
+        return self.lm_head(x)
+
+    # ==========================================
+    # 🛡️ 修复2：带状态机约束的强力生成器
+    # ==========================================
+    @torch.no_grad()
+    def generate_safe(self, start_tokens, max_new_tokens, temperature=1.0):
+        """
+        基于状态机的安全解码器。确保模型生成的 Token 绝对符合拓扑语法。
+        """
+        self.eval()
+        device = next(self.parameters()).device
+        seq = torch.tensor([start_tokens], dtype=torch.long).to(device) # [1, seq_len]
+        tk = self.tokenizer
+
+        for _ in range(max_new_tokens):
+            logits = self(seq)[:, -1, :] / temperature # 只取最后一个位置的预测
+            
+            # --- 构建 Logit 掩码 (全置为负无穷) ---
+            mask = torch.full((VOCAB_SIZE,), float('-inf'), device=device)
+            
+            # --- 状态机解析：根据历史寻找当前上下文 ---
+            curr_list = seq[0].tolist()
+            last_cmd = None
+            dist = 0
+            
+            # 倒序寻找最近的一个指令 (STROKE 或 JUNCTION)
+            for i in range(len(curr_list) - 1, -1, -1):
+                if curr_list[i] in [tk.CMD_STROKE, tk.CMD_JUNCTION]:
+                    last_cmd = curr_list[i]
+                    dist = len(curr_list) - 1 - i
+                    break
+            
+            # --- 动态赋权：开放允许的 Token 区间 ---
+            if last_cmd is None or (last_cmd == tk.CMD_STROKE and dist == 11) or (last_cmd == tk.CMD_JUNCTION and dist == 5):
+                # 状态 0：期待新指令
+                mask[tk.CMD_STROKE] = 0
+                mask[tk.CMD_JUNCTION] = 0
+                mask[tk.EOS] = 0
+            
+            elif last_cmd == tk.CMD_STROKE:
+                # 笔画属性解析流 (严格的顺序依赖)
+                if dist == 0: mask[tk.OFFSET_SHAPE:tk.OFFSET_VAR] = 0       # Shape
+                elif dist == 1: mask[tk.OFFSET_VAR:tk.OFFSET_CELL] = 0      # Variant
+                elif dist == 2: mask[tk.OFFSET_CELL:tk.OFFSET_OFFSET] = 0   # p0_cx
+                elif dist == 3: mask[tk.OFFSET_CELL:tk.OFFSET_OFFSET] = 0   # p0_cy
+                elif dist == 4: mask[tk.OFFSET_OFFSET:tk.OFFSET_WIDTH] = 0  # p0_ox
+                elif dist == 5: mask[tk.OFFSET_OFFSET:tk.OFFSET_WIDTH] = 0  # p0_oy
+                elif dist == 6: mask[tk.OFFSET_CELL:tk.OFFSET_OFFSET] = 0   # p3_cx
+                elif dist == 7: mask[tk.OFFSET_CELL:tk.OFFSET_OFFSET] = 0   # p3_cy
+                elif dist == 8: mask[tk.OFFSET_OFFSET:tk.OFFSET_WIDTH] = 0  # p3_ox
+                elif dist == 9: mask[tk.OFFSET_OFFSET:tk.OFFSET_WIDTH] = 0  # p3_oy
+                elif dist == 10: mask[tk.OFFSET_WIDTH:tk.OFFSET_JTYPE] = 0  # Width
+                
+            elif last_cmd == tk.CMD_JUNCTION:
+                # 🌟 动态向回追溯，获取当前刚刚生成的交点类型 (j_type)
+                # 当 dist=3 时，我们在预测 ta_bin，此时 j_type 刚好在倒数第 3 个位置
+                # 当 dist=4 时，我们在预测 tb_bin，此时 j_type 刚好在倒数第 4 个位置
+                j_type_val = -1
+                if dist in [3, 4]:
+                    j_type_token = curr_list[-dist]
+                    j_type_val = j_type_token - tk.OFFSET_JTYPE
+
+                # 交点属性解析流
+                if dist == 0: mask[tk.OFFSET_JTYPE:tk.OFFSET_DIST] = 0      # JType
+                elif dist == 1: mask[tk.OFFSET_DIST:tk.OFFSET_TBIN] = 0     # ref_a
+                elif dist == 2: mask[tk.OFFSET_DIST:tk.OFFSET_TBIN] = 0     # ref_b
+                elif dist == 3 or dist == 4:                                # ta_bin & tb_bin
+                    if j_type_val == 0:
+                        # 🎯 物理法则强干预：如果是 E2E (0)，强制 t 值只能是 0 或 32！
+                        mask[tk.OFFSET_TBIN + 0] = 0
+                        mask[tk.OFFSET_TBIN + 32] = 0
+                    else:
+                        # 如果是 T 型或 X 型，允许 0 到 32 的所有比例 (共 33 个 Token)
+                        mask[tk.OFFSET_TBIN : tk.OFFSET_TBIN + 33] = 0
+
+            # 将掩码加到 logits 上，非法的选项会被拉到 -inf，softmax 后概率直接为 0
+            safe_logits = logits + mask
+            probs = F.softmax(safe_logits, dim=-1)
+            next_token = torch.multinomial(probs, num_samples=1)
+            
+            seq = torch.cat([seq, next_token], dim=1)
+            if next_token.item() == tk.EOS: break
+                
+        return seq[0].tolist()
 
 # ==========================================
 # 🚂 极简训练循环
 # ==========================================
 def main():
-    device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
-    print(f"🚀 初始化极简矢量语言模型 (Device: {device})...")
+    if torch.cuda.is_available(): device = torch.device("cuda")
+    elif torch.backends.mps.is_available(): device = torch.device("mps")
+    else: device = torch.device("cpu")
+    
+    print(f"🚀 初始化纯正 GPT 矢量语言模型 (Device: {device})...")
     
     dataset = FontVectorLanguageDataset(DATASET_FILE)
-    dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=4)
+    dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0) # 调试时设为 0
     print(f"✅ 数据集加载完成，样本数: {len(dataset)}")
 
     model = FontVectorLM().to(device)
     optimizer = optim.AdamW(model.parameters(), lr=LR)
-    
-    # 使用交叉熵计算 Loss，极其关键的一点：忽略 PAD Token (0) 的 Loss
     criterion = nn.CrossEntropyLoss(ignore_index=0)
 
     for epoch in range(EPOCHS):
@@ -202,18 +284,15 @@ def main():
         
         for batch_x, batch_y in pbar:
             batch_x, batch_y = batch_x.to(device), batch_y.to(device)
-            
-            # 构建 Padding Mask (为 True 的地方在 Attention 中会被忽略)
             padding_mask = (batch_x == 0)
             
             optimizer.zero_grad()
             logits = model(batch_x, padding_mask=padding_mask)
             
-            # 计算 Next-Token Prediction Loss
-            # logits 展平为 [Batch * Seq_len, Vocab_size], batch_y 展平为 [Batch * Seq_len]
             loss = criterion(logits.reshape(-1, VOCAB_SIZE), batch_y.reshape(-1))
-            
             loss.backward()
+            
+            # GPT 必备的梯度裁剪，防止早期梯度爆炸
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
             
@@ -223,7 +302,7 @@ def main():
         print(f"📈 Epoch {epoch+1} | 平均 Loss: {total_loss/len(dataloader):.4f}")
         
     torch.save(model.state_dict(), MODEL_SAVE_PATH)
-    print(f"💾 模型已保存至 {MODEL_SAVE_PATH}！大一统时代降临！")
+    print(f"💾 模型已保存至 {MODEL_SAVE_PATH}！")
 
 if __name__ == "__main__":
     main()
