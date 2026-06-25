@@ -1,6 +1,7 @@
 import os
 import json
 import glob
+import math
 import numpy as np
 from tqdm import tqdm
 
@@ -24,8 +25,8 @@ GRID_BINS = 32
 
 # 图派生策略参数：彻底抛弃顺序派生！
 MAX_ORDER_SAMPLES = 1   # Graph 具有排列不变性，顺序派生失去意义，设为 1
-ROTATION_MODE = 3       # 几何增强 (旋转)
-MIRROR_MODE = True      # 几何增强 (翻转)
+ROTATION_MODE = 0       # 🚫 关闭旋转增强：旋转后 edge_ts 不变但坐标改变，造成"同输入多GT"歧义
+MIRROR_MODE = False     # 🚫 关闭镜像增强：同上
 
 # ==========================================
 # 🧮 转换函数：量化与离散化
@@ -168,6 +169,7 @@ def main():
                 j_map = {"NONE": 0, "E2E": 1, "X": 2, "T": 3}
                 
                 # (A) 将事件提取为高效的 Hash 表
+                # event_dict value: (ev_type, ta_val, tb_val, angle_deg)
                 event_dict = {}
                 for ev in derived_events:
                     ev_type = ev.get("type")
@@ -177,12 +179,23 @@ def main():
                     elif ev_type == "T":
                         b_a, b_b = ev.get("guest"), ev.get("host")
                         ta_val, tb_val = ev.get("guest_t", 0.0), ev.get("host_t", 0.0)
+                    else:
+                        continue
+
+                    # 🌟 新增：读取夹角信息
+                    # E2E 端对端，切线方向相反，定义夹角 180°
+                    # X/T 已有 angle 字段（切线夹角，度数）
+                    if ev_type == "E2E":
+                        angle_deg = 180.0
+                    else:
+                        angle_deg = float(ev.get("angle") or 0.0)
                         
                     if b_a in bid_to_node_idx and b_b in bid_to_node_idx:
                         u_idx = bid_to_node_idx[b_a]
                         v_idx = bid_to_node_idx[b_b]
-                        event_dict[(u_idx, v_idx)] = (ev_type, ta_val, tb_val)
-                        event_dict[(v_idx, u_idx)] = (ev_type, tb_val, ta_val) # 反向有向边
+                        event_dict[(u_idx, v_idx)] = (ev_type, ta_val, tb_val, angle_deg)
+                        # 反向有向边：角度不变（夹角是无向量）
+                        event_dict[(v_idx, u_idx)] = (ev_type, tb_val, ta_val, angle_deg)
                 
                 edges = []
                 # (B) N² 遍历，暴力生成完备边 (包含强负样本)
@@ -192,12 +205,14 @@ def main():
                         if u == v:
                             edges.append({
                                 "u": u, "v": v, "j_type": "NONE", "j_type_idx": 0,
-                                "t_u": 0.0, "t_v": 0.0, "t_diff": 0.0, "t_prod": 0.0
+                                "t_u": 0.0, "t_v": 0.0, "t_diff": 0.0, "t_prod": 0.0,
+                                "angle_sin": 0.0, "angle_cos": 1.0
                             })
                             continue
                             
                         if (u, v) in event_dict:
-                            ev_type, ta_val, tb_val = event_dict[(u, v)]
+                            ev_type, ta_val, tb_val, angle_deg = event_dict[(u, v)]
+                            angle_rad = math.radians(angle_deg)
                             # 🌟 修复 3: 注入 t_diff 和 t_prod 进行对称性破缺 (Symmetry Breaking)
                             edges.append({
                                 "u": u, "v": v,
@@ -206,13 +221,16 @@ def main():
                                 "t_u": float(np.round(ta_val, 4)),
                                 "t_v": float(np.round(tb_val, 4)),
                                 "t_diff": float(np.round(abs(ta_val - tb_val), 4)),
-                                "t_prod": float(np.round(ta_val * tb_val, 4))
+                                "t_prod": float(np.round(ta_val * tb_val, 4)),
+                                "angle_sin": float(np.round(math.sin(angle_rad), 6)),
+                                "angle_cos": float(np.round(math.cos(angle_rad), 6))
                             })
                         else:
-                            # 🌟 注入显式负样本
+                            # 🌟 注入显式负样本（angle=0，sin=0, cos=1）
                             edges.append({
                                 "u": u, "v": v, "j_type": "NONE", "j_type_idx": 0,
-                                "t_u": 0.0, "t_v": 0.0, "t_diff": 0.0, "t_prod": 0.0
+                                "t_u": 0.0, "t_v": 0.0, "t_diff": 0.0, "t_prod": 0.0,
+                                "angle_sin": 0.0, "angle_cos": 1.0
                             })
                 
                 final_dataset.append({
