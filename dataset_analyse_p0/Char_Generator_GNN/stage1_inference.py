@@ -1,13 +1,13 @@
+import os
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
-import os
 import json
 
 # ==========================================
 # ⚙️ 导入图模型基建 (确保指向的是新的 stage2_graph_train)
 # ==========================================
-from stage1_train import FontGraphGenerator, D_MODEL, D_EDGE, N_HEADS, N_LAYERS
+from stage1_train import FontGraphGenerator, D_MODEL, D_EDGE, N_HEADS, N_LAYERS, NUM_EDGE_TYPES
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(SCRIPT_DIR, "fontgpt_canonical_graph_latest.pth")
 CLUSTER_FILE = os.path.join(SCRIPT_DIR, "clustered_results.json")
@@ -65,24 +65,34 @@ def infer_graph(model, edge_types, edge_ts, device):
     model.eval()
     B = 1
     N = edge_types.size(0)
-    
+
+    # 构造空白的节点特征：推理时无先验 shape/width/coords，全部由模型从拓扑中求解
+    b_shapes = torch.zeros(B, N, dtype=torch.long).to(device)
+    b_widths = torch.zeros(B, N, dtype=torch.long).to(device)
+    b_coords = torch.full((B, N, 4), 0.5, dtype=torch.float).to(device)  # 初始化为画布中心
+
     b_edge_types = edge_types.unsqueeze(0).to(device)
     b_edge_ts = edge_ts.unsqueeze(0).to(device)
     b_mask = torch.zeros(B, N, dtype=torch.bool).to(device)
-    
-    # 修改处：正确接收模型输出的 3 个返回值
-    shape_logits, width_logits, coords_pred = model(b_edge_types, b_edge_ts, b_mask)
-    
+
+    # 🚀 一次前向传播，解算所有笔画几何
+    shape_logits, width_logits, coords_pred, edge_preds = model(
+        b_shapes, b_widths, b_coords, b_edge_types, b_edge_ts, b_mask
+    )
+
     shapes = torch.argmax(shape_logits[0], dim=-1).cpu().numpy()
     widths = torch.argmax(width_logits[0], dim=-1).cpu().numpy()
     coords = coords_pred[0].cpu().numpy() * CANVAS_SIZE
-    
-    return shapes, widths, coords
+
+    # 提取网络回归出的 t_u, t_v（用于物理吸附 Solver）
+    predicted_ts = edge_preds[0, :, :, -2:].cpu().numpy()  # [N, N, 2]
+
+    return shapes, widths, coords, predicted_ts
 
 # ==========================================
 # 🎨 渲染引擎 (含物理吸附 Solver)
 # ==========================================
-def render_graph(edge_types, shapes, widths, coords, edge_ts):
+def render_graph(edge_types, shapes, widths, coords, predicted_ts):
     plt.figure(figsize=(8, 8))
     plt.title("FontGPT Graph - Physical Solver Inference")
     plt.xlim(0, CANVAS_SIZE); plt.ylim(CANVAS_SIZE, 0)
@@ -90,14 +100,17 @@ def render_graph(edge_types, shapes, widths, coords, edge_ts):
     refined_coords = coords.copy()
     N = len(shapes)
     drawn_pts = [] 
-    edge_ts_np = edge_ts.numpy()
 
-    # 物理吸附 Solver
+    # 物理吸附 Solver 范式转移：由网络提供先验和几何特征，直接由 solver 一次性解析拓扑。
+    # 这里我们利用网络预测的 t_u, t_v 来作为节点对齐的参考。
+    # 根据网络生成的边类型以及边上回归出的精确 t_a, t_b 值，微调生成笔画。
     for i in range(N):
         for j in range(N):
             if edge_types[i, j] > 0:
-                tu, tv = edge_ts_np[i, j, 0], edge_ts_np[i, j, 1]
+                tu, tv = predicted_ts[i, j, 0], predicted_ts[i, j, 1]
+                # 计算出对方应该相交的点
                 pt_j = refined_coords[j, :2] * (1-tv) + refined_coords[j, 2:] * tv
+                # 把本笔画的关键点拉过去吸附
                 if tu < 0.1: refined_coords[i, :2] = pt_j
                 elif tu > 0.9: refined_coords[i, 2:] = pt_j
     
@@ -114,15 +127,33 @@ def render_graph(edge_types, shapes, widths, coords, edge_ts):
 # 🎬 主函数
 # ==========================================
 def main():
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu"))
     model = FontGraphGenerator().to(device)
-    model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+    # 架构升级后兼容性加载：过滤掉形状不匹配的权重
+    if os.path.exists(MODEL_PATH):
+        state = torch.load(MODEL_PATH, map_location=device)
+        model_state = model.state_dict()
+        compatible = {
+            k: v for k, v in state.items()
+            if k in model_state and v.shape == model_state[k].shape
+        }
+        skipped = [k for k in state if k not in compatible]
+        model_state.update(compatible)
+        model.load_state_dict(model_state)
+        print(f"✅ 权重加载：{len(compatible)}/{len(state)} 层兼容")
+        if skipped:
+            print(f"⚠️  跳过不兼容层（架构已升级，需重新训练获得完整权重）: {skipped[:4]}")
+    else:
+        print(f"⚠️  未找到权重文件，使用随机初始化")
     
-    # 假设你已经定义了 get_random_graph_topology
+    # 获取纯粹的拓扑结构骨架 (只包含连接关系和粗略的位置暗示)
     edge_types, edge_ts = get_random_graph_topology()
     
-    shapes, widths, coords = infer_graph(model, edge_types, edge_ts, device)
-    render_graph(edge_types, shapes, widths, coords, edge_ts)
+    # 彻底前向抛给网络：一键算出所有笔画几何坐标、宽度，并预测节点吸附参数(预测的 t)
+    shapes, widths, coords, predicted_ts = infer_graph(model, edge_types, edge_ts, device)
+    
+    # Solver 利用预测网络提供的物理参量进行精确的拓扑微调吸附
+    render_graph(edge_types, shapes, widths, coords, predicted_ts)
 
 if __name__ == "__main__":
     main()
