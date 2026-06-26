@@ -1,8 +1,23 @@
 import os
+
+# =========================================================
+# ⚠️ 多进程 + scipy/numpy 时，建议限制每个进程内部 BLAS 线程
+# 避免 8 个进程 × 每个进程再开 8 线程，导致反而变慢
+# 这些必须尽量放在 numpy/scipy import 前
+# =========================================================
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+os.environ.setdefault("VECLIB_MAXIMUM_THREADS", "1")
+os.environ.setdefault("NUMEXPR_NUM_THREADS", "1")
+
 import json
 import math
 import random
+import time
+import traceback
 from collections import Counter, defaultdict
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -37,20 +52,29 @@ GLYPH_CENTER = np.array([CANVAS_SIZE * 0.5, CANVAS_SIZE * 0.5], dtype=float)
 # 调试时可以设成 10 / 20；正式可以 None
 MAX_SOLVE_COUNT = None
 
-# 每类预览图数量
-PREVIEW_COUNT_BEST = 16
-PREVIEW_COUNT_ROUGH = 8
-PREVIEW_COUNT_BAD = 8
+# =========================================================
+# 🚀 并行配置
+# =========================================================
+PARALLEL_SOLVE = True
 
-# 多初值优化
+# Mac M4 Pro 可以先用 6 或 8。
+# 如果机器很卡，改成 4。
+# 如果想自动：NUM_WORKERS = max(1, min((os.cpu_count() or 4) - 1, 8))
+NUM_WORKERS = max(1, min((os.cpu_count() or 4) - 1, 8))
+
+# 每个 worker 处理一个 candidate。
+# candidate 本身是小 JSON，进程间传输开销可接受。
+CHUNKSIZE = 1
+
+# =========================================================
+# 🧩 优化器配置
+# =========================================================
 NUM_RESTARTS = 3
-
-# 两阶段优化
 RUN_TWO_STAGE_SOLVER = True
 
 SOLVER_METHOD = "L-BFGS-B"
-SOLVER_MAXITER_STAGE1 = 220
-SOLVER_MAXITER_STAGE2 = 420
+SOLVER_MAXITER_STAGE1 = 180
+SOLVER_MAXITER_STAGE2 = 320
 
 # 如果 primitive 缺失，退化为一根直线
 FALLBACK_LINE = np.array([[-0.5, 0.0], [0.5, 0.0]], dtype=float)
@@ -61,25 +85,35 @@ EPS = 1e-8
 STRUCTURAL_SHAPES = {20}
 
 # ---------------------------------------------------------
-# Loss 权重
+# Angle 类型权重
 # ---------------------------------------------------------
-# Stage 1：先强行焊接拓扑，降低美学约束干扰
+# 关键修改：
+# E2E 只表示端点连接，不一定要求切线 180° 连续。
+# 所以 E2E angle 在 objective 中弱化。
+ANGLE_TYPE_WEIGHT = {
+    "E2E": 0.15,
+    "T": 1.0,
+    "X": 1.0,
+    "UNKNOWN": 0.5,
+}
+
+# Stage 1：先强行焊接 topology
 LOSS_WEIGHTS_STAGE1 = {
-    "junction": 220.0,
-    "angle": 22.0,
-    "length": 4.0,
-    "bbox": 30.0,
-    "center": 2.0,
+    "junction": 240.0,
+    "angle": 18.0,
+    "length": 3.0,
+    "bbox": 25.0,
+    "center": 1.5,
     "extent": 2.0,
     "repulsion": 0.0,
     "compact": 4.0,
     "theta_reg": 0.0,
 }
 
-# Stage 2：在拓扑已接好的基础上，做布局、美学、边界微调
+# Stage 2：布局、美学、边界微调
 LOSS_WEIGHTS_STAGE2 = {
-    "junction": 140.0,
-    "angle": 16.0,
+    "junction": 150.0,
+    "angle": 12.0,
     "length": 7.0,
     "bbox": 60.0,
     "center": 8.0,
@@ -89,34 +123,47 @@ LOSS_WEIGHTS_STAGE2 = {
     "theta_reg": 0.02,
 }
 
-# 控制整体字形大小
 TARGET_MIN_SPAN_RATIO = 0.22
 TARGET_MAX_SPAN_RATIO = 0.88
 
 # ---------------------------------------------------------
 # Quality filter 阈值
 # ---------------------------------------------------------
+# 关键修改：
+# quality 主角度指标只看 T/X，不看 E2E。
+# E2E angle 保留在 debug 中，但不主导 good/bad。
 QUALITY_THRESHOLDS = {
     "good": {
         "mean_junction_px": 2.0,
         "max_junction_px": 6.0,
-        "mean_angle_diff_deg": 15.0,
-        "max_angle_diff_deg": 35.0,
+
+        # 只针对 T/X angle
+        "mean_tx_angle_diff_deg": 15.0,
+        "max_tx_angle_diff_deg": 35.0,
+
         "bbox_overflow_px": 2.0,
     },
     "usable": {
         "mean_junction_px": 5.0,
         "max_junction_px": 16.0,
-        "mean_angle_diff_deg": 30.0,
-        "max_angle_diff_deg": 70.0,
+
+        # 只针对 T/X angle
+        "mean_tx_angle_diff_deg": 30.0,
+        "max_tx_angle_diff_deg": 70.0,
+
         "bbox_overflow_px": 8.0,
     },
 }
 
-# 打印控制
-PRINT_EVERY_CANDIDATE_SUMMARY = True
-PRINT_DETAILED_FIRST_N = 8
-PRINT_DETAILED_BAD_N = 4
+# 预览图数量
+PREVIEW_COUNT_BEST = 16
+PREVIEW_COUNT_ROUGH = 8
+PREVIEW_COUNT_BAD = 8
+
+# 日志控制
+PRINT_WORKER_DETAIL = False
+PRINT_MAIN_PROGRESS = True
+PROGRESS_EVERY = 5
 
 
 # =========================================================
@@ -177,17 +224,22 @@ def smallest_angle_diff(a, b):
 def line_angle_between(v1, v2):
     n1 = np.linalg.norm(v1)
     n2 = np.linalg.norm(v2)
+
     if n1 < EPS or n2 < EPS:
         return 0.0
+
     c = float(np.dot(v1, v2) / (n1 * n2 + EPS))
     c = np.clip(c, -1.0, 1.0)
+
     return float(math.acos(c))
 
 
 def edge_type_name(edge):
     if "j_type" in edge:
         return str(edge["j_type"])
+
     idx = int(edge.get("j_type_idx", 0))
+
     return {
         1: "E2E",
         2: "X",
@@ -201,18 +253,23 @@ def get_target_angle_rad(edge):
 
     if "angle" in edge:
         val = float(edge["angle"])
+
         if abs(val) > math.pi + 1e-4:
             return degrees_to_radians(val)
+
         return val
 
     if "angle_sin" in edge and "angle_cos" in edge:
         s = float(edge["angle_sin"])
         c = float(edge["angle_cos"])
         ang = math.atan2(s, c)
+
         if ang < 0:
             ang += 2 * math.pi
+
         if ang > math.pi:
             ang = 2 * math.pi - ang
+
         return ang
 
     return None
@@ -238,11 +295,8 @@ def get_candidate_list(data):
 
 def get_candidate_edges(candidate):
     """
-    当前 pipeline 的标准边字段：
-
+    标准字段：
         candidate["topology"]["positive_edges_undirected"]
-
-    之前 num_edges=0 的问题就是因为没读这个字段。
     """
     if not isinstance(candidate, dict):
         return []
@@ -289,26 +343,30 @@ def get_local_polyline(node):
 
 def polyline_arc_length(poly):
     poly = np.asarray(poly, dtype=float)
+
     if len(poly) < 2:
         return 0.0
+
     diffs = np.diff(poly, axis=0)
+
     return float(np.sum(np.linalg.norm(diffs, axis=1)))
 
 
 def polyline_cumulative_lengths(poly):
     poly = np.asarray(poly, dtype=float)
+
     if len(poly) < 2:
         return np.array([0.0], dtype=float)
+
     segs = np.linalg.norm(np.diff(poly, axis=0), axis=1)
+
     return np.concatenate([[0.0], np.cumsum(segs)])
 
 
 def sample_polyline_point_and_tangent(poly, cumlen, t_frac):
     """
     t_frac ∈ [0,1]。
-
-    当前 primitive 是 y=f(x) 离散形态，严格来说不是原始 Bézier t。
-    这里用弧长比例近似 junction 位置。
+    当前 primitive 是 y=f(x) 离散形态，这里使用弧长比例近似 junction 位置。
     """
     poly = np.asarray(poly, dtype=float)
     t_frac = float(np.clip(t_frac, 0.0, 1.0))
@@ -325,6 +383,7 @@ def sample_polyline_point_and_tangent(poly, cumlen, t_frac):
         return poly[0].copy(), np.array([1.0, 0.0])
 
     target = t_frac * total
+
     idx = int(np.searchsorted(cumlen, target, side="right") - 1)
     idx = max(0, min(idx, len(poly) - 2))
 
@@ -350,7 +409,9 @@ def sample_polyline_point_and_tangent(poly, cumlen, t_frac):
 def rotate_points(poly, theta):
     c = math.cos(theta)
     s = math.sin(theta)
+
     R = np.array([[c, -s], [s, c]], dtype=float)
+
     return poly @ R.T
 
 
@@ -365,12 +426,14 @@ def transform_polyline(poly, cx, cy, theta, scale):
 def transform_point_and_tangent(local_point, local_tangent, cx, cy, theta, scale):
     c = math.cos(theta)
     s = math.sin(theta)
+
     R = np.array([[c, -s], [s, c]], dtype=float)
 
     pt = (R @ local_point) * scale + np.array([cx, cy], dtype=float)
 
     tg = R @ local_tangent
     n = np.linalg.norm(tg)
+
     if n < EPS:
         tg = np.array([1.0, 0.0], dtype=float)
     else:
@@ -381,8 +444,10 @@ def transform_point_and_tangent(local_point, local_tangent, cx, cy, theta, scale
 
 def bbox_from_points(points):
     pts = np.asarray(points, dtype=float)
+
     if len(pts) == 0:
         return [0.0, 0.0, 0.0, 0.0]
+
     return [
         float(np.min(pts[:, 0])),
         float(np.min(pts[:, 1])),
@@ -405,23 +470,29 @@ def bbox_union(boxes):
 
 def bbox_overflow_px(box):
     x0, y0, x1, y1 = box
+
     overflow = 0.0
     overflow = max(overflow, CANVAS_MARGIN - x0)
     overflow = max(overflow, CANVAS_MARGIN - y0)
     overflow = max(overflow, x1 - (CANVAS_SIZE - CANVAS_MARGIN))
     overflow = max(overflow, y1 - (CANVAS_SIZE - CANVAS_MARGIN))
+
     return max(0.0, float(overflow))
 
 
 def connected_pair_set(edges):
     pairs = set()
+
     for e in edges:
         u = int(e["u"])
         v = int(e["v"])
+
         if u == v:
             continue
+
         a, b = min(u, v), max(u, v)
         pairs.add((a, b))
+
     return pairs
 
 
@@ -445,6 +516,7 @@ def build_initial_layout(nodes, edges, rng=None, restart_idx=0):
 
         for e in edges:
             u, v = int(e["u"]), int(e["v"])
+
             if 0 <= u < n and 0 <= v < n and u != v:
                 G.add_edge(u, v)
 
@@ -482,15 +554,16 @@ def build_initial_layout(nodes, edges, rng=None, restart_idx=0):
         centers[:, 0] = GLYPH_CENTER[0] + radius * np.cos(angles)
         centers[:, 1] = GLYPH_CENTER[1] + radius * np.sin(angles)
 
-    # restart 扰动
     if restart_idx > 0:
         centers += rng.normal(0.0, 28.0, size=centers.shape)
         centers[:, 0] = np.clip(centers[:, 0], CANVAS_MARGIN, CANVAS_SIZE - CANVAS_MARGIN)
         centers[:, 1] = np.clip(centers[:, 1], CANVAS_MARGIN, CANVAS_SIZE - CANVAS_MARGIN)
 
     neighbor_map = defaultdict(list)
+
     for e in edges:
         u, v = int(e["u"]), int(e["v"])
+
         if 0 <= u < n and 0 <= v < n and u != v:
             neighbor_map[u].append(v)
             neighbor_map[v].append(u)
@@ -499,20 +572,24 @@ def build_initial_layout(nodes, edges, rng=None, restart_idx=0):
 
     for i, node in enumerate(nodes):
         cx, cy = centers[i]
+
         local_arc = max(float(node["_local_arc_len"]), EPS)
         target_len_px = float(node["_target_length_px"])
 
         scale0 = target_len_px / local_arc
-        scale0 = clamp(scale0, 12.0, CANVAS_SIZE * 0.95)
+        scale0 = clamp(scale0, 10.0, CANVAS_SIZE * 0.95)
 
         theta0 = 0.0
 
         neighs = neighbor_map.get(i, [])
+
         if len(neighs) > 0:
             vecs = []
+
             for j in neighs:
                 v = centers[j] - centers[i]
                 nn = np.linalg.norm(v)
+
                 if nn > EPS:
                     vecs.append(v / nn)
 
@@ -553,6 +630,7 @@ def compute_objective_and_metrics(x, cache, return_debug=False):
 
     for i, node in enumerate(nodes):
         cx, cy, theta, scale = params[i]
+
         local_poly = node["_local_polyline"]
         local_arc = node["_local_arc_len"]
 
@@ -567,8 +645,10 @@ def compute_objective_and_metrics(x, cache, return_debug=False):
 
     glyph_bbox = bbox_union(transformed_boxes)
     gx0, gy0, gx1, gy1 = glyph_bbox
+
     g_w = gx1 - gx0
     g_h = gy1 - gy0
+
     g_cx = 0.5 * (gx0 + gx1)
     g_cy = 0.5 * (gy0 + gy1)
 
@@ -587,6 +667,7 @@ def compute_objective_and_metrics(x, cache, return_debug=False):
             continue
 
         jtype = edge_type_name(e)
+
         t_u = float(e.get("t_u", 0.0))
         t_v = float(e.get("t_v", 0.0))
 
@@ -635,7 +716,9 @@ def compute_objective_and_metrics(x, cache, return_debug=False):
         if target_angle is not None:
             pred_angle = line_angle_between(tan_u, tan_v)
             angle_diff = smallest_angle_diff(pred_angle, target_angle)
-            angle_terms.append((angle_diff / math.pi) ** 2)
+
+            angle_type_weight = ANGLE_TYPE_WEIGHT.get(jtype, ANGLE_TYPE_WEIGHT["UNKNOWN"])
+            angle_terms.append(angle_type_weight * (angle_diff / math.pi) ** 2)
 
         if return_debug:
             edge_debug.append({
@@ -648,6 +731,7 @@ def compute_objective_and_metrics(x, cache, return_debug=False):
                 "target_angle_deg": None if target_angle is None else round(radians_to_degrees(target_angle), 6),
                 "pred_angle_deg": None if pred_angle is None else round(radians_to_degrees(pred_angle), 6),
                 "angle_diff_deg": None if angle_diff is None else round(radians_to_degrees(angle_diff), 6),
+                "angle_type_weight": ANGLE_TYPE_WEIGHT.get(jtype, ANGLE_TYPE_WEIGHT["UNKNOWN"]),
                 "junction_point_u": to_float_list(p_u, 4),
                 "junction_point_v": to_float_list(p_v, 4),
             })
@@ -670,6 +754,7 @@ def compute_objective_and_metrics(x, cache, return_debug=False):
 
         if return_debug:
             cx, cy, theta, scale = params[i]
+
             node_debug.append({
                 "node_id": int(node.get("node_id", i)),
                 "shape_code": int(node.get("shape_code", -1)),
@@ -697,10 +782,13 @@ def compute_objective_and_metrics(x, cache, return_debug=False):
 
             if x < CANVAS_MARGIN:
                 overflow += ((CANVAS_MARGIN - x) / CANVAS_SIZE) ** 2
+
             if x > CANVAS_SIZE - CANVAS_MARGIN:
                 overflow += ((x - (CANVAS_SIZE - CANVAS_MARGIN)) / CANVAS_SIZE) ** 2
+
             if y < CANVAS_MARGIN:
                 overflow += ((CANVAS_MARGIN - y) / CANVAS_SIZE) ** 2
+
             if y > CANVAS_SIZE - CANVAS_MARGIN:
                 overflow += ((y - (CANVAS_SIZE - CANVAS_MARGIN)) / CANVAS_SIZE) ** 2
 
@@ -743,6 +831,7 @@ def compute_objective_and_metrics(x, cache, return_debug=False):
         for j in range(i + 1, n):
             ci = centers[i]
             cj = centers[j]
+
             d = float(np.linalg.norm(ci - cj))
 
             li = actual_lengths[i]
@@ -750,12 +839,14 @@ def compute_objective_and_metrics(x, cache, return_debug=False):
 
             if (i, j) not in connected_pairs:
                 desired_min = 0.16 * (li + lj)
+
                 if desired_min > EPS:
                     rep = max(0.0, desired_min - d) / desired_min
                     rep_terms.append(rep ** 2)
 
             else:
                 desired_max = 0.90 * (li + lj)
+
                 if desired_max > EPS:
                     comp = max(0.0, d - desired_max) / desired_max
                     compact_terms.append(comp ** 2)
@@ -771,6 +862,7 @@ def compute_objective_and_metrics(x, cache, return_debug=False):
     for i, node in enumerate(nodes):
         theta0 = float(node.get("_init_theta", 0.0))
         theta = float(params[i][2])
+
         diff = smallest_angle_diff(theta, theta0)
         theta_terms.append((diff / math.pi) ** 2)
 
@@ -824,10 +916,16 @@ def evaluate_solve_quality(final_metrics):
             "quality_status": "bad_no_edges",
             "is_valid": False,
             "is_usable": False,
+
             "mean_junction_px": 999.0,
             "max_junction_px": 999.0,
-            "mean_angle_diff_deg": 999.0,
-            "max_angle_diff_deg": 999.0,
+
+            "mean_all_angle_diff_deg": 999.0,
+            "max_all_angle_diff_deg": 999.0,
+
+            "mean_tx_angle_diff_deg": 999.0,
+            "max_tx_angle_diff_deg": 999.0,
+
             "bbox_overflow_px": 999.0,
             "quality_score": 999999.0,
         }
@@ -837,17 +935,29 @@ def evaluate_solve_quality(final_metrics):
         for e in edge_debug
     ]
 
-    angles = [
+    all_angles = [
         float(e.get("angle_diff_deg", 0.0))
         for e in edge_debug
         if e.get("angle_diff_deg", None) is not None
     ]
 
+    # 关键：T / X 角度才进入主质量判定
+    tx_angles = [
+        float(e.get("angle_diff_deg", 0.0))
+        for e in edge_debug
+        if e.get("angle_diff_deg", None) is not None
+        and e.get("j_type", "") in ["T", "X"]
+    ]
+
     mean_j = safe_mean(junctions, 999.0)
     max_j = safe_max(junctions, 999.0)
 
-    mean_a = safe_mean(angles, 0.0)
-    max_a = safe_max(angles, 0.0)
+    mean_all_a = safe_mean(all_angles, 0.0)
+    max_all_a = safe_max(all_angles, 0.0)
+
+    # 如果没有 T/X angle，则认为 TX angle 约束满足
+    mean_tx_a = safe_mean(tx_angles, 0.0)
+    max_tx_a = safe_max(tx_angles, 0.0)
 
     bbox_ov = float(final_metrics.get("bbox_overflow_px", 999.0))
 
@@ -857,16 +967,16 @@ def evaluate_solve_quality(final_metrics):
     is_valid = (
         mean_j <= good["mean_junction_px"]
         and max_j <= good["max_junction_px"]
-        and mean_a <= good["mean_angle_diff_deg"]
-        and max_a <= good["max_angle_diff_deg"]
+        and mean_tx_a <= good["mean_tx_angle_diff_deg"]
+        and max_tx_a <= good["max_tx_angle_diff_deg"]
         and bbox_ov <= good["bbox_overflow_px"]
     )
 
     is_usable = (
         mean_j <= usable["mean_junction_px"]
         and max_j <= usable["max_junction_px"]
-        and mean_a <= usable["mean_angle_diff_deg"]
-        and max_a <= usable["max_angle_diff_deg"]
+        and mean_tx_a <= usable["mean_tx_angle_diff_deg"]
+        and max_tx_a <= usable["max_tx_angle_diff_deg"]
         and bbox_ov <= usable["bbox_overflow_px"]
     )
 
@@ -877,12 +987,14 @@ def evaluate_solve_quality(final_metrics):
     else:
         status = "bad"
 
-    # lower is better
+    # 质量分数仍保留 all angle 的弱影响，避免 E2E 完全乱飞
     quality_score = (
         mean_j * 1.0
         + max_j * 0.35
-        + mean_a * 0.08
-        + max_a * 0.04
+        + mean_tx_a * 0.10
+        + max_tx_a * 0.05
+        + mean_all_a * 0.015
+        + max_all_a * 0.008
         + bbox_ov * 2.0
         + float(final_metrics.get("center", 0.0)) * 10.0
         + float(final_metrics.get("extent", 0.0)) * 10.0
@@ -892,10 +1004,16 @@ def evaluate_solve_quality(final_metrics):
         "quality_status": status,
         "is_valid": bool(is_valid),
         "is_usable": bool(is_usable),
+
         "mean_junction_px": round(mean_j, 4),
         "max_junction_px": round(max_j, 4),
-        "mean_angle_diff_deg": round(mean_a, 4),
-        "max_angle_diff_deg": round(max_a, 4),
+
+        "mean_all_angle_diff_deg": round(mean_all_a, 4),
+        "max_all_angle_diff_deg": round(max_all_a, 4),
+
+        "mean_tx_angle_diff_deg": round(mean_tx_a, 4),
+        "max_tx_angle_diff_deg": round(max_tx_a, 4),
+
         "bbox_overflow_px": round(bbox_ov, 4),
         "quality_score": round(float(quality_score), 6),
     }
@@ -903,6 +1021,7 @@ def evaluate_solve_quality(final_metrics):
 
 def candidate_quality_sort_key(c):
     q = c.get("quality_report", {})
+
     status_rank = {
         "good": 0,
         "usable_but_rough": 1,
@@ -914,152 +1033,9 @@ def candidate_quality_sort_key(c):
         status_rank,
         q.get("quality_score", 999999.0),
         q.get("max_junction_px", 999.0),
-        q.get("max_angle_diff_deg", 999.0),
+        q.get("max_tx_angle_diff_deg", 999.0),
         c.get("solver_debug", {}).get("total", 999999.0),
     )
-
-
-# =========================================================
-# 🖨️ 打印
-# =========================================================
-def print_header(title):
-    print("\n" + "=" * 80)
-    print(title)
-    print("=" * 80)
-
-
-def print_weights():
-    print_header("🎚️ Constraint Solver Config")
-    print(f"  method: {SOLVER_METHOD}")
-    print(f"  num_restarts: {NUM_RESTARTS}")
-    print(f"  run_two_stage_solver: {RUN_TWO_STAGE_SOLVER}")
-    print(f"  maxiter_stage1: {SOLVER_MAXITER_STAGE1}")
-    print(f"  maxiter_stage2: {SOLVER_MAXITER_STAGE2}")
-    print(f"  canvas_size: {CANVAS_SIZE}")
-    print(f"  canvas_margin: {CANVAS_MARGIN}")
-
-    print("\n[Stage 1 weights]")
-    for k, v in LOSS_WEIGHTS_STAGE1.items():
-        print(f"  {k:>12s}: {v}")
-
-    print("\n[Stage 2 weights]")
-    for k, v in LOSS_WEIGHTS_STAGE2.items():
-        print(f"  {k:>12s}: {v}")
-
-    print("\n[Quality thresholds]")
-    print(json.dumps(QUALITY_THRESHOLDS, indent=2, ensure_ascii=False))
-
-
-def print_metrics(metrics, prefix=""):
-    print(f"{prefix}Total      : {metrics['total']:.6f}")
-    print(f"{prefix}Junction   : {metrics['junction']:.6f}")
-    print(f"{prefix}Angle      : {metrics['angle']:.6f}")
-    print(f"{prefix}Length     : {metrics['length']:.6f}")
-    print(f"{prefix}BBox       : {metrics['bbox']:.6f}")
-    print(f"{prefix}Center     : {metrics['center']:.6f}")
-    print(f"{prefix}Extent     : {metrics['extent']:.6f}")
-    print(f"{prefix}Repulsion  : {metrics['repulsion']:.6f}")
-    print(f"{prefix}Compact    : {metrics['compact']:.6f}")
-    print(f"{prefix}ThetaReg   : {metrics['theta_reg']:.6f}")
-    print(f"{prefix}GlyphBBox  : {metrics['glyph_bbox']}")
-    print(f"{prefix}GlyphSpan  : {metrics['glyph_span_px']}")
-    print(f"{prefix}GlyphCenter: {metrics['glyph_center_px']}")
-    print(f"{prefix}OverflowPx : {metrics['bbox_overflow_px']}")
-
-
-def print_quality(q, prefix=""):
-    print(f"{prefix}QualityStatus: {q['quality_status']}")
-    print(f"{prefix}is_valid     : {q['is_valid']}")
-    print(f"{prefix}is_usable    : {q['is_usable']}")
-    print(f"{prefix}mean_j_px   : {q['mean_junction_px']}")
-    print(f"{prefix}max_j_px    : {q['max_junction_px']}")
-    print(f"{prefix}mean_ang_deg: {q['mean_angle_diff_deg']}")
-    print(f"{prefix}max_ang_deg : {q['max_angle_diff_deg']}")
-    print(f"{prefix}quality_score: {q['quality_score']}")
-
-
-# =========================================================
-# 🎨 渲染
-# =========================================================
-def render_candidate_preview(solved_candidate, out_path):
-    nodes = solved_candidate["solved_nodes"]
-
-    fig, ax = plt.subplots(1, 1, figsize=(7.5, 7.5))
-
-    colors = [
-        "#E53935", "#1E88E5", "#43A047", "#FB8C00", "#8E24AA",
-        "#00897B", "#6D4C41", "#3949AB", "#D81B60", "#7CB342",
-        "#546E7A", "#F4511E"
-    ]
-
-    for i, node in enumerate(nodes):
-        poly = np.asarray(node["solved_polyline_px"], dtype=float)
-        c = colors[i % len(colors)]
-
-        lw = 1.8 + 1.2 * float(node.get("width_token", 0))
-
-        ax.plot(poly[:, 0], poly[:, 1], color=c, lw=lw, alpha=0.95)
-
-        p0 = poly[0]
-        p1 = poly[-1]
-
-        ax.scatter([p0[0]], [p0[1]], color="green", s=26, zorder=5)
-        ax.scatter([p1[0]], [p1[1]], color="red", s=26, zorder=5)
-
-        center = np.asarray(node["center_px"], dtype=float)
-        ax.text(
-            center[0] + 4,
-            center[1] - 4,
-            f"N{node['node_id']}",
-            fontsize=9,
-            color=c,
-            fontweight="bold",
-        )
-
-    for e in solved_candidate.get("solver_debug", {}).get("edge_debug", []):
-        pu = np.asarray(e["junction_point_u"], dtype=float)
-        pv = np.asarray(e["junction_point_v"], dtype=float)
-        pm = 0.5 * (pu + pv)
-
-        et = e.get("j_type", "?")
-        dist = e.get("junction_distance_px", 0.0)
-
-        ax.plot(
-            [pu[0], pv[0]],
-            [pu[1], pv[1]],
-            "--",
-            color="#333333",
-            lw=0.8,
-            alpha=0.65,
-        )
-
-        ax.scatter([pm[0]], [pm[1]], color="#111111", s=12, zorder=7)
-
-        ax.text(
-            pm[0] + 2,
-            pm[1] + 2,
-            f"{et} {dist:.1f}px",
-            fontsize=7,
-            color="#222222",
-        )
-
-    q = solved_candidate.get("quality_report", {})
-    title = (
-        f"{solved_candidate.get('generated_glyph_id', '')} | {q.get('quality_status', '')}\n"
-        f"score={q.get('quality_score', 0)} "
-        f"maxJ={q.get('max_junction_px', 0)}px "
-        f"maxA={q.get('max_angle_diff_deg', 0)}°"
-    )
-
-    ax.set_title(title, fontsize=10)
-    ax.set_xlim(0, CANVAS_SIZE)
-    ax.set_ylim(CANVAS_SIZE, 0)
-    ax.set_aspect("equal")
-    ax.grid(True, alpha=0.25)
-
-    plt.tight_layout()
-    plt.savefig(out_path, dpi=130, bbox_inches="tight")
-    plt.close(fig)
 
 
 # =========================================================
@@ -1150,26 +1126,33 @@ def optimize_once(nodes, edges, x0, stage_weights_1, stage_weights_2):
 # =========================================================
 # 🚀 单个 candidate 求解
 # =========================================================
-def solve_one_candidate(candidate, idx, rng):
+def solve_one_candidate_core(candidate, idx, seed):
+    rng = np.random.default_rng(seed)
+
     nodes_raw = candidate.get("nodes", [])
     edges_raw = get_candidate_edges(candidate)
 
     gid = candidate.get("generated_glyph_id", f"glyph_candidate_{idx:05d}")
 
     if len(nodes_raw) == 0:
-        print(f"⚠️ {gid} 没有 nodes，跳过。")
-        return None
+        return {
+            "candidate_index": idx,
+            "generated_glyph_id": gid,
+            "ok": False,
+            "error": "empty_nodes",
+            "result": None,
+            "summary_line": f"{gid}: skipped empty nodes",
+        }
 
     if len(edges_raw) == 0:
-        print(f"⚠️ {gid} 没有 edges，跳过。")
-        return None
-
-    detailed = idx < PRINT_DETAILED_FIRST_N
-
-    if PRINT_EVERY_CANDIDATE_SUMMARY:
-        print_header(f"🔧 Solving Candidate #{idx:04d} | {gid}")
-        print(f"  num_nodes: {len(nodes_raw)}")
-        print(f"  num_edges: {len(edges_raw)}")
+        return {
+            "candidate_index": idx,
+            "generated_glyph_id": gid,
+            "ok": False,
+            "error": "empty_edges",
+            "result": None,
+            "summary_line": f"{gid}: skipped empty edges",
+        }
 
     nodes = []
 
@@ -1236,18 +1219,7 @@ def solve_one_candidate(candidate, idx, rng):
 
         q = opt_result["quality_report"]
 
-        if PRINT_EVERY_CANDIDATE_SUMMARY:
-            print(
-                f"  Restart {restart_idx}: "
-                f"init={init_total:.4f} "
-                f"final={opt_result['final_total']:.4f} "
-                f"status={q['quality_status']} "
-                f"maxJ={q['max_junction_px']}px "
-                f"maxA={q['max_angle_diff_deg']}° "
-                f"score={q['quality_score']}"
-            )
-
-        # 如果已经很好，提前停止 restarts
+        # 已经非常好就提前停止
         if q["is_valid"] and q["quality_score"] < 3.0:
             break
 
@@ -1267,46 +1239,6 @@ def solve_one_candidate(candidate, idx, rng):
 
     res_stage1 = best["res_stage1"]
     res_stage2 = best["res_stage2"]
-
-    if detailed or quality_report["quality_status"] == "bad":
-        print("\n[Best Initial Metrics]")
-        print_metrics(best["initial_metrics"], prefix="  ")
-
-        print("\n[Best Final Metrics]")
-        print_metrics(final_metrics, prefix="  ")
-
-        print("\n[Quality Report]")
-        print_quality(quality_report, prefix="  ")
-
-        print("\n[Optimizer Status]")
-        if res_stage1 is not None:
-            print(f"  stage1_success: {res_stage1.success}")
-            print(f"  stage1_status : {res_stage1.status}")
-            print(f"  stage1_msg    : {res_stage1.message}")
-            print(f"  stage1_nit    : {getattr(res_stage1, 'nit', 'NA')}")
-
-        print(f"  stage2_success: {res_stage2.success}")
-        print(f"  stage2_status : {res_stage2.status}")
-        print(f"  stage2_msg    : {res_stage2.message}")
-        print(f"  stage2_nit    : {getattr(res_stage2, 'nit', 'NA')}")
-        print(f"  best_restart  : {best['restart_idx']}")
-
-        print("\n[Edge Diagnostics]")
-        for ed in final_metrics.get("edge_debug", []):
-            extra = ""
-            if ed["target_angle_deg"] is not None:
-                extra = (
-                    f" | target_angle={ed['target_angle_deg']:.2f}°"
-                    f" pred_angle={ed['pred_angle_deg']:.2f}°"
-                    f" diff={ed['angle_diff_deg']:.2f}°"
-                )
-
-            print(
-                f"  Edge ({ed['u']}->{ed['v']}) {ed['j_type']}: "
-                f"t_u={ed['t_u']:.3f}, t_v={ed['t_v']:.3f}, "
-                f"junction_dist={ed['junction_distance_px']:.3f}px"
-                f"{extra}"
-            )
 
     params = unpack_params(x_star, len(nodes))
 
@@ -1339,7 +1271,24 @@ def solve_one_candidate(candidate, idx, rng):
             "solved_bbox_px": to_float_list(bbox_from_points(poly_px), 6),
         })
 
+    # restart summary
+    restart_summary = []
+
+    for r in restart_results:
+        q = r["quality_report"]
+        restart_summary.append({
+            "restart_idx": int(r["restart_idx"]),
+            "initial_total": round(float(r["initial_total"]), 6),
+            "final_total": round(float(r["final_total"]), 6),
+            "quality_status": q["quality_status"],
+            "quality_score": q["quality_score"],
+            "max_junction_px": q["max_junction_px"],
+            "max_tx_angle_diff_deg": q["max_tx_angle_diff_deg"],
+            "max_all_angle_diff_deg": q["max_all_angle_diff_deg"],
+        })
+
     out_candidate = {
+        "candidate_index": int(idx),
         "generated_glyph_id": gid,
         "generation_stage": "constraint_solved",
 
@@ -1357,6 +1306,8 @@ def solve_one_candidate(candidate, idx, rng):
 
         "solve_report": {
             "best_restart_idx": int(best["restart_idx"]),
+            "restart_summary": restart_summary,
+
             "stage1_success": None if res_stage1 is None else bool(res_stage1.success),
             "stage1_status": None if res_stage1 is None else int(res_stage1.status),
             "stage1_message": None if res_stage1 is None else str(res_stage1.message),
@@ -1375,12 +1326,53 @@ def solve_one_candidate(candidate, idx, rng):
         "solver_debug": final_metrics,
     }
 
-    return out_candidate
+    summary_line = (
+        f"{gid}: "
+        f"N={len(nodes_raw)} E={len(edges_raw)} "
+        f"status={quality_report['quality_status']} "
+        f"score={quality_report['quality_score']} "
+        f"maxJ={quality_report['max_junction_px']}px "
+        f"maxTXA={quality_report['max_tx_angle_diff_deg']}° "
+        f"best_restart={best['restart_idx']}"
+    )
+
+    return {
+        "candidate_index": idx,
+        "generated_glyph_id": gid,
+        "ok": True,
+        "error": None,
+        "result": out_candidate,
+        "summary_line": summary_line,
+    }
+
+
+def worker_solve_one(args):
+    idx, candidate, seed = args
+
+    try:
+        return solve_one_candidate_core(candidate, idx, seed)
+
+    except Exception as e:
+        return {
+            "candidate_index": idx,
+            "generated_glyph_id": candidate.get("generated_glyph_id", f"glyph_candidate_{idx:05d}"),
+            "ok": False,
+            "error": str(e),
+            "traceback": traceback.format_exc(),
+            "result": None,
+            "summary_line": f"candidate #{idx}: ERROR {str(e)}",
+        }
 
 
 # =========================================================
 # 📊 输入诊断
 # =========================================================
+def print_header(title):
+    print("\n" + "=" * 80)
+    print(title)
+    print("=" * 80)
+
+
 def corpus_diagnostics(candidates):
     print_header("📊 Constraint Solver Input Diagnostics")
 
@@ -1395,6 +1387,7 @@ def corpus_diagnostics(candidates):
 
     if len(candidates) > 0:
         first_keys = list(candidates[0].keys())
+
         if isinstance(candidates[0].get("topology", {}), dict):
             first_topo_keys = list(candidates[0]["topology"].keys())
 
@@ -1422,6 +1415,7 @@ def corpus_diagnostics(candidates):
             if "primitive_ref" not in n:
                 ok = False
                 break
+
             if "primitive_polyline_local_norm" not in n.get("primitive_ref", {}):
                 ok = False
                 break
@@ -1460,6 +1454,25 @@ def corpus_diagnostics(candidates):
     print("  ✅ 已检测到 topology.positive_edges_undirected，solver 可以进行拓扑约束求解。")
 
 
+def print_solver_config():
+    print_header("🎚️ Constraint Solver Config")
+
+    print(f"  parallel_solve: {PARALLEL_SOLVE}")
+    print(f"  num_workers:    {NUM_WORKERS}")
+    print(f"  num_restarts:   {NUM_RESTARTS}")
+    print(f"  method:         {SOLVER_METHOD}")
+    print(f"  stage1_iter:    {SOLVER_MAXITER_STAGE1}")
+    print(f"  stage2_iter:    {SOLVER_MAXITER_STAGE2}")
+    print(f"  canvas_size:    {CANVAS_SIZE}")
+
+    print("\n[ANGLE_TYPE_WEIGHT]")
+    for k, v in ANGLE_TYPE_WEIGHT.items():
+        print(f"  {k}: {v}")
+
+    print("\n[Quality Thresholds]")
+    print(json.dumps(QUALITY_THRESHOLDS, indent=2, ensure_ascii=False))
+
+
 # =========================================================
 # 📦 输出汇总
 # =========================================================
@@ -1478,8 +1491,10 @@ def summarize_solved_outputs(solved):
     q_scores = []
     mean_js = []
     max_js = []
-    mean_as = []
-    max_as = []
+    mean_tx_as = []
+    max_tx_as = []
+    mean_all_as = []
+    max_all_as = []
     totals = []
 
     edge_count_hist = Counter()
@@ -1503,8 +1518,12 @@ def summarize_solved_outputs(solved):
         q_scores.append(float(q.get("quality_score", 999999.0)))
         mean_js.append(float(q.get("mean_junction_px", 999.0)))
         max_js.append(float(q.get("max_junction_px", 999.0)))
-        mean_as.append(float(q.get("mean_angle_diff_deg", 999.0)))
-        max_as.append(float(q.get("max_angle_diff_deg", 999.0)))
+
+        mean_tx_as.append(float(q.get("mean_tx_angle_diff_deg", 999.0)))
+        max_tx_as.append(float(q.get("max_tx_angle_diff_deg", 999.0)))
+
+        mean_all_as.append(float(q.get("mean_all_angle_diff_deg", 999.0)))
+        max_all_as.append(float(q.get("max_all_angle_diff_deg", 999.0)))
 
         totals.append(float(c.get("solver_debug", {}).get("total", 999999.0)))
 
@@ -1528,10 +1547,15 @@ def summarize_solved_outputs(solved):
 
         "avg_quality_score": round(float(np.mean(q_scores)), 6),
         "avg_total": round(float(np.mean(totals)), 6),
+
         "avg_mean_junction_px": round(float(np.mean(mean_js)), 6),
         "avg_max_junction_px": round(float(np.mean(max_js)), 6),
-        "avg_mean_angle_diff_deg": round(float(np.mean(mean_as)), 6),
-        "avg_max_angle_diff_deg": round(float(np.mean(max_as)), 6),
+
+        "avg_mean_tx_angle_diff_deg": round(float(np.mean(mean_tx_as)), 6),
+        "avg_max_tx_angle_diff_deg": round(float(np.mean(max_tx_as)), 6),
+
+        "avg_mean_all_angle_diff_deg": round(float(np.mean(mean_all_as)), 6),
+        "avg_max_all_angle_diff_deg": round(float(np.mean(max_all_as)), 6),
 
         "node_count_hist": {str(k): int(v) for k, v in node_count_hist.items()},
         "edge_count_hist": {str(k): int(v) for k, v in edge_count_hist.items()},
@@ -1542,7 +1566,8 @@ def summarize_solved_outputs(solved):
                 "quality_status": c.get("quality_report", {}).get("quality_status", ""),
                 "quality_score": c.get("quality_report", {}).get("quality_score", 999999.0),
                 "max_junction_px": c.get("quality_report", {}).get("max_junction_px", 999.0),
-                "max_angle_diff_deg": c.get("quality_report", {}).get("max_angle_diff_deg", 999.0),
+                "max_tx_angle_diff_deg": c.get("quality_report", {}).get("max_tx_angle_diff_deg", 999.0),
+                "max_all_angle_diff_deg": c.get("quality_report", {}).get("max_all_angle_diff_deg", 999.0),
             }
             for c in solved_sorted[:10]
         ],
@@ -1565,8 +1590,10 @@ def summarize_solved_outputs(solved):
     print(f"  avg_total: {summary['avg_total']}")
     print(f"  avg_mean_junction_px: {summary['avg_mean_junction_px']}")
     print(f"  avg_max_junction_px: {summary['avg_max_junction_px']}")
-    print(f"  avg_mean_angle_diff_deg: {summary['avg_mean_angle_diff_deg']}")
-    print(f"  avg_max_angle_diff_deg: {summary['avg_max_angle_diff_deg']}")
+    print(f"  avg_mean_tx_angle_diff_deg: {summary['avg_mean_tx_angle_diff_deg']}")
+    print(f"  avg_max_tx_angle_diff_deg: {summary['avg_max_tx_angle_diff_deg']}")
+    print(f"  avg_mean_all_angle_diff_deg: {summary['avg_mean_all_angle_diff_deg']}")
+    print(f"  avg_max_all_angle_diff_deg: {summary['avg_max_all_angle_diff_deg']}")
 
     print("\n[Top-10 Best Glyphs]")
     for item in summary["top_best_ids"]:
@@ -1575,15 +1602,99 @@ def summarize_solved_outputs(solved):
             f"status={item['quality_status']} "
             f"score={item['quality_score']} "
             f"maxJ={item['max_junction_px']}px "
-            f"maxA={item['max_angle_diff_deg']}°"
+            f"maxTXA={item['max_tx_angle_diff_deg']}° "
+            f"maxAllA={item['max_all_angle_diff_deg']}°"
         )
 
     return summary
 
 
 # =========================================================
-# 🖼️ 渲染预览
+# 🖼️ 渲染
 # =========================================================
+def render_candidate_preview(solved_candidate, out_path):
+    nodes = solved_candidate["solved_nodes"]
+
+    fig, ax = plt.subplots(1, 1, figsize=(7.5, 7.5))
+
+    colors = [
+        "#E53935", "#1E88E5", "#43A047", "#FB8C00", "#8E24AA",
+        "#00897B", "#6D4C41", "#3949AB", "#D81B60", "#7CB342",
+        "#546E7A", "#F4511E"
+    ]
+
+    for i, node in enumerate(nodes):
+        poly = np.asarray(node["solved_polyline_px"], dtype=float)
+        c = colors[i % len(colors)]
+
+        lw = 1.8 + 1.2 * float(node.get("width_token", 0))
+
+        ax.plot(poly[:, 0], poly[:, 1], color=c, lw=lw, alpha=0.95)
+
+        p0 = poly[0]
+        p1 = poly[-1]
+
+        ax.scatter([p0[0]], [p0[1]], color="green", s=26, zorder=5)
+        ax.scatter([p1[0]], [p1[1]], color="red", s=26, zorder=5)
+
+        center = np.asarray(node["center_px"], dtype=float)
+
+        ax.text(
+            center[0] + 4,
+            center[1] - 4,
+            f"N{node['node_id']}",
+            fontsize=9,
+            color=c,
+            fontweight="bold",
+        )
+
+    for e in solved_candidate.get("solver_debug", {}).get("edge_debug", []):
+        pu = np.asarray(e["junction_point_u"], dtype=float)
+        pv = np.asarray(e["junction_point_v"], dtype=float)
+        pm = 0.5 * (pu + pv)
+
+        et = e.get("j_type", "?")
+        dist = e.get("junction_distance_px", 0.0)
+
+        ax.plot(
+            [pu[0], pv[0]],
+            [pu[1], pv[1]],
+            "--",
+            color="#333333",
+            lw=0.8,
+            alpha=0.65,
+        )
+
+        ax.scatter([pm[0]], [pm[1]], color="#111111", s=12, zorder=7)
+
+        ax.text(
+            pm[0] + 2,
+            pm[1] + 2,
+            f"{et} {dist:.1f}px",
+            fontsize=7,
+            color="#222222",
+        )
+
+    q = solved_candidate.get("quality_report", {})
+
+    title = (
+        f"{solved_candidate.get('generated_glyph_id', '')} | {q.get('quality_status', '')}\n"
+        f"score={q.get('quality_score', 0)} "
+        f"maxJ={q.get('max_junction_px', 0)}px "
+        f"maxTXA={q.get('max_tx_angle_diff_deg', 0)}°"
+    )
+
+    ax.set_title(title, fontsize=10)
+    ax.set_xlim(0, CANVAS_SIZE)
+    ax.set_ylim(CANVAS_SIZE, 0)
+    ax.set_aspect("equal")
+    ax.grid(True, alpha=0.25)
+
+    plt.tight_layout()
+    plt.savefig(out_path, dpi=130, bbox_inches="tight")
+    plt.close(fig)
+
+
 def render_previews(solved):
     print_header("🖼️ Rendering Preview Images")
 
@@ -1630,12 +1741,99 @@ def render_previews(solved):
 
 
 # =========================================================
+# 🧵 并行主求解
+# =========================================================
+def solve_all_candidates(candidates):
+    tasks = []
+
+    for idx, candidate in enumerate(candidates):
+        seed = RANDOM_SEED + idx * 1009
+        tasks.append((idx, candidate, seed))
+
+    results = []
+
+    t0 = time.time()
+
+    if PARALLEL_SOLVE and NUM_WORKERS > 1:
+        print_header("🚀 Start Parallel Constraint Solving")
+        print(f"  workers: {NUM_WORKERS}")
+        print(f"  tasks:   {len(tasks)}")
+
+        done_count = 0
+
+        with ProcessPoolExecutor(max_workers=NUM_WORKERS) as executor:
+            futures = [
+                executor.submit(worker_solve_one, task)
+                for task in tasks
+            ]
+
+            for fut in as_completed(futures):
+                item = fut.result()
+                results.append(item)
+                done_count += 1
+
+                if PRINT_MAIN_PROGRESS and (
+                    done_count % PROGRESS_EVERY == 0
+                    or done_count == len(tasks)
+                ):
+                    elapsed = time.time() - t0
+                    speed = done_count / max(elapsed, 1e-6)
+                    remain = (len(tasks) - done_count) / max(speed, 1e-6)
+
+                    print(
+                        f"  progress {done_count}/{len(tasks)} "
+                        f"| {speed:.2f} cand/s "
+                        f"| ETA {remain:.1f}s "
+                        f"| last: {item.get('summary_line', '')}"
+                    )
+
+    else:
+        print_header("🚀 Start Serial Constraint Solving")
+
+        for i, task in enumerate(tasks):
+            item = worker_solve_one(task)
+            results.append(item)
+
+            if PRINT_MAIN_PROGRESS:
+                print(f"  {i + 1}/{len(tasks)} | {item.get('summary_line', '')}")
+
+    elapsed = time.time() - t0
+
+    print_header("⏱️ Solve Time")
+    print(f"  total time: {elapsed:.2f}s")
+    print(f"  avg per candidate: {elapsed / max(1, len(tasks)):.3f}s")
+    print(f"  parallel: {PARALLEL_SOLVE}")
+    print(f"  workers: {NUM_WORKERS}")
+
+    # 排序回原始顺序
+    results = sorted(results, key=lambda x: x.get("candidate_index", 10**9))
+
+    solved = []
+    errors = []
+
+    for r in results:
+        if r.get("ok") and r.get("result") is not None:
+            solved.append(r["result"])
+        else:
+            errors.append(r)
+
+    if errors:
+        print_header("⚠️ Solve Errors / Skips")
+        for e in errors[:20]:
+            print(f"  idx={e.get('candidate_index')} gid={e.get('generated_glyph_id')} error={e.get('error')}")
+
+        if len(errors) > 20:
+            print(f"  ... plus {len(errors) - 20} more")
+
+    return solved, errors, elapsed
+
+
+# =========================================================
 # 🎬 主程序
 # =========================================================
 def main():
     random.seed(RANDOM_SEED)
     np.random.seed(RANDOM_SEED)
-    rng = np.random.default_rng(RANDOM_SEED)
 
     ensure_dir(PREVIEW_DIR)
 
@@ -1651,40 +1849,17 @@ def main():
         return
 
     corpus_diagnostics(candidates)
-    print_weights()
+    print_solver_config()
 
     if MAX_SOLVE_COUNT is not None:
         candidates = candidates[:MAX_SOLVE_COUNT]
         print(f"\n⚠️ 调试模式：仅求解前 {len(candidates)} 个 candidate")
 
-    solved = []
-
-    print_header("🚀 Start Constraint Solving")
-
-    bad_detail_printed = 0
-
-    for idx, candidate in enumerate(candidates):
-        try:
-            out_candidate = solve_one_candidate(candidate, idx, rng)
-
-            if out_candidate is not None:
-                solved.append(out_candidate)
-
-                q = out_candidate["quality_report"]
-
-                if (
-                    q["quality_status"] == "bad"
-                    and bad_detail_printed < PRINT_DETAILED_BAD_N
-                    and idx >= PRINT_DETAILED_FIRST_N
-                ):
-                    bad_detail_printed += 1
-
-        except Exception as e:
-            print(f"\n❌ Candidate #{idx:04d} 求解异常: {str(e)}")
-
-    output_summary = summarize_solved_outputs(solved)
+    solved, errors, elapsed = solve_all_candidates(candidates)
 
     solved_sorted = sorted(solved, key=candidate_quality_sort_key)
+
+    output_summary = summarize_solved_outputs(solved_sorted)
 
     valid_solved = [
         c for c in solved_sorted
@@ -1704,12 +1879,12 @@ def main():
     render_previews(solved_sorted)
 
     output_obj = {
-        "schema_version": "constraint_solver_v2_quality_filter",
+        "schema_version": "constraint_solver_v3_parallel_e2e_angle_relaxed",
 
         "description": (
             "Constraint-based geometric solver for topology + stroke primitive glyph candidates. "
-            "This version reads topology.positive_edges_undirected, uses multi-start two-stage optimization, "
-            "and ranks outputs using geometry quality rather than scipy optimizer success."
+            "This version uses multiprocessing, multi-start two-stage optimization, "
+            "relaxes E2E angle in objective/quality filtering, and ranks outputs by geometry quality."
         ),
 
         "source_input_file": INPUT_FILE,
@@ -1724,6 +1899,21 @@ def main():
         "canvas_size": CANVAS_SIZE,
         "canvas_margin": CANVAS_MARGIN,
 
+        "parallel_config": {
+            "parallel_solve": PARALLEL_SOLVE,
+            "num_workers": NUM_WORKERS,
+            "chunksize": CHUNKSIZE,
+            "elapsed_seconds": round(float(elapsed), 4),
+            "avg_seconds_per_candidate": round(float(elapsed / max(1, len(candidates))), 6),
+            "env_threads": {
+                "OMP_NUM_THREADS": os.environ.get("OMP_NUM_THREADS"),
+                "OPENBLAS_NUM_THREADS": os.environ.get("OPENBLAS_NUM_THREADS"),
+                "MKL_NUM_THREADS": os.environ.get("MKL_NUM_THREADS"),
+                "VECLIB_MAXIMUM_THREADS": os.environ.get("VECLIB_MAXIMUM_THREADS"),
+                "NUMEXPR_NUM_THREADS": os.environ.get("NUMEXPR_NUM_THREADS"),
+            },
+        },
+
         "solver_config": {
             "method": SOLVER_METHOD,
             "num_restarts": NUM_RESTARTS,
@@ -1735,6 +1925,7 @@ def main():
             "target_max_span_ratio": TARGET_MAX_SPAN_RATIO,
         },
 
+        "angle_type_weight": ANGLE_TYPE_WEIGHT,
         "loss_weights_stage1": LOSS_WEIGHTS_STAGE1,
         "loss_weights_stage2": LOSS_WEIGHTS_STAGE2,
         "quality_thresholds": QUALITY_THRESHOLDS,
@@ -1745,16 +1936,13 @@ def main():
         "valid_count": len(valid_solved),
         "usable_count": len(usable_solved),
         "rejected_count": len(rejected_solved),
+        "error_count": len(errors),
 
-        # 全量结果
         "solved_glyph_candidates": solved_sorted,
-
-        # 方便后续 aesthetic_scorer 直接读
         "valid_solved_glyph_candidates": valid_solved,
         "usable_solved_glyph_candidates": usable_solved,
-
-        # 不建议后续使用，但保留用于 debug
         "rejected_solved_glyph_candidates": rejected_solved,
+        "solve_errors": errors,
     }
 
     save_json(output_obj, OUTPUT_FILE)
@@ -1765,9 +1953,9 @@ def main():
 
     print("\n📌 下一步：")
     print("  1. 优先打开 solver_previews/best 看 good 样本")
-    print("  2. 如果 good 数量太少，先降低 graph_grammar_sampler 的 complexity / X / cycle 权重")
-    print("  3. aesthetic_scorer.py 后续应优先读取 valid_solved_glyph_candidates")
-    print("  4. rejected_solved_glyph_candidates 可以用于分析哪些 topology-primitive 组合不可满足")
+    print("  2. 如果 CPU 仍然很低，确认是不是 NUM_WORKERS 太小，或 macOS 活动监视器显示的是单进程占比")
+    print("  3. aesthetic_scorer.py 后续优先读取 valid_solved_glyph_candidates")
+    print("  4. 如果要进一步加速，可以把 NUM_RESTARTS 从 3 改 2，或先用 graph_grammar_sampler 多生成、solver 只过滤")
 
 
 if __name__ == "__main__":
