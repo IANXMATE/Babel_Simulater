@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 # =========================================================
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# 你的训练脚本，里面定义了 DenseGNNDiscriminator / graph_from_object / batch_graphs
+# 需要和 gnn_layout_discriminator.py 放在同一个目录
 GNN_SCRIPT_DIR = SCRIPT_DIR
 sys.path.insert(0, GNN_SCRIPT_DIR)
 
@@ -28,9 +28,14 @@ SOLVED_FILE = os.path.join(SCRIPT_DIR, "solved_glyph_candidates.json")
 OUTPUT_FILE = os.path.join(SCRIPT_DIR, "gnn_scored_solved_glyphs.json")
 
 PREVIEW_DIR = os.path.join(SCRIPT_DIR, "gnn_scored_solved_previews")
-TOP_PREVIEW_DIR = os.path.join(PREVIEW_DIR, "top_gnn")
-BOTTOM_PREVIEW_DIR = os.path.join(PREVIEW_DIR, "bottom_gnn")
-MIDDLE_PREVIEW_DIR = os.path.join(PREVIEW_DIR, "middle_gnn")
+
+TOP_GNN_DIR = os.path.join(PREVIEW_DIR, "top_gnn")
+BOTTOM_GNN_DIR = os.path.join(PREVIEW_DIR, "bottom_gnn")
+MIDDLE_GNN_DIR = os.path.join(PREVIEW_DIR, "middle_gnn")
+
+TOP_GNN_GOOD_ONLY_DIR = os.path.join(PREVIEW_DIR, "top_gnn_good_only")
+TOP_COMBINED_DIR = os.path.join(PREVIEW_DIR, "top_combined")
+BAD_BUT_GNN_HIGH_DIR = os.path.join(PREVIEW_DIR, "top_bad_but_gnn_high")
 
 # auto / cuda / mps / cpu
 DEVICE_MODE = "auto"
@@ -39,17 +44,39 @@ CANVAS_SIZE = 400.0
 
 BATCH_SIZE = 64
 
-# 预览数量
 TOP_K_PREVIEW = 24
 BOTTOM_K_PREVIEW = 16
 MIDDLE_K_PREVIEW = 12
+GOOD_ONLY_PREVIEW = 24
+COMBINED_PREVIEW = 24
+BAD_BUT_HIGH_PREVIEW = 16
 
-# 是否把完整 candidate 一起保存到输出 json
-# True 文件会比较大；False 只保存 score summary 和排序信息
 SAVE_FULL_CANDIDATES = True
-
-# 是否保存 preview png
 SAVE_PREVIEWS = True
+
+# solver gate
+GOOD_STATUS_SET = {"good"}
+USABLE_STATUS_SET = {"usable_but_rough", "usable"}
+
+USABLE_MAX_JUNCTION_PX = 6.0
+USABLE_MAX_ANGLE_DEG = 80.0
+
+# combined score 超参
+COMBINED_JUNCTION_WEIGHT = 0.20
+COMBINED_ANGLE_WEIGHT = 0.015
+
+# 纯黑宽度渲染默认宽度
+DEFAULT_RENDER_WIDTH_PX = 8.0
+MIN_RENDER_WIDTH_PX = 3.0
+MAX_RENDER_WIDTH_PX = 24.0
+
+# width_token 兜底映射
+WIDTH_TOKEN_TO_PX = {
+    0: 6.0,
+    1: 10.0,
+    2: 14.0,
+    3: 18.0,
+}
 
 
 # =========================================================
@@ -156,14 +183,36 @@ def deg_to_rad(deg):
     return float(deg) * math.pi / 180.0
 
 
+def read_metric_from_quality(q, keys, default=0.0):
+    """
+    兼容各种 quality_report 字段名。
+    """
+    if not isinstance(q, dict):
+        return default
+
+    for k in keys:
+        if k in q:
+            return safe_float(q[k], default)
+
+    for parent in [
+        "metrics",
+        "quality_metrics",
+        "final_metrics",
+        "best_final_metrics",
+        "quality_report",
+    ]:
+        if parent in q and isinstance(q[parent], dict):
+            for k in keys:
+                if k in q[parent]:
+                    return safe_float(q[parent][k], default)
+
+    return default
+
+
 # =========================================================
 # 📦 solved candidate 读取
 # =========================================================
 def get_candidate_list(solved_data):
-    """
-    优先读 solved_glyph_candidates。
-    如果没有，就拼接 valid / usable / rejected。
-    """
     if isinstance(solved_data, list):
         return solved_data
 
@@ -221,8 +270,7 @@ def get_candidate_edges(candidate):
 
 def choose_solved_nodes(candidate):
     """
-    打分时必须优先使用 solver 之后的 node。
-    之前训练脚本里的 get_nodes 是优先 nodes，这里要修正。
+    打分和渲染时，优先用 solver 后节点。
     """
     for k in [
         "solved_nodes",
@@ -233,7 +281,6 @@ def choose_solved_nodes(candidate):
         if k in candidate and isinstance(candidate[k], list):
             return candidate[k]
 
-    # 有些版本可能把最终结果仍然写在 nodes 里
     if "nodes" in candidate and isinstance(candidate["nodes"], list):
         return candidate["nodes"]
 
@@ -251,7 +298,6 @@ def choose_original_nodes(candidate):
 # 🧱 node 标准化
 # =========================================================
 def extract_center_norm(node):
-    # layout_prior
     if "layout_prior" in node and isinstance(node["layout_prior"], dict):
         lp = node["layout_prior"]
         if "center_norm" in lp:
@@ -259,7 +305,6 @@ def extract_center_norm(node):
         if "center_px" in lp:
             return to_norm_xy(lp["center_px"])
 
-    # direct
     for k in ["center_norm", "center"]:
         if k in node:
             p = to_norm_xy(node[k])
@@ -272,7 +317,6 @@ def extract_center_norm(node):
             if p is not None:
                 return p
 
-    # scalar cx/cy
     for pair in [
         ("cx_norm", "cy_norm"),
         ("center_x_norm", "center_y_norm"),
@@ -285,7 +329,6 @@ def extract_center_norm(node):
             p = np.array([safe_float(node[kx]), safe_float(node[ky])], dtype=np.float32)
             return to_norm_xy(p)
 
-    # solver_params
     for key in ["solver_params", "params", "final_params", "optimized_params"]:
         if key in node and isinstance(node[key], dict):
             p = extract_center_norm(node[key])
@@ -374,9 +417,6 @@ def node_id_of(node, fallback):
 
 
 def normalize_node_for_gnn(solved_node, original_node=None, fallback_idx=0):
-    """
-    把 solver 输出 node 转成 gnn_layout_discriminator.py 能读的格式。
-    """
     out = {}
 
     if original_node is not None:
@@ -387,7 +427,6 @@ def normalize_node_for_gnn(solved_node, original_node=None, fallback_idx=0):
     node_id = node_id_of(out, fallback_idx)
     out["node_id"] = int(node_id)
 
-    # shape / width 从 original 补齐
     if "shape_code" not in out and original_node is not None:
         out["shape_code"] = original_node.get("shape_code", original_node.get("shape_token", 0))
 
@@ -414,7 +453,6 @@ def normalize_node_for_gnn(solved_node, original_node=None, fallback_idx=0):
     lp["length_norm"] = float(length_norm)
     lp["scale_norm"] = float(length_norm)
 
-    # 同时放到 direct 字段，方便别的函数读取
     out["center_norm"] = lp["center_norm"]
     out["rotation_rad"] = lp["rotation_rad"]
     out["length_norm"] = lp["length_norm"]
@@ -432,7 +470,6 @@ def normalize_edges_for_gnn(edges):
 
         ee = copy.deepcopy(e)
 
-        # 兼容不同字段名
         if "u" not in ee:
             for k in ["src", "source", "a", "node_u"]:
                 if k in ee:
@@ -474,10 +511,6 @@ def normalize_edges_for_gnn(edges):
 
 
 def build_score_object_from_candidate(candidate, idx):
-    """
-    生成一个专门给 GNN 打分用的 object。
-    核心：nodes 必须是 solver 后的 layout，而不是原始 primitive node。
-    """
     cand_id = get_candidate_id(candidate, idx)
 
     solved_nodes = choose_solved_nodes(candidate)
@@ -594,7 +627,9 @@ def get_quality_report(candidate):
 def get_quality_status(candidate):
     q = get_quality_report(candidate)
 
-    return q.get("quality_status", q.get("QualityStatus", "unknown"))
+    status = q.get("quality_status", q.get("QualityStatus", candidate.get("quality_status", "unknown")))
+
+    return str(status)
 
 
 def get_quality_score(candidate):
@@ -607,15 +642,42 @@ def get_quality_score(candidate):
     return safe_float(candidate.get("quality_score", 999999.0), 999999.0)
 
 
+def compute_solver_feasibility_score(max_junction_px, max_angle_diff_deg):
+    return float(
+        math.exp(
+            -COMBINED_JUNCTION_WEIGHT * max(0.0, max_junction_px)
+            -COMBINED_ANGLE_WEIGHT * max(0.0, max_angle_diff_deg)
+        )
+    )
+
+
+def is_solver_allowed(item):
+    status = item["quality_status"]
+
+    if status in GOOD_STATUS_SET:
+        return True
+
+    if status in USABLE_STATUS_SET:
+        if (
+            item["max_junction_px"] <= USABLE_MAX_JUNCTION_PX
+            and item["max_angle_diff_deg"] <= USABLE_MAX_ANGLE_DEG
+        ):
+            return True
+
+    return False
+
+
 def summarize_scored_items(items):
     by_quality = defaultdict(list)
     by_node_count = defaultdict(list)
     by_edge_count = defaultdict(list)
+    by_allowed = defaultdict(list)
 
     for it in items:
         by_quality[it["quality_status"]].append(it["gnn_layout_realness_score"])
         by_node_count[str(it["num_nodes"])].append(it["gnn_layout_realness_score"])
         by_edge_count[str(it["num_edges"])].append(it["gnn_layout_realness_score"])
+        by_allowed[str(it["solver_allowed"])].append(it["gnn_layout_realness_score"])
 
     def stats(vals):
         vals = np.asarray(vals, dtype=np.float32)
@@ -635,13 +697,19 @@ def summarize_scored_items(items):
         }
 
     all_scores = [it["gnn_layout_realness_score"] for it in items]
+    all_combined = [it["combined_score"] for it in items]
 
     return {
         "count": len(items),
-        "overall": stats(all_scores),
+        "overall_gnn": stats(all_scores),
+        "overall_combined": stats(all_combined),
         "by_quality_status": {
             k: stats(v)
             for k, v in by_quality.items()
+        },
+        "by_solver_allowed": {
+            k: stats(v)
+            for k, v in by_allowed.items()
         },
         "by_node_count": {
             k: stats(v)
@@ -655,13 +723,9 @@ def summarize_scored_items(items):
 
 
 # =========================================================
-# 🎨 preview 渲染
+# 🎨 polyline / width 渲染
 # =========================================================
 def extract_polyline_px(node):
-    """
-    尽量从 solved node 里拿最终 stroke polyline。
-    如果没有，就返回 None。
-    """
     keys = [
         "solved_polyline_px",
         "polyline_px",
@@ -717,9 +781,43 @@ def line_from_layout_prior_px(node):
     return np.stack([p0, p1], axis=0)
 
 
-def render_candidate_preview(candidate, score_item, out_path):
-    fig, ax = plt.subplots(1, 1, figsize=(6.5, 6.5))
+def extract_render_width_px(node):
+    """
+    优先读取真实宽度字段；否则用 width_token 兜底。
+    """
+    for key in [
+        "width_px",
+        "stroke_width_px",
+        "render_width_px",
+        "width_mean_px",
+        "actual_width_px",
+        "target_width_px",
+    ]:
+        if key in node:
+            w = safe_float(node[key], DEFAULT_RENDER_WIDTH_PX)
+            return clamp(w, MIN_RENDER_WIDTH_PX, MAX_RENDER_WIDTH_PX)
 
+    for parent in ["layout_prior", "solver_priors", "primitive_ref", "primitive_assignment"]:
+        if parent in node and isinstance(node[parent], dict):
+            for key in [
+                "width_px",
+                "stroke_width_px",
+                "render_width_px",
+                "width_mean_px",
+                "actual_width_px",
+                "target_width_px",
+            ]:
+                if key in node[parent]:
+                    w = safe_float(node[parent][key], DEFAULT_RENDER_WIDTH_PX)
+                    return clamp(w, MIN_RENDER_WIDTH_PX, MAX_RENDER_WIDTH_PX)
+
+    width_token = safe_int(node.get("width_token", 0), 0)
+    w = WIDTH_TOKEN_TO_PX.get(width_token, DEFAULT_RENDER_WIDTH_PX)
+
+    return clamp(w, MIN_RENDER_WIDTH_PX, MAX_RENDER_WIDTH_PX)
+
+
+def draw_debug_view(ax, candidate, score_item):
     score_obj = build_score_object_from_candidate(candidate, score_item["candidate_index"])
     nodes = score_obj["nodes"]
     edges = score_obj["topology"]["positive_edges_undirected"]
@@ -741,8 +839,7 @@ def render_candidate_preview(candidate, score_item, out_path):
             poly = line_from_layout_prior_px(node)
 
         if poly is not None:
-            ax.plot(poly[:, 0], poly[:, 1], color=c, lw=2.8, alpha=0.95)
-
+            ax.plot(poly[:, 0], poly[:, 1], color=c, lw=2.6, alpha=0.95)
             ax.scatter([poly[0, 0]], [poly[0, 1]], color="green", s=25, zorder=6)
             ax.scatter([poly[-1, 0]], [poly[-1, 1]], color="red", s=25, zorder=6)
 
@@ -761,7 +858,6 @@ def render_candidate_preview(candidate, score_item, out_path):
                 color="black",
             )
 
-    # 画 topology 边的 center-to-center 辅助线
     for e in edges:
         u = safe_int(e.get("u", -1), -1)
         v = safe_int(e.get("v", -1), -1)
@@ -803,21 +899,67 @@ def render_candidate_preview(candidate, score_item, out_path):
             bbox=dict(facecolor="white", alpha=0.6, edgecolor="none"),
         )
 
-    q = get_quality_report(candidate)
+    ax.set_title("debug: colored strokes + topology", fontsize=9)
+
+
+def draw_black_width_view(ax, candidate, score_item):
+    """
+    纯黑带宽度渲染。
+    """
+    score_obj = build_score_object_from_candidate(candidate, score_item["candidate_index"])
+    nodes = score_obj["nodes"]
+
+    for node in nodes:
+        poly = extract_polyline_px(node)
+
+        if poly is None:
+            poly = line_from_layout_prior_px(node)
+
+        if poly is None:
+            continue
+
+        w = extract_render_width_px(node)
+
+        ax.plot(
+            poly[:, 0],
+            poly[:, 1],
+            color="black",
+            lw=w,
+            alpha=1.0,
+            solid_capstyle="round",
+            solid_joinstyle="round",
+            zorder=5,
+        )
+
+    ax.set_title("black width render", fontsize=9)
+
+
+def render_candidate_preview(candidate, score_item, out_path):
+    fig, axes = plt.subplots(1, 2, figsize=(12.5, 6.2))
+
+    ax_debug, ax_black = axes
+
+    draw_debug_view(ax_debug, candidate, score_item)
+    draw_black_width_view(ax_black, candidate, score_item)
 
     title = (
-        f"{score_item['candidate_id']}\n"
-        f"GNN realness={score_item['gnn_layout_realness_score']:.4f} | "
+        f"{score_item['candidate_id']} | "
+        f"GNN={score_item['gnn_layout_realness_score']:.4f} | "
         f"solver={score_item['quality_status']} | "
-        f"Q={score_item['solver_quality_score']:.3f}"
+        f"feas={score_item['solver_feasibility_score']:.4f} | "
+        f"combined={score_item['combined_score']:.4f}\n"
+        f"Q={score_item['solver_quality_score']:.3f} | "
+        f"maxJ={score_item['max_junction_px']:.2f}px | "
+        f"maxA={score_item['max_angle_diff_deg']:.1f}°"
     )
 
-    ax.set_title(title, fontsize=10)
+    fig.suptitle(title, fontsize=10)
 
-    ax.set_xlim(0, CANVAS_SIZE)
-    ax.set_ylim(CANVAS_SIZE, 0)
-    ax.set_aspect("equal")
-    ax.grid(True, alpha=0.25)
+    for ax in axes:
+        ax.set_xlim(0, CANVAS_SIZE)
+        ax.set_ylim(CANVAS_SIZE, 0)
+        ax.set_aspect("equal")
+        ax.grid(True, alpha=0.20)
 
     plt.tight_layout()
     plt.savefig(out_path, dpi=140, bbox_inches="tight")
@@ -826,21 +968,44 @@ def render_candidate_preview(candidate, score_item, out_path):
 
 def render_previews(candidates, scored_items):
     ensure_dir(PREVIEW_DIR)
-    ensure_dir(TOP_PREVIEW_DIR)
-    ensure_dir(BOTTOM_PREVIEW_DIR)
-    ensure_dir(MIDDLE_PREVIEW_DIR)
+    ensure_dir(TOP_GNN_DIR)
+    ensure_dir(BOTTOM_GNN_DIR)
+    ensure_dir(MIDDLE_GNN_DIR)
+    ensure_dir(TOP_GNN_GOOD_ONLY_DIR)
+    ensure_dir(TOP_COMBINED_DIR)
+    ensure_dir(BAD_BUT_GNN_HIGH_DIR)
 
-    sorted_items = sorted(
+    sorted_by_gnn = sorted(
         scored_items,
         key=lambda x: x["gnn_layout_realness_score"],
         reverse=True,
     )
 
-    top_items = sorted_items[:TOP_K_PREVIEW]
-    bottom_items = sorted_items[-BOTTOM_K_PREVIEW:]
+    sorted_by_combined = sorted(
+        scored_items,
+        key=lambda x: x["combined_score"],
+        reverse=True,
+    )
 
-    mid_start = max(0, len(sorted_items) // 2 - MIDDLE_K_PREVIEW // 2)
-    middle_items = sorted_items[mid_start:mid_start + MIDDLE_K_PREVIEW]
+    good_only = [
+        x for x in sorted_by_gnn
+        if x["solver_allowed"]
+    ]
+
+    bad_but_high = [
+        x for x in sorted_by_gnn
+        if not x["solver_allowed"]
+    ]
+
+    top_gnn_items = sorted_by_gnn[:TOP_K_PREVIEW]
+    bottom_items = sorted_by_gnn[-BOTTOM_K_PREVIEW:]
+
+    mid_start = max(0, len(sorted_by_gnn) // 2 - MIDDLE_K_PREVIEW // 2)
+    middle_items = sorted_by_gnn[mid_start:mid_start + MIDDLE_K_PREVIEW]
+
+    good_only_items = good_only[:GOOD_ONLY_PREVIEW]
+    combined_items = sorted_by_combined[:COMBINED_PREVIEW]
+    bad_high_items = bad_but_high[:BAD_BUT_HIGH_PREVIEW]
 
     print("\n" + "=" * 80)
     print("🖼️ Rendering GNN Scored Previews")
@@ -853,15 +1018,23 @@ def render_previews(candidates, scored_items):
 
             out_path = os.path.join(
                 out_dir,
-                f"{prefix}_{rank:03d}_{item['candidate_id']}_score_{item['gnn_layout_realness_score']:.4f}.png",
+                (
+                    f"{prefix}_{rank:03d}_"
+                    f"{item['candidate_id']}_"
+                    f"gnn_{item['gnn_layout_realness_score']:.4f}_"
+                    f"comb_{item['combined_score']:.4f}.png"
+                ),
             )
 
             render_candidate_preview(cand, item, out_path)
             print(f"  saved: {out_path}")
 
-    render_group(top_items, TOP_PREVIEW_DIR, "top")
-    render_group(bottom_items, BOTTOM_PREVIEW_DIR, "bottom")
-    render_group(middle_items, MIDDLE_PREVIEW_DIR, "middle")
+    render_group(top_gnn_items, TOP_GNN_DIR, "top_gnn")
+    render_group(bottom_items, BOTTOM_GNN_DIR, "bottom_gnn")
+    render_group(middle_items, MIDDLE_GNN_DIR, "middle_gnn")
+    render_group(good_only_items, TOP_GNN_GOOD_ONLY_DIR, "good_only")
+    render_group(combined_items, TOP_COMBINED_DIR, "combined")
+    render_group(bad_high_items, BAD_BUT_GNN_HIGH_DIR, "bad_high")
 
     print("=" * 80 + "\n")
 
@@ -871,7 +1044,7 @@ def render_previews(candidates, scored_items):
 # =========================================================
 def main():
     print("\n" + "=" * 80)
-    print("🚀 Score Solved Glyphs with GNN Layout Critic")
+    print("🚀 Score Solved Glyphs with GNN Layout Critic V2")
     print("=" * 80)
     print(f"  model_file:  {MODEL_FILE}")
     print(f"  solved_file: {SOLVED_FILE}")
@@ -942,54 +1115,157 @@ def main():
 
         q = get_quality_report(cand)
 
+        mean_junction_px = read_metric_from_quality(
+            q,
+            ["mean_junction_px", "mean_j_px", "mean_junction", "mean_j"],
+            0.0,
+        )
+
+        max_junction_px = read_metric_from_quality(
+            q,
+            ["max_junction_px", "max_j_px", "max_junction", "max_j"],
+            0.0,
+        )
+
+        mean_angle_diff_deg = read_metric_from_quality(
+            q,
+            ["mean_angle_diff_deg", "mean_ang_deg", "mean_angle_deg", "mean_angle"],
+            0.0,
+        )
+
+        max_angle_diff_deg = read_metric_from_quality(
+            q,
+            ["max_angle_diff_deg", "max_ang_deg", "max_angle_deg", "max_angle"],
+            0.0,
+        )
+
+        solver_feasibility_score = compute_solver_feasibility_score(
+            max_junction_px=max_junction_px,
+            max_angle_diff_deg=max_angle_diff_deg,
+        )
+
+        combined_score = float(score * solver_feasibility_score)
+
         item = {
             "rank_by_gnn": None,
+            "rank_by_combined": None,
+
             "candidate_index": int(cand_idx),
             "candidate_id": cand_id,
+
             "gnn_layout_realness_score": float(score),
+            "solver_feasibility_score": float(solver_feasibility_score),
+            "combined_score": float(combined_score),
 
             "quality_status": get_quality_status(cand),
             "solver_quality_score": get_quality_score(cand),
 
+            "solver_allowed": None,
+
             "num_nodes": int(len(nodes)),
             "num_edges": int(len(edges)),
 
-            "mean_junction_px": safe_float(q.get("mean_junction_px", q.get("mean_j_px", 0.0)), 0.0),
-            "max_junction_px": safe_float(q.get("max_junction_px", q.get("max_j_px", 0.0)), 0.0),
-            "mean_angle_diff_deg": safe_float(q.get("mean_angle_diff_deg", q.get("mean_ang_deg", 0.0)), 0.0),
-            "max_angle_diff_deg": safe_float(q.get("max_angle_diff_deg", q.get("max_ang_deg", 0.0)), 0.0),
+            "mean_junction_px": float(mean_junction_px),
+            "max_junction_px": float(max_junction_px),
+            "mean_angle_diff_deg": float(mean_angle_diff_deg),
+            "max_angle_diff_deg": float(max_angle_diff_deg),
         }
+
+        item["solver_allowed"] = bool(is_solver_allowed(item))
 
         scored_items.append(item)
 
-    scored_items_sorted = sorted(
+    scored_by_gnn = sorted(
         scored_items,
         key=lambda x: x["gnn_layout_realness_score"],
         reverse=True,
     )
 
-    for rank, item in enumerate(scored_items_sorted):
+    scored_by_combined = sorted(
+        scored_items,
+        key=lambda x: x["combined_score"],
+        reverse=True,
+    )
+
+    for rank, item in enumerate(scored_by_gnn):
         item["rank_by_gnn"] = int(rank)
 
-    summary = summarize_scored_items(scored_items_sorted)
+    for rank, item in enumerate(scored_by_combined):
+        item["rank_by_combined"] = int(rank)
+
+    summary = summarize_scored_items(scored_items)
+
+    allowed_items = [x for x in scored_by_gnn if x["solver_allowed"]]
+    bad_but_high_items = [x for x in scored_by_gnn if not x["solver_allowed"]]
 
     print("\n" + "=" * 80)
-    print("📊 GNN Score Summary")
+    print("📊 GNN + Solver Score Summary")
     print("=" * 80)
 
     print(f"  scored_count: {summary['count']}")
-    print(f"  overall: {summary['overall']}")
+    print(f"  overall_gnn:      {summary['overall_gnn']}")
+    print(f"  overall_combined: {summary['overall_combined']}")
+    print(f"  solver_allowed_count: {len(allowed_items)}")
+    print(f"  solver_rejected_count: {len(bad_but_high_items)}")
 
     print("\n[By Solver Quality Status]")
     for k, v in summary["by_quality_status"].items():
         print(f"  {k}: {v}")
 
+    print("\n[By Solver Allowed]")
+    for k, v in summary["by_solver_allowed"].items():
+        print(f"  {k}: {v}")
+
     print("\n[Top-20 by GNN Realness]")
-    for item in scored_items_sorted[:20]:
+    for item in scored_by_gnn[:20]:
         print(
-            f"  {item['rank_by_gnn']:03d} | "
+            f"  GNN#{item['rank_by_gnn']:03d} | "
             f"{item['candidate_id']} | "
             f"gnn={item['gnn_layout_realness_score']:.4f} | "
+            f"feas={item['solver_feasibility_score']:.4f} | "
+            f"comb={item['combined_score']:.4f} | "
+            f"allowed={item['solver_allowed']} | "
+            f"solver={item['quality_status']} | "
+            f"Q={item['solver_quality_score']:.3f} | "
+            f"maxJ={item['max_junction_px']:.2f}px | "
+            f"maxA={item['max_angle_diff_deg']:.1f}°"
+        )
+
+    print("\n[Top-20 by Combined Score]")
+    for item in scored_by_combined[:20]:
+        print(
+            f"  COMB#{item['rank_by_combined']:03d} | "
+            f"{item['candidate_id']} | "
+            f"comb={item['combined_score']:.4f} | "
+            f"gnn={item['gnn_layout_realness_score']:.4f} | "
+            f"feas={item['solver_feasibility_score']:.4f} | "
+            f"allowed={item['solver_allowed']} | "
+            f"solver={item['quality_status']} | "
+            f"Q={item['solver_quality_score']:.3f} | "
+            f"maxJ={item['max_junction_px']:.2f}px | "
+            f"maxA={item['max_angle_diff_deg']:.1f}°"
+        )
+
+    print("\n[Top-20 by GNN among Solver-Allowed]")
+    for rank, item in enumerate(allowed_items[:20]):
+        print(
+            f"  GOOD#{rank:03d} | "
+            f"{item['candidate_id']} | "
+            f"gnn={item['gnn_layout_realness_score']:.4f} | "
+            f"comb={item['combined_score']:.4f} | "
+            f"solver={item['quality_status']} | "
+            f"Q={item['solver_quality_score']:.3f} | "
+            f"maxJ={item['max_junction_px']:.2f}px | "
+            f"maxA={item['max_angle_diff_deg']:.1f}°"
+        )
+
+    print("\n[Top Bad-but-GNN-High]")
+    for rank, item in enumerate(bad_but_high_items[:16]):
+        print(
+            f"  BADHIGH#{rank:03d} | "
+            f"{item['candidate_id']} | "
+            f"gnn={item['gnn_layout_realness_score']:.4f} | "
+            f"comb={item['combined_score']:.4f} | "
             f"solver={item['quality_status']} | "
             f"Q={item['solver_quality_score']:.3f} | "
             f"maxJ={item['max_junction_px']:.2f}px | "
@@ -997,49 +1273,76 @@ def main():
         )
 
     print("\n[Bottom-10 by GNN Realness]")
-    for item in scored_items_sorted[-10:]:
+    for item in scored_by_gnn[-10:]:
         print(
-            f"  {item['rank_by_gnn']:03d} | "
+            f"  GNN#{item['rank_by_gnn']:03d} | "
             f"{item['candidate_id']} | "
             f"gnn={item['gnn_layout_realness_score']:.4f} | "
+            f"comb={item['combined_score']:.4f} | "
             f"solver={item['quality_status']} | "
             f"Q={item['solver_quality_score']:.3f}"
         )
 
     if SAVE_FULL_CANDIDATES:
-        ranked_candidates = []
+        ranked_candidates_by_combined = []
 
-        for item in scored_items_sorted:
+        for item in scored_by_combined:
             cand = copy.deepcopy(candidates[item["candidate_index"]])
             cand["gnn_layout_realness_score"] = item["gnn_layout_realness_score"]
+            cand["solver_feasibility_score"] = item["solver_feasibility_score"]
+            cand["combined_score"] = item["combined_score"]
             cand["rank_by_gnn"] = item["rank_by_gnn"]
+            cand["rank_by_combined"] = item["rank_by_combined"]
+            cand["solver_allowed"] = item["solver_allowed"]
             cand["gnn_score_item"] = item
-            ranked_candidates.append(cand)
+            ranked_candidates_by_combined.append(cand)
     else:
-        ranked_candidates = []
+        ranked_candidates_by_combined = []
 
     output = {
-        "schema_version": "gnn_scored_solved_glyphs_v1",
+        "schema_version": "gnn_scored_solved_glyphs_v2_combined",
         "model_file": MODEL_FILE,
         "solved_file": SOLVED_FILE,
         "output_file": OUTPUT_FILE,
 
         "model_best_state": checkpoint.get("best_state", {}),
+        "config": {
+            "combined_junction_weight": COMBINED_JUNCTION_WEIGHT,
+            "combined_angle_weight": COMBINED_ANGLE_WEIGHT,
+            "usable_max_junction_px": USABLE_MAX_JUNCTION_PX,
+            "usable_max_angle_deg": USABLE_MAX_ANGLE_DEG,
+            "width_token_to_px": WIDTH_TOKEN_TO_PX,
+            "default_render_width_px": DEFAULT_RENDER_WIDTH_PX,
+        },
+
         "summary": summary,
 
-        "scored_items_sorted": scored_items_sorted,
+        "scored_items_by_gnn": scored_by_gnn,
+        "scored_items_by_combined": scored_by_combined,
+        "solver_allowed_items_by_gnn": allowed_items,
+        "bad_but_gnn_high_items": bad_but_high_items,
 
         "top_gnn_candidate_ids": [
             item["candidate_id"]
-            for item in scored_items_sorted[:TOP_K_PREVIEW]
+            for item in scored_by_gnn[:TOP_K_PREVIEW]
         ],
 
-        "bottom_gnn_candidate_ids": [
+        "top_combined_candidate_ids": [
             item["candidate_id"]
-            for item in scored_items_sorted[-BOTTOM_K_PREVIEW:]
+            for item in scored_by_combined[:COMBINED_PREVIEW]
         ],
 
-        "ranked_solved_glyph_candidates": ranked_candidates,
+        "top_gnn_good_only_candidate_ids": [
+            item["candidate_id"]
+            for item in allowed_items[:GOOD_ONLY_PREVIEW]
+        ],
+
+        "bad_but_gnn_high_candidate_ids": [
+            item["candidate_id"]
+            for item in bad_but_high_items[:BAD_BUT_HIGH_PREVIEW]
+        ],
+
+        "ranked_solved_glyph_candidates_by_combined": ranked_candidates_by_combined,
     }
 
     save_json(output, OUTPUT_FILE)
@@ -1050,15 +1353,16 @@ def main():
     print(f"  scored json: {OUTPUT_FILE}")
 
     if SAVE_PREVIEWS:
-        render_previews(candidates, scored_items_sorted)
+        render_previews(candidates, scored_items)
         print(f"  previews:    {PREVIEW_DIR}")
 
     print("\n📌 下一步看法：")
-    print("  1. 打开 gnn_scored_solved_previews/top_gnn")
-    print("  2. 对比 solver_previews/best")
-    print("  3. 如果 top_gnn 明显更像字符，说明 GNN critic 有实际筛选价值")
-    print("  4. 如果 top_gnn 仍然不像字符，需要加入人工 hard negative 继续训练")
-    print("  5. 可以把 top_gnn_candidate_ids 作为后续 aesthetic_scorer / QD search 的输入")
+    print("  1. 优先打开 gnn_scored_solved_previews/top_gnn_good_only")
+    print("  2. 再打开 gnn_scored_solved_previews/top_combined")
+    print("  3. 每张图左侧是彩色 debug/topology，右侧是纯黑带宽度渲染")
+    print("  4. 如果右侧黑色宽度图更像字符，说明宽度渲染方向有价值")
+    print("  5. 如果 top_bad_but_gnn_high 看起来像字符但连接差，说明 solver 还需要二次修复")
+    print("  6. 如果 good_only 仍然不像字符，就需要加入人工 hard negative 继续训练 GNN critic")
 
 
 if __name__ == "__main__":
