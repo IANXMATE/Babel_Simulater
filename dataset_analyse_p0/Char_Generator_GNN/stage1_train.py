@@ -16,14 +16,14 @@ DATASET_FILE = os.path.join(SCRIPT_DIR, "fontgpt_dataset_graph.json")
 MODEL_SAVE_PATH = os.path.join(SCRIPT_DIR, "fontgpt_canonical_graph_latest.pth")
 
 # 图模型特征维度
-D_MODEL = 256
+D_MODEL = 512
 D_EDGE = 64
 N_HEADS = 8
 N_LAYERS = 6
-DROPOUT = 0.1
+DROPOUT = 0.05
 
-BATCH_SIZE = 64
-EPOCHS = 100
+BATCH_SIZE = 256
+EPOCHS = 200
 LR = 3e-4
 
 NUM_SHAPES = 1000
@@ -34,9 +34,10 @@ MAX_NODES = 50
 # Loss 权重
 LAMBDA_EDGE = 1.0        # L_edge 权重
 LAMBDA_T = 5.0           # L_t 权重：t 值只有 0/1，加大权重强化端点对齐监督
-LAMBDA_JUNCTION = 5.0    # L_junction 权重（降低防止梯度爆炸）
-LAMBDA_COORD_ANGLE = 3.0 # L_coord_angle 权重：坐标切线角度约束（直接作用于坐标）
-LAMBDA_REPULSE = 2.0     # 节点互斥力：持续驱动坐标分散
+LAMBDA_COORD = 50.0
+LAMBDA_JUNCTION = 1.0
+LAMBDA_COORD_ANGLE = 1.0
+LAMBDA_REPULSE = 0.5
 MIN_NODE_DIST_SQ = 0.04  # 最小节点间距^2（=0.2^2，用平方距避免 sqrt 导数爆炸）
 LAMBDA_ANGLE = 1.0       # L_angle 权重：监督 edge_preds 里的 angle sin/cos（辅助监督）
 LAMBDA_LENGTH = 5.0      # L_length 权重：监督笔画长度（平移不变，不引起均值坍塌）
@@ -486,13 +487,17 @@ def compute_graph_loss(preds, targets, mask):
     else:
         loss_repulse = torch.tensor(0.0, device=coords_pred.device)
 
+    loss_coord = F.smooth_l1_loss(coords_pred[valid_nodes], gt_coords[valid_nodes])
+
     total = (loss_node
              + LAMBDA_EDGE * loss_edge
              + LAMBDA_ANGLE * loss_angle
              + LAMBDA_JUNCTION * loss_junction
              + LAMBDA_COORD_ANGLE * loss_coord_angle
              + LAMBDA_REPULSE * loss_repulse)
-    return total, loss_node, loss_edge, loss_angle, loss_junction, loss_repulse
+
+    total = total + LAMBDA_COORD * loss_coord
+    return total, loss_node, loss_edge, loss_angle, loss_junction, loss_repulse, loss_coord
 
 
 # ==========================================
@@ -521,7 +526,7 @@ def main():
 
     for epoch in range(EPOCHS):
         model.train()
-        total_loss = total_n = total_e = total_a = total_j = total_s = 0.0
+        total_loss = total_n = total_e = total_a = total_j = total_s = total_l = 0.0
         pbar = tqdm(dataloader, desc=f"Epoch {epoch+1}/{EPOCHS}")
 
         for b_shapes, b_widths, b_coords, b_edge_types, b_edge_ts, b_mask in pbar:
@@ -539,7 +544,7 @@ def main():
             preds = model(b_edge_types, b_edge_ts, b_mask)
 
             targets = (b_shapes, b_widths, b_coords, b_edge_types, b_edge_ts)
-            loss, n_loss, e_loss, a_loss, j_loss, r_loss = compute_graph_loss(preds, targets, b_mask)
+            loss, n_loss, e_loss, a_loss, j_loss, r_loss, l_loss = compute_graph_loss(preds, targets, b_mask)
 
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
@@ -551,6 +556,7 @@ def main():
             total_a += a_loss.item()
             total_j += j_loss.item()
             total_s += r_loss.item()
+            total_l += l_loss.item()
 
             pbar.set_postfix({
                 "Total": f"{loss.item():.3f}",
@@ -559,6 +565,7 @@ def main():
                 "Angle": f"{a_loss.item():.4f}",
                 "Junc": f"{j_loss.item():.4f}",
                 "Repul": f"{r_loss.item():.4f}",
+                "Coord": f"{l_loss.item():.4f}"
             })
 
         steps = len(dataloader)
@@ -569,7 +576,8 @@ def main():
             f"Edge: {total_e/steps:.4f} | "
             f"Angle: {total_a/steps:.5f} | "
             f"Junc: {total_j/steps:.5f} | "
-            f"Repul: {total_s/steps:.5f}"
+            f"Repul: {total_s/steps:.5f} | "
+            f"Coord: {total_l/steps:.5f} | "
         )
 
     torch.save(model.state_dict(), MODEL_SAVE_PATH)
