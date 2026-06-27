@@ -1,0 +1,6895 @@
+{
+  "schema_version": "primitive_sampler_audit_v1",
+  "candidate_file": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph\\glyph_candidates_with_primitives.json",
+  "corpus_file": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph\\alien_glyph_pcg_corpus.json",
+  "scored_solved_file": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph\\gnn_scored_solved_glyphs.json",
+  "preview_dir": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph\\primitive_sampler_audit_previews",
+  "config": {
+    "canvas_size": 400.0,
+    "width_token_to_px": {
+      "0": 6.0,
+      "1": 10.0,
+      "2": 14.0,
+      "3": 18.0
+    },
+    "default_render_width_px": 8.0,
+    "structural_shape_codes": [
+      "20",
+      20
+    ],
+    "use_fallback_layout_if_missing": true
+  },
+  "summary": {
+    "candidate_count": 200,
+    "total_nodes": 738,
+    "total_edges": 619,
+    "missing_primitive_nodes": 0,
+    "missing_primitive_rate": 0.0,
+    "missing_layout_nodes": 0,
+    "missing_layout_rate": 0.0,
+    "shape20_nodes": 268,
+    "shape20_ratio": 0.363144,
+    "avg_unique_shape_per_candidate": 3.055,
+    "avg_shape_entropy_per_candidate": 1.054475,
+    "avg_black_render_fill_ratio": 0.072751,
+    "shape_code_hist": {
+      "4": 17,
+      "11": 19,
+      "20": 268,
+      "23": 16,
+      "14": 65,
+      "10": 14,
+      "24": 20,
+      "6": 15,
+      "16": 65,
+      "5": 11,
+      "7": 11,
+      "21": 15,
+      "15": 18,
+      "3": 16,
+      "2": 18,
+      "8": 21,
+      "13": 18,
+      "19": 8,
+      "22": 20,
+      "1": 15,
+      "17": 18,
+      "18": 10,
+      "9": 18,
+      "0": 11,
+      "12": 11
+    },
+    "width_token_hist": {
+      "0": 618,
+      "1": 117,
+      "2": 3
+    },
+    "variant_id_hist": {
+      "3": 174,
+      "0": 188,
+      "2": 205,
+      "1": 171
+    },
+    "assignment_source_hist": {
+      "layout_aware_primitive_sampler": 738
+    },
+    "primitive_source_hist": {
+      "node.primitive_ref": 738
+    }
+  },
+  "warnings": [],
+  "candidate_metrics": [
+    {
+      "candidate_index": 0,
+      "candidate_id": "glyph_candidate_00000",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.058139,
+      "shape_counter": {
+        "4": 1,
+        "11": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.3082474172115326,
+      "combined_score": 0.29978416422226767,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 1,
+      "candidate_id": "glyph_candidate_00001",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.052291,
+      "shape_counter": {
+        "23": 1,
+        "14": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 7.423333045153413e-06,
+      "combined_score": 7.372140909553886e-06,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 2,
+      "candidate_id": "glyph_candidate_00002",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.078974,
+      "shape_counter": {
+        "20": 2,
+        "10": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 2,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.019356947392225266,
+      "combined_score": 0.010834672337289143,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 3,
+      "candidate_id": "glyph_candidate_00003",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.062349,
+      "shape_counter": {
+        "11": 1,
+        "24": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 1,
+        "1": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.2547605633735657,
+      "combined_score": 0.2529480513192009,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 4,
+      "candidate_id": "glyph_candidate_00004",
+      "num_nodes": 3,
+      "num_edges": 3,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.066083,
+      "shape_counter": {
+        "20": 2,
+        "6": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "3": 1,
+        "1": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.8400099277496338,
+      "combined_score": 0.7137364028685892,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 5,
+      "candidate_id": "glyph_candidate_00005",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.070999,
+      "shape_counter": {
+        "20": 2,
+        "16": 1,
+        "23": 1,
+        "4": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "1": 1,
+        "0": 2,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.8519223928451538,
+      "combined_score": 0.5889465511576663,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 6,
+      "candidate_id": "glyph_candidate_00006",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 0.9502705392302345,
+      "width_entropy": 0.6730116670072565,
+      "shape20_count": 3,
+      "shape20_ratio": 0.6,
+      "width0_ratio": 0.6,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.09676,
+      "shape_counter": {
+        "20": 3,
+        "14": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "1": 2,
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 3,
+        "1": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.18222759664058685,
+      "combined_score": 0.11382889920881137,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 7,
+      "candidate_id": "glyph_candidate_00007",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": 0.6931471805579453,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.5,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.065049,
+      "shape_counter": {
+        "5": 1,
+        "7": 1,
+        "21": 1,
+        "15": 1
+      },
+      "width_counter": {
+        "1": 2,
+        "0": 2
+      },
+      "variant_counter": {
+        "3": 2,
+        "1": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.9646209478378296,
+      "combined_score": 0.8041575631170442,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 8,
+      "candidate_id": "glyph_candidate_00008",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.061522,
+      "shape_counter": {
+        "3": 1,
+        "20": 1,
+        "11": 1,
+        "6": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.35734429955482483,
+      "combined_score": 0.32718303080618083,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 9,
+      "candidate_id": "glyph_candidate_00009",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.069636,
+      "shape_counter": {
+        "2": 1,
+        "20": 1,
+        "8": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.9032891392707825,
+      "combined_score": 0.8874770844625874,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 10,
+      "candidate_id": "glyph_candidate_00010",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.6931471805579453,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.5,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.085051,
+      "shape_counter": {
+        "20": 2,
+        "21": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "1": 2,
+        "0": 2
+      },
+      "variant_counter": {
+        "0": 1,
+        "1": 3
+      },
+      "gnn_layout_realness_score": 0.02361219935119152,
+      "combined_score": 0.007569019238963253,
+      "solver_allowed": false,
+      "quality_status": "bad"
+    },
+    {
+      "candidate_index": 11,
+      "candidate_id": "glyph_candidate_00011",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.0573,
+      "shape_counter": {
+        "20": 1,
+        "13": 1,
+        "19": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.6222655773162842,
+      "combined_score": 0.6042614537916491,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 12,
+      "candidate_id": "glyph_candidate_00012",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.093052,
+      "shape_counter": {
+        "20": 2,
+        "22": 1,
+        "2": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 2,
+        "0": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.8357076644897461,
+      "combined_score": 0.7659515126361013,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 13,
+      "candidate_id": "glyph_candidate_00013",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.055145,
+      "shape_counter": {
+        "20": 1,
+        "4": 1,
+        "6": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "1": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.0772007629275322,
+      "combined_score": 0.07333143268839729,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 14,
+      "candidate_id": "glyph_candidate_00014",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.6931471805579453,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.5,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.073098,
+      "shape_counter": {
+        "20": 2,
+        "21": 1,
+        "6": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 2
+      },
+      "variant_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.050206996500492096,
+      "combined_score": 0.02985744998710377,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 15,
+      "candidate_id": "glyph_candidate_00015",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.051129,
+      "shape_counter": {
+        "20": 2,
+        "2": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.8389912843704224,
+      "combined_score": 0.8261697974348404,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 16,
+      "candidate_id": "glyph_candidate_00016",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": 0.6730116670072565,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.6,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.094271,
+      "shape_counter": {
+        "1": 1,
+        "7": 1,
+        "14": 2,
+        "10": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 2
+      },
+      "variant_counter": {
+        "2": 1,
+        "1": 2,
+        "0": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.02923554927110672,
+      "combined_score": 0.019623452549632974,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 17,
+      "candidate_id": "glyph_candidate_00017",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.05745,
+      "shape_counter": {
+        "8": 1,
+        "16": 1,
+        "20": 1,
+        "1": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "2": 1,
+        "1": 1,
+        "0": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.6735296249389648,
+      "combined_score": 0.5743115283607186,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 18,
+      "candidate_id": "glyph_candidate_00018",
+      "num_nodes": 3,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.333333,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.083697,
+      "shape_counter": {
+        "14": 1,
+        "13": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "1": 2,
+        "0": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.8821958303451538,
+      "combined_score": 0.5994389061282246,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 19,
+      "candidate_id": "glyph_candidate_00019",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.063378,
+      "shape_counter": {
+        "20": 2,
+        "24": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "2": 2,
+        "0": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.05937397480010986,
+      "combined_score": 0.05236591987555641,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 20,
+      "candidate_id": "glyph_candidate_00020",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 0.9502705392302345,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 3,
+      "shape20_ratio": 0.6,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.078942,
+      "shape_counter": {
+        "14": 1,
+        "20": 3,
+        "21": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "3": 2,
+        "1": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.0005643271724693477,
+      "combined_score": 9.357976519888736e-05,
+      "solver_allowed": false,
+      "quality_status": "bad"
+    },
+    {
+      "candidate_index": 21,
+      "candidate_id": "glyph_candidate_00021",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.070216,
+      "shape_counter": {
+        "20": 1,
+        "14": 1,
+        "22": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.2254791259765625,
+      "combined_score": 0.2249386249349092,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 22,
+      "candidate_id": "glyph_candidate_00022",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.072165,
+      "shape_counter": {
+        "16": 1,
+        "15": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 1,
+        "3": 1,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.9208415746688843,
+      "combined_score": 0.826077014430983,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 23,
+      "candidate_id": "glyph_candidate_00023",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.075807,
+      "shape_counter": {
+        "6": 1,
+        "24": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.8273740410804749,
+      "combined_score": 0.8166551228199148,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 24,
+      "candidate_id": "glyph_candidate_00024",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 5,
+      "unique_width_count": 1,
+      "shape_entropy": 1.6094379124291003,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.2,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.082863,
+      "shape_counter": {
+        "20": 1,
+        "13": 1,
+        "11": 1,
+        "19": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 1,
+        "2": 1,
+        "1": 2
+      },
+      "gnn_layout_realness_score": 0.8222164511680603,
+      "combined_score": 0.554054846628656,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 25,
+      "candidate_id": "glyph_candidate_00025",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.082815,
+      "shape_counter": {
+        "20": 1,
+        "14": 1,
+        "13": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.8639825582504272,
+      "combined_score": 0.8587111320113914,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 26,
+      "candidate_id": "glyph_candidate_00026",
+      "num_nodes": 3,
+      "num_edges": 6,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.155243,
+      "shape_counter": {
+        "16": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "3": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.3441358208656311,
+      "combined_score": 0.017676859432936707,
+      "solver_allowed": false,
+      "quality_status": "bad"
+    },
+    {
+      "candidate_index": 27,
+      "candidate_id": "glyph_candidate_00027",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.063692,
+      "shape_counter": {
+        "8": 1,
+        "10": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 3
+      },
+      "gnn_layout_realness_score": 0.14056381583213806,
+      "combined_score": 0.136923392536636,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 28,
+      "candidate_id": "glyph_candidate_00028",
+      "num_nodes": 3,
+      "num_edges": 3,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.061059,
+      "shape_counter": {
+        "20": 2,
+        "22": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 1,
+        "1": 2
+      },
+      "gnn_layout_realness_score": 0.8189564943313599,
+      "combined_score": 0.7694615326474509,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 29,
+      "candidate_id": "glyph_candidate_00029",
+      "num_nodes": 3,
+      "num_edges": 6,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.054742,
+      "shape_counter": {
+        "20": 1,
+        "8": 1,
+        "1": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.5489258766174316,
+      "combined_score": 0.020954290386621353,
+      "solver_allowed": false,
+      "quality_status": "bad"
+    },
+    {
+      "candidate_index": 30,
+      "candidate_id": "glyph_candidate_00030",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.061706,
+      "shape_counter": {
+        "20": 2,
+        "5": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "2": 2,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.011702071875333786,
+      "combined_score": 0.009145901994296652,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 31,
+      "candidate_id": "glyph_candidate_00031",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.054535,
+      "shape_counter": {
+        "20": 1,
+        "16": 1,
+        "11": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.2712254226207733,
+      "combined_score": 0.24936814359240284,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 32,
+      "candidate_id": "glyph_candidate_00032",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.093606,
+      "shape_counter": {
+        "17": 1,
+        "14": 1,
+        "18": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.03582274541258812,
+      "combined_score": 0.03559065268592718,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 33,
+      "candidate_id": "glyph_candidate_00033",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.121432,
+      "shape_counter": {
+        "4": 1,
+        "11": 1,
+        "18": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "2": 1
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.20771737396717072,
+      "combined_score": 0.20593866396682367,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 34,
+      "candidate_id": "glyph_candidate_00034",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.064228,
+      "shape_counter": {
+        "20": 2,
+        "13": 1,
+        "7": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.025781642645597458,
+      "combined_score": 0.021679404604642103,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 35,
+      "candidate_id": "glyph_candidate_00035",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.093776,
+      "shape_counter": {
+        "4": 1,
+        "16": 2,
+        "23": 1,
+        "3": 1
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 3,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.21196576952934265,
+      "combined_score": 0.1651682740845904,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 36,
+      "candidate_id": "glyph_candidate_00036",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.049807,
+      "shape_counter": {
+        "20": 2,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.3541492819786072,
+      "combined_score": 0.35333567463716425,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 37,
+      "candidate_id": "glyph_candidate_00037",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.062245,
+      "shape_counter": {
+        "16": 2,
+        "10": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 1,
+        "2": 1,
+        "1": 2
+      },
+      "gnn_layout_realness_score": 0.30729639530181885,
+      "combined_score": 0.2522379123709429,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 38,
+      "candidate_id": "glyph_candidate_00038",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.058306,
+      "shape_counter": {
+        "20": 2,
+        "16": 1,
+        "22": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "2": 2,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.0026986084412783384,
+      "combined_score": 0.002428846001450541,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 39,
+      "candidate_id": "glyph_candidate_00039",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.060788,
+      "shape_counter": {
+        "20": 1,
+        "8": 2
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.8349646329879761,
+      "combined_score": 0.8230931421834219,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 40,
+      "candidate_id": "glyph_candidate_00040",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.059734,
+      "shape_counter": {
+        "20": 2,
+        "15": 1,
+        "14": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "2": 2,
+        "0": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.002509088721126318,
+      "combined_score": 0.0016248242042172989,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 41,
+      "candidate_id": "glyph_candidate_00041",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.07004,
+      "shape_counter": {
+        "14": 2,
+        "23": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 1,
+        "1": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.6833248734474182,
+      "combined_score": 0.6669602194061977,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 42,
+      "candidate_id": "glyph_candidate_00042",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.037971,
+      "shape_counter": {
+        "20": 2,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.905163586139679,
+      "combined_score": 0.8996229090063457,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 43,
+      "candidate_id": "glyph_candidate_00043",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.08231,
+      "shape_counter": {
+        "20": 2,
+        "13": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 2,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.5651620626449585,
+      "combined_score": 0.4299945467181839,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 44,
+      "candidate_id": "glyph_candidate_00044",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.054594,
+      "shape_counter": {
+        "11": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.044859834015369415,
+      "combined_score": 0.044361981452162046,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 45,
+      "candidate_id": "glyph_candidate_00045",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.070659,
+      "shape_counter": {
+        "16": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.03348426893353462,
+      "combined_score": 0.03237465114340287,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 46,
+      "candidate_id": "glyph_candidate_00046",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 3,
+      "shape_entropy": 0.9502705392302345,
+      "width_entropy": 1.0549201679831441,
+      "shape20_count": 3,
+      "shape20_ratio": 0.6,
+      "width0_ratio": 0.4,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.068419,
+      "shape_counter": {
+        "20": 3,
+        "1": 1,
+        "18": 1
+      },
+      "width_counter": {
+        "1": 2,
+        "0": 2,
+        "2": 1
+      },
+      "variant_counter": {
+        "3": 2,
+        "0": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.9375479221343994,
+      "combined_score": 0.5703372619496764,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 47,
+      "candidate_id": "glyph_candidate_00047",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.076835,
+      "shape_counter": {
+        "19": 1,
+        "3": 1,
+        "11": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.11551468074321747,
+      "combined_score": 0.1150075326918589,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 48,
+      "candidate_id": "glyph_candidate_00048",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.068891,
+      "shape_counter": {
+        "3": 1,
+        "13": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "2": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.019961556419730186,
+      "combined_score": 0.01872478869668988,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 49,
+      "candidate_id": "glyph_candidate_00049",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.080028,
+      "shape_counter": {
+        "23": 1,
+        "20": 2,
+        "9": 1,
+        "7": 1
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 1,
+        "2": 3
+      },
+      "gnn_layout_realness_score": 0.8502328395843506,
+      "combined_score": 0.41675988512073336,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 50,
+      "candidate_id": "glyph_candidate_00050",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.090972,
+      "shape_counter": {
+        "16": 2,
+        "4": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "2": 3,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.00565216364338994,
+      "combined_score": 0.0042299002769285,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 51,
+      "candidate_id": "glyph_candidate_00051",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.6931471805579453,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.5,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.100831,
+      "shape_counter": {
+        "14": 1,
+        "3": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 2
+      },
+      "variant_counter": {
+        "0": 1,
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.6535684466362,
+      "combined_score": 0.5293909877442524,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 52,
+      "candidate_id": "glyph_candidate_00052",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.053248,
+      "shape_counter": {
+        "20": 1,
+        "11": 2,
+        "22": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 2,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.4911832809448242,
+      "combined_score": 0.2574787877625001,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 53,
+      "candidate_id": "glyph_candidate_00053",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.055688,
+      "shape_counter": {
+        "5": 1,
+        "6": 1,
+        "22": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "1": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.03284911811351776,
+      "combined_score": 0.03225409134837642,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 54,
+      "candidate_id": "glyph_candidate_00054",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.065637,
+      "shape_counter": {
+        "20": 2,
+        "22": 1,
+        "10": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.003285657148808241,
+      "combined_score": 0.0004967972306420038,
+      "solver_allowed": false,
+      "quality_status": "bad"
+    },
+    {
+      "candidate_index": 55,
+      "candidate_id": "glyph_candidate_00055",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.073541,
+      "shape_counter": {
+        "24": 1,
+        "20": 2,
+        "5": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "1": 3,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.3087790012359619,
+      "combined_score": 0.20656307519753744,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 56,
+      "candidate_id": "glyph_candidate_00056",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.057435,
+      "shape_counter": {
+        "14": 1,
+        "0": 1,
+        "20": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.35215407609939575,
+      "combined_score": 0.23930737081804782,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 57,
+      "candidate_id": "glyph_candidate_00057",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 5,
+      "unique_width_count": 2,
+      "shape_entropy": 1.6094379124291003,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 1,
+      "shape20_ratio": 0.2,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.109893,
+      "shape_counter": {
+        "16": 1,
+        "15": 1,
+        "20": 1,
+        "14": 1,
+        "13": 1
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 3,
+        "1": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.035578858107328415,
+      "combined_score": 0.007905917961296142,
+      "solver_allowed": false,
+      "quality_status": "bad"
+    },
+    {
+      "candidate_index": 58,
+      "candidate_id": "glyph_candidate_00058",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 0.9502705392302345,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 3,
+      "shape20_ratio": 0.6,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.100108,
+      "shape_counter": {
+        "20": 3,
+        "16": 1,
+        "17": 1
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 1,
+        "3": 2,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.8205170035362244,
+      "combined_score": 0.6184984177964249,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 59,
+      "candidate_id": "glyph_candidate_00059",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.080304,
+      "shape_counter": {
+        "20": 2,
+        "16": 1,
+        "14": 1,
+        "15": 1
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 2,
+        "3": 1,
+        "1": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.8127972483634949,
+      "combined_score": 0.6136481335221827,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 60,
+      "candidate_id": "glyph_candidate_00060",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.076467,
+      "shape_counter": {
+        "20": 1,
+        "1": 1,
+        "14": 1,
+        "9": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.7641275525093079,
+      "combined_score": 0.4769037691813421,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 61,
+      "candidate_id": "glyph_candidate_00061",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.060276,
+      "shape_counter": {
+        "14": 1,
+        "22": 1,
+        "7": 1,
+        "13": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 1,
+        "0": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.46519607305526733,
+      "combined_score": 0.2580050037716119,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 62,
+      "candidate_id": "glyph_candidate_00062",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.060452,
+      "shape_counter": {
+        "16": 1,
+        "15": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 1,
+        "0": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.8973261713981628,
+      "combined_score": 0.8201763849385648,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 63,
+      "candidate_id": "glyph_candidate_00063",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.077953,
+      "shape_counter": {
+        "10": 1,
+        "20": 2,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 1,
+        "0": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.5077619552612305,
+      "combined_score": 0.39815952666735,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 64,
+      "candidate_id": "glyph_candidate_00064",
+      "num_nodes": 3,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.104006,
+      "shape_counter": {
+        "21": 1,
+        "5": 1,
+        "18": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.24632766842842102,
+      "combined_score": 0.12497361501077882,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 65,
+      "candidate_id": "glyph_candidate_00065",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.045037,
+      "shape_counter": {
+        "20": 1,
+        "10": 1,
+        "8": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 1,
+        "1": 2
+      },
+      "gnn_layout_realness_score": 0.2562585771083832,
+      "combined_score": 0.2551947557102922,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 66,
+      "candidate_id": "glyph_candidate_00066",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.080588,
+      "shape_counter": {
+        "21": 1,
+        "20": 2,
+        "16": 1,
+        "12": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 4
+      },
+      "variant_counter": {
+        "2": 3,
+        "1": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.014221691526472569,
+      "combined_score": 0.008581840245608499,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 67,
+      "candidate_id": "glyph_candidate_00067",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.063536,
+      "shape_counter": {
+        "20": 2,
+        "14": 1,
+        "23": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "3": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.44329842925071716,
+      "combined_score": 0.23200599188766974,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 68,
+      "candidate_id": "glyph_candidate_00068",
+      "num_nodes": 3,
+      "num_edges": 6,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.155053,
+      "shape_counter": {
+        "14": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 1,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.057194072753190994,
+      "combined_score": 0.009217743517532082,
+      "solver_allowed": false,
+      "quality_status": "bad"
+    },
+    {
+      "candidate_index": 69,
+      "candidate_id": "glyph_candidate_00069",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0549201679831441,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.086028,
+      "shape_counter": {
+        "3": 1,
+        "14": 2,
+        "20": 2
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 4
+      },
+      "variant_counter": {
+        "1": 1,
+        "3": 1,
+        "0": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.5030065178871155,
+      "combined_score": 0.32985828671881784,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 70,
+      "candidate_id": "glyph_candidate_00070",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.051946,
+      "shape_counter": {
+        "11": 1,
+        "13": 1,
+        "19": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.6288502812385559,
+      "combined_score": 0.6189677689119734,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 71,
+      "candidate_id": "glyph_candidate_00071",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.6931471805579453,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.5,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.096449,
+      "shape_counter": {
+        "20": 2,
+        "14": 1,
+        "9": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 2
+      },
+      "variant_counter": {
+        "3": 3,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.5812180042266846,
+      "combined_score": 0.5776949197906442,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 72,
+      "candidate_id": "glyph_candidate_00072",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.6931471805579453,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.5,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.126315,
+      "shape_counter": {
+        "16": 1,
+        "20": 2,
+        "2": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 2
+      },
+      "variant_counter": {
+        "1": 2,
+        "3": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.8166292309761047,
+      "combined_score": 0.5090189135944138,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 73,
+      "candidate_id": "glyph_candidate_00073",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.050856,
+      "shape_counter": {
+        "4": 1,
+        "20": 1,
+        "15": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "0": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.5566627383232117,
+      "combined_score": 0.5410109721143547,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 74,
+      "candidate_id": "glyph_candidate_00074",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.6931471805579453,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.5,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.111688,
+      "shape_counter": {
+        "6": 1,
+        "16": 2,
+        "0": 1
+      },
+      "width_counter": {
+        "1": 2,
+        "0": 2
+      },
+      "variant_counter": {
+        "2": 1,
+        "1": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.6753979921340942,
+      "combined_score": 0.6569593438694207,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 75,
+      "candidate_id": "glyph_candidate_00075",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.083493,
+      "shape_counter": {
+        "16": 1,
+        "20": 1,
+        "0": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "3": 2,
+        "1": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.2852853536605835,
+      "combined_score": 0.23174784840351037,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 76,
+      "candidate_id": "glyph_candidate_00076",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.066043,
+      "shape_counter": {
+        "17": 1,
+        "16": 1,
+        "12": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.8589133620262146,
+      "combined_score": 0.7854902599341795,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 77,
+      "candidate_id": "glyph_candidate_00077",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.085063,
+      "shape_counter": {
+        "14": 1,
+        "8": 1,
+        "16": 1,
+        "2": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 1,
+        "3": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.6239228844642639,
+      "combined_score": 0.28842837209150857,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 78,
+      "candidate_id": "glyph_candidate_00078",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.068231,
+      "shape_counter": {
+        "16": 1,
+        "9": 1,
+        "2": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.003906318452209234,
+      "combined_score": 0.0038034758960013306,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 79,
+      "candidate_id": "glyph_candidate_00079",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.067122,
+      "shape_counter": {
+        "20": 1,
+        "18": 1,
+        "3": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "2": 1,
+        "0": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.037306882441043854,
+      "combined_score": 0.03542429292043452,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 80,
+      "candidate_id": "glyph_candidate_00080",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.05707,
+      "shape_counter": {
+        "14": 1,
+        "20": 1,
+        "24": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.5836756825447083,
+      "combined_score": 0.5708266026739042,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 81,
+      "candidate_id": "glyph_candidate_00081",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.059246,
+      "shape_counter": {
+        "20": 1,
+        "11": 1,
+        "22": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.8583567142486572,
+      "combined_score": 0.8398470265138728,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 82,
+      "candidate_id": "glyph_candidate_00082",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.074716,
+      "shape_counter": {
+        "20": 1,
+        "1": 1,
+        "15": 1,
+        "12": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 2,
+        "0": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.6498072743415833,
+      "combined_score": 0.6306782439006859,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 83,
+      "candidate_id": "glyph_candidate_00083",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.048325,
+      "shape_counter": {
+        "20": 2,
+        "23": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.8870112299919128,
+      "combined_score": 0.8806124601841309,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 84,
+      "candidate_id": "glyph_candidate_00084",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.058822,
+      "shape_counter": {
+        "9": 1,
+        "17": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.593459963798523,
+      "combined_score": 0.5891788300652826,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 85,
+      "candidate_id": "glyph_candidate_00085",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.04266,
+      "shape_counter": {
+        "3": 1,
+        "16": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.7698494791984558,
+      "combined_score": 0.7672364356604272,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 86,
+      "candidate_id": "glyph_candidate_00086",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.06652,
+      "shape_counter": {
+        "21": 1,
+        "22": 1,
+        "12": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.034494832158088684,
+      "combined_score": 0.03440939096520725,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 87,
+      "candidate_id": "glyph_candidate_00087",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6730116670072565,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 3,
+      "shape20_ratio": 0.6,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.091362,
+      "shape_counter": {
+        "20": 3,
+        "1": 2
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 3,
+        "0": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.41264835000038147,
+      "combined_score": 0.2618248522852969,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 88,
+      "candidate_id": "glyph_candidate_00088",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.333333,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.104286,
+      "shape_counter": {
+        "16": 1,
+        "20": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 1,
+        "1": 2
+      },
+      "variant_counter": {
+        "3": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.07445516437292099,
+      "combined_score": 0.07409419015193087,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 89,
+      "candidate_id": "glyph_candidate_00089",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.092918,
+      "shape_counter": {
+        "4": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "2": 1,
+        "3": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.08900470286607742,
+      "combined_score": 0.08839622008659424,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 90,
+      "candidate_id": "glyph_candidate_00090",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.087369,
+      "shape_counter": {
+        "17": 1,
+        "18": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.12127972394227982,
+      "combined_score": 0.09909110165100486,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 91,
+      "candidate_id": "glyph_candidate_00091",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.069818,
+      "shape_counter": {
+        "12": 1,
+        "14": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.19701270759105682,
+      "combined_score": 0.19133928858885754,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 92,
+      "candidate_id": "glyph_candidate_00092",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.058235,
+      "shape_counter": {
+        "23": 1,
+        "24": 1,
+        "9": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.0013454451691359282,
+      "combined_score": 0.0012202856114131872,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 93,
+      "candidate_id": "glyph_candidate_00093",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.057534,
+      "shape_counter": {
+        "14": 2,
+        "24": 1,
+        "17": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "2": 2,
+        "3": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.8390937447547913,
+      "combined_score": 0.7041296028278426,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 94,
+      "candidate_id": "glyph_candidate_00094",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.5623351446168083,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 3,
+      "shape20_ratio": 0.75,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.061073,
+      "shape_counter": {
+        "16": 1,
+        "20": 3
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "1": 2,
+        "3": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.03837182745337486,
+      "combined_score": 0.02576259233421463,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 95,
+      "candidate_id": "glyph_candidate_00095",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.075149,
+      "shape_counter": {
+        "20": 2,
+        "2": 1,
+        "12": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 2,
+        "1": 2
+      },
+      "gnn_layout_realness_score": 0.06629705429077148,
+      "combined_score": 0.05861704157710234,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 96,
+      "candidate_id": "glyph_candidate_00096",
+      "num_nodes": 3,
+      "num_edges": 6,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.087484,
+      "shape_counter": {
+        "17": 1,
+        "14": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.16933758556842804,
+      "combined_score": 0.004529602875591007,
+      "solver_allowed": false,
+      "quality_status": "bad"
+    },
+    {
+      "candidate_index": 97,
+      "candidate_id": "glyph_candidate_00097",
+      "num_nodes": 3,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.050723,
+      "shape_counter": {
+        "24": 1,
+        "20": 1,
+        "23": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "2": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.4695304334163666,
+      "combined_score": 0.45248432309941594,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 98,
+      "candidate_id": "glyph_candidate_00098",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.059579,
+      "shape_counter": {
+        "6": 1,
+        "20": 1,
+        "2": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "1": 3,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.7241730093955994,
+      "combined_score": 0.5984424283225056,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 99,
+      "candidate_id": "glyph_candidate_00099",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.090803,
+      "shape_counter": {
+        "23": 1,
+        "2": 1,
+        "10": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 1,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.2841980457305908,
+      "combined_score": 0.28277494650862495,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 100,
+      "candidate_id": "glyph_candidate_00100",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.110177,
+      "shape_counter": {
+        "22": 1,
+        "0": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "1": 3
+      },
+      "variant_counter": {
+        "2": 1,
+        "0": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.9487515687942505,
+      "combined_score": 0.8522389815257485,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 101,
+      "candidate_id": "glyph_candidate_00101",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.5623351446168083,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 3,
+      "shape20_ratio": 0.75,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.058687,
+      "shape_counter": {
+        "7": 1,
+        "20": 3
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "3": 2,
+        "0": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.33471640944480896,
+      "combined_score": 0.31069248672445493,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 102,
+      "candidate_id": "glyph_candidate_00102",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.041131,
+      "shape_counter": {
+        "12": 1,
+        "13": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.506324052810669,
+      "combined_score": 0.4832996646039936,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 103,
+      "candidate_id": "glyph_candidate_00103",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.056153,
+      "shape_counter": {
+        "20": 1,
+        "22": 1,
+        "10": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.8420935273170471,
+      "combined_score": 0.8390170983063732,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 104,
+      "candidate_id": "glyph_candidate_00104",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.5623351446168083,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 3,
+      "shape20_ratio": 0.75,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.074486,
+      "shape_counter": {
+        "20": 3,
+        "19": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "1": 2,
+        "2": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.5100844502449036,
+      "combined_score": 0.3178108202009697,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 105,
+      "candidate_id": "glyph_candidate_00105",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.08887,
+      "shape_counter": {
+        "18": 1,
+        "17": 1,
+        "20": 1,
+        "15": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "0": 2,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.1646830290555954,
+      "combined_score": 0.12617660976244163,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 106,
+      "candidate_id": "glyph_candidate_00106",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.069727,
+      "shape_counter": {
+        "21": 1,
+        "8": 1,
+        "24": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "1": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.5726474523544312,
+      "combined_score": 0.4360645404563705,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 107,
+      "candidate_id": "glyph_candidate_00107",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.5623351446168083,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 3,
+      "shape20_ratio": 0.75,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.054032,
+      "shape_counter": {
+        "8": 1,
+        "20": 3
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "3": 2,
+        "1": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.7204427719116211,
+      "combined_score": 0.5490370820726661,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 108,
+      "candidate_id": "glyph_candidate_00108",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.061524,
+      "shape_counter": {
+        "20": 1,
+        "21": 1,
+        "3": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.8043074607849121,
+      "combined_score": 0.7955085613850341,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 109,
+      "candidate_id": "glyph_candidate_00109",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.5623351446168083,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 3,
+      "shape20_ratio": 0.75,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.077761,
+      "shape_counter": {
+        "20": 3,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "1": 2,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.01960589922964573,
+      "combined_score": 0.009702373070728437,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 110,
+      "candidate_id": "glyph_candidate_00110",
+      "num_nodes": 5,
+      "num_edges": 6,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.122315,
+      "shape_counter": {
+        "2": 1,
+        "20": 2,
+        "15": 1,
+        "9": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 4
+      },
+      "variant_counter": {
+        "2": 3,
+        "3": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.7492813467979431,
+      "combined_score": 0.2769659412606025,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 111,
+      "candidate_id": "glyph_candidate_00111",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.05056,
+      "shape_counter": {
+        "20": 1,
+        "4": 1,
+        "15": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 1,
+        "1": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.0462326742708683,
+      "combined_score": 0.04608035790600354,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 112,
+      "candidate_id": "glyph_candidate_00112",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.071823,
+      "shape_counter": {
+        "23": 1,
+        "8": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.584893524646759,
+      "combined_score": 0.5740576469569301,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 113,
+      "candidate_id": "glyph_candidate_00113",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.069458,
+      "shape_counter": {
+        "14": 2,
+        "18": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 2,
+        "0": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.9164486527442932,
+      "combined_score": 0.675792475722272,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 114,
+      "candidate_id": "glyph_candidate_00114",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.074308,
+      "shape_counter": {
+        "9": 1,
+        "20": 1,
+        "22": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.38229766488075256,
+      "combined_score": 0.31081551369241517,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 115,
+      "candidate_id": "glyph_candidate_00115",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.059605,
+      "shape_counter": {
+        "20": 2,
+        "24": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.9154567718505859,
+      "combined_score": 0.6962460687617383,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 116,
+      "candidate_id": "glyph_candidate_00116",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 5,
+      "unique_width_count": 1,
+      "shape_entropy": 1.6094379124291003,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.2,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.078086,
+      "shape_counter": {
+        "17": 1,
+        "20": 1,
+        "0": 1,
+        "19": 1,
+        "13": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "2": 2,
+        "3": 3
+      },
+      "gnn_layout_realness_score": 0.729774534702301,
+      "combined_score": 0.5013756546828743,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 117,
+      "candidate_id": "glyph_candidate_00117",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.059317,
+      "shape_counter": {
+        "12": 1,
+        "23": 1,
+        "24": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "3": 2,
+        "1": 1,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.8726992011070251,
+      "combined_score": 0.6140343914684009,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 118,
+      "candidate_id": "glyph_candidate_00118",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.066563,
+      "shape_counter": {
+        "20": 2,
+        "21": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "0": 1,
+        "1": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.23592771589756012,
+      "combined_score": 0.23252679589319303,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 119,
+      "candidate_id": "glyph_candidate_00119",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.078321,
+      "shape_counter": {
+        "0": 1,
+        "20": 2,
+        "13": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 2,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.44853878021240234,
+      "combined_score": 0.28678567054131515,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 120,
+      "candidate_id": "glyph_candidate_00120",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.065215,
+      "shape_counter": {
+        "10": 1,
+        "20": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.9545373916625977,
+      "combined_score": 0.9468368680134766,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 121,
+      "candidate_id": "glyph_candidate_00121",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.063918,
+      "shape_counter": {
+        "20": 2,
+        "3": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 1,
+        "1": 2
+      },
+      "gnn_layout_realness_score": 0.887603759765625,
+      "combined_score": 0.868393911602669,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 122,
+      "candidate_id": "glyph_candidate_00122",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.0483,
+      "shape_counter": {
+        "9": 1,
+        "17": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.6872259974479675,
+      "combined_score": 0.5269697786765961,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 123,
+      "candidate_id": "glyph_candidate_00123",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.048256,
+      "shape_counter": {
+        "24": 1,
+        "8": 1,
+        "13": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.5833196640014648,
+      "combined_score": 0.5421568468102345,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 124,
+      "candidate_id": "glyph_candidate_00124",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.072396,
+      "shape_counter": {
+        "20": 1,
+        "6": 1,
+        "14": 2
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 1,
+        "0": 1,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.041620027273893356,
+      "combined_score": 0.03582125657474809,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 125,
+      "candidate_id": "glyph_candidate_00125",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.333333,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.05763,
+      "shape_counter": {
+        "8": 1,
+        "14": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "1": 2,
+        "0": 1
+      },
+      "variant_counter": {
+        "3": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.4638351500034332,
+      "combined_score": 0.4603049519851739,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 126,
+      "candidate_id": "glyph_candidate_00126",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.063983,
+      "shape_counter": {
+        "20": 1,
+        "10": 1,
+        "3": 1,
+        "7": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 2,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.0076246727257966995,
+      "combined_score": 0.007368907067035578,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 127,
+      "candidate_id": "glyph_candidate_00127",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0549201679831441,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.104814,
+      "shape_counter": {
+        "17": 2,
+        "20": 2,
+        "9": 1
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 2,
+        "2": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.923309326171875,
+      "combined_score": 0.757152214846218,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 128,
+      "candidate_id": "glyph_candidate_00128",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 5,
+      "unique_width_count": 1,
+      "shape_entropy": 1.6094379124291003,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.2,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.097729,
+      "shape_counter": {
+        "20": 1,
+        "15": 1,
+        "1": 1,
+        "21": 1,
+        "22": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "1": 3,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.014187830500304699,
+      "combined_score": 0.013082357805532983,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 129,
+      "candidate_id": "glyph_candidate_00129",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.093241,
+      "shape_counter": {
+        "3": 1,
+        "5": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.008237726986408234,
+      "combined_score": 0.006699041488223002,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 130,
+      "candidate_id": "glyph_candidate_00130",
+      "num_nodes": 5,
+      "num_edges": 6,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 0.9502705392302345,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 3,
+      "shape20_ratio": 0.6,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.063521,
+      "shape_counter": {
+        "20": 3,
+        "16": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "1": 2,
+        "0": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.5967341661453247,
+      "combined_score": 0.2793405736276483,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 131,
+      "candidate_id": "glyph_candidate_00131",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.069281,
+      "shape_counter": {
+        "23": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 1,
+        "0": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.05844736471772194,
+      "combined_score": 0.058219863910254584,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 132,
+      "candidate_id": "glyph_candidate_00132",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.065842,
+      "shape_counter": {
+        "8": 1,
+        "16": 2
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.705242931842804,
+      "combined_score": 0.700337476135258,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 133,
+      "candidate_id": "glyph_candidate_00133",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.081291,
+      "shape_counter": {
+        "16": 1,
+        "22": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "0": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.041440997272729874,
+      "combined_score": 0.04127804097818122,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 134,
+      "candidate_id": "glyph_candidate_00134",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.062956,
+      "shape_counter": {
+        "1": 1,
+        "8": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.7926183938980103,
+      "combined_score": 0.7838533015910906,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 135,
+      "candidate_id": "glyph_candidate_00135",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.07092,
+      "shape_counter": {
+        "20": 1,
+        "4": 1,
+        "24": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "1": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.9311273097991943,
+      "combined_score": 0.9287466724021219,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 136,
+      "candidate_id": "glyph_candidate_00136",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.054959,
+      "shape_counter": {
+        "20": 2,
+        "6": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 1,
+        "1": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.21619261801242828,
+      "combined_score": 0.21535972302836948,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 137,
+      "candidate_id": "glyph_candidate_00137",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.128307,
+      "shape_counter": {
+        "20": 2,
+        "16": 1,
+        "5": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "2": 1
+      },
+      "variant_counter": {
+        "0": 2,
+        "1": 2
+      },
+      "gnn_layout_realness_score": 0.8461213707923889,
+      "combined_score": 0.27157078228018255,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 138,
+      "candidate_id": "glyph_candidate_00138",
+      "num_nodes": 6,
+      "num_edges": 5,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0114042647043517,
+      "width_entropy": 0.4505612088643047,
+      "shape20_count": 3,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.833333,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.086073,
+      "shape_counter": {
+        "16": 2,
+        "20": 3,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 5,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 3,
+        "2": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.8404136896133423,
+      "combined_score": 0.3509817606796505,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 139,
+      "candidate_id": "glyph_candidate_00139",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.067357,
+      "shape_counter": {
+        "16": 1,
+        "20": 2,
+        "22": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 1,
+        "0": 1,
+        "3": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.18918035924434662,
+      "combined_score": 0.18674813581954242,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 140,
+      "candidate_id": "glyph_candidate_00140",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.064818,
+      "shape_counter": {
+        "21": 1,
+        "14": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 1,
+        "0": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.45518362522125244,
+      "combined_score": 0.4280760682956774,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 141,
+      "candidate_id": "glyph_candidate_00141",
+      "num_nodes": 6,
+      "num_edges": 8,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3296613488507583,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.058307,
+      "shape_counter": {
+        "3": 1,
+        "16": 2,
+        "20": 2,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 6
+      },
+      "variant_counter": {
+        "1": 2,
+        "0": 2,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.024395814165472984,
+      "combined_score": 0.007096711920480273,
+      "solver_allowed": false,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 142,
+      "candidate_id": "glyph_candidate_00142",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.073975,
+      "shape_counter": {
+        "20": 2,
+        "9": 1,
+        "3": 1,
+        "4": 1
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 3,
+        "1": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.7301080226898193,
+      "combined_score": 0.48313325191347806,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 143,
+      "candidate_id": "glyph_candidate_00143",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.053594,
+      "shape_counter": {
+        "13": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.3610508441925049,
+      "combined_score": 0.35623078420485516,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 144,
+      "candidate_id": "glyph_candidate_00144",
+      "num_nodes": 3,
+      "num_edges": 3,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.092009,
+      "shape_counter": {
+        "20": 2,
+        "21": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "0": 1,
+        "1": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.5728249549865723,
+      "combined_score": 0.3622520286647802,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 145,
+      "candidate_id": "glyph_candidate_00145",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.091824,
+      "shape_counter": {
+        "1": 1,
+        "15": 1,
+        "17": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.6136943697929382,
+      "combined_score": 0.6085365857776874,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 146,
+      "candidate_id": "glyph_candidate_00146",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.056452,
+      "shape_counter": {
+        "23": 1,
+        "15": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.43817779421806335,
+      "combined_score": 0.4234454722921647,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 147,
+      "candidate_id": "glyph_candidate_00147",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.059097,
+      "shape_counter": {
+        "5": 1,
+        "7": 1,
+        "20": 1,
+        "6": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 3
+      },
+      "gnn_layout_realness_score": 0.010929391719400883,
+      "combined_score": 0.005993620468084975,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 148,
+      "candidate_id": "glyph_candidate_00148",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 5,
+      "unique_width_count": 1,
+      "shape_entropy": 1.6094379124291003,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.2,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.066709,
+      "shape_counter": {
+        "20": 1,
+        "14": 1,
+        "8": 1,
+        "4": 1,
+        "17": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "3": 2,
+        "1": 1,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.01964718848466873,
+      "combined_score": 0.012587625754449489,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 149,
+      "candidate_id": "glyph_candidate_00149",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.086871,
+      "shape_counter": {
+        "20": 2,
+        "11": 1,
+        "3": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "3": 1,
+        "2": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.8921026587486267,
+      "combined_score": 0.6054192627138482,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 150,
+      "candidate_id": "glyph_candidate_00150",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.043525,
+      "shape_counter": {
+        "14": 1,
+        "9": 1,
+        "11": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.631122350692749,
+      "combined_score": 0.6206577131476845,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 151,
+      "candidate_id": "glyph_candidate_00151",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.082288,
+      "shape_counter": {
+        "16": 1,
+        "20": 1,
+        "0": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 1,
+        "0": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 3.7158295072003966e-06,
+      "combined_score": 3.2984806031828807e-06,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 152,
+      "candidate_id": "glyph_candidate_00152",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.068815,
+      "shape_counter": {
+        "20": 2,
+        "11": 1,
+        "14": 1,
+        "17": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "0": 2,
+        "3": 3
+      },
+      "gnn_layout_realness_score": 0.06045759841799736,
+      "combined_score": 0.02944435664358921,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 153,
+      "candidate_id": "glyph_candidate_00153",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.077012,
+      "shape_counter": {
+        "16": 1,
+        "9": 2,
+        "7": 1,
+        "5": 1
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 1,
+        "0": 1,
+        "3": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.044622208923101425,
+      "combined_score": 0.010046574121951146,
+      "solver_allowed": false,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 154,
+      "candidate_id": "glyph_candidate_00154",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.044679,
+      "shape_counter": {
+        "20": 1,
+        "11": 1,
+        "2": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.4900793135166168,
+      "combined_score": 0.48443692753277057,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 155,
+      "candidate_id": "glyph_candidate_00155",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.095357,
+      "shape_counter": {
+        "20": 2,
+        "2": 1,
+        "22": 1,
+        "10": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "1": 2,
+        "2": 1,
+        "0": 2
+      },
+      "gnn_layout_realness_score": 0.4572363495826721,
+      "combined_score": 0.32351336716461354,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 156,
+      "candidate_id": "glyph_candidate_00156",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 5,
+      "unique_width_count": 1,
+      "shape_entropy": 1.6094379124291003,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.086121,
+      "shape_counter": {
+        "2": 1,
+        "21": 1,
+        "15": 1,
+        "16": 1,
+        "9": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "3": 2,
+        "0": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.6849408745765686,
+      "combined_score": 0.3606949257588284,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 157,
+      "candidate_id": "glyph_candidate_00157",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.069824,
+      "shape_counter": {
+        "4": 1,
+        "9": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 1,
+        "1": 1,
+        "0": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.89826899766922,
+      "combined_score": 0.5728990799239758,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 158,
+      "candidate_id": "glyph_candidate_00158",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.063539,
+      "shape_counter": {
+        "1": 1,
+        "24": 2,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "2": 3,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.3176109790802002,
+      "combined_score": 0.22695852639145447,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 159,
+      "candidate_id": "glyph_candidate_00159",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.333333,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.070727,
+      "shape_counter": {
+        "21": 1,
+        "20": 1,
+        "1": 1
+      },
+      "width_counter": {
+        "0": 1,
+        "1": 2
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.8992322683334351,
+      "combined_score": 0.8896617765038488,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 160,
+      "candidate_id": "glyph_candidate_00160",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.069304,
+      "shape_counter": {
+        "17": 1,
+        "20": 1,
+        "0": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.855587363243103,
+      "combined_score": 0.8481590758382395,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 161,
+      "candidate_id": "glyph_candidate_00161",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.055463,
+      "shape_counter": {
+        "6": 1,
+        "20": 1,
+        "22": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.09100162237882614,
+      "combined_score": 0.09007992526113204,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 162,
+      "candidate_id": "glyph_candidate_00162",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 0.9502705392302345,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 3,
+      "shape20_ratio": 0.6,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.062257,
+      "shape_counter": {
+        "14": 1,
+        "20": 3,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "2": 2,
+        "1": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.02156539261341095,
+      "combined_score": 0.01172343507077985,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 163,
+      "candidate_id": "glyph_candidate_00163",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.052713,
+      "shape_counter": {
+        "11": 1,
+        "20": 2,
+        "10": 1,
+        "13": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "2": 2,
+        "0": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.08371486514806747,
+      "combined_score": 0.045176478402420714,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 164,
+      "candidate_id": "glyph_candidate_00164",
+      "num_nodes": 3,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.077066,
+      "shape_counter": {
+        "14": 1,
+        "20": 1,
+        "3": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 1,
+        "1": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.3137715458869934,
+      "combined_score": 0.1780358901881517,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 165,
+      "candidate_id": "glyph_candidate_00165",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.075091,
+      "shape_counter": {
+        "20": 1,
+        "24": 1,
+        "16": 2
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "0": 2,
+        "3": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.92247474193573,
+      "combined_score": 0.5115472699669507,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 166,
+      "candidate_id": "glyph_candidate_00166",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.044815,
+      "shape_counter": {
+        "11": 1,
+        "19": 1,
+        "14": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.9302184581756592,
+      "combined_score": 0.9132041506594335,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 167,
+      "candidate_id": "glyph_candidate_00167",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.075321,
+      "shape_counter": {
+        "16": 1,
+        "15": 1,
+        "13": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "3": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.594635546207428,
+      "combined_score": 0.4900702217308491,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 168,
+      "candidate_id": "glyph_candidate_00168",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.102296,
+      "shape_counter": {
+        "4": 1,
+        "16": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 1,
+        "1": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.3016800284385681,
+      "combined_score": 0.1857732691746931,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 169,
+      "candidate_id": "glyph_candidate_00169",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.065305,
+      "shape_counter": {
+        "20": 2,
+        "8": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 3
+      },
+      "gnn_layout_realness_score": 0.13405247032642365,
+      "combined_score": 0.1333092067788161,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 170,
+      "candidate_id": "glyph_candidate_00170",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.072586,
+      "shape_counter": {
+        "20": 2,
+        "18": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 2,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.017752239480614662,
+      "combined_score": 0.014932673669875584,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 171,
+      "candidate_id": "glyph_candidate_00171",
+      "num_nodes": 3,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.062223,
+      "shape_counter": {
+        "20": 1,
+        "12": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 2
+      },
+      "variant_counter": {
+        "2": 1,
+        "3": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.5757758617401123,
+      "combined_score": 0.4355974147144251,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 172,
+      "candidate_id": "glyph_candidate_00172",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.25,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.090685,
+      "shape_counter": {
+        "20": 2,
+        "1": 1,
+        "8": 1
+      },
+      "width_counter": {
+        "1": 3,
+        "0": 1
+      },
+      "variant_counter": {
+        "2": 3,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.42665502429008484,
+      "combined_score": 0.3475038628482542,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 173,
+      "candidate_id": "glyph_candidate_00173",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.051475,
+      "shape_counter": {
+        "20": 2,
+        "17": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 6.76238996675238e-05,
+      "combined_score": 6.689080180277607e-05,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 174,
+      "candidate_id": "glyph_candidate_00174",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.078378,
+      "shape_counter": {
+        "16": 1,
+        "12": 1,
+        "20": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "2": 1,
+        "3": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.8855339288711548,
+      "combined_score": 0.8396883176369188,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 175,
+      "candidate_id": "glyph_candidate_00175",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.066048,
+      "shape_counter": {
+        "20": 2,
+        "14": 1,
+        "19": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "2": 1,
+        "3": 1,
+        "1": 2
+      },
+      "gnn_layout_realness_score": 0.5383211970329285,
+      "combined_score": 0.4415429964580967,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 176,
+      "candidate_id": "glyph_candidate_00176",
+      "num_nodes": 5,
+      "num_edges": 5,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.067507,
+      "shape_counter": {
+        "20": 2,
+        "22": 1,
+        "14": 1,
+        "11": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 3,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.008181464858353138,
+      "combined_score": 0.0003150043636549424,
+      "solver_allowed": false,
+      "quality_status": "bad"
+    },
+    {
+      "candidate_index": 177,
+      "candidate_id": "glyph_candidate_00177",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.068485,
+      "shape_counter": {
+        "20": 1,
+        "24": 1,
+        "12": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.9386287927627563,
+      "combined_score": 0.9268206554680581,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 178,
+      "candidate_id": "glyph_candidate_00178",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.100702,
+      "shape_counter": {
+        "6": 1,
+        "24": 2,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 2,
+        "2": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.5478243827819824,
+      "combined_score": 0.12314158195621328,
+      "solver_allowed": false,
+      "quality_status": "bad"
+    },
+    {
+      "candidate_index": 179,
+      "candidate_id": "glyph_candidate_00179",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.0605,
+      "shape_counter": {
+        "8": 1,
+        "16": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "1": 2,
+        "2": 1,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.40164586901664734,
+      "combined_score": 0.1897885917227111,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 180,
+      "candidate_id": "glyph_candidate_00180",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.333333,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.095081,
+      "shape_counter": {
+        "5": 1,
+        "20": 1,
+        "9": 1
+      },
+      "width_counter": {
+        "1": 2,
+        "0": 1
+      },
+      "variant_counter": {
+        "0": 3
+      },
+      "gnn_layout_realness_score": 0.4693087041378021,
+      "combined_score": 0.45346621557134154,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 181,
+      "candidate_id": "glyph_candidate_00181",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.073897,
+      "shape_counter": {
+        "20": 2,
+        "8": 1,
+        "2": 1
+      },
+      "width_counter": {
+        "0": 4
+      },
+      "variant_counter": {
+        "3": 2,
+        "0": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.03028090111911297,
+      "combined_score": 0.028821371781156045,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 182,
+      "candidate_id": "glyph_candidate_00182",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.080733,
+      "shape_counter": {
+        "20": 2,
+        "16": 1,
+        "9": 1
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 1,
+        "2": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.6372972726821899,
+      "combined_score": 0.5343420745005014,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 183,
+      "candidate_id": "glyph_candidate_00183",
+      "num_nodes": 3,
+      "num_edges": 3,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.078046,
+      "shape_counter": {
+        "14": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 1,
+        "2": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.07212116569280624,
+      "combined_score": 0.026753025277776298,
+      "solver_allowed": true,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 184,
+      "candidate_id": "glyph_candidate_00184",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.083366,
+      "shape_counter": {
+        "20": 2,
+        "1": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 2,
+        "0": 1
+      },
+      "gnn_layout_realness_score": 0.7094645500183105,
+      "combined_score": 0.6595056443261085,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 185,
+      "candidate_id": "glyph_candidate_00185",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.054917,
+      "shape_counter": {
+        "2": 1,
+        "15": 1,
+        "7": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.0013587725115939975,
+      "combined_score": 0.001351130605062182,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 186,
+      "candidate_id": "glyph_candidate_00186",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.035372,
+      "shape_counter": {
+        "20": 2,
+        "17": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 1,
+        "1": 2
+      },
+      "gnn_layout_realness_score": 0.6924494504928589,
+      "combined_score": 0.6817310598800304,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 187,
+      "candidate_id": "glyph_candidate_00187",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.06547,
+      "shape_counter": {
+        "0": 1,
+        "20": 1,
+        "4": 2
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 3
+      },
+      "variant_counter": {
+        "0": 2,
+        "3": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.3420613706111908,
+      "combined_score": 0.25342050071402705,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 188,
+      "candidate_id": "glyph_candidate_00188",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 5,
+      "unique_width_count": 2,
+      "shape_entropy": 1.6094379124291003,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 1,
+      "shape20_ratio": 0.2,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.07202,
+      "shape_counter": {
+        "14": 1,
+        "5": 1,
+        "6": 1,
+        "20": 1,
+        "4": 1
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "2": 3,
+        "0": 1,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.007699030917137861,
+      "combined_score": 0.004510348692887793,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 189,
+      "candidate_id": "glyph_candidate_00189",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 0.9502705392302345,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 3,
+      "shape20_ratio": 0.6,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.077537,
+      "shape_counter": {
+        "20": 3,
+        "24": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "0": 1,
+        "1": 3,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.0588018037378788,
+      "combined_score": 0.0567906971787077,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 190,
+      "candidate_id": "glyph_candidate_00190",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.5623351446168083,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 3,
+      "shape20_ratio": 0.75,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.066135,
+      "shape_counter": {
+        "18": 1,
+        "20": 3
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 1,
+        "0": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.5126383900642395,
+      "combined_score": 0.49471938555607564,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 191,
+      "candidate_id": "glyph_candidate_00191",
+      "num_nodes": 5,
+      "num_edges": 4,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": 0.5004024235361879,
+      "shape20_count": 1,
+      "shape20_ratio": 0.2,
+      "width0_ratio": 0.8,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.085157,
+      "shape_counter": {
+        "7": 1,
+        "20": 1,
+        "14": 2,
+        "2": 1
+      },
+      "width_counter": {
+        "0": 4,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 1,
+        "2": 1,
+        "1": 2
+      },
+      "gnn_layout_realness_score": 0.27373990416526794,
+      "combined_score": 0.16499883292422612,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 192,
+      "candidate_id": "glyph_candidate_00192",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 0.666667,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.067636,
+      "shape_counter": {
+        "0": 1,
+        "20": 2
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 1
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.014710377901792526,
+      "combined_score": 0.014674821827472663,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 193,
+      "candidate_id": "glyph_candidate_00193",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 1,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 0,
+      "shape20_ratio": 0.0,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.058596,
+      "shape_counter": {
+        "14": 1,
+        "16": 1,
+        "10": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 1,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.6189318895339966,
+      "combined_score": 0.589960292370209,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 194,
+      "candidate_id": "glyph_candidate_00194",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 2,
+      "unique_width_count": 1,
+      "shape_entropy": 0.6365141682928128,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.666667,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.076979,
+      "shape_counter": {
+        "20": 2,
+        "8": 1
+      },
+      "width_counter": {
+        "0": 3
+      },
+      "variant_counter": {
+        "3": 2,
+        "1": 1
+      },
+      "gnn_layout_realness_score": 0.2710082530975342,
+      "combined_score": 0.24823832550528424,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 195,
+      "candidate_id": "glyph_candidate_00195",
+      "num_nodes": 3,
+      "num_edges": 2,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.0986122886651097,
+      "width_entropy": 0.6365141682928128,
+      "shape20_count": 1,
+      "shape20_ratio": 0.333333,
+      "width0_ratio": 0.333333,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.064742,
+      "shape_counter": {
+        "20": 1,
+        "0": 1,
+        "16": 1
+      },
+      "width_counter": {
+        "1": 2,
+        "0": 1
+      },
+      "variant_counter": {
+        "1": 1,
+        "0": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.9277144074440002,
+      "combined_score": 0.9111649401488685,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 196,
+      "candidate_id": "glyph_candidate_00196",
+      "num_nodes": 5,
+      "num_edges": 6,
+      "unique_shape_count": 4,
+      "unique_width_count": 1,
+      "shape_entropy": 1.3321790402061222,
+      "width_entropy": -1.000088900581841e-12,
+      "shape20_count": 2,
+      "shape20_ratio": 0.4,
+      "width0_ratio": 1.0,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.09683,
+      "shape_counter": {
+        "20": 2,
+        "14": 1,
+        "23": 1,
+        "6": 1
+      },
+      "width_counter": {
+        "0": 5
+      },
+      "variant_counter": {
+        "2": 3,
+        "1": 1,
+        "3": 1
+      },
+      "gnn_layout_realness_score": 0.07197251915931702,
+      "combined_score": 0.01586736315319333,
+      "solver_allowed": false,
+      "quality_status": "usable_but_rough"
+    },
+    {
+      "candidate_index": 197,
+      "candidate_id": "glyph_candidate_00197",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 3,
+      "unique_width_count": 2,
+      "shape_entropy": 1.039720770836918,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 2,
+      "shape20_ratio": 0.5,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.067505,
+      "shape_counter": {
+        "20": 2,
+        "23": 1,
+        "22": 1
+      },
+      "width_counter": {
+        "1": 1,
+        "0": 3
+      },
+      "variant_counter": {
+        "1": 1,
+        "2": 1,
+        "3": 2
+      },
+      "gnn_layout_realness_score": 0.8687434792518616,
+      "combined_score": 0.7183291505508199,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 198,
+      "candidate_id": "glyph_candidate_00198",
+      "num_nodes": 4,
+      "num_edges": 4,
+      "unique_shape_count": 2,
+      "unique_width_count": 2,
+      "shape_entropy": 0.5623351446168083,
+      "width_entropy": 0.5623351446168083,
+      "shape20_count": 3,
+      "shape20_ratio": 0.75,
+      "width0_ratio": 0.75,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.078486,
+      "shape_counter": {
+        "2": 1,
+        "20": 3
+      },
+      "width_counter": {
+        "0": 3,
+        "1": 1
+      },
+      "variant_counter": {
+        "0": 1,
+        "1": 2,
+        "2": 1
+      },
+      "gnn_layout_realness_score": 0.7710272669792175,
+      "combined_score": 0.5237024809740526,
+      "solver_allowed": true,
+      "quality_status": "good"
+    },
+    {
+      "candidate_index": 199,
+      "candidate_id": "glyph_candidate_00199",
+      "num_nodes": 4,
+      "num_edges": 3,
+      "unique_shape_count": 4,
+      "unique_width_count": 2,
+      "shape_entropy": 1.3862943611158907,
+      "width_entropy": 0.6931471805579453,
+      "shape20_count": 1,
+      "shape20_ratio": 0.25,
+      "width0_ratio": 0.5,
+      "missing_primitive_count": 0,
+      "missing_layout_count": 0,
+      "black_render_fill_ratio": 0.098254,
+      "shape_counter": {
+        "20": 1,
+        "13": 1,
+        "15": 1,
+        "2": 1
+      },
+      "width_counter": {
+        "0": 2,
+        "1": 2
+      },
+      "variant_counter": {
+        "3": 1,
+        "0": 1,
+        "2": 2
+      },
+      "gnn_layout_realness_score": 0.8214791417121887,
+      "combined_score": 0.7641213003569811,
+      "solver_allowed": true,
+      "quality_status": "good"
+    }
+  ],
+  "by_shape_downstream_summary": {
+    "4": {
+      "candidate_appear_count": 16,
+      "mean_gnn_score": 0.349075,
+      "median_gnn_score": 0.256823,
+      "mean_combined_score": 0.278372,
+      "solver_allowed_rate": 1.0
+    },
+    "11": {
+      "candidate_appear_count": 18,
+      "mean_gnn_score": 0.414231,
+      "median_gnn_score": 0.332796,
+      "mean_combined_score": 0.359089,
+      "solver_allowed_rate": 0.944444
+    },
+    "20": {
+      "candidate_appear_count": 164,
+      "mean_gnn_score": 0.437552,
+      "median_gnn_score": 0.445919,
+      "mean_combined_score": 0.353132,
+      "solver_allowed_rate": 0.932927
+    },
+    "23": {
+      "candidate_appear_count": 16,
+      "mean_gnn_score": 0.473611,
+      "median_gnn_score": 0.456414,
+      "mean_combined_score": 0.380681,
+      "solver_allowed_rate": 0.9375
+    },
+    "14": {
+      "candidate_appear_count": 58,
+      "mean_gnn_score": 0.395534,
+      "median_gnn_score": 0.397726,
+      "mean_combined_score": 0.310316,
+      "solver_allowed_rate": 0.87931
+    },
+    "10": {
+      "candidate_appear_count": 14,
+      "mean_gnn_score": 0.322293,
+      "median_gnn_score": 0.270228,
+      "mean_combined_score": 0.293437,
+      "solver_allowed_rate": 0.928571
+    },
+    "24": {
+      "candidate_appear_count": 18,
+      "mean_gnn_score": 0.555807,
+      "median_gnn_score": 0.577984,
+      "mean_combined_score": 0.451094,
+      "solver_allowed_rate": 0.944444
+    },
+    "6": {
+      "candidate_appear_count": 15,
+      "mean_gnn_score": 0.304786,
+      "median_gnn_score": 0.091002,
+      "mean_combined_score": 0.24928,
+      "solver_allowed_rate": 0.866667
+    },
+    "16": {
+      "candidate_appear_count": 57,
+      "mean_gnn_score": 0.426991,
+      "median_gnn_score": 0.401646,
+      "mean_combined_score": 0.320615,
+      "solver_allowed_rate": 0.894737
+    },
+    "5": {
+      "candidate_appear_count": 11,
+      "mean_gnn_score": 0.268291,
+      "median_gnn_score": 0.044622,
+      "mean_combined_score": 0.175398,
+      "solver_allowed_rate": 0.909091
+    },
+    "7": {
+      "candidate_appear_count": 11,
+      "mean_gnn_score": 0.27346,
+      "median_gnn_score": 0.044622,
+      "mean_combined_score": 0.183698,
+      "solver_allowed_rate": 0.909091
+    },
+    "21": {
+      "candidate_appear_count": 15,
+      "mean_gnn_score": 0.371553,
+      "median_gnn_score": 0.246328,
+      "mean_combined_score": 0.301834,
+      "solver_allowed_rate": 0.866667
+    },
+    "15": {
+      "candidate_appear_count": 18,
+      "mean_gnn_score": 0.498268,
+      "median_gnn_score": 0.604165,
+      "mean_combined_score": 0.408656,
+      "solver_allowed_rate": 0.944444
+    },
+    "3": {
+      "candidate_appear_count": 16,
+      "mean_gnn_score": 0.396042,
+      "median_gnn_score": 0.335558,
+      "mean_combined_score": 0.327478,
+      "solver_allowed_rate": 0.9375
+    },
+    "2": {
+      "candidate_appear_count": 18,
+      "mean_gnn_score": 0.520919,
+      "median_gnn_score": 0.654432,
+      "mean_combined_score": 0.397183,
+      "solver_allowed_rate": 1.0
+    },
+    "8": {
+      "candidate_appear_count": 20,
+      "mean_gnn_score": 0.484387,
+      "median_gnn_score": 0.560787,
+      "mean_combined_score": 0.399622,
+      "solver_allowed_rate": 0.95
+    },
+    "13": {
+      "candidate_appear_count": 18,
+      "mean_gnn_score": 0.503335,
+      "median_gnn_score": 0.574241,
+      "mean_combined_score": 0.413387,
+      "solver_allowed_rate": 0.944444
+    },
+    "19": {
+      "candidate_appear_count": 8,
+      "mean_gnn_score": 0.612156,
+      "median_gnn_score": 0.625558,
+      "mean_combined_score": 0.508278,
+      "solver_allowed_rate": 1.0
+    },
+    "22": {
+      "candidate_appear_count": 20,
+      "mean_gnn_score": 0.380566,
+      "median_gnn_score": 0.303888,
+      "mean_combined_score": 0.328034,
+      "solver_allowed_rate": 0.9
+    },
+    "1": {
+      "candidate_appear_count": 14,
+      "mean_gnn_score": 0.556378,
+      "median_gnn_score": 0.631751,
+      "mean_combined_score": 0.434553,
+      "solver_allowed_rate": 0.928571
+    },
+    "17": {
+      "candidate_appear_count": 17,
+      "mean_gnn_score": 0.481489,
+      "median_gnn_score": 0.613694,
+      "mean_combined_score": 0.407571,
+      "solver_allowed_rate": 0.941176
+    },
+    "18": {
+      "candidate_appear_count": 10,
+      "mean_gnn_score": 0.319752,
+      "median_gnn_score": 0.1862,
+      "mean_combined_score": 0.238298,
+      "solver_allowed_rate": 1.0
+    },
+    "9": {
+      "candidate_appear_count": 17,
+      "mean_gnn_score": 0.566593,
+      "median_gnn_score": 0.637297,
+      "mean_combined_score": 0.410159,
+      "solver_allowed_rate": 0.941176
+    },
+    "0": {
+      "candidate_appear_count": 11,
+      "mean_gnn_score": 0.507271,
+      "median_gnn_score": 0.448539,
+      "mean_combined_score": 0.435985,
+      "solver_allowed_rate": 1.0
+    },
+    "12": {
+      "candidate_appear_count": 11,
+      "mean_gnn_score": 0.509064,
+      "median_gnn_score": 0.575776,
+      "mean_combined_score": 0.455323,
+      "solver_allowed_rate": 1.0
+    }
+  }
+}

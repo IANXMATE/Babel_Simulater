@@ -1,0 +1,10 @@
+{
+  "schema_version": "pcg_annotation_manifest_v2",
+  "good_count": 0,
+  "bad_count": 0,
+  "items": {},
+  "topo_out_dir": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\AI_VECTOR_ROUTER_With_topo\\annotations_topo",
+  "max_json_mb": 80,
+  "good_topo_files": [],
+  "bad_topo_files": []
+}

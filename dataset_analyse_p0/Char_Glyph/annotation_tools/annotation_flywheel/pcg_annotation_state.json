@@ -1,0 +1,7 @@
+{
+  "schema_version": "pcg_annotation_state_v2",
+  "labels": {},
+  "source_scored_file": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph\\gnn_scored_solved_glyphs.json",
+  "source_solved_file": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph\\solved_glyph_candidates.json",
+  "topo_out_dir": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\AI_VECTOR_ROUTER_With_topo\\annotations_topo"
+}

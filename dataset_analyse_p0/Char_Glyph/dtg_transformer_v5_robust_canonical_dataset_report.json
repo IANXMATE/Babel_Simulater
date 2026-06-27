@@ -1,0 +1,300 @@
+{
+  "schema_version": "dtg_transformer_v5_robust_canonical_dataset_report",
+  "stats": {
+    "raw_edges": 239,
+    "kept_edges": 133,
+    "dropped_edges": 102,
+    "edges_inferred_glyphs": 23,
+    "no_edges_after_canonicalization": 18,
+    "no_edges": 2
+  },
+  "oracle_edge_junction_px_stats": {
+    "mean": 0.052255,
+    "p50": 0.0,
+    "p90": 0.0,
+    "max": 1.732552
+  },
+  "dropped_edge_examples": [
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 195.46469449996948,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 195.46469449996948,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 209.75031852722168,
+      "edge": {
+        "u": 1,
+        "v": 3,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 209.75031852722168,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 184.13769006729126,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 184.13769006729126,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 104.31803464889526,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 104.31803464889526,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 95.39073705673218,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "T",
+        "t_u": 0.0,
+        "t_v": 0.8354430198669434,
+        "oracle_junction_px": 95.39073705673218,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 131.17454051971436,
+      "edge": {
+        "u": 3,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 131.17454051971436,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 131.17454051971436,
+      "edge": {
+        "u": 3,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 131.17454051971436,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 213.3176326751709,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 213.3176326751709,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 33.06333124637604,
+      "edge": {
+        "u": 1,
+        "v": 3,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 0.0,
+        "oracle_junction_px": 33.06333124637604,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 285.2573871612549,
+      "edge": {
+        "u": 1,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 0.0,
+        "oracle_junction_px": 285.2573871612549,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 42.87746846675873,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 0.0,
+        "oracle_junction_px": 42.87746846675873,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 42.87746846675873,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 0.0,
+        "oracle_junction_px": 42.87746846675873,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 187.54853010177612,
+      "edge": {
+        "u": 1,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 187.54853010177612,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 121.83613777160645,
+      "edge": {
+        "u": 1,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 121.83613777160645,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 194.054114818573,
+      "edge": {
+        "u": 2,
+        "v": 3,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 194.054114818573,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 152.4631142616272,
+      "edge": {
+        "u": 1,
+        "v": 3,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 152.4631142616272,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 200.18222332000732,
+      "edge": {
+        "u": 2,
+        "v": 3,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 0.0,
+        "oracle_junction_px": 200.18222332000732,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 62.43962645530701,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 0.0,
+        "oracle_junction_px": 62.43962645530701,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 156.14854097366333,
+      "edge": {
+        "u": 1,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 156.14854097366333,
+        "source": "json",
+        "canonicalized": true
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 152.53136157989502,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "oracle_junction_px": 152.53136157989502,
+        "source": "json",
+        "canonicalized": true
+      }
+    }
+  ],
+  "usable_glyphs": 106
+}

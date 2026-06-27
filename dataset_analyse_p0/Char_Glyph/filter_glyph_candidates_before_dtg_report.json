@@ -1,0 +1,4894 @@
+{
+  "schema_version": "filter_glyph_candidates_before_dtg_report",
+  "source_file": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph\\glyph_candidates_with_primitives.json",
+  "output_file": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph\\glyph_candidates_filtered_for_dtg.json",
+  "summary": {
+    "input_count": 200,
+    "ok_count": 200,
+    "failed_count": 0,
+    "hard_pass_count": 24,
+    "selected_count": 24,
+    "selected_by": {
+      "hard_pass_top_score": 24
+    },
+    "elapsed_sec": 0.22,
+    "cand_per_sec": 908.44,
+    "failures": {},
+    "hard_reason_hist": {
+      "meanJ>12.0": 172,
+      "maxJ>18.0": 172
+    },
+    "all_prior_max_junction_px_stats": {
+      "mean": 27.609915,
+      "p50": 28.852467,
+      "p90": 38.03434,
+      "p95": 38.860416,
+      "max": 40.537498
+    },
+    "all_prior_mean_junction_px_stats": {
+      "mean": 19.690378,
+      "p50": 20.110636,
+      "p90": 27.437449,
+      "p95": 29.785646,
+      "max": 35.59211
+    },
+    "selected_prior_max_junction_px_stats": {
+      "mean": 11.280423,
+      "p50": 12.718334,
+      "p90": 14.830898,
+      "p95": 15.046042,
+      "max": 17.504717
+    },
+    "selected_prior_mean_junction_px_stats": {
+      "mean": 7.061863,
+      "p50": 7.909809,
+      "p90": 9.551568,
+      "p95": 10.29826,
+      "max": 10.758022
+    },
+    "top10": [
+      {
+        "rank": 0,
+        "idx": 0,
+        "candidate_id": "glyph_candidate_00739",
+        "score": 5.8034,
+        "prior_max_junction_px": 4.0496,
+        "prior_mean_junction_px": 3.5077,
+        "num_nodes": 3,
+        "num_edges": 2,
+        "hard_pass": true,
+        "hard_reasons": []
+      },
+      {
+        "rank": 1,
+        "idx": 1,
+        "candidate_id": "glyph_candidate_00356",
+        "score": 5.83,
+        "prior_max_junction_px": 4.3611,
+        "prior_mean_junction_px": 1.9377,
+        "num_nodes": 4,
+        "num_edges": 3,
+        "hard_pass": true,
+        "hard_reasons": []
+      },
+      {
+        "rank": 2,
+        "idx": 2,
+        "candidate_id": "glyph_candidate_00599",
+        "score": 7.6984,
+        "prior_max_junction_px": 5.8838,
+        "prior_mean_junction_px": 2.6294,
+        "num_nodes": 4,
+        "num_edges": 3,
+        "hard_pass": true,
+        "hard_reasons": []
+      },
+      {
+        "rank": 3,
+        "idx": 3,
+        "candidate_id": "glyph_candidate_00813",
+        "score": 10.528,
+        "prior_max_junction_px": 4.0465,
+        "prior_mean_junction_px": 2.9629,
+        "num_nodes": 3,
+        "num_edges": 2,
+        "hard_pass": true,
+        "hard_reasons": []
+      },
+      {
+        "rank": 4,
+        "idx": 4,
+        "candidate_id": "glyph_candidate_00424",
+        "score": 10.6405,
+        "prior_max_junction_px": 8.3561,
+        "prior_mean_junction_px": 4.5688,
+        "num_nodes": 3,
+        "num_edges": 2,
+        "hard_pass": true,
+        "hard_reasons": []
+      },
+      {
+        "rank": 5,
+        "idx": 5,
+        "candidate_id": "glyph_candidate_00760",
+        "score": 10.896,
+        "prior_max_junction_px": 5.1611,
+        "prior_mean_junction_px": 4.8033,
+        "num_nodes": 3,
+        "num_edges": 2,
+        "hard_pass": true,
+        "hard_reasons": []
+      },
+      {
+        "rank": 6,
+        "idx": 6,
+        "candidate_id": "glyph_candidate_00302",
+        "score": 11.5216,
+        "prior_max_junction_px": 8.3281,
+        "prior_mean_junction_px": 6.387,
+        "num_nodes": 3,
+        "num_edges": 2,
+        "hard_pass": true,
+        "hard_reasons": []
+      },
+      {
+        "rank": 7,
+        "idx": 7,
+        "candidate_id": "glyph_candidate_00574",
+        "score": 14.0634,
+        "prior_max_junction_px": 11.1296,
+        "prior_mean_junction_px": 5.8677,
+        "num_nodes": 3,
+        "num_edges": 2,
+        "hard_pass": true,
+        "hard_reasons": []
+      },
+      {
+        "rank": 8,
+        "idx": 8,
+        "candidate_id": "glyph_candidate_00215",
+        "score": 15.4466,
+        "prior_max_junction_px": 10.9306,
+        "prior_mean_junction_px": 9.0321,
+        "num_nodes": 3,
+        "num_edges": 2,
+        "hard_pass": true,
+        "hard_reasons": []
+      },
+      {
+        "rank": 9,
+        "idx": 9,
+        "candidate_id": "glyph_candidate_00656",
+        "score": 16.2097,
+        "prior_max_junction_px": 13.1371,
+        "prior_mean_junction_px": 5.1451,
+        "num_nodes": 4,
+        "num_edges": 3,
+        "hard_pass": true,
+        "hard_reasons": []
+      }
+    ]
+  },
+  "all_items": [
+    {
+      "idx": 0,
+      "candidate_id": "glyph_candidate_00739",
+      "ok": true,
+      "reason": "ok",
+      "score": 5.803442180156708,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 3.507724165916443,
+      "prior_max_junction_px": 4.049580097198486,
+      "bbox_diag_px": 321.9460144042969,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        76.67436981201172,
+        90.84439086914062,
+        276.3898620605469,
+        343.357666015625
+      ]
+    },
+    {
+      "idx": 1,
+      "candidate_id": "glyph_candidate_00356",
+      "ok": true,
+      "reason": "ok",
+      "score": 5.829990257819493,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 1.9377209941546123,
+      "prior_max_junction_px": 4.3611297607421875,
+      "bbox_diag_px": 408.1723937988281,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        59.29906463623047,
+        47.31349182128906,
+        342.69219970703125,
+        341.0702819824219
+      ]
+    },
+    {
+      "idx": 2,
+      "candidate_id": "glyph_candidate_00599",
+      "ok": true,
+      "reason": "ok",
+      "score": 7.6984430849552155,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 2.629381477832794,
+      "prior_max_junction_px": 5.883752346038818,
+      "bbox_diag_px": 350.6123352050781,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        65.86033630371094,
+        72.95120239257812,
+        321.5840148925781,
+        312.81451416015625
+      ]
+    },
+    {
+      "idx": 3,
+      "candidate_id": "glyph_candidate_00813",
+      "ok": true,
+      "reason": "ok",
+      "score": 10.527956545352936,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 2.962933659553528,
+      "prior_max_junction_px": 4.046489715576172,
+      "bbox_diag_px": 540.712890625,
+      "canvas_outside_ratio": 0.0625,
+      "bbox": [
+        -31.756866455078125,
+        41.875221252441406,
+        401.7684326171875,
+        365.0256652832031
+      ]
+    },
+    {
+      "idx": 4,
+      "candidate_id": "glyph_candidate_00424",
+      "ok": true,
+      "reason": "ok",
+      "score": 10.640480935573578,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 4.568815112113953,
+      "prior_max_junction_px": 8.356073379516602,
+      "bbox_diag_px": 336.6847839355469,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        119.46998596191406,
+        50.50408935546875,
+        302.5829162597656,
+        333.0395812988281
+      ]
+    },
+    {
+      "idx": 5,
+      "candidate_id": "glyph_candidate_00760",
+      "ok": true,
+      "reason": "ok",
+      "score": 10.896042188008625,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 4.8032684326171875,
+      "prior_max_junction_px": 5.161074638366699,
+      "bbox_diag_px": 561.4788818359375,
+      "canvas_outside_ratio": 0.041666666666666664,
+      "bbox": [
+        10.834312438964844,
+        35.776397705078125,
+        378.9580078125,
+        459.73809814453125
+      ]
+    },
+    {
+      "idx": 6,
+      "candidate_id": "glyph_candidate_00302",
+      "ok": true,
+      "reason": "ok",
+      "score": 11.52161192893982,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 6.3869853019714355,
+      "prior_max_junction_px": 8.328119277954102,
+      "bbox_diag_px": 415.82135009765625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        81.38963317871094,
+        41.420928955078125,
+        317.59515380859375,
+        383.6406555175781
+      ]
+    },
+    {
+      "idx": 7,
+      "candidate_id": "glyph_candidate_00574",
+      "ok": true,
+      "reason": "ok",
+      "score": 14.063438907265663,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 5.867672950029373,
+      "prior_max_junction_px": 11.129602432250977,
+      "bbox_diag_px": 307.75518798828125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        62.7339973449707,
+        153.6151123046875,
+        334.63238525390625,
+        297.78350830078125
+      ]
+    },
+    {
+      "idx": 8,
+      "candidate_id": "glyph_candidate_00215",
+      "ok": true,
+      "reason": "ok",
+      "score": 15.446624398231506,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 9.032052278518677,
+      "prior_max_junction_px": 10.930598258972168,
+      "bbox_diag_px": 480.3341064453125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        54.696285247802734,
+        7.10919189453125,
+        334.8487854003906,
+        397.28277587890625
+      ]
+    },
+    {
+      "idx": 9,
+      "candidate_id": "glyph_candidate_00656",
+      "ok": true,
+      "reason": "ok",
+      "score": 16.20970051487287,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 5.145116666952769,
+      "prior_max_junction_px": 13.137142181396484,
+      "bbox_diag_px": 404.4125061035156,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        74.03948974609375,
+        62.56988525390625,
+        383.1306457519531,
+        323.3612365722656
+      ]
+    },
+    {
+      "idx": 10,
+      "candidate_id": "glyph_candidate_00936",
+      "ok": true,
+      "reason": "ok",
+      "score": 16.26643341779709,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 7.712149977684021,
+      "prior_max_junction_px": 12.410358428955078,
+      "bbox_diag_px": 363.6076354980469,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        27.53514862060547,
+        83.35610961914062,
+        313.1270446777344,
+        308.40673828125
+      ]
+    },
+    {
+      "idx": 11,
+      "candidate_id": "glyph_candidate_00528",
+      "ok": true,
+      "reason": "ok",
+      "score": 16.83465003967285,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 8.107467651367188,
+      "prior_max_junction_px": 12.780916213989258,
+      "bbox_diag_px": 361.5928955078125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        56.66843795776367,
+        140.2614288330078,
+        375.12579345703125,
+        311.5340881347656
+      ]
+    },
+    {
+      "idx": 12,
+      "candidate_id": "glyph_candidate_00442",
+      "ok": true,
+      "reason": "ok",
+      "score": 16.898042400677998,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 5.439900795618693,
+      "prior_max_junction_px": 13.678092002868652,
+      "bbox_diag_px": 353.47076416015625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        87.12727355957031,
+        87.98857116699219,
+        343.63970947265625,
+        331.1817932128906
+      ]
+    },
+    {
+      "idx": 13,
+      "candidate_id": "glyph_candidate_00336",
+      "ok": true,
+      "reason": "ok",
+      "score": 17.297083258628845,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 9.282660245895386,
+      "prior_max_junction_px": 12.655753135681152,
+      "bbox_diag_px": 391.4190979003906,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        102.27932739257812,
+        85.15634155273438,
+        375.3611755371094,
+        365.5760498046875
+      ]
+    },
+    {
+      "idx": 14,
+      "candidate_id": "glyph_candidate_00246",
+      "ok": true,
+      "reason": "ok",
+      "score": 17.86369961500168,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 8.332023024559021,
+      "prior_max_junction_px": 13.697688102722168,
+      "bbox_diag_px": 411.4791564941406,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        90.81367492675781,
+        37.436458587646484,
+        307.46942138671875,
+        387.2583923339844
+      ]
+    },
+    {
+      "idx": 15,
+      "candidate_id": "glyph_candidate_00247",
+      "ok": true,
+      "reason": "ok",
+      "score": 17.925088852643967,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 7.67661851644516,
+      "prior_max_junction_px": 14.086779594421387,
+      "bbox_diag_px": 340.80914306640625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        86.66446685791016,
+        124.61321258544922,
+        380.14910888671875,
+        297.86920166015625
+      ]
+    },
+    {
+      "idx": 16,
+      "candidate_id": "glyph_candidate_00275",
+      "ok": true,
+      "reason": "ok",
+      "score": 18.760721683502197,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 10.420767784118652,
+      "prior_max_junction_px": 13.550337791442871,
+      "bbox_diag_px": 386.3648986816406,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        99.387451171875,
+        98.83264923095703,
+        373.6797790527344,
+        370.93841552734375
+      ]
+    },
+    {
+      "idx": 17,
+      "candidate_id": "glyph_candidate_00005",
+      "ok": true,
+      "reason": "ok",
+      "score": 18.835866689682007,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 9.4291090965271,
+      "prior_max_junction_px": 14.121312141418457,
+      "bbox_diag_px": 406.4527893066406,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        107.44551086425781,
+        16.99340057373047,
+        332.4912109375,
+        355.4580383300781
+      ]
+    },
+    {
+      "idx": 18,
+      "candidate_id": "glyph_candidate_00958",
+      "ok": true,
+      "reason": "ok",
+      "score": 18.937859535217285,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 9.096529006958008,
+      "prior_max_junction_px": 14.389595031738281,
+      "bbox_diag_px": 291.9267883300781,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        148.13473510742188,
+        59.08066177368164,
+        317.977783203125,
+        296.51397705078125
+      ]
+    },
+    {
+      "idx": 19,
+      "candidate_id": "glyph_candidate_00693",
+      "ok": true,
+      "reason": "ok",
+      "score": 19.504908621311188,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 8.908550381660461,
+      "prior_max_junction_px": 15.050633430480957,
+      "bbox_diag_px": 470.1741638183594,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        13.35577392578125,
+        73.15083312988281,
+        362.7569580078125,
+        387.7657470703125
+      ]
+    },
+    {
+      "idx": 20,
+      "candidate_id": "glyph_candidate_00464",
+      "ok": true,
+      "reason": "ok",
+      "score": 20.39903950691223,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 10.758022785186768,
+      "prior_max_junction_px": 15.020028114318848,
+      "bbox_diag_px": 317.841796875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        71.76283264160156,
+        118.9234390258789,
+        356.6255798339844,
+        259.9079284667969
+      ]
+    },
+    {
+      "idx": 21,
+      "candidate_id": "glyph_candidate_00040",
+      "ok": true,
+      "reason": "ok",
+      "score": 22.034306287765503,
+      "hard_pass": false,
+      "hard_reasons": [
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 12.39171552658081,
+      "prior_max_junction_px": 15.838448524475098,
+      "bbox_diag_px": 325.9626770019531,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        75.5624771118164,
+        137.6083221435547,
+        353.8896179199219,
+        307.271728515625
+      ]
+    },
+    {
+      "idx": 22,
+      "candidate_id": "glyph_candidate_00644",
+      "ok": true,
+      "reason": "ok",
+      "score": 22.588272353013355,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 8.127785245577494,
+      "prior_max_junction_px": 18.02437973022461,
+      "bbox_diag_px": 352.45404052734375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        100.70745849609375,
+        63.93574523925781,
+        356.7122802734375,
+        306.1864013671875
+      ]
+    },
+    {
+      "idx": 23,
+      "candidate_id": "glyph_candidate_00767",
+      "ok": true,
+      "reason": "ok",
+      "score": 23.26129961013794,
+      "hard_pass": false,
+      "hard_reasons": [
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 14.180058479309082,
+      "prior_max_junction_px": 16.1712703704834,
+      "bbox_diag_px": 323.94635009765625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        68.1266860961914,
+        94.65686798095703,
+        278.16619873046875,
+        341.2833557128906
+      ]
+    },
+    {
+      "idx": 24,
+      "candidate_id": "glyph_candidate_00154",
+      "ok": true,
+      "reason": "ok",
+      "score": 23.582525610923767,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 9.604050397872925,
+      "prior_max_junction_px": 13.780500411987305,
+      "bbox_diag_px": 449.9381103515625,
+      "canvas_outside_ratio": 0.0625,
+      "bbox": [
+        129.78900146484375,
+        -42.547279357910156,
+        390.30877685546875,
+        324.2956848144531
+      ]
+    },
+    {
+      "idx": 25,
+      "candidate_id": "glyph_candidate_00938",
+      "ok": true,
+      "reason": "ok",
+      "score": 24.800258894761402,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 11.641315976778666,
+      "prior_max_junction_px": 18.47960090637207,
+      "bbox_diag_px": 372.6186828613281,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        73.53670501708984,
+        83.5616455078125,
+        350.5736999511719,
+        332.750732421875
+      ]
+    },
+    {
+      "idx": 26,
+      "candidate_id": "glyph_candidate_00950",
+      "ok": true,
+      "reason": "ok",
+      "score": 24.973026275634766,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 3,
+      "num_edges": 6,
+      "prior_mean_junction_px": 8.706302642822266,
+      "prior_max_junction_px": 12.619874954223633,
+      "bbox_diag_px": 336.34637451171875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        140.42039489746094,
+        45.38922119140625,
+        254.01611328125,
+        361.9723815917969
+      ]
+    },
+    {
+      "idx": 27,
+      "candidate_id": "glyph_candidate_00956",
+      "ok": true,
+      "reason": "ok",
+      "score": 25.08916135629018,
+      "hard_pass": true,
+      "hard_reasons": [],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 9.168888966242472,
+      "prior_max_junction_px": 17.504716873168945,
+      "bbox_diag_px": 513.1173706054688,
+      "canvas_outside_ratio": 0.03125,
+      "bbox": [
+        -6.8510284423828125,
+        58.09935760498047,
+        356.5931701660156,
+        420.3116455078125
+      ]
+    },
+    {
+      "idx": 28,
+      "candidate_id": "glyph_candidate_00564",
+      "ok": true,
+      "reason": "ok",
+      "score": 25.732069492340088,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 14.81478214263916,
+      "prior_max_junction_px": 18.324678421020508,
+      "bbox_diag_px": 427.806884765625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        5.1644134521484375,
+        61.73799133300781,
+        364.58404541015625,
+        293.7644348144531
+      ]
+    },
+    {
+      "idx": 29,
+      "candidate_id": "glyph_candidate_00561",
+      "ok": true,
+      "reason": "ok",
+      "score": 25.792155106862385,
+      "hard_pass": false,
+      "hard_reasons": [
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 15.349401156107584,
+      "prior_max_junction_px": 17.617454528808594,
+      "bbox_diag_px": 338.5894775390625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        74.15753173828125,
+        90.77011108398438,
+        318.69464111328125,
+        324.958984375
+      ]
+    },
+    {
+      "idx": 30,
+      "candidate_id": "glyph_candidate_00949",
+      "ok": true,
+      "reason": "ok",
+      "score": 26.026059826215107,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 7.898627678553264,
+      "prior_max_junction_px": 20.326745986938477,
+      "bbox_diag_px": 489.60638427734375,
+      "canvas_outside_ratio": 0.015625,
+      "bbox": [
+        48.56922912597656,
+        -14.491423606872559,
+        359.4154052734375,
+        363.77972412109375
+      ]
+    },
+    {
+      "idx": 31,
+      "candidate_id": "glyph_candidate_00999",
+      "ok": true,
+      "reason": "ok",
+      "score": 26.159579515457153,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 12.8236985206604,
+      "prior_max_junction_px": 19.747730255126953,
+      "bbox_diag_px": 312.06573486328125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        110.99433898925781,
+        66.97706604003906,
+        288.54644775390625,
+        323.609619140625
+      ]
+    },
+    {
+      "idx": 32,
+      "candidate_id": "glyph_candidate_00232",
+      "ok": true,
+      "reason": "ok",
+      "score": 27.291856050491333,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 16.587263584136963,
+      "prior_max_junction_px": 18.99822425842285,
+      "bbox_diag_px": 347.7564697265625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        85.958251953125,
+        49.86236572265625,
+        322.5085144042969,
+        304.771240234375
+      ]
+    },
+    {
+      "idx": 33,
+      "candidate_id": "glyph_candidate_00119",
+      "ok": true,
+      "reason": "ok",
+      "score": 27.349470615386963,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 15.561509132385254,
+      "prior_max_junction_px": 19.568716049194336,
+      "bbox_diag_px": 407.18817138671875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        31.90704345703125,
+        72.11184692382812,
+        342.6813659667969,
+        335.2117004394531
+      ]
+    },
+    {
+      "idx": 34,
+      "candidate_id": "glyph_candidate_00062",
+      "ok": true,
+      "reason": "ok",
+      "score": 27.81147813796997,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 18.382149696350098,
+      "prior_max_junction_px": 18.620403289794922,
+      "bbox_diag_px": 436.2945861816406,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        2.4259414672851562,
+        81.79229736328125,
+        367.5725402832031,
+        320.58282470703125
+      ]
+    },
+    {
+      "idx": 35,
+      "candidate_id": "glyph_candidate_00410",
+      "ok": true,
+      "reason": "ok",
+      "score": 27.942392230033875,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 13.252010107040405,
+      "prior_max_junction_px": 21.316387176513672,
+      "bbox_diag_px": 311.4544982910156,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        138.51622009277344,
+        122.29024505615234,
+        330.44427490234375,
+        367.5809326171875
+      ]
+    },
+    {
+      "idx": 36,
+      "candidate_id": "glyph_candidate_00801",
+      "ok": true,
+      "reason": "ok",
+      "score": 28.226795196533203,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 16.76758575439453,
+      "prior_max_junction_px": 19.843002319335938,
+      "bbox_diag_px": 267.43017578125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        106.21990203857422,
+        130.04014587402344,
+        336.7933044433594,
+        265.52008056640625
+      ]
+    },
+    {
+      "idx": 37,
+      "candidate_id": "glyph_candidate_00946",
+      "ok": true,
+      "reason": "ok",
+      "score": 28.472731987635296,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 15.547166347503662,
+      "prior_max_junction_px": 19.032482147216797,
+      "bbox_diag_px": 397.43817138671875,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        27.56822967529297,
+        -6.690971374511719,
+        265.3211364746094,
+        311.7908020019531
+      ]
+    },
+    {
+      "idx": 38,
+      "candidate_id": "glyph_candidate_00112",
+      "ok": true,
+      "reason": "ok",
+      "score": 29.03192949295044,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 17.503331184387207,
+      "prior_max_junction_px": 20.280263900756836,
+      "bbox_diag_px": 313.3985290527344,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        117.23868560791016,
+        48.52100372314453,
+        268.32745361328125,
+        323.0948791503906
+      ]
+    },
+    {
+      "idx": 39,
+      "candidate_id": "glyph_candidate_00208",
+      "ok": true,
+      "reason": "ok",
+      "score": 29.114664524793625,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 11.848751962184906,
+      "prior_max_junction_px": 23.190288543701172,
+      "bbox_diag_px": 311.8453063964844,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        38.76154327392578,
+        158.074951171875,
+        335.759521484375,
+        253.15228271484375
+      ]
+    },
+    {
+      "idx": 40,
+      "candidate_id": "glyph_candidate_00996",
+      "ok": true,
+      "reason": "ok",
+      "score": 29.164702892303467,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 18.58084011077881,
+      "prior_max_junction_px": 19.874282836914062,
+      "bbox_diag_px": 336.4241943359375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        85.94486999511719,
+        114.422607421875,
+        358.1300964355469,
+        312.1507873535156
+      ]
+    },
+    {
+      "idx": 41,
+      "candidate_id": "glyph_candidate_00344",
+      "ok": true,
+      "reason": "ok",
+      "score": 29.410336017608643,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.39859104156494,
+      "prior_max_junction_px": 19.711040496826172,
+      "bbox_diag_px": 472.7568664550781,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        2.233184814453125,
+        42.131126403808594,
+        361.4520263671875,
+        349.4760437011719
+      ]
+    },
+    {
+      "idx": 42,
+      "candidate_id": "glyph_candidate_00918",
+      "ok": true,
+      "reason": "ok",
+      "score": 29.465489864349365,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 16.702113151550293,
+      "prior_max_junction_px": 21.11443328857422,
+      "bbox_diag_px": 446.4454650878906,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        43.42052459716797,
+        64.95832824707031,
+        396.490966796875,
+        338.1886901855469
+      ]
+    },
+    {
+      "idx": 43,
+      "candidate_id": "glyph_candidate_00658",
+      "ok": true,
+      "reason": "ok",
+      "score": 29.501593748728432,
+      "hard_pass": false,
+      "hard_reasons": [
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 14.56459903717041,
+      "prior_max_junction_px": 15.552627563476562,
+      "bbox_diag_px": 541.4015502929688,
+      "canvas_outside_ratio": 0.08333333333333333,
+      "bbox": [
+        -71.32294464111328,
+        11.295089721679688,
+        375.2886962890625,
+        317.32403564453125
+      ]
+    },
+    {
+      "idx": 44,
+      "candidate_id": "glyph_candidate_00909",
+      "ok": true,
+      "reason": "ok",
+      "score": 29.596574624379475,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 15.140811602274576,
+      "prior_max_junction_px": 21.526168823242188,
+      "bbox_diag_px": 313.8958435058594,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        46.171913146972656,
+        112.16238403320312,
+        299.88787841796875,
+        296.9833984375
+      ]
+    },
+    {
+      "idx": 45,
+      "candidate_id": "glyph_candidate_00122",
+      "ok": true,
+      "reason": "ok",
+      "score": 29.673180413246154,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 6,
+      "num_edges": 5,
+      "prior_mean_junction_px": 12.604856157302857,
+      "prior_max_junction_px": 21.870752334594727,
+      "bbox_diag_px": 355.21533203125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        62.499691009521484,
+        95.2296371459961,
+        346.1729736328125,
+        309.02252197265625
+      ]
+    },
+    {
+      "idx": 46,
+      "candidate_id": "glyph_candidate_00369",
+      "ok": true,
+      "reason": "ok",
+      "score": 29.958652019500732,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.441969871520996,
+      "prior_max_junction_px": 20.237667083740234,
+      "bbox_diag_px": 387.1517028808594,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        42.01640319824219,
+        140.7085723876953,
+        379.249755859375,
+        330.86669921875
+      ]
+    },
+    {
+      "idx": 47,
+      "candidate_id": "glyph_candidate_00948",
+      "ok": true,
+      "reason": "ok",
+      "score": 30.34111261367798,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 17.60200595855713,
+      "prior_max_junction_px": 21.040109634399414,
+      "bbox_diag_px": 417.84344482421875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        10.861030578613281,
+        78.81303405761719,
+        345.528564453125,
+        328.9945373535156
+      ]
+    },
+    {
+      "idx": 48,
+      "candidate_id": "glyph_candidate_00817",
+      "ok": true,
+      "reason": "ok",
+      "score": 30.828729540109634,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 12.851245701313019,
+      "prior_max_junction_px": 24.403106689453125,
+      "bbox_diag_px": 315.8007507324219,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        40.819183349609375,
+        142.978515625,
+        290.4013366699219,
+        336.4697570800781
+      ]
+    },
+    {
+      "idx": 49,
+      "candidate_id": "glyph_candidate_00303",
+      "ok": true,
+      "reason": "ok",
+      "score": 30.8866726718843,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 13.139731757342815,
+      "prior_max_junction_px": 21.81680679321289,
+      "bbox_diag_px": 285.9926452636719,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        73.02899932861328,
+        92.38934326171875,
+        291.3804931640625,
+        277.0902404785156
+      ]
+    },
+    {
+      "idx": 50,
+      "candidate_id": "glyph_candidate_00353",
+      "ok": true,
+      "reason": "ok",
+      "score": 31.173423051834106,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 17.321482181549072,
+      "prior_max_junction_px": 22.51268196105957,
+      "bbox_diag_px": 328.9328918457031,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        36.679229736328125,
+        96.92940521240234,
+        317.317138671875,
+        268.50799560546875
+      ]
+    },
+    {
+      "idx": 51,
+      "candidate_id": "glyph_candidate_00766",
+      "ok": true,
+      "reason": "ok",
+      "score": 31.402912616729736,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 20.009915351867676,
+      "prior_max_junction_px": 21.3979549407959,
+      "bbox_diag_px": 320.86505126953125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        78.99597930908203,
+        49.20252227783203,
+        276.8038330078125,
+        301.8414611816406
+      ]
+    },
+    {
+      "idx": 52,
+      "candidate_id": "glyph_candidate_00722",
+      "ok": true,
+      "reason": "ok",
+      "score": 32.03284970919291,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 14.593198299407959,
+      "prior_max_junction_px": 23.069583892822266,
+      "bbox_diag_px": 335.96710205078125,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        149.6151885986328,
+        -4.936714172363281,
+        256.0683898925781,
+        313.71923828125
+      ]
+    },
+    {
+      "idx": 53,
+      "candidate_id": "glyph_candidate_00998",
+      "ok": true,
+      "reason": "ok",
+      "score": 32.26832962036133,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 15.077850341796875,
+      "prior_max_junction_px": 24.72940444946289,
+      "bbox_diag_px": 292.59185791015625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        96.85848999023438,
+        110.9547119140625,
+        322.581787109375,
+        297.12396240234375
+      ]
+    },
+    {
+      "idx": 54,
+      "candidate_id": "glyph_candidate_00871",
+      "ok": true,
+      "reason": "ok",
+      "score": 32.390856901804604,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.677578926086426,
+      "prior_max_junction_px": 20.885400772094727,
+      "bbox_diag_px": 441.6764221191406,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        -3.6534423828125,
+        33.712615966796875,
+        339.7521667480469,
+        311.47265625
+      ]
+    },
+    {
+      "idx": 55,
+      "candidate_id": "glyph_candidate_00139",
+      "ok": true,
+      "reason": "ok",
+      "score": 32.51777648925781,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.343406677246094,
+      "prior_max_junction_px": 22.846073150634766,
+      "bbox_diag_px": 354.0555725097656,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        5.0899658203125,
+        107.49401092529297,
+        332.2184143066406,
+        242.92784118652344
+      ]
+    },
+    {
+      "idx": 56,
+      "candidate_id": "glyph_candidate_00505",
+      "ok": true,
+      "reason": "ok",
+      "score": 32.57767883936564,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.372305870056152,
+      "prior_max_junction_px": 21.2248592376709,
+      "bbox_diag_px": 367.1181335449219,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        114.59324645996094,
+        -5.915946960449219,
+        320.64764404296875,
+        297.92169189453125
+      ]
+    },
+    {
+      "idx": 57,
+      "candidate_id": "glyph_candidate_00962",
+      "ok": true,
+      "reason": "ok",
+      "score": 32.76603817939758,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 14.994184970855713,
+      "prior_max_junction_px": 25.268945693969727,
+      "bbox_diag_px": 334.7872314453125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        94.05738067626953,
+        36.933868408203125,
+        318.9369201660156,
+        284.9493408203125
+      ]
+    },
+    {
+      "idx": 58,
+      "candidate_id": "glyph_candidate_00255",
+      "ok": true,
+      "reason": "ok",
+      "score": 33.63648223876953,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 21.564464569091797,
+      "prior_max_junction_px": 22.854249954223633,
+      "bbox_diag_px": 385.5377197265625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        82.24165344238281,
+        42.7857666015625,
+        315.5491027832031,
+        349.71728515625
+      ]
+    },
+    {
+      "idx": 59,
+      "candidate_id": "glyph_candidate_00752",
+      "ok": true,
+      "reason": "ok",
+      "score": 33.9319167137146,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 6,
+      "prior_mean_junction_px": 12.624796867370605,
+      "prior_max_junction_px": 19.619518280029297,
+      "bbox_diag_px": 327.2278137207031,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        40.59919738769531,
+        134.81491088867188,
+        344.1675720214844,
+        256.97991943359375
+      ]
+    },
+    {
+      "idx": 60,
+      "candidate_id": "glyph_candidate_00639",
+      "ok": true,
+      "reason": "ok",
+      "score": 34.10750389099121,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 20.758052825927734,
+      "prior_max_junction_px": 23.728477478027344,
+      "bbox_diag_px": 305.3652038574219,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        76.21044921875,
+        68.84883880615234,
+        296.4242248535156,
+        280.3997802734375
+      ]
+    },
+    {
+      "idx": 61,
+      "candidate_id": "glyph_candidate_00531",
+      "ok": true,
+      "reason": "ok",
+      "score": 34.42283280690511,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 18.531105677286785,
+      "prior_max_junction_px": 24.65727996826172,
+      "bbox_diag_px": 383.69915771484375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        90.86477661132812,
+        36.655418395996094,
+        323.7998962402344,
+        341.55914306640625
+      ]
+    },
+    {
+      "idx": 62,
+      "candidate_id": "glyph_candidate_00754",
+      "ok": true,
+      "reason": "ok",
+      "score": 34.60487246513367,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.207932949066162,
+      "prior_max_junction_px": 22.500905990600586,
+      "bbox_diag_px": 386.742431640625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        99.71493530273438,
+        33.808570861816406,
+        339.61279296875,
+        337.15447998046875
+      ]
+    },
+    {
+      "idx": 63,
+      "candidate_id": "glyph_candidate_00783",
+      "ok": true,
+      "reason": "ok",
+      "score": 34.75034099072218,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 13.35039435327053,
+      "prior_max_junction_px": 25.575143814086914,
+      "bbox_diag_px": 310.1221008300781,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        96.12736511230469,
+        60.86637878417969,
+        254.5860595703125,
+        327.44952392578125
+      ]
+    },
+    {
+      "idx": 64,
+      "candidate_id": "glyph_candidate_00821",
+      "ok": true,
+      "reason": "ok",
+      "score": 35.130351066589355,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 1,
+      "prior_mean_junction_px": 22.08690071105957,
+      "prior_max_junction_px": 22.08690071105957,
+      "bbox_diag_px": 347.3526611328125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        126.47422790527344,
+        36.6693115234375,
+        313.4256896972656,
+        329.42010498046875
+      ]
+    },
+    {
+      "idx": 65,
+      "candidate_id": "glyph_candidate_00494",
+      "ok": true,
+      "reason": "ok",
+      "score": 35.23893630504608,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 16.98898482322693,
+      "prior_max_junction_px": 26.744443893432617,
+      "bbox_diag_px": 329.4713134765625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        113.5186538696289,
+        60.80559539794922,
+        294.15179443359375,
+        336.346923828125
+      ]
+    },
+    {
+      "idx": 66,
+      "candidate_id": "glyph_candidate_00807",
+      "ok": true,
+      "reason": "ok",
+      "score": 35.25663391749064,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 20.839001019795734,
+      "prior_max_junction_px": 24.337133407592773,
+      "bbox_diag_px": 423.9406433105469,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        47.267982482910156,
+        30.95599365234375,
+        382.5354309082031,
+        290.419677734375
+      ]
+    },
+    {
+      "idx": 67,
+      "candidate_id": "glyph_candidate_00976",
+      "ok": true,
+      "reason": "ok",
+      "score": 35.36468291282654,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 15.797801494598389,
+      "prior_max_junction_px": 27.465782165527344,
+      "bbox_diag_px": 384.0220031738281,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        66.49005126953125,
+        81.9817123413086,
+        343.36822509765625,
+        348.0858154296875
+      ]
+    },
+    {
+      "idx": 68,
+      "candidate_id": "glyph_candidate_00911",
+      "ok": true,
+      "reason": "ok",
+      "score": 35.448675870895386,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 18.97800588607788,
+      "prior_max_junction_px": 25.959672927856445,
+      "bbox_diag_px": 344.84136962890625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        124.35960388183594,
+        102.46903991699219,
+        394.0064697265625,
+        317.4251708984375
+      ]
+    },
+    {
+      "idx": 69,
+      "candidate_id": "glyph_candidate_00782",
+      "ok": true,
+      "reason": "ok",
+      "score": 35.78276228904724,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 18.356242656707764,
+      "prior_max_junction_px": 26.60464096069336,
+      "bbox_diag_px": 333.2884826660156,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        23.30799102783203,
+        130.49169921875,
+        324.0887451171875,
+        274.0609436035156
+      ]
+    },
+    {
+      "idx": 70,
+      "candidate_id": "glyph_candidate_00294",
+      "ok": true,
+      "reason": "ok",
+      "score": 36.032877365748085,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.603702068328857,
+      "prior_max_junction_px": 24.564359664916992,
+      "bbox_diag_px": 424.4453430175781,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        47.696983337402344,
+        -7.3968658447265625,
+        334.753173828125,
+        305.2572326660156
+      ]
+    },
+    {
+      "idx": 71,
+      "candidate_id": "glyph_candidate_00115",
+      "ok": true,
+      "reason": "ok",
+      "score": 36.15884181857109,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 13.998187482357025,
+      "prior_max_junction_px": 26.659748077392578,
+      "bbox_diag_px": 387.81610107421875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        55.161102294921875,
+        49.28070068359375,
+        308.9627685546875,
+        342.51446533203125
+      ]
+    },
+    {
+      "idx": 72,
+      "candidate_id": "glyph_candidate_00961",
+      "ok": true,
+      "reason": "ok",
+      "score": 36.2902455329895,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.48428440093994,
+      "prior_max_junction_px": 26.54810333251953,
+      "bbox_diag_px": 356.37677001953125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        73.30311584472656,
+        84.14353942871094,
+        282.5546569824219,
+        372.6191711425781
+      ]
+    },
+    {
+      "idx": 73,
+      "candidate_id": "glyph_candidate_00664",
+      "ok": true,
+      "reason": "ok",
+      "score": 36.29269138971964,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 16.990708351135254,
+      "prior_max_junction_px": 26.13067054748535,
+      "bbox_diag_px": 405.0341491699219,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        94.50294494628906,
+        75.18183135986328,
+        417.4269104003906,
+        319.6665344238281
+      ]
+    },
+    {
+      "idx": 74,
+      "candidate_id": "glyph_candidate_00645",
+      "ok": true,
+      "reason": "ok",
+      "score": 36.597642501195274,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.430954456329346,
+      "prior_max_junction_px": 23.548831939697266,
+      "bbox_diag_px": 428.9063720703125,
+      "canvas_outside_ratio": 0.041666666666666664,
+      "bbox": [
+        72.70893859863281,
+        68.47792053222656,
+        314.09869384765625,
+        423.0081481933594
+      ]
+    },
+    {
+      "idx": 75,
+      "candidate_id": "glyph_candidate_00190",
+      "ok": true,
+      "reason": "ok",
+      "score": 37.093812704086304,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 17.480136394500732,
+      "prior_max_junction_px": 28.353744506835938,
+      "bbox_diag_px": 321.1329040527344,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        38.46135711669922,
+        128.80967712402344,
+        335.4567565917969,
+        250.95741271972656
+      ]
+    },
+    {
+      "idx": 76,
+      "candidate_id": "glyph_candidate_00029",
+      "ok": true,
+      "reason": "ok",
+      "score": 37.18722891807556,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 12.395354747772217,
+      "prior_max_junction_px": 20.989551544189453,
+      "bbox_diag_px": 556.0311279296875,
+      "canvas_outside_ratio": 0.125,
+      "bbox": [
+        -14.222801208496094,
+        80.79385375976562,
+        450.73638916015625,
+        385.7259216308594
+      ]
+    },
+    {
+      "idx": 77,
+      "candidate_id": "glyph_candidate_00012",
+      "ok": true,
+      "reason": "ok",
+      "score": 37.19996611277262,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 22.87342643737793,
+      "prior_max_junction_px": 24.096586227416992,
+      "bbox_diag_px": 422.5089416503906,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        135.940185546875,
+        -2.2613067626953125,
+        317.8504333496094,
+        379.0816650390625
+      ]
+    },
+    {
+      "idx": 78,
+      "candidate_id": "glyph_candidate_00364",
+      "ok": true,
+      "reason": "ok",
+      "score": 37.47166935602824,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 17.507023811340332,
+      "prior_max_junction_px": 27.051490783691406,
+      "bbox_diag_px": 369.9620056152344,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        93.54549407958984,
+        69.42708587646484,
+        242.66273498535156,
+        408.00634765625
+      ]
+    },
+    {
+      "idx": 79,
+      "candidate_id": "glyph_candidate_00550",
+      "ok": true,
+      "reason": "ok",
+      "score": 37.81658864021301,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 21.326212406158447,
+      "prior_max_junction_px": 27.15348243713379,
+      "bbox_diag_px": 364.6714782714844,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        82.71774291992188,
+        72.8324203491211,
+        283.8512878417969,
+        377.02081298828125
+      ]
+    },
+    {
+      "idx": 80,
+      "candidate_id": "glyph_candidate_00808",
+      "ok": true,
+      "reason": "ok",
+      "score": 37.852608839670815,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 20.841980934143066,
+      "prior_max_junction_px": 25.764951705932617,
+      "bbox_diag_px": 508.55047607421875,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        -16.378204345703125,
+        27.847412109375,
+        377.3993225097656,
+        349.65924072265625
+      ]
+    },
+    {
+      "idx": 81,
+      "candidate_id": "glyph_candidate_00046",
+      "ok": true,
+      "reason": "ok",
+      "score": 38.021245405077934,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 15.547907680273056,
+      "prior_max_junction_px": 30.247291564941406,
+      "bbox_diag_px": 276.4228515625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        78.6170654296875,
+        147.91854858398438,
+        338.07763671875,
+        243.25897216796875
+      ]
+    },
+    {
+      "idx": 82,
+      "candidate_id": "glyph_candidate_00546",
+      "ok": true,
+      "reason": "ok",
+      "score": 38.12117539346218,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 16.614726275205612,
+      "prior_max_junction_px": 24.813812255859375,
+      "bbox_diag_px": 383.0841064453125,
+      "canvas_outside_ratio": 0.03125,
+      "bbox": [
+        83.78584289550781,
+        96.6285400390625,
+        426.8836364746094,
+        267.031982421875
+      ]
+    },
+    {
+      "idx": 83,
+      "candidate_id": "glyph_candidate_00810",
+      "ok": true,
+      "reason": "ok",
+      "score": 38.338587284088135,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 24.25175952911377,
+      "prior_max_junction_px": 26.21270751953125,
+      "bbox_diag_px": 399.4901123046875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        63.68600845336914,
+        22.342041015625,
+        303.4383850097656,
+        341.890380859375
+      ]
+    },
+    {
+      "idx": 84,
+      "candidate_id": "glyph_candidate_00217",
+      "ok": true,
+      "reason": "ok",
+      "score": 38.434694051742554,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 20.53596067428589,
+      "prior_max_junction_px": 25.66671371459961,
+      "bbox_diag_px": 440.95135498046875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        49.81620788574219,
+        6.010284423828125,
+        337.8558044433594,
+        339.8834533691406
+      ]
+    },
+    {
+      "idx": 85,
+      "candidate_id": "glyph_candidate_00951",
+      "ok": true,
+      "reason": "ok",
+      "score": 38.436458855867386,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 5,
+      "num_edges": 4,
+      "prior_mean_junction_px": 14.02009254693985,
+      "prior_max_junction_px": 30.42641258239746,
+      "bbox_diag_px": 364.5015563964844,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        92.53508758544922,
+        94.01515197753906,
+        371.1009216308594,
+        329.0948486328125
+      ]
+    },
+    {
+      "idx": 86,
+      "candidate_id": "glyph_candidate_00093",
+      "ok": true,
+      "reason": "ok",
+      "score": 38.45179986953735,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 25.015694618225098,
+      "prior_max_junction_px": 25.943952560424805,
+      "bbox_diag_px": 362.48681640625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        106.22836303710938,
+        64.60466766357422,
+        358.2027282714844,
+        325.19171142578125
+      ]
+    },
+    {
+      "idx": 87,
+      "candidate_id": "glyph_candidate_00216",
+      "ok": true,
+      "reason": "ok",
+      "score": 38.53669357299805,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 6,
+      "num_edges": 5,
+      "prior_mean_junction_px": 19.873043060302734,
+      "prior_max_junction_px": 27.10017204284668,
+      "bbox_diag_px": 371.46234130859375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        71.53437805175781,
+        51.47468566894531,
+        305.07208251953125,
+        340.3421936035156
+      ]
+    },
+    {
+      "idx": 88,
+      "candidate_id": "glyph_candidate_00663",
+      "ok": true,
+      "reason": "ok",
+      "score": 38.65154711405436,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 21.004871368408203,
+      "prior_max_junction_px": 26.482444763183594,
+      "bbox_diag_px": 413.40118408203125,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        60.90385437011719,
+        128.88772583007812,
+        403.1270446777344,
+        360.8011169433594
+      ]
+    },
+    {
+      "idx": 89,
+      "candidate_id": "glyph_candidate_00884",
+      "ok": true,
+      "reason": "ok",
+      "score": 39.17025327682495,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 23.431445121765137,
+      "prior_max_junction_px": 27.454530715942383,
+      "bbox_diag_px": 342.98968505859375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        115.33953094482422,
+        2.1351318359375,
+        286.3620300292969,
+        299.44512939453125
+      ]
+    },
+    {
+      "idx": 90,
+      "candidate_id": "glyph_candidate_00803",
+      "ok": true,
+      "reason": "ok",
+      "score": 39.49005699157715,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 17.288692474365234,
+      "prior_max_junction_px": 30.34571075439453,
+      "bbox_diag_px": 382.59454345703125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        56.910186767578125,
+        79.68168640136719,
+        339.3845520019531,
+        337.7259521484375
+      ]
+    },
+    {
+      "idx": 91,
+      "candidate_id": "glyph_candidate_00335",
+      "ok": true,
+      "reason": "ok",
+      "score": 39.57694721221924,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 22.4408016204834,
+      "prior_max_junction_px": 28.35654640197754,
+      "bbox_diag_px": 417.1346740722656,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        28.9372615814209,
+        76.36454772949219,
+        368.2978515625,
+        318.92529296875
+      ]
+    },
+    {
+      "idx": 92,
+      "candidate_id": "glyph_candidate_00623",
+      "ok": true,
+      "reason": "ok",
+      "score": 39.60935115814209,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 22.51323127746582,
+      "prior_max_junction_px": 27.85273551940918,
+      "bbox_diag_px": 366.32476806640625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        68.4111328125,
+        85.70448303222656,
+        337.8971862792969,
+        333.8397216796875
+      ]
+    },
+    {
+      "idx": 93,
+      "candidate_id": "glyph_candidate_00381",
+      "ok": true,
+      "reason": "ok",
+      "score": 39.789219538370766,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 18.388442993164062,
+      "prior_max_junction_px": 28.92833137512207,
+      "bbox_diag_px": 502.56787109375,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        37.42192077636719,
+        44.847190856933594,
+        384.379638671875,
+        408.4332580566406
+      ]
+    },
+    {
+      "idx": 94,
+      "candidate_id": "glyph_candidate_00823",
+      "ok": true,
+      "reason": "ok",
+      "score": 40.06374994913737,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 17.54119618733724,
+      "prior_max_junction_px": 30.79315185546875,
+      "bbox_diag_px": 303.7248229980469,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        86.8083267211914,
+        102.82553100585938,
+        295.43231201171875,
+        323.5624694824219
+      ]
+    },
+    {
+      "idx": 95,
+      "candidate_id": "glyph_candidate_00398",
+      "ok": true,
+      "reason": "ok",
+      "score": 40.06713008880615,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 23.338865280151367,
+      "prior_max_junction_px": 27.89769744873047,
+      "bbox_diag_px": 407.3986511230469,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        59.138671875,
+        9.085670471191406,
+        304.79473876953125,
+        334.08837890625
+      ]
+    },
+    {
+      "idx": 96,
+      "candidate_id": "glyph_candidate_00221",
+      "ok": true,
+      "reason": "ok",
+      "score": 40.324267864227295,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 22.145609855651855,
+      "prior_max_junction_px": 29.251462936401367,
+      "bbox_diag_px": 371.0003662109375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        53.57320785522461,
+        78.56737518310547,
+        348.7167663574219,
+        303.3596496582031
+      ]
+    },
+    {
+      "idx": 97,
+      "candidate_id": "glyph_candidate_00799",
+      "ok": true,
+      "reason": "ok",
+      "score": 40.45692102114359,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 20.055381298065186,
+      "prior_max_junction_px": 28.762563705444336,
+      "bbox_diag_px": 340.3375549316406,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        -1.6197738647460938,
+        146.9022674560547,
+        321.5098876953125,
+        253.75204467773438
+      ]
+    },
+    {
+      "idx": 98,
+      "candidate_id": "glyph_candidate_00127",
+      "ok": true,
+      "reason": "ok",
+      "score": 40.658671855926514,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 18.62245464324951,
+      "prior_max_junction_px": 31.347444534301758,
+      "bbox_diag_px": 394.164794921875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        63.52854537963867,
+        53.933204650878906,
+        334.1627197265625,
+        340.50433349609375
+      ]
+    },
+    {
+      "idx": 99,
+      "candidate_id": "glyph_candidate_00308",
+      "ok": true,
+      "reason": "ok",
+      "score": 40.80452432632446,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 5,
+      "num_edges": 5,
+      "prior_mean_junction_px": 19.911931800842286,
+      "prior_max_junction_px": 26.84855842590332,
+      "bbox_diag_px": 352.22515869140625,
+      "canvas_outside_ratio": 0.0125,
+      "bbox": [
+        134.26583862304688,
+        -10.069892883300781,
+        249.26092529296875,
+        322.8545837402344
+      ]
+    },
+    {
+      "idx": 100,
+      "candidate_id": "glyph_candidate_00260",
+      "ok": true,
+      "reason": "ok",
+      "score": 41.2989813486735,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 22.505364735921223,
+      "prior_max_junction_px": 29.54629898071289,
+      "bbox_diag_px": 431.26275634765625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        85.07383728027344,
+        1.7244873046875,
+        348.695068359375,
+        343.03289794921875
+      ]
+    },
+    {
+      "idx": 101,
+      "candidate_id": "glyph_candidate_00437",
+      "ok": true,
+      "reason": "ok",
+      "score": 41.36222644646963,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 20.655147473017376,
+      "prior_max_junction_px": 30.534652709960938,
+      "bbox_diag_px": 323.77825927734375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        93.82000732421875,
+        109.1842269897461,
+        342.57611083984375,
+        316.4346923828125
+      ]
+    },
+    {
+      "idx": 102,
+      "candidate_id": "glyph_candidate_00910",
+      "ok": true,
+      "reason": "ok",
+      "score": 41.45619662602743,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 22.7847687403361,
+      "prior_max_junction_px": 29.563812255859375,
+      "bbox_diag_px": 443.46392822265625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        20.875999450683594,
+        39.527076721191406,
+        365.2654113769531,
+        318.9124755859375
+      ]
+    },
+    {
+      "idx": 103,
+      "candidate_id": "glyph_candidate_00433",
+      "ok": true,
+      "reason": "ok",
+      "score": 41.58275127410889,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 26.12567710876465,
+      "prior_max_junction_px": 28.519912719726562,
+      "bbox_diag_px": 330.0043029785156,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        82.59390258789062,
+        88.06332397460938,
+        321.86883544921875,
+        315.3304443359375
+      ]
+    },
+    {
+      "idx": 104,
+      "candidate_id": "glyph_candidate_00371",
+      "ok": true,
+      "reason": "ok",
+      "score": 41.752644856770836,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 23.159536997477215,
+      "prior_max_junction_px": 29.672876358032227,
+      "bbox_diag_px": 379.89727783203125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        62.979705810546875,
+        45.59777069091797,
+        309.15045166015625,
+        334.9451599121094
+      ]
+    },
+    {
+      "idx": 105,
+      "candidate_id": "glyph_candidate_00010",
+      "ok": true,
+      "reason": "ok",
+      "score": 41.8340638478597,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 1,
+      "prior_mean_junction_px": 24.333820343017578,
+      "prior_max_junction_px": 24.333820343017578,
+      "bbox_diag_px": 412.33843994140625,
+      "canvas_outside_ratio": 0.041666666666666664,
+      "bbox": [
+        -29.991859436035156,
+        151.7193603515625,
+        344.6676025390625,
+        323.920654296875
+      ]
+    },
+    {
+      "idx": 106,
+      "candidate_id": "glyph_candidate_00666",
+      "ok": true,
+      "reason": "ok",
+      "score": 41.85224390029907,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 6,
+      "prior_mean_junction_px": 20.111943244934082,
+      "prior_max_junction_px": 23.79627227783203,
+      "bbox_diag_px": 337.4734802246094,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        168.02993774414062,
+        40.562744140625,
+        242.0603790283203,
+        369.81622314453125
+      ]
+    },
+    {
+      "idx": 107,
+      "candidate_id": "glyph_candidate_00397",
+      "ok": true,
+      "reason": "ok",
+      "score": 42.17675622304281,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 24.420414606730144,
+      "prior_max_junction_px": 29.466548919677734,
+      "bbox_diag_px": 371.6438293457031,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        83.7440414428711,
+        116.89198303222656,
+        394.18951416015625,
+        321.202392578125
+      ]
+    },
+    {
+      "idx": 108,
+      "candidate_id": "glyph_candidate_00796",
+      "ok": true,
+      "reason": "ok",
+      "score": 42.257731676101685,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 22.616194248199463,
+      "prior_max_junction_px": 30.949634552001953,
+      "bbox_diag_px": 325.2826843261719,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        54.268775939941406,
+        65.23184967041016,
+        295.5355529785156,
+        283.4041748046875
+      ]
+    },
+    {
+      "idx": 109,
+      "candidate_id": "glyph_candidate_00041",
+      "ok": true,
+      "reason": "ok",
+      "score": 42.2959623336792,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 28.082155227661133,
+      "prior_max_junction_px": 28.254884719848633,
+      "bbox_diag_px": 360.366943359375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        33.15911865234375,
+        96.40240478515625,
+        301.80902099609375,
+        336.59307861328125
+      ]
+    },
+    {
+      "idx": 110,
+      "candidate_id": "glyph_candidate_00116",
+      "ok": true,
+      "reason": "ok",
+      "score": 42.331228733062744,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 26.71945285797119,
+      "prior_max_junction_px": 28.97150230407715,
+      "bbox_diag_px": 345.4981994628906,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        83.84457397460938,
+        89.96864318847656,
+        379.56939697265625,
+        268.6186828613281
+      ]
+    },
+    {
+      "idx": 111,
+      "candidate_id": "glyph_candidate_00577",
+      "ok": true,
+      "reason": "ok",
+      "score": 42.376100063323975,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 25.462546348571777,
+      "prior_max_junction_px": 29.644826889038086,
+      "bbox_diag_px": 337.1708679199219,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        154.41091918945312,
+        38.1495361328125,
+        277.489990234375,
+        352.0535583496094
+      ]
+    },
+    {
+      "idx": 112,
+      "candidate_id": "glyph_candidate_00088",
+      "ok": true,
+      "reason": "ok",
+      "score": 42.50619705518087,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 21.379380702972412,
+      "prior_max_junction_px": 28.483173370361328,
+      "bbox_diag_px": 481.8001708984375,
+      "canvas_outside_ratio": 0.041666666666666664,
+      "bbox": [
+        -13.107421875,
+        62.485591888427734,
+        315.82611083984375,
+        414.5284118652344
+      ]
+    },
+    {
+      "idx": 113,
+      "candidate_id": "glyph_candidate_00171",
+      "ok": true,
+      "reason": "ok",
+      "score": 42.52329897880554,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 24.422441005706787,
+      "prior_max_junction_px": 27.81207847595215,
+      "bbox_diag_px": 364.9925537109375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        15.923110961914062,
+        107.99270629882812,
+        340.686767578125,
+        274.57037353515625
+      ]
+    },
+    {
+      "idx": 114,
+      "candidate_id": "glyph_candidate_00657",
+      "ok": true,
+      "reason": "ok",
+      "score": 42.886040687561035,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 20.64360237121582,
+      "prior_max_junction_px": 32.564239501953125,
+      "bbox_diag_px": 327.0702819824219,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        107.04839324951172,
+        87.3738784790039,
+        254.8685302734375,
+        379.13433837890625
+      ]
+    },
+    {
+      "idx": 115,
+      "candidate_id": "glyph_candidate_00972",
+      "ok": true,
+      "reason": "ok",
+      "score": 42.958858489990234,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 18.91436004638672,
+      "prior_max_junction_px": 31.001678466796875,
+      "bbox_diag_px": 348.1306457519531,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        119.37540435791016,
+        99.55548095703125,
+        349.377685546875,
+        360.886474609375
+      ]
+    },
+    {
+      "idx": 116,
+      "candidate_id": "glyph_candidate_00611",
+      "ok": true,
+      "reason": "ok",
+      "score": 42.97115840911865,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 5,
+      "num_edges": 5,
+      "prior_mean_junction_px": 20.495390701293946,
+      "prior_max_junction_px": 29.72346305847168,
+      "bbox_diag_px": 288.1017761230469,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        78.90179443359375,
+        155.67868041992188,
+        351.8986511230469,
+        247.7403106689453
+      ]
+    },
+    {
+      "idx": 117,
+      "candidate_id": "glyph_candidate_00665",
+      "ok": true,
+      "reason": "ok",
+      "score": 43.14017939567566,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 23.727155208587646,
+      "prior_max_junction_px": 28.776601791381836,
+      "bbox_diag_px": 464.5751037597656,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        85.9738540649414,
+        19.058719635009766,
+        362.5166015625,
+        392.3603820800781
+      ]
+    },
+    {
+      "idx": 118,
+      "candidate_id": "glyph_candidate_00959",
+      "ok": true,
+      "reason": "ok",
+      "score": 43.21662759780884,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 20.355137825012207,
+      "prior_max_junction_px": 33.039058685302734,
+      "bbox_diag_px": 333.241943359375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        111.68268585205078,
+        50.16481399536133,
+        376.61346435546875,
+        252.30801391601562
+      ]
+    },
+    {
+      "idx": 119,
+      "candidate_id": "glyph_candidate_00868",
+      "ok": true,
+      "reason": "ok",
+      "score": 43.6553635597229,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 20.10933017730713,
+      "prior_max_junction_px": 31.850698471069336,
+      "bbox_diag_px": 361.3476257324219,
+      "canvas_outside_ratio": 0.015625,
+      "bbox": [
+        109.18882751464844,
+        91.2713623046875,
+        406.3052062988281,
+        296.9263000488281
+      ]
+    },
+    {
+      "idx": 120,
+      "candidate_id": "glyph_candidate_00145",
+      "ok": true,
+      "reason": "ok",
+      "score": 43.813930839300156,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 18.038422286510468,
+      "prior_max_junction_px": 34.79471969604492,
+      "bbox_diag_px": 393.1455383300781,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        1.9352647066116333,
+        45.5977783203125,
+        278.24090576171875,
+        325.2736511230469
+      ]
+    },
+    {
+      "idx": 121,
+      "candidate_id": "glyph_candidate_00584",
+      "ok": true,
+      "reason": "ok",
+      "score": 43.98473342259725,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 18.226506233215332,
+      "prior_max_junction_px": 31.53814697265625,
+      "bbox_diag_px": 552.4718627929688,
+      "canvas_outside_ratio": 0.041666666666666664,
+      "bbox": [
+        42.43468475341797,
+        -29.13726806640625,
+        416.41998291015625,
+        377.5077819824219
+      ]
+    },
+    {
+      "idx": 122,
+      "candidate_id": "glyph_candidate_00004",
+      "ok": true,
+      "reason": "ok",
+      "score": 44.19864892959595,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 28.38790225982666,
+      "prior_max_junction_px": 30.004697799682617,
+      "bbox_diag_px": 388.11077880859375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        27.967702865600586,
+        77.83369445800781,
+        331.1554870605469,
+        320.1293029785156
+      ]
+    },
+    {
+      "idx": 123,
+      "candidate_id": "glyph_candidate_00090",
+      "ok": true,
+      "reason": "ok",
+      "score": 44.422037079930305,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 18.12001410126686,
+      "prior_max_junction_px": 32.862030029296875,
+      "bbox_diag_px": 328.77728271484375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        86.93428802490234,
+        45.82414245605469,
+        312.6080627441406,
+        284.91796875
+      ]
+    },
+    {
+      "idx": 124,
+      "candidate_id": "glyph_candidate_00516",
+      "ok": true,
+      "reason": "ok",
+      "score": 44.442174434661865,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 26.60337734222412,
+      "prior_max_junction_px": 31.140485763549805,
+      "bbox_diag_px": 419.1247253417969,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        77.28714752197266,
+        10.021625518798828,
+        274.3789978027344,
+        379.9139709472656
+      ]
+    },
+    {
+      "idx": 125,
+      "candidate_id": "glyph_candidate_00583",
+      "ok": true,
+      "reason": "ok",
+      "score": 44.59706449508667,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 25.744261741638184,
+      "prior_max_junction_px": 31.724933624267578,
+      "bbox_diag_px": 308.466064453125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        68.39513397216797,
+        80.90050506591797,
+        270.6865234375,
+        313.7727966308594
+      ]
+    },
+    {
+      "idx": 126,
+      "candidate_id": "glyph_candidate_00542",
+      "ok": true,
+      "reason": "ok",
+      "score": 44.640368074178696,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 17.512028872966766,
+      "prior_max_junction_px": 33.38435363769531,
+      "bbox_diag_px": 373.7574462890625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        46.6790771484375,
+        56.003318786621094,
+        304.85467529296875,
+        326.2624206542969
+      ]
+    },
+    {
+      "idx": 127,
+      "candidate_id": "glyph_candidate_00683",
+      "ok": true,
+      "reason": "ok",
+      "score": 44.74469017982483,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 22.576134204864502,
+      "prior_max_junction_px": 33.45662307739258,
+      "bbox_diag_px": 431.2508239746094,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        102.05563354492188,
+        51.152931213378906,
+        376.275390625,
+        383.99041748046875
+      ]
+    },
+    {
+      "idx": 128,
+      "candidate_id": "glyph_candidate_00848",
+      "ok": true,
+      "reason": "ok",
+      "score": 44.91901683807373,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 27.28163719177246,
+      "prior_max_junction_px": 31.2781982421875,
+      "bbox_diag_px": 341.44940185546875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        15.059762001037598,
+        92.81184387207031,
+        276.3602294921875,
+        312.60662841796875
+      ]
+    },
+    {
+      "idx": 129,
+      "candidate_id": "glyph_candidate_00436",
+      "ok": true,
+      "reason": "ok",
+      "score": 44.969424813985825,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 18.6101753115654,
+      "prior_max_junction_px": 35.664337158203125,
+      "bbox_diag_px": 359.9293518066406,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        102.10794067382812,
+        2.8876495361328125,
+        287.41436767578125,
+        311.44989013671875
+      ]
+    },
+    {
+      "idx": 130,
+      "candidate_id": "glyph_candidate_00624",
+      "ok": true,
+      "reason": "ok",
+      "score": 45.04087829589844,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 29.359111785888672,
+      "prior_max_junction_px": 30.3613224029541,
+      "bbox_diag_px": 379.7247619628906,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        127.0314712524414,
+        22.43968963623047,
+        354.4253234863281,
+        326.54974365234375
+      ]
+    },
+    {
+      "idx": 131,
+      "candidate_id": "glyph_candidate_00521",
+      "ok": true,
+      "reason": "ok",
+      "score": 45.150471687316895,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 5,
+      "num_edges": 5,
+      "prior_mean_junction_px": 22.32417106628418,
+      "prior_max_junction_px": 30.988386154174805,
+      "bbox_diag_px": 294.001708984375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        149.09893798828125,
+        86.38470458984375,
+        258.16363525390625,
+        359.4083251953125
+      ]
+    },
+    {
+      "idx": 132,
+      "candidate_id": "glyph_candidate_00001",
+      "ok": true,
+      "reason": "ok",
+      "score": 45.43200818697611,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 22.182584285736084,
+      "prior_max_junction_px": 32.674049377441406,
+      "bbox_diag_px": 445.45867919921875,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        54.605133056640625,
+        -5.673591613769531,
+        328.5255126953125,
+        345.61126708984375
+      ]
+    },
+    {
+      "idx": 133,
+      "candidate_id": "glyph_candidate_00916",
+      "ok": true,
+      "reason": "ok",
+      "score": 45.602909564971924,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 25.779480934143066,
+      "prior_max_junction_px": 32.71316909790039,
+      "bbox_diag_px": 288.8821105957031,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        109.54295349121094,
+        63.88013458251953,
+        318.83331298828125,
+        263.0042724609375
+      ]
+    },
+    {
+      "idx": 134,
+      "candidate_id": "glyph_candidate_00681",
+      "ok": true,
+      "reason": "ok",
+      "score": 46.30440362294515,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 20.326550165812176,
+      "prior_max_junction_px": 35.64112854003906,
+      "bbox_diag_px": 375.52972412109375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        68.22570037841797,
+        72.06608581542969,
+        317.3687744140625,
+        353.04705810546875
+      ]
+    },
+    {
+      "idx": 135,
+      "candidate_id": "glyph_candidate_00735",
+      "ok": true,
+      "reason": "ok",
+      "score": 46.32589769363403,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 24.582886695861816,
+      "prior_max_junction_px": 33.534454345703125,
+      "bbox_diag_px": 384.48443603515625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        88.62159729003906,
+        46.96988296508789,
+        288.904541015625,
+        375.1695556640625
+      ]
+    },
+    {
+      "idx": 136,
+      "candidate_id": "glyph_candidate_00375",
+      "ok": true,
+      "reason": "ok",
+      "score": 46.4016003459692,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 20.536507576704025,
+      "prior_max_junction_px": 33.63334655761719,
+      "bbox_diag_px": 371.566650390625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        119.4098129272461,
+        58.87157440185547,
+        306.0276184082031,
+        380.17449951171875
+      ]
+    },
+    {
+      "idx": 137,
+      "candidate_id": "glyph_candidate_00540",
+      "ok": true,
+      "reason": "ok",
+      "score": 46.44916343688965,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 25.075267791748047,
+      "prior_max_junction_px": 33.911529541015625,
+      "bbox_diag_px": 325.911865234375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        52.355255126953125,
+        95.3237075805664,
+        332.5232849121094,
+        261.8302307128906
+      ]
+    },
+    {
+      "idx": 138,
+      "candidate_id": "glyph_candidate_00786",
+      "ok": true,
+      "reason": "ok",
+      "score": 46.69181823730469,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 25.625404357910156,
+      "prior_max_junction_px": 33.87911605834961,
+      "bbox_diag_px": 360.1277160644531,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        82.68875122070312,
+        142.1168212890625,
+        397.7389221191406,
+        316.5741271972656
+      ]
+    },
+    {
+      "idx": 139,
+      "candidate_id": "glyph_candidate_00449",
+      "ok": true,
+      "reason": "ok",
+      "score": 47.34650166829427,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 24.50445556640625,
+      "prior_max_junction_px": 31.760940551757812,
+      "bbox_diag_px": 410.5409240722656,
+      "canvas_outside_ratio": 0.041666666666666664,
+      "bbox": [
+        50.53327178955078,
+        -19.34178924560547,
+        276.91339111328125,
+        323.14306640625
+      ]
+    },
+    {
+      "idx": 140,
+      "candidate_id": "glyph_candidate_00566",
+      "ok": true,
+      "reason": "ok",
+      "score": 47.3682696968317,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 20.87583687901497,
+      "prior_max_junction_px": 34.43035125732422,
+      "bbox_diag_px": 384.3369445800781,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        140.5469207763672,
+        26.637449264526367,
+        310.1871032714844,
+        371.5100402832031
+      ]
+    },
+    {
+      "idx": 141,
+      "candidate_id": "glyph_candidate_00699",
+      "ok": true,
+      "reason": "ok",
+      "score": 47.39151382446289,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 25.714759826660156,
+      "prior_max_junction_px": 34.53413391113281,
+      "bbox_diag_px": 337.1334533691406,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        74.7068099975586,
+        83.80299377441406,
+        308.35797119140625,
+        326.83819580078125
+      ]
+    },
+    {
+      "idx": 142,
+      "candidate_id": "glyph_candidate_00892",
+      "ok": true,
+      "reason": "ok",
+      "score": 47.454033732414246,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 5,
+      "num_edges": 4,
+      "prior_mean_junction_px": 19.85490584373474,
+      "prior_max_junction_px": 36.526580810546875,
+      "bbox_diag_px": 347.86895751953125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        72.79098510742188,
+        88.13445281982422,
+        358.8133850097656,
+        286.13446044921875
+      ]
+    },
+    {
+      "idx": 143,
+      "candidate_id": "glyph_candidate_00905",
+      "ok": true,
+      "reason": "ok",
+      "score": 47.59402656555176,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 20.07938003540039,
+      "prior_max_junction_px": 37.55433654785156,
+      "bbox_diag_px": 409.8703918457031,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        2.4265899658203125,
+        93.32177734375,
+        347.2720031738281,
+        314.8514404296875
+      ]
+    },
+    {
+      "idx": 144,
+      "candidate_id": "glyph_candidate_00852",
+      "ok": true,
+      "reason": "ok",
+      "score": 47.82953202724457,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.59090304374695,
+      "prior_max_junction_px": 38.034080505371094,
+      "bbox_diag_px": 324.9352111816406,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        47.172943115234375,
+        142.67367553710938,
+        343.77301025390625,
+        275.3811950683594
+      ]
+    },
+    {
+      "idx": 145,
+      "candidate_id": "glyph_candidate_00506",
+      "ok": true,
+      "reason": "ok",
+      "score": 47.93220257759094,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 24.32318353652954,
+      "prior_max_junction_px": 35.77061080932617,
+      "bbox_diag_px": 373.2601013183594,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        83.1397705078125,
+        41.6983642578125,
+        327.85223388671875,
+        323.5474548339844
+      ]
+    },
+    {
+      "idx": 146,
+      "candidate_id": "glyph_candidate_00329",
+      "ok": true,
+      "reason": "ok",
+      "score": 47.93987989425659,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 26.61617946624756,
+      "prior_max_junction_px": 34.63179016113281,
+      "bbox_diag_px": 363.16619873046875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        82.5824203491211,
+        98.62203979492188,
+        317.03521728515625,
+        375.9694519042969
+      ]
+    },
+    {
+      "idx": 147,
+      "candidate_id": "glyph_candidate_00787",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.02526807785034,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 31.82376766204834,
+      "prior_max_junction_px": 32.11338424682617,
+      "bbox_diag_px": 308.26495361328125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        132.79229736328125,
+        86.45733642578125,
+        324.678955078125,
+        327.7181701660156
+      ]
+    },
+    {
+      "idx": 148,
+      "candidate_id": "glyph_candidate_00718",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.02622437477112,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 5,
+      "num_edges": 4,
+      "prior_mean_junction_px": 24.34264039993286,
+      "prior_max_junction_px": 34.85490417480469,
+      "bbox_diag_px": 420.6902160644531,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        3.3846893310546875,
+        94.16358184814453,
+        383.2896423339844,
+        274.8635559082031
+      ]
+    },
+    {
+      "idx": 149,
+      "candidate_id": "glyph_candidate_00879",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.03984006245931,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 29.735118865966797,
+      "prior_max_junction_px": 29.838947296142578,
+      "bbox_diag_px": 402.33868408203125,
+      "canvas_outside_ratio": 0.041666666666666664,
+      "bbox": [
+        63.71012496948242,
+        108.83485412597656,
+        434.76043701171875,
+        264.39215087890625
+      ]
+    },
+    {
+      "idx": 150,
+      "candidate_id": "glyph_candidate_00508",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.10253167152405,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 23.797768115997314,
+      "prior_max_junction_px": 36.20364761352539,
+      "bbox_diag_px": 419.5876159667969,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        13.885346412658691,
+        17.199371337890625,
+        310.15460205078125,
+        314.3160095214844
+      ]
+    },
+    {
+      "idx": 151,
+      "candidate_id": "glyph_candidate_00906",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.15389400720596,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 18.320246815681458,
+      "prior_max_junction_px": 36.493770599365234,
+      "bbox_diag_px": 341.1457214355469,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        82.76287841796875,
+        47.10101318359375,
+        322.24822998046875,
+        290.05609130859375
+      ]
+    },
+    {
+      "idx": 152,
+      "candidate_id": "glyph_candidate_00985",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.52631123860677,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 20.872584025065105,
+      "prior_max_junction_px": 37.59001922607422,
+      "bbox_diag_px": 420.2801208496094,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        27.534378051757812,
+        66.13884735107422,
+        301.9471435546875,
+        384.46728515625
+      ]
+    },
+    {
+      "idx": 153,
+      "candidate_id": "glyph_candidate_00293",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.55532741546631,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 29.46852684020996,
+      "prior_max_junction_px": 33.82106399536133,
+      "bbox_diag_px": 413.20953369140625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        49.3121223449707,
+        71.55477905273438,
+        366.58624267578125,
+        336.2796325683594
+      ]
+    },
+    {
+      "idx": 154,
+      "candidate_id": "glyph_candidate_00885",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.707321643829346,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 27.059441566467285,
+      "prior_max_junction_px": 35.1776008605957,
+      "bbox_diag_px": 354.6546936035156,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        102.77275848388672,
+        94.08897399902344,
+        321.9566955566406,
+        372.90496826171875
+      ]
+    },
+    {
+      "idx": 155,
+      "candidate_id": "glyph_candidate_00211",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.816932797431946,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 19.43367028236389,
+      "prior_max_junction_px": 34.10009765625,
+      "bbox_diag_px": 452.010009765625,
+      "canvas_outside_ratio": 0.03125,
+      "bbox": [
+        63.29056167602539,
+        79.83799743652344,
+        410.78375244140625,
+        368.9081115722656
+      ]
+    },
+    {
+      "idx": 156,
+      "candidate_id": "glyph_candidate_00919",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.85278132557869,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 23.245502531528473,
+      "prior_max_junction_px": 34.73003005981445,
+      "bbox_diag_px": 418.3533630371094,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        58.92510986328125,
+        66.14385986328125,
+        350.02496337890625,
+        366.6108703613281
+      ]
+    },
+    {
+      "idx": 157,
+      "candidate_id": "glyph_candidate_00543",
+      "ok": true,
+      "reason": "ok",
+      "score": 48.9543514251709,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 24.977230072021484,
+      "prior_max_junction_px": 36.465736389160156,
+      "bbox_diag_px": 276.74066162109375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        138.54197692871094,
+        104.62841033935547,
+        285.1035461425781,
+        339.3731689453125
+      ]
+    },
+    {
+      "idx": 158,
+      "candidate_id": "glyph_candidate_00560",
+      "ok": true,
+      "reason": "ok",
+      "score": 49.17695347468058,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 31.104660987854004,
+      "prior_max_junction_px": 31.957956314086914,
+      "bbox_diag_px": 497.19976806640625,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        31.938140869140625,
+        52.172576904296875,
+        370.552734375,
+        416.2436828613281
+      ]
+    },
+    {
+      "idx": 159,
+      "candidate_id": "glyph_candidate_00079",
+      "ok": true,
+      "reason": "ok",
+      "score": 49.41074387232462,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 24.98981507619222,
+      "prior_max_junction_px": 36.415836334228516,
+      "bbox_diag_px": 386.45166015625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        84.87222290039062,
+        42.30111312866211,
+        340.6567077636719,
+        331.9891662597656
+      ]
+    },
+    {
+      "idx": 160,
+      "candidate_id": "glyph_candidate_00552",
+      "ok": true,
+      "reason": "ok",
+      "score": 49.601704597473145,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 28.472429275512695,
+      "prior_max_junction_px": 34.8654899597168,
+      "bbox_diag_px": 292.9538269042969,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        134.99867248535156,
+        81.87519073486328,
+        306.959716796875,
+        319.048828125
+      ]
+    },
+    {
+      "idx": 161,
+      "candidate_id": "glyph_candidate_00518",
+      "ok": true,
+      "reason": "ok",
+      "score": 49.7345365524292,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 5,
+      "num_edges": 5,
+      "prior_mean_junction_px": 22.989428329467774,
+      "prior_max_junction_px": 35.23982238769531,
+      "bbox_diag_px": 411.8996887207031,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        30.868228912353516,
+        100.82164764404297,
+        371.607177734375,
+        332.24835205078125
+      ]
+    },
+    {
+      "idx": 162,
+      "candidate_id": "glyph_candidate_00979",
+      "ok": true,
+      "reason": "ok",
+      "score": 49.82118034362793,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 5,
+      "num_edges": 5,
+      "prior_mean_junction_px": 23.41299819946289,
+      "prior_max_junction_px": 34.114681243896484,
+      "bbox_diag_px": 350.1319274902344,
+      "canvas_outside_ratio": 0.0125,
+      "bbox": [
+        133.06829833984375,
+        -5.099761962890625,
+        247.16183471679688,
+        325.92144775390625
+      ]
+    },
+    {
+      "idx": 163,
+      "candidate_id": "glyph_candidate_00185",
+      "ok": true,
+      "reason": "ok",
+      "score": 50.270625591278076,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 31.67263698577881,
+      "prior_max_junction_px": 34.43430709838867,
+      "bbox_diag_px": 302.0440368652344,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        105.9508056640625,
+        123.63804626464844,
+        348.3981018066406,
+        303.776611328125
+      ]
+    },
+    {
+      "idx": 164,
+      "candidate_id": "glyph_candidate_00575",
+      "ok": true,
+      "reason": "ok",
+      "score": 50.27676288286845,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 23.674232959747314,
+      "prior_max_junction_px": 36.772979736328125,
+      "bbox_diag_px": 387.67071533203125,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        87.75701141357422,
+        -7.282646179199219,
+        304.7999267578125,
+        313.935302734375
+      ]
+    },
+    {
+      "idx": 165,
+      "candidate_id": "glyph_candidate_00259",
+      "ok": true,
+      "reason": "ok",
+      "score": 50.38293584187826,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 19.246668497721355,
+      "prior_max_junction_px": 40.25960159301758,
+      "bbox_diag_px": 306.07568359375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        62.930702209472656,
+        144.53189086914062,
+        335.6217956542969,
+        283.5350646972656
+      ]
+    },
+    {
+      "idx": 166,
+      "candidate_id": "glyph_candidate_00603",
+      "ok": true,
+      "reason": "ok",
+      "score": 50.4166214565436,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 19.78502768278122,
+      "prior_max_junction_px": 38.85744094848633,
+      "bbox_diag_px": 533.9517211914062,
+      "canvas_outside_ratio": 0.020833333333333332,
+      "bbox": [
+        16.512283325195312,
+        28.884788513183594,
+        427.02178955078125,
+        370.332275390625
+      ]
+    },
+    {
+      "idx": 167,
+      "candidate_id": "glyph_candidate_00952",
+      "ok": true,
+      "reason": "ok",
+      "score": 50.50320751965046,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 19.93305078148842,
+      "prior_max_junction_px": 38.03668212890625,
+      "bbox_diag_px": 364.6004638671875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        77.13219451904297,
+        13.005889892578125,
+        289.6643371582031,
+        309.2550964355469
+      ]
+    },
+    {
+      "idx": 168,
+      "candidate_id": "glyph_candidate_00445",
+      "ok": true,
+      "reason": "ok",
+      "score": 50.5840117931366,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 21.695725917816162,
+      "prior_max_junction_px": 39.736148834228516,
+      "bbox_diag_px": 331.5816955566406,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        78.75965881347656,
+        83.3318099975586,
+        318.21044921875,
+        312.699951171875
+      ]
+    },
+    {
+      "idx": 169,
+      "candidate_id": "glyph_candidate_00974",
+      "ok": true,
+      "reason": "ok",
+      "score": 50.752968072891235,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 24.949005603790283,
+      "prior_max_junction_px": 38.278465270996094,
+      "bbox_diag_px": 367.7185363769531,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        87.61277770996094,
+        73.74758911132812,
+        393.73089599609375,
+        277.4842529296875
+      ]
+    },
+    {
+      "idx": 170,
+      "candidate_id": "glyph_candidate_00091",
+      "ok": true,
+      "reason": "ok",
+      "score": 50.78269131978353,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 27.758769989013672,
+      "prior_max_junction_px": 33.56997299194336,
+      "bbox_diag_px": 415.6459655761719,
+      "canvas_outside_ratio": 0.041666666666666664,
+      "bbox": [
+        44.10693359375,
+        96.35575103759766,
+        418.0067138671875,
+        277.90606689453125
+      ]
+    },
+    {
+      "idx": 171,
+      "candidate_id": "glyph_candidate_00354",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.01161861419678,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 28.56563377380371,
+      "prior_max_junction_px": 36.72880172729492,
+      "bbox_diag_px": 373.9588928222656,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        104.28365325927734,
+        59.882266998291016,
+        352.34283447265625,
+        339.7248840332031
+      ]
+    },
+    {
+      "idx": 172,
+      "candidate_id": "glyph_candidate_00014",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.04307556152344,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 24.252304077148438,
+      "prior_max_junction_px": 38.91692352294922,
+      "bbox_diag_px": 305.5675354003906,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        128.67852783203125,
+        103.76498413085938,
+        298.2337341308594,
+        357.9746398925781
+      ]
+    },
+    {
+      "idx": 173,
+      "candidate_id": "glyph_candidate_00875",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.09118431806564,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 21.28402268886566,
+      "prior_max_junction_px": 40.44917297363281,
+      "bbox_diag_px": 304.55859375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        84.69729614257812,
+        129.84478759765625,
+        352.03680419921875,
+        275.7403869628906
+      ]
+    },
+    {
+      "idx": 174,
+      "candidate_id": "glyph_candidate_00672",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.099350929260254,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 25.173830032348633,
+      "prior_max_junction_px": 38.01243591308594,
+      "bbox_diag_px": 289.4803771972656,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        38.05946350097656,
+        124.7641830444336,
+        266.2986145019531,
+        302.8253479003906
+      ]
+    },
+    {
+      "idx": 175,
+      "candidate_id": "glyph_candidate_00323",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.13989814122518,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 23.951953570048016,
+      "prior_max_junction_px": 38.66392135620117,
+      "bbox_diag_px": 374.5540771484375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        52.11811065673828,
+        77.77580261230469,
+        335.4071350097656,
+        322.802490234375
+      ]
+    },
+    {
+      "idx": 176,
+      "candidate_id": "glyph_candidate_00317",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.20485711097717,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 24.749725818634033,
+      "prior_max_junction_px": 38.829994201660156,
+      "bbox_diag_px": 401.8160705566406,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        29.870223999023438,
+        121.48902130126953,
+        387.0640869140625,
+        305.5235595703125
+      ]
+    },
+    {
+      "idx": 177,
+      "candidate_id": "glyph_candidate_00614",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.22329568862915,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 22.6511812210083,
+      "prior_max_junction_px": 39.897705078125,
+      "bbox_diag_px": 406.3417053222656,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        47.456939697265625,
+        26.368988037109375,
+        322.4356994628906,
+        325.5349426269531
+      ]
+    },
+    {
+      "idx": 178,
+      "candidate_id": "glyph_candidate_00399",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.7082539498806,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 22.24921053647995,
+      "prior_max_junction_px": 38.083648681640625,
+      "bbox_diag_px": 374.4136047363281,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        79.49860382080078,
+        39.898582458496094,
+        293.55792236328125,
+        347.0860900878906
+      ]
+    },
+    {
+      "idx": 179,
+      "candidate_id": "glyph_candidate_00131",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.802284240722656,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 27.424468994140625,
+      "prior_max_junction_px": 38.090049743652344,
+      "bbox_diag_px": 477.33416748046875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        43.563114166259766,
+        27.261499404907227,
+        357.78179931640625,
+        386.58660888671875
+      ]
+    },
+    {
+      "idx": 180,
+      "candidate_id": "glyph_candidate_00050",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.85023832321167,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 32.771559715270996,
+      "prior_max_junction_px": 35.46445846557617,
+      "bbox_diag_px": 410.4581604003906,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        31.670576095581055,
+        98.28720092773438,
+        362.2027587890625,
+        341.64776611328125
+      ]
+    },
+    {
+      "idx": 181,
+      "candidate_id": "glyph_candidate_00861",
+      "ok": true,
+      "reason": "ok",
+      "score": 51.85346546769142,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 21.619223415851593,
+      "prior_max_junction_px": 38.543853759765625,
+      "bbox_diag_px": 385.1899719238281,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        31.638404846191406,
+        95.38765716552734,
+        359.09808349609375,
+        298.22125244140625
+      ]
+    },
+    {
+      "idx": 182,
+      "candidate_id": "glyph_candidate_00153",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.04161882400513,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 23.450310707092285,
+      "prior_max_junction_px": 38.566463470458984,
+      "bbox_diag_px": 392.5652770996094,
+      "canvas_outside_ratio": 0.015625,
+      "bbox": [
+        123.58906555175781,
+        62.08171844482422,
+        319.07177734375,
+        402.5138244628906
+      ]
+    },
+    {
+      "idx": 183,
+      "candidate_id": "glyph_candidate_00700",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.095438957214355,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 23.584592819213867,
+      "prior_max_junction_px": 40.30314254760742,
+      "bbox_diag_px": 288.26458740234375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        145.65090942382812,
+        16.655189514160156,
+        243.12350463867188,
+        287.9402160644531
+      ]
+    },
+    {
+      "idx": 184,
+      "candidate_id": "glyph_candidate_00720",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.133905462920666,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 25.524738416075706,
+      "prior_max_junction_px": 36.87153625488281,
+      "bbox_diag_px": 386.13787841796875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        46.83970642089844,
+        71.45214080810547,
+        316.7569580078125,
+        347.58099365234375
+      ]
+    },
+    {
+      "idx": 185,
+      "candidate_id": "glyph_candidate_00253",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.297860860824585,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 6,
+      "prior_mean_junction_px": 17.591647624969482,
+      "prior_max_junction_px": 35.502037048339844,
+      "bbox_diag_px": 341.62677001953125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        44.2664794921875,
+        157.91046142578125,
+        377.0047912597656,
+        235.3319091796875
+      ]
+    },
+    {
+      "idx": 186,
+      "candidate_id": "glyph_candidate_00628",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.41967439651489,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 30.745675086975098,
+      "prior_max_junction_px": 37.046836853027344,
+      "bbox_diag_px": 381.0190124511719,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        94.4560546875,
+        53.10309982299805,
+        296.19708251953125,
+        376.33062744140625
+      ]
+    },
+    {
+      "idx": 187,
+      "candidate_id": "glyph_candidate_00271",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.507426261901855,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 26.07416343688965,
+      "prior_max_junction_px": 38.97034454345703,
+      "bbox_diag_px": 356.795166015625,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        67.7930679321289,
+        44.37596893310547,
+        267.0191345214844,
+        340.36883544921875
+      ]
+    },
+    {
+      "idx": 188,
+      "candidate_id": "glyph_candidate_00924",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.73788547515869,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 32.93600654602051,
+      "prior_max_junction_px": 36.26988220214844,
+      "bbox_diag_px": 370.9906005859375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        57.92573165893555,
+        84.87771606445312,
+        368.6982727050781,
+        287.4966735839844
+      ]
+    },
+    {
+      "idx": 189,
+      "candidate_id": "glyph_candidate_00160",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.793381690979004,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 27.0163516998291,
+      "prior_max_junction_px": 37.53520584106445,
+      "bbox_diag_px": 469.6881408691406,
+      "canvas_outside_ratio": 0.015625,
+      "bbox": [
+        76.11290740966797,
+        12.727676391601562,
+        406.586181640625,
+        346.485595703125
+      ]
+    },
+    {
+      "idx": 190,
+      "candidate_id": "glyph_candidate_00789",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.88070201873779,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 27.554258346557617,
+      "prior_max_junction_px": 39.103572845458984,
+      "bbox_diag_px": 386.6697998046875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        6.151329040527344,
+        69.30192565917969,
+        305.4421081542969,
+        314.1254577636719
+      ]
+    },
+    {
+      "idx": 191,
+      "candidate_id": "glyph_candidate_00199",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.89149522781372,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 24.96888828277588,
+      "prior_max_junction_px": 40.40705108642578,
+      "bbox_diag_px": 347.20257568359375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        86.80155181884766,
+        154.3123779296875,
+        390.99993896484375,
+        321.68310546875
+      ]
+    },
+    {
+      "idx": 192,
+      "candidate_id": "glyph_candidate_00913",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.91004514694214,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 32.19077968597412,
+      "prior_max_junction_px": 36.81465530395508,
+      "bbox_diag_px": 304.1555480957031,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        106.35094451904297,
+        98.75297546386719,
+        334.29693603515625,
+        300.1263122558594
+      ]
+    },
+    {
+      "idx": 193,
+      "candidate_id": "glyph_candidate_00414",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.94332480430603,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 25.840529918670654,
+      "prior_max_junction_px": 37.5230598449707,
+      "bbox_diag_px": 418.77264404296875,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        18.581584930419922,
+        74.09048461914062,
+        351.25,
+        328.45684814453125
+      ]
+    },
+    {
+      "idx": 194,
+      "candidate_id": "glyph_candidate_00547",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.95929932594299,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 4,
+      "prior_mean_junction_px": 27.278278827667236,
+      "prior_max_junction_px": 36.820159912109375,
+      "bbox_diag_px": 391.8727722167969,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        62.106998443603516,
+        34.754615783691406,
+        361.6610107421875,
+        287.4039001464844
+      ]
+    },
+    {
+      "idx": 195,
+      "candidate_id": "glyph_candidate_00288",
+      "ok": true,
+      "reason": "ok",
+      "score": 52.993683497111,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 4,
+      "num_edges": 3,
+      "prior_mean_junction_px": 27.979188283284504,
+      "prior_max_junction_px": 38.50408935546875,
+      "bbox_diag_px": 402.1428527832031,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        95.22013854980469,
+        51.69486999511719,
+        327.4462890625,
+        380.0085754394531
+      ]
+    },
+    {
+      "idx": 196,
+      "candidate_id": "glyph_candidate_00609",
+      "ok": true,
+      "reason": "ok",
+      "score": 53.144662857055664,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 33.9796257019043,
+      "prior_max_junction_px": 36.154850006103516,
+      "bbox_diag_px": 342.6484375,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        112.40374755859375,
+        33.9171142578125,
+        290.42742919921875,
+        326.6892395019531
+      ]
+    },
+    {
+      "idx": 197,
+      "candidate_id": "glyph_candidate_00902",
+      "ok": true,
+      "reason": "ok",
+      "score": 53.31478404998779,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 30.971532821655273,
+      "prior_max_junction_px": 37.829017639160156,
+      "bbox_diag_px": 315.0278625488281,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        23.56488037109375,
+        87.8830795288086,
+        270.166748046875,
+        283.91900634765625
+      ]
+    },
+    {
+      "idx": 198,
+      "candidate_id": "glyph_candidate_00404",
+      "ok": true,
+      "reason": "ok",
+      "score": 53.402772426605225,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 25.73054790496826,
+      "prior_max_junction_px": 40.537498474121094,
+      "bbox_diag_px": 322.6175842285156,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        115.20404815673828,
+        107.54441833496094,
+        261.63885498046875,
+        395.0143127441406
+      ]
+    },
+    {
+      "idx": 199,
+      "candidate_id": "glyph_candidate_00027",
+      "ok": true,
+      "reason": "ok",
+      "score": 53.55623149871826,
+      "hard_pass": false,
+      "hard_reasons": [
+        "maxJ>18.0",
+        "meanJ>12.0"
+      ],
+      "num_nodes": 3,
+      "num_edges": 2,
+      "prior_mean_junction_px": 35.59210777282715,
+      "prior_max_junction_px": 35.76017761230469,
+      "bbox_diag_px": 446.4630126953125,
+      "canvas_outside_ratio": 0.0,
+      "bbox": [
+        87.91178894042969,
+        24.819379806518555,
+        337.05072021484375,
+        395.30419921875
+      ]
+    }
+  ]
+}
