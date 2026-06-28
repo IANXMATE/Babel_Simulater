@@ -35,6 +35,99 @@ def get_polygon_orientation(pts):
     return "ccw" if area > 0 else "cw"
 
 
+# ==========================================
+# 🌟 稳定拓扑检测参数
+# ==========================================
+# 原代码使用 50 个采样点 + 最近采样点距离判定 X，拖拽时容易因为采样点错开而时好时坏。
+# 新逻辑：仍然把 Bézier 离散为 polyline，但 X 用“线段相交”判断，而不是“采样点最近距离”。
+TOPO_SAMPLE_N = 120
+X_ENDPOINT_MARGIN = 2
+SEG_EPS = 1e-8
+
+
+def _cross2d(a, b):
+    return float(a[0] * b[1] - a[1] * b[0])
+
+
+def segment_intersection(p0, p1, q0, q1, eps=SEG_EPS):
+    """
+    判断线段 p0-p1 与 q0-q1 是否相交。
+    返回:
+        None
+        或 (point, local_t_on_p, local_t_on_q)
+    """
+    p0 = np.asarray(p0, dtype=float)
+    p1 = np.asarray(p1, dtype=float)
+    q0 = np.asarray(q0, dtype=float)
+    q1 = np.asarray(q1, dtype=float)
+
+    r = p1 - p0
+    s = q1 - q0
+    denom = _cross2d(r, s)
+
+    # 平行/近似平行时不当作 X。E2E/T 已经处理端点接触。
+    if abs(denom) < eps:
+        return None
+
+    qp = q0 - p0
+    t = _cross2d(qp, s) / denom
+    u = _cross2d(qp, r) / denom
+
+    if 0.0 <= t <= 1.0 and 0.0 <= u <= 1.0:
+        pt = p0 + t * r
+        return pt, float(t), float(u)
+
+    return None
+
+
+def find_polyline_x_intersection(c1, c2, endpoint_margin=X_ENDPOINT_MARGIN):
+    """
+    在两条离散 polyline 之间寻找真正的线段交点。
+    返回:
+        hit, point, t1, t2
+
+    t1/t2 是原 Bézier 参数的近似值。
+    endpoint_margin 用来避免靠近端点的接触被误标为 X；
+    端点附近应该优先由 E2E/T 逻辑处理。
+    """
+    n1 = len(c1)
+    n2 = len(c2)
+    if n1 < 2 or n2 < 2:
+        return False, None, None, None
+
+    i_start = max(0, endpoint_margin)
+    i_end = max(i_start, n1 - 1 - endpoint_margin)
+    j_start = max(0, endpoint_margin)
+    j_end = max(j_start, n2 - 1 - endpoint_margin)
+
+    best = None
+
+    for i in range(i_start, i_end):
+        for j in range(j_start, j_end):
+            hit = segment_intersection(c1[i], c1[i + 1], c2[j], c2[j + 1])
+            if hit is None:
+                continue
+
+            pt, lt1, lt2 = hit
+            t1 = (i + lt1) / (n1 - 1)
+            t2 = (j + lt2) / (n2 - 1)
+
+            # 只接受内部交叉，避免靠近端点的接触被当成 X
+            if t1 <= 0.02 or t1 >= 0.98 or t2 <= 0.02 or t2 >= 0.98:
+                continue
+
+            best = (pt, t1, t2)
+            break
+        if best is not None:
+            break
+
+    if best is None:
+        return False, None, None, None
+
+    pt, t1, t2 = best
+    return True, pt, float(t1), float(t2)
+
+
 class TopoAnnotationWorkspace(QWidget):
     def __init__(self, main_workspace, hex_key, char, binary, dt_map, phase1_edges):
         super().__init__()
@@ -167,8 +260,9 @@ class TopoAnnotationWorkspace(QWidget):
             for j, e2 in enumerate(self.edges):
                 if i >= j: continue
                 p1, p2 = np.array(e1['path']), np.array(e2['path'])
-                c1 = cubic_bezier_np(p1, np.linspace(0, 1, 50)[:, None])
-                c2 = cubic_bezier_np(p2, np.linspace(0, 1, 50)[:, None])
+                topo_ts = np.linspace(0, 1, TOPO_SAMPLE_N)[:, None]
+                c1 = cubic_bezier_np(p1, topo_ts)
+                c2 = cubic_bezier_np(p2, topo_ts)
 
                 is_e2e, is_x = False, False
                 t_relations = []
@@ -195,12 +289,13 @@ class TopoAnnotationWorkspace(QWidget):
                             pts.append(p2[pt2_idx])
 
                 # 3. X型交叉
+                # 原逻辑：50 个采样点之间最近距离 < 2.0，容易因为交点落在采样间隙而时好时坏。
+                # 新逻辑：polyline 线段相交，判断真正的中心线交叉。
                 if not is_e2e and not t_relations:
-                    diff = c1[:, np.newaxis, :] - c2[np.newaxis, :, :]
-                    if np.min(np.linalg.norm(diff, axis=2)) < 2.0: 
+                    hit_x, x_pt, x_t1, x_t2 = find_polyline_x_intersection(c1, c2)
+                    if hit_x:
                         is_x = True
-                        m_idx, _ = np.unravel_index(np.argmin(np.linalg.norm(diff, axis=2)), diff.shape[:2])
-                        pts.append(c1[m_idx])
+                        pts.append(x_pt)
 
                 if is_e2e or t_relations or is_x: 
                     u, v = min(e1['id'], e2['id']), max(e1['id'], e2['id'])
@@ -349,7 +444,7 @@ class TopoAnnotationWorkspace(QWidget):
                 
             host_curves = set([e for e, p in self.co_dragged_points])
             for h_idx in host_curves:
-                c_host = cubic_bezier_np(np.array(self.edges[h_idx]['path']), np.linspace(0, 1, 50)[:, None])
+                c_host = cubic_bezier_np(np.array(self.edges[h_idx]['path']), np.linspace(0, 1, TOPO_SAMPLE_N)[:, None])
                 for o_idx, other_edge in enumerate(self.edges):
                     if o_idx in host_curves: continue
                     for ep_idx in [0, 3]:
@@ -366,7 +461,7 @@ class TopoAnnotationWorkspace(QWidget):
                 self.edges[e_idx]['path'][p_idx] = [event.xdata, event.ydata]
                 affected_edge_indices.add(e_idx)
             for o_idx, ep_idx, h_idx, min_t in self.t_constraints:
-                c_host_updated = cubic_bezier_np(np.array(self.edges[h_idx]['path']), np.linspace(0, 1, 50)[:, None])
+                c_host_updated = cubic_bezier_np(np.array(self.edges[h_idx]['path']), np.linspace(0, 1, TOPO_SAMPLE_N)[:, None])
                 self.edges[o_idx]['path'][ep_idx] = c_host_updated[min_t].tolist()
                 affected_edge_indices.add(o_idx)
             for e_idx in affected_edge_indices:
@@ -400,11 +495,11 @@ class TopoAnnotationWorkspace(QWidget):
                     if dist < min_ep_dist:
                         min_ep_dist, best_ep_pos, best_ep_host, best_ep_idx = dist, ep.tolist(), i, end_idx
                 
-                curve = cubic_bezier_np(np.array(edge['path']), np.linspace(0, 1, 50)[:, None])
+                curve = cubic_bezier_np(np.array(edge['path']), np.linspace(0, 1, TOPO_SAMPLE_N)[:, None])
                 dists = np.linalg.norm(curve - pt, axis=1)
                 min_idx = np.argmin(dists)
                 if dists[min_idx] < min_curve_dist:
-                    min_curve_dist, best_curve_pos, best_curve_host, best_curve_t = dists[min_idx], curve[min_idx].tolist(), i, min_idx / 49.0
+                    min_curve_dist, best_curve_pos, best_curve_host, best_curve_t = dists[min_idx], curve[min_idx].tolist(), i, min_idx / (TOPO_SAMPLE_N - 1)
 
             snap_threshold = 12.0
             new_pos = None
@@ -509,8 +604,9 @@ class TopoAnnotationWorkspace(QWidget):
             for j, e2 in enumerate(self.edges):
                 if i >= j: continue
                 p1, p2 = np.array(e1['path']), np.array(e2['path'])
-                c1 = cubic_bezier_np(p1, np.linspace(0, 1, 50)[:, None])
-                c2 = cubic_bezier_np(p2, np.linspace(0, 1, 50)[:, None])
+                topo_ts = np.linspace(0, 1, TOPO_SAMPLE_N)[:, None]
+                c1 = cubic_bezier_np(p1, topo_ts)
+                c2 = cubic_bezier_np(p2, topo_ts)
                 
                 id1, id2 = int(id_map[e1['id']]), int(id_map[e2['id']])
                 is_e2e = False
@@ -533,7 +629,7 @@ class TopoAnnotationWorkspace(QWidget):
                         dists = np.linalg.norm(c2 - p1[pt1_idx], axis=1)
                         m_idx = np.argmin(dists)
                         if dists[m_idx] < 2.0:
-                            t2 = m_idx / 49.0
+                            t2 = m_idx / (TOPO_SAMPLE_N - 1)
                             ang = get_angle(get_bezier_derivative(p1, t1), get_bezier_derivative(p2, t2))
                             topology_events.append({
                                 "type": "T",
@@ -546,7 +642,7 @@ class TopoAnnotationWorkspace(QWidget):
                         dists = np.linalg.norm(c1 - p2[pt2_idx], axis=1)
                         m_idx = np.argmin(dists)
                         if dists[m_idx] < 2.0:
-                            t1 = m_idx / 49.0
+                            t1 = m_idx / (TOPO_SAMPLE_N - 1)
                             ang = get_angle(get_bezier_derivative(p1, t1), get_bezier_derivative(p2, t2))
                             topology_events.append({
                                 "type": "T",
@@ -557,19 +653,17 @@ class TopoAnnotationWorkspace(QWidget):
                             })
                             
                 # --- X 交叉 ---
+                # 原逻辑：采样点最近距离 < 2.0。现在改成 polyline 线段相交，避免交点落入采样间隙。
                 if not is_e2e and len([ev for ev in topology_events if ev['type'] == 'T' and ev['guest'] in (id1, id2)]) == 0:
-                    diff = c1[:, np.newaxis, :] - c2[np.newaxis, :, :]
-                    min_dist = np.min(np.linalg.norm(diff, axis=2))
-                    if min_dist < 2.0:
-                        m_idx1, m_idx2 = np.unravel_index(np.argmin(np.linalg.norm(diff, axis=2)), diff.shape[:2])
-                        t1, t2 = m_idx1 / 49.0, m_idx2 / 49.0
+                    hit_x, x_pt, t1, t2 = find_polyline_x_intersection(c1, c2)
+                    if hit_x:
                         ang = get_angle(get_bezier_derivative(p1, t1), get_bezier_derivative(p2, t2))
                         topology_events.append({
                             "type": "X",
-                            "stroke_a": id1, "t_a": round(t1, 3),
-                            "stroke_b": id2, "t_b": round(t2, 3),
-                            "angle": round(ang, 1),
-                            "position": [round(float(c1[m_idx1][0]), 1), round(float(c1[m_idx1][1]), 1)]
+                            "stroke_a": id1, "t_a": round(float(t1), 3),
+                            "stroke_b": id2, "t_b": round(float(t2), 3),
+                            "angle": round(float(ang), 1),
+                            "position": [round(float(x_pt[0]), 1), round(float(x_pt[1]), 1)]
                         })
 
         # 🟢 Layer 4: Cycles & Orientations
