@@ -1,0 +1,1309 @@
+{
+  "E00D": {
+    "glyph_info": {
+      "char": "",
+      "unicode_hex": "E00D",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "label": "good",
+      "source": "annotation_flywheel_pcg_app_no_json",
+      "candidate_id": "pcg_direct_58275747_00040_151335",
+      "style_mode": "mild_left",
+      "topology_family": "zigzag",
+      "created_at": "2026-06-28 22:53:31",
+      "complexity": {
+        "stroke_count": 5,
+        "edge_count": 6,
+        "connected_components": 1,
+        "cycle_count": 2,
+        "style_mode": "mild_left",
+        "topology_family": "zigzag"
+      },
+      "pcg_meta": {
+        "generator": "procedural_topology_direct",
+        "stroke_count_target": 5,
+        "connected_components_target": 1,
+        "cycle_target": 1,
+        "connected_components_actual": 1,
+        "cycle_count_actual": 2,
+        "families": [
+          "zigzag"
+        ],
+        "created_at": "2026-06-28 22:51:15",
+        "complexity": {
+          "stroke_count": 5,
+          "edge_count": 6,
+          "connected_components": 1,
+          "cycle_count": 2,
+          "style_mode": "mild_left",
+          "topology_family": "zigzag"
+        },
+        "aesthetic_score": null,
+        "model_accept": null,
+        "attempt": 40,
+        "human_label": "good",
+        "committed_at": "2026-06-28 22:53:31",
+        "storage_mode": "file_backed_commit"
+      }
+    },
+    "strokes": [
+      {
+        "bezier_id": 0,
+        "mother_bezier": [
+          [
+            315.9051818847656,
+            285.9996643066406
+          ],
+          [
+            282.5476379394531,
+            288.0220031738281
+          ],
+          [
+            238.26007080078125,
+            307.1251525878906
+          ],
+          [
+            218.85360717773438,
+            332.13323974609375
+          ]
+        ],
+        "width": 9.66771333371074,
+        "width_norm": 0.02416928333427685,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_left",
+        "width_token": 10,
+        "start_anchor": 0,
+        "end_anchor": 1
+      },
+      {
+        "bezier_id": 1,
+        "mother_bezier": [
+          [
+            218.85360717773438,
+            332.13323974609375
+          ],
+          [
+            252.14315795898438,
+            305.5948486328125
+          ],
+          [
+            262.27178955078125,
+            273.6332702636719
+          ],
+          [
+            255.83676147460938,
+            232.28924560546875
+          ]
+        ],
+        "width": 8.604565957042276,
+        "width_norm": 0.02151141489260569,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_left",
+        "width_token": 9,
+        "start_anchor": 1,
+        "end_anchor": 2
+      },
+      {
+        "bezier_id": 2,
+        "mother_bezier": [
+          [
+            255.83676147460938,
+            232.28924560546875
+          ],
+          [
+            233.36297607421875,
+            225.1557159423828
+          ],
+          [
+            199.84226989746094,
+            234.8238525390625
+          ],
+          [
+            185.6184539794922,
+            250.06536865234375
+          ]
+        ],
+        "width": 10.882555235359373,
+        "width_norm": 0.027206388088398432,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_left",
+        "width_token": 11,
+        "start_anchor": 2,
+        "end_anchor": 3
+      },
+      {
+        "bezier_id": 3,
+        "mother_bezier": [
+          [
+            185.6184539794922,
+            250.06536865234375
+          ],
+          [
+            216.04159545898438,
+            221.532958984375
+          ],
+          [
+            224.10646057128906,
+            192.26976013183594
+          ],
+          [
+            212.0423126220703,
+            151.7087860107422
+          ]
+        ],
+        "width": 8.494637736932315,
+        "width_norm": 0.021236594342330786,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_left",
+        "width_token": 8,
+        "start_anchor": 3,
+        "end_anchor": 4
+      },
+      {
+        "bezier_id": 4,
+        "mother_bezier": [
+          [
+            255.83676147460938,
+            232.28924560546875
+          ],
+          [
+            249.5881805419922,
+            194.57875061035156
+          ],
+          [
+            239.0887908935547,
+            170.7476806640625
+          ],
+          [
+            212.0423126220703,
+            151.7087860107422
+          ]
+        ],
+        "width": 13.034915960950809,
+        "width_norm": 0.03258728990237702,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_left",
+        "width_token": 13,
+        "start_anchor": 2,
+        "end_anchor": 4
+      }
+    ],
+    "topology": {
+      "connections": [
+        {
+          "u": 0,
+          "v": 1,
+          "src": 0,
+          "dst": 1,
+          "source": 0,
+          "target": 1,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 1,
+          "anchor_v": 1
+        },
+        {
+          "u": 1,
+          "v": 2,
+          "src": 1,
+          "dst": 2,
+          "source": 1,
+          "target": 2,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 1,
+          "v": 4,
+          "src": 1,
+          "dst": 4,
+          "source": 1,
+          "target": 4,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 2,
+          "v": 4,
+          "src": 2,
+          "dst": 4,
+          "source": 2,
+          "target": 4,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 2,
+          "v": 3,
+          "src": 2,
+          "dst": 3,
+          "source": 2,
+          "target": 3,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 3,
+          "anchor_v": 3
+        },
+        {
+          "u": 3,
+          "v": 4,
+          "src": 3,
+          "dst": 4,
+          "source": 3,
+          "target": 4,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 4,
+          "anchor_v": 4
+        }
+      ],
+      "positive_edges_undirected": [
+        {
+          "u": 0,
+          "v": 1,
+          "src": 0,
+          "dst": 1,
+          "source": 0,
+          "target": 1,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 1,
+          "anchor_v": 1
+        },
+        {
+          "u": 1,
+          "v": 2,
+          "src": 1,
+          "dst": 2,
+          "source": 1,
+          "target": 2,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 1,
+          "v": 4,
+          "src": 1,
+          "dst": 4,
+          "source": 1,
+          "target": 4,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 2,
+          "v": 4,
+          "src": 2,
+          "dst": 4,
+          "source": 2,
+          "target": 4,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 2,
+          "v": 3,
+          "src": 2,
+          "dst": 3,
+          "source": 2,
+          "target": 3,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 3,
+          "anchor_v": 3
+        },
+        {
+          "u": 3,
+          "v": 4,
+          "src": 3,
+          "dst": 4,
+          "source": 3,
+          "target": 4,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 4,
+          "anchor_v": 4
+        }
+      ],
+      "t_junctions": [],
+      "cycles": [],
+      "anchors": [
+        {
+          "anchor_id": 0,
+          "xy": [
+            315.9051818847656,
+            285.9996643066406
+          ]
+        },
+        {
+          "anchor_id": 1,
+          "xy": [
+            218.85360717773438,
+            332.13323974609375
+          ]
+        },
+        {
+          "anchor_id": 2,
+          "xy": [
+            255.83676147460938,
+            232.28924560546875
+          ]
+        },
+        {
+          "anchor_id": 3,
+          "xy": [
+            185.6184539794922,
+            250.06536865234375
+          ]
+        },
+        {
+          "anchor_id": 4,
+          "xy": [
+            212.0423126220703,
+            151.7087860107422
+          ]
+        },
+        {
+          "anchor_id": 5,
+          "xy": [
+            124.24846649169922,
+            200.8109588623047
+          ]
+        }
+      ]
+    },
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_DIRECT_GENERATE_AND_LABEL",
+        "label": "good",
+        "candidate_id": "pcg_direct_58275747_00040_151335",
+        "style_mode": "mild_left",
+        "topology_family": "zigzag",
+        "timestamp": "2026-06-28 22:53:31",
+        "source": "annotation_flywheel_pcg_app_no_json.py"
+      },
+      {
+        "action": "PCG_DIRECT_FILE_BACKED_COMMIT",
+        "label": "good",
+        "candidate_id": "pcg_direct_58275747_00040_151335",
+        "style_mode": "mild_left",
+        "topology_family": "zigzag",
+        "timestamp": "2026-06-28 22:53:31",
+        "source": "annotation_flywheel_pcg_app_no_json_v4_filebacked.py"
+      }
+    ],
+    "metadata": {
+      "schema_note": "fallback annotations_topo-compatible bundle",
+      "stroke_meta": {
+        "stroke_count": 5,
+        "candidate_id": "pcg_direct_58275747_00040_151335",
+        "style_mode": "mild_left",
+        "topology_family": "zigzag"
+      }
+    }
+  },
+  "E010": {
+    "glyph_info": {
+      "char": "",
+      "unicode_hex": "E010",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "label": "good",
+      "source": "annotation_flywheel_pcg_app_no_json",
+      "candidate_id": "pcg_direct_58275748_00045_609367",
+      "style_mode": "mild_left",
+      "topology_family": "random_tree",
+      "created_at": "2026-06-28 22:53:31",
+      "complexity": {
+        "stroke_count": 5,
+        "edge_count": 5,
+        "connected_components": 1,
+        "cycle_count": 1,
+        "style_mode": "mild_left",
+        "topology_family": "random_tree"
+      },
+      "pcg_meta": {
+        "generator": "procedural_topology_direct",
+        "stroke_count_target": 5,
+        "connected_components_target": 1,
+        "cycle_target": 2,
+        "connected_components_actual": 1,
+        "cycle_count_actual": 1,
+        "families": [
+          "random_tree"
+        ],
+        "created_at": "2026-06-28 22:51:15",
+        "complexity": {
+          "stroke_count": 5,
+          "edge_count": 5,
+          "connected_components": 1,
+          "cycle_count": 1,
+          "style_mode": "mild_left",
+          "topology_family": "random_tree"
+        },
+        "aesthetic_score": null,
+        "model_accept": null,
+        "attempt": 45,
+        "human_label": "good",
+        "committed_at": "2026-06-28 22:53:31",
+        "storage_mode": "file_backed_commit"
+      }
+    },
+    "strokes": [
+      {
+        "bezier_id": 0,
+        "mother_bezier": [
+          [
+            155.39537048339844,
+            150.0528106689453
+          ],
+          [
+            132.07081604003906,
+            139.7459259033203
+          ],
+          [
+            108.27936553955078,
+            139.3021240234375
+          ],
+          [
+            79.37728881835938,
+            147.87318420410156
+          ]
+        ],
+        "width": 12.451181753855845,
+        "width_norm": 0.031127954384639615,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_left",
+        "width_token": 12,
+        "start_anchor": 0,
+        "end_anchor": 1
+      },
+      {
+        "bezier_id": 1,
+        "mother_bezier": [
+          [
+            79.37728881835938,
+            147.87318420410156
+          ],
+          [
+            87.22193908691406,
+            119.53913879394531
+          ],
+          [
+            83.93746948242188,
+            94.09844970703125
+          ],
+          [
+            69.50875854492188,
+            71.73687744140625
+          ]
+        ],
+        "width": 7.7446637025544,
+        "width_norm": 0.019361659256386,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_left",
+        "width_token": 8,
+        "start_anchor": 1,
+        "end_anchor": 2
+      },
+      {
+        "bezier_id": 2,
+        "mother_bezier": [
+          [
+            69.50875854492188,
+            71.73687744140625
+          ],
+          [
+            88.0414047241211,
+            73.15729522705078
+          ],
+          [
+            105.07562255859375,
+            64.90876770019531
+          ],
+          [
+            119.22779846191406,
+            47.641929626464844
+          ]
+        ],
+        "width": 10.983801985760227,
+        "width_norm": 0.02745950496440057,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_left",
+        "width_token": 11,
+        "start_anchor": 2,
+        "end_anchor": 3
+      },
+      {
+        "bezier_id": 3,
+        "mother_bezier": [
+          [
+            69.50875854492188,
+            71.73687744140625
+          ],
+          [
+            67.07279968261719,
+            55.740806579589844
+          ],
+          [
+            53.611183166503906,
+            43.90550994873047
+          ],
+          [
+            35.0,
+            35.0
+          ]
+        ],
+        "width": 7.945365540512447,
+        "width_norm": 0.01986341385128112,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_left",
+        "width_token": 8,
+        "start_anchor": 2,
+        "end_anchor": 4
+      },
+      {
+        "bezier_id": 4,
+        "mother_bezier": [
+          [
+            119.22779846191406,
+            47.641929626464844
+          ],
+          [
+            98.98542785644531,
+            75.51253509521484
+          ],
+          [
+            93.64811706542969,
+            117.23302459716797
+          ],
+          [
+            106.67159271240234,
+            141.95477294921875
+          ]
+        ],
+        "width": 7.225851687916667,
+        "width_norm": 0.01806462921979167,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_left",
+        "width_token": 7,
+        "start_anchor": 3,
+        "end_anchor": 5
+      }
+    ],
+    "topology": {
+      "connections": [
+        {
+          "u": 0,
+          "v": 1,
+          "src": 0,
+          "dst": 1,
+          "source": 0,
+          "target": 1,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 1,
+          "anchor_v": 1
+        },
+        {
+          "u": 1,
+          "v": 2,
+          "src": 1,
+          "dst": 2,
+          "source": 1,
+          "target": 2,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 1,
+          "v": 3,
+          "src": 1,
+          "dst": 3,
+          "source": 1,
+          "target": 3,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 2,
+          "v": 3,
+          "src": 2,
+          "dst": 3,
+          "source": 2,
+          "target": 3,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 2,
+          "v": 4,
+          "src": 2,
+          "dst": 4,
+          "source": 2,
+          "target": 4,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 3,
+          "anchor_v": 3
+        }
+      ],
+      "positive_edges_undirected": [
+        {
+          "u": 0,
+          "v": 1,
+          "src": 0,
+          "dst": 1,
+          "source": 0,
+          "target": 1,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 1,
+          "anchor_v": 1
+        },
+        {
+          "u": 1,
+          "v": 2,
+          "src": 1,
+          "dst": 2,
+          "source": 1,
+          "target": 2,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 1,
+          "v": 3,
+          "src": 1,
+          "dst": 3,
+          "source": 1,
+          "target": 3,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 2,
+          "v": 3,
+          "src": 2,
+          "dst": 3,
+          "source": 2,
+          "target": 3,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 2,
+          "v": 4,
+          "src": 2,
+          "dst": 4,
+          "source": 2,
+          "target": 4,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 3,
+          "anchor_v": 3
+        }
+      ],
+      "t_junctions": [],
+      "cycles": [],
+      "anchors": [
+        {
+          "anchor_id": 0,
+          "xy": [
+            155.39537048339844,
+            150.0528106689453
+          ]
+        },
+        {
+          "anchor_id": 1,
+          "xy": [
+            79.37728881835938,
+            147.87318420410156
+          ]
+        },
+        {
+          "anchor_id": 2,
+          "xy": [
+            69.50875854492188,
+            71.73687744140625
+          ]
+        },
+        {
+          "anchor_id": 3,
+          "xy": [
+            119.22779846191406,
+            47.641929626464844
+          ]
+        },
+        {
+          "anchor_id": 4,
+          "xy": [
+            35.0,
+            35.0
+          ]
+        },
+        {
+          "anchor_id": 5,
+          "xy": [
+            106.67159271240234,
+            141.95477294921875
+          ]
+        }
+      ]
+    },
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_DIRECT_GENERATE_AND_LABEL",
+        "label": "good",
+        "candidate_id": "pcg_direct_58275748_00045_609367",
+        "style_mode": "mild_left",
+        "topology_family": "random_tree",
+        "timestamp": "2026-06-28 22:53:31",
+        "source": "annotation_flywheel_pcg_app_no_json.py"
+      },
+      {
+        "action": "PCG_DIRECT_FILE_BACKED_COMMIT",
+        "label": "good",
+        "candidate_id": "pcg_direct_58275748_00045_609367",
+        "style_mode": "mild_left",
+        "topology_family": "random_tree",
+        "timestamp": "2026-06-28 22:53:31",
+        "source": "annotation_flywheel_pcg_app_no_json_v4_filebacked.py"
+      }
+    ],
+    "metadata": {
+      "schema_note": "fallback annotations_topo-compatible bundle",
+      "stroke_meta": {
+        "stroke_count": 5,
+        "candidate_id": "pcg_direct_58275748_00045_609367",
+        "style_mode": "mild_left",
+        "topology_family": "random_tree"
+      }
+    }
+  },
+  "E017": {
+    "glyph_info": {
+      "char": "",
+      "unicode_hex": "E017",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "label": "good",
+      "source": "annotation_flywheel_pcg_app_no_json",
+      "candidate_id": "pcg_direct_58275752_00064_161773",
+      "style_mode": "mild_right",
+      "topology_family": "random_tree",
+      "created_at": "2026-06-28 22:53:31",
+      "complexity": {
+        "stroke_count": 6,
+        "edge_count": 6,
+        "connected_components": 1,
+        "cycle_count": 1,
+        "style_mode": "mild_right",
+        "topology_family": "random_tree"
+      },
+      "pcg_meta": {
+        "generator": "procedural_topology_direct",
+        "stroke_count_target": 6,
+        "connected_components_target": 1,
+        "cycle_target": 1,
+        "connected_components_actual": 1,
+        "cycle_count_actual": 1,
+        "families": [
+          "random_tree"
+        ],
+        "created_at": "2026-06-28 22:51:15",
+        "complexity": {
+          "stroke_count": 6,
+          "edge_count": 6,
+          "connected_components": 1,
+          "cycle_count": 1,
+          "style_mode": "mild_right",
+          "topology_family": "random_tree"
+        },
+        "aesthetic_score": null,
+        "model_accept": null,
+        "attempt": 64,
+        "human_label": "good",
+        "committed_at": "2026-06-28 22:53:31",
+        "storage_mode": "file_backed_commit"
+      }
+    },
+    "strokes": [
+      {
+        "bezier_id": 0,
+        "mother_bezier": [
+          [
+            158.35916137695312,
+            192.47642517089844
+          ],
+          [
+            135.94337463378906,
+            222.75852966308594
+          ],
+          [
+            108.51594543457031,
+            242.950439453125
+          ],
+          [
+            79.127197265625,
+            244.91989135742188
+          ]
+        ],
+        "width": 7.278024788884728,
+        "width_norm": 0.01819506197221182,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_right",
+        "width_token": 7,
+        "start_anchor": 0,
+        "end_anchor": 1
+      },
+      {
+        "bezier_id": 1,
+        "mother_bezier": [
+          [
+            158.35916137695312,
+            192.47642517089844
+          ],
+          [
+            137.77574157714844,
+            175.3719940185547
+          ],
+          [
+            129.6664276123047,
+            154.099609375
+          ],
+          [
+            130.72401428222656,
+            129.68577575683594
+          ]
+        ],
+        "width": 8.638194381961519,
+        "width_norm": 0.021595485954903796,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_right",
+        "width_token": 9,
+        "start_anchor": 0,
+        "end_anchor": 2
+      },
+      {
+        "bezier_id": 2,
+        "mother_bezier": [
+          [
+            79.127197265625,
+            244.91989135742188
+          ],
+          [
+            115.67738342285156,
+            246.870849609375
+          ],
+          [
+            144.4063720703125,
+            273.0757751464844
+          ],
+          [
+            156.53976440429688,
+            310.7142028808594
+          ]
+        ],
+        "width": 11.396311815967051,
+        "width_norm": 0.02849077953991763,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_right",
+        "width_token": 11,
+        "start_anchor": 1,
+        "end_anchor": 3
+      },
+      {
+        "bezier_id": 3,
+        "mother_bezier": [
+          [
+            130.72401428222656,
+            129.68577575683594
+          ],
+          [
+            109.09581756591797,
+            154.57839965820312
+          ],
+          [
+            72.42266082763672,
+            167.360595703125
+          ],
+          [
+            38.259552001953125,
+            163.80210876464844
+          ]
+        ],
+        "width": 11.16344112420784,
+        "width_norm": 0.027908602810519597,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_right",
+        "width_token": 11,
+        "start_anchor": 2,
+        "end_anchor": 4
+      },
+      {
+        "bezier_id": 4,
+        "mother_bezier": [
+          [
+            38.259552001953125,
+            163.80210876464844
+          ],
+          [
+            60.399444580078125,
+            152.04454040527344
+          ],
+          [
+            89.31588745117188,
+            155.6992950439453
+          ],
+          [
+            107.61424255371094,
+            169.84390258789062
+          ]
+        ],
+        "width": 11.64140061222827,
+        "width_norm": 0.029103501530570678,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_right",
+        "width_token": 12,
+        "start_anchor": 4,
+        "end_anchor": 5
+      },
+      {
+        "bezier_id": 5,
+        "mother_bezier": [
+          [
+            130.72401428222656,
+            129.68577575683594
+          ],
+          [
+            160.13784790039062,
+            117.71713256835938
+          ],
+          [
+            201.5673065185547,
+            118.50352478027344
+          ],
+          [
+            236.605712890625,
+            130.5623016357422
+          ]
+        ],
+        "width": 12.11478963275889,
+        "width_norm": 0.030286974081897226,
+        "alpha": 1.0,
+        "exist": true,
+        "role": "stroke",
+        "shape_code": 30,
+        "style_token": "mild_right",
+        "width_token": 12,
+        "start_anchor": 2,
+        "end_anchor": 6
+      }
+    ],
+    "topology": {
+      "connections": [
+        {
+          "u": 0,
+          "v": 1,
+          "src": 0,
+          "dst": 1,
+          "source": 0,
+          "target": 1,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 0,
+          "anchor_v": 0
+        },
+        {
+          "u": 0,
+          "v": 2,
+          "src": 0,
+          "dst": 2,
+          "source": 0,
+          "target": 2,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 1,
+          "anchor_v": 1
+        },
+        {
+          "u": 1,
+          "v": 3,
+          "src": 1,
+          "dst": 3,
+          "source": 1,
+          "target": 3,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 1,
+          "v": 5,
+          "src": 1,
+          "dst": 5,
+          "source": 1,
+          "target": 5,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 3,
+          "v": 5,
+          "src": 3,
+          "dst": 5,
+          "source": 3,
+          "target": 5,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 3,
+          "v": 4,
+          "src": 3,
+          "dst": 4,
+          "source": 3,
+          "target": 4,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 4,
+          "anchor_v": 4
+        }
+      ],
+      "positive_edges_undirected": [
+        {
+          "u": 0,
+          "v": 1,
+          "src": 0,
+          "dst": 1,
+          "source": 0,
+          "target": 1,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 0,
+          "anchor_v": 0
+        },
+        {
+          "u": 0,
+          "v": 2,
+          "src": 0,
+          "dst": 2,
+          "source": 0,
+          "target": 2,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 1,
+          "anchor_v": 1
+        },
+        {
+          "u": 1,
+          "v": 3,
+          "src": 1,
+          "dst": 3,
+          "source": 1,
+          "target": 3,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 1,
+          "v": 5,
+          "src": 1,
+          "dst": 5,
+          "source": 1,
+          "target": 5,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 3,
+          "v": 5,
+          "src": 3,
+          "dst": 5,
+          "source": 3,
+          "target": 5,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 2,
+          "anchor_v": 2
+        },
+        {
+          "u": 3,
+          "v": 4,
+          "src": 3,
+          "dst": 4,
+          "source": 3,
+          "target": 4,
+          "j_type": "E2E",
+          "type": "E2E",
+          "anchor_u": 4,
+          "anchor_v": 4
+        }
+      ],
+      "t_junctions": [],
+      "cycles": [],
+      "anchors": [
+        {
+          "anchor_id": 0,
+          "xy": [
+            158.35916137695312,
+            192.47642517089844
+          ]
+        },
+        {
+          "anchor_id": 1,
+          "xy": [
+            79.127197265625,
+            244.91989135742188
+          ]
+        },
+        {
+          "anchor_id": 2,
+          "xy": [
+            130.72401428222656,
+            129.68577575683594
+          ]
+        },
+        {
+          "anchor_id": 3,
+          "xy": [
+            156.53976440429688,
+            310.7142028808594
+          ]
+        },
+        {
+          "anchor_id": 4,
+          "xy": [
+            38.259552001953125,
+            163.80210876464844
+          ]
+        },
+        {
+          "anchor_id": 5,
+          "xy": [
+            107.61424255371094,
+            169.84390258789062
+          ]
+        },
+        {
+          "anchor_id": 6,
+          "xy": [
+            236.605712890625,
+            130.5623016357422
+          ]
+        }
+      ]
+    },
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_DIRECT_GENERATE_AND_LABEL",
+        "label": "good",
+        "candidate_id": "pcg_direct_58275752_00064_161773",
+        "style_mode": "mild_right",
+        "topology_family": "random_tree",
+        "timestamp": "2026-06-28 22:53:31",
+        "source": "annotation_flywheel_pcg_app_no_json.py"
+      },
+      {
+        "action": "PCG_DIRECT_FILE_BACKED_COMMIT",
+        "label": "good",
+        "candidate_id": "pcg_direct_58275752_00064_161773",
+        "style_mode": "mild_right",
+        "topology_family": "random_tree",
+        "timestamp": "2026-06-28 22:53:31",
+        "source": "annotation_flywheel_pcg_app_no_json_v4_filebacked.py"
+      }
+    ],
+    "metadata": {
+      "schema_note": "fallback annotations_topo-compatible bundle",
+      "stroke_meta": {
+        "stroke_count": 6,
+        "candidate_id": "pcg_direct_58275752_00064_161773",
+        "style_mode": "mild_right",
+        "topology_family": "random_tree"
+      }
+    }
+  }
+}
