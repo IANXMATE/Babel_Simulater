@@ -1,0 +1,39 @@
+{
+  "schema_version": "topostyle_retrieval_v2_diverse_report_v1",
+  "input_file": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\glyph_candidates_filtered_for_dtg.json",
+  "candidate_key": "glyph_candidates_with_primitives",
+  "candidate_count": 24,
+  "solved_output_count": 168,
+  "skipped": {},
+  "mode_hist": {
+    "retrieval": 24,
+    "straight": 24,
+    "left_curve": 24,
+    "right_curve": 24,
+    "s_curve": 24,
+    "high_curve": 24,
+    "shape_match": 24
+  },
+  "source_candidate_output_count_stats": {
+    "mean": 7.0,
+    "p50": 7.0,
+    "p90": 7.0,
+    "p95": 7.0,
+    "max": 7.0
+  },
+  "max_prior_reconstruction_rmse_px_stats": {
+    "mean": 30.466581,
+    "p50": 29.130896,
+    "p90": 60.206348,
+    "p95": 67.331619,
+    "max": 119.225166
+  },
+  "mean_prior_reconstruction_rmse_px_stats": {
+    "mean": 15.880153,
+    "p50": 13.475506,
+    "p90": 34.404152,
+    "p95": 37.820171,
+    "max": 53.731735
+  },
+  "note": "Do not rank by prior RMSE; prior may be a straight fallback. Use visual scorer/manual preview to select."
+}

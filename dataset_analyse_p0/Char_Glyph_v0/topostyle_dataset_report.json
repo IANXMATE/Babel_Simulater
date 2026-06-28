@@ -1,0 +1,344 @@
+{
+  "schema_version": "topostyle_dataset_report",
+  "annotation_dir": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\AI_VECTOR_ROUTER_With_topo\\annotations_topo",
+  "files": 4,
+  "usable_glyphs": 103,
+  "stats": {
+    "raw_edges": 236,
+    "kept_edges": 130,
+    "dropped_edges": 102,
+    "edges_inferred_glyphs": 20,
+    "no_edges_after_canonicalization": 18,
+    "no_edges": 5
+  },
+  "node_hist": {
+    "4": 29,
+    "3": 38,
+    "2": 19,
+    "5": 15,
+    "6": 2
+  },
+  "segment_hist": {
+    "4": 29,
+    "3": 36,
+    "2": 18,
+    "5": 18,
+    "6": 2
+  },
+  "anchor_hist": {
+    "7": 21,
+    "5": 37,
+    "6": 13,
+    "3": 18,
+    "8": 3,
+    "9": 9,
+    "11": 1,
+    "10": 1
+  },
+  "oracle_edge_junction_px_stats": {
+    "mean": 0.049848,
+    "p50": 0.0,
+    "p90": 0.0,
+    "max": 2.284001
+  },
+  "style_stats": {
+    "alpha1": {
+      "mean": 0.274542,
+      "p50": 0.312554,
+      "p90": 0.383622,
+      "min": 0.0,
+      "max": 0.846736
+    },
+    "beta1": {
+      "mean": 0.022793,
+      "p50": 0.0,
+      "p90": 0.462114,
+      "min": -1.101066,
+      "max": 1.25
+    },
+    "alpha2": {
+      "mean": 0.282295,
+      "p50": 0.312404,
+      "p90": 0.380893,
+      "min": 0.0,
+      "max": 0.856894
+    },
+    "beta2": {
+      "mean": 0.015169,
+      "p50": 0.000915,
+      "p90": 0.436636,
+      "min": -1.040141,
+      "max": 1.25
+    },
+    "width_norm": {
+      "mean": 0.035,
+      "p50": 0.035,
+      "p90": 0.035,
+      "min": 0.035,
+      "max": 0.035
+    }
+  },
+  "dropped_edge_examples": [
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 195.46469116210938,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 195.46469116210938
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 209.7503204345703,
+      "edge": {
+        "u": 1,
+        "v": 3,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 209.7503204345703
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 184.1376953125,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 184.1376953125
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 104.31803131103516,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 104.31803131103516
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 95.39073705673218,
+      "edge": {
+        "u": 2,
+        "v": 1,
+        "j_type": "T",
+        "t_u": 0.8354430198669434,
+        "t_v": 0.0,
+        "source": "json",
+        "oracle_junction_px": 95.39073705673218,
+        "canonical_mode": "v_endpoint_to_u_curve"
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 131.17454528808594,
+      "edge": {
+        "u": 3,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 131.17454528808594
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 131.17454528808594,
+      "edge": {
+        "u": 3,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 131.17454528808594
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 213.317626953125,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 213.317626953125
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 33.063331604003906,
+      "edge": {
+        "u": 1,
+        "v": 3,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 0.0,
+        "source": "json",
+        "oracle_junction_px": 33.063331604003906
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 285.25738525390625,
+      "edge": {
+        "u": 1,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 0.0,
+        "source": "json",
+        "oracle_junction_px": 285.25738525390625
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 42.87746810913086,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 0.0,
+        "source": "json",
+        "oracle_junction_px": 42.87746810913086
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 42.87746810913086,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 0.0,
+        "source": "json",
+        "oracle_junction_px": 42.87746810913086
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 187.54852294921875,
+      "edge": {
+        "u": 1,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 187.54852294921875
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 121.83613586425781,
+      "edge": {
+        "u": 1,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 121.83613586425781
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 194.05410766601562,
+      "edge": {
+        "u": 2,
+        "v": 3,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 194.05410766601562
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 152.46311950683594,
+      "edge": {
+        "u": 1,
+        "v": 3,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 152.46311950683594
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 200.18222045898438,
+      "edge": {
+        "u": 2,
+        "v": 3,
+        "j_type": "E2E",
+        "t_u": 1.0,
+        "t_v": 0.0,
+        "source": "json",
+        "oracle_junction_px": 200.18222045898438
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 62.43962478637695,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 0.0,
+        "source": "json",
+        "oracle_junction_px": 62.43962478637695
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 156.14854431152344,
+      "edge": {
+        "u": 1,
+        "v": 4,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 156.14854431152344
+      }
+    },
+    {
+      "reason": "oracle_edge_too_large",
+      "oracle_junction_px": 152.53135681152344,
+      "edge": {
+        "u": 1,
+        "v": 2,
+        "j_type": "E2E",
+        "t_u": 0.0,
+        "t_v": 1.0,
+        "source": "json",
+        "oracle_junction_px": 152.53135681152344
+      }
+    }
+  ]
+}

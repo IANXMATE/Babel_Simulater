@@ -1,0 +1,401 @@
+{
+  "schema_version": "topostyle_retrieval_selector_report_v1",
+  "method": "topology-first codebook retrieval selector",
+  "config": {
+    "MAX_INPUT_CANDIDATES": 300,
+    "MAX_OUTPUT_CANDIDATES": 240,
+    "CANDIDATE_EDGE_MAXJ_PX": 45.0,
+    "TOP_K_TOKENS_PER_SEG": 6,
+    "BEAM_SIZE": 8,
+    "MEMORY_TOP_N": 50,
+    "W_STYLE": [
+      1.0,
+      1.399999976158142,
+      1.0,
+      1.399999976158142,
+      0.3499999940395355
+    ],
+    "W_LENGTH": 0.35,
+    "W_STRAIGHT": 0.4,
+    "W_SHAPE_MISMATCH": 0.35,
+    "W_WIDTH_TOKEN_MISMATCH": 0.08
+  },
+  "input": {
+    "input_file": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\glyph_candidates_filtered_for_dtg.json",
+    "candidate_key": "glyph_candidates_with_primitives",
+    "input_candidates_used": 24
+  },
+  "memory": {
+    "memory_size": 362,
+    "labeled_glyphs": 103,
+    "missed_assignments": 0,
+    "token_hist": {
+      "5": 85,
+      "56": 17,
+      "29": 16,
+      "23": 4,
+      "25": 2,
+      "41": 15,
+      "10": 13,
+      "9": 8,
+      "60": 6,
+      "32": 8,
+      "15": 5,
+      "16": 7,
+      "28": 4,
+      "39": 1,
+      "63": 1,
+      "3": 4,
+      "50": 1,
+      "45": 6,
+      "42": 6,
+      "38": 3,
+      "46": 3,
+      "36": 1,
+      "21": 1,
+      "57": 6,
+      "1": 4,
+      "22": 3,
+      "49": 5,
+      "48": 8,
+      "20": 12,
+      "31": 4,
+      "33": 8,
+      "43": 5,
+      "13": 5,
+      "53": 2,
+      "24": 6,
+      "18": 3,
+      "27": 6,
+      "55": 2,
+      "35": 2,
+      "11": 2,
+      "61": 5,
+      "52": 2,
+      "6": 6,
+      "2": 4,
+      "40": 4,
+      "34": 2,
+      "26": 4,
+      "0": 8,
+      "7": 3,
+      "51": 1,
+      "59": 2,
+      "12": 1,
+      "54": 2,
+      "62": 2,
+      "37": 3,
+      "30": 1,
+      "17": 3,
+      "58": 2,
+      "8": 1,
+      "14": 2,
+      "44": 1,
+      "47": 1,
+      "4": 1,
+      "19": 1
+    }
+  },
+  "summary": {
+    "valid_topostyle_graphs": 24,
+    "solved_output_count": 192,
+    "skipped": {},
+    "elapsed_sec": 0.866,
+    "cand_per_sec": 27.719,
+    "output_per_sec": 221.755,
+    "max_prior_reconstruction_rmse_px_stats": {
+      "mean": 7.139123,
+      "p50": 5.953208,
+      "p90": 10.517531,
+      "p95": 13.779017,
+      "max": 42.376213
+    },
+    "mean_prior_reconstruction_rmse_px_stats": {
+      "mean": 3.222735,
+      "p50": 2.701176,
+      "p90": 4.752777,
+      "p95": 5.664847,
+      "max": 15.620919
+    },
+    "beam_score_stats": {
+      "mean": 0.157552,
+      "p50": 0.160115,
+      "p90": 0.211395,
+      "p95": 0.222846,
+      "max": 0.242465
+    },
+    "topology_junction_px_by_construction": 0.0
+  },
+  "graph_stats": [
+    {
+      "candidate_id": "glyph_candidate_00739",
+      "num_segments": 5,
+      "num_anchors": 6,
+      "num_beams": 8,
+      "best_beam_score": 0.18479582880448897
+    },
+    {
+      "candidate_id": "glyph_candidate_00356",
+      "num_segments": 8,
+      "num_anchors": 9,
+      "num_beams": 8,
+      "best_beam_score": 0.18032594492204776
+    },
+    {
+      "candidate_id": "glyph_candidate_00599",
+      "num_segments": 8,
+      "num_anchors": 9,
+      "num_beams": 8,
+      "best_beam_score": 0.17609473467746065
+    },
+    {
+      "candidate_id": "glyph_candidate_00813",
+      "num_segments": 5,
+      "num_anchors": 6,
+      "num_beams": 8,
+      "best_beam_score": 0.0826611168179064
+    },
+    {
+      "candidate_id": "glyph_candidate_00424",
+      "num_segments": 5,
+      "num_anchors": 6,
+      "num_beams": 8,
+      "best_beam_score": 0.20377161137608288
+    },
+    {
+      "candidate_id": "glyph_candidate_00760",
+      "num_segments": 5,
+      "num_anchors": 6,
+      "num_beams": 8,
+      "best_beam_score": 0.1494133011605731
+    },
+    {
+      "candidate_id": "glyph_candidate_00302",
+      "num_segments": 5,
+      "num_anchors": 6,
+      "num_beams": 8,
+      "best_beam_score": 0.1552534566145032
+    },
+    {
+      "candidate_id": "glyph_candidate_00574",
+      "num_segments": 5,
+      "num_anchors": 6,
+      "num_beams": 8,
+      "best_beam_score": 0.1801339082590997
+    },
+    {
+      "candidate_id": "glyph_candidate_00215",
+      "num_segments": 5,
+      "num_anchors": 6,
+      "num_beams": 8,
+      "best_beam_score": 0.06809973935218146
+    },
+    {
+      "candidate_id": "glyph_candidate_00656",
+      "num_segments": 8,
+      "num_anchors": 9,
+      "num_beams": 8,
+      "best_beam_score": 0.12483688049408653
+    },
+    {
+      "candidate_id": "glyph_candidate_00936",
+      "num_segments": 4,
+      "num_anchors": 5,
+      "num_beams": 8,
+      "best_beam_score": 0.13824426004376472
+    },
+    {
+      "candidate_id": "glyph_candidate_00528",
+      "num_segments": 4,
+      "num_anchors": 5,
+      "num_beams": 8,
+      "best_beam_score": 0.12419521587662564
+    },
+    {
+      "candidate_id": "glyph_candidate_00442",
+      "num_segments": 8,
+      "num_anchors": 9,
+      "num_beams": 8,
+      "best_beam_score": 0.2313322905219375
+    },
+    {
+      "candidate_id": "glyph_candidate_00336",
+      "num_segments": 3,
+      "num_anchors": 4,
+      "num_beams": 8,
+      "best_beam_score": 0.07799118489457241
+    },
+    {
+      "candidate_id": "glyph_candidate_00246",
+      "num_segments": 3,
+      "num_anchors": 4,
+      "num_beams": 8,
+      "best_beam_score": 0.11438115899298645
+    },
+    {
+      "candidate_id": "glyph_candidate_00247",
+      "num_segments": 4,
+      "num_anchors": 5,
+      "num_beams": 8,
+      "best_beam_score": 0.19101728937377693
+    },
+    {
+      "candidate_id": "glyph_candidate_00275",
+      "num_segments": 4,
+      "num_anchors": 5,
+      "num_beams": 8,
+      "best_beam_score": 0.1658849207009644
+    },
+    {
+      "candidate_id": "glyph_candidate_00005",
+      "num_segments": 4,
+      "num_anchors": 5,
+      "num_beams": 8,
+      "best_beam_score": 0.0768246889456629
+    },
+    {
+      "candidate_id": "glyph_candidate_00958",
+      "num_segments": 3,
+      "num_anchors": 4,
+      "num_beams": 8,
+      "best_beam_score": 0.1103382713772793
+    },
+    {
+      "candidate_id": "glyph_candidate_00693",
+      "num_segments": 5,
+      "num_anchors": 6,
+      "num_beams": 8,
+      "best_beam_score": 0.1992302543367832
+    },
+    {
+      "candidate_id": "glyph_candidate_00464",
+      "num_segments": 4,
+      "num_anchors": 5,
+      "num_beams": 8,
+      "best_beam_score": 0.11425872427184278
+    },
+    {
+      "candidate_id": "glyph_candidate_00154",
+      "num_segments": 3,
+      "num_anchors": 5,
+      "num_beams": 8,
+      "best_beam_score": 0.17993374985047644
+    },
+    {
+      "candidate_id": "glyph_candidate_00950",
+      "num_segments": 5,
+      "num_anchors": 5,
+      "num_beams": 8,
+      "best_beam_score": 0.11360181881667664
+    },
+    {
+      "candidate_id": "glyph_candidate_00956",
+      "num_segments": 5,
+      "num_anchors": 6,
+      "num_beams": 8,
+      "best_beam_score": 0.21016050525252972
+    }
+  ],
+  "top10_outputs": [
+    {
+      "rank": 0,
+      "generated_glyph_id": "glyph_candidate_00656_topostyle_beam_01",
+      "source_candidate_id": "glyph_candidate_00656",
+      "beam_rank": 1,
+      "beam_score": 0.13196106543299121,
+      "max_prior_reconstruction_rmse_px": 1.6121671199798584,
+      "mean_prior_reconstruction_rmse_px": 0.7245557093992829,
+      "num_segments": 8
+    },
+    {
+      "rank": 1,
+      "generated_glyph_id": "glyph_candidate_00356_topostyle_beam_00",
+      "source_candidate_id": "glyph_candidate_00356",
+      "beam_rank": 0,
+      "beam_score": 0.18032594492204776,
+      "max_prior_reconstruction_rmse_px": 1.9827593564987183,
+      "mean_prior_reconstruction_rmse_px": 0.9996945662423968,
+      "num_segments": 8
+    },
+    {
+      "rank": 2,
+      "generated_glyph_id": "glyph_candidate_00356_topostyle_beam_01",
+      "source_candidate_id": "glyph_candidate_00356",
+      "beam_rank": 1,
+      "beam_score": 0.18503188485832503,
+      "max_prior_reconstruction_rmse_px": 1.9827593564987183,
+      "mean_prior_reconstruction_rmse_px": 0.973012357018888,
+      "num_segments": 8
+    },
+    {
+      "rank": 3,
+      "generated_glyph_id": "glyph_candidate_00356_topostyle_beam_04",
+      "source_candidate_id": "glyph_candidate_00356",
+      "beam_rank": 4,
+      "beam_score": 0.1937119636018454,
+      "max_prior_reconstruction_rmse_px": 1.9827593564987183,
+      "mean_prior_reconstruction_rmse_px": 1.023969511501491,
+      "num_segments": 8
+    },
+    {
+      "rank": 4,
+      "generated_glyph_id": "glyph_candidate_00656_topostyle_beam_00",
+      "source_candidate_id": "glyph_candidate_00656",
+      "beam_rank": 0,
+      "beam_score": 0.12483688049408653,
+      "max_prior_reconstruction_rmse_px": 1.9968798160552979,
+      "mean_prior_reconstruction_rmse_px": 0.7726447964087129,
+      "num_segments": 8
+    },
+    {
+      "rank": 5,
+      "generated_glyph_id": "glyph_candidate_00656_topostyle_beam_03",
+      "source_candidate_id": "glyph_candidate_00656",
+      "beam_rank": 3,
+      "beam_score": 0.13752469740012943,
+      "max_prior_reconstruction_rmse_px": 1.9968798160552979,
+      "mean_prior_reconstruction_rmse_px": 0.839379564858973,
+      "num_segments": 8
+    },
+    {
+      "rank": 6,
+      "generated_glyph_id": "glyph_candidate_00656_topostyle_beam_05",
+      "source_candidate_id": "glyph_candidate_00656",
+      "beam_rank": 5,
+      "beam_score": 0.13991333739366693,
+      "max_prior_reconstruction_rmse_px": 1.9968798160552979,
+      "mean_prior_reconstruction_rmse_px": 0.8315622555091977,
+      "num_segments": 8
+    },
+    {
+      "rank": 7,
+      "generated_glyph_id": "glyph_candidate_00574_topostyle_beam_00",
+      "source_candidate_id": "glyph_candidate_00574",
+      "beam_rank": 0,
+      "beam_score": 0.1801339082590997,
+      "max_prior_reconstruction_rmse_px": 2.094050884246826,
+      "mean_prior_reconstruction_rmse_px": 1.163423752784729,
+      "num_segments": 5
+    },
+    {
+      "rank": 8,
+      "generated_glyph_id": "glyph_candidate_00574_topostyle_beam_03",
+      "source_candidate_id": "glyph_candidate_00574",
+      "beam_rank": 3,
+      "beam_score": 0.19194277687853867,
+      "max_prior_reconstruction_rmse_px": 2.180851459503174,
+      "mean_prior_reconstruction_rmse_px": 1.3380598545074462,
+      "num_segments": 5
+    },
+    {
+      "rank": 9,
+      "generated_glyph_id": "glyph_candidate_00574_topostyle_beam_02",
+      "source_candidate_id": "glyph_candidate_00574",
+      "beam_rank": 2,
+      "beam_score": 0.18745310343886307,
+      "max_prior_reconstruction_rmse_px": 2.2615489959716797,
+      "mean_prior_reconstruction_rmse_px": 1.1969233751296997,
+      "num_segments": 5
+    }
+  ]
+}

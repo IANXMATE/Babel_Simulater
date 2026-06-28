@@ -1,0 +1,114 @@
+{
+  "input_file": "C:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\topostyle_retrieval_solved_candidates.json",
+  "input_candidate_count": 192,
+  "valid_input_count": 24,
+  "skipped": {},
+  "style_modes": [
+    "straight",
+    "mild_left",
+    "mild_right",
+    "strong_left",
+    "strong_right",
+    "s_curve_left",
+    "s_curve_right",
+    "hook_left",
+    "hook_right"
+  ],
+  "generated_output_count": 216,
+  "mode_hist": {
+    "straight": 24,
+    "mild_left": 24,
+    "mild_right": 24,
+    "strong_left": 24,
+    "strong_right": 24,
+    "s_curve_left": 24,
+    "s_curve_right": 24,
+    "hook_left": 24,
+    "hook_right": 24
+  },
+  "node_hist": {
+    "8": 32,
+    "5": 80,
+    "4": 48,
+    "3": 32
+  },
+  "diversity": {
+    "node_count_stats": {
+      "mean": 4.916667,
+      "p50": 5.0,
+      "p90": 8.0,
+      "p95": 8.0,
+      "max": 8.0
+    },
+    "mode_control_displacement_px_stats": {
+      "straight": {
+        "mean": 9.283284,
+        "p50": 5.316743,
+        "p90": 20.073626,
+        "p95": 26.214682,
+        "max": 38.181271
+      },
+      "mild_left": {
+        "mean": 22.947845,
+        "p50": 17.927902,
+        "p90": 42.369274,
+        "p95": 51.576675,
+        "max": 60.217705
+      },
+      "mild_right": {
+        "mean": 18.648636,
+        "p50": 16.480904,
+        "p90": 32.023392,
+        "p95": 34.29768,
+        "max": 39.98011
+      },
+      "strong_left": {
+        "mean": 36.839569,
+        "p50": 31.25259,
+        "p90": 61.905048,
+        "p95": 73.779343,
+        "max": 80.217216
+      },
+      "strong_right": {
+        "mean": 30.731941,
+        "p50": 29.002731,
+        "p90": 48.001133,
+        "p95": 51.877506,
+        "max": 63.142132
+      },
+      "s_curve_left": {
+        "mean": 30.242582,
+        "p50": 29.017914,
+        "p90": 47.077965,
+        "p95": 49.595451,
+        "max": 51.178627
+      },
+      "s_curve_right": {
+        "mean": 29.337097,
+        "p50": 27.935421,
+        "p90": 42.91724,
+        "p95": 45.109673,
+        "max": 64.656059
+      },
+      "hook_left": {
+        "mean": 31.525461,
+        "p50": 27.36134,
+        "p90": 53.128098,
+        "p95": 61.957321,
+        "max": 69.965561
+      },
+      "hook_right": {
+        "mean": 27.944769,
+        "p50": 27.386806,
+        "p90": 41.307774,
+        "p95": 50.693527,
+        "max": 57.817303
+      }
+    }
+  },
+  "notes": [
+    "该脚本保持每条 Bézier 的 P0/P3 不变，因此原有 topology endpoint 关系不被破坏。",
+    "它不是 retrieval，也不是神经网络推理，而是显式 style family 扩展器。",
+    "如果你觉得差异还不够大，可以进一步增大 mild/strong/s_curve/hook 的振幅。"
+  ]
+}
