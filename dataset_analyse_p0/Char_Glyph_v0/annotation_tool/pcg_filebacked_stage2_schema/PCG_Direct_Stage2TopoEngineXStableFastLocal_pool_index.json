@@ -1,0 +1,9 @@
+{
+  "version": "pool_commit_index_v1",
+  "pool_prefix": "PCG_Direct_Stage2TopoEngineXStableFastLocal",
+  "next_code": 57727,
+  "good_count": 41,
+  "bad_count": 342,
+  "rebuilt_at": "2026-06-29 01:37:45",
+  "updated_at": "2026-06-29 01:49:49"
+}
