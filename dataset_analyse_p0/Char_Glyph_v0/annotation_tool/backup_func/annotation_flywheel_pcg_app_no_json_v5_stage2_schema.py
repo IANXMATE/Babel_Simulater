@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 r"""
-annotation_flywheel_pcg_app_no_json_v4_filebacked.py
+annotation_flywheel_pcg_app_no_json_v5_stage2_schema.py
 
 完整 GUI 脚本：不读取任何现有候选 JSON，直接在内存中随机生成 N*N 个拓扑字体候选，
 再由人工勾选 Good；未勾选为 Bad。
@@ -67,24 +67,50 @@ except Exception as e:
 # 0. 路径配置：脚本通常在 Char_Glyph_v0/pcg_flywheel_app 下，用 ../ 找旧人工标注脚本
 # =============================================================================
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
+TOOL_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# 如果用户直接把脚本放在 Char_Glyph_v0 下，也能工作
-if os.path.exists(os.path.join(SCRIPT_DIR, "annotation_flywheel_app_fixed.py")):
-    PROJECT_DIR = SCRIPT_DIR
+# 本脚本按你的新放置方式设计：
+#   Char_Glyph_v0/
+#     annotation_flywheel_app_fixed.py
+#     annotation_tool/
+#       annotation_flywheel_pcg_app_no_json_v5_stage2_schema.py
+#
+# 因此默认用 ../ 找 Char_Glyph_v0 和第二阶段人工标注脚本。
+if os.path.basename(TOOL_DIR).lower() == "annotation_tool":
+    CHAR_GLYPH_DIR = os.path.abspath(os.path.join(TOOL_DIR, ".."))
+else:
+    # 兼容：如果你直接放在 Char_Glyph_v0 下，也可以运行。
+    CHAR_GLYPH_DIR = TOOL_DIR
 
-if PROJECT_DIR not in sys.path:
-    sys.path.insert(0, PROJECT_DIR)
-if SCRIPT_DIR not in sys.path:
-    sys.path.insert(0, SCRIPT_DIR)
+SCRIPT_DIR = TOOL_DIR
+PROJECT_DIR = CHAR_GLYPH_DIR
 
-DEFAULT_OUTPUT_ROOT = os.path.join(SCRIPT_DIR, "pcg_labeled_topo_pools")
+# 把 Char_Glyph_v0 与 annotation_tool 都加入 import 路径。
+for _p in [CHAR_GLYPH_DIR, TOOL_DIR, os.path.join(CHAR_GLYPH_DIR, "annotation_tool")]:
+    if os.path.isdir(_p) and _p not in sys.path:
+        sys.path.insert(0, _p)
+
+# 默认输出到第二阶段人工标注同级目录下，避免混乱：
+#   Babel_Simulater/dataset_analyse_p0/AI_VECTOR_ROUTER_With_topo/annotations_topo/pcg_filebacked_stage2_schema
+ANNOTATIONS_TOPO_DIR = os.path.abspath(
+    os.path.join(CHAR_GLYPH_DIR, "..", "AI_VECTOR_ROUTER_With_topo", "annotations_topo")
+)
+DEFAULT_OUTPUT_ROOT = os.path.join(ANNOTATIONS_TOPO_DIR, "pcg_filebacked_stage2_schema")
+
 DEFAULT_MAX_JSON_MB = 80
 DEFAULT_FONT_NAME = "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf"
 
 # File-backed pool prefix：Commit/Manage 都直接读写这些 active pool 文件。
-POOL_PREFIX = "PCG_Direct_FileBacked"
+POOL_PREFIX = "PCG_Direct_Stage2Schema"
+
+# 强约束：为了尽可能等同第二阶段人工标注格式，不再静默 fallback。
+# 如果无法导入 annotation_flywheel_app_fixed.py 或无法调用 candidate_to_char_bundle()，
+# 程序会直接报错，而不是写出“不完全一致”的 JSON。
+REQUIRE_STAGE2_CONVERTER = True
+
+# True 表示 commit 后不额外改写 bundle 结构，只使用第二阶段函数返回的 bundle。
+# label/style/topology_family 等信息主要保存在文件夹、manifest 和 candidate 输入字段中。
+PRESERVE_STAGE2_BUNDLE = True
 
 # Private Use Area 起点，用于模拟 unicode
 PUA_BASE = 0xE000
@@ -163,20 +189,52 @@ _ANNOTATION_APP = None
 
 
 def _try_import_annotation_app():
+    """
+    严格导入第二阶段人工标注脚本。
+    脚本位于 Char_Glyph_v0/annotation_tool 时，会从 ../Char_Glyph_v0 搜索。
+    """
     global _ANNOTATION_APP
     if _ANNOTATION_APP is not None:
         return _ANNOTATION_APP if _ANNOTATION_APP is not False else None
 
-    for mod_name in ["annotation_flywheel_app_fixed", "annotation_flywheel_app"]:
+    search_dirs = [
+        CHAR_GLYPH_DIR,
+        TOOL_DIR,
+        os.path.join(CHAR_GLYPH_DIR, "annotation_tool"),
+    ]
+    for d in search_dirs:
+        if os.path.isdir(d) and d not in sys.path:
+            sys.path.insert(0, d)
+
+    module_names = [
+        "annotation_flywheel_app_fixed",
+        "annotation_flywheel_app",
+    ]
+
+    last_err = None
+    for mod_name in module_names:
         try:
             mod = __import__(mod_name)
+            if not hasattr(mod, "candidate_to_char_bundle"):
+                last_err = RuntimeError(f"{mod_name} lacks candidate_to_char_bundle()")
+                continue
             _ANNOTATION_APP = mod
-            print(f"[Reuse] imported {mod_name}")
+            print(f"[Stage2Schema] imported {mod_name} from {getattr(mod, '__file__', '')}")
             return mod
-        except Exception:
-            pass
+        except Exception as e:
+            last_err = e
 
     _ANNOTATION_APP = False
+    if REQUIRE_STAGE2_CONVERTER:
+        raise ImportError(
+            "无法导入第二阶段人工标注转换函数。请确认文件位置：\n"
+            f"  当前脚本目录: {TOOL_DIR}\n"
+            f"  期望 Char_Glyph_v0: {CHAR_GLYPH_DIR}\n"
+            "并确认存在：\n"
+            "  ../annotation_flywheel_app_fixed.py\n"
+            "且其中包含 candidate_to_char_bundle()。\n"
+            f"最后错误: {repr(last_err)}"
+        )
     return None
 
 
@@ -250,15 +308,16 @@ def _get_width_from_node(node: Dict[str, Any]) -> float:
 
 def candidate_to_strokes(candidate: Dict[str, Any]) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
     """
-    优先复用旧人工标注脚本的 candidate_to_strokes；
-    不存在时 fallback 成 annotations_topo-compatible strokes。
+    优先复用第二阶段人工标注脚本的 candidate_to_strokes。
+    如果旧脚本没有该函数，则仅用于 GUI 复杂度/预览时走本地解析；
+    保存 JSON 时必须通过 candidate_to_char_bundle。
     """
     app = _try_import_annotation_app()
     if app is not None and hasattr(app, "candidate_to_strokes"):
         try:
             return app.candidate_to_strokes(candidate)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"[WARN] stage2 candidate_to_strokes failed, GUI will use local parser only: {repr(e)}")
 
     strokes = []
     for i, nd in enumerate(_get_nodes(candidate)):
@@ -298,73 +357,57 @@ def candidate_to_strokes(candidate: Dict[str, Any]) -> Tuple[List[Dict[str, Any]
 
 def candidate_to_char_bundle(candidate: Dict[str, Any], label: str, hex_key: str) -> Tuple[str, Dict[str, Any]]:
     """
-    优先复用旧人工标注脚本的 candidate_to_char_bundle。
-    若旧函数签名不同或失败，使用 fallback。
+    严格复用第二阶段人工标注脚本的 candidate_to_char_bundle。
+    不再静默 fallback 写近似结构，避免 Good/Bad 与第二阶段格式不一致。
+
+    调用前会把 PCG candidate 补成旧标注脚本更可能识别的字段：
+      - char / unicode_hex / font_path / font_name / label
+      - strokes / solved_nodes / nodes
+      - topology / cycles / edit_history
     """
     app = _try_import_annotation_app()
-    if app is not None and hasattr(app, "candidate_to_char_bundle"):
-        fn = app.candidate_to_char_bundle
+    if app is None or not hasattr(app, "candidate_to_char_bundle"):
+        raise RuntimeError("第二阶段 candidate_to_char_bundle() 不存在，拒绝保存非第二阶段格式 JSON。")
+
+    c = copy.deepcopy(candidate)
+    c["unicode_hex"] = hex_key
+    c["char"] = chr(int(hex_key, 16))
+    c["font_path"] = c.get("font_path", DEFAULT_FONT_NAME)
+    c["font_name"] = c.get("font_name", DEFAULT_FONT_NAME)
+    c["label"] = label
+
+    try:
+        strokes, _ = candidate_to_strokes(c)
+        c.setdefault("strokes", strokes)
+    except Exception:
+        pass
+
+    fn = app.candidate_to_char_bundle
+    errors = []
+
+    for call in [
+        lambda: fn(c, label, hex_key),
+        lambda: fn(c, label),
+        lambda: fn(c),
+    ]:
         try:
-            return fn(candidate, label, hex_key)
-        except TypeError:
-            try:
-                return fn(candidate, label)
-            except Exception:
-                pass
-        except Exception:
-            pass
+            result = call()
+            if isinstance(result, tuple) and len(result) == 2:
+                out_hex, bundle = result
+                return str(out_hex), bundle
+            if isinstance(result, dict):
+                return hex_key, result
+        except TypeError as e:
+            errors.append(repr(e))
+        except Exception as e:
+            errors.append(repr(e))
 
-    strokes, stroke_meta = candidate_to_strokes(candidate)
-    edges = candidate.get("topology", {}).get("positive_edges_undirected", [])
-    t_junctions = candidate.get("topology", {}).get("t_junctions", [])
-    cycles = candidate.get("cycles", candidate.get("topology", {}).get("cycles", []))
-
-    char_code = int(hex_key, 16)
-    char = chr(char_code)
-
-    comp = candidate.get("pcg_meta", {}).get("complexity", candidate_complexity(candidate))
-
-    bundle = {
-        "glyph_info": {
-            "char": char,
-            "unicode_hex": hex_key,
-            "font_path": candidate.get("font_path", DEFAULT_FONT_NAME),
-            "font_name": candidate.get("font_name", DEFAULT_FONT_NAME),
-            "label": label,
-            "source": "annotation_flywheel_pcg_app_no_json",
-            "candidate_id": _get_candidate_id(candidate),
-            "style_mode": candidate.get("style_mode"),
-            "topology_family": candidate.get("topology_family"),
-            "created_at": time.strftime("%Y-%m-%d %H:%M:%S"),
-            "complexity": comp,
-            "pcg_meta": candidate.get("pcg_meta", {}),
-        },
-        "strokes": strokes,
-        "topology": {
-            "connections": edges,
-            "positive_edges_undirected": edges,
-            "t_junctions": t_junctions,
-            "cycles": cycles,
-            "anchors": candidate.get("anchors", []),
-        },
-        "cycles": cycles,
-        "edit_history": [
-            {
-                "action": "PCG_DIRECT_GENERATE_AND_LABEL",
-                "label": label,
-                "candidate_id": _get_candidate_id(candidate),
-                "style_mode": candidate.get("style_mode"),
-                "topology_family": candidate.get("topology_family"),
-                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                "source": "annotation_flywheel_pcg_app_no_json.py",
-            }
-        ],
-        "metadata": {
-            "schema_note": "fallback annotations_topo-compatible bundle",
-            "stroke_meta": stroke_meta,
-        },
-    }
-    return hex_key, bundle
+    raise RuntimeError(
+        "第二阶段 candidate_to_char_bundle() 调用失败，拒绝使用 fallback 保存。\n"
+        "请检查 annotation_flywheel_app_fixed.py 的函数签名，或把函数名/签名告诉我做适配。\n"
+        "尝试过签名: (candidate,label,hex_key), (candidate,label), (candidate)\n"
+        f"errors={errors}"
+    )
 
 
 # =============================================================================
@@ -1487,7 +1530,7 @@ class ScrollableFrame(ttk.Frame):
 class AnnotationFlywheelPCGNoJSONApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Annotation Flywheel PCG App - No JSON Source - File Backed")
+        self.root.title("Annotation Flywheel PCG App - No JSON Source - File Backed + Stage2 Schema Strict")
         self.root.geometry("1520x910")
 
         self.rng = random.Random(int(time.time()))
@@ -1508,7 +1551,7 @@ class AnnotationFlywheelPCGNoJSONApp:
         self.jitter_var = tk.StringVar(value="16")
         self.max_json_mb_var = tk.IntVar(value=80)
 
-        self.status_var = tk.StringVar(value="Ready. No source candidate JSON. Commit/Manage are file-backed.")
+        self.status_var = tk.StringVar(value="Ready. No source candidate JSON. File-backed. Stage2 schema strict.")
 
         self.style_mode_vars: Dict[str, tk.BooleanVar] = {}
         self.family_vars: Dict[str, tk.BooleanVar] = {}
@@ -1812,9 +1855,12 @@ class AnnotationFlywheelPCGNoJSONApp:
 
             out_hex, bundle = candidate_to_char_bundle(c, label, hex_key)
 
-            # 强制使用本次分配的 hex_key，避免旧函数内部生成 key 导致冲突。
+            # 为避免 key 冲突，磁盘 pool 的外层 key 使用本次分配的 hex_key。
+            # 当 PRESERVE_STAGE2_BUNDLE=True 时，不再额外改写 bundle 内部字段，
+            # 以最大程度保持第二阶段人工标注输出结构。
             out_hex = hex_key
-            if isinstance(bundle, dict):
+
+            if (not PRESERVE_STAGE2_BUNDLE) and isinstance(bundle, dict):
                 bundle.setdefault("glyph_info", {})
                 if isinstance(bundle["glyph_info"], dict):
                     bundle["glyph_info"]["char"] = chr(int(hex_key, 16))
@@ -1836,7 +1882,7 @@ class AnnotationFlywheelPCGNoJSONApp:
                         "style_mode": c.get("style_mode"),
                         "topology_family": c.get("topology_family"),
                         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                        "source": "annotation_flywheel_pcg_app_no_json_v4_filebacked.py",
+                        "source": "annotation_flywheel_pcg_app_no_json_v5_stage2_schema.py",
                     })
 
             if label == "good":
@@ -1958,11 +2004,11 @@ class AnnotationFlywheelPCGNoJSONApp:
         cfg = self.get_generator_config()
 
         manifest = {
-            "schema_version": "annotation_flywheel_pcg_no_json_file_backed_manifest_v1",
+            "schema_version": "annotation_flywheel_pcg_no_json_stage2_schema_manifest_v1",
             "batch_name": batch_name,
             "created_at": time.strftime("%Y-%m-%d %H:%M:%S"),
             "source": "direct_procedural_generation_no_existing_json",
-            "storage_mode": "file_backed_pool_commit",
+            "storage_mode": "file_backed_pool_commit_stage2_schema_strict",
             "output_root": os.path.abspath(out_root),
             "good_dir": os.path.abspath(pool_label_dir(out_root, "good")),
             "bad_dir": os.path.abspath(pool_label_dir(out_root, "bad")),
@@ -1972,6 +2018,8 @@ class AnnotationFlywheelPCGNoJSONApp:
             "good_files": good_files,
             "bad_files": bad_files,
             "pool_prefix": POOL_PREFIX,
+            "require_stage2_converter": REQUIRE_STAGE2_CONVERTER,
+            "preserve_stage2_bundle": PRESERVE_STAGE2_BUNDLE,
             "generator_config": {
                 "stroke_min": cfg.stroke_min,
                 "stroke_max": cfg.stroke_max,
@@ -1987,7 +2035,7 @@ class AnnotationFlywheelPCGNoJSONApp:
             },
             "notes": [
                 "No existing candidate JSON is read for generation.",
-                "Commit Current Labels directly modifies disk-backed Good/Bad pool files.",
+                "Commit Current Labels directly modifies disk-backed Good/Bad pool files using the stage-2 converter.",
                 "Manage Good/Bad Pool directly reads and modifies disk files.",
                 "Preview uses dual rendering: black-width preview and colored-width preview.",
                 "Each JSON is split before exceeding max_json_mb.",
