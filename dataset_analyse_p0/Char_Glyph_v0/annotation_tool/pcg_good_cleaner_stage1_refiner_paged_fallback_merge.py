@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 r"""
-pcg_good_cleaner_stage1_refiner_pth_fixed.py
+pcg_good_cleaner_stage1_refiner_paged_fallback_merge.py
 
 放置位置：
     dataset_analyse_p0/Char_Glyph_v0/annotation_tool/
@@ -41,6 +41,11 @@ except Exception:
     cKDTree = None
 
 try:
+    from scipy.ndimage import distance_transform_edt
+except Exception:
+    distance_transform_edt = None
+
+try:
     import torch
     import torch.nn as nn
 except Exception:
@@ -66,6 +71,8 @@ REPORT_PREFIX = "PCG_GoodCleanReport"
 
 DEFAULT_MAX_JSON_MB = 80
 PREVIEW_SIZE = 150
+PAGE_ROWS_DEFAULT = 3
+PAGE_COLS_DEFAULT = 4
 CANVAS_SIZE = 400.0
 
 # clean 保守参数
@@ -267,22 +274,55 @@ def deriv(P: np.ndarray, t: float) -> np.ndarray:
     t = float(t)
     return 3*mt**2*(P[1]-P[0]) + 6*mt*t*(P[2]-P[1]) + 3*t**2*(P[3]-P[2])
 
-def avg_width(s: Dict[str, Any]) -> float:
+def width_ctrl_from_stroke(s: Dict[str, Any]) -> np.ndarray:
     wb = s.get("width_bezier")
     if isinstance(wb, list):
         try:
             a = np.asarray(wb, dtype=np.float32).reshape(-1)
-            if len(a):
-                return float(np.mean(a))
+            if len(a) == 4:
+                return np.maximum(a, 0.5).astype(np.float32)
+            if len(a) > 0:
+                m = float(np.mean(a))
+                return np.array([m, m, m, m], dtype=np.float32)
         except Exception:
             pass
     for k in ["width", "width_mean", "stroke_width"]:
         if k in s:
             try:
-                return float(s[k])
+                w = max(float(s[k]), 0.5)
+                return np.array([w, w, w, w], dtype=np.float32)
             except Exception:
                 pass
-    return 10.0
+    return np.array([10.0, 10.0, 10.0, 10.0], dtype=np.float32)
+
+
+def edge_width_ctrl(e: Dict[str, Any]) -> np.ndarray:
+    wb = e.get("width_bezier")
+    if isinstance(wb, (list, tuple, np.ndarray)):
+        try:
+            a = np.asarray(wb, dtype=np.float32).reshape(-1)
+            if len(a) == 4:
+                return np.maximum(a, 0.5).astype(np.float32)
+            if len(a) > 0:
+                m = float(np.mean(a))
+                return np.array([m, m, m, m], dtype=np.float32)
+        except Exception:
+            pass
+    w = max(float(e.get("width", 10.0)), 0.5)
+    return np.array([w, w, w, w], dtype=np.float32)
+
+
+def width_at_ts(width_ctrl, ts) -> np.ndarray:
+    w = np.asarray(width_ctrl, dtype=np.float32).reshape(4)
+    t = np.asarray(ts, dtype=np.float32).reshape(-1)
+    mt = 1.0 - t
+    vals = mt**3*w[0] + 3*mt**2*t*w[1] + 3*mt*t**2*w[2] + t**3*w[3]
+    return np.maximum(vals.astype(np.float32), 0.5)
+
+
+def avg_width(s: Dict[str, Any]) -> float:
+    return float(np.mean(width_ctrl_from_stroke(s)))
+
 
 def bundle_to_edges(bundle: Dict[str, Any], sample_n: int = 64) -> List[Dict[str, Any]]:
     edges = []
@@ -303,11 +343,13 @@ def bundle_to_edges(bundle: Dict[str, Any], sample_n: int = 64) -> List[Dict[str
             eid = int(s.get("bezier_id", i + 1))
         except Exception:
             eid = i + 1
+        wc = width_ctrl_from_stroke(s)
         edges.append({
             "id": eid,
             "path": cubic(P, ts).astype(np.float32),
             "mother_bezier": P,
-            "width": avg_width(s),
+            "width": float(np.mean(wc)),
+            "width_bezier": wc.astype(float).tolist(),
         })
     return edges
 
@@ -357,6 +399,32 @@ def fit_cubic(path) -> Tuple[np.ndarray, float, float]:
     err = np.linalg.norm(cubic(P, t) - path, axis=1)
     return P, float(np.sqrt(np.mean(err**2))), float(np.max(err))
 
+def phase1_resample_merged_path(path: np.ndarray) -> np.ndarray:
+    """
+    贴近一阶段 action_merge 的路径预处理：
+      - stitch 后如果几乎是直线，直接拉成直线均匀采样；
+      - 否则按弧长重采样，避免点密度影响 Bézier 拟合。
+    """
+    path = clean_path(np.asarray(path, dtype=np.float32))
+    if len(path) <= 2:
+        return path
+    diffs = np.diff(path, axis=0)
+    dists = np.linalg.norm(diffs, axis=1)
+    total_len = float(np.sum(dists))
+    chord_len = float(np.linalg.norm(path[-1] - path[0]))
+    if total_len < 1e-6:
+        return path
+    if chord_len > 1.0 and (total_len / chord_len) < 1.05:
+        num_pts = len(path)
+        t_vals = np.linspace(0, 1, num_pts).reshape(-1, 1)
+        return (path[0] * (1 - t_vals) + path[-1] * t_vals).astype(np.float32)
+    cum_dist = np.insert(np.cumsum(dists), 0, 0.0)
+    t_uniform = np.linspace(0, total_len, max(20, int(total_len)))
+    new_x = np.interp(t_uniform, cum_dist, path[:, 0])
+    new_y = np.interp(t_uniform, cum_dist, path[:, 1])
+    return np.column_stack([new_x, new_y]).astype(np.float32)
+
+
 def stitch(a, b) -> Tuple[np.ndarray, str, float]:
     a, b = np.asarray(a, dtype=np.float32), np.asarray(b, dtype=np.float32)
     modes = {
@@ -369,38 +437,139 @@ def stitch(a, b) -> Tuple[np.ndarray, str, float]:
     d, p = modes[mode]
     return clean_path(p), mode, float(d)
 
-def render_mask(edges: List[Dict[str, Any]], size=MASK_SIZE, pad=18) -> np.ndarray:
-    img = Image.new("L", (size, size), 0)
-    draw = ImageDraw.Draw(img)
-    if not edges:
-        return np.array(img, dtype=np.uint8)
-    pts = [np.asarray(e["path"], dtype=np.float32) for e in edges if len(e.get("path", []))]
+def mask_view(edge_groups: List[List[Dict[str, Any]]], size=MASK_SIZE, pad=18):
+    pts = []
+    for edges in edge_groups:
+        for e in edges:
+            p = np.asarray(e.get("path", []), dtype=np.float32)
+            if len(p):
+                pts.append(p)
     if not pts:
-        return np.array(img, dtype=np.uint8)
+        return np.array([0.0, 0.0], dtype=np.float32), 1.0
     allp = np.concatenate(pts, axis=0)
     mn, mx = np.min(allp, axis=0), np.max(allp, axis=0)
     span = np.maximum(mx - mn, 1e-5)
     scale = min((size - 2*pad) / span[0], (size - 2*pad) / span[1])
-    widths = [float(e.get("width", 10.0)) for e in edges]
-    med = max(float(np.median(widths)), 1e-3)
+    return mn.astype(np.float32), float(scale)
 
-    def mp(p):
-        x = (p[0]-mn[0])*scale + pad
-        y = (p[1]-mn[1])*scale + pad
-        return float(x), float(size-y)
+
+def _map_points_to_mask(points: np.ndarray, view, size=MASK_SIZE, pad=18) -> np.ndarray:
+    mn, scale = view
+    pts = np.asarray(points, dtype=np.float32)
+    x = (pts[:, 0] - mn[0]) * scale + pad
+    y = (pts[:, 1] - mn[1]) * scale + pad
+    y = size - y
+    return np.column_stack([x, y]).astype(np.float32)
+
+
+def render_mask(edges: List[Dict[str, Any]], size=MASK_SIZE, pad=18, view=None) -> np.ndarray:
+    """
+    按真实 width_bezier 渲染轮廓 mask。
+    """
+    img = Image.new("L", (size, size), 0)
+    draw = ImageDraw.Draw(img)
+    if not edges:
+        return np.array(img, dtype=np.uint8)
+    if view is None:
+        view = mask_view([edges], size=size, pad=pad)
 
     for e in edges:
-        p = np.asarray(e["path"], dtype=np.float32)
-        if len(p) < 2:
+        path = np.asarray(e.get("path", []), dtype=np.float32)
+        if len(path) < 2:
             continue
-        xy = [mp(q) for q in p]
-        w = max(1, int(round(4.0 * float(e.get("width", 10.0)) / med)))
-        draw.line(xy, fill=255, width=w, joint="curve")
-        r = w / 2
-        for q in [p[0], p[-1]]:
-            x, y = mp(q)
+        if "mother_bezier" in e:
+            try:
+                P = np.asarray(e["mother_bezier"], dtype=np.float32)
+                if P.shape == (4, 2):
+                    ts = np.linspace(0, 1, max(80, len(path)))
+                    path = cubic(P, ts).astype(np.float32)
+                else:
+                    ts = np.linspace(0, 1, len(path))
+            except Exception:
+                ts = np.linspace(0, 1, len(path))
+        else:
+            ts = np.linspace(0, 1, len(path))
+
+        pix = _map_points_to_mask(path, view, size=size, pad=pad)
+        _, scale = view
+        w_pix = np.maximum(width_at_ts(edge_width_ctrl(e), ts) * scale, 0.75)
+
+        dp = np.gradient(pix, axis=0)
+        n = np.zeros_like(dp)
+        n[:, 0], n[:, 1] = -dp[:, 1], dp[:, 0]
+        n = n / (np.linalg.norm(n, axis=1, keepdims=True) + 1e-6)
+
+        upper = pix + n * w_pix[:, None]
+        lower = pix - n * w_pix[:, None]
+        poly = np.vstack([upper, lower[::-1]])
+        draw.polygon([tuple(map(float, q)) for q in poly], fill=255)
+
+        for q, r in [(pix[0], float(w_pix[0])), (pix[-1], float(w_pix[-1]))]:
+            x, y = float(q[0]), float(q[1])
             draw.ellipse([x-r, y-r, x+r, y+r], fill=255)
+
     return np.array(img, dtype=np.uint8)
+
+
+def fit_width_bezier_from_outline(P: np.ndarray, target_edges: List[Dict[str, Any]], size=MASK_SIZE, pad=18) -> Tuple[np.ndarray, Dict[str, Any]]:
+    """
+    从合并前两条带宽度 stroke 的轮廓中回归合并后 width_bezier。
+    逻辑类似 regress_width_dt_fast：目标轮廓 mask -> distance transform -> 中心线采样 -> 三次宽度拟合。
+    """
+    P = np.asarray(P, dtype=np.float32)
+    ts = np.linspace(0, 1, 96)
+    curve = cubic(P, ts).astype(np.float32)
+
+    base_w = float(np.mean([np.mean(edge_width_ctrl(e)) for e in target_edges]))
+    tmp_edge = {"id": -999, "path": curve, "mother_bezier": P, "width_bezier": [base_w]*4}
+    view = mask_view([target_edges, [tmp_edge]], size=size, pad=pad)
+    target_mask = render_mask(target_edges, size=size, pad=pad, view=view)
+
+    if distance_transform_edt is None or int((target_mask > 0).sum()) <= 0:
+        vals, lens = [], []
+        for e in target_edges:
+            vals.append(float(np.mean(edge_width_ctrl(e))))
+            p = np.asarray(e.get("path", []), dtype=np.float32)
+            lens.append(float(np.sum(np.linalg.norm(np.diff(p, axis=0), axis=1))) if len(p) > 1 else 1.0)
+        w = float(np.average(vals, weights=np.maximum(lens, 1e-6)))
+        return np.array([w, w, w, w], dtype=np.float32), {"width_fit_mode": "fallback_weighted_mean"}
+
+    dt = distance_transform_edt(target_mask > 0).astype(np.float32)
+    pix = _map_points_to_mask(curve, view, size=size, pad=pad)
+    xs = np.clip(np.round(pix[:, 0]).astype(int), 0, size - 1)
+    ys = np.clip(np.round(pix[:, 1]).astype(int), 0, size - 1)
+    _, scale = view
+    w_samples = dt[ys, xs] / max(scale, 1e-6)
+
+    positive = w_samples[w_samples > 0.25]
+    if len(positive) == 0:
+        w0 = base_w
+        return np.array([w0, w0, w0, w0], dtype=np.float32), {"width_fit_mode": "fallback_no_positive_dt"}
+
+    med = float(np.median(positive))
+    w_samples = np.where(w_samples > 0.25, w_samples, med)
+
+    t = ts.astype(np.float32)
+    mt = 1.0 - t
+    A = np.stack([mt**3, 3*mt**2*t, 3*mt*t**2, t**3], axis=1)
+    try:
+        wc, *_ = np.linalg.lstsq(A, w_samples, rcond=None)
+    except Exception:
+        wc = np.array([med, med, med, med], dtype=np.float32)
+
+    old_ws = np.concatenate([edge_width_ctrl(e) for e in target_edges])
+    lo = max(0.5, float(np.percentile(old_ws, 5)) * 0.45)
+    hi = max(lo + 0.5, float(np.percentile(old_ws, 95)) * 2.2)
+    wc = np.clip(np.asarray(wc, dtype=np.float32), lo, hi)
+
+    pred = A @ wc
+    rms = float(np.sqrt(np.mean((pred - w_samples) ** 2)))
+    return wc.astype(np.float32), {
+        "width_fit_mode": "distance_transform_lstsq",
+        "width_rms_error": round(rms, 3),
+        "width_ctrl": [round(float(x), 3) for x in wc.tolist()],
+        "width_clip_range": [round(float(lo), 3), round(float(hi), 3)],
+    }
 
 def mask_iou(a, b) -> float:
     A, B = a > 0, b > 0
@@ -770,26 +939,56 @@ class Stage1Refiner:
     def try_merge(self, edges, ia, ib):
         e1, e2 = edges[ia], edges[ib]
         path, mode, ed = stitch(e1["path"], e2["path"])
-        rep = {"type":"Merge","old_ids":[int(e1["id"]),int(e2["id"])],"endpoint_dist":round(ed,3),"mode":mode,"accepted":False}
+        path = phase1_resample_merged_path(path)
+
+        rep = {"type":"Merge","old_ids":[int(e1["id"]),int(e2["id"])],
+               "endpoint_dist":round(ed,3),"mode":mode,"accepted":False}
+
         if ed > MERGE_ENDPOINT_DIST_MAX:
-            rep["reject_reason"] = "endpoint too far"; return False, edges, rep
+            rep["reject_reason"] = f"endpoint too far: {ed:.3f} > {MERGE_ENDPOINT_DIST_MAX}"
+            return False, edges, rep
+
         P, rms, mx = fit_cubic(path)
         rep["rms_error"], rep["max_error"] = round(rms,3), round(mx,3)
+
         if rms > MERGE_MAX_BEZIER_RMS_ERROR or mx > MERGE_MAX_BEZIER_MAX_ERROR:
-            rep["reject_reason"] = "bezier fit error too high"; return False, edges, rep
-        l1 = float(np.sum(np.linalg.norm(np.diff(e1["path"], axis=0), axis=1)))
-        l2 = float(np.sum(np.linalg.norm(np.diff(e2["path"], axis=0), axis=1)))
-        w = (float(e1.get("width",10))*l1 + float(e2.get("width",10))*l2) / max(l1+l2, 1e-6)
-        new = {"id":max(int(e["id"]) for e in edges)+1, "path":cubic(P, np.linspace(0,1,max(len(path),64))).astype(np.float32),
-               "mother_bezier":P, "width":float(w)}
-        before, after = render_mask([e1,e2]), render_mask([new])
+            reasons = []
+            if rms > MERGE_MAX_BEZIER_RMS_ERROR:
+                reasons.append(f"rms_error {rms:.3f} > threshold {MERGE_MAX_BEZIER_RMS_ERROR}")
+            if mx > MERGE_MAX_BEZIER_MAX_ERROR:
+                reasons.append(f"max_error {mx:.3f} > threshold {MERGE_MAX_BEZIER_MAX_ERROR}")
+            rep["reject_reason"] = "bezier fit error too high: " + "; ".join(reasons)
+            return False, edges, rep
+
+        # 关键修改：合并后 width 不是平均值，而是从合并前轮廓中重新回归 width_bezier。
+        wc, wdbg = fit_width_bezier_from_outline(P, [e1, e2], size=MASK_SIZE)
+        rep.update(wdbg)
+
+        new = {"id":max(int(e["id"]) for e in edges)+1,
+               "path":cubic(P, np.linspace(0,1,max(len(path),96))).astype(np.float32),
+               "mother_bezier":P.astype(np.float32),
+               "width":float(np.mean(wc)),
+               "width_bezier":wc.astype(float).tolist()}
+
+        shared_view = mask_view([[e1, e2], [new]], size=MASK_SIZE)
+        before = render_mask([e1,e2], view=shared_view)
+        after = render_mask([new], view=shared_view)
         iou = mask_iou(before, after)
         area_delta = abs(int((after>0).sum()) - int((before>0).sum())) / max(int((before>0).sum()), 1)
         rep["mask_iou"], rep["area_delta_ratio"] = round(iou,4), round(area_delta,4)
+
         if iou < MERGE_MIN_MASK_IOU or area_delta > MERGE_MAX_AREA_DELTA_RATIO:
-            rep["reject_reason"] = "outline guard rejected"; return False, edges, rep
+            reasons = []
+            if iou < MERGE_MIN_MASK_IOU:
+                reasons.append(f"mask_iou {iou:.4f} < threshold {MERGE_MIN_MASK_IOU}")
+            if area_delta > MERGE_MAX_AREA_DELTA_RATIO:
+                reasons.append(f"area_delta_ratio {area_delta:.4f} > threshold {MERGE_MAX_AREA_DELTA_RATIO}")
+            rep["reject_reason"] = "outline guard rejected: " + "; ".join(reasons)
+            return False, edges, rep
+
         out = [copy.deepcopy(e) for k,e in enumerate(edges) if k not in (ia,ib)] + [new]
-        rep["accepted"], rep["new_id"], rep["new_width"] = True, int(new["id"]), round(float(w),3)
+        rep["accepted"], rep["new_id"] = True, int(new["id"])
+        rep["new_width_bezier"] = [round(float(x),3) for x in wc.tolist()]
         return True, out, rep
 
     def try_delete(self, edges, idx):
@@ -798,7 +997,10 @@ class Stage1Refiner:
         if len(edges) <= MIN_STROKES_AFTER_CLEAN:
             rep["reject_reason"] = "too few strokes"; return False, edges, rep
         rem = [copy.deepcopy(x) for k,x in enumerate(edges) if k != idx]
-        target, rem_mask, full = render_mask([e]), render_mask(rem), render_mask(edges)
+        shared_view = mask_view([[e], rem, edges], size=MASK_SIZE)
+        target = render_mask([e], view=shared_view)
+        rem_mask = render_mask(rem, view=shared_view)
+        full = render_mask(edges, view=shared_view)
         target_area = max(int((target>0).sum()), 1)
         uncovered_target = np.logical_and(target > 0, rem_mask == 0).sum()
         covered = 1.0 - float(uncovered_target) / target_area
@@ -812,36 +1014,182 @@ class Stage1Refiner:
         rep["accepted"] = True
         return True, rem, rep
 
+    def all_close_merge_candidates(self, edges, taboo, locked=None, max_candidates=16):
+        """
+        几何 fallback：不完全相信模型的 action type。
+        当模型连续建议 Delete 但被覆盖率护栏拒绝时，扫描所有近端点 pair，
+        例如 E2E: 1-2, 2-3, 5-6 这种 pair，并按 endpoint_dist 排序。
+        """
+        locked = locked or set()
+        cand = []
+        for i in range(len(edges)):
+            if edges[i]["id"] in locked:
+                continue
+            for j in range(i+1, len(edges)):
+                if edges[j]["id"] in locked:
+                    continue
+                pair = tuple(sorted([int(edges[i]["id"]), int(edges[j]["id"])]))
+                if pair in taboo:
+                    continue
+                _, mode, d = stitch(edges[i]["path"], edges[j]["path"])
+                if d <= MERGE_ENDPOINT_DIST_MAX:
+                    cand.append((float(d), i, j, mode, pair))
+        cand.sort(key=lambda x: (x[0], x[4][0], x[4][1]))
+        return cand[:max_candidates]
+
+    def try_fallback_merge_scan(self, edges, taboo, locked, step, trigger, max_candidates=12, report_top_k=6):
+        """
+        Delete 被拒绝后，主动尝试最接近的几何 merge 候选。
+        若有可接受 merge，直接执行；若都失败，写一个 FallbackMergeScan 报告，
+        里面列出最接近的若干 pair 以及 reject_reason，方便人工判断。
+        """
+        candidates = self.all_close_merge_candidates(edges, taboo, locked=locked, max_candidates=max_candidates)
+        summary = {
+            "type": "FallbackMergeScan",
+            "trigger": trigger,
+            "step": step,
+            "accepted": False,
+            "candidate_count": len(candidates),
+            "top_candidates": [],
+        }
+
+        for rank, (dist, i, j, mode, pair) in enumerate(candidates):
+            ok, new_edges, rep = self.try_merge(edges, i, j)
+            rep["fallback_rank"] = rank
+            rep["fallback_trigger"] = trigger
+            rep["fallback_pair"] = [int(edges[i]["id"]), int(edges[j]["id"])]
+            rep["fallback_endpoint_dist"] = round(float(dist), 3)
+
+            if ok:
+                rep["fallback_after_rejected_action"] = True
+                rep["step"] = step
+                return True, new_edges, rep
+
+            taboo.add(pair)
+            if len(summary["top_candidates"]) < report_top_k:
+                summary["top_candidates"].append(rep)
+
+        if not candidates:
+            summary["note"] = "No close endpoint pair found under MERGE_ENDPOINT_DIST_MAX."
+        return False, edges, summary
+
     def refine(self, bundle, uid):
         before_topo = compute_topo(bundle)
         edges = bundle_to_edges(bundle, sample_n=64)
         locked, taboo, ops, rejected = set(), set(), [], []
+
         for step in range(MAX_REFINE_STEPS):
             if len(ops) >= MAX_ACCEPTED_OPS or len(edges) <= MIN_STROKES_AFTER_CLEAN:
                 break
+
             act, idx, dbg = self.predict(edges, locked)
             if act == "Done" or idx is None:
+                # 即使模型说 Done，也做一次轻量 fallback merge 扫描：
+                # 如果存在非常明显的 E2E 可合并 pair，它仍然有机会被执行。
+                ok, new_edges, scan = self.try_fallback_merge_scan(
+                    edges, taboo, locked, step,
+                    trigger="model_done_or_no_pointer",
+                    max_candidates=8,
+                    report_top_k=4,
+                )
+                if ok:
+                    edges = new_edges
+                    ops.append(scan)
+                    continue
+                if scan.get("candidate_count", 0) > 0:
+                    rejected.append(scan)
                 break
+
             if act == "Delete":
                 ok, new_edges, rep = self.try_delete(edges, idx)
                 rep["step"], rep["model_debug"] = step, dbg
-                if ok: edges = new_edges; ops.append(rep)
-                else: rejected.append(rep); locked.add(int(edges[idx]["id"]))
-            elif act == "Merge":
+
+                if ok:
+                    edges = new_edges
+                    ops.append(rep)
+                    continue
+
+                # 先记录 Delete 被拒绝。
+                rejected.append(rep)
+
+                # 关键新增：Delete 被拒绝后，不马上进入下一轮 Delete，
+                # 而是扫描所有 E2E / 近端点 pair，尝试最合理的 Merge。
+                target_id = int(edges[idx]["id"])
+                ok_m, merge_edges, merge_rep = self.try_fallback_merge_scan(
+                    edges, taboo, locked,
+                    step,
+                    trigger=f"delete_rejected_target_{target_id}",
+                    max_candidates=12,
+                    report_top_k=6,
+                )
+
+                if ok_m:
+                    merge_rep["model_debug"] = {
+                        "mode": "fallback_after_delete_reject",
+                        "original_model_action": "Delete",
+                        "delete_target_id": target_id,
+                    }
+                    edges = merge_edges
+                    ops.append(merge_rep)
+                    continue
+
+                if merge_rep.get("candidate_count", 0) > 0:
+                    rejected.append(merge_rep)
+
+                # fallback merge 也没成，才 lock 这个 Delete target，避免模型反复删同一条。
+                locked.add(target_id)
+                continue
+
+            if act == "Merge":
                 j, _ = self.find_partner(idx, edges, taboo, locked)
                 if j is None:
-                    locked.add(int(edges[idx]["id"]))
-                    rejected.append({"step":step,"type":"Merge","old_id":int(edges[idx]["id"]),"accepted":False,"reject_reason":"no partner","model_debug":dbg})
+                    target_id = int(edges[idx]["id"])
+                    locked.add(target_id)
+                    rejected.append({
+                        "step": step,
+                        "type": "Merge",
+                        "old_id": target_id,
+                        "accepted": False,
+                        "reject_reason": "no partner",
+                        "model_debug": dbg,
+                    })
                     continue
+
                 ok, new_edges, rep = self.try_merge(edges, idx, j)
                 rep["step"], rep["model_debug"] = step, dbg
-                if ok: edges = new_edges; ops.append(rep)
-                else:
-                    rejected.append(rep)
-                    taboo.add(tuple(sorted([int(edges[idx]["id"]), int(edges[j]["id"])])))
-                    locked.add(int(edges[idx]["id"]))
-            else:
-                break
+                if ok:
+                    edges = new_edges
+                    ops.append(rep)
+                    continue
+
+                rejected.append(rep)
+                taboo.add(tuple(sorted([int(edges[idx]["id"]), int(edges[j]["id"])])))
+
+                # 模型指出的 merge pair 失败后，也扫描其它近端点 pair。
+                ok_m, merge_edges, scan = self.try_fallback_merge_scan(
+                    edges, taboo, locked,
+                    step,
+                    trigger=f"model_merge_rejected_target_{int(edges[idx]['id'])}",
+                    max_candidates=10,
+                    report_top_k=5,
+                )
+                if ok_m:
+                    scan["model_debug"] = {
+                        "mode": "fallback_after_merge_reject",
+                        "original_model_action": "Merge",
+                        "original_model_target_id": int(edges[idx]["id"]),
+                    }
+                    edges = merge_edges
+                    ops.append(scan)
+                    continue
+                if scan.get("candidate_count", 0) > 0:
+                    rejected.append(scan)
+
+                locked.add(int(edges[idx]["id"]))
+                continue
+
+            break
+
         cleaned = rebuild_bundle(bundle, edges, uid, ops)
         cleaned["clean_meta"]["rejected_ops"] = rejected
         cleaned["clean_meta"]["topology_text_before"] = before_topo["topology_text"]
@@ -862,13 +1210,13 @@ def rebuild_bundle(original, edges, uid, ops):
         c = cubic(P, ts)
         length = float(np.sum(np.linalg.norm(np.diff(c, axis=0), axis=1)))
         mn, mx = np.min(c, axis=0), np.max(c, axis=0)
-        w = float(e.get("width", 10.0))
+        wc = edge_width_ctrl(e)
         strokes.append({"bezier_id":new_id,
                         "stroke_type":"closed" if np.linalg.norm(P[0]-P[3]) < TOPO_THRESH else "open",
                         "length":round(length,2),
                         "bbox":[round(float(mn[0]),1),round(float(mn[1]),1),round(float(mx[0]),1),round(float(mx[1]),1)],
                         "mother_bezier":P.astype(float).tolist(),
-                        "width_bezier":[w,w,w,w]})
+                        "width_bezier":[round(float(x), 3) for x in wc.tolist()]})
     b["strokes"] = strokes
     topo = compute_topo(b)
     b["topology_events"], b["cycles"] = topo["topology_events"], topo["cycles"]
@@ -922,13 +1270,17 @@ class App:
         self.pool_root = tk.StringVar(value=POOL_ROOT_DEFAULT)
         self.max_mb = tk.IntVar(value=DEFAULT_MAX_JSON_MB)
         self.preview_px = tk.IntVar(value=PREVIEW_SIZE)
+        self.page_rows = tk.IntVar(value=PAGE_ROWS_DEFAULT)
+        self.page_cols = tk.IntVar(value=PAGE_COLS_DEFAULT)
+        self.page_idx = 0
         self.status = tk.StringVar(value="Ready")
         self.refiner = Stage1Refiner()
         self.good_raw, self.good_by_uid, self.uid_outer, self.cleaned, self.pending = {}, {}, {}, {}, []
         self.selected_uid = None
         self.photos = []
         self._ui()
-        self.refresh()
+        self.status.set("UI ready. Loading pools after first paint...")
+        self.root.after(100, self.refresh)
 
     def _ui(self):
         top = ttk.Frame(self.root); top.pack(side="top", fill="x", padx=8, pady=6)
@@ -937,10 +1289,16 @@ class App:
         ttk.Button(top, text="Browse", command=self.browse).pack(side="left")
         ttk.Label(top, text="Preview:").pack(side="left", padx=(12,2))
         ttk.Spinbox(top, from_=100, to=260, textvariable=self.preview_px, width=6).pack(side="left")
+        ttk.Label(top, text="Rows:").pack(side="left", padx=(12,2))
+        ttk.Spinbox(top, from_=1, to=20, textvariable=self.page_rows, width=4).pack(side="left")
+        ttk.Label(top, text="Cols:").pack(side="left", padx=(8,2))
+        ttk.Spinbox(top, from_=1, to=10, textvariable=self.page_cols, width=4).pack(side="left")
         ttk.Label(top, text="JSON MB:").pack(side="left", padx=(12,2))
         ttk.Spinbox(top, from_=10, to=95, textvariable=self.max_mb, width=6).pack(side="left")
         row = ttk.Frame(self.root); row.pack(side="top", fill="x", padx=8, pady=4)
         ttk.Button(row, text="Refresh Pools", command=self.refresh).pack(side="left", padx=3)
+        ttk.Button(row, text="Prev Page", command=self.prev_page).pack(side="left", padx=3)
+        ttk.Button(row, text="Next Page", command=self.next_page).pack(side="left", padx=3)
         ttk.Button(row, text="Preview Clean Selected", command=self.preview_selected).pack(side="left", padx=3)
         ttk.Button(row, text="Open Cleaned Preview Window", command=self.open_cleaned).pack(side="left", padx=3)
         ttk.Button(row, text="Write Cleaned Pool", command=lambda: self.write_cleaned(True)).pack(side="left", padx=3)
@@ -985,18 +1343,58 @@ class App:
             else:
                 cleaned_uids.add(str(k))
         self.pending = [u for u in sorted(self.good_by_uid.keys()) if u not in cleaned_uids]
-        self.status.set(f"Good={len(self.good_by_uid)} | Cleaned={len(cleaned_uids)} | Pending={len(self.pending)} | dup_hidden={dup} | Model: {self.refiner.status}")
+        self.page_idx = 0
+        page_size = max(1, int(self.page_rows.get()) * int(self.page_cols.get()))
+        total_pages = max(1, math.ceil(len(self.pending) / page_size))
+        self.status.set(
+            f"Good={len(self.good_by_uid)} | Cleaned={len(cleaned_uids)} | Pending={len(self.pending)} "
+            f"| Page=1/{total_pages} size={page_size} | dup_hidden={dup} | Model: {self.refiner.status}"
+        )
+        self.render_grid()
+
+    def _page_size(self):
+        return max(1, int(self.page_rows.get()) * int(self.page_cols.get()))
+
+    def _total_pages(self):
+        return max(1, math.ceil(len(self.pending) / self._page_size()))
+
+    def prev_page(self):
+        self.page_idx = max(0, self.page_idx - 1)
+        self.render_grid()
+
+    def next_page(self):
+        self.page_idx = min(self._total_pages() - 1, self.page_idx + 1)
         self.render_grid()
 
     def render_grid(self):
         self.clear()
         size = int(self.preview_px.get())
-        cols = 4
-        for idx, uid in enumerate(self.pending):
+        rows = max(1, int(self.page_rows.get()))
+        cols = max(1, int(self.page_cols.get()))
+        page_size = rows * cols
+        total_pages = self._total_pages()
+        self.page_idx = max(0, min(self.page_idx, total_pages - 1))
+
+        start_i = self.page_idx * page_size
+        end_i = min(len(self.pending), start_i + page_size)
+        visible = self.pending[start_i:end_i]
+
+        info = ttk.Label(
+            self.scroll.inner,
+            text=(
+                f"Page {self.page_idx + 1}/{total_pages} | showing pending[{start_i}:{end_i}] "
+                f"of {len(self.pending)} | grid={rows}x{cols}"
+            ),
+            foreground="blue",
+        )
+        info.grid(row=0, column=0, columnspan=cols, sticky="w", padx=8, pady=6)
+
+        for local_idx, uid in enumerate(visible):
+            idx = start_i + local_idx
             b = self.good_by_uid[uid]
-            r,c = divmod(idx, cols)
+            r,c = divmod(local_idx, cols)
             frame = ttk.Frame(self.scroll.inner, relief="groove", borderwidth=2)
-            frame.grid(row=r, column=c, padx=8, pady=8, sticky="n")
+            frame.grid(row=r + 1, column=c, padx=8, pady=8, sticky="n")
             img = render_bundle(b, size)
             ph = ImageTk.PhotoImage(img); self.photos.append(ph)
             ttk.Label(frame, image=ph).pack(side="top", padx=4, pady=4)
@@ -1006,6 +1404,11 @@ class App:
             ttk.Label(frame, text=txt, font=("Consolas",8), justify="center", wraplength=size*2+50).pack(side="top")
             ttk.Button(frame, text="Select", command=lambda u=uid:self.select(u)).pack(side="left", padx=4, pady=4)
             ttk.Button(frame, text="Clean Preview", command=lambda u=uid:self.preview_uid(u)).pack(side="left", padx=4, pady=4)
+
+        self.status.set(
+            f"Good={len(self.good_by_uid)} | Cleaned={len(self.cleaned)} | Pending={len(self.pending)} "
+            f"| Page={self.page_idx + 1}/{total_pages} size={page_size} | Model: {self.refiner.status}"
+        )
 
     def select(self, uid):
         self.selected_uid = uid
