@@ -266,6 +266,70 @@ def compute_topo_html(strokes: list) -> str:
     return "".join(html)
 
 
+def _fmt_coord(pt) -> str:
+    try:
+        return f"({float(pt[0]):.1f}, {float(pt[1]):.1f})"
+    except Exception:
+        return "(?)"
+
+
+def describe_action_html(op: dict) -> str:
+    """生成当前步骤的操作说明 HTML。"""
+    if not isinstance(op, dict):
+        return "<div style='color:#777; margin-bottom:5px;'>[操作] 初始状态，无移动。</div>"
+
+    action = op.get("action", "?")
+    before = op.get("before")
+    after = op.get("after")
+    merged_sources = op.get("merged_sources") or []
+    merged_note = ""
+    if merged_sources:
+        merged_note = f" <span style='color:#9C27B0;'>(合并 {len(merged_sources)} 次后续微调)</span>"
+
+    if action == "CONTROL_MOVE":
+        stroke = op.get("stroke", "?")
+        control = op.get("control", "?")
+        source = op.get("source_action")
+        source_note = ""
+        if source == "T_ATTACH":
+            source_note = f"；来源：重复 T_ATTACH 到 stroke {op.get('source_host', '?')}"
+        elif source == "SNAP":
+            source_note = f"；来源：重复 SNAP 到 stroke {op.get('source_host_stroke', '?')} {op.get('source_host_endpoint', '?')}"
+        return (
+            "<div style='background:#FFF8E1; border:1px solid #FFE082; padding:5px; margin-bottom:5px;'>"
+            f"<b style='color:#E65100;'>[本步移动]</b> "
+            f"stroke <b>{stroke}</b> 的 <b>{control}</b>："
+            f"{_fmt_coord(before)} → {_fmt_coord(after)}{merged_note}{source_note}"
+            "</div>"
+        )
+
+    if action == "T_ATTACH":
+        return (
+            "<div style='background:#E8F5E9; border:1px solid #A5D6A7; padding:5px; margin-bottom:5px;'>"
+            f"<b style='color:#2E7D32;'>[建立 T 连接]</b> "
+            f"guest stroke <b>{op.get('guest', '?')}</b> 的 <b>{op.get('guest_endpoint', '?')}</b> "
+            f"搭到 host stroke <b>{op.get('host', '?')}</b>，host_t={float(op.get('host_t', 0.0)):.3f}："
+            f"{_fmt_coord(before)} → {_fmt_coord(after)}{merged_note}"
+            "</div>"
+        )
+
+    if action == "SNAP":
+        return (
+            "<div style='background:#E3F2FD; border:1px solid #90CAF9; padding:5px; margin-bottom:5px;'>"
+            f"<b style='color:#1565C0;'>[建立端点吸附]</b> "
+            f"stroke <b>{op.get('stroke', '?')}</b> 的 <b>{op.get('endpoint', '?')}</b> "
+            f"吸附到 stroke <b>{op.get('host_stroke', '?')}</b> 的 <b>{op.get('host_endpoint', '?')}</b>："
+            f"{_fmt_coord(before)} → {_fmt_coord(after)}{merged_note}"
+            "</div>"
+        )
+
+    return (
+        "<div style='background:#F5F5F5; border:1px solid #DDD; padding:5px; margin-bottom:5px;'>"
+        f"<b>[{action}]</b> {_fmt_coord(before)} → {_fmt_coord(after)}{merged_note}"
+        "</div>"
+    )
+
+
 # ── edit_history 帧重建 ──────────────────────────────────────────────────────
 def _pidx(pname: str) -> int:
     """'P0' -> 0, 'P3' -> 3"""
@@ -280,14 +344,9 @@ def replay_frames(phase1_strokes: list, edit_history: list):
     从 Phase 1 最终形态（annotations/{字体名}.json 中的 strokes）出发，
     正向逐步应用 edit_history 中的每个操作，生成每帧的 strokes 快照序列。
 
-    参数：
-        phase1_strokes: Phase 1 最终 strokes（Phase 2 的输入初始状态），
-                        每条 stroke 含 bezier_id / mother_bezier 字段。
-        edit_history:   Phase 2 的增量操作列表（CONTROL_MOVE / SNAP / T_ATTACH）。
-
     返回：
-        [(strokes_snapshot, action_name), ...]
-        第 0 帧为 "Initial"（Phase 1 最终形态），后续每帧对应一次 edit_history 操作。
+        [(strokes_snapshot, action_name, action_op), ...]
+        第 0 帧 action_op 为 None，后续每帧对应一次 edit_history 操作。
     """
     # 以 Phase 1 最终形态为起点（深拷贝，防止修改原数据）
     strokes = copy.deepcopy(phase1_strokes)
@@ -319,22 +378,23 @@ def replay_frames(phase1_strokes: list, edit_history: list):
                 sid_map[bid]["mother_bezier"][pidx] = list(after)
 
     # 第 0 帧：Phase 1 最终形态（Phase 2 标注的起点）
-    frames = [(copy.deepcopy(strokes), "Initial (Phase 1 Final)")]
+    frames = [(copy.deepcopy(strokes), "Initial (Phase 1 Final)", None)]
 
     # 正向逐步 replay
     for op in edit_history:
         _apply_op(op)
-        frames.append((copy.deepcopy(strokes), op.get("action", "?")))
+        frames.append((copy.deepcopy(strokes), op.get("action", "?"), copy.deepcopy(op)))
 
     return frames
 
 
 # ── 渲染引擎 ────────────────────────────────────────────────────────────────
 class StrokeRenderer:
-    def render_strokes(self, strokes: list, size=(2.5, 2.5)) -> QPixmap:
+    def render_strokes(self, strokes: list, size=(2.5, 2.5), highlight_op: dict = None) -> QPixmap:
         """
         将 strokes（含 mother_bezier）渲染为彩色贝塞尔曲线图，
         每条笔画用 tab20 色板着色，起点用圆点标记。
+        若 highlight_op 含 before/after，则额外绘制红色移动箭头。
         """
         fig = plt.figure(figsize=size, dpi=80)
         fig.patch.set_facecolor('#FFFFFF')
@@ -362,8 +422,48 @@ class StrokeRenderer:
                     fontweight='bold',
                     bbox=dict(facecolor='white', alpha=0.75, edgecolor='none', pad=1))
 
+        self._draw_move_highlight(ax, highlight_op)
+
         plt.tight_layout(pad=0)
         return self._fig_to_pixmap(fig)
+
+    def _draw_move_highlight(self, ax, op: dict):
+        """在图上标识当前操作的 before → after 移动路径。"""
+        if not isinstance(op, dict):
+            return
+        before = op.get("before")
+        after = op.get("after")
+        if not isinstance(before, (list, tuple)) or not isinstance(after, (list, tuple)):
+            return
+        if len(before) < 2 or len(after) < 2:
+            return
+        try:
+            bx, by = float(before[0]), float(before[1])
+            axx, ayy = float(after[0]), float(after[1])
+        except Exception:
+            return
+
+        # 移动箭头：红色虚线 + 起止点标记 + after 光圈
+        ax.annotate(
+            "",
+            xy=(axx, ayy), xytext=(bx, by),
+            arrowprops=dict(
+                arrowstyle="->",
+                color="#D32F2F",
+                lw=2.6,
+                linestyle="--",
+                shrinkA=0,
+                shrinkB=0,
+                mutation_scale=16,
+            ),
+            zorder=20,
+        )
+        ax.scatter([bx], [by], s=42, marker="x", c="#757575", linewidths=2.0, zorder=21)
+        ax.scatter([axx], [ayy], s=70, marker="o", facecolors="none", edgecolors="#D32F2F", linewidths=2.5, zorder=22)
+        ax.text(bx + 4, by + 4, "before", color="#616161", fontsize=8,
+                bbox=dict(facecolor="white", alpha=0.85, edgecolor="none", pad=1), zorder=23)
+        ax.text(axx + 4, ayy - 4, "after", color="#D32F2F", fontsize=8, fontweight="bold",
+                bbox=dict(facecolor="white", alpha=0.85, edgecolor="none", pad=1), zorder=23)
 
     def render_thumbnail_from_strokes(self, strokes: list, size=(1.5, 1.5)) -> QPixmap:
         """微缩图：纯黑白笔画轮廓"""
@@ -569,7 +669,7 @@ class Phase2PreviewWorkspace(QWidget):
 
         # ── 区域 A：固定参考图（初始状态） ─────────────────────────────────
         ref_layout = QHBoxLayout()
-        init_strokes, _ = frames[0]
+        init_strokes, _, _ = frames[0]
         ref_label = QLabel(
             "🎯 <b>Phase 1 Final State (Phase 2 Input)</b><br>"
             "<span style='color:#757575; font-size:11px;'>From annotations/ — before any Phase 2 edit</span>"
@@ -600,7 +700,7 @@ class Phase2PreviewWorkspace(QWidget):
         time_layout.setAlignment(Qt.AlignLeft)
         time_layout.setSpacing(12)
 
-        for i, (frame_strokes, action_name) in enumerate(frames):
+        for i, (frame_strokes, action_name, action_op) in enumerate(frames):
             # 操作标签 + 箭头
             if i > 0:
                 arrow_wrap = QVBoxLayout()
@@ -636,7 +736,7 @@ class Phase2PreviewWorkspace(QWidget):
 
             # 1. 彩色贝塞尔笔画图
             lbl_img = QLabel()
-            pix = self.renderer.render_strokes(frame_strokes, size=(2.5, 2.5))
+            pix = self.renderer.render_strokes(frame_strokes, size=(2.5, 2.5), highlight_op=action_op)
             lbl_img.setPixmap(pix)
             lbl_img.setAlignment(Qt.AlignCenter)
             card_layout.addWidget(lbl_img)
@@ -665,8 +765,8 @@ class Phase2PreviewWorkspace(QWidget):
             )
             topo_box.setMinimumWidth(260)
             topo_box.setMaximumWidth(320)
-            topo_box.setMaximumHeight(120)
-            topo_html = compute_topo_html(frame_strokes)
+            topo_box.setMaximumHeight(185)
+            topo_html = describe_action_html(action_op) + compute_topo_html(frame_strokes)
             topo_box.setHtml(topo_html)
             card_layout.addWidget(topo_box)
 
