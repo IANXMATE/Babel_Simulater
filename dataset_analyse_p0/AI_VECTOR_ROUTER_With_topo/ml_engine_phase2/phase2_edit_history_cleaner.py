@@ -10,9 +10,9 @@ Phase 2 人工标注历史清理工具。
 核心规则：
     1. 第一次 SNAP / T_ATTACH 保留，表示“建立拓扑连接”。
     2. 后续同一连接对象上的重复 SNAP / T_ATTACH 视为“已连接结构的位置调整”，
-       转换为 CONTROL_MOVE。
-    3. 连续作用在同一 stroke/control 上的 CONTROL_MOVE 可以合并为一次移动，
-       before 使用第一步 before，after 使用最后一步 after。
+       先转换为 CONTROL_MOVE。
+    3. 在完成重复连接转换之后，全局合并同一 stroke/control 的多步 CONTROL_MOVE，
+       即使这些移动中间穿插了其他控制点移动。
 
 该模块同时供：
     - action_stage2_preview_tool_cleaned.py
@@ -45,15 +45,8 @@ def _round_coord(coord: Any) -> Optional[List[float]]:
         return None
 
 
-def _same_coord(a: Any, b: Any, eps: float = 1e-6) -> bool:
-    aa, bb = _round_coord(a), _round_coord(b)
-    if aa is None or bb is None:
-        return False
-    return abs(aa[0] - bb[0]) <= eps and abs(aa[1] - bb[1]) <= eps
-
-
 def _control_move_key(op: Dict[str, Any]) -> Optional[Tuple[str, str]]:
-    """CONTROL_MOVE 的合并 key：同一 stroke + control。"""
+    """CONTROL_MOVE 的全局合并 key：同一 stroke + control。"""
     if op.get("action") != "CONTROL_MOVE":
         return None
     stroke = op.get("stroke")
@@ -72,7 +65,6 @@ def _repeat_relation_key(op: Dict[str, Any]) -> Optional[Tuple[Any, ...]]:
         host = op.get("host")
         if guest is None or guest_endpoint is None or host is None:
             return None
-        # 同一 guest 端点搭在同一 host 曲线上，多次出现视为后续位置调整。
         return ("T_ATTACH", str(guest), str(guest_endpoint), str(host))
 
     if action == "SNAP":
@@ -82,7 +74,6 @@ def _repeat_relation_key(op: Dict[str, Any]) -> Optional[Tuple[Any, ...]]:
         host_endpoint = op.get("host_endpoint")
         if stroke is None or endpoint is None or host_stroke is None or host_endpoint is None:
             return None
-        # 同一端点与同一 host 端点多次 SNAP，后续视为连接后的整体移动。
         return ("SNAP", str(stroke), str(endpoint), str(host_stroke), str(host_endpoint))
 
     return None
@@ -101,7 +92,7 @@ def _relation_op_to_control_move(op: Dict[str, Any]) -> Optional[Dict[str, Any]]
         guest_endpoint = op.get("guest_endpoint")
         if guest is None or guest_endpoint is None:
             return None
-        new_op = {
+        return {
             "action": "CONTROL_MOVE",
             "stroke": int(guest) if str(guest).isdigit() else guest,
             "control": str(guest_endpoint),
@@ -111,14 +102,13 @@ def _relation_op_to_control_move(op: Dict[str, Any]) -> Optional[Dict[str, Any]]
             "source_host": op.get("host"),
             "source_host_t": op.get("host_t"),
         }
-        return new_op
 
     if action == "SNAP":
         stroke = op.get("stroke")
         endpoint = op.get("endpoint")
         if stroke is None or endpoint is None:
             return None
-        new_op = {
+        return {
             "action": "CONTROL_MOVE",
             "stroke": int(stroke) if str(stroke).isdigit() else stroke,
             "control": str(endpoint),
@@ -128,7 +118,6 @@ def _relation_op_to_control_move(op: Dict[str, Any]) -> Optional[Dict[str, Any]]
             "source_host_stroke": op.get("host_stroke"),
             "source_host_endpoint": op.get("host_endpoint"),
         }
-        return new_op
 
     return None
 
@@ -145,58 +134,25 @@ def _normalize_original_op(op: Dict[str, Any]) -> Dict[str, Any]:
     return new_op
 
 
-def _append_or_merge_move(cleaned: List[Dict[str, Any]], move_op: Dict[str, Any], *, merge_moves: bool) -> None:
-    """追加 CONTROL_MOVE；若连续同点移动则合并。"""
-    if not merge_moves or not cleaned:
-        cleaned.append(move_op)
-        return
-
-    last = cleaned[-1]
-    if last.get("action") != "CONTROL_MOVE":
-        cleaned.append(move_op)
-        return
-
-    if _control_move_key(last) != _control_move_key(move_op):
-        cleaned.append(move_op)
-        return
-
-    # 如果上一条 after 与当前 before 对不上，说明不是连续位置调整，不能安全合并。
-    if not _same_coord(last.get("after"), move_op.get("before")):
-        cleaned.append(move_op)
-        return
-
-    last["after"] = move_op.get("after")
-
-    # 记录来源，方便排查，但不影响 preview/training 对 CONTROL_MOVE 的解析。
-    sources = last.setdefault("merged_sources", [])
-    src_action = move_op.get("source_action")
-    if src_action:
-        sources.append({
-            "source_action": src_action,
-            "source_host": move_op.get("source_host"),
-            "source_host_t": move_op.get("source_host_t"),
-            "source_host_stroke": move_op.get("source_host_stroke"),
-            "source_host_endpoint": move_op.get("source_host_endpoint"),
-            "before": move_op.get("before"),
-            "after": move_op.get("after"),
-        })
+def _source_record(op: Dict[str, Any]) -> Dict[str, Any]:
+    """为 merged_sources 生成一条可追踪来源记录。"""
+    return {
+        "action": op.get("action"),
+        "source_action": op.get("source_action"),
+        "stroke": op.get("stroke"),
+        "control": op.get("control"),
+        "before": op.get("before"),
+        "after": op.get("after"),
+        "source_host": op.get("source_host"),
+        "source_host_t": op.get("source_host_t"),
+        "source_host_stroke": op.get("source_host_stroke"),
+        "source_host_endpoint": op.get("source_host_endpoint"),
+    }
 
 
-def clean_edit_history(edit_history: List[Dict[str, Any]], *, merge_moves: bool = True) -> List[Dict[str, Any]]:
-    """
-    清理 Phase 2 edit_history。
-
-    参数：
-        edit_history: 原始 edit_history 列表。
-        merge_moves: 是否合并连续同一控制点的 CONTROL_MOVE。
-
-    返回：
-        cleaned edit_history。输入对象不会被修改。
-    """
-    if not isinstance(edit_history, list):
-        return []
-
-    cleaned: List[Dict[str, Any]] = []
+def _pass1_convert_repeated_relations(edit_history: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """第一阶段：保留首次 SNAP/T_ATTACH，重复连接转 CONTROL_MOVE。"""
+    converted: List[Dict[str, Any]] = []
     seen_relations = set()
 
     for raw_op in edit_history:
@@ -211,23 +167,89 @@ def clean_edit_history(edit_history: List[Dict[str, Any]], *, merge_moves: bool 
             if rel_key is not None and rel_key in seen_relations:
                 move_op = _relation_op_to_control_move(op)
                 if move_op is not None:
-                    _append_or_merge_move(cleaned, move_op, merge_moves=merge_moves)
+                    converted.append(move_op)
                 continue
 
             if rel_key is not None:
                 seen_relations.add(rel_key)
-            cleaned.append(op)
+            converted.append(op)
             continue
 
-        if action == "CONTROL_MOVE":
-            move_op = _normalize_original_op(op)
-            _append_or_merge_move(cleaned, move_op, merge_moves=merge_moves)
+        converted.append(op)
+
+    return converted
+
+
+def _pass2_merge_control_moves(ops: List[Dict[str, Any]], *, merge_moves: bool) -> List[Dict[str, Any]]:
+    """
+    第二阶段：全局合并同一 stroke/control 的 CONTROL_MOVE。
+
+    注意：这里不要求同点移动相邻。输出顺序以该点第一次出现的位置为准。
+    """
+    if not merge_moves:
+        return [_deepcopy_jsonable(op) for op in ops]
+
+    output: List[Dict[str, Any]] = []
+    move_index: Dict[Tuple[str, str], int] = {}
+
+    for op in ops:
+        if not isinstance(op, dict):
             continue
 
-        # 未知 action 不擅自删除，原样保留。
-        cleaned.append(op)
+        if op.get("action") != "CONTROL_MOVE":
+            output.append(_deepcopy_jsonable(op))
+            continue
 
-    return cleaned
+        move_op = _normalize_original_op(op)
+        key = _control_move_key(move_op)
+        if key is None:
+            output.append(move_op)
+            continue
+
+        if key not in move_index:
+            move_index[key] = len(output)
+            move_op.setdefault("merged_sources", [])
+            output.append(move_op)
+            continue
+
+        base = output[move_index[key]]
+        base_sources = base.setdefault("merged_sources", [])
+        base_sources.append(_source_record(move_op))
+        # before 保留第一次，after 更新为最后一次。
+        if move_op.get("after") is not None:
+            base["after"] = move_op.get("after")
+
+        # 如果后续移动来自重复 T/SNAP，保留最近的来源字段，便于排查。
+        for field in (
+            "source_action", "source_host", "source_host_t",
+            "source_host_stroke", "source_host_endpoint",
+        ):
+            if field in move_op:
+                base[field] = move_op.get(field)
+
+    return output
+
+
+def clean_edit_history(edit_history: List[Dict[str, Any]], *, merge_moves: bool = True) -> List[Dict[str, Any]]:
+    """
+    清理 Phase 2 edit_history。
+
+    清理顺序：
+        1. 重复 SNAP/T_ATTACH -> CONTROL_MOVE。
+        2. 全局合并同一 stroke/control 的多步 CONTROL_MOVE。
+
+    参数：
+        edit_history: 原始 edit_history 列表。
+        merge_moves: 是否合并同一控制点的 CONTROL_MOVE。
+
+    返回：
+        cleaned edit_history。输入对象不会被修改。
+    """
+    if not isinstance(edit_history, list):
+        return []
+
+    converted = _pass1_convert_repeated_relations(edit_history)
+    return _pass2_merge_control_moves(converted, merge_moves=merge_moves)
 
 
 def clean_bundle_edit_history(bundle: Dict[str, Any], *, merge_moves: bool = True) -> Dict[str, Any]:
@@ -245,6 +267,7 @@ def clean_bundle_edit_history(bundle: Dict[str, Any], *, merge_moves: bool = Tru
 if __name__ == "__main__":
     demo = [
         {"action": "T_ATTACH", "guest": 2, "guest_endpoint": "P0", "host": 1, "host_t": 0.4, "before": [1, 1], "after": [2, 2]},
+        {"action": "CONTROL_MOVE", "stroke": 3, "control": "P1", "before": [8, 8], "after": [9, 9]},
         {"action": "T_ATTACH", "guest": 2, "guest_endpoint": "P0", "host": 1, "host_t": 0.5, "before": [2, 2], "after": [3, 3]},
         {"action": "CONTROL_MOVE", "stroke": 2, "control": "P0", "before": [3, 3], "after": [4, 4]},
     ]
