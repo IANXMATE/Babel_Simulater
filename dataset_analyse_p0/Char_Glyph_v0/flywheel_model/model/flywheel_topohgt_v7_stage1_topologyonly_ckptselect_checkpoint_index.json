@@ -1,0 +1,4436 @@
+{
+  "created_at": "2026-07-01 17:19:16",
+  "updated_at": "2026-07-01 17:23:02",
+  "script": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/train_flywheel_topohgt_v7_stage1_topologyonly_ckptselect.py",
+  "model_save_dir": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model",
+  "checkpoint_paths": {
+    "latest": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_latest.pth",
+    "loss": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_loss.pth",
+    "quality_balanced": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_quality_f1.pth",
+    "quality_conservative": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_quality_precision80_recall.pth",
+    "relation_overall": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_macro_f1.pth",
+    "relation_e2e": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_E2E_f1.pth",
+    "relation_t": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_T_f1.pth",
+    "relation_x": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_X_f1.pth"
+  },
+  "recommendations": {
+    "latest": {
+      "purpose": "latest",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_latest.pth",
+      "epoch": 25,
+      "score": 0.49624060150375937,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:00",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    "loss": {
+      "purpose": "loss",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_loss.pth",
+      "epoch": 25,
+      "score": 2.8279776573181152,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:00",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    "quality_balanced": {
+      "purpose": "quality_balanced",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_quality_f1.pth",
+      "epoch": 15,
+      "score": 0.4963503649635036,
+      "train_loss": 3.1322602358731357,
+      "saved_at": "2026-07-01 17:21:33",
+      "metrics_summary": {
+        "loss": 3.090843439102173,
+        "quality_best_f1": {
+          "score": 0.4963503649635036,
+          "threshold": 0.7,
+          "precision": 0.41975308641975306,
+          "recall": 0.6071428571428571,
+          "tp": 34,
+          "fp": 47,
+          "fn": 22,
+          "tn": 278
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.17857142857142858,
+          "f1": 0.30303030303030304,
+          "tp": 10,
+          "fp": 0,
+          "fn": 46,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.96033350176857,
+              "threshold": 0.75,
+              "precision": 0.9343657817109144,
+              "recall": 0.9877858627858628,
+              "tp": 3801,
+              "fp": 267,
+              "fn": 47,
+              "tn": 147
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9142314088857211,
+              "recall": 1.0,
+              "f1": 0.9551942410326424,
+              "tp": 3848,
+              "fp": 361,
+              "fn": 0,
+              "tn": 53
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.22900763358778625,
+              "threshold": 0.45,
+              "precision": 0.189873417721519,
+              "recall": 0.28846153846153844,
+              "tp": 15,
+              "fp": 64,
+              "fn": 37,
+              "tn": 4319
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.75,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.3857988165680473,
+              "threshold": 0.6,
+              "precision": 0.2926391382405745,
+              "recall": 0.5659722222222222,
+              "tp": 163,
+              "fp": 394,
+              "fn": 125,
+              "tn": 3694
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5250466506414678
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.45,
+        "relation_X_best_f1": 0.6,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.75,
+        "relation_X_precision_target": null
+      }
+    },
+    "relation_overall": {
+      "purpose": "relation_overall",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_macro_f1.pth",
+      "epoch": 25,
+      "score": 0.5575215810980579,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:01",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    "relation_e2e": {
+      "purpose": "relation_e2e",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_E2E_f1.pth",
+      "epoch": 25,
+      "score": 0.9627854169294815,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:01",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    "relation_t": {
+      "purpose": "relation_t",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_T_f1.pth",
+      "epoch": 25,
+      "score": 0.25333333333333335,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:01",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    "relation_x": {
+      "purpose": "relation_x",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_X_f1.pth",
+      "epoch": 25,
+      "score": 0.4564459930313589,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:02",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    "quality_conservative": {
+      "purpose": "quality_conservative",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_quality_precision80_recall.pth",
+      "epoch": 15,
+      "score": 0.17857142857142858,
+      "train_loss": 3.1322602358731357,
+      "saved_at": "2026-07-01 17:21:34",
+      "metrics_summary": {
+        "loss": 3.090843439102173,
+        "quality_best_f1": {
+          "score": 0.4963503649635036,
+          "threshold": 0.7,
+          "precision": 0.41975308641975306,
+          "recall": 0.6071428571428571,
+          "tp": 34,
+          "fp": 47,
+          "fn": 22,
+          "tn": 278
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.17857142857142858,
+          "f1": 0.30303030303030304,
+          "tp": 10,
+          "fp": 0,
+          "fn": 46,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.96033350176857,
+              "threshold": 0.75,
+              "precision": 0.9343657817109144,
+              "recall": 0.9877858627858628,
+              "tp": 3801,
+              "fp": 267,
+              "fn": 47,
+              "tn": 147
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9142314088857211,
+              "recall": 1.0,
+              "f1": 0.9551942410326424,
+              "tp": 3848,
+              "fp": 361,
+              "fn": 0,
+              "tn": 53
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.22900763358778625,
+              "threshold": 0.45,
+              "precision": 0.189873417721519,
+              "recall": 0.28846153846153844,
+              "tp": 15,
+              "fp": 64,
+              "fn": 37,
+              "tn": 4319
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.75,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.3857988165680473,
+              "threshold": 0.6,
+              "precision": 0.2926391382405745,
+              "recall": 0.5659722222222222,
+              "tp": 163,
+              "fp": 394,
+              "fn": 125,
+              "tn": 3694
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5250466506414678
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.45,
+        "relation_X_best_f1": 0.6,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.75,
+        "relation_X_precision_target": null
+      }
+    }
+  },
+  "history": [
+    {
+      "purpose": "loss",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_loss.pth",
+      "epoch": 1,
+      "score": 4.125450134277344,
+      "train_loss": 4.477393887259743,
+      "saved_at": "2026-07-01 17:19:25",
+      "metrics_summary": {
+        "loss": 4.125450134277344,
+        "quality_best_f1": {
+          "score": 0.3276836158192091,
+          "threshold": 0.45,
+          "precision": 0.2396694214876033,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 92,
+          "fn": 27,
+          "tn": 233
+        },
+        "quality_precision_target": null,
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.949265522774966,
+              "threshold": 0.8,
+              "precision": 0.9040677169057136,
+              "recall": 0.9992203742203742,
+              "tp": 3845,
+              "fp": 408,
+              "fn": 3,
+              "tn": 6
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.05,
+              "precision": 0.9028625058657908,
+              "recall": 1.0,
+              "f1": 0.9489519112207151,
+              "tp": 3848,
+              "fp": 414,
+              "fn": 0,
+              "tn": 0
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.03303509979353062,
+              "threshold": 0.15,
+              "precision": 0.017130620985010708,
+              "recall": 0.46153846153846156,
+              "tp": 24,
+              "fp": 1377,
+              "fn": 28,
+              "tn": 3006
+            },
+            "precision_target": null
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.13227130098962103,
+              "threshold": 0.3,
+              "precision": 0.07107652399481193,
+              "recall": 0.9513888888888888,
+              "tp": 274,
+              "fp": 3581,
+              "fn": 14,
+              "tn": 507
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.3715239745193726
+      },
+      "thresholds": {
+        "quality_best_f1": 0.45,
+        "quality_precision_target": null,
+        "relation_E2E_best_f1": 0.8,
+        "relation_T_best_f1": 0.15,
+        "relation_X_best_f1": 0.3,
+        "relation_E2E_precision_target": 0.05,
+        "relation_T_precision_target": null,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "quality_balanced",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_quality_f1.pth",
+      "epoch": 1,
+      "score": 0.3276836158192091,
+      "train_loss": 4.477393887259743,
+      "saved_at": "2026-07-01 17:19:26",
+      "metrics_summary": {
+        "loss": 4.125450134277344,
+        "quality_best_f1": {
+          "score": 0.3276836158192091,
+          "threshold": 0.45,
+          "precision": 0.2396694214876033,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 92,
+          "fn": 27,
+          "tn": 233
+        },
+        "quality_precision_target": null,
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.949265522774966,
+              "threshold": 0.8,
+              "precision": 0.9040677169057136,
+              "recall": 0.9992203742203742,
+              "tp": 3845,
+              "fp": 408,
+              "fn": 3,
+              "tn": 6
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.05,
+              "precision": 0.9028625058657908,
+              "recall": 1.0,
+              "f1": 0.9489519112207151,
+              "tp": 3848,
+              "fp": 414,
+              "fn": 0,
+              "tn": 0
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.03303509979353062,
+              "threshold": 0.15,
+              "precision": 0.017130620985010708,
+              "recall": 0.46153846153846156,
+              "tp": 24,
+              "fp": 1377,
+              "fn": 28,
+              "tn": 3006
+            },
+            "precision_target": null
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.13227130098962103,
+              "threshold": 0.3,
+              "precision": 0.07107652399481193,
+              "recall": 0.9513888888888888,
+              "tp": 274,
+              "fp": 3581,
+              "fn": 14,
+              "tn": 507
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.3715239745193726
+      },
+      "thresholds": {
+        "quality_best_f1": 0.45,
+        "quality_precision_target": null,
+        "relation_E2E_best_f1": 0.8,
+        "relation_T_best_f1": 0.15,
+        "relation_X_best_f1": 0.3,
+        "relation_E2E_precision_target": 0.05,
+        "relation_T_precision_target": null,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_overall",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_macro_f1.pth",
+      "epoch": 1,
+      "score": 0.3715239745193726,
+      "train_loss": 4.477393887259743,
+      "saved_at": "2026-07-01 17:19:27",
+      "metrics_summary": {
+        "loss": 4.125450134277344,
+        "quality_best_f1": {
+          "score": 0.3276836158192091,
+          "threshold": 0.45,
+          "precision": 0.2396694214876033,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 92,
+          "fn": 27,
+          "tn": 233
+        },
+        "quality_precision_target": null,
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.949265522774966,
+              "threshold": 0.8,
+              "precision": 0.9040677169057136,
+              "recall": 0.9992203742203742,
+              "tp": 3845,
+              "fp": 408,
+              "fn": 3,
+              "tn": 6
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.05,
+              "precision": 0.9028625058657908,
+              "recall": 1.0,
+              "f1": 0.9489519112207151,
+              "tp": 3848,
+              "fp": 414,
+              "fn": 0,
+              "tn": 0
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.03303509979353062,
+              "threshold": 0.15,
+              "precision": 0.017130620985010708,
+              "recall": 0.46153846153846156,
+              "tp": 24,
+              "fp": 1377,
+              "fn": 28,
+              "tn": 3006
+            },
+            "precision_target": null
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.13227130098962103,
+              "threshold": 0.3,
+              "precision": 0.07107652399481193,
+              "recall": 0.9513888888888888,
+              "tp": 274,
+              "fp": 3581,
+              "fn": 14,
+              "tn": 507
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.3715239745193726
+      },
+      "thresholds": {
+        "quality_best_f1": 0.45,
+        "quality_precision_target": null,
+        "relation_E2E_best_f1": 0.8,
+        "relation_T_best_f1": 0.15,
+        "relation_X_best_f1": 0.3,
+        "relation_E2E_precision_target": 0.05,
+        "relation_T_precision_target": null,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_e2e",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_E2E_f1.pth",
+      "epoch": 1,
+      "score": 0.949265522774966,
+      "train_loss": 4.477393887259743,
+      "saved_at": "2026-07-01 17:19:28",
+      "metrics_summary": {
+        "loss": 4.125450134277344,
+        "quality_best_f1": {
+          "score": 0.3276836158192091,
+          "threshold": 0.45,
+          "precision": 0.2396694214876033,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 92,
+          "fn": 27,
+          "tn": 233
+        },
+        "quality_precision_target": null,
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.949265522774966,
+              "threshold": 0.8,
+              "precision": 0.9040677169057136,
+              "recall": 0.9992203742203742,
+              "tp": 3845,
+              "fp": 408,
+              "fn": 3,
+              "tn": 6
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.05,
+              "precision": 0.9028625058657908,
+              "recall": 1.0,
+              "f1": 0.9489519112207151,
+              "tp": 3848,
+              "fp": 414,
+              "fn": 0,
+              "tn": 0
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.03303509979353062,
+              "threshold": 0.15,
+              "precision": 0.017130620985010708,
+              "recall": 0.46153846153846156,
+              "tp": 24,
+              "fp": 1377,
+              "fn": 28,
+              "tn": 3006
+            },
+            "precision_target": null
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.13227130098962103,
+              "threshold": 0.3,
+              "precision": 0.07107652399481193,
+              "recall": 0.9513888888888888,
+              "tp": 274,
+              "fp": 3581,
+              "fn": 14,
+              "tn": 507
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.3715239745193726
+      },
+      "thresholds": {
+        "quality_best_f1": 0.45,
+        "quality_precision_target": null,
+        "relation_E2E_best_f1": 0.8,
+        "relation_T_best_f1": 0.15,
+        "relation_X_best_f1": 0.3,
+        "relation_E2E_precision_target": 0.05,
+        "relation_T_precision_target": null,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_t",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_T_f1.pth",
+      "epoch": 1,
+      "score": 0.03303509979353062,
+      "train_loss": 4.477393887259743,
+      "saved_at": "2026-07-01 17:19:28",
+      "metrics_summary": {
+        "loss": 4.125450134277344,
+        "quality_best_f1": {
+          "score": 0.3276836158192091,
+          "threshold": 0.45,
+          "precision": 0.2396694214876033,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 92,
+          "fn": 27,
+          "tn": 233
+        },
+        "quality_precision_target": null,
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.949265522774966,
+              "threshold": 0.8,
+              "precision": 0.9040677169057136,
+              "recall": 0.9992203742203742,
+              "tp": 3845,
+              "fp": 408,
+              "fn": 3,
+              "tn": 6
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.05,
+              "precision": 0.9028625058657908,
+              "recall": 1.0,
+              "f1": 0.9489519112207151,
+              "tp": 3848,
+              "fp": 414,
+              "fn": 0,
+              "tn": 0
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.03303509979353062,
+              "threshold": 0.15,
+              "precision": 0.017130620985010708,
+              "recall": 0.46153846153846156,
+              "tp": 24,
+              "fp": 1377,
+              "fn": 28,
+              "tn": 3006
+            },
+            "precision_target": null
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.13227130098962103,
+              "threshold": 0.3,
+              "precision": 0.07107652399481193,
+              "recall": 0.9513888888888888,
+              "tp": 274,
+              "fp": 3581,
+              "fn": 14,
+              "tn": 507
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.3715239745193726
+      },
+      "thresholds": {
+        "quality_best_f1": 0.45,
+        "quality_precision_target": null,
+        "relation_E2E_best_f1": 0.8,
+        "relation_T_best_f1": 0.15,
+        "relation_X_best_f1": 0.3,
+        "relation_E2E_precision_target": 0.05,
+        "relation_T_precision_target": null,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_x",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_X_f1.pth",
+      "epoch": 1,
+      "score": 0.13227130098962103,
+      "train_loss": 4.477393887259743,
+      "saved_at": "2026-07-01 17:19:29",
+      "metrics_summary": {
+        "loss": 4.125450134277344,
+        "quality_best_f1": {
+          "score": 0.3276836158192091,
+          "threshold": 0.45,
+          "precision": 0.2396694214876033,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 92,
+          "fn": 27,
+          "tn": 233
+        },
+        "quality_precision_target": null,
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.949265522774966,
+              "threshold": 0.8,
+              "precision": 0.9040677169057136,
+              "recall": 0.9992203742203742,
+              "tp": 3845,
+              "fp": 408,
+              "fn": 3,
+              "tn": 6
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.05,
+              "precision": 0.9028625058657908,
+              "recall": 1.0,
+              "f1": 0.9489519112207151,
+              "tp": 3848,
+              "fp": 414,
+              "fn": 0,
+              "tn": 0
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.03303509979353062,
+              "threshold": 0.15,
+              "precision": 0.017130620985010708,
+              "recall": 0.46153846153846156,
+              "tp": 24,
+              "fp": 1377,
+              "fn": 28,
+              "tn": 3006
+            },
+            "precision_target": null
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.13227130098962103,
+              "threshold": 0.3,
+              "precision": 0.07107652399481193,
+              "recall": 0.9513888888888888,
+              "tp": 274,
+              "fp": 3581,
+              "fn": 14,
+              "tn": 507
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.3715239745193726
+      },
+      "thresholds": {
+        "quality_best_f1": 0.45,
+        "quality_precision_target": null,
+        "relation_E2E_best_f1": 0.8,
+        "relation_T_best_f1": 0.15,
+        "relation_X_best_f1": 0.3,
+        "relation_E2E_precision_target": 0.05,
+        "relation_T_precision_target": null,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "loss",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_loss.pth",
+      "epoch": 5,
+      "score": 3.6882327795028687,
+      "train_loss": 3.841974973678589,
+      "saved_at": "2026-07-01 17:20:02",
+      "metrics_summary": {
+        "loss": 3.6882327795028687,
+        "quality_best_f1": {
+          "score": 0.4150943396226415,
+          "threshold": 0.5,
+          "precision": 0.44,
+          "recall": 0.39285714285714285,
+          "tp": 22,
+          "fp": 28,
+          "fn": 34,
+          "tn": 297
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.65,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "tp": 8,
+          "fp": 0,
+          "fn": 48,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9595997498436524,
+              "threshold": 0.75,
+              "precision": 0.9250060284543044,
+              "recall": 0.9968814968814969,
+              "tp": 3836,
+              "fp": 311,
+              "fn": 12,
+              "tn": 103
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.7,
+              "precision": 0.9168453657374315,
+              "recall": 1.0,
+              "f1": 0.9566190180236172,
+              "tp": 3848,
+              "fp": 349,
+              "fn": 0,
+              "tn": 65
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.11965811965811966,
+              "threshold": 0.25,
+              "precision": 0.1076923076923077,
+              "recall": 0.1346153846153846,
+              "tp": 7,
+              "fp": 58,
+              "fn": 45,
+              "tn": 4325
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.4,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2710526315789474,
+              "threshold": 0.35,
+              "precision": 0.21822033898305085,
+              "recall": 0.3576388888888889,
+              "tp": 103,
+              "fp": 369,
+              "fn": 185,
+              "tn": 3719
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4501035003602398
+      },
+      "thresholds": {
+        "quality_best_f1": 0.5,
+        "quality_precision_target": 0.65,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.25,
+        "relation_X_best_f1": 0.35,
+        "relation_E2E_precision_target": 0.7,
+        "relation_T_precision_target": 0.4,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "quality_balanced",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_quality_f1.pth",
+      "epoch": 5,
+      "score": 0.4150943396226415,
+      "train_loss": 3.841974973678589,
+      "saved_at": "2026-07-01 17:20:03",
+      "metrics_summary": {
+        "loss": 3.6882327795028687,
+        "quality_best_f1": {
+          "score": 0.4150943396226415,
+          "threshold": 0.5,
+          "precision": 0.44,
+          "recall": 0.39285714285714285,
+          "tp": 22,
+          "fp": 28,
+          "fn": 34,
+          "tn": 297
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.65,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "tp": 8,
+          "fp": 0,
+          "fn": 48,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9595997498436524,
+              "threshold": 0.75,
+              "precision": 0.9250060284543044,
+              "recall": 0.9968814968814969,
+              "tp": 3836,
+              "fp": 311,
+              "fn": 12,
+              "tn": 103
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.7,
+              "precision": 0.9168453657374315,
+              "recall": 1.0,
+              "f1": 0.9566190180236172,
+              "tp": 3848,
+              "fp": 349,
+              "fn": 0,
+              "tn": 65
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.11965811965811966,
+              "threshold": 0.25,
+              "precision": 0.1076923076923077,
+              "recall": 0.1346153846153846,
+              "tp": 7,
+              "fp": 58,
+              "fn": 45,
+              "tn": 4325
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.4,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2710526315789474,
+              "threshold": 0.35,
+              "precision": 0.21822033898305085,
+              "recall": 0.3576388888888889,
+              "tp": 103,
+              "fp": 369,
+              "fn": 185,
+              "tn": 3719
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4501035003602398
+      },
+      "thresholds": {
+        "quality_best_f1": 0.5,
+        "quality_precision_target": 0.65,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.25,
+        "relation_X_best_f1": 0.35,
+        "relation_E2E_precision_target": 0.7,
+        "relation_T_precision_target": 0.4,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "quality_conservative",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_quality_precision80_recall.pth",
+      "epoch": 5,
+      "score": 0.14285714285714285,
+      "train_loss": 3.841974973678589,
+      "saved_at": "2026-07-01 17:20:04",
+      "metrics_summary": {
+        "loss": 3.6882327795028687,
+        "quality_best_f1": {
+          "score": 0.4150943396226415,
+          "threshold": 0.5,
+          "precision": 0.44,
+          "recall": 0.39285714285714285,
+          "tp": 22,
+          "fp": 28,
+          "fn": 34,
+          "tn": 297
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.65,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "tp": 8,
+          "fp": 0,
+          "fn": 48,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9595997498436524,
+              "threshold": 0.75,
+              "precision": 0.9250060284543044,
+              "recall": 0.9968814968814969,
+              "tp": 3836,
+              "fp": 311,
+              "fn": 12,
+              "tn": 103
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.7,
+              "precision": 0.9168453657374315,
+              "recall": 1.0,
+              "f1": 0.9566190180236172,
+              "tp": 3848,
+              "fp": 349,
+              "fn": 0,
+              "tn": 65
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.11965811965811966,
+              "threshold": 0.25,
+              "precision": 0.1076923076923077,
+              "recall": 0.1346153846153846,
+              "tp": 7,
+              "fp": 58,
+              "fn": 45,
+              "tn": 4325
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.4,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2710526315789474,
+              "threshold": 0.35,
+              "precision": 0.21822033898305085,
+              "recall": 0.3576388888888889,
+              "tp": 103,
+              "fp": 369,
+              "fn": 185,
+              "tn": 3719
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4501035003602398
+      },
+      "thresholds": {
+        "quality_best_f1": 0.5,
+        "quality_precision_target": 0.65,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.25,
+        "relation_X_best_f1": 0.35,
+        "relation_E2E_precision_target": 0.7,
+        "relation_T_precision_target": 0.4,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_overall",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_macro_f1.pth",
+      "epoch": 5,
+      "score": 0.4501035003602398,
+      "train_loss": 3.841974973678589,
+      "saved_at": "2026-07-01 17:20:04",
+      "metrics_summary": {
+        "loss": 3.6882327795028687,
+        "quality_best_f1": {
+          "score": 0.4150943396226415,
+          "threshold": 0.5,
+          "precision": 0.44,
+          "recall": 0.39285714285714285,
+          "tp": 22,
+          "fp": 28,
+          "fn": 34,
+          "tn": 297
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.65,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "tp": 8,
+          "fp": 0,
+          "fn": 48,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9595997498436524,
+              "threshold": 0.75,
+              "precision": 0.9250060284543044,
+              "recall": 0.9968814968814969,
+              "tp": 3836,
+              "fp": 311,
+              "fn": 12,
+              "tn": 103
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.7,
+              "precision": 0.9168453657374315,
+              "recall": 1.0,
+              "f1": 0.9566190180236172,
+              "tp": 3848,
+              "fp": 349,
+              "fn": 0,
+              "tn": 65
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.11965811965811966,
+              "threshold": 0.25,
+              "precision": 0.1076923076923077,
+              "recall": 0.1346153846153846,
+              "tp": 7,
+              "fp": 58,
+              "fn": 45,
+              "tn": 4325
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.4,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2710526315789474,
+              "threshold": 0.35,
+              "precision": 0.21822033898305085,
+              "recall": 0.3576388888888889,
+              "tp": 103,
+              "fp": 369,
+              "fn": 185,
+              "tn": 3719
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4501035003602398
+      },
+      "thresholds": {
+        "quality_best_f1": 0.5,
+        "quality_precision_target": 0.65,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.25,
+        "relation_X_best_f1": 0.35,
+        "relation_E2E_precision_target": 0.7,
+        "relation_T_precision_target": 0.4,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_e2e",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_E2E_f1.pth",
+      "epoch": 5,
+      "score": 0.9595997498436524,
+      "train_loss": 3.841974973678589,
+      "saved_at": "2026-07-01 17:20:05",
+      "metrics_summary": {
+        "loss": 3.6882327795028687,
+        "quality_best_f1": {
+          "score": 0.4150943396226415,
+          "threshold": 0.5,
+          "precision": 0.44,
+          "recall": 0.39285714285714285,
+          "tp": 22,
+          "fp": 28,
+          "fn": 34,
+          "tn": 297
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.65,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "tp": 8,
+          "fp": 0,
+          "fn": 48,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9595997498436524,
+              "threshold": 0.75,
+              "precision": 0.9250060284543044,
+              "recall": 0.9968814968814969,
+              "tp": 3836,
+              "fp": 311,
+              "fn": 12,
+              "tn": 103
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.7,
+              "precision": 0.9168453657374315,
+              "recall": 1.0,
+              "f1": 0.9566190180236172,
+              "tp": 3848,
+              "fp": 349,
+              "fn": 0,
+              "tn": 65
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.11965811965811966,
+              "threshold": 0.25,
+              "precision": 0.1076923076923077,
+              "recall": 0.1346153846153846,
+              "tp": 7,
+              "fp": 58,
+              "fn": 45,
+              "tn": 4325
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.4,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2710526315789474,
+              "threshold": 0.35,
+              "precision": 0.21822033898305085,
+              "recall": 0.3576388888888889,
+              "tp": 103,
+              "fp": 369,
+              "fn": 185,
+              "tn": 3719
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4501035003602398
+      },
+      "thresholds": {
+        "quality_best_f1": 0.5,
+        "quality_precision_target": 0.65,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.25,
+        "relation_X_best_f1": 0.35,
+        "relation_E2E_precision_target": 0.7,
+        "relation_T_precision_target": 0.4,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_t",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_T_f1.pth",
+      "epoch": 5,
+      "score": 0.11965811965811966,
+      "train_loss": 3.841974973678589,
+      "saved_at": "2026-07-01 17:20:05",
+      "metrics_summary": {
+        "loss": 3.6882327795028687,
+        "quality_best_f1": {
+          "score": 0.4150943396226415,
+          "threshold": 0.5,
+          "precision": 0.44,
+          "recall": 0.39285714285714285,
+          "tp": 22,
+          "fp": 28,
+          "fn": 34,
+          "tn": 297
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.65,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "tp": 8,
+          "fp": 0,
+          "fn": 48,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9595997498436524,
+              "threshold": 0.75,
+              "precision": 0.9250060284543044,
+              "recall": 0.9968814968814969,
+              "tp": 3836,
+              "fp": 311,
+              "fn": 12,
+              "tn": 103
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.7,
+              "precision": 0.9168453657374315,
+              "recall": 1.0,
+              "f1": 0.9566190180236172,
+              "tp": 3848,
+              "fp": 349,
+              "fn": 0,
+              "tn": 65
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.11965811965811966,
+              "threshold": 0.25,
+              "precision": 0.1076923076923077,
+              "recall": 0.1346153846153846,
+              "tp": 7,
+              "fp": 58,
+              "fn": 45,
+              "tn": 4325
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.4,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2710526315789474,
+              "threshold": 0.35,
+              "precision": 0.21822033898305085,
+              "recall": 0.3576388888888889,
+              "tp": 103,
+              "fp": 369,
+              "fn": 185,
+              "tn": 3719
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4501035003602398
+      },
+      "thresholds": {
+        "quality_best_f1": 0.5,
+        "quality_precision_target": 0.65,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.25,
+        "relation_X_best_f1": 0.35,
+        "relation_E2E_precision_target": 0.7,
+        "relation_T_precision_target": 0.4,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_x",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_X_f1.pth",
+      "epoch": 5,
+      "score": 0.2710526315789474,
+      "train_loss": 3.841974973678589,
+      "saved_at": "2026-07-01 17:20:06",
+      "metrics_summary": {
+        "loss": 3.6882327795028687,
+        "quality_best_f1": {
+          "score": 0.4150943396226415,
+          "threshold": 0.5,
+          "precision": 0.44,
+          "recall": 0.39285714285714285,
+          "tp": 22,
+          "fp": 28,
+          "fn": 34,
+          "tn": 297
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.65,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "tp": 8,
+          "fp": 0,
+          "fn": 48,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9595997498436524,
+              "threshold": 0.75,
+              "precision": 0.9250060284543044,
+              "recall": 0.9968814968814969,
+              "tp": 3836,
+              "fp": 311,
+              "fn": 12,
+              "tn": 103
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.7,
+              "precision": 0.9168453657374315,
+              "recall": 1.0,
+              "f1": 0.9566190180236172,
+              "tp": 3848,
+              "fp": 349,
+              "fn": 0,
+              "tn": 65
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.11965811965811966,
+              "threshold": 0.25,
+              "precision": 0.1076923076923077,
+              "recall": 0.1346153846153846,
+              "tp": 7,
+              "fp": 58,
+              "fn": 45,
+              "tn": 4325
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.4,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2710526315789474,
+              "threshold": 0.35,
+              "precision": 0.21822033898305085,
+              "recall": 0.3576388888888889,
+              "tp": 103,
+              "fp": 369,
+              "fn": 185,
+              "tn": 3719
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4501035003602398
+      },
+      "thresholds": {
+        "quality_best_f1": 0.5,
+        "quality_precision_target": 0.65,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.25,
+        "relation_X_best_f1": 0.35,
+        "relation_E2E_precision_target": 0.7,
+        "relation_T_precision_target": 0.4,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "loss",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_loss.pth",
+      "epoch": 10,
+      "score": 3.3239816427230835,
+      "train_loss": 3.409443660215898,
+      "saved_at": "2026-07-01 17:20:47",
+      "metrics_summary": {
+        "loss": 3.3239816427230835,
+        "quality_best_f1": {
+          "score": 0.45454545454545453,
+          "threshold": 0.7,
+          "precision": 0.39473684210526316,
+          "recall": 0.5357142857142857,
+          "tp": 30,
+          "fp": 46,
+          "fn": 26,
+          "tn": 279
+        },
+        "quality_precision_target": {
+          "score": 0.10714285714285714,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.10714285714285714,
+          "f1": 0.19354838709677416,
+          "tp": 6,
+          "fp": 0,
+          "fn": 50,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9612773447322102,
+              "threshold": 0.7,
+              "precision": 0.9310764734534827,
+              "recall": 0.9935031185031185,
+              "tp": 3823,
+              "fp": 283,
+              "fn": 25,
+              "tn": 131
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.55,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.1702127659574468,
+              "threshold": 0.35,
+              "precision": 0.11764705882352941,
+              "recall": 0.3076923076923077,
+              "tp": 16,
+              "fp": 120,
+              "fn": 36,
+              "tn": 4263
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.65,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2986577181208053,
+              "threshold": 0.5,
+              "precision": 0.19690265486725664,
+              "recall": 0.6180555555555556,
+              "tp": 178,
+              "fp": 726,
+              "fn": 110,
+              "tn": 3362
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4767159429368208
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.35,
+        "relation_X_best_f1": 0.5,
+        "relation_E2E_precision_target": 0.55,
+        "relation_T_precision_target": 0.65,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "quality_balanced",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_quality_f1.pth",
+      "epoch": 10,
+      "score": 0.45454545454545453,
+      "train_loss": 3.409443660215898,
+      "saved_at": "2026-07-01 17:20:48",
+      "metrics_summary": {
+        "loss": 3.3239816427230835,
+        "quality_best_f1": {
+          "score": 0.45454545454545453,
+          "threshold": 0.7,
+          "precision": 0.39473684210526316,
+          "recall": 0.5357142857142857,
+          "tp": 30,
+          "fp": 46,
+          "fn": 26,
+          "tn": 279
+        },
+        "quality_precision_target": {
+          "score": 0.10714285714285714,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.10714285714285714,
+          "f1": 0.19354838709677416,
+          "tp": 6,
+          "fp": 0,
+          "fn": 50,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9612773447322102,
+              "threshold": 0.7,
+              "precision": 0.9310764734534827,
+              "recall": 0.9935031185031185,
+              "tp": 3823,
+              "fp": 283,
+              "fn": 25,
+              "tn": 131
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.55,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.1702127659574468,
+              "threshold": 0.35,
+              "precision": 0.11764705882352941,
+              "recall": 0.3076923076923077,
+              "tp": 16,
+              "fp": 120,
+              "fn": 36,
+              "tn": 4263
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.65,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2986577181208053,
+              "threshold": 0.5,
+              "precision": 0.19690265486725664,
+              "recall": 0.6180555555555556,
+              "tp": 178,
+              "fp": 726,
+              "fn": 110,
+              "tn": 3362
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4767159429368208
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.35,
+        "relation_X_best_f1": 0.5,
+        "relation_E2E_precision_target": 0.55,
+        "relation_T_precision_target": 0.65,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_overall",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_macro_f1.pth",
+      "epoch": 10,
+      "score": 0.4767159429368208,
+      "train_loss": 3.409443660215898,
+      "saved_at": "2026-07-01 17:20:49",
+      "metrics_summary": {
+        "loss": 3.3239816427230835,
+        "quality_best_f1": {
+          "score": 0.45454545454545453,
+          "threshold": 0.7,
+          "precision": 0.39473684210526316,
+          "recall": 0.5357142857142857,
+          "tp": 30,
+          "fp": 46,
+          "fn": 26,
+          "tn": 279
+        },
+        "quality_precision_target": {
+          "score": 0.10714285714285714,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.10714285714285714,
+          "f1": 0.19354838709677416,
+          "tp": 6,
+          "fp": 0,
+          "fn": 50,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9612773447322102,
+              "threshold": 0.7,
+              "precision": 0.9310764734534827,
+              "recall": 0.9935031185031185,
+              "tp": 3823,
+              "fp": 283,
+              "fn": 25,
+              "tn": 131
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.55,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.1702127659574468,
+              "threshold": 0.35,
+              "precision": 0.11764705882352941,
+              "recall": 0.3076923076923077,
+              "tp": 16,
+              "fp": 120,
+              "fn": 36,
+              "tn": 4263
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.65,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2986577181208053,
+              "threshold": 0.5,
+              "precision": 0.19690265486725664,
+              "recall": 0.6180555555555556,
+              "tp": 178,
+              "fp": 726,
+              "fn": 110,
+              "tn": 3362
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4767159429368208
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.35,
+        "relation_X_best_f1": 0.5,
+        "relation_E2E_precision_target": 0.55,
+        "relation_T_precision_target": 0.65,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_e2e",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_E2E_f1.pth",
+      "epoch": 10,
+      "score": 0.9612773447322102,
+      "train_loss": 3.409443660215898,
+      "saved_at": "2026-07-01 17:20:50",
+      "metrics_summary": {
+        "loss": 3.3239816427230835,
+        "quality_best_f1": {
+          "score": 0.45454545454545453,
+          "threshold": 0.7,
+          "precision": 0.39473684210526316,
+          "recall": 0.5357142857142857,
+          "tp": 30,
+          "fp": 46,
+          "fn": 26,
+          "tn": 279
+        },
+        "quality_precision_target": {
+          "score": 0.10714285714285714,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.10714285714285714,
+          "f1": 0.19354838709677416,
+          "tp": 6,
+          "fp": 0,
+          "fn": 50,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9612773447322102,
+              "threshold": 0.7,
+              "precision": 0.9310764734534827,
+              "recall": 0.9935031185031185,
+              "tp": 3823,
+              "fp": 283,
+              "fn": 25,
+              "tn": 131
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.55,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.1702127659574468,
+              "threshold": 0.35,
+              "precision": 0.11764705882352941,
+              "recall": 0.3076923076923077,
+              "tp": 16,
+              "fp": 120,
+              "fn": 36,
+              "tn": 4263
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.65,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2986577181208053,
+              "threshold": 0.5,
+              "precision": 0.19690265486725664,
+              "recall": 0.6180555555555556,
+              "tp": 178,
+              "fp": 726,
+              "fn": 110,
+              "tn": 3362
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4767159429368208
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.35,
+        "relation_X_best_f1": 0.5,
+        "relation_E2E_precision_target": 0.55,
+        "relation_T_precision_target": 0.65,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_t",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_T_f1.pth",
+      "epoch": 10,
+      "score": 0.1702127659574468,
+      "train_loss": 3.409443660215898,
+      "saved_at": "2026-07-01 17:20:50",
+      "metrics_summary": {
+        "loss": 3.3239816427230835,
+        "quality_best_f1": {
+          "score": 0.45454545454545453,
+          "threshold": 0.7,
+          "precision": 0.39473684210526316,
+          "recall": 0.5357142857142857,
+          "tp": 30,
+          "fp": 46,
+          "fn": 26,
+          "tn": 279
+        },
+        "quality_precision_target": {
+          "score": 0.10714285714285714,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.10714285714285714,
+          "f1": 0.19354838709677416,
+          "tp": 6,
+          "fp": 0,
+          "fn": 50,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9612773447322102,
+              "threshold": 0.7,
+              "precision": 0.9310764734534827,
+              "recall": 0.9935031185031185,
+              "tp": 3823,
+              "fp": 283,
+              "fn": 25,
+              "tn": 131
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.55,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.1702127659574468,
+              "threshold": 0.35,
+              "precision": 0.11764705882352941,
+              "recall": 0.3076923076923077,
+              "tp": 16,
+              "fp": 120,
+              "fn": 36,
+              "tn": 4263
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.65,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2986577181208053,
+              "threshold": 0.5,
+              "precision": 0.19690265486725664,
+              "recall": 0.6180555555555556,
+              "tp": 178,
+              "fp": 726,
+              "fn": 110,
+              "tn": 3362
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4767159429368208
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.35,
+        "relation_X_best_f1": 0.5,
+        "relation_E2E_precision_target": 0.55,
+        "relation_T_precision_target": 0.65,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_x",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_X_f1.pth",
+      "epoch": 10,
+      "score": 0.2986577181208053,
+      "train_loss": 3.409443660215898,
+      "saved_at": "2026-07-01 17:20:51",
+      "metrics_summary": {
+        "loss": 3.3239816427230835,
+        "quality_best_f1": {
+          "score": 0.45454545454545453,
+          "threshold": 0.7,
+          "precision": 0.39473684210526316,
+          "recall": 0.5357142857142857,
+          "tp": 30,
+          "fp": 46,
+          "fn": 26,
+          "tn": 279
+        },
+        "quality_precision_target": {
+          "score": 0.10714285714285714,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.10714285714285714,
+          "f1": 0.19354838709677416,
+          "tp": 6,
+          "fp": 0,
+          "fn": 50,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9612773447322102,
+              "threshold": 0.7,
+              "precision": 0.9310764734534827,
+              "recall": 0.9935031185031185,
+              "tp": 3823,
+              "fp": 283,
+              "fn": 25,
+              "tn": 131
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.55,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.1702127659574468,
+              "threshold": 0.35,
+              "precision": 0.11764705882352941,
+              "recall": 0.3076923076923077,
+              "tp": 16,
+              "fp": 120,
+              "fn": 36,
+              "tn": 4263
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.65,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.2986577181208053,
+              "threshold": 0.5,
+              "precision": 0.19690265486725664,
+              "recall": 0.6180555555555556,
+              "tp": 178,
+              "fp": 726,
+              "fn": 110,
+              "tn": 3362
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.4767159429368208
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.35,
+        "relation_X_best_f1": 0.5,
+        "relation_E2E_precision_target": 0.55,
+        "relation_T_precision_target": 0.65,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "loss",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_loss.pth",
+      "epoch": 15,
+      "score": 3.090843439102173,
+      "train_loss": 3.1322602358731357,
+      "saved_at": "2026-07-01 17:21:32",
+      "metrics_summary": {
+        "loss": 3.090843439102173,
+        "quality_best_f1": {
+          "score": 0.4963503649635036,
+          "threshold": 0.7,
+          "precision": 0.41975308641975306,
+          "recall": 0.6071428571428571,
+          "tp": 34,
+          "fp": 47,
+          "fn": 22,
+          "tn": 278
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.17857142857142858,
+          "f1": 0.30303030303030304,
+          "tp": 10,
+          "fp": 0,
+          "fn": 46,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.96033350176857,
+              "threshold": 0.75,
+              "precision": 0.9343657817109144,
+              "recall": 0.9877858627858628,
+              "tp": 3801,
+              "fp": 267,
+              "fn": 47,
+              "tn": 147
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9142314088857211,
+              "recall": 1.0,
+              "f1": 0.9551942410326424,
+              "tp": 3848,
+              "fp": 361,
+              "fn": 0,
+              "tn": 53
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.22900763358778625,
+              "threshold": 0.45,
+              "precision": 0.189873417721519,
+              "recall": 0.28846153846153844,
+              "tp": 15,
+              "fp": 64,
+              "fn": 37,
+              "tn": 4319
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.75,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.3857988165680473,
+              "threshold": 0.6,
+              "precision": 0.2926391382405745,
+              "recall": 0.5659722222222222,
+              "tp": 163,
+              "fp": 394,
+              "fn": 125,
+              "tn": 3694
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5250466506414678
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.45,
+        "relation_X_best_f1": 0.6,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.75,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "quality_balanced",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_quality_f1.pth",
+      "epoch": 15,
+      "score": 0.4963503649635036,
+      "train_loss": 3.1322602358731357,
+      "saved_at": "2026-07-01 17:21:33",
+      "metrics_summary": {
+        "loss": 3.090843439102173,
+        "quality_best_f1": {
+          "score": 0.4963503649635036,
+          "threshold": 0.7,
+          "precision": 0.41975308641975306,
+          "recall": 0.6071428571428571,
+          "tp": 34,
+          "fp": 47,
+          "fn": 22,
+          "tn": 278
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.17857142857142858,
+          "f1": 0.30303030303030304,
+          "tp": 10,
+          "fp": 0,
+          "fn": 46,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.96033350176857,
+              "threshold": 0.75,
+              "precision": 0.9343657817109144,
+              "recall": 0.9877858627858628,
+              "tp": 3801,
+              "fp": 267,
+              "fn": 47,
+              "tn": 147
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9142314088857211,
+              "recall": 1.0,
+              "f1": 0.9551942410326424,
+              "tp": 3848,
+              "fp": 361,
+              "fn": 0,
+              "tn": 53
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.22900763358778625,
+              "threshold": 0.45,
+              "precision": 0.189873417721519,
+              "recall": 0.28846153846153844,
+              "tp": 15,
+              "fp": 64,
+              "fn": 37,
+              "tn": 4319
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.75,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.3857988165680473,
+              "threshold": 0.6,
+              "precision": 0.2926391382405745,
+              "recall": 0.5659722222222222,
+              "tp": 163,
+              "fp": 394,
+              "fn": 125,
+              "tn": 3694
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5250466506414678
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.45,
+        "relation_X_best_f1": 0.6,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.75,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "quality_conservative",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_quality_precision80_recall.pth",
+      "epoch": 15,
+      "score": 0.17857142857142858,
+      "train_loss": 3.1322602358731357,
+      "saved_at": "2026-07-01 17:21:34",
+      "metrics_summary": {
+        "loss": 3.090843439102173,
+        "quality_best_f1": {
+          "score": 0.4963503649635036,
+          "threshold": 0.7,
+          "precision": 0.41975308641975306,
+          "recall": 0.6071428571428571,
+          "tp": 34,
+          "fp": 47,
+          "fn": 22,
+          "tn": 278
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.17857142857142858,
+          "f1": 0.30303030303030304,
+          "tp": 10,
+          "fp": 0,
+          "fn": 46,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.96033350176857,
+              "threshold": 0.75,
+              "precision": 0.9343657817109144,
+              "recall": 0.9877858627858628,
+              "tp": 3801,
+              "fp": 267,
+              "fn": 47,
+              "tn": 147
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9142314088857211,
+              "recall": 1.0,
+              "f1": 0.9551942410326424,
+              "tp": 3848,
+              "fp": 361,
+              "fn": 0,
+              "tn": 53
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.22900763358778625,
+              "threshold": 0.45,
+              "precision": 0.189873417721519,
+              "recall": 0.28846153846153844,
+              "tp": 15,
+              "fp": 64,
+              "fn": 37,
+              "tn": 4319
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.75,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.3857988165680473,
+              "threshold": 0.6,
+              "precision": 0.2926391382405745,
+              "recall": 0.5659722222222222,
+              "tp": 163,
+              "fp": 394,
+              "fn": 125,
+              "tn": 3694
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5250466506414678
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.45,
+        "relation_X_best_f1": 0.6,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.75,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_overall",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_macro_f1.pth",
+      "epoch": 15,
+      "score": 0.5250466506414678,
+      "train_loss": 3.1322602358731357,
+      "saved_at": "2026-07-01 17:21:34",
+      "metrics_summary": {
+        "loss": 3.090843439102173,
+        "quality_best_f1": {
+          "score": 0.4963503649635036,
+          "threshold": 0.7,
+          "precision": 0.41975308641975306,
+          "recall": 0.6071428571428571,
+          "tp": 34,
+          "fp": 47,
+          "fn": 22,
+          "tn": 278
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.17857142857142858,
+          "f1": 0.30303030303030304,
+          "tp": 10,
+          "fp": 0,
+          "fn": 46,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.96033350176857,
+              "threshold": 0.75,
+              "precision": 0.9343657817109144,
+              "recall": 0.9877858627858628,
+              "tp": 3801,
+              "fp": 267,
+              "fn": 47,
+              "tn": 147
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9142314088857211,
+              "recall": 1.0,
+              "f1": 0.9551942410326424,
+              "tp": 3848,
+              "fp": 361,
+              "fn": 0,
+              "tn": 53
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.22900763358778625,
+              "threshold": 0.45,
+              "precision": 0.189873417721519,
+              "recall": 0.28846153846153844,
+              "tp": 15,
+              "fp": 64,
+              "fn": 37,
+              "tn": 4319
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.75,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.3857988165680473,
+              "threshold": 0.6,
+              "precision": 0.2926391382405745,
+              "recall": 0.5659722222222222,
+              "tp": 163,
+              "fp": 394,
+              "fn": 125,
+              "tn": 3694
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5250466506414678
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.45,
+        "relation_X_best_f1": 0.6,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.75,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_t",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_T_f1.pth",
+      "epoch": 15,
+      "score": 0.22900763358778625,
+      "train_loss": 3.1322602358731357,
+      "saved_at": "2026-07-01 17:21:34",
+      "metrics_summary": {
+        "loss": 3.090843439102173,
+        "quality_best_f1": {
+          "score": 0.4963503649635036,
+          "threshold": 0.7,
+          "precision": 0.41975308641975306,
+          "recall": 0.6071428571428571,
+          "tp": 34,
+          "fp": 47,
+          "fn": 22,
+          "tn": 278
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.17857142857142858,
+          "f1": 0.30303030303030304,
+          "tp": 10,
+          "fp": 0,
+          "fn": 46,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.96033350176857,
+              "threshold": 0.75,
+              "precision": 0.9343657817109144,
+              "recall": 0.9877858627858628,
+              "tp": 3801,
+              "fp": 267,
+              "fn": 47,
+              "tn": 147
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9142314088857211,
+              "recall": 1.0,
+              "f1": 0.9551942410326424,
+              "tp": 3848,
+              "fp": 361,
+              "fn": 0,
+              "tn": 53
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.22900763358778625,
+              "threshold": 0.45,
+              "precision": 0.189873417721519,
+              "recall": 0.28846153846153844,
+              "tp": 15,
+              "fp": 64,
+              "fn": 37,
+              "tn": 4319
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.75,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.3857988165680473,
+              "threshold": 0.6,
+              "precision": 0.2926391382405745,
+              "recall": 0.5659722222222222,
+              "tp": 163,
+              "fp": 394,
+              "fn": 125,
+              "tn": 3694
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5250466506414678
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.45,
+        "relation_X_best_f1": 0.6,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.75,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_x",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_X_f1.pth",
+      "epoch": 15,
+      "score": 0.3857988165680473,
+      "train_loss": 3.1322602358731357,
+      "saved_at": "2026-07-01 17:21:35",
+      "metrics_summary": {
+        "loss": 3.090843439102173,
+        "quality_best_f1": {
+          "score": 0.4963503649635036,
+          "threshold": 0.7,
+          "precision": 0.41975308641975306,
+          "recall": 0.6071428571428571,
+          "tp": 34,
+          "fp": 47,
+          "fn": 22,
+          "tn": 278
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 1.0,
+          "recall": 0.17857142857142858,
+          "f1": 0.30303030303030304,
+          "tp": 10,
+          "fp": 0,
+          "fn": 46,
+          "tn": 325
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.96033350176857,
+              "threshold": 0.75,
+              "precision": 0.9343657817109144,
+              "recall": 0.9877858627858628,
+              "tp": 3801,
+              "fp": 267,
+              "fn": 47,
+              "tn": 147
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9142314088857211,
+              "recall": 1.0,
+              "f1": 0.9551942410326424,
+              "tp": 3848,
+              "fp": 361,
+              "fn": 0,
+              "tn": 53
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.22900763358778625,
+              "threshold": 0.45,
+              "precision": 0.189873417721519,
+              "recall": 0.28846153846153844,
+              "tp": 15,
+              "fp": 64,
+              "fn": 37,
+              "tn": 4319
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.75,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.3857988165680473,
+              "threshold": 0.6,
+              "precision": 0.2926391382405745,
+              "recall": 0.5659722222222222,
+              "tp": 163,
+              "fp": 394,
+              "fn": 125,
+              "tn": 3694
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5250466506414678
+      },
+      "thresholds": {
+        "quality_best_f1": 0.7,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.45,
+        "relation_X_best_f1": 0.6,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.75,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "loss",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_loss.pth",
+      "epoch": 20,
+      "score": 2.9531365633010864,
+      "train_loss": 3.0055761337280273,
+      "saved_at": "2026-07-01 17:22:16",
+      "metrics_summary": {
+        "loss": 2.9531365633010864,
+        "quality_best_f1": {
+          "score": 0.4957264957264957,
+          "threshold": 0.75,
+          "precision": 0.47540983606557374,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 32,
+          "fn": 27,
+          "tn": 293
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 0.8333333333333334,
+          "recall": 0.17857142857142858,
+          "f1": 0.29411764705882354,
+          "tp": 10,
+          "fp": 2,
+          "fn": 46,
+          "tn": 323
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9620060790273557,
+              "threshold": 0.75,
+              "precision": 0.9382411067193676,
+              "recall": 0.987006237006237,
+              "tp": 3798,
+              "fp": 250,
+              "fn": 50,
+              "tn": 164
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.24444444444444444,
+              "threshold": 0.6,
+              "precision": 0.2894736842105263,
+              "recall": 0.21153846153846154,
+              "tp": 11,
+              "fp": 27,
+              "fn": 41,
+              "tn": 4356
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.41007194244604317,
+              "threshold": 0.65,
+              "precision": 0.3131868131868132,
+              "recall": 0.59375,
+              "tp": 171,
+              "fp": 375,
+              "fn": 117,
+              "tn": 3713
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5388408219726144
+      },
+      "thresholds": {
+        "quality_best_f1": 0.75,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.6,
+        "relation_X_best_f1": 0.65,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_overall",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_macro_f1.pth",
+      "epoch": 20,
+      "score": 0.5388408219726144,
+      "train_loss": 3.0055761337280273,
+      "saved_at": "2026-07-01 17:22:17",
+      "metrics_summary": {
+        "loss": 2.9531365633010864,
+        "quality_best_f1": {
+          "score": 0.4957264957264957,
+          "threshold": 0.75,
+          "precision": 0.47540983606557374,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 32,
+          "fn": 27,
+          "tn": 293
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 0.8333333333333334,
+          "recall": 0.17857142857142858,
+          "f1": 0.29411764705882354,
+          "tp": 10,
+          "fp": 2,
+          "fn": 46,
+          "tn": 323
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9620060790273557,
+              "threshold": 0.75,
+              "precision": 0.9382411067193676,
+              "recall": 0.987006237006237,
+              "tp": 3798,
+              "fp": 250,
+              "fn": 50,
+              "tn": 164
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.24444444444444444,
+              "threshold": 0.6,
+              "precision": 0.2894736842105263,
+              "recall": 0.21153846153846154,
+              "tp": 11,
+              "fp": 27,
+              "fn": 41,
+              "tn": 4356
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.41007194244604317,
+              "threshold": 0.65,
+              "precision": 0.3131868131868132,
+              "recall": 0.59375,
+              "tp": 171,
+              "fp": 375,
+              "fn": 117,
+              "tn": 3713
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5388408219726144
+      },
+      "thresholds": {
+        "quality_best_f1": 0.75,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.6,
+        "relation_X_best_f1": 0.65,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_e2e",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_E2E_f1.pth",
+      "epoch": 20,
+      "score": 0.9620060790273557,
+      "train_loss": 3.0055761337280273,
+      "saved_at": "2026-07-01 17:22:18",
+      "metrics_summary": {
+        "loss": 2.9531365633010864,
+        "quality_best_f1": {
+          "score": 0.4957264957264957,
+          "threshold": 0.75,
+          "precision": 0.47540983606557374,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 32,
+          "fn": 27,
+          "tn": 293
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 0.8333333333333334,
+          "recall": 0.17857142857142858,
+          "f1": 0.29411764705882354,
+          "tp": 10,
+          "fp": 2,
+          "fn": 46,
+          "tn": 323
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9620060790273557,
+              "threshold": 0.75,
+              "precision": 0.9382411067193676,
+              "recall": 0.987006237006237,
+              "tp": 3798,
+              "fp": 250,
+              "fn": 50,
+              "tn": 164
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.24444444444444444,
+              "threshold": 0.6,
+              "precision": 0.2894736842105263,
+              "recall": 0.21153846153846154,
+              "tp": 11,
+              "fp": 27,
+              "fn": 41,
+              "tn": 4356
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.41007194244604317,
+              "threshold": 0.65,
+              "precision": 0.3131868131868132,
+              "recall": 0.59375,
+              "tp": 171,
+              "fp": 375,
+              "fn": 117,
+              "tn": 3713
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5388408219726144
+      },
+      "thresholds": {
+        "quality_best_f1": 0.75,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.6,
+        "relation_X_best_f1": 0.65,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_t",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_T_f1.pth",
+      "epoch": 20,
+      "score": 0.24444444444444444,
+      "train_loss": 3.0055761337280273,
+      "saved_at": "2026-07-01 17:22:18",
+      "metrics_summary": {
+        "loss": 2.9531365633010864,
+        "quality_best_f1": {
+          "score": 0.4957264957264957,
+          "threshold": 0.75,
+          "precision": 0.47540983606557374,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 32,
+          "fn": 27,
+          "tn": 293
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 0.8333333333333334,
+          "recall": 0.17857142857142858,
+          "f1": 0.29411764705882354,
+          "tp": 10,
+          "fp": 2,
+          "fn": 46,
+          "tn": 323
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9620060790273557,
+              "threshold": 0.75,
+              "precision": 0.9382411067193676,
+              "recall": 0.987006237006237,
+              "tp": 3798,
+              "fp": 250,
+              "fn": 50,
+              "tn": 164
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.24444444444444444,
+              "threshold": 0.6,
+              "precision": 0.2894736842105263,
+              "recall": 0.21153846153846154,
+              "tp": 11,
+              "fp": 27,
+              "fn": 41,
+              "tn": 4356
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.41007194244604317,
+              "threshold": 0.65,
+              "precision": 0.3131868131868132,
+              "recall": 0.59375,
+              "tp": 171,
+              "fp": 375,
+              "fn": 117,
+              "tn": 3713
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5388408219726144
+      },
+      "thresholds": {
+        "quality_best_f1": 0.75,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.6,
+        "relation_X_best_f1": 0.65,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_x",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_X_f1.pth",
+      "epoch": 20,
+      "score": 0.41007194244604317,
+      "train_loss": 3.0055761337280273,
+      "saved_at": "2026-07-01 17:22:19",
+      "metrics_summary": {
+        "loss": 2.9531365633010864,
+        "quality_best_f1": {
+          "score": 0.4957264957264957,
+          "threshold": 0.75,
+          "precision": 0.47540983606557374,
+          "recall": 0.5178571428571429,
+          "tp": 29,
+          "fp": 32,
+          "fn": 27,
+          "tn": 293
+        },
+        "quality_precision_target": {
+          "score": 0.17857142857142858,
+          "threshold": 0.9,
+          "precision": 0.8333333333333334,
+          "recall": 0.17857142857142858,
+          "f1": 0.29411764705882354,
+          "tp": 10,
+          "fp": 2,
+          "fn": 46,
+          "tn": 323
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9620060790273557,
+              "threshold": 0.75,
+              "precision": 0.9382411067193676,
+              "recall": 0.987006237006237,
+              "tp": 3798,
+              "fp": 250,
+              "fn": 50,
+              "tn": 164
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.45,
+              "precision": 0.9161904761904762,
+              "recall": 1.0,
+              "f1": 0.9562624254473161,
+              "tp": 3848,
+              "fp": 352,
+              "fn": 0,
+              "tn": 62
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.24444444444444444,
+              "threshold": 0.6,
+              "precision": 0.2894736842105263,
+              "recall": 0.21153846153846154,
+              "tp": 11,
+              "fp": 27,
+              "fn": 41,
+              "tn": 4356
+            },
+            "precision_target": {
+              "score": 0.019230769230769232,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.019230769230769232,
+              "f1": 0.03773584905660378,
+              "tp": 1,
+              "fp": 0,
+              "fn": 51,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.41007194244604317,
+              "threshold": 0.65,
+              "precision": 0.3131868131868132,
+              "recall": 0.59375,
+              "tp": 171,
+              "fp": 375,
+              "fn": 117,
+              "tn": 3713
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5388408219726144
+      },
+      "thresholds": {
+        "quality_best_f1": 0.75,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.75,
+        "relation_T_best_f1": 0.6,
+        "relation_X_best_f1": 0.65,
+        "relation_E2E_precision_target": 0.45,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "loss",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_loss.pth",
+      "epoch": 25,
+      "score": 2.8279776573181152,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:00",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_overall",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_macro_f1.pth",
+      "epoch": 25,
+      "score": 0.5575215810980579,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:01",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_e2e",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_E2E_f1.pth",
+      "epoch": 25,
+      "score": 0.9627854169294815,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:01",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_t",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_T_f1.pth",
+      "epoch": 25,
+      "score": 0.25333333333333335,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:01",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    },
+    {
+      "purpose": "relation_x",
+      "path": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/flywheel_model/model/flywheel_topohgt_v7_stage1_topologyonly_ckptselect_best_relation_X_f1.pth",
+      "epoch": 25,
+      "score": 0.4564459930313589,
+      "train_loss": 2.8683494437824595,
+      "saved_at": "2026-07-01 17:23:02",
+      "metrics_summary": {
+        "loss": 2.8279776573181152,
+        "quality_best_f1": {
+          "score": 0.49624060150375937,
+          "threshold": 0.65,
+          "precision": 0.42857142857142855,
+          "recall": 0.5892857142857143,
+          "tp": 33,
+          "fp": 44,
+          "fn": 23,
+          "tn": 281
+        },
+        "quality_precision_target": {
+          "score": 0.14285714285714285,
+          "threshold": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 0.14285714285714285,
+          "f1": 0.24615384615384617,
+          "tp": 8,
+          "fp": 1,
+          "fn": 48,
+          "tn": 324
+        },
+        "relation": {
+          "E2E": {
+            "best_f1": {
+              "score": 0.9627854169294815,
+              "threshold": 0.7,
+              "precision": 0.9355234126011277,
+              "recall": 0.9916839916839917,
+              "tp": 3816,
+              "fp": 263,
+              "fn": 32,
+              "tn": 151
+            },
+            "precision_target": {
+              "score": 1.0,
+              "threshold": 0.5,
+              "precision": 0.921455938697318,
+              "recall": 1.0,
+              "f1": 0.959122632103689,
+              "tp": 3848,
+              "fp": 328,
+              "fn": 0,
+              "tn": 86
+            }
+          },
+          "T": {
+            "best_f1": {
+              "score": 0.25333333333333335,
+              "threshold": 0.5,
+              "precision": 0.19387755102040816,
+              "recall": 0.36538461538461536,
+              "tp": 19,
+              "fp": 79,
+              "fn": 33,
+              "tn": 4304
+            },
+            "precision_target": {
+              "score": 0.038461538461538464,
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.038461538461538464,
+              "f1": 0.07407407407407407,
+              "tp": 2,
+              "fp": 0,
+              "fn": 50,
+              "tn": 4383
+            }
+          },
+          "X": {
+            "best_f1": {
+              "score": 0.4564459930313589,
+              "threshold": 0.7,
+              "precision": 0.458041958041958,
+              "recall": 0.4548611111111111,
+              "tp": 131,
+              "fp": 155,
+              "fn": 157,
+              "tn": 3933
+            },
+            "precision_target": null
+          }
+        },
+        "relation_macro_f1": 0.5575215810980579
+      },
+      "thresholds": {
+        "quality_best_f1": 0.65,
+        "quality_precision_target": 0.9,
+        "relation_E2E_best_f1": 0.7,
+        "relation_T_best_f1": 0.5,
+        "relation_X_best_f1": 0.7,
+        "relation_E2E_precision_target": 0.5,
+        "relation_T_precision_target": 0.8,
+        "relation_X_precision_target": null
+      }
+    }
+  ],
+  "selection_rules": {
+    "quality_balanced": "max val_metrics.quality_best_f1.f1",
+    "quality_conservative": "max val_metrics.quality_best_at_precision_target.recall, when precision>=precision_target",
+    "relation_overall": "max mean(E2E_bestF1, T_bestF1, X_bestF1)",
+    "relation_e2e": "max E2E bestF1",
+    "relation_t": "max T bestF1",
+    "relation_x": "max X bestF1",
+    "loss": "min val loss",
+    "latest": "latest evaluated checkpoint"
+  },
+  "config": {
+    "max_strokes": 16,
+    "canvas_norm": 400.0,
+    "width_norm": 20.0,
+    "dist_norm": 32.0,
+    "curve_sample_n": 32,
+    "raster_size": 48,
+    "input_mode": "stage1_topology_only",
+    "use_raster_branch": false,
+    "relation_candidate_only": true,
+    "cand_e2e_endpoint_dist_max": 16.0,
+    "cand_t_endpoint_curve_dist_max": 16.0,
+    "cand_x_curve_curve_dist_max": 8.0,
+    "cand_include_all_positive": true,
+    "rel_pos_weight_clip": 20.0,
+    "use_manual_rel_pos_weight": true,
+    "e2e_pos_weight_manual": 1.0,
+    "t_pos_weight_manual": 20.0,
+    "x_pos_weight_manual": 8.0,
+    "rel_eval_threshold": 0.5,
+    "rel_threshold_min": 0.05,
+    "rel_threshold_max": 0.95,
+    "rel_threshold_step": 0.05,
+    "rel_precision_target": 0.8,
+    "precompute_items": true,
+    "cache_preprocessed_pt": true,
+    "force_rebuild_cache": false,
+    "val_ratio": 0.12,
+    "group_split": true,
+    "seed": 42,
+    "hidden_dim": 128,
+    "num_layers": 3,
+    "dropout": 0.15,
+    "batch_size": 256,
+    "epochs": 35,
+    "lr": 0.00015,
+    "weight_decay": 0.0003,
+    "grad_clip": 1.0,
+    "early_stop_patience": 8,
+    "early_stop_metric": "quality_best_f1",
+    "w_quality": 2.0,
+    "w_relation": 1.0,
+    "quality_pos_weight_clip": 20.0,
+    "rel_weight_clip": 8.0,
+    "threshold_min": 0.05,
+    "threshold_max": 0.95,
+    "threshold_step": 0.05,
+    "precision_target": 0.8,
+    "num_workers": 0,
+    "log_every": 5,
+    "save_prefix": "flywheel_topohgt_v7_stage1_topologyonly_ckptselect",
+    "export_error_topk": 100,
+    "annotations_are_positive": true
+  }
+}
