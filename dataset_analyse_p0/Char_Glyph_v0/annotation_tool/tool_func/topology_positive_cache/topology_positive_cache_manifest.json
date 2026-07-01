@@ -1,19 +1,19 @@
 {
-  "build_seconds": 0.65,
-  "built_at": "2026-07-02 00:50:19",
+  "build_seconds": 0.765,
+  "built_at": "2026-07-02 01:27:41",
   "cache_version": "topology_novelty_positive_cache_v2",
   "endpoint_tol": 4.0,
   "error_count": 0,
   "errors": [],
-  "geometry_bins": 24,
-  "item_count": 661,
+  "geometry_bins": 16,
+  "item_count": 696,
   "max_json_mb": 80,
-  "saved_at": "2026-07-02 00:50:19",
+  "saved_at": "2026-07-02 01:27:41",
   "shards": [
     {
       "file": "topology_positive_cache_shard_0000.json",
-      "item_count": 661,
-      "size": 209118
+      "item_count": 696,
+      "size": 220456
     }
   ],
   "source_manifest": {
@@ -23,7 +23,7 @@
       "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/cleaned",
       "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/AI_VECTOR_ROUTER_With_topo/annotations_topo"
     ],
-    "file_count": 13,
+    "file_count": 22,
     "files": [
       {
         "basename": "Assistant[wght]_topo.json",
@@ -115,17 +115,80 @@
         "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_005012_612449_167638_topo.json",
         "size": 75373,
         "source": "good"
+      },
+      {
+        "basename": "PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_011111_871965_406725_topo.json",
+        "mtime_ns": 1782925871965798300,
+        "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_011111_871965_406725_topo.json",
+        "size": 18389,
+        "source": "good"
+      },
+      {
+        "basename": "PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_011831_311740_783718_topo.json",
+        "mtime_ns": 1782926311742858400,
+        "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_011831_311740_783718_topo.json",
+        "size": 38560,
+        "source": "good"
+      },
+      {
+        "basename": "PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_011908_348358_228354_topo.json",
+        "mtime_ns": 1782926348361567900,
+        "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_011908_348358_228354_topo.json",
+        "size": 62060,
+        "source": "good"
+      },
+      {
+        "basename": "PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012047_447141_743779_topo.json",
+        "mtime_ns": 1782926447142828100,
+        "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012047_447141_743779_topo.json",
+        "size": 44464,
+        "source": "good"
+      },
+      {
+        "basename": "PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012237_557869_503868_topo.json",
+        "mtime_ns": 1782926557870945200,
+        "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012237_557869_503868_topo.json",
+        "size": 21216,
+        "source": "good"
+      },
+      {
+        "basename": "PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012425_665715_537657_topo.json",
+        "mtime_ns": 1782926665716528800,
+        "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012425_665715_537657_topo.json",
+        "size": 18349,
+        "source": "good"
+      },
+      {
+        "basename": "PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012553_753566_999942_topo.json",
+        "mtime_ns": 1782926753566251700,
+        "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012553_753566_999942_topo.json",
+        "size": 10358,
+        "source": "good"
+      },
+      {
+        "basename": "PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012658_818656_793201_topo.json",
+        "mtime_ns": 1782926818656535100,
+        "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012658_818656_793201_topo.json",
+        "size": 16786,
+        "source": "good"
+      },
+      {
+        "basename": "PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012738_858791_944304_topo.json",
+        "mtime_ns": 1782926858792976900,
+        "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012738_858791_944304_topo.json",
+        "size": 25283,
+        "source": "good"
       }
     ],
-    "manifest_hash": "c08c36b4f42ee5df824fbdb64921f4c6"
+    "manifest_hash": "5df35e34d6bda860d28cb91976d22a83"
   },
   "source_policy": "positive_only: good + cleaned + annotations_topo; bad is intentionally ignored",
   "summary": {
-    "family_hash_count": 321,
-    "geometry_hash_count": 615,
-    "item_count": 661,
-    "source_manifest_hash": "c08c36b4f42ee5df824fbdb64921f4c6",
-    "strict_hash_count": 492
+    "family_hash_count": 336,
+    "geometry_hash_count": 650,
+    "item_count": 696,
+    "source_manifest_hash": "5df35e34d6bda860d28cb91976d22a83",
+    "strict_hash_count": 523
   },
   "workers": 19
 }
