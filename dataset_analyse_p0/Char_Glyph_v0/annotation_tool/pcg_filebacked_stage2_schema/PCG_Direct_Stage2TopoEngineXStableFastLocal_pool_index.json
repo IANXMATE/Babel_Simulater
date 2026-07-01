@@ -3,9 +3,10 @@
   "pool_prefix": "PCG_Direct_Stage2TopoEngineXStableFastLocal",
   "pua_base": 983040,
   "pua_max": 1114109,
-  "next_code": 986459,
-  "good_count": 366,
-  "bad_count": 3053,
-  "compacted_at": "2026-07-01 22:43:03",
-  "updated_at": "2026-07-01 22:43:03"
+  "next_code": 986754,
+  "good_count": 425,
+  "bad_count": 3289,
+  "seen_hex_count": 3689,
+  "rebuilt_at": "2026-07-02 00:48:28",
+  "updated_at": "2026-07-02 00:50:12"
 }
