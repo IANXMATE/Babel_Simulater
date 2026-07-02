@@ -1,0 +1,16 @@
+{
+  "schema_version": "pcg_pool_fast_compact_summary_v1",
+  "created_at": "2026-07-02 23:40:58",
+  "mode": "merge_only_keep_existing_codepoints",
+  "pool_prefix": "PCG_Direct_Stage2TopoEngineXStableFastLocal",
+  "output_root": "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\annotation_tool\\pcg_filebacked_stage2_schema",
+  "good_count_after": 496,
+  "bad_count_after": 3830,
+  "next_code": "U+F10E6",
+  "good_files": [
+    "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\annotation_tool\\pcg_filebacked_stage2_schema\\good\\PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_part000_topo.json"
+  ],
+  "bad_files": [
+    "c:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\annotation_tool\\pcg_filebacked_stage2_schema\\bad\\PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticBad_part000_topo.json"
+  ]
+}
