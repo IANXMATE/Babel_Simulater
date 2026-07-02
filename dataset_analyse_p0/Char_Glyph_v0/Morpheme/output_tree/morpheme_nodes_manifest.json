@@ -4,12 +4,12 @@
   "max_mb": 80,
   "prefix": "morpheme_nodes",
   "row_count": 6340,
-  "saved_at": "2026-07-02 14:41:35",
+  "saved_at": "2026-07-02 15:51:43",
   "shards": [
     {
       "file": "morpheme_nodes_shard_0000.json",
       "row_count": 6340,
-      "size_bytes": 13604382
+      "size_bytes": 13603562
     }
   ],
   "stable_min_support": 2
