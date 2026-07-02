@@ -1,19 +1,19 @@
 {
-  "build_seconds": 0.765,
-  "built_at": "2026-07-02 01:27:41",
+  "build_seconds": 0.739,
+  "built_at": "2026-07-02 12:47:18",
   "cache_version": "topology_novelty_positive_cache_v2",
   "endpoint_tol": 4.0,
   "error_count": 0,
   "errors": [],
   "geometry_bins": 16,
-  "item_count": 696,
+  "item_count": 707,
   "max_json_mb": 80,
-  "saved_at": "2026-07-02 01:27:41",
+  "saved_at": "2026-07-02 12:47:18",
   "shards": [
     {
       "file": "topology_positive_cache_shard_0000.json",
-      "item_count": 696,
-      "size": 220456
+      "item_count": 707,
+      "size": 224068
     }
   ],
   "source_manifest": {
@@ -23,7 +23,7 @@
       "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/cleaned",
       "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/AI_VECTOR_ROUTER_With_topo/annotations_topo"
     ],
-    "file_count": 22,
+    "file_count": 23,
     "files": [
       {
         "basename": "Assistant[wght]_topo.json",
@@ -178,17 +178,24 @@
         "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_012738_858791_944304_topo.json",
         "size": 25283,
         "source": "good"
+      },
+      {
+        "basename": "PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_124702_622794_709468_topo.json",
+        "mtime_ns": 1782967622794664200,
+        "path": "c:/Users/Administrator/Documents/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good/PCG_Direct_Stage2TopoEngineXStableFastLocal_AestheticGood_partinc_20260702_124702_622794_709468_topo.json",
+        "size": 97086,
+        "source": "good"
       }
     ],
-    "manifest_hash": "5df35e34d6bda860d28cb91976d22a83"
+    "manifest_hash": "94fedbbbc890ef397cf06d5de82b77bc"
   },
   "source_policy": "positive_only: good + cleaned + annotations_topo; bad is intentionally ignored",
   "summary": {
-    "family_hash_count": 336,
-    "geometry_hash_count": 650,
-    "item_count": 696,
-    "source_manifest_hash": "5df35e34d6bda860d28cb91976d22a83",
-    "strict_hash_count": 523
+    "family_hash_count": 340,
+    "geometry_hash_count": 661,
+    "item_count": 707,
+    "source_manifest_hash": "94fedbbbc890ef397cf06d5de82b77bc",
+    "strict_hash_count": 531
   },
   "workers": 19
 }
