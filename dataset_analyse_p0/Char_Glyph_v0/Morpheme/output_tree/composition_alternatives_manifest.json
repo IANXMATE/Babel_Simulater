@@ -1,0 +1,14 @@
+{
+  "description": "generalized binary-tree/graph alternatives: parent <- children + topology_way",
+  "max_mb": 80,
+  "prefix": "composition_alternatives",
+  "row_count": 78516,
+  "saved_at": "2026-07-02 14:41:36",
+  "shards": [
+    {
+      "file": "composition_alternatives_shard_0000.json",
+      "row_count": 78516,
+      "size_bytes": 48119351
+    }
+  ]
+}

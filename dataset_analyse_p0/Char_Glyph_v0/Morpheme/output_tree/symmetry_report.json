@@ -1,0 +1,814 @@
+{
+  "by_best_type": {
+    "mirror_x": 1468,
+    "mirror_y": 3295,
+    "rot2": 1079,
+    "rot3": 284,
+    "rot4": 214
+  },
+  "cluster_count": 6340,
+  "strict_symmetric_count": 154,
+  "symmetry_threshold": 0.08,
+  "top_strict_symmetric": [
+    {
+      "best_symmetry_score": 0.0,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M_LINE",
+      "source_glyph_count": 599,
+      "stroke_count": 1,
+      "support_count": 3199
+    },
+    {
+      "best_symmetry_score": 0.0,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000007_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.0,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000014_2s",
+      "source_glyph_count": 3,
+      "stroke_count": 2,
+      "support_count": 3
+    },
+    {
+      "best_symmetry_score": 0.0,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000021_2s",
+      "source_glyph_count": 2,
+      "stroke_count": 2,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.000924,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000004_2s",
+      "source_glyph_count": 85,
+      "stroke_count": 2,
+      "support_count": 114
+    },
+    {
+      "best_symmetry_score": 0.002038,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000064_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.002226,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000005_2s",
+      "source_glyph_count": 7,
+      "stroke_count": 2,
+      "support_count": 7
+    },
+    {
+      "best_symmetry_score": 0.004228,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M001155_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.004284,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M001167_3s",
+      "source_glyph_count": 2,
+      "stroke_count": 3,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.004479,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000050_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.005771,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000173_2s",
+      "source_glyph_count": 14,
+      "stroke_count": 2,
+      "support_count": 17
+    },
+    {
+      "best_symmetry_score": 0.006198,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000217_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.006293,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000771_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.006384,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000118_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.006629,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000878_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.007293,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000013_2s",
+      "source_glyph_count": 2,
+      "stroke_count": 2,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.007979,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000967_3s",
+      "source_glyph_count": 22,
+      "stroke_count": 3,
+      "support_count": 25
+    },
+    {
+      "best_symmetry_score": 0.008298,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000051_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.009176,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000403_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.011256,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000102_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.012806,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M002545_4s",
+      "source_glyph_count": 2,
+      "stroke_count": 4,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.01724,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000000_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.018735,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M000469_3s",
+      "source_glyph_count": 12,
+      "stroke_count": 3,
+      "support_count": 14
+    },
+    {
+      "best_symmetry_score": 0.019048,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000243_2s",
+      "source_glyph_count": 2,
+      "stroke_count": 2,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.020591,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000081_2s",
+      "source_glyph_count": 9,
+      "stroke_count": 2,
+      "support_count": 9
+    },
+    {
+      "best_symmetry_score": 0.021313,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M002676_4s",
+      "source_glyph_count": 1,
+      "stroke_count": 4,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.022161,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000216_2s",
+      "source_glyph_count": 4,
+      "stroke_count": 2,
+      "support_count": 4
+    },
+    {
+      "best_symmetry_score": 0.022622,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000017_2s",
+      "source_glyph_count": 3,
+      "stroke_count": 2,
+      "support_count": 3
+    },
+    {
+      "best_symmetry_score": 0.023288,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M002881_4s",
+      "source_glyph_count": 2,
+      "stroke_count": 4,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.024999,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M000310_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.025528,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000230_2s",
+      "source_glyph_count": 45,
+      "stroke_count": 2,
+      "support_count": 47
+    },
+    {
+      "best_symmetry_score": 0.026988,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M005440_6s",
+      "source_glyph_count": 1,
+      "stroke_count": 6,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.027391,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000233_2s",
+      "source_glyph_count": 27,
+      "stroke_count": 2,
+      "support_count": 31
+    },
+    {
+      "best_symmetry_score": 0.02768,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000109_2s",
+      "source_glyph_count": 2,
+      "stroke_count": 2,
+      "support_count": 3
+    },
+    {
+      "best_symmetry_score": 0.029917,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M001306_3s",
+      "source_glyph_count": 6,
+      "stroke_count": 3,
+      "support_count": 6
+    },
+    {
+      "best_symmetry_score": 0.030238,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M003111_5s",
+      "source_glyph_count": 2,
+      "stroke_count": 5,
+      "support_count": 3
+    },
+    {
+      "best_symmetry_score": 0.031142,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000349_3s",
+      "source_glyph_count": 12,
+      "stroke_count": 3,
+      "support_count": 13
+    },
+    {
+      "best_symmetry_score": 0.031533,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000680_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.031732,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000010_2s",
+      "source_glyph_count": 12,
+      "stroke_count": 2,
+      "support_count": 12
+    },
+    {
+      "best_symmetry_score": 0.03213,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M001609_4s",
+      "source_glyph_count": 1,
+      "stroke_count": 4,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.032468,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M001957_4s",
+      "source_glyph_count": 1,
+      "stroke_count": 4,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.033065,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000682_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.033184,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000049_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.033838,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000663_3s",
+      "source_glyph_count": 13,
+      "stroke_count": 3,
+      "support_count": 13
+    },
+    {
+      "best_symmetry_score": 0.033883,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000191_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.035125,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000886_3s",
+      "source_glyph_count": 2,
+      "stroke_count": 3,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.035255,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M000506_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.035422,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000965_3s",
+      "source_glyph_count": 13,
+      "stroke_count": 3,
+      "support_count": 15
+    },
+    {
+      "best_symmetry_score": 0.035477,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M002673_4s",
+      "source_glyph_count": 1,
+      "stroke_count": 4,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.03628,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000218_2s",
+      "source_glyph_count": 65,
+      "stroke_count": 2,
+      "support_count": 73
+    },
+    {
+      "best_symmetry_score": 0.037174,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M005686_6s",
+      "source_glyph_count": 3,
+      "stroke_count": 6,
+      "support_count": 3
+    },
+    {
+      "best_symmetry_score": 0.038068,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M000304_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.038198,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M002149_4s",
+      "source_glyph_count": 1,
+      "stroke_count": 4,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.03841,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000879_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.038448,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M002996_4s",
+      "source_glyph_count": 1,
+      "stroke_count": 4,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.038869,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000043_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.039227,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M002608_4s",
+      "source_glyph_count": 1,
+      "stroke_count": 4,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.039683,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000029_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.039882,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000138_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.040544,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M001308_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.041527,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000843_3s",
+      "source_glyph_count": 4,
+      "stroke_count": 3,
+      "support_count": 5
+    },
+    {
+      "best_symmetry_score": 0.041964,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M000498_3s",
+      "source_glyph_count": 3,
+      "stroke_count": 3,
+      "support_count": 3
+    },
+    {
+      "best_symmetry_score": 0.04278,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M006277_8s",
+      "source_glyph_count": 1,
+      "stroke_count": 8,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.04291,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000435_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.044522,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000002_2s",
+      "source_glyph_count": 71,
+      "stroke_count": 2,
+      "support_count": 79
+    },
+    {
+      "best_symmetry_score": 0.044799,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000177_2s",
+      "source_glyph_count": 11,
+      "stroke_count": 2,
+      "support_count": 11
+    },
+    {
+      "best_symmetry_score": 0.045151,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M004095_5s",
+      "source_glyph_count": 1,
+      "stroke_count": 5,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.046362,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000315_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.046449,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M001632_4s",
+      "source_glyph_count": 9,
+      "stroke_count": 4,
+      "support_count": 9
+    },
+    {
+      "best_symmetry_score": 0.046886,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000240_2s",
+      "source_glyph_count": 9,
+      "stroke_count": 2,
+      "support_count": 10
+    },
+    {
+      "best_symmetry_score": 0.047244,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M002946_4s",
+      "source_glyph_count": 1,
+      "stroke_count": 4,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.047858,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M004569_5s",
+      "source_glyph_count": 2,
+      "stroke_count": 5,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.048137,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M003822_5s",
+      "source_glyph_count": 1,
+      "stroke_count": 5,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.049153,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M000477_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.04942,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M001209_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.049546,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000093_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.050731,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M001161_3s",
+      "source_glyph_count": 2,
+      "stroke_count": 3,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.052761,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M000214_2s",
+      "source_glyph_count": 4,
+      "stroke_count": 2,
+      "support_count": 4
+    },
+    {
+      "best_symmetry_score": 0.053003,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M001114_3s",
+      "source_glyph_count": 2,
+      "stroke_count": 3,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.053102,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000350_3s",
+      "source_glyph_count": 11,
+      "stroke_count": 3,
+      "support_count": 12
+    },
+    {
+      "best_symmetry_score": 0.053605,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M006303_8s",
+      "source_glyph_count": 1,
+      "stroke_count": 8,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.053665,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M000023_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.053987,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M001730_4s",
+      "source_glyph_count": 7,
+      "stroke_count": 4,
+      "support_count": 7
+    },
+    {
+      "best_symmetry_score": 0.054145,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M002943_4s",
+      "source_glyph_count": 9,
+      "stroke_count": 4,
+      "support_count": 9
+    },
+    {
+      "best_symmetry_score": 0.056143,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M001307_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.056411,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M001639_4s",
+      "source_glyph_count": 1,
+      "stroke_count": 4,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.056605,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M005869_6s",
+      "source_glyph_count": 4,
+      "stroke_count": 6,
+      "support_count": 4
+    },
+    {
+      "best_symmetry_score": 0.05676,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000896_3s",
+      "source_glyph_count": 1,
+      "stroke_count": 3,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.056874,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000228_2s",
+      "source_glyph_count": 12,
+      "stroke_count": 2,
+      "support_count": 16
+    },
+    {
+      "best_symmetry_score": 0.056894,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000174_2s",
+      "source_glyph_count": 56,
+      "stroke_count": 2,
+      "support_count": 67
+    },
+    {
+      "best_symmetry_score": 0.057428,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M001629_4s",
+      "source_glyph_count": 10,
+      "stroke_count": 4,
+      "support_count": 12
+    },
+    {
+      "best_symmetry_score": 0.057817,
+      "best_symmetry_type": "rot2",
+      "morpheme_id": "M005938_6s",
+      "source_glyph_count": 1,
+      "stroke_count": 6,
+      "support_count": 2
+    },
+    {
+      "best_symmetry_score": 0.057872,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M000063_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.057939,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M001575_4s",
+      "source_glyph_count": 1,
+      "stroke_count": 4,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.058043,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000271_3s",
+      "source_glyph_count": 26,
+      "stroke_count": 3,
+      "support_count": 30
+    },
+    {
+      "best_symmetry_score": 0.058047,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M005990_7s",
+      "source_glyph_count": 1,
+      "stroke_count": 7,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.058763,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M004865_5s",
+      "source_glyph_count": 1,
+      "stroke_count": 5,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.058967,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M004390_5s",
+      "source_glyph_count": 1,
+      "stroke_count": 5,
+      "support_count": 1
+    },
+    {
+      "best_symmetry_score": 0.060201,
+      "best_symmetry_type": "mirror_x",
+      "morpheme_id": "M001002_3s",
+      "source_glyph_count": 10,
+      "stroke_count": 3,
+      "support_count": 10
+    },
+    {
+      "best_symmetry_score": 0.060286,
+      "best_symmetry_type": "mirror_y",
+      "morpheme_id": "M000012_2s",
+      "source_glyph_count": 1,
+      "stroke_count": 2,
+      "support_count": 1
+    }
+  ]
+}

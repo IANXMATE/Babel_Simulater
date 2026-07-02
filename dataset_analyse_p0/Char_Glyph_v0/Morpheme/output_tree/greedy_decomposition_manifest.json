@@ -1,0 +1,14 @@
+{
+  "description": "large-block-first recursive decomposition forest",
+  "max_mb": 80,
+  "prefix": "greedy_decomposition",
+  "row_count": 599,
+  "saved_at": "2026-07-02 14:41:36",
+  "shards": [
+    {
+      "file": "greedy_decomposition_shard_0000.json",
+      "row_count": 599,
+      "size_bytes": 1507980
+    }
+  ]
+}

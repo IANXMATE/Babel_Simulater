@@ -1,0 +1,50 @@
+{
+  "counts": {
+    "composition_alternative_count": 78516,
+    "existing_mirror_candidate_count": 4243,
+    "extract_errors": 0,
+    "glyph_count": 599,
+    "morpheme_node_count": 6340,
+    "raw_instance_count": 19907,
+    "stable_morpheme_count": 1407,
+    "strict_symmetric_morpheme_count": 154
+  },
+  "created_at": "2026-07-02 14:41:37",
+  "outputs": [
+    "loaded_glyphs_manifest.json",
+    "morpheme_nodes_manifest.json",
+    "composition_alternatives_manifest.json",
+    "glyph_roots.json",
+    "greedy_decomposition_manifest.json",
+    "symmetry_report.json",
+    "existing_mirror_candidates.json",
+    "summary.json"
+  ],
+  "params": {
+    "cluster_th": 0.14,
+    "collinear_tol": 15.0,
+    "endpoint_tol": 4.0,
+    "max_composition_strokes": 8,
+    "max_enum_strokes": 8,
+    "right_tol": 12.0,
+    "stable_min_support": 2,
+    "symmetry_th": 0.08,
+    "workers": "auto"
+  },
+  "semantics": [
+    "Morpheme is topology-only. Width/style/curve interior P1/P2 are ignored.",
+    "Each stroke is reduced to straight motherline P0->P3.",
+    "Global rotate/translate/uniform scale does not change morpheme bucket.",
+    "Composite morpheme bucket depends on child relative topology way, angle class, distance/length descriptor.",
+    "Bottom primitive is always M_LINE.",
+    "A parent can have multiple composition alternatives.",
+    "Mirror candidates are selected from existing morphemes/compositions only; no new mirror morphemes are generated."
+  ],
+  "sources": {
+    "annotations_topo": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/AI_VECTOR_ROUTER_With_topo/annotations_topo",
+    "cleaned": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/cleaned",
+    "good": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good",
+    "priority": "annotations_topo > cleaned > good"
+  },
+  "total_seconds": 24.235
+}

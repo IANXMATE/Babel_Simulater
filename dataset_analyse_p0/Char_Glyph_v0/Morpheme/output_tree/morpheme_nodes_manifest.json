@@ -1,0 +1,16 @@
+{
+  "cluster_threshold": 0.14,
+  "description": "topology-only morpheme clusters; LINE is bottom primitive",
+  "max_mb": 80,
+  "prefix": "morpheme_nodes",
+  "row_count": 6340,
+  "saved_at": "2026-07-02 14:41:35",
+  "shards": [
+    {
+      "file": "morpheme_nodes_shard_0000.json",
+      "row_count": 6340,
+      "size_bytes": 13604382
+    }
+  ],
+  "stable_min_support": 2
+}
