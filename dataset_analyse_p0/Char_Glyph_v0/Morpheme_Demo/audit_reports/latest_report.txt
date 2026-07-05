@@ -1,0 +1,187 @@
+================================================================================================
+[Morpheme Data Representation Support Audit]
+time: 2026-07-03 23:49:27
+script_dir: C:\Users\Administrator\Documents\BST\Babel_Simulater\dataset_analyse_p0\Char_Glyph_v0\Morpheme_Demo
+char_glyph_dir: C:\Users\Administrator\Documents\BST\Babel_Simulater\dataset_analyse_p0\Char_Glyph_v0
+dataset_analyse_dir: C:\Users\Administrator\Documents\BST\Babel_Simulater\dataset_analyse_p0
+morpheme_output_tree: C:\Users\Administrator\Documents\BST\Babel_Simulater\dataset_analyse_p0\Char_Glyph_v0\Morpheme\output_tree
+annotations_topo_dir: C:\Users\Administrator\Documents\BST\Babel_Simulater\dataset_analyse_p0\AI_VECTOR_ROUTER_With_topo\annotations_topo
+pcg_pool_root: C:\Users\Administrator\Documents\BST\Babel_Simulater\dataset_analyse_p0\Char_Glyph_v0\annotation_tool\pcg_filebacked_stage2_schema
+report_dir: C:\Users\Administrator\Documents\BST\Babel_Simulater\dataset_analyse_p0\Char_Glyph_v0\Morpheme_Demo\audit_reports
+================================================================================================
+
+--- Source counts ---
+annotations_topo: 128
+good: 491
+cleaned: 364
+bad: 3804
+
+--- Positive corpus core ---
+count: 983
+has_strokes_ratio: 1.0
+has_topology_events_ratio: 1.0
+straight_ratio_mean: 0.165071
+axis_ratio_mean: 0.067945
+vertical_ratio_mean: 0.04112
+horizontal_ratio_mean: 0.026824
+diagonal_ratio_mean: 0.932055
+graph_cycle_glyph_ratio: 0.694812
+articulation_glyph_ratio: 0.606307
+bridge_glyph_ratio: 0.687691
+recorded_cycle_glyph_ratio: 0.575788
+fallback_topology_ratio: 0.002035
+angle_bucket_stroke_ratio: {'horizontal': 0.13944, 'vertical': 0.147042, 'diagonal': 0.713518}
+layout_ratios: {'has_left_right_layout': 0.141404, 'has_top_bottom_layout': 0.10885, 'has_enclosure_layout': 0.027467, 'has_spine_attach_layout': 0.084435, 'has_parallel_verticals': 0.024415, 'has_stacked_horizontals': 0.009156}
+relation_counter: {'E2E': 5366, 'T': 339, 'X': 801}
+stroke_count_percentiles: {'0': 1.0, '25': 4.0, '50': 6.0, '75': 7.0, '90': 8.0, '95': 8.0, '99': 8.0, '100': 11.0}
+cycle_rank_percentiles: {'0': 0.0, '25': 0.0, '50': 2.0, '75': 3.0, '90': 6.0, '95': 8.0, '99': 12.0, '100': 14.0}
+max_degree_percentiles: {'0': 0.0, '25': 2.0, '50': 3.0, '75': 4.0, '90': 5.0, '95': 6.0, '99': 6.18, '100': 7.0}
+
+--- Bad corpus core ---
+count: 3804
+axis_ratio_mean: 0.051524
+vertical_ratio_mean: 0.026538
+horizontal_ratio_mean: 0.024986
+diagonal_ratio_mean: 0.948476
+has_topology_events_ratio: 1.0
+angle_bucket_stroke_ratio: {'horizontal': 0.135974, 'vertical': 0.147387, 'diagonal': 0.716639}
+layout_ratios: {'has_left_right_layout': 0.347003, 'has_top_bottom_layout': 0.217666, 'has_enclosure_layout': 0.015247, 'has_spine_attach_layout': 0.055468, 'has_parallel_verticals': 0.028917, 'has_stacked_horizontals': 0.024711}
+
+--- Morpheme tree core ---
+exists: True
+node_count: 6340
+stable_node_count: 1405
+stable_node_ratio: 0.221609
+composition_count: 78534
+greedy_decomposition_count: 599
+glyph_root_count: 2
+has_M_LINE: True
+composition_parent_unique_count: 6337
+composition_child_unique_count: 5937
+explicit_layout_relation_count: 0
+existing_mirror_candidate_count: 2
+stroke_count_percentiles: {'0': 1.0, '25': 4.0, '50': 5.0, '75': 5.0, '90': 6.0, '95': 7.0, '99': 8.0, '100': 10.0}
+composition_relation_counter: {'X': 17169, 'E2E': 229490, 'E2E_GEOM': 229534, 'T': 3995}
+topology_way_keys: {'angle_class_hist': 78534, 'angle_stats': 78534, 'edge_count': 78534, 'relation_hist': 78534}
+
+=== Representation / Generation Scheme Support Matrix ===
+[5/5] 笔画几何记录 (stroke_geometry) | 强支持
+  evidence: positive_has_strokes_ratio=1.0
+  meaning : 可以直接用 mother_bezier / width_bezier 做生成、渲染、直线/竖线/横线分析。
+[5/5] E2E/T/X/cycle 拓扑事件图 (topology_event_graph) | 强支持
+  evidence: positive_has_topology_events_ratio=1.0, relation_counter={'E2E': 5366, 'T': 339, 'X': 801}
+  meaning : 可以构建图，计算 degree、cycle、bridge、articulation 等问题。
+[5/5] 你的广义语素树 (morpheme_tree) | 强支持
+  evidence: nodes=6340, comps=78534, stable=1405
+  meaning : 支持 parent <- child_a + child_b + topology_way 的语素组合扩散。
+[5/5] 伪 radical sequence / 语素序列 (pseudo_radical_sequence) | 可做伪序列，不是传统偏旁序列
+  evidence: greedy_decomposition_count=599, glyph_root_count=2
+  meaning : 可以把 glyph 表示成 Mxxxx 语素序列；但没有传统汉字 radical 语义名。
+[4/5] formation-like layout tree / 布局语素树 (formation_like_layout_tree) | 可从 bbox/组件隐式推断
+  evidence: explicit_layout_relations=0, layout_ratios={'has_left_right_layout': 0.141404, 'has_top_bottom_layout': 0.10885, 'has_enclosure_layout': 0.027467, 'has_spine_attach_layout': 0.084435, 'has_parallel_verticals': 0.024415, 'has_stacked_horizontals': 0.009156}
+  meaning : 可加入 LEFT_RIGHT / TOP_BOTTOM / ENCLOSURE / SPINE_ATTACH；若没有显式 layout_way，需要从 bbox 推断。
+[3/5] 横竖/正交/类汉字直线生成 (axis_aligned_generation) | 数据可分析，但生成器需要强约束
+  evidence: axis_ratio_mean=0.067945, vertical_ratio_mean=0.04112, horizontal_ratio_mean=0.026824, angle_bucket={'horizontal': 0.13944, 'vertical': 0.147042, 'diagonal': 0.713518}
+  meaning : 可以加入 axis_snap/grid_snap/vertical_column/horizontal_bar_stack/orthogonal_cross，解决候选太斜。
+[5/5] 自动新增问题 / 自动派生拓扑 rule (topology_question_discovery) | 数据量足够做第一版
+  evidence: morpheme_nodes=6340, stable=1405, graph_signal={cycle:0.694812, bridge:0.687691, articulation:0.606307}
+  meaning : 可以尝试 bridge/articulation/biconnected/path/orientation/layout questions，并用 split gain / cluster gain 筛选。
+[4/5] 拓扑过滤模型 / recall gate (neural_quality_gate) | 可训练 recall gate
+  evidence: positive=983, bad=3804
+  meaning : 可以继续训练 Stage1 topology filter；审美 precision 依赖 hard negatives 和更多 positive。
+
+--- Recommendations ---
+1. 优先加 axis-aligned generation：axis_snap_prob、grid_snap_prob、vertical_column、horizontal_bar_stack、orthogonal_cross。
+2. 在 composition_alternatives 或新生成器里新增 layout_way：LEFT_RIGHT / TOP_BOTTOM / ENCLOSURE / SPINE_ATTACH / PARALLEL_COLUMNS / STACKED_BARS。
+3. 可以做 topology question discovery 第一版：bridge_count、articulation_count、biconnected_count、longest_path_ratio、orientation_group_count。
+4. 不要把 traditional radical sequence 当主目标；你的系统更适合做 pseudo radical sequence，即 Mxxxx morpheme 序列。
+5. formation tree 可以理解成 layout-aware morpheme tree；当前 morpheme tree 应扩展 layout_way，而不是重写成汉字偏旁系统。
+
+--- Copy this block to ChatGPT ---
+{
+  "source_counts": {
+    "annotations_topo": 128,
+    "good": 491,
+    "cleaned": 364,
+    "bad": 3804
+  },
+  "positive_core": {
+    "count": 983,
+    "axis_ratio_mean": 0.067945,
+    "vertical_ratio_mean": 0.04112,
+    "horizontal_ratio_mean": 0.026824,
+    "diagonal_ratio_mean": 0.932055,
+    "layout_ratios": {
+      "has_left_right_layout": 0.141404,
+      "has_top_bottom_layout": 0.10885,
+      "has_enclosure_layout": 0.027467,
+      "has_spine_attach_layout": 0.084435,
+      "has_parallel_verticals": 0.024415,
+      "has_stacked_horizontals": 0.009156
+    },
+    "graph_cycle_glyph_ratio": 0.694812,
+    "articulation_glyph_ratio": 0.606307,
+    "bridge_glyph_ratio": 0.687691,
+    "angle_bucket_stroke_ratio": {
+      "horizontal": 0.13944,
+      "vertical": 0.147042,
+      "diagonal": 0.713518
+    }
+  },
+  "morpheme_tree_core": {
+    "node_count": 6340,
+    "stable_node_count": 1405,
+    "composition_count": 78534,
+    "greedy_decomposition_count": 599,
+    "glyph_root_count": 2,
+    "explicit_layout_relation_count": 0,
+    "composition_relation_counter": {
+      "X": 17169,
+      "E2E": 229490,
+      "E2E_GEOM": 229534,
+      "T": 3995
+    }
+  },
+  "support_matrix": [
+    {
+      "scheme": "stroke_geometry",
+      "score": 5,
+      "status": "强支持"
+    },
+    {
+      "scheme": "topology_event_graph",
+      "score": 5,
+      "status": "强支持"
+    },
+    {
+      "scheme": "morpheme_tree",
+      "score": 5,
+      "status": "强支持"
+    },
+    {
+      "scheme": "pseudo_radical_sequence",
+      "score": 5,
+      "status": "可做伪序列，不是传统偏旁序列"
+    },
+    {
+      "scheme": "formation_like_layout_tree",
+      "score": 4,
+      "status": "可从 bbox/组件隐式推断"
+    },
+    {
+      "scheme": "axis_aligned_generation",
+      "score": 3,
+      "status": "数据可分析，但生成器需要强约束"
+    },
+    {
+      "scheme": "topology_question_discovery",
+      "score": 5,
+      "status": "数据量足够做第一版"
+    },
+    {
+      "scheme": "neural_quality_gate",
+      "score": 4,
+      "status": "可训练 recall gate"
+    }
+  ]
+}

@@ -1,0 +1,3547 @@
+{
+  "created_at": "2026-07-03 23:49:27",
+  "elapsed_seconds": 5.851,
+  "paths": {
+    "script_dir": "C:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\Morpheme_Demo",
+    "char_glyph_dir": "C:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0",
+    "dataset_analyse_dir": "C:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0",
+    "morpheme_output_tree": "C:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\Morpheme\\output_tree",
+    "annotations_topo_dir": "C:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\AI_VECTOR_ROUTER_With_topo\\annotations_topo",
+    "pcg_pool_root": "C:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\annotation_tool\\pcg_filebacked_stage2_schema",
+    "report_dir": "C:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\Morpheme_Demo\\audit_reports"
+  },
+  "source_counts": {
+    "annotations_topo": 128,
+    "good": 491,
+    "cleaned": 364,
+    "bad": 3804
+  },
+  "positive_summary": {
+    "count": 983,
+    "stroke_count_percentiles": {
+      "0": 1.0,
+      "25": 4.0,
+      "50": 6.0,
+      "75": 7.0,
+      "90": 8.0,
+      "95": 8.0,
+      "99": 8.0,
+      "100": 11.0
+    },
+    "event_count_percentiles": {
+      "0": 0.0,
+      "25": 4.0,
+      "50": 6.0,
+      "75": 9.0,
+      "90": 12.0,
+      "95": 15.0,
+      "99": 19.0,
+      "100": 21.0
+    },
+    "cycle_rank_percentiles": {
+      "0": 0.0,
+      "25": 0.0,
+      "50": 2.0,
+      "75": 3.0,
+      "90": 6.0,
+      "95": 8.0,
+      "99": 12.0,
+      "100": 14.0
+    },
+    "max_degree_percentiles": {
+      "0": 0.0,
+      "25": 2.0,
+      "50": 3.0,
+      "75": 4.0,
+      "90": 5.0,
+      "95": 6.0,
+      "99": 6.18,
+      "100": 7.0
+    },
+    "has_strokes_ratio": 1.0,
+    "has_topology_events_ratio": 1.0,
+    "relation_counter": {
+      "E2E": 5366,
+      "T": 339,
+      "X": 801
+    },
+    "recorded_cycle_glyph_ratio": 0.575788,
+    "graph_cycle_glyph_ratio": 0.694812,
+    "articulation_glyph_ratio": 0.606307,
+    "bridge_glyph_ratio": 0.687691,
+    "biconnected_glyph_ratio": 0.997965,
+    "straight_ratio_mean": 0.165071,
+    "axis_ratio_mean": 0.067945,
+    "vertical_ratio_mean": 0.04112,
+    "horizontal_ratio_mean": 0.026824,
+    "diagonal_ratio_mean": 0.932055,
+    "angle_bucket_stroke_count": {
+      "horizontal": 752,
+      "vertical": 793,
+      "diagonal": 3848,
+      "total": 5393
+    },
+    "angle_bucket_stroke_ratio": {
+      "horizontal": 0.13944,
+      "vertical": 0.147042,
+      "diagonal": 0.713518
+    },
+    "layout_counts": {
+      "has_left_right_layout": 139,
+      "has_top_bottom_layout": 107,
+      "has_enclosure_layout": 27,
+      "has_spine_attach_layout": 83,
+      "has_parallel_verticals": 24,
+      "has_stacked_horizontals": 9
+    },
+    "layout_ratios": {
+      "has_left_right_layout": 0.141404,
+      "has_top_bottom_layout": 0.10885,
+      "has_enclosure_layout": 0.027467,
+      "has_spine_attach_layout": 0.084435,
+      "has_parallel_verticals": 0.024415,
+      "has_stacked_horizontals": 0.009156
+    },
+    "fallback_topology_ratio": 0.002035,
+    "length_percentiles": {
+      "0": 0.0,
+      "25": 82.308,
+      "50": 104.97,
+      "75": 134.718,
+      "90": 165.553,
+      "95": 185.6052,
+      "99": 261.1637,
+      "100": 370.353
+    },
+    "angle_percentiles": {
+      "0": 0.0,
+      "25": 45.805,
+      "50": 90.0,
+      "75": 134.86,
+      "90": 162.7678,
+      "95": 171.877,
+      "99": 178.5983,
+      "100": 179.978
+    }
+  },
+  "bad_summary": {
+    "count": 3804,
+    "stroke_count_percentiles": {
+      "0": 3.0,
+      "25": 5.0,
+      "50": 6.0,
+      "75": 7.0,
+      "90": 8.0,
+      "95": 8.0,
+      "99": 11.0,
+      "100": 12.0
+    },
+    "event_count_percentiles": {
+      "0": 0.0,
+      "25": 3.0,
+      "50": 6.0,
+      "75": 8.0,
+      "90": 12.0,
+      "95": 14.0,
+      "99": 19.0,
+      "100": 68.0
+    },
+    "cycle_rank_percentiles": {
+      "0": 0.0,
+      "25": 0.0,
+      "50": 1.0,
+      "75": 3.0,
+      "90": 5.0,
+      "95": 7.0,
+      "99": 10.97,
+      "100": 23.0
+    },
+    "max_degree_percentiles": {
+      "0": 0.0,
+      "25": 2.0,
+      "50": 3.0,
+      "75": 4.0,
+      "90": 5.0,
+      "95": 5.0,
+      "99": 6.0,
+      "100": 9.0
+    },
+    "has_strokes_ratio": 1.0,
+    "has_topology_events_ratio": 1.0,
+    "relation_counter": {
+      "E2E": 21694,
+      "X": 1987,
+      "T": 521
+    },
+    "recorded_cycle_glyph_ratio": 0.477129,
+    "graph_cycle_glyph_ratio": 0.687697,
+    "articulation_glyph_ratio": 0.52918,
+    "bridge_glyph_ratio": 0.698738,
+    "biconnected_glyph_ratio": 0.985542,
+    "straight_ratio_mean": 0.250645,
+    "axis_ratio_mean": 0.051524,
+    "vertical_ratio_mean": 0.026538,
+    "horizontal_ratio_mean": 0.024986,
+    "diagonal_ratio_mean": 0.948476,
+    "angle_bucket_stroke_count": {
+      "horizontal": 3062,
+      "vertical": 3319,
+      "diagonal": 16138,
+      "total": 22519
+    },
+    "angle_bucket_stroke_ratio": {
+      "horizontal": 0.135974,
+      "vertical": 0.147387,
+      "diagonal": 0.716639
+    },
+    "layout_counts": {
+      "has_left_right_layout": 1320,
+      "has_top_bottom_layout": 828,
+      "has_enclosure_layout": 58,
+      "has_spine_attach_layout": 211,
+      "has_parallel_verticals": 110,
+      "has_stacked_horizontals": 94
+    },
+    "layout_ratios": {
+      "has_left_right_layout": 0.347003,
+      "has_top_bottom_layout": 0.217666,
+      "has_enclosure_layout": 0.015247,
+      "has_spine_attach_layout": 0.055468,
+      "has_parallel_verticals": 0.028917,
+      "has_stacked_horizontals": 0.024711
+    },
+    "fallback_topology_ratio": 0.014458,
+    "length_percentiles": {
+      "0": 0.0,
+      "25": 66.9625,
+      "50": 93.217,
+      "75": 120.7675,
+      "90": 147.5212,
+      "95": 163.1183,
+      "99": 193.1281,
+      "100": 309.829
+    },
+    "angle_percentiles": {
+      "0": 0.0,
+      "25": 44.1525,
+      "50": 89.722,
+      "75": 133.5725,
+      "90": 160.9426,
+      "95": 170.2304,
+      "99": 177.8578,
+      "100": 179.999
+    }
+  },
+  "morpheme_tree_summary": {
+    "tree_dir": "C:\\Users\\Administrator\\Documents\\BST\\Babel_Simulater\\dataset_analyse_p0\\Char_Glyph_v0\\Morpheme\\output_tree",
+    "exists": true,
+    "node_count": 6340,
+    "composition_count": 78534,
+    "greedy_decomposition_count": 599,
+    "glyph_root_count": 2,
+    "stable_node_count": 1405,
+    "stable_node_ratio": 0.221609,
+    "has_M_LINE": true,
+    "stroke_count_percentiles": {
+      "0": 1.0,
+      "25": 4.0,
+      "50": 5.0,
+      "75": 5.0,
+      "90": 6.0,
+      "95": 7.0,
+      "99": 8.0,
+      "100": 10.0
+    },
+    "source_glyph_count_percentiles": {
+      "0": 1.0,
+      "25": 1.0,
+      "50": 1.0,
+      "75": 1.0,
+      "90": 3.0,
+      "95": 7.0,
+      "99": 24.0,
+      "100": 599.0
+    },
+    "support_count_percentiles": {
+      "0": 1.0,
+      "25": 1.0,
+      "50": 1.0,
+      "75": 2.0,
+      "90": 4.0,
+      "95": 8.0,
+      "99": 30.0,
+      "100": 3199.0
+    },
+    "composition_parent_unique_count": 6337,
+    "composition_child_unique_count": 5937,
+    "composition_relation_counter": {
+      "X": 17169,
+      "E2E": 229490,
+      "E2E_GEOM": 229534,
+      "T": 3995
+    },
+    "composition_angle_counter": {
+      "right": 90568,
+      "obtuse": 132244,
+      "acute": 205167,
+      "collinear": 52209
+    },
+    "topology_way_keys": {
+      "angle_class_hist": 78534,
+      "angle_stats": 78534,
+      "edge_count": 78534,
+      "relation_hist": 78534
+    },
+    "explicit_layout_relation_count": 0,
+    "explicit_layout_relation_counter": {},
+    "summary": {
+      "counts": {
+        "composition_alternative_count": 78534,
+        "existing_mirror_candidate_count": 4280,
+        "extract_errors": 0,
+        "glyph_count": 599,
+        "morpheme_node_count": 6340,
+        "raw_instance_count": 19907,
+        "stable_morpheme_count": 1405,
+        "strict_symmetric_morpheme_count": 154
+      },
+      "created_at": "2026-07-02 15:51:51",
+      "outputs": [
+        "loaded_glyphs_manifest.json",
+        "morpheme_nodes_manifest.json",
+        "composition_alternatives_manifest.json",
+        "glyph_roots.json",
+        "greedy_decomposition_manifest.json",
+        "symmetry_report.json",
+        "existing_mirror_candidates.json",
+        "summary.json"
+      ],
+      "params": {
+        "cluster_th": 0.14,
+        "collinear_tol": 15.0,
+        "endpoint_tol": 4.0,
+        "max_composition_strokes": 8,
+        "max_enum_strokes": 8,
+        "right_tol": 12.0,
+        "stable_min_support": 2,
+        "symmetry_th": 0.08,
+        "workers": "auto"
+      },
+      "semantics": [
+        "Morpheme is topology-only. Width/style/curve interior P1/P2 are ignored.",
+        "Each stroke is reduced to straight motherline P0->P3.",
+        "Global rotate/translate/uniform scale does not change morpheme bucket.",
+        "Composite morpheme bucket depends on child relative topology way, angle class, distance/length descriptor.",
+        "Bottom primitive is always M_LINE.",
+        "A parent can have multiple composition alternatives.",
+        "Mirror candidates are selected from existing morphemes/compositions only; no new mirror morphemes are generated."
+      ],
+      "sources": {
+        "annotations_topo": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/AI_VECTOR_ROUTER_With_topo/annotations_topo",
+        "cleaned": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/cleaned",
+        "good": "/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good",
+        "priority": "annotations_topo > cleaned > good"
+      },
+      "total_seconds": 32.501
+    },
+    "symmetry_report": {
+      "by_best_type": {
+        "mirror_x": 1459,
+        "mirror_y": 3295,
+        "rot2": 1085,
+        "rot3": 286,
+        "rot4": 215
+      },
+      "cluster_count": 6340,
+      "strict_symmetric_count": 154,
+      "symmetry_threshold": 0.08,
+      "top_strict_symmetric": [
+        {
+          "best_symmetry_score": 0.0,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M_LINE",
+          "source_glyph_count": 599,
+          "stroke_count": 1,
+          "support_count": 3199
+        },
+        {
+          "best_symmetry_score": 0.0,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000006_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.0,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000012_2s",
+          "source_glyph_count": 3,
+          "stroke_count": 2,
+          "support_count": 3
+        },
+        {
+          "best_symmetry_score": 0.0,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000021_2s",
+          "source_glyph_count": 2,
+          "stroke_count": 2,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.002038,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000063_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.002226,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000005_2s",
+          "source_glyph_count": 7,
+          "stroke_count": 2,
+          "support_count": 7
+        },
+        {
+          "best_symmetry_score": 0.004228,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M001159_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.004284,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M001171_3s",
+          "source_glyph_count": 2,
+          "stroke_count": 3,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.004479,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000049_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.004883,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000004_2s",
+          "source_glyph_count": 85,
+          "stroke_count": 2,
+          "support_count": 114
+        },
+        {
+          "best_symmetry_score": 0.005771,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000173_2s",
+          "source_glyph_count": 15,
+          "stroke_count": 2,
+          "support_count": 19
+        },
+        {
+          "best_symmetry_score": 0.006198,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000216_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.006293,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000772_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.006629,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000879_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.007293,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000014_2s",
+          "source_glyph_count": 2,
+          "stroke_count": 2,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.007979,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000971_3s",
+          "source_glyph_count": 23,
+          "stroke_count": 3,
+          "support_count": 26
+        },
+        {
+          "best_symmetry_score": 0.008298,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000050_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.009176,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000399_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.011256,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000100_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.012458,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000166_2s",
+          "source_glyph_count": 107,
+          "stroke_count": 2,
+          "support_count": 125
+        },
+        {
+          "best_symmetry_score": 0.012806,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M002546_4s",
+          "source_glyph_count": 2,
+          "stroke_count": 4,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.01724,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000000_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.019048,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000240_2s",
+          "source_glyph_count": 2,
+          "stroke_count": 2,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.020591,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000079_2s",
+          "source_glyph_count": 9,
+          "stroke_count": 2,
+          "support_count": 9
+        },
+        {
+          "best_symmetry_score": 0.021313,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M002679_4s",
+          "source_glyph_count": 1,
+          "stroke_count": 4,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.022161,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000215_2s",
+          "source_glyph_count": 4,
+          "stroke_count": 2,
+          "support_count": 4
+        },
+        {
+          "best_symmetry_score": 0.022622,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000018_2s",
+          "source_glyph_count": 3,
+          "stroke_count": 2,
+          "support_count": 3
+        },
+        {
+          "best_symmetry_score": 0.023288,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M002881_4s",
+          "source_glyph_count": 2,
+          "stroke_count": 4,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.024999,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M000307_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.026278,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M001700_4s",
+          "source_glyph_count": 9,
+          "stroke_count": 4,
+          "support_count": 11
+        },
+        {
+          "best_symmetry_score": 0.026988,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M005440_6s",
+          "source_glyph_count": 1,
+          "stroke_count": 6,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.027391,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000232_2s",
+          "source_glyph_count": 27,
+          "stroke_count": 2,
+          "support_count": 31
+        },
+        {
+          "best_symmetry_score": 0.02768,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000108_2s",
+          "source_glyph_count": 2,
+          "stroke_count": 2,
+          "support_count": 3
+        },
+        {
+          "best_symmetry_score": 0.027871,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M000501_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.029917,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M001310_3s",
+          "source_glyph_count": 6,
+          "stroke_count": 3,
+          "support_count": 6
+        },
+        {
+          "best_symmetry_score": 0.030238,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M003112_5s",
+          "source_glyph_count": 2,
+          "stroke_count": 5,
+          "support_count": 3
+        },
+        {
+          "best_symmetry_score": 0.030482,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000226_2s",
+          "source_glyph_count": 47,
+          "stroke_count": 2,
+          "support_count": 50
+        },
+        {
+          "best_symmetry_score": 0.031142,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000344_3s",
+          "source_glyph_count": 12,
+          "stroke_count": 3,
+          "support_count": 13
+        },
+        {
+          "best_symmetry_score": 0.031533,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000681_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.031732,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000010_2s",
+          "source_glyph_count": 12,
+          "stroke_count": 2,
+          "support_count": 12
+        },
+        {
+          "best_symmetry_score": 0.03213,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M001613_4s",
+          "source_glyph_count": 1,
+          "stroke_count": 4,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.032468,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M001960_4s",
+          "source_glyph_count": 1,
+          "stroke_count": 4,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.033065,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000683_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.033184,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000047_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.033838,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000664_3s",
+          "source_glyph_count": 13,
+          "stroke_count": 3,
+          "support_count": 13
+        },
+        {
+          "best_symmetry_score": 0.033883,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000192_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.0342,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M000488_3s",
+          "source_glyph_count": 11,
+          "stroke_count": 3,
+          "support_count": 11
+        },
+        {
+          "best_symmetry_score": 0.035125,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000887_3s",
+          "source_glyph_count": 2,
+          "stroke_count": 3,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.035255,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M000505_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.035422,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000968_3s",
+          "source_glyph_count": 16,
+          "stroke_count": 3,
+          "support_count": 18
+        },
+        {
+          "best_symmetry_score": 0.035477,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M002676_4s",
+          "source_glyph_count": 1,
+          "stroke_count": 4,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.03628,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000217_2s",
+          "source_glyph_count": 79,
+          "stroke_count": 2,
+          "support_count": 88
+        },
+        {
+          "best_symmetry_score": 0.038068,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M000305_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.038198,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M002152_4s",
+          "source_glyph_count": 1,
+          "stroke_count": 4,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.03841,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000880_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.038448,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M002997_4s",
+          "source_glyph_count": 1,
+          "stroke_count": 4,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.038869,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000042_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.039227,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M002611_4s",
+          "source_glyph_count": 1,
+          "stroke_count": 4,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.039683,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000029_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.039882,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000136_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.040544,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M001312_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.041527,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000843_3s",
+          "source_glyph_count": 4,
+          "stroke_count": 3,
+          "support_count": 5
+        },
+        {
+          "best_symmetry_score": 0.041964,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M000498_3s",
+          "source_glyph_count": 3,
+          "stroke_count": 3,
+          "support_count": 3
+        },
+        {
+          "best_symmetry_score": 0.04278,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M006277_8s",
+          "source_glyph_count": 1,
+          "stroke_count": 8,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.04291,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000432_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.044522,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000001_2s",
+          "source_glyph_count": 71,
+          "stroke_count": 2,
+          "support_count": 79
+        },
+        {
+          "best_symmetry_score": 0.044799,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000178_2s",
+          "source_glyph_count": 11,
+          "stroke_count": 2,
+          "support_count": 11
+        },
+        {
+          "best_symmetry_score": 0.045151,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M004096_5s",
+          "source_glyph_count": 1,
+          "stroke_count": 5,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.046362,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000312_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.046449,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M001636_4s",
+          "source_glyph_count": 9,
+          "stroke_count": 4,
+          "support_count": 9
+        },
+        {
+          "best_symmetry_score": 0.046886,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000237_2s",
+          "source_glyph_count": 9,
+          "stroke_count": 2,
+          "support_count": 10
+        },
+        {
+          "best_symmetry_score": 0.047244,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M002947_4s",
+          "source_glyph_count": 1,
+          "stroke_count": 4,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.047858,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M004569_5s",
+          "source_glyph_count": 2,
+          "stroke_count": 5,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.048137,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M003823_5s",
+          "source_glyph_count": 1,
+          "stroke_count": 5,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.049153,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M000473_3s",
+          "source_glyph_count": 4,
+          "stroke_count": 3,
+          "support_count": 4
+        },
+        {
+          "best_symmetry_score": 0.04942,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M001213_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.049546,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000091_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.050731,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M001165_3s",
+          "source_glyph_count": 2,
+          "stroke_count": 3,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.052761,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M000213_2s",
+          "source_glyph_count": 4,
+          "stroke_count": 2,
+          "support_count": 4
+        },
+        {
+          "best_symmetry_score": 0.053003,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M001118_3s",
+          "source_glyph_count": 2,
+          "stroke_count": 3,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.053102,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000345_3s",
+          "source_glyph_count": 11,
+          "stroke_count": 3,
+          "support_count": 12
+        },
+        {
+          "best_symmetry_score": 0.053605,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M006303_8s",
+          "source_glyph_count": 1,
+          "stroke_count": 8,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.053665,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M000023_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.053987,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M001733_4s",
+          "source_glyph_count": 7,
+          "stroke_count": 4,
+          "support_count": 7
+        },
+        {
+          "best_symmetry_score": 0.054145,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M002944_4s",
+          "source_glyph_count": 9,
+          "stroke_count": 4,
+          "support_count": 9
+        },
+        {
+          "best_symmetry_score": 0.055224,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M005686_6s",
+          "source_glyph_count": 3,
+          "stroke_count": 6,
+          "support_count": 3
+        },
+        {
+          "best_symmetry_score": 0.056143,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M001311_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.056411,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M001643_4s",
+          "source_glyph_count": 1,
+          "stroke_count": 4,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.05676,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000896_3s",
+          "source_glyph_count": 1,
+          "stroke_count": 3,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.056874,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000224_2s",
+          "source_glyph_count": 16,
+          "stroke_count": 2,
+          "support_count": 21
+        },
+        {
+          "best_symmetry_score": 0.056894,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000174_2s",
+          "source_glyph_count": 50,
+          "stroke_count": 2,
+          "support_count": 57
+        },
+        {
+          "best_symmetry_score": 0.057428,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M001633_4s",
+          "source_glyph_count": 10,
+          "stroke_count": 4,
+          "support_count": 12
+        },
+        {
+          "best_symmetry_score": 0.057817,
+          "best_symmetry_type": "rot2",
+          "morpheme_id": "M005938_6s",
+          "source_glyph_count": 1,
+          "stroke_count": 6,
+          "support_count": 2
+        },
+        {
+          "best_symmetry_score": 0.057872,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M000062_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.057939,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M001579_4s",
+          "source_glyph_count": 1,
+          "stroke_count": 4,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.058047,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M005990_7s",
+          "source_glyph_count": 1,
+          "stroke_count": 7,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.058763,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M004865_5s",
+          "source_glyph_count": 1,
+          "stroke_count": 5,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.058967,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M004390_5s",
+          "source_glyph_count": 1,
+          "stroke_count": 5,
+          "support_count": 1
+        },
+        {
+          "best_symmetry_score": 0.060201,
+          "best_symmetry_type": "mirror_x",
+          "morpheme_id": "M001007_3s",
+          "source_glyph_count": 10,
+          "stroke_count": 3,
+          "support_count": 10
+        },
+        {
+          "best_symmetry_score": 0.060286,
+          "best_symmetry_type": "mirror_y",
+          "morpheme_id": "M000013_2s",
+          "source_glyph_count": 1,
+          "stroke_count": 2,
+          "support_count": 1
+        }
+      ]
+    },
+    "existing_mirror_candidate_count": 2
+  },
+  "support_matrix": [
+    {
+      "scheme": "stroke_geometry",
+      "cn": "笔画几何记录",
+      "support_score_1_to_5": 5,
+      "status": "强支持",
+      "evidence": "positive_has_strokes_ratio=1.0",
+      "what_it_means": "可以直接用 mother_bezier / width_bezier 做生成、渲染、直线/竖线/横线分析。"
+    },
+    {
+      "scheme": "topology_event_graph",
+      "cn": "E2E/T/X/cycle 拓扑事件图",
+      "support_score_1_to_5": 5,
+      "status": "强支持",
+      "evidence": "positive_has_topology_events_ratio=1.0, relation_counter={'E2E': 5366, 'T': 339, 'X': 801}",
+      "what_it_means": "可以构建图，计算 degree、cycle、bridge、articulation 等问题。"
+    },
+    {
+      "scheme": "morpheme_tree",
+      "cn": "你的广义语素树",
+      "support_score_1_to_5": 5,
+      "status": "强支持",
+      "evidence": "nodes=6340, comps=78534, stable=1405",
+      "what_it_means": "支持 parent <- child_a + child_b + topology_way 的语素组合扩散。"
+    },
+    {
+      "scheme": "pseudo_radical_sequence",
+      "cn": "伪 radical sequence / 语素序列",
+      "support_score_1_to_5": 5,
+      "status": "可做伪序列，不是传统偏旁序列",
+      "evidence": "greedy_decomposition_count=599, glyph_root_count=2",
+      "what_it_means": "可以把 glyph 表示成 Mxxxx 语素序列；但没有传统汉字 radical 语义名。"
+    },
+    {
+      "scheme": "formation_like_layout_tree",
+      "cn": "formation-like layout tree / 布局语素树",
+      "support_score_1_to_5": 4,
+      "status": "可从 bbox/组件隐式推断",
+      "evidence": "explicit_layout_relations=0, layout_ratios={'has_left_right_layout': 0.141404, 'has_top_bottom_layout': 0.10885, 'has_enclosure_layout': 0.027467, 'has_spine_attach_layout': 0.084435, 'has_parallel_verticals': 0.024415, 'has_stacked_horizontals': 0.009156}",
+      "what_it_means": "可加入 LEFT_RIGHT / TOP_BOTTOM / ENCLOSURE / SPINE_ATTACH；若没有显式 layout_way，需要从 bbox 推断。"
+    },
+    {
+      "scheme": "axis_aligned_generation",
+      "cn": "横竖/正交/类汉字直线生成",
+      "support_score_1_to_5": 3,
+      "status": "数据可分析，但生成器需要强约束",
+      "evidence": "axis_ratio_mean=0.067945, vertical_ratio_mean=0.04112, horizontal_ratio_mean=0.026824, angle_bucket={'horizontal': 0.13944, 'vertical': 0.147042, 'diagonal': 0.713518}",
+      "what_it_means": "可以加入 axis_snap/grid_snap/vertical_column/horizontal_bar_stack/orthogonal_cross，解决候选太斜。"
+    },
+    {
+      "scheme": "topology_question_discovery",
+      "cn": "自动新增问题 / 自动派生拓扑 rule",
+      "support_score_1_to_5": 5,
+      "status": "数据量足够做第一版",
+      "evidence": "morpheme_nodes=6340, stable=1405, graph_signal={cycle:0.694812, bridge:0.687691, articulation:0.606307}",
+      "what_it_means": "可以尝试 bridge/articulation/biconnected/path/orientation/layout questions，并用 split gain / cluster gain 筛选。"
+    },
+    {
+      "scheme": "neural_quality_gate",
+      "cn": "拓扑过滤模型 / recall gate",
+      "support_score_1_to_5": 4,
+      "status": "可训练 recall gate",
+      "evidence": "positive=983, bad=3804",
+      "what_it_means": "可以继续训练 Stage1 topology filter；审美 precision 依赖 hard negatives 和更多 positive。"
+    }
+  ],
+  "recommendations": [
+    "优先加 axis-aligned generation：axis_snap_prob、grid_snap_prob、vertical_column、horizontal_bar_stack、orthogonal_cross。",
+    "在 composition_alternatives 或新生成器里新增 layout_way：LEFT_RIGHT / TOP_BOTTOM / ENCLOSURE / SPINE_ATTACH / PARALLEL_COLUMNS / STACKED_BARS。",
+    "可以做 topology question discovery 第一版：bridge_count、articulation_count、biconnected_count、longest_path_ratio、orientation_group_count。",
+    "不要把 traditional radical sequence 当主目标；你的系统更适合做 pseudo radical sequence，即 Mxxxx morpheme 序列。",
+    "formation tree 可以理解成 layout-aware morpheme tree；当前 morpheme tree 应扩展 layout_way，而不是重写成汉字偏旁系统。"
+  ],
+  "positive_examples_head": [
+    {
+      "uid": "annotations_topo:hex:U+05D4",
+      "source": "annotations_topo",
+      "stroke_count": 4,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "E2E": 2
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          90.0,
+          90.084,
+          0.746,
+          61.39
+        ],
+        "length_values": [
+          192.764,
+          185.842,
+          144.034,
+          137.83
+        ],
+        "straightness_mean": 0.721692642400892,
+        "axis_score_mean": 0.8364434798937284,
+        "vertical_score_mean": 0.5905873768803958,
+        "horizontal_score_mean": 0.2458561030133326
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 1,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 1,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 2,
+        "horizontal_count": 1,
+        "axis_count": 3,
+        "straight_count": 3,
+        "vertical_ratio": 0.5,
+        "horizontal_ratio": 0.25,
+        "axis_ratio": 0.75,
+        "straight_ratio": 0.75,
+        "diagonal_ratio": 0.25
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05DC",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "E2E": 2
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          88.898,
+          179.711,
+          111.364
+        ],
+        "length_values": [
+          76.824,
+          146.236,
+          251.397
+        ],
+        "straightness_mean": 0.9268065961642966,
+        "axis_score_mean": 0.831445264927709,
+        "vertical_score_mean": 0.5002554317318003,
+        "horizontal_score_mean": 0.3311898331959086
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 1,
+        "axis_count": 2,
+        "straight_count": 3,
+        "vertical_ratio": 0.3333333333333333,
+        "horizontal_ratio": 0.3333333333333333,
+        "axis_ratio": 0.6666666666666666,
+        "straight_ratio": 1.0,
+        "diagonal_ratio": 0.33333333333333337
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05EA",
+      "source": "annotations_topo",
+      "stroke_count": 4,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 3,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 2,
+        "bridge_count": 3,
+        "biconnected_count": 3,
+        "relation_counter": {
+          "E2E": 3
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          122.651,
+          90.548,
+          89.486,
+          21.987
+        ],
+        "length_values": [
+          122.332,
+          183.191,
+          213.387,
+          195.465
+        ],
+        "straightness_mean": 0.471060769394794,
+        "axis_score_mean": 0.6905547575212327,
+        "vertical_score_mean": 0.5627065448658821,
+        "horizontal_score_mean": 0.12784821265535068
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 1,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 2,
+        "horizontal_count": 0,
+        "axis_count": 2,
+        "straight_count": 2,
+        "vertical_ratio": 0.5,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.5,
+        "straight_ratio": 0.5,
+        "diagonal_ratio": 0.5
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05D3",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "T": 1,
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          0.188,
+          105.657,
+          90.347
+        ],
+        "length_values": [
+          225.261,
+          63.175,
+          243.728
+        ],
+        "straightness_mean": 0.7612853773625199,
+        "axis_score_mean": 0.8800587188836543,
+        "vertical_score_mean": 0.5481169032689747,
+        "horizontal_score_mean": 0.3319418156146795
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 1,
+        "axis_count": 2,
+        "straight_count": 2,
+        "vertical_ratio": 0.3333333333333333,
+        "horizontal_ratio": 0.3333333333333333,
+        "axis_ratio": 0.6666666666666666,
+        "straight_ratio": 0.6666666666666666,
+        "diagonal_ratio": 0.33333333333333337
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05DD",
+      "source": "annotations_topo",
+      "stroke_count": 4,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 4,
+      "cycle_count_recorded": 1,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 1,
+        "articulation_count": 0,
+        "bridge_count": 0,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 4
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          0.0,
+          89.073,
+          17.319,
+          90.0
+        ],
+        "length_values": [
+          209.75,
+          228.244,
+          215.843,
+          292.469
+        ],
+        "straightness_mean": 0.6589727065178471,
+        "axis_score_mean": 0.8986334980773575,
+        "vertical_score_mean": 0.4948498150741223,
+        "horizontal_score_mean": 0.4037836830032352
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 1,
+        "has_parallel_verticals": 1,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 2,
+        "horizontal_count": 1,
+        "axis_count": 3,
+        "straight_count": 3,
+        "vertical_ratio": 0.5,
+        "horizontal_ratio": 0.25,
+        "axis_ratio": 0.75,
+        "straight_ratio": 0.75,
+        "diagonal_ratio": 0.25
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05E4",
+      "source": "annotations_topo",
+      "stroke_count": 4,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 3,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 2,
+        "bridge_count": 3,
+        "biconnected_count": 3,
+        "relation_counter": {
+          "E2E": 3
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          81.168,
+          19.53,
+          163.676,
+          91.749
+        ],
+        "length_values": [
+          187.602,
+          183.372,
+          196.543,
+          184.138
+        ],
+        "straightness_mean": 0.029716992720205893,
+        "axis_score_mean": 0.7420321798430233,
+        "vertical_score_mean": 0.44121680425118215,
+        "horizontal_score_mean": 0.3008153755918412
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05E9",
+      "source": "annotations_topo",
+      "stroke_count": 4,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 3,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 2,
+        "bridge_count": 3,
+        "biconnected_count": 3,
+        "relation_counter": {
+          "T": 1,
+          "E2E": 2
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          119.628,
+          83.446,
+          151.238,
+          97.642
+        ],
+        "length_values": [
+          196.843,
+          284.728,
+          203.371,
+          186.67
+        ],
+        "straightness_mean": 0.22799064957001866,
+        "axis_score_mean": 0.5967518688746708,
+        "vertical_score_mean": 0.5065387537042759,
+        "horizontal_score_mean": 0.09021311517039488
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 0,
+        "axis_count": 1,
+        "straight_count": 1,
+        "vertical_ratio": 0.25,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.25,
+        "straight_ratio": 0.25,
+        "diagonal_ratio": 0.75
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05D8",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "E2E": 2
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          83.248,
+          27.951,
+          126.038
+        ],
+        "length_values": [
+          295.255,
+          122.905,
+          295.011
+        ],
+        "straightness_mean": 0.3127543244341579,
+        "axis_score_mean": 0.47599562030483966,
+        "vertical_score_mean": 0.3497064908316429,
+        "horizontal_score_mean": 0.12628912947319682
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 0,
+        "axis_count": 1,
+        "straight_count": 1,
+        "vertical_ratio": 0.3333333333333333,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.3333333333333333,
+        "straight_ratio": 0.3333333333333333,
+        "diagonal_ratio": 0.6666666666666667
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05DA",
+      "source": "annotations_topo",
+      "stroke_count": 2,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 1,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          89.77,
+          22.447
+        ],
+        "length_values": [
+          249.002,
+          146.218
+        ],
+        "straightness_mean": 0.4535318518146235,
+        "axis_score_mean": 0.7480369263116269,
+        "vertical_score_mean": 0.4974433078322532,
+        "horizontal_score_mean": 0.25059361847937367
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 0,
+        "axis_count": 1,
+        "straight_count": 1,
+        "vertical_ratio": 0.5,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.5,
+        "straight_ratio": 0.5,
+        "diagonal_ratio": 0.5
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05D0",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "T": 2
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          108.476,
+          107.396,
+          56.056
+        ],
+        "length_values": [
+          199.102,
+          249.276,
+          370.353
+        ],
+        "straightness_mean": 0.9358569331641147,
+        "axis_score_mean": 0.4828502548029487,
+        "vertical_score_mean": 0.4828502548029487,
+        "horizontal_score_mean": 0.0
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 3,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 1.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05D2",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "T": 1,
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          133.1,
+          44.439,
+          84.416
+        ],
+        "length_values": [
+          156.826,
+          105.578,
+          219.59
+        ],
+        "straightness_mean": 0.18914673691541842,
+        "axis_score_mean": 0.3101955196391718,
+        "vertical_score_mean": 0.3060417480582373,
+        "horizontal_score_mean": 0.004153771580934477
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05D1",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "T": 1,
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          0.0,
+          89.944,
+          23.359
+        ],
+        "length_values": [
+          234.123,
+          221.099,
+          198.273
+        ],
+        "straightness_mean": 0.636534849100034,
+        "axis_score_mean": 0.8265567052277207,
+        "vertical_score_mean": 0.3329199901620386,
+        "horizontal_score_mean": 0.4936367150656822
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 1,
+        "axis_count": 2,
+        "straight_count": 2,
+        "vertical_ratio": 0.3333333333333333,
+        "horizontal_ratio": 0.3333333333333333,
+        "axis_ratio": 0.6666666666666666,
+        "straight_ratio": 0.6666666666666666,
+        "diagonal_ratio": 0.33333333333333337
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05E2",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "E2E": 1,
+          "T": 1
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          153.684,
+          95.758,
+          73.959
+        ],
+        "length_values": [
+          211.992,
+          211.373,
+          294.367
+        ],
+        "straightness_mean": 0.3976241454025575,
+        "axis_score_mean": 0.6436011618122152,
+        "vertical_score_mean": 0.5051983983781297,
+        "horizontal_score_mean": 0.1384027634340854
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 1,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.3333333333333333,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05D6",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "T": 1,
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          0.347,
+          106.95,
+          89.825
+        ],
+        "length_values": [
+          121.864,
+          63.628,
+          241.509
+        ],
+        "straightness_mean": 0.7063084859468475,
+        "axis_score_mean": 0.8705765650283971,
+        "vertical_score_mean": 0.539815395828036,
+        "horizontal_score_mean": 0.3307611692003611
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 1,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 1,
+        "axis_count": 2,
+        "straight_count": 2,
+        "vertical_ratio": 0.3333333333333333,
+        "horizontal_ratio": 0.3333333333333333,
+        "axis_ratio": 0.6666666666666666,
+        "straight_ratio": 0.6666666666666666,
+        "diagonal_ratio": 0.33333333333333337
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05E8",
+      "source": "annotations_topo",
+      "stroke_count": 2,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 1,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          22.992,
+          89.678
+        ],
+        "length_values": [
+          193.583,
+          224.983
+        ],
+        "straightness_mean": 0.4673019326274973,
+        "axis_score_mean": 0.7409580869037482,
+        "vertical_score_mean": 0.49642269442741543,
+        "horizontal_score_mean": 0.24453539247633282
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 0,
+        "axis_count": 1,
+        "straight_count": 1,
+        "vertical_ratio": 0.5,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.5,
+        "straight_ratio": 0.5,
+        "diagonal_ratio": 0.5
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05D9",
+      "source": "annotations_topo",
+      "stroke_count": 2,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 1,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          90.14,
+          82.372
+        ],
+        "length_values": [
+          116.686,
+          63.344
+        ],
+        "straightness_mean": 0.9617765109829977,
+        "axis_score_mean": 0.9136919423407537,
+        "vertical_score_mean": 0.9136919423407537,
+        "horizontal_score_mean": 0.0
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 1,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 2,
+        "horizontal_count": 0,
+        "axis_count": 2,
+        "straight_count": 2,
+        "vertical_ratio": 1.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 1.0,
+        "straight_ratio": 1.0,
+        "diagonal_ratio": 0.0
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05E5",
+      "source": "annotations_topo",
+      "stroke_count": 2,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 1,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "T": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          112.091,
+          70.937
+        ],
+        "length_values": [
+          184.905,
+          324.079
+        ],
+        "straightness_mean": 0.8364703329787506,
+        "axis_score_mean": 0.5427292114319517,
+        "vertical_score_mean": 0.5427292114319517,
+        "horizontal_score_mean": 0.0
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 2,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 1.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05E7",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 1,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          90.26,
+          0.533,
+          113.691
+        ],
+        "length_values": [
+          220.002,
+          158.797,
+          237.118
+        ],
+        "straightness_mean": 0.6103504570837945,
+        "axis_score_mean": 0.8186363471453254,
+        "vertical_score_mean": 0.48925093100533806,
+        "horizontal_score_mean": 0.3293854161399873
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 1,
+        "axis_count": 2,
+        "straight_count": 2,
+        "vertical_ratio": 0.3333333333333333,
+        "horizontal_ratio": 0.3333333333333333,
+        "axis_ratio": 0.6666666666666666,
+        "straight_ratio": 0.6666666666666666,
+        "diagonal_ratio": 0.33333333333333337
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05E0",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "E2E": 2
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          37.666,
+          179.606,
+          89.873
+        ],
+        "length_values": [
+          115.987,
+          110.509,
+          228.241
+        ],
+        "straightness_mean": 0.614324769740826,
+        "axis_score_mean": 0.7171337394622151,
+        "vertical_score_mean": 0.3323919811329215,
+        "horizontal_score_mean": 0.3847417583292936
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 1,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 1,
+        "axis_count": 2,
+        "straight_count": 2,
+        "vertical_ratio": 0.3333333333333333,
+        "horizontal_ratio": 0.3333333333333333,
+        "axis_ratio": 0.6666666666666666,
+        "straight_ratio": 0.6666666666666666,
+        "diagonal_ratio": 0.33333333333333337
+      }
+    },
+    {
+      "uid": "annotations_topo:hex:U+05DB",
+      "source": "annotations_topo",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 1,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "E2E": 2
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          170.877,
+          6.527,
+          87.114
+        ],
+        "length_values": [
+          138.755,
+          128.565,
+          263.334
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.8627010739564788,
+        "vertical_score_mean": 0.31195752475894,
+        "horizontal_score_mean": 0.5507435491975388
+      },
+      "layout": {
+        "component_count": 1,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 1,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    }
+  ],
+  "bad_examples_head": [
+    {
+      "uid": "bad:pcg_direct_66930121_00001_456455",
+      "source": "bad",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 1,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          23.262,
+          158.511,
+          78.809
+        ],
+        "length_values": [
+          142.745,
+          89.24,
+          104.162
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.5856206393815269,
+        "vertical_score_mean": 0.2504389968996506,
+        "horizontal_score_mean": 0.33518164248187626
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930140_00006_404181",
+      "source": "bad",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 1,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          96.594,
+          26.39,
+          149.747
+        ],
+        "length_values": [
+          58.031,
+          59.247,
+          102.118
+        ],
+        "straightness_mean": 0.2662786762748512,
+        "axis_score_mean": 0.5315741796267764,
+        "vertical_score_mean": 0.28448556019592536,
+        "horizontal_score_mean": 0.24708861943085103
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 0,
+        "axis_count": 1,
+        "straight_count": 1,
+        "vertical_ratio": 0.3333333333333333,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.3333333333333333,
+        "straight_ratio": 0.3333333333333333,
+        "diagonal_ratio": 0.6666666666666667
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930141_00007_618912",
+      "source": "bad",
+      "stroke_count": 4,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "X": 1,
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          0.564,
+          103.626,
+          56.02,
+          26.972
+        ],
+        "length_values": [
+          99.757,
+          53.339,
+          67.12,
+          57.719
+        ],
+        "straightness_mean": 0.03800527304493129,
+        "axis_score_mean": 0.5825438362325353,
+        "vertical_score_mean": 0.2355233399953043,
+        "horizontal_score_mean": 0.347020496237231
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930145_00010_166662",
+      "source": "bad",
+      "stroke_count": 8,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 7,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 1,
+        "articulation_count": 3,
+        "bridge_count": 4,
+        "biconnected_count": 5,
+        "relation_counter": {
+          "E2E": 7
+        },
+        "used_fallback": false,
+        "max_degree": 3
+      },
+      "stroke": {
+        "angle_values": [
+          13.85,
+          121.164,
+          41.038,
+          151.973,
+          44.151,
+          124.369,
+          48.73,
+          114.906
+        ],
+        "length_values": [
+          91.415,
+          64.212,
+          102.617,
+          56.829,
+          61.202,
+          88.742,
+          102.427,
+          79.843
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.28117867671183466,
+        "vertical_score_mean": 0.13413988390544218,
+        "horizontal_score_mean": 0.14703879280639243
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930150_00011_748524",
+      "source": "bad",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 1,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          159.367,
+          81.201,
+          116.567
+        ],
+        "length_values": [
+          98.064,
+          120.905,
+          75.718
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.5851975974464647,
+        "vertical_score_mean": 0.40470069352480514,
+        "horizontal_score_mean": 0.18049690392165954
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930153_00013_228654",
+      "source": "bad",
+      "stroke_count": 6,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 5,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 1,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 3,
+        "relation_counter": {
+          "E2E": 4,
+          "X": 1
+        },
+        "used_fallback": false,
+        "max_degree": 3
+      },
+      "stroke": {
+        "angle_values": [
+          163.86,
+          179.927,
+          112.629,
+          35.95,
+          34.328,
+          22.695
+        ],
+        "length_values": [
+          54.376,
+          82.454,
+          66.393,
+          128.85,
+          210.354,
+          98.028
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.5117989745273288,
+        "vertical_score_mean": 0.08285458564588832,
+        "horizontal_score_mean": 0.42894438888144054
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 1,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930156_00014_790104",
+      "source": "bad",
+      "stroke_count": 8,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 9,
+      "cycle_count_recorded": 1,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 3,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 3,
+        "relation_counter": {
+          "E2E": 7,
+          "T": 2
+        },
+        "used_fallback": false,
+        "max_degree": 4
+      },
+      "stroke": {
+        "angle_values": [
+          85.835,
+          168.227,
+          88.164,
+          30.97,
+          122.587,
+          42.459,
+          0.0,
+          0.0
+        ],
+        "length_values": [
+          99.326,
+          55.246,
+          105.979,
+          69.418,
+          60.776,
+          76.653,
+          19.715,
+          5.568
+        ],
+        "straightness_mean": 0.6282046352596503,
+        "axis_score_mean": 0.6561392206415997,
+        "vertical_score_mean": 0.26781259154250797,
+        "horizontal_score_mean": 0.38832662909909177
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 1,
+        "has_parallel_verticals": 1,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 2,
+        "horizontal_count": 0,
+        "axis_count": 2,
+        "straight_count": 5,
+        "vertical_ratio": 0.25,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.25,
+        "straight_ratio": 0.625,
+        "diagonal_ratio": 0.75
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930160_00015_193513",
+      "source": "bad",
+      "stroke_count": 8,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 7,
+      "cycle_count_recorded": 1,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 1,
+        "articulation_count": 4,
+        "bridge_count": 4,
+        "biconnected_count": 5,
+        "relation_counter": {
+          "E2E": 5,
+          "X": 2
+        },
+        "used_fallback": false,
+        "max_degree": 3
+      },
+      "stroke": {
+        "angle_values": [
+          144.929,
+          148.073,
+          160.27,
+          73.728,
+          24.884,
+          93.622,
+          169.165,
+          65.95
+        ],
+        "length_values": [
+          150.493,
+          144.458,
+          151.994,
+          19.596,
+          107.028,
+          105.241,
+          103.341,
+          92.133
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.5378051480142021,
+        "vertical_score_mean": 0.25293355821980557,
+        "horizontal_score_mean": 0.28487158979439653
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 1,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930168_00019_948765",
+      "source": "bad",
+      "stroke_count": 5,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 3,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 3,
+        "biconnected_count": 3,
+        "relation_counter": {
+          "E2E": 3
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          68.615,
+          152.755,
+          10.59,
+          171.477,
+          1.006
+        ],
+        "length_values": [
+          127.174,
+          103.042,
+          106.417,
+          78.652,
+          80.492
+        ],
+        "straightness_mean": 0.7829605529246276,
+        "axis_score_mean": 0.6944484207567865,
+        "vertical_score_mean": 0.104954491251454,
+        "horizontal_score_mean": 0.5894939295053325
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 1,
+        "vertical_count": 0,
+        "horizontal_count": 2,
+        "axis_count": 2,
+        "straight_count": 5,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.4,
+        "axis_ratio": 0.4,
+        "straight_ratio": 1.0,
+        "diagonal_ratio": 0.6
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930168_00020_735182",
+      "source": "bad",
+      "stroke_count": 7,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 8,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 3,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 3,
+        "relation_counter": {
+          "E2E": 8
+        },
+        "used_fallback": false,
+        "max_degree": 3
+      },
+      "stroke": {
+        "angle_values": [
+          113.34,
+          23.295,
+          151.241,
+          34.271,
+          21.779,
+          65.517,
+          153.109
+        ],
+        "length_values": [
+          87.954,
+          76.783,
+          104.371,
+          117.425,
+          110.844,
+          108.887,
+          121.685
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.419627505182771,
+        "vertical_score_mean": 0.13389429562787145,
+        "horizontal_score_mean": 0.28573320955489956
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930174_00021_191381",
+      "source": "bad",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 1,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          2.908,
+          42.777,
+          133.471
+        ],
+        "length_values": [
+          99.381,
+          70.896,
+          129.113
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.33958170006991667,
+        "vertical_score_mean": 0.011322919268884882,
+        "horizontal_score_mean": 0.3282587808010318
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930174_00022_191285",
+      "source": "bad",
+      "stroke_count": 4,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "E2E": 2
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          50.146,
+          133.421,
+          94.31,
+          41.172
+        ],
+        "length_values": [
+          126.174,
+          76.496,
+          69.839,
+          96.86
+        ],
+        "straightness_mean": 0.8266120249746001,
+        "axis_score_mean": 0.2846829182610803,
+        "vertical_score_mean": 0.2634163647285502,
+        "horizontal_score_mean": 0.021266553532530125
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 0,
+        "axis_count": 1,
+        "straight_count": 4,
+        "vertical_ratio": 0.25,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.25,
+        "straight_ratio": 1.0,
+        "diagonal_ratio": 0.75
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930177_00024_652606",
+      "source": "bad",
+      "stroke_count": 8,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 9,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 3,
+        "articulation_count": 2,
+        "bridge_count": 3,
+        "biconnected_count": 4,
+        "relation_counter": {
+          "E2E": 9
+        },
+        "used_fallback": false,
+        "max_degree": 3
+      },
+      "stroke": {
+        "angle_values": [
+          94.514,
+          143.407,
+          0.0,
+          0.0,
+          74.132,
+          162.778,
+          56.702,
+          172.985
+        ],
+        "length_values": [
+          75.176,
+          91.897,
+          59.307,
+          31.839,
+          102.255,
+          123.72,
+          135.639,
+          130.395
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.6819146088752324,
+        "vertical_score_mean": 0.22588767009056976,
+        "horizontal_score_mean": 0.4560269387846626
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 1,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930181_00025_281583",
+      "source": "bad",
+      "stroke_count": 3,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 1,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 1
+        },
+        "used_fallback": false,
+        "max_degree": 1
+      },
+      "stroke": {
+        "angle_values": [
+          129.084,
+          123.991,
+          49.298
+        ],
+        "length_values": [
+          152.536,
+          66.633,
+          79.049
+        ],
+        "straightness_mean": 0.013496478134184605,
+        "axis_score_mean": 0.1572059724693089,
+        "vertical_score_mean": 0.1572059724693089,
+        "horizontal_score_mean": 0.0
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930182_00026_882144",
+      "source": "bad",
+      "stroke_count": 4,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 2,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 0,
+        "articulation_count": 1,
+        "bridge_count": 2,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "X": 2
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          177.317,
+          172.839,
+          72.059,
+          70.815
+        ],
+        "length_values": [
+          135.718,
+          123.204,
+          184.043,
+          179.954
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.7390547494026289,
+        "vertical_score_mean": 0.29374469538766496,
+        "horizontal_score_mean": 0.44531005401496404
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930187_00028_535242",
+      "source": "bad",
+      "stroke_count": 8,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 7,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 1,
+        "articulation_count": 3,
+        "bridge_count": 4,
+        "biconnected_count": 5,
+        "relation_counter": {
+          "E2E": 7
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          35.579,
+          113.299,
+          162.853,
+          125.098,
+          85.772,
+          148.696,
+          85.938,
+          98.265
+        ],
+        "length_values": [
+          115.954,
+          105.22,
+          174.974,
+          83.811,
+          95.917,
+          94.717,
+          100.081,
+          92.879
+        ],
+        "straightness_mean": 0.22165169702634063,
+        "axis_score_mean": 0.5583831612651059,
+        "vertical_score_mean": 0.4168001389054421,
+        "horizontal_score_mean": 0.14158302235966375
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 1,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.125,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930191_00029_132315",
+      "source": "bad",
+      "stroke_count": 5,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 4,
+      "cycle_count_recorded": 1,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 1,
+        "articulation_count": 1,
+        "bridge_count": 1,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "E2E": 2,
+          "X": 2
+        },
+        "used_fallback": false,
+        "max_degree": 3
+      },
+      "stroke": {
+        "angle_values": [
+          23.364,
+          103.06,
+          21.196,
+          141.403,
+          127.332
+        ],
+        "length_values": [
+          107.955,
+          107.587,
+          110.901,
+          112.517,
+          135.821
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.4064477912741918,
+        "vertical_score_mean": 0.17603377144621465,
+        "horizontal_score_mean": 0.23041401982797716
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930199_00031_034782",
+      "source": "bad",
+      "stroke_count": 4,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 3,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 1,
+        "articulation_count": 0,
+        "bridge_count": 0,
+        "biconnected_count": 1,
+        "relation_counter": {
+          "E2E": 3
+        },
+        "used_fallback": false,
+        "max_degree": 2
+      },
+      "stroke": {
+        "angle_values": [
+          166.092,
+          10.877,
+          125.899,
+          70.987
+        ],
+        "length_values": [
+          151.229,
+          102.445,
+          105.058,
+          113.632
+        ],
+        "straightness_mean": 0.0,
+        "axis_score_mean": 0.5572418895390636,
+        "vertical_score_mean": 0.1949329877951794,
+        "horizontal_score_mean": 0.3623089017438842
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 0,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 0,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.0,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930199_00032_022487",
+      "source": "bad",
+      "stroke_count": 6,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 7,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 3,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "E2E": 7
+        },
+        "used_fallback": false,
+        "max_degree": 3
+      },
+      "stroke": {
+        "angle_values": [
+          53.345,
+          2.628,
+          121.623,
+          28.39,
+          122.5,
+          64.473
+        ],
+        "length_values": [
+          77.701,
+          71.202,
+          107.827,
+          103.198,
+          105.72,
+          88.294
+        ],
+        "straightness_mean": 0.727099735415781,
+        "axis_score_mean": 0.417325248378357,
+        "vertical_score_mean": 0.19887242156514648,
+        "horizontal_score_mean": 0.21845282681321052
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 0,
+        "horizontal_count": 0,
+        "axis_count": 0,
+        "straight_count": 4,
+        "vertical_ratio": 0.0,
+        "horizontal_ratio": 0.0,
+        "axis_ratio": 0.0,
+        "straight_ratio": 0.6666666666666666,
+        "diagonal_ratio": 1.0
+      }
+    },
+    {
+      "uid": "bad:pcg_direct_66930199_00033_012679",
+      "source": "bad",
+      "stroke_count": 7,
+      "has_strokes": 1,
+      "has_topology_events": 1,
+      "topology_event_count": 11,
+      "cycle_count_recorded": 0,
+      "graph": {
+        "connected_components": 2,
+        "cycle_rank": 6,
+        "articulation_count": 0,
+        "bridge_count": 1,
+        "biconnected_count": 2,
+        "relation_counter": {
+          "E2E": 11
+        },
+        "used_fallback": false,
+        "max_degree": 4
+      },
+      "stroke": {
+        "angle_values": [
+          12.765,
+          168.747,
+          52.179,
+          103.796,
+          171.604,
+          90.494,
+          164.694
+        ],
+        "length_values": [
+          74.149,
+          140.401,
+          104.986,
+          119.29,
+          104.662,
+          83.18,
+          66.744
+        ],
+        "straightness_mean": 0.8725732940813528,
+        "axis_score_mean": 0.6830779603002791,
+        "vertical_score_mean": 0.26314110657797823,
+        "horizontal_score_mean": 0.41993685372230083
+      },
+      "layout": {
+        "component_count": 2,
+        "has_left_right_layout": 1,
+        "has_top_bottom_layout": 0,
+        "has_enclosure_layout": 0,
+        "has_spine_attach_layout": 0,
+        "has_parallel_verticals": 0,
+        "has_stacked_horizontals": 0,
+        "vertical_count": 1,
+        "horizontal_count": 1,
+        "axis_count": 2,
+        "straight_count": 7,
+        "vertical_ratio": 0.14285714285714285,
+        "horizontal_ratio": 0.14285714285714285,
+        "axis_ratio": 0.2857142857142857,
+        "straight_ratio": 1.0,
+        "diagonal_ratio": 0.7142857142857143
+      }
+    }
+  ]
+}
