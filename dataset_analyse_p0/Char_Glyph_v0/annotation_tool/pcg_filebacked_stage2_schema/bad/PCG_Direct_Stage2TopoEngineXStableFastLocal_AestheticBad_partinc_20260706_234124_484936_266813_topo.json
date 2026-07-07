@@ -1,0 +1,5132 @@
+{
+  "F1163": {
+    "glyph_info": {
+      "hex_key": "F1163",
+      "char": "󱅣",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457065_00002_786693",
+      "style_mode": "straight",
+      "topology_family": "hanzi_block+hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1163",
+        "unicode_hex": null,
+        "char": "󱅣"
+      },
+      "unicode_hex": "F1163"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 204.24,
+        "bbox": [
+          150.8,
+          85.0,
+          355.0,
+          86.6
+        ],
+        "mother_bezier": [
+          [
+            150.79249572753906,
+            85.0
+          ],
+          [
+            218.18096923828125,
+            86.26406860351562
+          ],
+          [
+            287.61151123046875,
+            87.83723449707031
+          ],
+          [
+            355.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          12.738237380981445,
+          12.738237380981445,
+          12.738237380981445,
+          12.738237380981445
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.03,
+        "bbox": [
+          355.0,
+          85.0,
+          356.5,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            355.0,
+            85.0
+          ],
+          [
+            358.6160888671875,
+            159.25
+          ],
+          [
+            354.6778259277344,
+            235.75
+          ],
+          [
+            355.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          13.287111282348633,
+          13.287111282348633,
+          13.287111282348633,
+          13.287111282348633
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 135.03,
+        "bbox": [
+          128.7,
+          40.0,
+          130.0,
+          175.0
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            40.0
+          ],
+          [
+            128.0453338623047,
+            84.55000305175781
+          ],
+          [
+            128.47515869140625,
+            130.4499969482422
+          ],
+          [
+            130.0,
+            175.0
+          ]
+        ],
+        "width_bezier": [
+          13.31602668762207,
+          13.31602668762207,
+          13.31602668762207,
+          13.31602668762207
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          355.0,
+          85.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457065_00002_786693",
+        "style_mode": "straight",
+        "topology_family": "hanzi_block+hanzi_block",
+        "topology_text": "E2E: 1-2",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1165": {
+    "glyph_info": {
+      "hex_key": "F1165",
+      "char": "󱅥",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457086_00007_522577",
+      "style_mode": "straight",
+      "topology_family": "left_right_layout+center_spine_branches+stacked_horizontals",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1165",
+        "unicode_hex": null,
+        "char": "󱅥"
+      },
+      "unicode_hex": "F1165"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 225.0,
+        "bbox": [
+          175.0,
+          40.0,
+          175.2,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            175.0,
+            40.0
+          ],
+          [
+            175.4268035888672,
+            114.25
+          ],
+          [
+            175.11636352539062,
+            190.75
+          ],
+          [
+            175.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          9.879042625427246,
+          9.879042625427246,
+          9.879042625427246,
+          9.879042625427246
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.01,
+        "bbox": [
+          219.0,
+          130.0,
+          220.0,
+          355.0
+        ],
+        "mother_bezier": [
+          [
+            220.0,
+            130.0
+          ],
+          [
+            218.23316955566406,
+            204.25
+          ],
+          [
+            219.0366973876953,
+            280.75
+          ],
+          [
+            220.0,
+            355.0
+          ]
+        ],
+        "width_bezier": [
+          7.008830547332764,
+          7.008830547332764,
+          7.008830547332764,
+          7.008830547332764
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 225.26,
+        "bbox": [
+          40.0,
+          75.1,
+          265.0,
+          85.0
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            85.0
+          ],
+          [
+            114.3687515258789,
+            84.44149780273438
+          ],
+          [
+            190.578125,
+            74.4651107788086
+          ],
+          [
+            265.0,
+            75.11578369140625
+          ]
+        ],
+        "width_bezier": [
+          11.928306579589844,
+          11.928306579589844,
+          11.928306579589844,
+          11.928306579589844
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "X",
+        "stroke_a": 1,
+        "t_a": 0.17,
+        "stroke_b": 3,
+        "t_b": 0.6,
+        "angle": 93.4,
+        "position": [
+          175.2,
+          78.1
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457086_00007_522577",
+        "style_mode": "straight",
+        "topology_family": "left_right_layout+center_spine_branches+stacked_horizontals",
+        "topology_text": "X: 1交叉3",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1166": {
+    "glyph_info": {
+      "hex_key": "F1166",
+      "char": "󱅦",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457114_00011_427020",
+      "style_mode": "straight",
+      "topology_family": "hanzi_block+hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1166",
+        "unicode_hex": null,
+        "char": "󱅦"
+      },
+      "unicode_hex": "F1166"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 225.03,
+        "bbox": [
+          130.0,
+          85.0,
+          355.0,
+          88.9
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            85.0
+          ],
+          [
+            204.2552490234375,
+            85.99381256103516
+          ],
+          [
+            280.7474670410156,
+            87.77323913574219
+          ],
+          [
+            355.0,
+            88.92324829101562
+          ]
+        ],
+        "width_bezier": [
+          11.869626998901367,
+          11.869626998901367,
+          11.869626998901367,
+          11.869626998901367
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.01,
+        "bbox": [
+          355.0,
+          88.9,
+          355.9,
+          313.9
+        ],
+        "mother_bezier": [
+          [
+            355.0,
+            88.92324829101562
+          ],
+          [
+            355.4788818359375,
+            163.17324829101562
+          ],
+          [
+            356.8481140136719,
+            239.67324829101562
+          ],
+          [
+            355.0,
+            313.9232482910156
+          ]
+        ],
+        "width_bezier": [
+          9.107402801513672,
+          9.107402801513672,
+          9.107402801513672,
+          9.107402801513672
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 212.22,
+        "bbox": [
+          142.9,
+          310.0,
+          355.0,
+          313.9
+        ],
+        "mother_bezier": [
+          [
+            355.0,
+            313.9232482910156
+          ],
+          [
+            285.0104675292969,
+            311.6941223144531
+          ],
+          [
+            212.79470825195312,
+            315.0940856933594
+          ],
+          [
+            142.858154296875,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          8.95092487335205,
+          8.95092487335205,
+          8.95092487335205,
+          8.95092487335205
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 238.72,
+        "bbox": [
+          265.0,
+          88.9,
+          355.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            265.0,
+            310.0
+          ],
+          [
+            297.8267822265625,
+            238.1287384033203
+          ],
+          [
+            323.767822265625,
+            161.22628784179688
+          ],
+          [
+            355.0,
+            88.92324829101562
+          ]
+        ],
+        "width_bezier": [
+          8.61293888092041,
+          8.61293888092041,
+          8.61293888092041,
+          8.61293888092041
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 162.28,
+        "bbox": [
+          40.0,
+          85.0,
+          175.0,
+          175.0
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            85.0
+          ],
+          [
+            85.71539306640625,
+            113.14584350585938
+          ],
+          [
+            131.45697021484375,
+            143.8793182373047
+          ],
+          [
+            175.0,
+            175.0
+          ]
+        ],
+        "width_bezier": [
+          8.915132522583008,
+          8.915132522583008,
+          8.915132522583008,
+          8.915132522583008
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          355.0,
+          88.9
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 1.0,
+        "position": [
+          355.0,
+          88.9
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 1.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          355.0,
+          313.9
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 0.0,
+        "stroke_b": 4,
+        "t_b": 1.0,
+        "position": [
+          355.0,
+          88.9
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457114_00011_427020",
+        "style_mode": "straight",
+        "topology_family": "hanzi_block+hanzi_block",
+        "topology_text": "E2E: 1-2、1-4、2-3、2-4",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1168": {
+    "glyph_info": {
+      "hex_key": "F1168",
+      "char": "󱅨",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457152_00018_690948",
+      "style_mode": "straight",
+      "topology_family": "hanzi_block+horizontal_bar_stack+hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1168",
+        "unicode_hex": null,
+        "char": "󱅨"
+      },
+      "unicode_hex": "F1168"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 142.33,
+        "bbox": [
+          130.0,
+          300.2,
+          265.0,
+          345.2
+        ],
+        "mother_bezier": [
+          [
+            265.0,
+            300.1962585449219
+          ],
+          [
+            221.02835083007812,
+            316.2963562011719
+          ],
+          [
+            173.5792236328125,
+            327.9035339355469
+          ],
+          [
+            130.0,
+            345.1962585449219
+          ]
+        ],
+        "width_bezier": [
+          10.99659538269043,
+          10.99659538269043,
+          10.99659538269043,
+          10.99659538269043
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.05,
+        "bbox": [
+          40.0,
+          174.2,
+          265.0,
+          176.3
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            175.0
+          ],
+          [
+            114.25,
+            179.06211853027344
+          ],
+          [
+            190.75,
+            171.96408081054688
+          ],
+          [
+            265.0,
+            175.0
+          ]
+        ],
+        "width_bezier": [
+          13.276355743408203,
+          13.276355743408203,
+          13.276355743408203,
+          13.276355743408203
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 135.29,
+        "bbox": [
+          174.3,
+          40.0,
+          190.0,
+          174.4
+        ],
+        "mother_bezier": [
+          [
+            190.0016632080078,
+            40.0
+          ],
+          [
+            183.83583068847656,
+            84.22545623779297
+          ],
+          [
+            180.9416961669922,
+            130.19485473632812
+          ],
+          [
+            174.3145751953125,
+            174.366455078125
+          ]
+        ],
+        "width_bezier": [
+          9.465300559997559,
+          9.465300559997559,
+          9.465300559997559,
+          9.465300559997559
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 96.01,
+        "bbox": [
+          174.3,
+          174.4,
+          190.7,
+          269.0
+        ],
+        "mother_bezier": [
+          [
+            174.3145751953125,
+            174.366455078125
+          ],
+          [
+            180.04776000976562,
+            205.52517700195312
+          ],
+          [
+            183.737548828125,
+            238.01182556152344
+          ],
+          [
+            190.68707275390625,
+            268.96002197265625
+          ]
+        ],
+        "width_bezier": [
+          13.555521011352539,
+          13.555521011352539,
+          13.555521011352539,
+          13.555521011352539
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "T",
+        "guest": 3,
+        "guest_t": 1.0,
+        "host": 2,
+        "host_t": 0.595,
+        "angle": 99.8,
+        "position": [
+          174.0,
+          174.9
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 4,
+        "guest_t": 0.0,
+        "host": 2,
+        "host_t": 0.595,
+        "angle": 80.9,
+        "position": [
+          174.0,
+          174.9
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 3,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          174.3,
+          174.4
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457152_00018_690948",
+        "style_mode": "straight",
+        "topology_family": "hanzi_block+horizontal_bar_stack+hanzi_block",
+        "topology_text": "E2E: 3-4 ; T: 3搭2、4搭2",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F116A": {
+    "glyph_info": {
+      "hex_key": "F116A",
+      "char": "󱅪",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457160_00020_476078",
+      "style_mode": "straight",
+      "topology_family": "hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F116A",
+        "unicode_hex": null,
+        "char": "󱅪"
+      },
+      "unicode_hex": "F116A"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 225.02,
+        "bbox": [
+          85.0,
+          84.1,
+          310.0,
+          85.2
+        ],
+        "mother_bezier": [
+          [
+            85.0,
+            85.0
+          ],
+          [
+            159.25,
+            86.21464538574219
+          ],
+          [
+            235.75,
+            82.35590362548828
+          ],
+          [
+            310.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          10.908230781555176,
+          10.908230781555176,
+          10.908230781555176,
+          10.908230781555176
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.02,
+        "bbox": [
+          308.7,
+          85.0,
+          310.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            310.0,
+            85.0
+          ],
+          [
+            310.06878662109375,
+            159.25
+          ],
+          [
+            307.061767578125,
+            235.75
+          ],
+          [
+            310.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          13.556198120117188,
+          13.556198120117188,
+          13.556198120117188,
+          13.556198120117188
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 225.05,
+        "bbox": [
+          84.1,
+          85.0,
+          86.1,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            85.0,
+            85.0
+          ],
+          [
+            81.68463897705078,
+            159.25
+          ],
+          [
+            88.61341857910156,
+            235.75
+          ],
+          [
+            85.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          12.133748054504395,
+          12.133748054504395,
+          12.133748054504395,
+          12.133748054504395
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 135.01,
+        "bbox": [
+          264.3,
+          130.0,
+          265.1,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            265.0,
+            130.0
+          ],
+          [
+            265.46527099609375,
+            174.5500030517578
+          ],
+          [
+            263.19183349609375,
+            220.4499969482422
+          ],
+          [
+            265.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          9.115898132324219,
+          9.115898132324219,
+          9.115898132324219,
+          9.115898132324219
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 135.04,
+        "bbox": [
+          220.0,
+          130.0,
+          221.5,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            220.0,
+            130.0
+          ],
+          [
+            221.91140747070312,
+            174.5500030517578
+          ],
+          [
+            221.9888916015625,
+            220.4499969482422
+          ],
+          [
+            220.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          10.5726318359375,
+          10.5726318359375,
+          10.5726318359375,
+          10.5726318359375
+        ]
+      },
+      {
+        "bezier_id": 6,
+        "stroke_type": "open",
+        "length": 135.03,
+        "bbox": [
+          218.7,
+          130.0,
+          220.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            220.0,
+            130.0
+          ],
+          [
+            218.82943725585938,
+            174.5500030517578
+          ],
+          [
+            217.7310028076172,
+            220.4499969482422
+          ],
+          [
+            220.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          12.596102714538574,
+          12.596102714538574,
+          12.596102714538574,
+          12.596102714538574
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          310.0,
+          85.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          85.0,
+          85.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 5,
+        "t_a": 0.0,
+        "stroke_b": 6,
+        "t_b": 0.0,
+        "position": [
+          220.0,
+          130.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 5,
+        "t_a": 1.0,
+        "stroke_b": 6,
+        "t_b": 1.0,
+        "position": [
+          220.0,
+          265.0
+        ]
+      }
+    ],
+    "cycles": [
+      {
+        "cycle_id": 0,
+        "members": [
+          5,
+          6
+        ],
+        "orientation": "unknown"
+      }
+    ],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457160_00020_476078",
+        "style_mode": "straight",
+        "topology_family": "hanzi_block",
+        "topology_text": "E2E: 1-2、1-3、5-6、5-6 ; Cycles: 5 6",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F116B": {
+    "glyph_info": {
+      "hex_key": "F116B",
+      "char": "󱅫",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457227_00028_838145",
+      "style_mode": "straight",
+      "topology_family": "semi_enclosure+hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F116B",
+        "unicode_hex": null,
+        "char": "󱅫"
+      },
+      "unicode_hex": "F116B"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 180.03,
+        "bbox": [
+          175.0,
+          83.8,
+          355.0,
+          85.1
+        ],
+        "mother_bezier": [
+          [
+            175.0,
+            85.0
+          ],
+          [
+            234.39999389648438,
+            85.56987762451172
+          ],
+          [
+            295.6000061035156,
+            81.96334075927734
+          ],
+          [
+            355.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          8.470474243164062,
+          8.470474243164062,
+          8.470474243164062,
+          8.470474243164062
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.26,
+        "bbox": [
+          355.0,
+          85.0,
+          365.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            355.0,
+            85.0
+          ],
+          [
+            357.7882385253906,
+            159.2727508544922
+          ],
+          [
+            358.2899169921875,
+            235.90158081054688
+          ],
+          [
+            365.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          10.531248092651367,
+          10.531248092651367,
+          10.531248092651367,
+          10.531248092651367
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 225.89,
+        "bbox": [
+          155.4,
+          85.0,
+          175.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            175.0,
+            85.0
+          ],
+          [
+            170.33615112304688,
+            159.40545654296875
+          ],
+          [
+            165.14561462402344,
+            236.0321502685547
+          ],
+          [
+            155.44627380371094,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          9.4512939453125,
+          9.4512939453125,
+          9.4512939453125,
+          9.4512939453125
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 135.01,
+        "bbox": [
+          220.0,
+          219.8,
+          355.0,
+          220.5
+        ],
+        "mother_bezier": [
+          [
+            220.0,
+            220.0
+          ],
+          [
+            264.54998779296875,
+            221.6205596923828
+          ],
+          [
+            310.45001220703125,
+            219.03060913085938
+          ],
+          [
+            355.0,
+            220.0
+          ]
+        ],
+        "width_bezier": [
+          8.3343505859375,
+          8.3343505859375,
+          8.3343505859375,
+          8.3343505859375
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 136.44,
+        "bbox": [
+          290.4,
+          130.0,
+          310.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            290.3828125,
+            130.0
+          ],
+          [
+            298.3743896484375,
+            174.32943725585938
+          ],
+          [
+            305.0516357421875,
+            220.22836303710938
+          ],
+          [
+            310.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          7.906921863555908,
+          7.906921863555908,
+          7.906921863555908,
+          7.906921863555908
+        ]
+      },
+      {
+        "bezier_id": 6,
+        "stroke_type": "open",
+        "length": 115.43,
+        "bbox": [
+          220.0,
+          130.0,
+          335.4,
+          131.4
+        ],
+        "mother_bezier": [
+          [
+            220.0,
+            130.0
+          ],
+          [
+            258.0763244628906,
+            131.974365234375
+          ],
+          [
+            297.3064880371094,
+            131.6771697998047
+          ],
+          [
+            335.3828125,
+            130.0
+          ]
+        ],
+        "width_bezier": [
+          7.442691326141357,
+          7.442691326141357,
+          7.442691326141357,
+          7.442691326141357
+        ]
+      },
+      {
+        "bezier_id": 7,
+        "stroke_type": "open",
+        "length": 154.64,
+        "bbox": [
+          200.4,
+          264.0,
+          355.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            200.3828125,
+            265.0
+          ],
+          [
+            251.40647888183594,
+            265.0000915527344
+          ],
+          [
+            303.976318359375,
+            262.67022705078125
+          ],
+          [
+            355.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          12.340827941894531,
+          12.340827941894531,
+          12.340827941894531,
+          12.340827941894531
+        ]
+      },
+      {
+        "bezier_id": 8,
+        "stroke_type": "open",
+        "length": 133.33,
+        "bbox": [
+          130.0,
+          85.0,
+          148.8,
+          217.0
+        ],
+        "mother_bezier": [
+          [
+            148.76568603515625,
+            85.0
+          ],
+          [
+            141.96633911132812,
+            128.4737548828125
+          ],
+          [
+            135.93675231933594,
+            173.40362548828125
+          ],
+          [
+            130.0,
+            217.0
+          ]
+        ],
+        "width_bezier": [
+          9.375070571899414,
+          9.375070571899414,
+          9.375070571899414,
+          9.375070571899414
+        ]
+      },
+      {
+        "bezier_id": 9,
+        "stroke_type": "open",
+        "length": 96.03,
+        "bbox": [
+          130.0,
+          217.0,
+          131.1,
+          313.0
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            217.0
+          ],
+          [
+            131.74061584472656,
+            248.67999267578125
+          ],
+          [
+            131.21170043945312,
+            281.32000732421875
+          ],
+          [
+            130.0,
+            313.0
+          ]
+        ],
+        "width_bezier": [
+          7.962082862854004,
+          7.962082862854004,
+          7.962082862854004,
+          7.962082862854004
+        ]
+      },
+      {
+        "bezier_id": 10,
+        "stroke_type": "open",
+        "length": 164.78,
+        "bbox": [
+          130.0,
+          217.0,
+          220.0,
+          355.0
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            217.0
+          ],
+          [
+            159.09922790527344,
+            262.958251953125
+          ],
+          [
+            188.10140991210938,
+            310.76312255859375
+          ],
+          [
+            220.0,
+            355.0
+          ]
+        ],
+        "width_bezier": [
+          11.807475090026855,
+          11.807475090026855,
+          11.807475090026855,
+          11.807475090026855
+        ]
+      },
+      {
+        "bezier_id": 11,
+        "stroke_type": "open",
+        "length": 135.04,
+        "bbox": [
+          130.0,
+          217.0,
+          265.0,
+          220.0
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            217.0
+          ],
+          [
+            174.57373046875,
+            216.92257690429688
+          ],
+          [
+            220.46253967285156,
+            218.4463348388672
+          ],
+          [
+            265.0,
+            220.0
+          ]
+        ],
+        "width_bezier": [
+          12.889223098754883,
+          12.889223098754883,
+          12.889223098754883,
+          12.889223098754883
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          355.0,
+          85.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          175.0,
+          85.0
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 3,
+        "t_a": 0.802,
+        "stroke_b": 10,
+        "t_b": 0.351,
+        "angle": 38.4,
+        "position": [
+          160.7,
+          265.8
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 3,
+        "t_a": 0.587,
+        "stroke_b": 11,
+        "t_b": 0.263,
+        "angle": 94.2,
+        "position": [
+          165.4,
+          217.2
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 4,
+        "t_a": 0.625,
+        "stroke_b": 5,
+        "t_b": 0.667,
+        "angle": 83.1,
+        "position": [
+          304.5,
+          220.0
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 4,
+        "guest_t": 0.0,
+        "host": 11,
+        "host_t": 0.671,
+        "angle": 0.4,
+        "position": [
+          220.7,
+          218.5
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 11,
+        "guest_t": 1.0,
+        "host": 4,
+        "host_t": 0.329,
+        "angle": 2.4,
+        "position": [
+          264.3,
+          220.5
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 5,
+        "guest_t": 0.0,
+        "host": 6,
+        "host_t": 0.608,
+        "angle": 80.5,
+        "position": [
+          290.2,
+          131.3
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 5,
+        "guest_t": 1.0,
+        "host": 7,
+        "host_t": 0.709,
+        "angle": 83.5,
+        "position": [
+          310.1,
+          264.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 8,
+        "t_a": 1.0,
+        "stroke_b": 9,
+        "t_b": 0.0,
+        "position": [
+          130.0,
+          217.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 8,
+        "t_a": 1.0,
+        "stroke_b": 10,
+        "t_b": 0.0,
+        "position": [
+          130.0,
+          217.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 8,
+        "t_a": 1.0,
+        "stroke_b": 11,
+        "t_b": 0.0,
+        "position": [
+          130.0,
+          217.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 9,
+        "t_a": 0.0,
+        "stroke_b": 10,
+        "t_b": 0.0,
+        "position": [
+          130.0,
+          217.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 9,
+        "t_a": 0.0,
+        "stroke_b": 11,
+        "t_b": 0.0,
+        "position": [
+          130.0,
+          217.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 10,
+        "t_a": 0.0,
+        "stroke_b": 11,
+        "t_b": 0.0,
+        "position": [
+          130.0,
+          217.0
+        ]
+      }
+    ],
+    "cycles": [
+      {
+        "cycle_id": 0,
+        "members": [
+          4,
+          11
+        ],
+        "orientation": "unknown"
+      },
+      {
+        "cycle_id": 1,
+        "members": [
+          3,
+          10,
+          11
+        ],
+        "orientation": "cw"
+      }
+    ],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457227_00028_838145",
+        "style_mode": "straight",
+        "topology_family": "semi_enclosure+hanzi_block",
+        "topology_text": "E2E: 1-2、1-3、8-9、8-10、8-11、9-10、9-11、10-11 ; T: 11搭4、4搭11、5搭6、5搭7 ; X: 3交叉10、3交叉11、4交叉5 ; Cycles: 4 11 | 3 10 11",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F116C": {
+    "glyph_info": {
+      "hex_key": "F116C",
+      "char": "󱅬",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457295_00033_229119",
+      "style_mode": "hook_right",
+      "topology_family": "hanzi_block+semi_enclosure+semi_enclosure",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F116C",
+        "unicode_hex": null,
+        "char": "󱅬"
+      },
+      "unicode_hex": "F116C"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 197.07,
+        "bbox": [
+          265.0,
+          110.9,
+          358.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            358.0,
+            265.0
+          ],
+          [
+            278.9117431640625,
+            260.0482482910156
+          ],
+          [
+            282.3314514160156,
+            177.17608642578125
+          ],
+          [
+            265.0,
+            110.88591766357422
+          ]
+        ],
+        "width_bezier": [
+          10.056347846984863,
+          10.056347846984863,
+          10.056347846984863,
+          10.056347846984863
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 96.03,
+        "bbox": [
+          262.0,
+          264.1,
+          358.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            262.0,
+            265.0
+          ],
+          [
+            293.67999267578125,
+            263.27764892578125
+          ],
+          [
+            326.32000732421875,
+            264.3289489746094
+          ],
+          [
+            358.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          7.469396114349365,
+          7.469396114349365,
+          7.469396114349365,
+          7.469396114349365
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 194.78,
+        "bbox": [
+          39.4,
+          160.2,
+          40.0,
+          355.0
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            160.2246551513672
+          ],
+          [
+            39.29405975341797,
+            224.50051879882812
+          ],
+          [
+            39.148162841796875,
+            290.72412109375
+          ],
+          [
+            40.0,
+            355.0
+          ]
+        ],
+        "width_bezier": [
+          13.173233985900879,
+          13.173233985900879,
+          13.173233985900879,
+          13.173233985900879
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 218.99,
+        "bbox": [
+          40.0,
+          39.8,
+          259.0,
+          40.5
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            40.0
+          ],
+          [
+            112.26528930664062,
+            41.51248550415039
+          ],
+          [
+            186.72042846679688,
+            39.18342208862305
+          ],
+          [
+            258.9857177734375,
+            40.0
+          ]
+        ],
+        "width_bezier": [
+          11.53616714477539,
+          11.53616714477539,
+          11.53616714477539,
+          11.53616714477539
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 2,
+        "t_b": 1.0,
+        "position": [
+          358.0,
+          265.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457295_00033_229119",
+        "style_mode": "hook_right",
+        "topology_family": "hanzi_block+semi_enclosure+semi_enclosure",
+        "topology_text": "E2E: 1-2",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F116D": {
+    "glyph_info": {
+      "hex_key": "F116D",
+      "char": "󱅭",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457311_00035_258324",
+      "style_mode": "straight",
+      "topology_family": "semi_enclosure+semi_enclosure",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F116D",
+        "unicode_hex": null,
+        "char": "󱅭"
+      },
+      "unicode_hex": "F116D"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 225.05,
+        "bbox": [
+          130.0,
+          38.0,
+          355.0,
+          40.0
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            40.0
+          ],
+          [
+            204.25,
+            36.62992858886719
+          ],
+          [
+            280.75,
+            38.232059478759766
+          ],
+          [
+            355.0,
+            40.0
+          ]
+        ],
+        "width_bezier": [
+          10.725006103515625,
+          10.725006103515625,
+          10.725006103515625,
+          10.725006103515625
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.23,
+        "bbox": [
+          355.0,
+          40.0,
+          365.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            355.0,
+            40.0
+          ],
+          [
+            360.17706298828125,
+            114.16657257080078
+          ],
+          [
+            362.2262878417969,
+            190.72662353515625
+          ],
+          [
+            365.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          12.092378616333008,
+          12.092378616333008,
+          12.092378616333008,
+          12.092378616333008
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 180.04,
+        "bbox": [
+          40.0,
+          93.9,
+          220.0,
+          95.4
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            93.95774841308594
+          ],
+          [
+            99.4000015258789,
+            93.39054107666016
+          ],
+          [
+            160.60000610351562,
+            97.37398529052734
+          ],
+          [
+            220.0,
+            93.95774841308594
+          ]
+        ],
+        "width_bezier": [
+          13.429635047912598,
+          13.429635047912598,
+          13.429635047912598,
+          13.429635047912598
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 216.07,
+        "bbox": [
+          220.0,
+          94.0,
+          221.5,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            220.0,
+            93.95774841308594
+          ],
+          [
+            220.22952270507812,
+            165.25169372558594
+          ],
+          [
+            223.17501831054688,
+            238.7060546875
+          ],
+          [
+            220.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          8.462956428527832,
+          8.462956428527832,
+          8.462956428527832,
+          8.462956428527832
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 180.28,
+        "bbox": [
+          40.0,
+          310.0,
+          220.0,
+          319.3
+        ],
+        "mother_bezier": [
+          [
+            220.0,
+            310.0
+          ],
+          [
+            160.70513916015625,
+            315.10504150390625
+          ],
+          [
+            99.23843383789062,
+            313.1141662597656
+          ],
+          [
+            40.0,
+            319.31005859375
+          ]
+        ],
+        "width_bezier": [
+          9.87563419342041,
+          9.87563419342041,
+          9.87563419342041,
+          9.87563419342041
+        ]
+      },
+      {
+        "bezier_id": 6,
+        "stroke_type": "open",
+        "length": 135.07,
+        "bbox": [
+          103.5,
+          130.0,
+          105.3,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            105.32555389404297,
+            130.0
+          ],
+          [
+            102.88044738769531,
+            174.5500030517578
+          ],
+          [
+            102.80731964111328,
+            220.4499969482422
+          ],
+          [
+            105.32555389404297,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          11.611185073852539,
+          11.611185073852539,
+          11.611185073852539,
+          11.611185073852539
+        ]
+      },
+      {
+        "bezier_id": 7,
+        "stroke_type": "open",
+        "length": 184.7,
+        "bbox": [
+          40.0,
+          139.0,
+          175.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            265.0
+          ],
+          [
+            83.33158874511719,
+            222.09420776367188
+          ],
+          [
+            131.04869079589844,
+            181.21189880371094
+          ],
+          [
+            175.0,
+            138.95774841308594
+          ]
+        ],
+        "width_bezier": [
+          9.844926834106445,
+          9.844926834106445,
+          9.844926834106445,
+          9.844926834106445
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          355.0,
+          40.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 3,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          220.0,
+          94.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 4,
+        "t_a": 1.0,
+        "stroke_b": 5,
+        "t_b": 0.0,
+        "position": [
+          220.0,
+          310.0
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 6,
+        "t_a": 0.557,
+        "stroke_b": 7,
+        "t_b": 0.472,
+        "angle": 132.1,
+        "position": [
+          103.5,
+          205.2
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457311_00035_258324",
+        "style_mode": "straight",
+        "topology_family": "semi_enclosure+semi_enclosure",
+        "topology_text": "E2E: 1-2、3-4、4-5 ; X: 6交叉7",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F116F": {
+    "glyph_info": {
+      "hex_key": "F116F",
+      "char": "󱅯",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457329_00038_437758",
+      "style_mode": "straight",
+      "topology_family": "hanzi_block+parallel_verticals+hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F116F",
+        "unicode_hex": null,
+        "char": "󱅯"
+      },
+      "unicode_hex": "F116F"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 201.26,
+        "bbox": [
+          220.0,
+          85.0,
+          310.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            310.0,
+            85.0
+          ],
+          [
+            281.9599304199219,
+            145.38836669921875
+          ],
+          [
+            250.16944885253906,
+            205.95152282714844
+          ],
+          [
+            220.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          12.182690620422363,
+          12.182690620422363,
+          12.182690620422363,
+          12.182690620422363
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 226.05,
+        "bbox": [
+          85.0,
+          130.0,
+          106.6,
+          355.0
+        ],
+        "mother_bezier": [
+          [
+            106.62834167480469,
+            130.0
+          ],
+          [
+            101.27059936523438,
+            204.4210662841797
+          ],
+          [
+            93.15538787841797,
+            280.8478698730469
+          ],
+          [
+            85.0,
+            355.0
+          ]
+        ],
+        "width_bezier": [
+          7.191864967346191,
+          7.191864967346191,
+          7.191864967346191,
+          7.191864967346191
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 225.05,
+        "bbox": [
+          37.3,
+          40.0,
+          40.7,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            37.25627136230469,
+            40.0
+          ],
+          [
+            38.61198425292969,
+            114.2445068359375
+          ],
+          [
+            42.32761001586914,
+            190.7105712890625
+          ],
+          [
+            40.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          8.155996322631836,
+          8.155996322631836,
+          8.155996322631836,
+          8.155996322631836
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 225.02,
+        "bbox": [
+          40.0,
+          263.6,
+          265.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            265.0
+          ],
+          [
+            114.25,
+            263.97100830078125
+          ],
+          [
+            190.75,
+            262.531982421875
+          ],
+          [
+            265.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          8.359761238098145,
+          8.359761238098145,
+          8.359761238098145,
+          8.359761238098145
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "T",
+        "guest": 1,
+        "guest_t": 1.0,
+        "host": 4,
+        "host_t": 0.797,
+        "angle": 116.3,
+        "position": [
+          219.6,
+          263.9
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 2,
+        "t_a": 0.596,
+        "stroke_b": 4,
+        "t_b": 0.244,
+        "angle": 96.6,
+        "position": [
+          94.7,
+          264.2
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 3,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          40.0,
+          265.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457329_00038_437758",
+        "style_mode": "straight",
+        "topology_family": "hanzi_block+parallel_verticals+hanzi_block",
+        "topology_text": "E2E: 3-4 ; T: 1搭4 ; X: 2交叉4",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1170": {
+    "glyph_info": {
+      "hex_key": "F1170",
+      "char": "󱅰",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457332_00039_627400",
+      "style_mode": "straight",
+      "topology_family": "semi_enclosure",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1170",
+        "unicode_hex": null,
+        "char": "󱅰"
+      },
+      "unicode_hex": "F1170"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 190.96,
+        "bbox": [
+          130.0,
+          130.0,
+          265.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            130.0
+          ],
+          [
+            177.37924194335938,
+            172.06024169921875
+          ],
+          [
+            220.08644104003906,
+            221.1688995361328
+          ],
+          [
+            265.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          9.450471878051758,
+          9.450471878051758,
+          9.450471878051758,
+          9.450471878051758
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.01,
+        "bbox": [
+          309.4,
+          85.0,
+          310.4,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            310.0,
+            85.0
+          ],
+          [
+            311.66754150390625,
+            159.25
+          ],
+          [
+            307.9801940917969,
+            235.75
+          ],
+          [
+            310.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          13.380002975463867,
+          13.380002975463867,
+          13.380002975463867,
+          13.380002975463867
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 185.58,
+        "bbox": [
+          130.0,
+          85.0,
+          310.0,
+          130.0
+        ],
+        "mother_bezier": [
+          [
+            310.0,
+            85.0
+          ],
+          [
+            251.0124053955078,
+            101.78453826904297
+          ],
+          [
+            188.7091522216797,
+            111.71320343017578
+          ],
+          [
+            130.0,
+            130.0
+          ]
+        ],
+        "width_bezier": [
+          12.940589904785156,
+          12.940589904785156,
+          12.940589904785156,
+          12.940589904785156
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 1.0,
+        "position": [
+          130.0,
+          130.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          310.0,
+          85.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457332_00039_627400",
+        "style_mode": "straight",
+        "topology_family": "semi_enclosure",
+        "topology_text": "E2E: 1-3、2-3",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1171": {
+    "glyph_info": {
+      "hex_key": "F1171",
+      "char": "󱅱",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457358_00043_309456",
+      "style_mode": "straight",
+      "topology_family": "outline_box+semi_enclosure+hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1171",
+        "unicode_hex": null,
+        "char": "󱅱"
+      },
+      "unicode_hex": "F1171"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 180.02,
+        "bbox": [
+          175.0,
+          83.8,
+          355.0,
+          85.0
+        ],
+        "mother_bezier": [
+          [
+            175.0,
+            85.0
+          ],
+          [
+            234.39999389648438,
+            82.40284729003906
+          ],
+          [
+            295.6000061035156,
+            85.00849151611328
+          ],
+          [
+            355.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          12.663362503051758,
+          12.663362503051758,
+          12.663362503051758,
+          12.663362503051758
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.24,
+        "bbox": [
+          355.0,
+          85.0,
+          365.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            355.0,
+            85.0
+          ],
+          [
+            356.08892822265625,
+            159.3482666015625
+          ],
+          [
+            363.1885986328125,
+            235.68385314941406
+          ],
+          [
+            365.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          9.889037132263184,
+          9.889037132263184,
+          9.889037132263184,
+          9.889037132263184
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 225.64,
+        "bbox": [
+          40.0,
+          158.5,
+          265.0,
+          175.0
+        ],
+        "mother_bezier": [
+          [
+            265.0,
+            175.0
+          ],
+          [
+            190.58486938476562,
+            171.79141235351562
+          ],
+          [
+            114.51726531982422,
+            160.2855682373047
+          ],
+          [
+            40.0,
+            158.46690368652344
+          ]
+        ],
+        "width_bezier": [
+          11.934830665588379,
+          11.934830665588379,
+          11.934830665588379,
+          11.934830665588379
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 206.8,
+        "bbox": [
+          40.0,
+          158.5,
+          48.6,
+          365.0
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            158.46690368652344
+          ],
+          [
+            46.33873748779297,
+            226.4773712158203
+          ],
+          [
+            49.342529296875,
+            296.69403076171875
+          ],
+          [
+            48.50794982910156,
+            365.0
+          ]
+        ],
+        "width_bezier": [
+          10.256322860717773,
+          10.256322860717773,
+          10.256322860717773,
+          10.256322860717773
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 229.03,
+        "bbox": [
+          38.3,
+          40.0,
+          40.2,
+          269.0
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            40.0
+          ],
+          [
+            41.300376892089844,
+            115.56607055664062
+          ],
+          [
+            35.65172576904297,
+            193.42202758789062
+          ],
+          [
+            40.0,
+            268.98809814453125
+          ]
+        ],
+        "width_bezier": [
+          10.790105819702148,
+          10.790105819702148,
+          10.790105819702148,
+          10.790105819702148
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          355.0,
+          85.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 3,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          40.0,
+          158.5
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 3,
+        "guest_t": 1.0,
+        "host": 5,
+        "host_t": 0.519,
+        "angle": 90.4,
+        "position": [
+          38.8,
+          158.9
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 4,
+        "guest_t": 0.0,
+        "host": 5,
+        "host_t": 0.519,
+        "angle": 6.3,
+        "position": [
+          38.8,
+          158.9
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457358_00043_309456",
+        "style_mode": "straight",
+        "topology_family": "outline_box+semi_enclosure+hanzi_block",
+        "topology_text": "E2E: 1-2、3-4 ; T: 3搭5、4搭5",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1172": {
+    "glyph_info": {
+      "hex_key": "F1172",
+      "char": "󱅲",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457385_00047_818565",
+      "style_mode": "straight",
+      "topology_family": "hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1172",
+        "unicode_hex": null,
+        "char": "󱅲"
+      },
+      "unicode_hex": "F1172"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 131.95,
+        "bbox": [
+          217.0,
+          85.0,
+          219.1,
+          216.9
+        ],
+        "mother_bezier": [
+          [
+            218.51332092285156,
+            85.0
+          ],
+          [
+            219.3647003173828,
+            128.54266357421875
+          ],
+          [
+            219.6464080810547,
+            173.3981475830078
+          ],
+          [
+            217.03903198242188,
+            216.9021453857422
+          ]
+        ],
+        "width_bezier": [
+          11.224710464477539,
+          11.224710464477539,
+          11.224710464477539,
+          11.224710464477539
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 96.14,
+        "bbox": [
+          216.9,
+          216.9,
+          219.3,
+          313.0
+        ],
+        "mother_bezier": [
+          [
+            217.03903198242188,
+            216.9021453857422
+          ],
+          [
+            216.29331970214844,
+            248.6474151611328
+          ],
+          [
+            220.03761291503906,
+            281.251708984375
+          ],
+          [
+            219.2318878173828,
+            312.99835205078125
+          ]
+        ],
+        "width_bezier": [
+          13.312756538391113,
+          13.312756538391113,
+          13.312756538391113,
+          13.312756538391113
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 132.09,
+        "bbox": [
+          85.0,
+          216.3,
+          217.0,
+          218.5
+        ],
+        "mother_bezier": [
+          [
+            85.0,
+            218.450439453125
+          ],
+          [
+            128.54483032226562,
+            215.54835510253906
+          ],
+          [
+            173.4531707763672,
+            216.30569458007812
+          ],
+          [
+            217.03903198242188,
+            216.9021453857422
+          ]
+        ],
+        "width_bezier": [
+          12.523337364196777,
+          12.523337364196777,
+          12.523337364196777,
+          12.523337364196777
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 96.02,
+        "bbox": [
+          217.0,
+          216.9,
+          313.0,
+          220.2
+        ],
+        "mother_bezier": [
+          [
+            217.03903198242188,
+            216.9021453857422
+          ],
+          [
+            248.6823272705078,
+            218.5311737060547
+          ],
+          [
+            281.27288818359375,
+            220.5580596923828
+          ],
+          [
+            312.9857482910156,
+            220.09950256347656
+          ]
+        ],
+        "width_bezier": [
+          8.098559379577637,
+          8.098559379577637,
+          8.098559379577637,
+          8.098559379577637
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          217.0,
+          216.9
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 3,
+        "t_b": 1.0,
+        "position": [
+          217.0,
+          216.9
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          217.0,
+          216.9
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 1.0,
+        "position": [
+          217.0,
+          216.9
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 0.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          217.0,
+          216.9
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 3,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          217.0,
+          216.9
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457385_00047_818565",
+        "style_mode": "straight",
+        "topology_family": "hanzi_block",
+        "topology_text": "E2E: 1-2、1-3、1-4、2-3、2-4、3-4",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1173": {
+    "glyph_info": {
+      "hex_key": "F1173",
+      "char": "󱅳",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457442_00054_750902",
+      "style_mode": "straight",
+      "topology_family": "hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1173",
+        "unicode_hex": null,
+        "char": "󱅳"
+      },
+      "unicode_hex": "F1173"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 225.0,
+        "bbox": [
+          85.0,
+          84.4,
+          310.0,
+          85.0
+        ],
+        "mother_bezier": [
+          [
+            85.0,
+            85.0
+          ],
+          [
+            159.25,
+            83.6356430053711
+          ],
+          [
+            235.75,
+            85.20487976074219
+          ],
+          [
+            310.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          11.586261749267578,
+          11.586261749267578,
+          11.586261749267578,
+          11.586261749267578
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.05,
+        "bbox": [
+          309.0,
+          85.0,
+          311.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            310.0,
+            85.0
+          ],
+          [
+            313.4424133300781,
+            159.25
+          ],
+          [
+            306.5046691894531,
+            235.75
+          ],
+          [
+            310.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          8.709108352661133,
+          8.709108352661133,
+          8.709108352661133,
+          8.709108352661133
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 225.03,
+        "bbox": [
+          85.0,
+          308.7,
+          310.0,
+          310.1
+        ],
+        "mother_bezier": [
+          [
+            310.0,
+            310.0
+          ],
+          [
+            235.75,
+            310.8501281738281
+          ],
+          [
+            159.25,
+            306.6853332519531
+          ],
+          [
+            85.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          12.381964683532715,
+          12.381964683532715,
+          12.381964683532715,
+          12.381964683532715
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 225.01,
+        "bbox": [
+          84.3,
+          85.0,
+          85.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            85.0,
+            310.0
+          ],
+          [
+            85.16871643066406,
+            235.75
+          ],
+          [
+            83.44126892089844,
+            159.25
+          ],
+          [
+            85.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          9.171250343322754,
+          9.171250343322754,
+          9.171250343322754,
+          9.171250343322754
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          310.0,
+          85.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 4,
+        "t_b": 1.0,
+        "position": [
+          85.0,
+          85.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 1.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          310.0,
+          310.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 3,
+        "t_a": 1.0,
+        "stroke_b": 4,
+        "t_b": 0.0,
+        "position": [
+          85.0,
+          310.0
+        ]
+      }
+    ],
+    "cycles": [
+      {
+        "cycle_id": 0,
+        "members": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "orientation": "ccw"
+      }
+    ],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457442_00054_750902",
+        "style_mode": "straight",
+        "topology_family": "hanzi_block",
+        "topology_text": "E2E: 1-2、1-4、2-3、3-4 ; Cycles: 1 2 3 4",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1174": {
+    "glyph_info": {
+      "hex_key": "F1174",
+      "char": "󱅴",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457459_00059_424866",
+      "style_mode": "straight",
+      "topology_family": "semi_enclosure+hanzi_block+hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1174",
+        "unicode_hex": null,
+        "char": "󱅴"
+      },
+      "unicode_hex": "F1174"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 190.03,
+        "bbox": [
+          175.0,
+          85.0,
+          365.0,
+          86.3
+        ],
+        "mother_bezier": [
+          [
+            365.0,
+            85.0
+          ],
+          [
+            302.29998779296875,
+            85.16914367675781
+          ],
+          [
+            237.6999969482422,
+            87.92269134521484
+          ],
+          [
+            175.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          11.99197769165039,
+          11.99197769165039,
+          11.99197769165039,
+          11.99197769165039
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 239.18,
+        "bbox": [
+          40.0,
+          131.9,
+          279.1,
+          133.8
+        ],
+        "mother_bezier": [
+          [
+            40.0,
+            133.75808715820312
+          ],
+          [
+            118.91647338867188,
+            130.87786865234375
+          ],
+          [
+            200.224365234375,
+            131.61183166503906
+          ],
+          [
+            279.1408386230469,
+            133.75808715820312
+          ]
+        ],
+        "width_bezier": [
+          13.918045043945312,
+          13.918045043945312,
+          13.918045043945312,
+          13.918045043945312
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 211.82,
+        "bbox": [
+          166.2,
+          53.4,
+          175.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            166.19940185546875,
+            53.3814697265625
+          ],
+          [
+            168.3712615966797,
+            123.24604797363281
+          ],
+          [
+            169.8802490234375,
+            195.25802612304688
+          ],
+          [
+            175.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          13.62798023223877,
+          13.62798023223877,
+          13.62798023223877,
+          13.62798023223877
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 96.01,
+        "bbox": [
+          172.0,
+          97.9,
+          268.0,
+          98.4
+        ],
+        "mother_bezier": [
+          [
+            172.0,
+            98.3814697265625
+          ],
+          [
+            203.67999267578125,
+            97.30834197998047
+          ],
+          [
+            236.32000732421875,
+            98.47968292236328
+          ],
+          [
+            268.0,
+            98.3814697265625
+          ]
+        ],
+        "width_bezier": [
+          13.701213836669922,
+          13.701213836669922,
+          13.701213836669922,
+          13.701213836669922
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "X",
+        "stroke_a": 2,
+        "t_a": 0.537,
+        "stroke_b": 3,
+        "t_b": 0.371,
+        "angle": 87.9,
+        "position": [
+          168.6,
+          131.9
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457459_00059_424866",
+        "style_mode": "straight",
+        "topology_family": "semi_enclosure+hanzi_block+hanzi_block",
+        "topology_text": "X: 2交叉3",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1175": {
+    "glyph_info": {
+      "hex_key": "F1175",
+      "char": "󱅵",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457491_00063_552214",
+      "style_mode": "straight",
+      "topology_family": "hanzi_block",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1175",
+        "unicode_hex": null,
+        "char": "󱅵"
+      },
+      "unicode_hex": "F1175"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 225.06,
+        "bbox": [
+          130.0,
+          85.0,
+          132.2,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            85.0
+          ],
+          [
+            131.09991455078125,
+            159.25
+          ],
+          [
+            134.43502807617188,
+            235.75
+          ],
+          [
+            130.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          13.894570350646973,
+          13.894570350646973,
+          13.894570350646973,
+          13.894570350646973
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 96.01,
+        "bbox": [
+          218.5,
+          129.5,
+          314.5,
+          130.0
+        ],
+        "mother_bezier": [
+          [
+            218.5,
+            130.0
+          ],
+          [
+            250.17999267578125,
+            129.39749145507812
+          ],
+          [
+            282.82000732421875,
+            129.1920928955078
+          ],
+          [
+            314.5,
+            130.0
+          ]
+        ],
+        "width_bezier": [
+          8.4844331741333,
+          8.4844331741333,
+          8.4844331741333,
+          8.4844331741333
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 96.02,
+        "bbox": [
+          215.5,
+          219.8,
+          311.5,
+          220.6
+        ],
+        "mother_bezier": [
+          [
+            215.5,
+            220.0
+          ],
+          [
+            247.17999267578125,
+            219.06686401367188
+          ],
+          [
+            279.82000732421875,
+            221.76039123535156
+          ],
+          [
+            311.5,
+            220.0
+          ]
+        ],
+        "width_bezier": [
+          7.268356800079346,
+          7.268356800079346,
+          7.268356800079346,
+          7.268356800079346
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 96.02,
+        "bbox": [
+          217.0,
+          264.9,
+          313.0,
+          265.7
+        ],
+        "mother_bezier": [
+          [
+            217.0,
+            265.0
+          ],
+          [
+            248.67999267578125,
+            264.282470703125
+          ],
+          [
+            281.32000732421875,
+            266.8335876464844
+          ],
+          [
+            313.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          11.95380973815918,
+          11.95380973815918,
+          11.95380973815918,
+          11.95380973815918
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 225.05,
+        "bbox": [
+          264.9,
+          85.0,
+          266.7,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            265.0,
+            85.0
+          ],
+          [
+            264.1361389160156,
+            159.25
+          ],
+          [
+            269.30859375,
+            235.75
+          ],
+          [
+            265.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          9.824370384216309,
+          9.824370384216309,
+          9.824370384216309,
+          9.824370384216309
+        ]
+      },
+      {
+        "bezier_id": 6,
+        "stroke_type": "open",
+        "length": 135.03,
+        "bbox": [
+          130.0,
+          85.0,
+          265.0,
+          86.2
+        ],
+        "mother_bezier": [
+          [
+            265.0,
+            85.0
+          ],
+          [
+            220.4499969482422,
+            85.2221908569336
+          ],
+          [
+            174.5500030517578,
+            87.62176513671875
+          ],
+          [
+            130.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          7.8768792152404785,
+          7.8768792152404785,
+          7.8768792152404785,
+          7.8768792152404785
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 6,
+        "t_b": 1.0,
+        "position": [
+          130.0,
+          85.0
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 2,
+        "t_a": 0.485,
+        "stroke_b": 5,
+        "t_b": 0.199,
+        "angle": 89.4,
+        "position": [
+          265.1,
+          129.5
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 3,
+        "t_a": 0.532,
+        "stroke_b": 5,
+        "t_b": 0.601,
+        "angle": 88.3,
+        "position": [
+          266.6,
+          220.4
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 4,
+        "t_a": 0.516,
+        "stroke_b": 5,
+        "t_b": 0.801,
+        "angle": 89.8,
+        "position": [
+          266.6,
+          265.4
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 5,
+        "t_a": 0.0,
+        "stroke_b": 6,
+        "t_b": 0.0,
+        "position": [
+          265.0,
+          85.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457491_00063_552214",
+        "style_mode": "straight",
+        "topology_family": "hanzi_block",
+        "topology_text": "E2E: 1-6、5-6 ; X: 2交叉5、3交叉5、4交叉5",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1176": {
+    "glyph_info": {
+      "hex_key": "F1176",
+      "char": "󱅶",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457565_00074_069076",
+      "style_mode": "straight",
+      "topology_family": "semi_enclosure",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1176",
+        "unicode_hex": null,
+        "char": "󱅶"
+      },
+      "unicode_hex": "F1176"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 225.02,
+        "bbox": [
+          83.8,
+          85.0,
+          85.1,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            85.0,
+            85.0
+          ],
+          [
+            81.90986633300781,
+            159.25
+          ],
+          [
+            85.86624145507812,
+            235.75
+          ],
+          [
+            85.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          12.04276180267334,
+          12.04276180267334,
+          12.04276180267334,
+          12.04276180267334
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.01,
+        "bbox": [
+          85.0,
+          310.0,
+          310.0,
+          311.0
+        ],
+        "mother_bezier": [
+          [
+            85.0,
+            310.0
+          ],
+          [
+            159.25,
+            311.61761474609375
+          ],
+          [
+            235.75,
+            310.97174072265625
+          ],
+          [
+            310.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          10.759413719177246,
+          10.759413719177246,
+          10.759413719177246,
+          10.759413719177246
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 225.02,
+        "bbox": [
+          309.9,
+          85.0,
+          311.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            310.0,
+            310.0
+          ],
+          [
+            312.6033020019531,
+            235.75
+          ],
+          [
+            309.3504638671875,
+            159.25
+          ],
+          [
+            310.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          11.095065116882324,
+          11.095065116882324,
+          11.095065116882324,
+          11.095065116882324
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 135.03,
+        "bbox": [
+          263.8,
+          130.0,
+          265.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            265.0,
+            130.0
+          ],
+          [
+            262.3699645996094,
+            174.5500030517578
+          ],
+          [
+            264.88970947265625,
+            220.4499969482422
+          ],
+          [
+            265.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          13.781668663024902,
+          13.781668663024902,
+          13.781668663024902,
+          13.781668663024902
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 190.95,
+        "bbox": [
+          130.0,
+          130.0,
+          265.0,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            130.0
+          ],
+          [
+            176.6365203857422,
+            172.24490356445312
+          ],
+          [
+            219.1956329345703,
+            221.91439819335938
+          ],
+          [
+            265.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          8.724380493164062,
+          8.724380493164062,
+          8.724380493164062,
+          8.724380493164062
+        ]
+      },
+      {
+        "bezier_id": 6,
+        "stroke_type": "open",
+        "length": 135.03,
+        "bbox": [
+          219.2,
+          130.0,
+          220.4,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            220.0,
+            130.0
+          ],
+          [
+            217.6736297607422,
+            174.5500030517578
+          ],
+          [
+            221.64248657226562,
+            220.4499969482422
+          ],
+          [
+            220.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          13.931194305419922,
+          13.931194305419922,
+          13.931194305419922,
+          13.931194305419922
+        ]
+      },
+      {
+        "bezier_id": 7,
+        "stroke_type": "open",
+        "length": 135.02,
+        "bbox": [
+          174.3,
+          130.0,
+          175.2,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            175.0,
+            130.0
+          ],
+          [
+            172.95965576171875,
+            174.5500030517578
+          ],
+          [
+            175.8458251953125,
+            220.4499969482422
+          ],
+          [
+            175.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          10.599767684936523,
+          10.599767684936523,
+          10.599767684936523,
+          10.599767684936523
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          85.0,
+          310.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 1.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          310.0,
+          310.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 4,
+        "t_a": 1.0,
+        "stroke_b": 5,
+        "t_b": 1.0,
+        "position": [
+          265.0,
+          265.0
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 5,
+        "t_a": 0.668,
+        "stroke_b": 6,
+        "t_b": 0.669,
+        "angle": 43.1,
+        "position": [
+          220.2,
+          220.5
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 5,
+        "t_a": 0.324,
+        "stroke_b": 7,
+        "t_b": 0.319,
+        "angle": 44.2,
+        "position": [
+          174.3,
+          172.9
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457565_00074_069076",
+        "style_mode": "straight",
+        "topology_family": "semi_enclosure",
+        "topology_text": "E2E: 1-2、2-3、4-5 ; X: 5交叉6、5交叉7",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1177": {
+    "glyph_info": {
+      "hex_key": "F1177",
+      "char": "󱅷",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457625_00081_255812",
+      "style_mode": "straight",
+      "topology_family": "vertical_column",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1177",
+        "unicode_hex": null,
+        "char": "󱅷"
+      },
+      "unicode_hex": "F1177"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 225.05,
+        "bbox": [
+          130.0,
+          85.0,
+          132.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            85.0
+          ],
+          [
+            134.45864868164062,
+            159.25
+          ],
+          [
+            129.8654327392578,
+            235.75
+          ],
+          [
+            130.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          7.308994770050049,
+          7.308994770050049,
+          7.308994770050049,
+          7.308994770050049
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.02,
+        "bbox": [
+          264.8,
+          85.0,
+          266.2,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            265.0,
+            85.0
+          ],
+          [
+            268.1291809082031,
+            159.25
+          ],
+          [
+            263.9139404296875,
+            235.75
+          ],
+          [
+            265.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          11.249126434326172,
+          11.249126434326172,
+          11.249126434326172,
+          11.249126434326172
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 190.96,
+        "bbox": [
+          130.0,
+          85.0,
+          265.0,
+          220.0
+        ],
+        "mother_bezier": [
+          [
+            265.0,
+            85.0
+          ],
+          [
+            218.39820861816406,
+            127.56246948242188
+          ],
+          [
+            176.48858642578125,
+            177.49459838867188
+          ],
+          [
+            130.0,
+            220.0
+          ]
+        ],
+        "width_bezier": [
+          13.710288047790527,
+          13.710288047790527,
+          13.710288047790527,
+          13.710288047790527
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "T",
+        "guest": 3,
+        "guest_t": 1.0,
+        "host": 1,
+        "host_t": 0.595,
+        "angle": 46.5,
+        "position": [
+          131.2,
+          219.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          265.0,
+          85.0
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457625_00081_255812",
+        "style_mode": "straight",
+        "topology_family": "vertical_column",
+        "topology_text": "E2E: 2-3 ; T: 3搭1",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1178": {
+    "glyph_info": {
+      "hex_key": "F1178",
+      "char": "󱅸",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457636_00084_279603",
+      "style_mode": "straight",
+      "topology_family": "semi_enclosure",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1178",
+        "unicode_hex": null,
+        "char": "󱅸"
+      },
+      "unicode_hex": "F1178"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 225.03,
+        "bbox": [
+          85.0,
+          83.8,
+          310.0,
+          85.2
+        ],
+        "mother_bezier": [
+          [
+            85.0,
+            85.0
+          ],
+          [
+            159.25,
+            86.07215118408203
+          ],
+          [
+            235.75,
+            81.78783416748047
+          ],
+          [
+            310.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          9.673867225646973,
+          9.673867225646973,
+          9.673867225646973,
+          9.673867225646973
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.06,
+        "bbox": [
+          307.8,
+          85.0,
+          310.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            310.0,
+            85.0
+          ],
+          [
+            309.1189880371094,
+            159.25
+          ],
+          [
+            305.52569580078125,
+            235.75
+          ],
+          [
+            310.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          12.220769882202148,
+          12.220769882202148,
+          12.220769882202148,
+          12.220769882202148
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 225.07,
+        "bbox": [
+          85.0,
+          85.0,
+          87.4,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            85.0,
+            85.0
+          ],
+          [
+            89.30735778808594,
+            159.25
+          ],
+          [
+            86.7964096069336,
+            235.75
+          ],
+          [
+            85.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          10.173723220825195,
+          10.173723220825195,
+          10.173723220825195,
+          10.173723220825195
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 135.07,
+        "bbox": [
+          265.0,
+          130.0,
+          266.8,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            265.0,
+            130.0
+          ],
+          [
+            267.27020263671875,
+            174.5500030517578
+          ],
+          [
+            267.62835693359375,
+            220.4499969482422
+          ],
+          [
+            265.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          8.694868087768555,
+          8.694868087768555,
+          8.694868087768555,
+          8.694868087768555
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 135.01,
+        "bbox": [
+          130.0,
+          220.0,
+          265.0,
+          220.7
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            220.0
+          ],
+          [
+            174.5500030517578,
+            220.50808715820312
+          ],
+          [
+            220.4499969482422,
+            221.19300842285156
+          ],
+          [
+            265.0,
+            220.0
+          ]
+        ],
+        "width_bezier": [
+          7.619182109832764,
+          7.619182109832764,
+          7.619182109832764,
+          7.619182109832764
+        ]
+      },
+      {
+        "bezier_id": 6,
+        "stroke_type": "open",
+        "length": 135.07,
+        "bbox": [
+          130.0,
+          220.0,
+          265.0,
+          221.8
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            220.0
+          ],
+          [
+            174.5500030517578,
+            222.435302734375
+          ],
+          [
+            220.4499969482422,
+            222.46273803710938
+          ],
+          [
+            265.0,
+            220.0
+          ]
+        ],
+        "width_bezier": [
+          10.390271186828613,
+          10.390271186828613,
+          10.390271186828613,
+          10.390271186828613
+        ]
+      },
+      {
+        "bezier_id": 7,
+        "stroke_type": "open",
+        "length": 135.03,
+        "bbox": [
+          219.0,
+          130.0,
+          220.1,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            220.0,
+            130.0
+          ],
+          [
+            220.6465301513672,
+            174.5500030517578
+          ],
+          [
+            217.49009704589844,
+            220.4499969482422
+          ],
+          [
+            220.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          7.23424768447876,
+          7.23424768447876,
+          7.23424768447876,
+          7.23424768447876
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          310.0,
+          85.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 0.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          85.0,
+          85.0
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 5,
+        "guest_t": 1.0,
+        "host": 4,
+        "host_t": 0.671,
+        "angle": 92.5,
+        "position": [
+          266.7,
+          220.7
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 6,
+        "guest_t": 1.0,
+        "host": 4,
+        "host_t": 0.671,
+        "angle": 94.2,
+        "position": [
+          266.7,
+          220.7
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 5,
+        "t_a": 0.0,
+        "stroke_b": 6,
+        "t_b": 0.0,
+        "position": [
+          130.0,
+          220.0
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 5,
+        "t_a": 1.0,
+        "stroke_b": 6,
+        "t_b": 1.0,
+        "position": [
+          265.0,
+          220.0
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 5,
+        "t_a": 0.659,
+        "stroke_b": 7,
+        "t_b": 0.671,
+        "angle": 90.4,
+        "position": [
+          219.0,
+          220.6
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 6,
+        "t_a": 0.659,
+        "stroke_b": 7,
+        "t_b": 0.678,
+        "angle": 91.2,
+        "position": [
+          219.0,
+          221.7
+        ]
+      }
+    ],
+    "cycles": [
+      {
+        "cycle_id": 0,
+        "members": [
+          5,
+          6
+        ],
+        "orientation": "unknown"
+      }
+    ],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457636_00084_279603",
+        "style_mode": "straight",
+        "topology_family": "semi_enclosure",
+        "topology_text": "E2E: 1-2、1-3、5-6、5-6 ; T: 5搭4、6搭4 ; X: 5交叉7、6交叉7 ; Cycles: 5 6",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F1179": {
+    "glyph_info": {
+      "hex_key": "F1179",
+      "char": "󱅹",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457646_00085_532981",
+      "style_mode": "straight",
+      "topology_family": "semi_enclosure+center_spine_branches",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F1179",
+        "unicode_hex": null,
+        "char": "󱅹"
+      },
+      "unicode_hex": "F1179"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 191.33,
+        "bbox": [
+          175.0,
+          62.6,
+          365.0,
+          85.0
+        ],
+        "mother_bezier": [
+          [
+            175.0,
+            62.61932373046875
+          ],
+          [
+            237.45913696289062,
+            72.04972076416016
+          ],
+          [
+            302.4601135253906,
+            76.2549057006836
+          ],
+          [
+            365.0,
+            85.0
+          ]
+        ],
+        "width_bezier": [
+          8.026398658752441,
+          8.026398658752441,
+          8.026398658752441,
+          8.026398658752441
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.27,
+        "bbox": [
+          355.0,
+          85.0,
+          365.0,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            365.0,
+            85.0
+          ],
+          [
+            359.1462097167969,
+            159.13650512695312
+          ],
+          [
+            355.3949890136719,
+            235.62091064453125
+          ],
+          [
+            355.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          13.95411205291748,
+          13.95411205291748,
+          13.95411205291748,
+          13.95411205291748
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 211.03,
+        "bbox": [
+          174.8,
+          99.0,
+          175.6,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            175.0,
+            98.98131561279297
+          ],
+          [
+            173.9827423095703,
+            168.6174774169922
+          ],
+          [
+            176.68235778808594,
+            240.36383056640625
+          ],
+          [
+            175.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          10.306805610656738,
+          10.306805610656738,
+          10.306805610656738,
+          10.306805610656738
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 96.05,
+        "bbox": [
+          37.6,
+          219.6,
+          132.4,
+          234.4
+        ],
+        "mother_bezier": [
+          [
+            132.43109130859375,
+            219.62234497070312
+          ],
+          [
+            100.88519287109375,
+            222.93162536621094
+          ],
+          [
+            68.58274841308594,
+            227.6247100830078
+          ],
+          [
+            37.568912506103516,
+            234.35897827148438
+          ]
+        ],
+        "width_bezier": [
+          9.403215408325195,
+          9.403215408325195,
+          9.403215408325195,
+          9.403215408325195
+        ]
+      },
+      {
+        "bezier_id": 5,
+        "stroke_type": "open",
+        "length": 132.57,
+        "bbox": [
+          132.4,
+          219.4,
+          265.0,
+          220.0
+        ],
+        "mother_bezier": [
+          [
+            132.43109130859375,
+            219.62234497070312
+          ],
+          [
+            176.17904663085938,
+            219.6724853515625
+          ],
+          [
+            221.25485229492188,
+            218.9654083251953
+          ],
+          [
+            265.0,
+            220.0
+          ]
+        ],
+        "width_bezier": [
+          10.228795051574707,
+          10.228795051574707,
+          10.228795051574707,
+          10.228795051574707
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "E2E",
+        "stroke_a": 1,
+        "t_a": 1.0,
+        "stroke_b": 2,
+        "t_b": 0.0,
+        "position": [
+          365.0,
+          85.0
+        ]
+      },
+      {
+        "type": "X",
+        "stroke_a": 3,
+        "t_a": 0.571,
+        "stroke_b": 5,
+        "t_b": 0.325,
+        "angle": 89.8,
+        "position": [
+          175.4,
+          219.5
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 4,
+        "t_a": 0.0,
+        "stroke_b": 5,
+        "t_b": 0.0,
+        "position": [
+          132.4,
+          219.6
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457646_00085_532981",
+        "style_mode": "straight",
+        "topology_family": "semi_enclosure+center_spine_branches",
+        "topology_text": "E2E: 1-2、4-5 ; X: 3交叉5",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  },
+  "F117B": {
+    "glyph_info": {
+      "hex_key": "F117B",
+      "char": "󱅻",
+      "label": "bad",
+      "font_path": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "font_name": "PCG_Procedural_TopoStyle_AestheticFlywheel.ttf",
+      "source": "PCG_stage2_topology_engine",
+      "candidate_id": "pcg_direct_52457679_00090_130699",
+      "style_mode": "straight",
+      "topology_family": "semi_enclosure+box+center_spine_branches",
+      "original_codepoint_before_compact": {
+        "outer_key": null,
+        "hex_key": "F117B",
+        "unicode_hex": null,
+        "char": "󱅻"
+      },
+      "unicode_hex": "F117B"
+    },
+    "strokes": [
+      {
+        "bezier_id": 1,
+        "stroke_type": "open",
+        "length": 225.01,
+        "bbox": [
+          129.8,
+          85.0,
+          130.6,
+          310.0
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            85.0
+          ],
+          [
+            128.95916748046875,
+            159.25
+          ],
+          [
+            131.67160034179688,
+            235.75
+          ],
+          [
+            130.0,
+            310.0
+          ]
+        ],
+        "width_bezier": [
+          9.670175552368164,
+          9.670175552368164,
+          9.670175552368164,
+          9.670175552368164
+        ]
+      },
+      {
+        "bezier_id": 2,
+        "stroke_type": "open",
+        "length": 225.01,
+        "bbox": [
+          130.0,
+          264.6,
+          355.0,
+          265.5
+        ],
+        "mother_bezier": [
+          [
+            130.0,
+            265.0
+          ],
+          [
+            204.25,
+            266.7413024902344
+          ],
+          [
+            280.75,
+            263.4483947753906
+          ],
+          [
+            355.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          10.279253005981445,
+          10.279253005981445,
+          10.279253005981445,
+          10.279253005981445
+        ]
+      },
+      {
+        "bezier_id": 3,
+        "stroke_type": "open",
+        "length": 127.3,
+        "bbox": [
+          265.0,
+          265.0,
+          355.0,
+          355.0
+        ],
+        "mother_bezier": [
+          [
+            355.0,
+            265.0
+          ],
+          [
+            323.9795227050781,
+            293.1892395019531
+          ],
+          [
+            295.29656982421875,
+            326.05816650390625
+          ],
+          [
+            265.0,
+            355.0
+          ]
+        ],
+        "width_bezier": [
+          10.751212120056152,
+          10.751212120056152,
+          10.751212120056152,
+          10.751212120056152
+        ]
+      },
+      {
+        "bezier_id": 4,
+        "stroke_type": "open",
+        "length": 225.31,
+        "bbox": [
+          175.0,
+          40.0,
+          185.9,
+          265.0
+        ],
+        "mother_bezier": [
+          [
+            185.91041564941406,
+            40.0
+          ],
+          [
+            177.86688232421875,
+            114.03455352783203
+          ],
+          [
+            180.27403259277344,
+            190.83116149902344
+          ],
+          [
+            175.0,
+            265.0
+          ]
+        ],
+        "width_bezier": [
+          12.342612266540527,
+          12.342612266540527,
+          12.342612266540527,
+          12.342612266540527
+        ]
+      }
+    ],
+    "topology_events": [
+      {
+        "type": "T",
+        "guest": 2,
+        "guest_t": 0.0,
+        "host": 1,
+        "host_t": 0.797,
+        "angle": 88.8,
+        "position": [
+          130.5,
+          264.6
+        ]
+      },
+      {
+        "type": "E2E",
+        "stroke_a": 2,
+        "t_a": 1.0,
+        "stroke_b": 3,
+        "t_b": 0.0,
+        "position": [
+          355.0,
+          265.0
+        ]
+      },
+      {
+        "type": "T",
+        "guest": 4,
+        "guest_t": 1.0,
+        "host": 2,
+        "host_t": 0.203,
+        "angle": 94.0,
+        "position": [
+          175.4,
+          265.5
+        ]
+      }
+    ],
+    "cycles": [],
+    "edit_history": [
+      {
+        "action": "PCG_GENERATE_AND_LABEL",
+        "label": "bad",
+        "candidate_id": "pcg_direct_52457679_00090_130699",
+        "style_mode": "straight",
+        "topology_family": "semi_enclosure+box+center_spine_branches",
+        "topology_text": "E2E: 2-3 ; T: 2搭1、4搭2",
+        "timestamp": "2026-07-06 23:41:24"
+      }
+    ]
+  }
+}
