@@ -1,0 +1,45 @@
+{
+  "patch_type": "production_feedback_control_patch",
+  "status": "ACCEPT_WITH_GUARDS",
+  "selected_policy_id": "P2_diversity_guarded_mix",
+  "production_rule_influence": 0.5,
+  "family_sampling_weights": {
+    "NESTED_ORBIT_SEAL": 0.85,
+    "NESTED_PORTAL": 0.85,
+    "RING_CORE_SPINE_PORT": 0.85,
+    "INTERLOCKED_PORT_MOTIF": 0.75,
+    "DISCOVERED_TOPOLOGY_MOTIF": 0.1
+  },
+  "enabled_production_families": [
+    "NESTED_ORBIT_SEAL",
+    "NESTED_PORTAL"
+  ],
+  "deprioritized_families": [
+    "DISCOVERED_TOPOLOGY_MOTIF"
+  ],
+  "hard_guards": {
+    "enable_short_fragment_guard": true,
+    "min_split_fragment_ratio": "1/6",
+    "min_line_length_px": 96,
+    "prefer_single_component": true,
+    "avoid_low_context_cycle": true,
+    "reject_bad_no_structural_field": false
+  },
+  "diversity_guards": {
+    "enable_signature_anti_collapse": true,
+    "max_top_signature_rate_delta": 0.08,
+    "family_balance_temperature": 0.75,
+    "avoid_same_family_streak": 3
+  },
+  "risk_response": {
+    "if_bad_short_or_fragmented_increases": "increase min_line_length / split-fragment penalty before raising production influence",
+    "if_top_signature_rate_increases": "lower NESTED_PORTAL/NESTED_ORBIT_SEAL sampling and rotate production families",
+    "if_bad_floating_not_reduced": "raise port coupling and enforce component attachment projection"
+  },
+  "feedback_score": 0.7605,
+  "notes": [
+    "This patch is produced by the automatic feedback judgement chain, not by manual rule screening.",
+    "Generated smoke-test samples are held in memory only and are not written to disk.",
+    "Wire this patch into the real PCG generator as control logic, then rerun the same feedback chain on real generator output if needed."
+  ]
+}

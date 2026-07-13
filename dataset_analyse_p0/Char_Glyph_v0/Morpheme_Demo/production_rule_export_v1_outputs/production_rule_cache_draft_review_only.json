@@ -2,7 +2,7 @@
   "schema_version": "production_rule_cache_draft_v1",
   "status": "review_only",
   "safe_to_auto_install": false,
-  "created_at": "2026-07-13T15:33:35",
+  "created_at": "2026-07-13T19:07:01",
   "source": "morpheme_v7_production_rule_exporter.py",
   "description": "Review-only draft generated from V7 production-ready grammar prototypes. Do not treat as enabled rules until visual review.",
   "production_rules": [

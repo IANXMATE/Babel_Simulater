@@ -1,0 +1,25 @@
+rule_id,production_family_v7,rule_name,hits,support
+production_candidate_0006_nested_orbit_seal,NESTED_ORBIT_SEAL,motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND connected_components<=1,125,0.25
+production_candidate_0007_nested_orbit_seal,NESTED_ORBIT_SEAL,motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND NOT_bad_floating_or_multicomponent,125,0.25
+production_candidate_0016_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND topology_event_count>=3 AND connected_components<=1,125,0.25
+production_candidate_0017_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND connected_components<=1,125,0.25
+production_candidate_0011_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND X_count>=1 AND connected_components<=1,124,0.248
+production_candidate_0009_discovered_topology_motif,DISCOVERED_TOPOLOGY_MOTIF,port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND connected_components<=1,120,0.24
+production_candidate_0010_nested_portal,NESTED_PORTAL,port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND connected_components<=1,118,0.236
+production_candidate_0001_nested_orbit_seal,NESTED_ORBIT_SEAL,motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND stroke_count<=7,21,0.042
+production_candidate_0008_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND stroke_count<=7,21,0.042
+production_candidate_0003_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND X_count>=1 AND stroke_count<=7,8,0.016
+production_candidate_0005_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND max_degree>=3 AND stroke_count<=7,7,0.014
+production_candidate_0022_discovered_topology_motif,DISCOVERED_TOPOLOGY_MOTIF,motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND stroke_count<=7,1,0.002
+production_candidate_0002_discovered_topology_motif,DISCOVERED_TOPOLOGY_MOTIF,port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND stroke_count<=7,0,0.0
+production_candidate_0004_nested_portal,NESTED_PORTAL,port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND stroke_count<=7,0,0.0
+production_candidate_0012_discovered_topology_motif,DISCOVERED_TOPOLOGY_MOTIF,port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND leaf_ratio<=0,0,0.0
+production_candidate_0013_nested_portal,NESTED_PORTAL,port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND leaf_ratio<=0,0,0.0
+production_candidate_0014_nested_orbit_seal,NESTED_ORBIT_SEAL,motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND leaf_ratio<=0,0,0.0
+production_candidate_0015_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND X_count>=1 AND leaf_ratio<=0,0,0.0
+production_candidate_0018_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND max_degree>=3 AND leaf_ratio<=0,0,0.0
+production_candidate_0019_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND leaf_ratio<=0,0,0.0
+production_candidate_0020_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND connected_components<=1,0,0.0
+production_candidate_0021_nested_portal,NESTED_PORTAL,motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND NOT_bad_floating_or_multicomponent,0,0.0
+production_candidate_0023_discovered_topology_motif,DISCOVERED_TOPOLOGY_MOTIF,motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND connected_components<=1,0,0.0
+production_candidate_0024_discovered_topology_motif,DISCOVERED_TOPOLOGY_MOTIF,motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND NOT_bad_floating_or_multicomponent,0,0.0

@@ -1,0 +1,1073 @@
+{
+  "schema_version": "memory_generation_quality_eval_v1",
+  "created_at": "2026-07-13T17:52:22",
+  "baseline_info": {
+    "root": "<in_memory_baseline_generator>",
+    "files": 0,
+    "bad_json": 0,
+    "truncated": false,
+    "generated_in_memory": true,
+    "samples": 500,
+    "seed": 42
+  },
+  "experiment_info": {
+    "root": "<in_memory_production_generator>",
+    "files": 0,
+    "bad_json": 0,
+    "truncated": false,
+    "generated_in_memory": true,
+    "samples": 500,
+    "seed": 100045,
+    "production_weight": 0.75
+  },
+  "baseline_summary": {
+    "n": 500,
+    "metric_means": {
+      "stroke_count": 6.544,
+      "connected_components": 2.552,
+      "cycle_count": 0.288,
+      "topology_event_count": 4.398,
+      "E2E_count": 3.434,
+      "T_count": 0.342,
+      "X_count": 0.622,
+      "E2E_ratio": 0.7688460317460317,
+      "X_ratio": 0.14496031746031746,
+      "branch_ratio": 0.08459523809523808,
+      "leaf_ratio": 0.5751365079365078,
+      "min_length": 54.616496675373696,
+      "mean_length": 95.09669053736265,
+      "axis_ratio": 0.25617380952380947,
+      "diagonal_ratio": 0.7438261904761905,
+      "curve_ratio": 0.2158547619047619,
+      "spine_score": 0.45258452380952385,
+      "enclosure_score": 0.26956,
+      "interlock_score": 0.30776,
+      "orbit_score": 0.5310739999999999,
+      "fragmentation_risk": 0.496,
+      "port_count_proxy": 11.12
+    },
+    "bad_subtype_rates": {
+      "bad_floating_or_multicomponent": 0.776,
+      "bad_low_context_cycle": 0.01,
+      "bad_no_structural_field": 0.02,
+      "bad_short_or_fragmented": 0.748,
+      "bad_trivial_e2e_chain": 0.232,
+      "bad_unbalanced_multicomponent": 0.638
+    },
+    "top_motif_support": [
+      {
+        "motif": "proxy:orbit_or_seal_field",
+        "support": 0.906,
+        "hits": 453
+      },
+      {
+        "motif": "proxy:multi_component_or_floating",
+        "support": 0.776,
+        "hits": 388
+      },
+      {
+        "motif": "proxy:interlocked_ports",
+        "support": 0.608,
+        "hits": 304
+      },
+      {
+        "motif": "role:maxD2_B0_portb2",
+        "support": 0.354,
+        "hits": 177
+      },
+      {
+        "motif": "field:spineb1_enclb0_interb0",
+        "support": 0.332,
+        "hits": 166
+      },
+      {
+        "motif": "proxy:nested_or_multi_cycle",
+        "support": 0.288,
+        "hits": 144
+      },
+      {
+        "motif": "orient:axisb0_diagb3_curveb0",
+        "support": 0.266,
+        "hits": 133
+      },
+      {
+        "motif": "proxy:ring_core_spine_ports",
+        "support": 0.236,
+        "hits": 118
+      },
+      {
+        "motif": "proxy:vertical_spine_branching",
+        "support": 0.218,
+        "hits": 109
+      },
+      {
+        "motif": "field:spineb2_enclb0_interb1",
+        "support": 0.21,
+        "hits": 105
+      },
+      {
+        "motif": "orient:axisb1_diagb2_curveb0",
+        "support": 0.19,
+        "hits": 95
+      },
+      {
+        "motif": "capacity:Sb2_CC3_C0",
+        "support": 0.184,
+        "hits": 92
+      },
+      {
+        "motif": "capacity:Sb1_CC3_C0",
+        "support": 0.144,
+        "hits": 72
+      },
+      {
+        "motif": "orient:axisb0_diagb3_curveb1",
+        "support": 0.144,
+        "hits": 72
+      },
+      {
+        "motif": "relhist:E4_T0_X0_C0",
+        "support": 0.142,
+        "hits": 71
+      },
+      {
+        "motif": "capacity:Sb1_CC2_C0",
+        "support": 0.128,
+        "hits": 64
+      },
+      {
+        "motif": "field:spineb1_enclb2_interb0",
+        "support": 0.104,
+        "hits": 52
+      },
+      {
+        "motif": "role:maxD2_B0_portb3",
+        "support": 0.104,
+        "hits": 52
+      },
+      {
+        "motif": "orient:axisb1_diagb2_curveb1",
+        "support": 0.09,
+        "hits": 45
+      },
+      {
+        "motif": "role:maxD2_B0_portb4",
+        "support": 0.082,
+        "hits": 41
+      },
+      {
+        "motif": "capacity:Sb1_CC1_C0",
+        "support": 0.078,
+        "hits": 39
+      },
+      {
+        "motif": "field:spineb2_enclb3_interb1",
+        "support": 0.078,
+        "hits": 39
+      },
+      {
+        "motif": "relhist:E4_T0_X1_C0",
+        "support": 0.076,
+        "hits": 38
+      },
+      {
+        "motif": "proxy:axis_skeleton_with_curve_residual",
+        "support": 0.074,
+        "hits": 37
+      },
+      {
+        "motif": "role:maxD3_B1_portb4",
+        "support": 0.074,
+        "hits": 37
+      },
+      {
+        "motif": "role:maxD3_B2_portb3",
+        "support": 0.074,
+        "hits": 37
+      },
+      {
+        "motif": "capacity:Sb2_CC3_C1",
+        "support": 0.068,
+        "hits": 34
+      },
+      {
+        "motif": "orient:axisb1_diagb3_curveb1",
+        "support": 0.068,
+        "hits": 34
+      },
+      {
+        "motif": "role:maxD1_B0_portb1",
+        "support": 0.068,
+        "hits": 34
+      },
+      {
+        "motif": "field:spineb1_enclb0_interb1",
+        "support": 0.062,
+        "hits": 31
+      },
+      {
+        "motif": "role:maxD3_B1_portb3",
+        "support": 0.062,
+        "hits": 31
+      },
+      {
+        "motif": "capacity:Sb0_CC1_C0",
+        "support": 0.056,
+        "hits": 28
+      },
+      {
+        "motif": "capacity:Sb2_CC2_C0",
+        "support": 0.054,
+        "hits": 27
+      },
+      {
+        "motif": "relhist:E4_T0_X0_C1",
+        "support": 0.054,
+        "hits": 27
+      },
+      {
+        "motif": "capacity:Sb1_CC3_C1",
+        "support": 0.05,
+        "hits": 25
+      },
+      {
+        "motif": "orient:axisb1_diagb3_curveb0",
+        "support": 0.048,
+        "hits": 24
+      },
+      {
+        "motif": "relhist:E3_T0_X1_C0",
+        "support": 0.048,
+        "hits": 24
+      },
+      {
+        "motif": "relhist:E3_T1_X1_C0",
+        "support": 0.044,
+        "hits": 22
+      },
+      {
+        "motif": "capacity:Sb1_CC1_C1",
+        "support": 0.042,
+        "hits": 21
+      },
+      {
+        "motif": "capacity:Sb1_CC2_C1",
+        "support": 0.042,
+        "hits": 21
+      }
+    ],
+    "production_rule_coverage": [
+      {
+        "rule_id": "production_candidate_0001_nested_orbit_seal",
+        "production_family_v7": "NESTED_ORBIT_SEAL",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND stroke_count<=7",
+        "hits": 97,
+        "support": 0.194
+      },
+      {
+        "rule_id": "production_candidate_0008_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND stroke_count<=7",
+        "hits": 97,
+        "support": 0.194
+      },
+      {
+        "rule_id": "production_candidate_0003_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND X_count>=1 AND stroke_count<=7",
+        "hits": 51,
+        "support": 0.102
+      },
+      {
+        "rule_id": "production_candidate_0005_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND max_degree>=3 AND stroke_count<=7",
+        "hits": 38,
+        "support": 0.076
+      },
+      {
+        "rule_id": "production_candidate_0006_nested_orbit_seal",
+        "production_family_v7": "NESTED_ORBIT_SEAL",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND connected_components<=1",
+        "hits": 35,
+        "support": 0.07
+      },
+      {
+        "rule_id": "production_candidate_0007_nested_orbit_seal",
+        "production_family_v7": "NESTED_ORBIT_SEAL",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND NOT_bad_floating_or_multicomponent",
+        "hits": 35,
+        "support": 0.07
+      },
+      {
+        "rule_id": "production_candidate_0016_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND topology_event_count>=3 AND connected_components<=1",
+        "hits": 35,
+        "support": 0.07
+      },
+      {
+        "rule_id": "production_candidate_0017_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND connected_components<=1",
+        "hits": 35,
+        "support": 0.07
+      },
+      {
+        "rule_id": "production_candidate_0011_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND X_count>=1 AND connected_components<=1",
+        "hits": 26,
+        "support": 0.052
+      },
+      {
+        "rule_id": "production_candidate_0009_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND connected_components<=1",
+        "hits": 12,
+        "support": 0.024
+      },
+      {
+        "rule_id": "production_candidate_0014_nested_orbit_seal",
+        "production_family_v7": "NESTED_ORBIT_SEAL",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND leaf_ratio<=0",
+        "hits": 6,
+        "support": 0.012
+      },
+      {
+        "rule_id": "production_candidate_0015_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND X_count>=1 AND leaf_ratio<=0",
+        "hits": 6,
+        "support": 0.012
+      },
+      {
+        "rule_id": "production_candidate_0019_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND leaf_ratio<=0",
+        "hits": 6,
+        "support": 0.012
+      },
+      {
+        "rule_id": "production_candidate_0022_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND stroke_count<=7",
+        "hits": 6,
+        "support": 0.012
+      },
+      {
+        "rule_id": "production_candidate_0002_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND stroke_count<=7",
+        "hits": 5,
+        "support": 0.01
+      },
+      {
+        "rule_id": "production_candidate_0018_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND max_degree>=3 AND leaf_ratio<=0",
+        "hits": 3,
+        "support": 0.006
+      },
+      {
+        "rule_id": "production_candidate_0004_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND stroke_count<=7",
+        "hits": 2,
+        "support": 0.004
+      },
+      {
+        "rule_id": "production_candidate_0010_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND connected_components<=1",
+        "hits": 2,
+        "support": 0.004
+      },
+      {
+        "rule_id": "production_candidate_0012_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND leaf_ratio<=0",
+        "hits": 2,
+        "support": 0.004
+      },
+      {
+        "rule_id": "production_candidate_0020_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND connected_components<=1",
+        "hits": 2,
+        "support": 0.004
+      },
+      {
+        "rule_id": "production_candidate_0021_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND NOT_bad_floating_or_multicomponent",
+        "hits": 2,
+        "support": 0.004
+      },
+      {
+        "rule_id": "production_candidate_0023_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND connected_components<=1",
+        "hits": 2,
+        "support": 0.004
+      },
+      {
+        "rule_id": "production_candidate_0024_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND NOT_bad_floating_or_multicomponent",
+        "hits": 2,
+        "support": 0.004
+      },
+      {
+        "rule_id": "production_candidate_0013_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND leaf_ratio<=0",
+        "hits": 1,
+        "support": 0.002
+      }
+    ],
+    "production_family_coverage": {
+      "DISCOVERED_TOPOLOGY_MOTIF": 0.04,
+      "NESTED_ORBIT_SEAL": 0.196,
+      "NESTED_PORTAL": 0.196
+    },
+    "diversity": {
+      "unique_signatures": 392,
+      "signature_uniqueness_ratio": 0.784,
+      "motif_entropy": 3.8778837052394257,
+      "top_signature_rate": 0.012
+    }
+  },
+  "experiment_summary": {
+    "n": 500,
+    "metric_means": {
+      "stroke_count": 10.48,
+      "connected_components": 1.91,
+      "cycle_count": 1.614,
+      "topology_event_count": 10.204,
+      "E2E_count": 7.784,
+      "T_count": 1.04,
+      "X_count": 1.38,
+      "E2E_ratio": 0.7767873543123544,
+      "X_ratio": 0.12903298923298923,
+      "branch_ratio": 0.11953286158286158,
+      "leaf_ratio": 0.20006147186147186,
+      "min_length": 53.77355182332099,
+      "mean_length": 86.79869321858871,
+      "axis_ratio": 0.32213305583305585,
+      "diagonal_ratio": 0.6778669441669443,
+      "curve_ratio": 0.618168537018537,
+      "spine_score": 0.5708295665445665,
+      "enclosure_score": 0.83816,
+      "interlock_score": 0.5876800000000001,
+      "orbit_score": 0.9007580000000001,
+      "fragmentation_risk": 0.515,
+      "port_count_proxy": 23.324
+    },
+    "bad_subtype_rates": {
+      "bad_floating_or_multicomponent": 0.716,
+      "bad_low_context_cycle": 0.002,
+      "bad_no_structural_field": 0.002,
+      "bad_overdense_cross_fragment": 0.222,
+      "bad_short_or_fragmented": 0.89,
+      "bad_trivial_e2e_chain": 0.058,
+      "bad_unbalanced_multicomponent": 0.152
+    },
+    "top_motif_support": [
+      {
+        "motif": "proxy:orbit_or_seal_field",
+        "support": 0.986,
+        "hits": 493
+      },
+      {
+        "motif": "proxy:interlocked_ports",
+        "support": 0.904,
+        "hits": 452
+      },
+      {
+        "motif": "proxy:nested_or_multi_cycle",
+        "support": 0.846,
+        "hits": 423
+      },
+      {
+        "motif": "proxy:ring_core_spine_ports",
+        "support": 0.836,
+        "hits": 418
+      },
+      {
+        "motif": "proxy:multi_component_or_floating",
+        "support": 0.716,
+        "hits": 358
+      },
+      {
+        "motif": "role:maxD3_B1_portb4",
+        "support": 0.55,
+        "hits": 275
+      },
+      {
+        "motif": "capacity:Sb2_CC2_C2",
+        "support": 0.532,
+        "hits": 266
+      },
+      {
+        "motif": "field:spineb2_enclb3_interb1",
+        "support": 0.404,
+        "hits": 202
+      },
+      {
+        "motif": "field:spineb2_enclb3_interb2",
+        "support": 0.35,
+        "hits": 175
+      },
+      {
+        "motif": "orient:axisb1_diagb2_curveb2",
+        "support": 0.342,
+        "hits": 171
+      },
+      {
+        "motif": "relhist:E4_T1_X1_C2",
+        "support": 0.26,
+        "hits": 130
+      },
+      {
+        "motif": "orient:axisb1_diagb2_curveb3",
+        "support": 0.256,
+        "hits": 128
+      },
+      {
+        "motif": "capacity:Sb2_CC1_C2",
+        "support": 0.236,
+        "hits": 118
+      },
+      {
+        "motif": "proxy:vertical_spine_branching",
+        "support": 0.228,
+        "hits": 114
+      },
+      {
+        "motif": "role:maxD3_B2_portb4",
+        "support": 0.186,
+        "hits": 93
+      },
+      {
+        "motif": "relhist:E4_T2_X1_C2",
+        "support": 0.148,
+        "hits": 74
+      },
+      {
+        "motif": "proxy:axis_skeleton_with_curve_residual",
+        "support": 0.134,
+        "hits": 67
+      },
+      {
+        "motif": "relhist:E4_T2_X2_C2",
+        "support": 0.126,
+        "hits": 63
+      },
+      {
+        "motif": "relhist:E4_T0_X1_C2",
+        "support": 0.124,
+        "hits": 62
+      },
+      {
+        "motif": "role:maxD2_B0_portb2",
+        "support": 0.096,
+        "hits": 48
+      },
+      {
+        "motif": "orient:axisb0_diagb3_curveb3",
+        "support": 0.092,
+        "hits": 46
+      },
+      {
+        "motif": "relhist:E4_T1_X2_C2",
+        "support": 0.082,
+        "hits": 41
+      },
+      {
+        "motif": "field:spineb1_enclb0_interb0",
+        "support": 0.078,
+        "hits": 39
+      },
+      {
+        "motif": "role:maxD4_B1_portb4",
+        "support": 0.066,
+        "hits": 33
+      },
+      {
+        "motif": "orient:axisb0_diagb3_curveb0",
+        "support": 0.058,
+        "hits": 29
+      },
+      {
+        "motif": "orient:axisb0_diagb3_curveb1",
+        "support": 0.048,
+        "hits": 24
+      },
+      {
+        "motif": "field:spineb2_enclb0_interb1",
+        "support": 0.046,
+        "hits": 23
+      },
+      {
+        "motif": "relhist:E4_T0_X0_C0",
+        "support": 0.038,
+        "hits": 19
+      },
+      {
+        "motif": "capacity:Sb1_CC3_C0",
+        "support": 0.036,
+        "hits": 18
+      },
+      {
+        "motif": "capacity:Sb2_CC3_C0",
+        "support": 0.036,
+        "hits": 18
+      },
+      {
+        "motif": "field:spineb1_enclb2_interb0",
+        "support": 0.034,
+        "hits": 17
+      },
+      {
+        "motif": "field:spineb3_enclb3_interb2",
+        "support": 0.034,
+        "hits": 17
+      },
+      {
+        "motif": "orient:axisb1_diagb2_curveb0",
+        "support": 0.034,
+        "hits": 17
+      },
+      {
+        "motif": "capacity:Sb1_CC2_C0",
+        "support": 0.032,
+        "hits": 16
+      },
+      {
+        "motif": "orient:axisb2_diagb2_curveb2",
+        "support": 0.032,
+        "hits": 16
+      },
+      {
+        "motif": "capacity:Sb2_CC3_C1",
+        "support": 0.03,
+        "hits": 15
+      },
+      {
+        "motif": "relhist:E4_T0_X2_C2",
+        "support": 0.028,
+        "hits": 14
+      },
+      {
+        "motif": "role:maxD2_B0_portb3",
+        "support": 0.028,
+        "hits": 14
+      },
+      {
+        "motif": "orient:axisb1_diagb2_curveb1",
+        "support": 0.026,
+        "hits": 13
+      },
+      {
+        "motif": "orient:axisb0_diagb3_curveb2",
+        "support": 0.024,
+        "hits": 12
+      }
+    ],
+    "production_rule_coverage": [
+      {
+        "rule_id": "production_candidate_0006_nested_orbit_seal",
+        "production_family_v7": "NESTED_ORBIT_SEAL",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND connected_components<=1",
+        "hits": 125,
+        "support": 0.25
+      },
+      {
+        "rule_id": "production_candidate_0007_nested_orbit_seal",
+        "production_family_v7": "NESTED_ORBIT_SEAL",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND NOT_bad_floating_or_multicomponent",
+        "hits": 125,
+        "support": 0.25
+      },
+      {
+        "rule_id": "production_candidate_0016_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND topology_event_count>=3 AND connected_components<=1",
+        "hits": 125,
+        "support": 0.25
+      },
+      {
+        "rule_id": "production_candidate_0017_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND connected_components<=1",
+        "hits": 125,
+        "support": 0.25
+      },
+      {
+        "rule_id": "production_candidate_0011_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND X_count>=1 AND connected_components<=1",
+        "hits": 124,
+        "support": 0.248
+      },
+      {
+        "rule_id": "production_candidate_0009_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND connected_components<=1",
+        "hits": 120,
+        "support": 0.24
+      },
+      {
+        "rule_id": "production_candidate_0010_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND connected_components<=1",
+        "hits": 118,
+        "support": 0.236
+      },
+      {
+        "rule_id": "production_candidate_0001_nested_orbit_seal",
+        "production_family_v7": "NESTED_ORBIT_SEAL",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND stroke_count<=7",
+        "hits": 21,
+        "support": 0.042
+      },
+      {
+        "rule_id": "production_candidate_0008_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND stroke_count<=7",
+        "hits": 21,
+        "support": 0.042
+      },
+      {
+        "rule_id": "production_candidate_0003_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND X_count>=1 AND stroke_count<=7",
+        "hits": 8,
+        "support": 0.016
+      },
+      {
+        "rule_id": "production_candidate_0005_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND max_degree>=3 AND stroke_count<=7",
+        "hits": 7,
+        "support": 0.014
+      },
+      {
+        "rule_id": "production_candidate_0022_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND stroke_count<=7",
+        "hits": 1,
+        "support": 0.002
+      },
+      {
+        "rule_id": "production_candidate_0002_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND stroke_count<=7",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0004_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND stroke_count<=7",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0012_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND leaf_ratio<=0",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0013_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND leaf_ratio<=0",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0014_nested_orbit_seal",
+        "production_family_v7": "NESTED_ORBIT_SEAL",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND leaf_ratio<=0",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0015_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND X_count>=1 AND leaf_ratio<=0",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0018_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND max_degree>=3 AND leaf_ratio<=0",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0019_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND leaf_ratio<=0",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0020_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND connected_components<=1",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0021_nested_portal",
+        "production_family_v7": "NESTED_PORTAL",
+        "rule_name": "motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND NOT_bad_floating_or_multicomponent",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0023_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND connected_components<=1",
+        "hits": 0,
+        "support": 0.0
+      },
+      {
+        "rule_id": "production_candidate_0024_discovered_topology_motif",
+        "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+        "rule_name": "motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND NOT_bad_floating_or_multicomponent",
+        "hits": 0,
+        "support": 0.0
+      }
+    ],
+    "production_family_coverage": {
+      "DISCOVERED_TOPOLOGY_MOTIF": 0.242,
+      "NESTED_ORBIT_SEAL": 0.278,
+      "NESTED_PORTAL": 0.278
+    },
+    "diversity": {
+      "unique_signatures": 145,
+      "signature_uniqueness_ratio": 0.29,
+      "motif_entropy": 3.3537752700389745,
+      "top_signature_rate": 0.168
+    }
+  },
+  "comparison": {
+    "metric_delta": {
+      "E2E_count": {
+        "baseline": 3.434,
+        "experiment": 7.784,
+        "delta": 4.35,
+        "relative_delta": 1.2667443214909724
+      },
+      "E2E_ratio": {
+        "baseline": 0.7688460317460317,
+        "experiment": 0.7767873543123544,
+        "delta": 0.007941322566322628,
+        "relative_delta": 0.010328885418434255
+      },
+      "T_count": {
+        "baseline": 0.342,
+        "experiment": 1.04,
+        "delta": 0.698,
+        "relative_delta": 2.0409356725146197
+      },
+      "X_count": {
+        "baseline": 0.622,
+        "experiment": 1.38,
+        "delta": 0.7579999999999999,
+        "relative_delta": 1.2186495176848873
+      },
+      "X_ratio": {
+        "baseline": 0.14496031746031746,
+        "experiment": 0.12903298923298923,
+        "delta": -0.01592732822732823,
+        "relative_delta": -0.10987371238124047
+      },
+      "axis_ratio": {
+        "baseline": 0.25617380952380947,
+        "experiment": 0.32213305583305585,
+        "delta": 0.06595924630924638,
+        "relative_delta": 0.257478492558842
+      },
+      "branch_ratio": {
+        "baseline": 0.08459523809523808,
+        "experiment": 0.11953286158286158,
+        "delta": 0.0349376234876235,
+        "relative_delta": 0.41299751941463186
+      },
+      "connected_components": {
+        "baseline": 2.552,
+        "experiment": 1.91,
+        "delta": -0.6420000000000001,
+        "relative_delta": -0.2515673981191223
+      },
+      "curve_ratio": {
+        "baseline": 0.2158547619047619,
+        "experiment": 0.618168537018537,
+        "delta": 0.4023137751137751,
+        "relative_delta": 1.8638170015970343
+      },
+      "cycle_count": {
+        "baseline": 0.288,
+        "experiment": 1.614,
+        "delta": 1.326,
+        "relative_delta": 4.604166666666667
+      },
+      "diagonal_ratio": {
+        "baseline": 0.7438261904761905,
+        "experiment": 0.6778669441669443,
+        "delta": -0.06595924630924621,
+        "relative_delta": -0.0886756169032173
+      },
+      "enclosure_score": {
+        "baseline": 0.26956,
+        "experiment": 0.83816,
+        "delta": 0.5686,
+        "relative_delta": 2.109363407033684
+      },
+      "fragmentation_risk": {
+        "baseline": 0.496,
+        "experiment": 0.515,
+        "delta": 0.019000000000000017,
+        "relative_delta": 0.03830645161290326
+      },
+      "interlock_score": {
+        "baseline": 0.30776,
+        "experiment": 0.5876800000000001,
+        "delta": 0.2799200000000001,
+        "relative_delta": 0.9095399012217317
+      },
+      "leaf_ratio": {
+        "baseline": 0.5751365079365078,
+        "experiment": 0.20006147186147186,
+        "delta": -0.375075036075036,
+        "relative_delta": -0.6521495869228361
+      },
+      "mean_length": {
+        "baseline": 95.09669053736265,
+        "experiment": 86.79869321858871,
+        "delta": -8.297997318773938,
+        "relative_delta": -0.08725852889185169
+      },
+      "min_length": {
+        "baseline": 54.616496675373696,
+        "experiment": 53.77355182332099,
+        "delta": -0.8429448520527032,
+        "relative_delta": -0.015433887256865796
+      },
+      "orbit_score": {
+        "baseline": 0.5310739999999999,
+        "experiment": 0.9007580000000001,
+        "delta": 0.3696840000000001,
+        "relative_delta": 0.6961063806550503
+      },
+      "port_count_proxy": {
+        "baseline": 11.12,
+        "experiment": 23.324,
+        "delta": 12.204000000000002,
+        "relative_delta": 1.0974820143884896
+      },
+      "spine_score": {
+        "baseline": 0.45258452380952385,
+        "experiment": 0.5708295665445665,
+        "delta": 0.11824504273504266,
+        "relative_delta": 0.26126620888346513
+      },
+      "stroke_count": {
+        "baseline": 6.544,
+        "experiment": 10.48,
+        "delta": 3.936000000000001,
+        "relative_delta": 0.6014669926650369
+      },
+      "topology_event_count": {
+        "baseline": 4.398,
+        "experiment": 10.204,
+        "delta": 5.806000000000001,
+        "relative_delta": 1.3201455206912236
+      }
+    },
+    "bad_subtype_delta": {
+      "bad_floating_or_multicomponent": {
+        "baseline": 0.776,
+        "experiment": 0.716,
+        "delta": -0.06000000000000005,
+        "relative_delta": -0.07731958762886605
+      },
+      "bad_low_context_cycle": {
+        "baseline": 0.01,
+        "experiment": 0.002,
+        "delta": -0.008,
+        "relative_delta": -0.8
+      },
+      "bad_no_structural_field": {
+        "baseline": 0.02,
+        "experiment": 0.002,
+        "delta": -0.018000000000000002,
+        "relative_delta": -0.9000000000000001
+      },
+      "bad_overdense_cross_fragment": {
+        "baseline": 0.0,
+        "experiment": 0.222,
+        "delta": 0.222,
+        "relative_delta": null
+      },
+      "bad_short_or_fragmented": {
+        "baseline": 0.748,
+        "experiment": 0.89,
+        "delta": 0.14200000000000002,
+        "relative_delta": 0.18983957219251338
+      },
+      "bad_trivial_e2e_chain": {
+        "baseline": 0.232,
+        "experiment": 0.058,
+        "delta": -0.17400000000000002,
+        "relative_delta": -0.75
+      },
+      "bad_unbalanced_multicomponent": {
+        "baseline": 0.638,
+        "experiment": 0.152,
+        "delta": -0.486,
+        "relative_delta": -0.7617554858934169
+      }
+    },
+    "production_family_delta": {
+      "DISCOVERED_TOPOLOGY_MOTIF": {
+        "baseline": 0.04,
+        "experiment": 0.242,
+        "delta": 0.20199999999999999,
+        "relative_delta": 5.05
+      },
+      "NESTED_ORBIT_SEAL": {
+        "baseline": 0.196,
+        "experiment": 0.278,
+        "delta": 0.08200000000000002,
+        "relative_delta": 0.4183673469387756
+      },
+      "NESTED_PORTAL": {
+        "baseline": 0.196,
+        "experiment": 0.278,
+        "delta": 0.08200000000000002,
+        "relative_delta": 0.4183673469387756
+      }
+    },
+    "recommendations": [
+      "PASS: bad_floating_or_multicomponent dropped by 6.00%.",
+      "PASS: bad_trivial_e2e_chain dropped by 17.40%.",
+      "WARN: bad_short_or_fragmented increased by 14.20%; reduce production influence or add penalty.",
+      "PASS: NESTED_ORBIT_SEAL coverage increased by 8.20%.",
+      "PASS: NESTED_PORTAL coverage increased by 8.20%.",
+      "WARN: top_signature_rate increased a lot; possible mode collapse."
+    ]
+  },
+  "notes": [
+    "This mode generates temporary sample records in memory and does not write generated samples to local storage.",
+    "It is a production-blueprint smoke test, not a replacement for evaluating the real GUI/PCG generator once integrated.",
+    "Use this to catch obvious directionality issues before wiring productions into the full generator."
+  ]
+}
