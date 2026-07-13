@@ -1,0 +1,8 @@
+bad_subtype,bad_hits,bad_support,good_hits,good_support,bad_minus_good,description
+bad_trivial_e2e_chain,1484,0.37484213185147763,73,0.13468634686346864,0.240155784988009,纯 E2E 链式结构：有拓扑，但构成过浅，通常缺少 seal/orbit/interlock 上下文。
+bad_floating_or_multicomponent,2007,0.5069461985349836,145,0.26752767527675275,0.23941852325823082,多连通块 / 漂浮部件：通常表示符文线没有通过 port/interlock 接回主结构。
+bad_short_or_fragmented,2198,0.555190704723415,203,0.37453874538745385,0.18065195933596118,短线/碎片风险：适合作为 quality gate，不适合作为正向拓扑规则。
+bad_unbalanced_multicomponent,834,0.21065925738822935,32,0.05904059040590406,0.1516186669823253,多部件不平衡：可能需要提高 port coupling 或使用 component-level 组合约束。
+bad_no_structural_field,657,0.16595099772669866,23,0.042435424354243544,0.12351557337245511,缺少结构场：不是坏在某个 motif，而是没有形成可解释构造中心。
+bad_low_context_cycle,275,0.06946198534983582,11,0.02029520295202952,0.049166782397806294,低上下文 cycle：有环，但没有 spine/port/interlock 支撑，像孤立框或无意义闭合。
+bad_overdense_cross_fragment,27,0.006819904016165698,3,0.005535055350553505,0.0012848486656121929,高交叉且碎片风险高：说明 interlock/weave 可能不是从安全端口发生。

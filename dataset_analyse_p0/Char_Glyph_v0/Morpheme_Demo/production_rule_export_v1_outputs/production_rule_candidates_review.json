@@ -1,0 +1,3632 @@
+[
+  {
+    "rule_id": "production_candidate_0001_nested_orbit_seal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_ORBIT_SEAL",
+    "context_blueprint_v7": "stroke_capacity",
+    "blueprint_signature_v7": "NESTED_ORBIT_SEAL|nested_portal+orbit_seal|stroke_capacity",
+    "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND stroke_count<=7",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:orbit_or_seal_field",
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "stroke_count",
+          "op": "<=",
+          "value": 7.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.636899972686641,
+      "original_score": 0.456899972686641,
+      "good_support": 0.16051660516605165,
+      "bad_support": 0.06996716342510735,
+      "cleaned_support": 0.46153846153846156,
+      "manual_support": 0.0234375,
+      "precision_vs_bad_support": 0.23901098901098902,
+      "generality_score": 0.7467020295202952,
+      "non_triviality_score": 0.7617,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_ORBIT_SEAL(outer_shell, inner_cycle, core_ports); constraints: line_length + stroke_capacity + physical_projector",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_ORBIT_SEAL",
+      "description": "Outer seal/orbit shell plus nested inner cycle/core and typed ports.",
+      "rhs_nodes": [
+        {
+          "id": "outer_shell",
+          "type": "cycle_or_orbit_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_cycle",
+          "type": "nested_cycle",
+          "role": "core_enclosure"
+        },
+        {
+          "id": "core_ports",
+          "type": "typed_port_set",
+          "role": "attachment_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_cycle",
+          "dst": "outer_shell",
+          "type": "inside"
+        },
+        {
+          "src": "core_ports",
+          "dst": "inner_cycle",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "shell_opening_prob": [
+          0.0,
+          0.35
+        ],
+        "orbit_offset": [
+          0.0,
+          0.28
+        ],
+        "port_count": [
+          2,
+          5
+        ],
+        "curvature_strength": [
+          0.25,
+          0.75
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "stroke_capacity",
+          "stroke_count<=7"
+        ],
+        "hard_constraints": [
+          "prefer_single_component",
+          "avoid_low_context_cycle",
+          "min_fragment_ratio>=1/6"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "stroke_count",
+            "op": "<=",
+            "value": 7.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0002_discovered_topology_motif",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+    "context_blueprint_v7": "stroke_capacity",
+    "blueprint_signature_v7": "DISCOVERED_TOPOLOGY_MOTIF|orbit_seal+semantic_topology|stroke_capacity",
+    "rule_name": "port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND stroke_count<=7",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:orbit_or_seal_field"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "port_count_proxy",
+          "op": ">=",
+          "value": 18.0
+        },
+        {
+          "feature": "stroke_count",
+          "op": "<=",
+          "value": 7.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6368978066807598,
+      "original_score": 0.4568978066807598,
+      "good_support": 0.2158671586715867,
+      "bad_support": 0.09396312200050518,
+      "cleaned_support": 0.22527472527472528,
+      "manual_support": 0.0078125,
+      "precision_vs_bad_support": 0.2392638036809816,
+      "generality_score": 0.7951337638376383,
+      "non_triviality_score": 0.7155,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: DISCOVERED_TOPOLOGY_MOTIF(typed_ports, structural_context); constraints: review visually before rule-cache promotion",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "DISCOVERED_TOPOLOGY_MOTIF",
+      "description": "Unclassified discovered topology motif. Needs visual review before becoming a named production.",
+      "rhs_nodes": [
+        {
+          "id": "motif_core",
+          "type": "discovered_motif_core",
+          "role": "core"
+        },
+        {
+          "id": "typed_ports",
+          "type": "typed_port_set",
+          "role": "attachments"
+        },
+        {
+          "id": "context",
+          "type": "structural_context",
+          "role": "constraint"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "typed_ports",
+          "dst": "motif_core",
+          "type": "attached_to"
+        },
+        {
+          "src": "context",
+          "dst": "motif_core",
+          "type": "constrains"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "typed_port_0",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        },
+        {
+          "name": "typed_port_1",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        }
+      ],
+      "free_variables": {
+        "port_count": [
+          1,
+          5
+        ],
+        "curve_flow": [
+          0.25,
+          0.75
+        ],
+        "component_count": [
+          1,
+          2
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "stroke_capacity",
+          "port_count_proxy>=18",
+          "stroke_count<=7"
+        ],
+        "hard_constraints": [
+          "visual_review_required",
+          "avoid_floating_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "port_count_proxy",
+            "op": ">=",
+            "value": 18.0
+          },
+          {
+            "feature": "stroke_count",
+            "op": "<=",
+            "value": 7.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0003_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "cross_context+stroke_capacity",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal|cross_context+stroke_capacity",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND X_count>=1 AND stroke_count<=7",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "X_count",
+          "op": ">=",
+          "value": 1.0
+        },
+        {
+          "feature": "stroke_count",
+          "op": "<=",
+          "value": 7.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6365395493603287,
+      "original_score": 0.45653954936032876,
+      "good_support": 0.14944649446494465,
+      "bad_support": 0.04874968426370296,
+      "cleaned_support": 0.2857142857142857,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.2956204379562044,
+      "generality_score": 0.7370156826568266,
+      "non_triviality_score": 0.6323999999999999,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "cross_context",
+          "stroke_capacity",
+          "X_count>=1",
+          "stroke_count<=7"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "X_count",
+            "op": ">=",
+            "value": 1.0
+          },
+          {
+            "feature": "stroke_count",
+            "op": "<=",
+            "value": 7.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0004_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "stroke_capacity",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal+semantic_topology|stroke_capacity",
+    "rule_name": "port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND stroke_count<=7",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "port_count_proxy",
+          "op": ">=",
+          "value": 18.0
+        },
+        {
+          "feature": "stroke_count",
+          "op": "<=",
+          "value": 7.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6351928346541771,
+      "original_score": 0.4551928346541771,
+      "good_support": 0.11992619926199262,
+      "bad_support": 0.04698156100025259,
+      "cleaned_support": 0.22527472527472528,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.2589641434262948,
+      "generality_score": 0.7111854243542436,
+      "non_triviality_score": 0.7562,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "stroke_capacity",
+          "port_count_proxy>=18",
+          "stroke_count<=7"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "port_count_proxy",
+            "op": ">=",
+            "value": 18.0
+          },
+          {
+            "feature": "stroke_count",
+            "op": "<=",
+            "value": 7.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0005_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "graph_complexity+stroke_capacity",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal|graph_complexity+stroke_capacity",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND max_degree>=3 AND stroke_count<=7",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "max_degree",
+          "op": ">=",
+          "value": 3.0
+        },
+        {
+          "feature": "stroke_count",
+          "op": "<=",
+          "value": 7.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6307655189362188,
+      "original_score": 0.4507655189362188,
+      "good_support": 0.16420664206642066,
+      "bad_support": 0.07173528668855772,
+      "cleaned_support": 0.47527472527472525,
+      "manual_support": 0.0234375,
+      "precision_vs_bad_support": 0.2386058981233244,
+      "generality_score": 0.749930811808118,
+      "non_triviality_score": 0.6323999999999999,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "graph_complexity",
+          "stroke_capacity",
+          "max_degree>=3",
+          "stroke_count<=7"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "max_degree",
+            "op": ">=",
+            "value": 3.0
+          },
+          {
+            "feature": "stroke_count",
+            "op": "<=",
+            "value": 7.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0006_nested_orbit_seal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_ORBIT_SEAL",
+    "context_blueprint_v7": "connectivity",
+    "blueprint_signature_v7": "NESTED_ORBIT_SEAL|nested_portal+orbit_seal|connectivity",
+    "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND connected_components<=1",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:orbit_or_seal_field",
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "connected_components",
+          "op": "<=",
+          "value": 1.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6275715352397011,
+      "original_score": 0.44757153523970106,
+      "good_support": 0.1881918819188192,
+      "bad_support": 0.09472088911341248,
+      "cleaned_support": 0.4340659340659341,
+      "manual_support": 0.0234375,
+      "precision_vs_bad_support": 0.2138364779874214,
+      "generality_score": 0.7709178966789668,
+      "non_triviality_score": 0.7617,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_ORBIT_SEAL(outer_shell, inner_cycle, core_ports); constraints: line_length + stroke_capacity + physical_projector",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_ORBIT_SEAL",
+      "description": "Outer seal/orbit shell plus nested inner cycle/core and typed ports.",
+      "rhs_nodes": [
+        {
+          "id": "outer_shell",
+          "type": "cycle_or_orbit_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_cycle",
+          "type": "nested_cycle",
+          "role": "core_enclosure"
+        },
+        {
+          "id": "core_ports",
+          "type": "typed_port_set",
+          "role": "attachment_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_cycle",
+          "dst": "outer_shell",
+          "type": "inside"
+        },
+        {
+          "src": "core_ports",
+          "dst": "inner_cycle",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "shell_opening_prob": [
+          0.0,
+          0.35
+        ],
+        "orbit_offset": [
+          0.0,
+          0.28
+        ],
+        "port_count": [
+          2,
+          5
+        ],
+        "curvature_strength": [
+          0.25,
+          0.75
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "connectivity",
+          "connected_components<=1"
+        ],
+        "hard_constraints": [
+          "prefer_single_component",
+          "avoid_low_context_cycle",
+          "min_fragment_ratio>=1/6"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "connected_components",
+            "op": "<=",
+            "value": 1.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0007_nested_orbit_seal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_ORBIT_SEAL",
+    "context_blueprint_v7": "bad_avoid",
+    "blueprint_signature_v7": "NESTED_ORBIT_SEAL|nested_portal+orbit_seal|bad_avoid",
+    "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND NOT_bad_floating_or_multicomponent",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:orbit_or_seal_field",
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [],
+      "range_constraints": [],
+      "bad_avoid_contexts": [
+        "bad_floating_or_multicomponent"
+      ],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6275715352397011,
+      "original_score": 0.44757153523970106,
+      "good_support": 0.1881918819188192,
+      "bad_support": 0.09472088911341248,
+      "cleaned_support": 0.4340659340659341,
+      "manual_support": 0.0234375,
+      "precision_vs_bad_support": 0.2138364779874214,
+      "generality_score": 0.7709178966789668,
+      "non_triviality_score": 0.7617,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_ORBIT_SEAL(outer_shell, inner_cycle, core_ports); constraints: line_length + stroke_capacity + physical_projector",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_ORBIT_SEAL",
+      "description": "Outer seal/orbit shell plus nested inner cycle/core and typed ports.",
+      "rhs_nodes": [
+        {
+          "id": "outer_shell",
+          "type": "cycle_or_orbit_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_cycle",
+          "type": "nested_cycle",
+          "role": "core_enclosure"
+        },
+        {
+          "id": "core_ports",
+          "type": "typed_port_set",
+          "role": "attachment_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_cycle",
+          "dst": "outer_shell",
+          "type": "inside"
+        },
+        {
+          "src": "core_ports",
+          "dst": "inner_cycle",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "shell_opening_prob": [
+          0.0,
+          0.35
+        ],
+        "orbit_offset": [
+          0.0,
+          0.28
+        ],
+        "port_count": [
+          2,
+          5
+        ],
+        "curvature_strength": [
+          0.25,
+          0.75
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "bad_avoid",
+          "avoid:bad_floating_or_multicomponent"
+        ],
+        "hard_constraints": [
+          "prefer_single_component",
+          "avoid_low_context_cycle",
+          "min_fragment_ratio>=1/6"
+        ],
+        "bad_avoid_contexts": [
+          "bad_floating_or_multicomponent"
+        ],
+        "quality_numeric_constraints": [],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0008_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "cycle_context+stroke_capacity",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal|cycle_context+stroke_capacity",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND stroke_count<=7",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "cycle_count",
+          "op": ">=",
+          "value": 1.0
+        },
+        {
+          "feature": "stroke_count",
+          "op": "<=",
+          "value": 7.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.627237262770074,
+      "original_score": 0.44723726277007403,
+      "good_support": 0.16420664206642066,
+      "bad_support": 0.07552412225309421,
+      "cleaned_support": 0.4807692307692308,
+      "manual_support": 0.0234375,
+      "precision_vs_bad_support": 0.22938144329896906,
+      "generality_score": 0.749930811808118,
+      "non_triviality_score": 0.6323999999999999,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "cycle_context",
+          "stroke_capacity",
+          "cycle_count>=1",
+          "stroke_count<=7"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "cycle_count",
+            "op": ">=",
+            "value": 1.0
+          },
+          {
+            "feature": "stroke_count",
+            "op": "<=",
+            "value": 7.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0009_discovered_topology_motif",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+    "context_blueprint_v7": "connectivity",
+    "blueprint_signature_v7": "DISCOVERED_TOPOLOGY_MOTIF|orbit_seal+semantic_topology|connectivity",
+    "rule_name": "port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND connected_components<=1",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:orbit_or_seal_field"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "port_count_proxy",
+          "op": ">=",
+          "value": 18.0
+        },
+        {
+          "feature": "connected_components",
+          "op": "<=",
+          "value": 1.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6222561576745305,
+      "original_score": 0.4422561576745305,
+      "good_support": 0.2656826568265683,
+      "bad_support": 0.1429653953018439,
+      "cleaned_support": 0.22802197802197802,
+      "manual_support": 0.0078125,
+      "precision_vs_bad_support": 0.2028169014084507,
+      "generality_score": 0.8387223247232473,
+      "non_triviality_score": 0.7155,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: DISCOVERED_TOPOLOGY_MOTIF(typed_ports, structural_context); constraints: review visually before rule-cache promotion",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "DISCOVERED_TOPOLOGY_MOTIF",
+      "description": "Unclassified discovered topology motif. Needs visual review before becoming a named production.",
+      "rhs_nodes": [
+        {
+          "id": "motif_core",
+          "type": "discovered_motif_core",
+          "role": "core"
+        },
+        {
+          "id": "typed_ports",
+          "type": "typed_port_set",
+          "role": "attachments"
+        },
+        {
+          "id": "context",
+          "type": "structural_context",
+          "role": "constraint"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "typed_ports",
+          "dst": "motif_core",
+          "type": "attached_to"
+        },
+        {
+          "src": "context",
+          "dst": "motif_core",
+          "type": "constrains"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "typed_port_0",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        },
+        {
+          "name": "typed_port_1",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        }
+      ],
+      "free_variables": {
+        "port_count": [
+          1,
+          5
+        ],
+        "curve_flow": [
+          0.25,
+          0.75
+        ],
+        "component_count": [
+          1,
+          2
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "connectivity",
+          "port_count_proxy>=18",
+          "connected_components<=1"
+        ],
+        "hard_constraints": [
+          "visual_review_required",
+          "avoid_floating_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "port_count_proxy",
+            "op": ">=",
+            "value": 18.0
+          },
+          {
+            "feature": "connected_components",
+            "op": "<=",
+            "value": 1.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0010_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "connectivity",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal+semantic_topology|connectivity",
+    "rule_name": "port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND connected_components<=1",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "port_count_proxy",
+          "op": ">=",
+          "value": 18.0
+        },
+        {
+          "feature": "connected_components",
+          "op": "<=",
+          "value": 1.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6182280980942791,
+      "original_score": 0.4382280980942792,
+      "good_support": 0.14760147601476015,
+      "bad_support": 0.07880777974235918,
+      "cleaned_support": 0.22802197802197802,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.20408163265306123,
+      "generality_score": 0.7354012915129151,
+      "non_triviality_score": 0.7562,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "connectivity",
+          "port_count_proxy>=18",
+          "connected_components<=1"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "port_count_proxy",
+            "op": ">=",
+            "value": 18.0
+          },
+          {
+            "feature": "connected_components",
+            "op": "<=",
+            "value": 1.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0011_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "connectivity+cross_context",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal|connectivity+cross_context",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND X_count>=1 AND connected_components<=1",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "X_count",
+          "op": ">=",
+          "value": 1.0
+        },
+        {
+          "feature": "connected_components",
+          "op": "<=",
+          "value": 1.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6147294586196188,
+      "original_score": 0.43472945861961876,
+      "good_support": 0.17712177121771217,
+      "bad_support": 0.06996716342510735,
+      "cleaned_support": 0.2774725274725275,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.257372654155496,
+      "generality_score": 0.7612315498154981,
+      "non_triviality_score": 0.6323999999999999,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "connectivity",
+          "cross_context",
+          "X_count>=1",
+          "connected_components<=1"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "X_count",
+            "op": ">=",
+            "value": 1.0
+          },
+          {
+            "feature": "connected_components",
+            "op": "<=",
+            "value": 1.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0012_discovered_topology_motif",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+    "context_blueprint_v7": "leaf_ratio",
+    "blueprint_signature_v7": "DISCOVERED_TOPOLOGY_MOTIF|orbit_seal+semantic_topology|leaf_ratio",
+    "rule_name": "port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND leaf_ratio<=0",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:orbit_or_seal_field"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "port_count_proxy",
+          "op": ">=",
+          "value": 18.0
+        },
+        {
+          "feature": "leaf_ratio",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.614330930954924,
+      "original_score": 0.434330930954924,
+      "good_support": 0.2158671586715867,
+      "bad_support": 0.10482445061884314,
+      "cleaned_support": 0.17032967032967034,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.2199248120300752,
+      "generality_score": 0.7951337638376383,
+      "non_triviality_score": 0.7155,
+      "orthogonality": 0.9333333333333333
+    },
+    "nearest_old_rule_by_token": "auto_pattern_003",
+    "max_old_token_jaccard": 0.06666666666666667,
+    "generation_hint_from_miner": "production_blueprint: DISCOVERED_TOPOLOGY_MOTIF(typed_ports, structural_context); constraints: review visually before rule-cache promotion",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "DISCOVERED_TOPOLOGY_MOTIF",
+      "description": "Unclassified discovered topology motif. Needs visual review before becoming a named production.",
+      "rhs_nodes": [
+        {
+          "id": "motif_core",
+          "type": "discovered_motif_core",
+          "role": "core"
+        },
+        {
+          "id": "typed_ports",
+          "type": "typed_port_set",
+          "role": "attachments"
+        },
+        {
+          "id": "context",
+          "type": "structural_context",
+          "role": "constraint"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "typed_ports",
+          "dst": "motif_core",
+          "type": "attached_to"
+        },
+        {
+          "src": "context",
+          "dst": "motif_core",
+          "type": "constrains"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "typed_port_0",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        },
+        {
+          "name": "typed_port_1",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        }
+      ],
+      "free_variables": {
+        "port_count": [
+          1,
+          5
+        ],
+        "curve_flow": [
+          0.25,
+          0.75
+        ],
+        "component_count": [
+          1,
+          2
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "leaf_ratio",
+          "port_count_proxy>=18",
+          "leaf_ratio<=0"
+        ],
+        "hard_constraints": [
+          "visual_review_required",
+          "avoid_floating_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "port_count_proxy",
+            "op": ">=",
+            "value": 18.0
+          },
+          {
+            "feature": "leaf_ratio",
+            "op": "<=",
+            "value": 0.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0013_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "leaf_ratio",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal+semantic_topology|leaf_ratio",
+    "rule_name": "port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND leaf_ratio<=0",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "port_count_proxy",
+          "op": ">=",
+          "value": 18.0
+        },
+        {
+          "feature": "leaf_ratio",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6127440610352209,
+      "original_score": 0.43274406103522095,
+      "good_support": 0.12361623616236163,
+      "bad_support": 0.057085122505683254,
+      "cleaned_support": 0.17032967032967034,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.22866894197952217,
+      "generality_score": 0.7144142066420665,
+      "non_triviality_score": 0.7562,
+      "orthogonality": 0.9333333333333333
+    },
+    "nearest_old_rule_by_token": "auto_pattern_003",
+    "max_old_token_jaccard": 0.06666666666666667,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "leaf_ratio",
+          "port_count_proxy>=18",
+          "leaf_ratio<=0"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "port_count_proxy",
+            "op": ">=",
+            "value": 18.0
+          },
+          {
+            "feature": "leaf_ratio",
+            "op": "<=",
+            "value": 0.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0014_nested_orbit_seal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_ORBIT_SEAL",
+    "context_blueprint_v7": "leaf_ratio",
+    "blueprint_signature_v7": "NESTED_ORBIT_SEAL|nested_portal+orbit_seal|leaf_ratio",
+    "rule_name": "motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND leaf_ratio<=0",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:orbit_or_seal_field",
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "leaf_ratio",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6118212507085119,
+      "original_score": 0.43182125070851185,
+      "good_support": 0.14022140221402213,
+      "bad_support": 0.06213690325839859,
+      "cleaned_support": 0.27197802197802196,
+      "manual_support": 0.015625,
+      "precision_vs_bad_support": 0.2360248447204969,
+      "generality_score": 0.7289437269372694,
+      "non_triviality_score": 0.7617,
+      "orthogonality": 0.9333333333333333
+    },
+    "nearest_old_rule_by_token": "auto_pattern_003",
+    "max_old_token_jaccard": 0.06666666666666667,
+    "generation_hint_from_miner": "production_blueprint: NESTED_ORBIT_SEAL(outer_shell, inner_cycle, core_ports); constraints: line_length + stroke_capacity + physical_projector",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_ORBIT_SEAL",
+      "description": "Outer seal/orbit shell plus nested inner cycle/core and typed ports.",
+      "rhs_nodes": [
+        {
+          "id": "outer_shell",
+          "type": "cycle_or_orbit_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_cycle",
+          "type": "nested_cycle",
+          "role": "core_enclosure"
+        },
+        {
+          "id": "core_ports",
+          "type": "typed_port_set",
+          "role": "attachment_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_cycle",
+          "dst": "outer_shell",
+          "type": "inside"
+        },
+        {
+          "src": "core_ports",
+          "dst": "inner_cycle",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "shell_opening_prob": [
+          0.0,
+          0.35
+        ],
+        "orbit_offset": [
+          0.0,
+          0.28
+        ],
+        "port_count": [
+          2,
+          5
+        ],
+        "curvature_strength": [
+          0.25,
+          0.75
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "leaf_ratio",
+          "leaf_ratio<=0"
+        ],
+        "hard_constraints": [
+          "prefer_single_component",
+          "avoid_low_context_cycle",
+          "min_fragment_ratio>=1/6"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "leaf_ratio",
+            "op": "<=",
+            "value": 0.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0015_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "cross_context+leaf_ratio",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal|cross_context+leaf_ratio",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND X_count>=1 AND leaf_ratio<=0",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "X_count",
+          "op": ">=",
+          "value": 1.0
+        },
+        {
+          "feature": "leaf_ratio",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6090872810760529,
+      "original_score": 0.42908728107605293,
+      "good_support": 0.13099630996309963,
+      "bad_support": 0.03839353372063652,
+      "cleaned_support": 0.1620879120879121,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.3183856502242152,
+      "generality_score": 0.7208717712177122,
+      "non_triviality_score": 0.6323999999999999,
+      "orthogonality": 0.9333333333333333
+    },
+    "nearest_old_rule_by_token": "auto_pattern_003",
+    "max_old_token_jaccard": 0.06666666666666667,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "cross_context",
+          "leaf_ratio",
+          "X_count>=1",
+          "leaf_ratio<=0"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "X_count",
+            "op": ">=",
+            "value": 1.0
+          },
+          {
+            "feature": "leaf_ratio",
+            "op": "<=",
+            "value": 0.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0016_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "connectivity+graph_complexity",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal|connectivity+graph_complexity",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND topology_event_count>=3 AND connected_components<=1",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "topology_event_count",
+          "op": ">=",
+          "value": 3.0
+        },
+        {
+          "feature": "connected_components",
+          "op": "<=",
+          "value": 1.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6058560520409115,
+      "original_score": 0.4258560520409116,
+      "good_support": 0.1881918819188192,
+      "bad_support": 0.09623642333922708,
+      "cleaned_support": 0.43956043956043955,
+      "manual_support": 0.0234375,
+      "precision_vs_bad_support": 0.2111801242236025,
+      "generality_score": 0.7709178966789668,
+      "non_triviality_score": 0.6323999999999999,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "connectivity",
+          "graph_complexity",
+          "connected_components<=1"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "topology_event_count",
+            "op": ">=",
+            "value": 3.0
+          },
+          {
+            "feature": "connected_components",
+            "op": "<=",
+            "value": 1.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0017_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "connectivity+cycle_context",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal|connectivity+cycle_context",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND connected_components<=1",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "cycle_count",
+          "op": ">=",
+          "value": 1.0
+        },
+        {
+          "feature": "connected_components",
+          "op": "<=",
+          "value": 1.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.6058560520409115,
+      "original_score": 0.4258560520409116,
+      "good_support": 0.1881918819188192,
+      "bad_support": 0.09623642333922708,
+      "cleaned_support": 0.43956043956043955,
+      "manual_support": 0.0234375,
+      "precision_vs_bad_support": 0.2111801242236025,
+      "generality_score": 0.7709178966789668,
+      "non_triviality_score": 0.6323999999999999,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "connectivity",
+          "cycle_context",
+          "cycle_count>=1",
+          "connected_components<=1"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "cycle_count",
+            "op": ">=",
+            "value": 1.0
+          },
+          {
+            "feature": "connected_components",
+            "op": "<=",
+            "value": 1.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0018_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "graph_complexity+leaf_ratio",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal|graph_complexity+leaf_ratio",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND max_degree>=3 AND leaf_ratio<=0",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "max_degree",
+          "op": ">=",
+          "value": 3.0
+        },
+        {
+          "feature": "leaf_ratio",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.5888257362202425,
+      "original_score": 0.40882573622024243,
+      "good_support": 0.14391143911439114,
+      "bad_support": 0.06643091689820661,
+      "cleaned_support": 0.27197802197802196,
+      "manual_support": 0.015625,
+      "precision_vs_bad_support": 0.2287390029325513,
+      "generality_score": 0.7321725092250922,
+      "non_triviality_score": 0.6323999999999999,
+      "orthogonality": 0.9333333333333333
+    },
+    "nearest_old_rule_by_token": "auto_pattern_003",
+    "max_old_token_jaccard": 0.06666666666666667,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "graph_complexity",
+          "leaf_ratio",
+          "max_degree>=3",
+          "leaf_ratio<=0"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "max_degree",
+            "op": ">=",
+            "value": 3.0
+          },
+          {
+            "feature": "leaf_ratio",
+            "op": "<=",
+            "value": 0.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0019_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_ready",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "cycle_context+leaf_ratio",
+    "blueprint_signature_v7": "NESTED_PORTAL|nested_portal|cycle_context+leaf_ratio",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND leaf_ratio<=0",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "cycle_count",
+          "op": ">=",
+          "value": 1.0
+        },
+        {
+          "feature": "leaf_ratio",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.5860923964334659,
+      "original_score": 0.40609239643346584,
+      "good_support": 0.14391143911439114,
+      "bad_support": 0.06920939631220005,
+      "cleaned_support": 0.27472527472527475,
+      "manual_support": 0.015625,
+      "precision_vs_bad_support": 0.2215909090909091,
+      "generality_score": 0.7321725092250922,
+      "non_triviality_score": 0.6323999999999999,
+      "orthogonality": 0.9333333333333333
+    },
+    "nearest_old_rule_by_token": "auto_pattern_003",
+    "max_old_token_jaccard": 0.06666666666666667,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "cycle_context",
+          "leaf_ratio",
+          "cycle_count>=1",
+          "leaf_ratio<=0"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "cycle_count",
+            "op": ">=",
+            "value": 1.0
+          },
+          {
+            "feature": "leaf_ratio",
+            "op": "<=",
+            "value": 0.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0020_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_aligned",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "connectivity",
+    "blueprint_signature_v7": "NESTED_PORTAL|enclosure_field+nested_portal|connectivity",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND connected_components<=1",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle",
+        "field:spineb1_enclb3_interb1"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "connected_components",
+          "op": "<=",
+          "value": 1.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.5573174006885161,
+      "original_score": 0.4473174006885161,
+      "good_support": 0.06642066420664207,
+      "bad_support": 0.018691588785046728,
+      "cleaned_support": 0.09340659340659341,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.32727272727272727,
+      "generality_score": 0.6643680811808118,
+      "non_triviality_score": 0.7957999999999998,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "connectivity",
+          "connected_components<=1"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "connected_components",
+            "op": "<=",
+            "value": 1.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0021_nested_portal",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_aligned",
+    "production_family_v7": "NESTED_PORTAL",
+    "context_blueprint_v7": "bad_avoid",
+    "blueprint_signature_v7": "NESTED_PORTAL|enclosure_field+nested_portal|bad_avoid",
+    "rule_name": "motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND NOT_bad_floating_or_multicomponent",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:nested_or_multi_cycle",
+        "field:spineb1_enclb3_interb1"
+      ],
+      "numeric_constraints": [],
+      "range_constraints": [],
+      "bad_avoid_contexts": [
+        "bad_floating_or_multicomponent"
+      ],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.5573174006885161,
+      "original_score": 0.4473174006885161,
+      "good_support": 0.06642066420664207,
+      "bad_support": 0.018691588785046728,
+      "cleaned_support": 0.09340659340659341,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.32727272727272727,
+      "generality_score": 0.6643680811808118,
+      "non_triviality_score": 0.7957999999999998,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: NESTED_PORTAL(core, shell_layers); constraints: cycle_context + length_gate + avoid_low_context_cycle",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "NESTED_PORTAL",
+      "description": "Nested cycle/portal structure with core and shell layers.",
+      "rhs_nodes": [
+        {
+          "id": "portal_shell",
+          "type": "cycle_shell",
+          "role": "enclosure"
+        },
+        {
+          "id": "inner_core",
+          "type": "core_stroke_group",
+          "role": "core"
+        },
+        {
+          "id": "portal_ports",
+          "type": "typed_port_set",
+          "role": "entry_exit_ports"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "inner_core",
+          "dst": "portal_shell",
+          "type": "inside_or_crosses"
+        },
+        {
+          "src": "portal_ports",
+          "dst": "portal_shell",
+          "type": "attached_to"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "outer_shell_port",
+          "attach_to": "outer_shell",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        },
+        {
+          "name": "inner_core_port",
+          "attach_to": "inner_cycle",
+          "allowed_relations": [
+            "E2E",
+            "X",
+            "T"
+          ]
+        },
+        {
+          "name": "side_attachment_port",
+          "attach_to": "core_ports",
+          "allowed_relations": [
+            "E2E",
+            "T"
+          ]
+        }
+      ],
+      "free_variables": {
+        "nest_depth": [
+          1,
+          3
+        ],
+        "portal_asymmetry": [
+          0.05,
+          0.35
+        ],
+        "port_count": [
+          1,
+          4
+        ],
+        "cross_context_prob": [
+          0.0,
+          0.65
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "bad_avoid",
+          "avoid:bad_floating_or_multicomponent"
+        ],
+        "hard_constraints": [
+          "cycle_count>=1",
+          "avoid_low_context_cycle",
+          "prefer_single_component"
+        ],
+        "bad_avoid_contexts": [
+          "bad_floating_or_multicomponent"
+        ],
+        "quality_numeric_constraints": [],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0022_discovered_topology_motif",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_aligned",
+    "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+    "context_blueprint_v7": "stroke_capacity",
+    "blueprint_signature_v7": "DISCOVERED_TOPOLOGY_MOTIF|enclosure_field+orbit_seal|stroke_capacity",
+    "rule_name": "motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND stroke_count<=7",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:orbit_or_seal_field",
+        "field:spineb1_enclb3_interb1"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "stroke_count",
+          "op": "<=",
+          "value": 7.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.5545079388676898,
+      "original_score": 0.44450793886768974,
+      "good_support": 0.06642066420664207,
+      "bad_support": 0.017428643596867896,
+      "cleaned_support": 0.09615384615384616,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.34285714285714286,
+      "generality_score": 0.6643680811808118,
+      "non_triviality_score": 0.7550999999999999,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: DISCOVERED_TOPOLOGY_MOTIF(typed_ports, structural_context); constraints: review visually before rule-cache promotion",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "DISCOVERED_TOPOLOGY_MOTIF",
+      "description": "Unclassified discovered topology motif. Needs visual review before becoming a named production.",
+      "rhs_nodes": [
+        {
+          "id": "motif_core",
+          "type": "discovered_motif_core",
+          "role": "core"
+        },
+        {
+          "id": "typed_ports",
+          "type": "typed_port_set",
+          "role": "attachments"
+        },
+        {
+          "id": "context",
+          "type": "structural_context",
+          "role": "constraint"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "typed_ports",
+          "dst": "motif_core",
+          "type": "attached_to"
+        },
+        {
+          "src": "context",
+          "dst": "motif_core",
+          "type": "constrains"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "typed_port_0",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        },
+        {
+          "name": "typed_port_1",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        }
+      ],
+      "free_variables": {
+        "port_count": [
+          1,
+          5
+        ],
+        "curve_flow": [
+          0.25,
+          0.75
+        ],
+        "component_count": [
+          1,
+          2
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "stroke_capacity",
+          "stroke_count<=7"
+        ],
+        "hard_constraints": [
+          "visual_review_required",
+          "avoid_floating_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "stroke_count",
+            "op": "<=",
+            "value": 7.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0023_discovered_topology_motif",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_aligned",
+    "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+    "context_blueprint_v7": "connectivity",
+    "blueprint_signature_v7": "DISCOVERED_TOPOLOGY_MOTIF|enclosure_field+orbit_seal|connectivity",
+    "rule_name": "motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND connected_components<=1",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:orbit_or_seal_field",
+        "field:spineb1_enclb3_interb1"
+      ],
+      "numeric_constraints": [
+        {
+          "feature": "connected_components",
+          "op": "<=",
+          "value": 1.0
+        }
+      ],
+      "range_constraints": [],
+      "bad_avoid_contexts": [],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.5542956238415837,
+      "original_score": 0.4442956238415837,
+      "good_support": 0.07564575645756458,
+      "bad_support": 0.02071230108613286,
+      "cleaned_support": 0.09065934065934066,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.3333333333333333,
+      "generality_score": 0.672440036900369,
+      "non_triviality_score": 0.7550999999999999,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: DISCOVERED_TOPOLOGY_MOTIF(typed_ports, structural_context); constraints: review visually before rule-cache promotion",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "DISCOVERED_TOPOLOGY_MOTIF",
+      "description": "Unclassified discovered topology motif. Needs visual review before becoming a named production.",
+      "rhs_nodes": [
+        {
+          "id": "motif_core",
+          "type": "discovered_motif_core",
+          "role": "core"
+        },
+        {
+          "id": "typed_ports",
+          "type": "typed_port_set",
+          "role": "attachments"
+        },
+        {
+          "id": "context",
+          "type": "structural_context",
+          "role": "constraint"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "typed_ports",
+          "dst": "motif_core",
+          "type": "attached_to"
+        },
+        {
+          "src": "context",
+          "dst": "motif_core",
+          "type": "constrains"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "typed_port_0",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        },
+        {
+          "name": "typed_port_1",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        }
+      ],
+      "free_variables": {
+        "port_count": [
+          1,
+          5
+        ],
+        "curve_flow": [
+          0.25,
+          0.75
+        ],
+        "component_count": [
+          1,
+          2
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "connectivity",
+          "connected_components<=1"
+        ],
+        "hard_constraints": [
+          "visual_review_required",
+          "avoid_floating_component"
+        ],
+        "bad_avoid_contexts": [],
+        "quality_numeric_constraints": [
+          {
+            "feature": "connected_components",
+            "op": "<=",
+            "value": 1.0
+          }
+        ],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  },
+  {
+    "rule_id": "production_candidate_0024_discovered_topology_motif",
+    "status": "review_only",
+    "source": "morpheme_independent_rule_miner_v7_production_ready",
+    "safe_to_auto_install": false,
+    "write_to_rule_cache": false,
+    "production_tier_v7": "production_aligned",
+    "production_family_v7": "DISCOVERED_TOPOLOGY_MOTIF",
+    "context_blueprint_v7": "bad_avoid",
+    "blueprint_signature_v7": "DISCOVERED_TOPOLOGY_MOTIF|enclosure_field+orbit_seal|bad_avoid",
+    "rule_name": "motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND NOT_bad_floating_or_multicomponent",
+    "parsed_predicates": {
+      "motifs": [
+        "proxy:orbit_or_seal_field",
+        "field:spineb1_enclb3_interb1"
+      ],
+      "numeric_constraints": [],
+      "range_constraints": [],
+      "bad_avoid_contexts": [
+        "bad_floating_or_multicomponent"
+      ],
+      "raw_unknown_terms": []
+    },
+    "support": {
+      "score": 0.5542956238415837,
+      "original_score": 0.4442956238415837,
+      "good_support": 0.07564575645756458,
+      "bad_support": 0.02071230108613286,
+      "cleaned_support": 0.09065934065934066,
+      "manual_support": 0.0,
+      "precision_vs_bad_support": 0.3333333333333333,
+      "generality_score": 0.672440036900369,
+      "non_triviality_score": 0.7550999999999999,
+      "orthogonality": 1.0
+    },
+    "nearest_old_rule_by_token": "",
+    "max_old_token_jaccard": 0.0,
+    "generation_hint_from_miner": "production_blueprint: DISCOVERED_TOPOLOGY_MOTIF(typed_ports, structural_context); constraints: review visually before rule-cache promotion",
+    "production": {
+      "lhs": "GlyphComponent",
+      "operator": "DISCOVERED_TOPOLOGY_MOTIF",
+      "description": "Unclassified discovered topology motif. Needs visual review before becoming a named production.",
+      "rhs_nodes": [
+        {
+          "id": "motif_core",
+          "type": "discovered_motif_core",
+          "role": "core"
+        },
+        {
+          "id": "typed_ports",
+          "type": "typed_port_set",
+          "role": "attachments"
+        },
+        {
+          "id": "context",
+          "type": "structural_context",
+          "role": "constraint"
+        }
+      ],
+      "rhs_edges": [
+        {
+          "src": "typed_ports",
+          "dst": "motif_core",
+          "type": "attached_to"
+        },
+        {
+          "src": "context",
+          "dst": "motif_core",
+          "type": "constrains"
+        }
+      ],
+      "typed_ports": [
+        {
+          "name": "typed_port_0",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        },
+        {
+          "name": "typed_port_1",
+          "attach_to": "motif_core",
+          "allowed_relations": [
+            "E2E",
+            "T",
+            "X"
+          ]
+        }
+      ],
+      "free_variables": {
+        "port_count": [
+          1,
+          5
+        ],
+        "curve_flow": [
+          0.25,
+          0.75
+        ],
+        "component_count": [
+          1,
+          2
+        ]
+      },
+      "constraints": {
+        "context_tags": [
+          "bad_avoid",
+          "avoid:bad_floating_or_multicomponent"
+        ],
+        "hard_constraints": [
+          "visual_review_required",
+          "avoid_floating_component"
+        ],
+        "bad_avoid_contexts": [
+          "bad_floating_or_multicomponent"
+        ],
+        "quality_numeric_constraints": [],
+        "quality_range_constraints": []
+      }
+    },
+    "review_checklist": [
+      "Visually inspect 20-50 generated samples before promotion.",
+      "Verify the production does not duplicate an existing old rule/operator.",
+      "Verify it improves Good rate without increasing floating/fragmented failures.",
+      "If accepted, assign a stable rule_id and move from review_only to enabled production config."
+    ]
+  }
+]

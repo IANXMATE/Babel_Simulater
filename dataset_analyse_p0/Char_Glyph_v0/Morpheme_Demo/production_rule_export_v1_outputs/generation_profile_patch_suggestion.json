@@ -1,0 +1,27 @@
+{
+  "schema_version": "generation_profile_patch_v1",
+  "status": "suggestion_only",
+  "safe_to_auto_apply": false,
+  "source": "morpheme_v7_production_rule_exporter.py",
+  "suggested_operator_weights": {
+    "DISCOVERED_TOPOLOGY_MOTIF": 0.25,
+    "NESTED_ORBIT_SEAL": 0.1667,
+    "NESTED_PORTAL": 0.5833
+  },
+  "suggested_generator_adjustments": {
+    "port_coupling": "0.80~0.88",
+    "nested_enclosure_prob": "0.48~0.62",
+    "orbit_weave_prob": "0.35~0.48",
+    "interlock_prob": "0.50~0.65",
+    "min_line_length": "96~110",
+    "connected_components": "prefer 1, allow 2 only when attached by ports",
+    "cycle_count": "prefer 1~3 for nested/orbit families"
+  },
+  "negative_contexts_to_penalize": [
+    "bad_floating_or_multicomponent",
+    "bad_trivial_e2e_chain",
+    "bad_short_or_fragmented",
+    "bad_low_context_cycle",
+    "bad_no_structural_field"
+  ]
+}

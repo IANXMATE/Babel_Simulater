@@ -1,0 +1,451 @@
+
+============================================================================================
+Morpheme Independent Rule Miner V5 Grammar Rule Prototypes
+============================================================================================
+SCRIPT_DIR              = /Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/Morpheme_Demo
+CHAR_GLYPH_DIR          = /Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0
+PCG_GOOD_DIR            = /Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/good
+PCG_BAD_DIR             = /Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/bad
+PCG_CLEANED_DIR         = /Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebacked_stage2_schema/cleaned
+MANUAL_ANNOTATIONS_DIR  = /Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/AI_VECTOR_ROUTER_With_topo/annotations_topo
+MORPHEME_OUTPUT_TREE    = /Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/Morpheme/output_tree
+MORPHEME_NEW_RULE_CACHE = /Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/Morpheme/new_rule_cache
+
+============================================================================================
+01 Data loading summary
+============================================================================================
+good    : records=   542, files=    8, bad_json=   0, truncated=False
+bad     : records=  3959, files=    8, bad_json=   0, truncated=False
+cleaned : records=   364, files=    1, bad_json=   0, truncated=False
+manual  : records=   128, files=    4, bad_json=   0, truncated=False
+
+Note: cleaned is treated as positive-ish reference, but candidate rules are mainly Good vs Bad; Manual is alignment/reference.
+
+============================================================================================
+02 Old rule inventory for orthogonality / de-dup only
+============================================================================================
+old rule json files scanned = 14
+old rule-like objects found = 16
+old rule feature vocab size = 39
+old rule token vocab size   = 145
+
+----------------------------------------------------------------------------------------
+Top old-rule feature tokens
+----------------------------------------------------------------------------------------
+token                | count
+----------------------------
+edge_density         | 32   
+E2E_ratio            | 18   
+cross_with_tail      | 18   
+max_degree_norm      | 16   
+0                    | 16   
+Auto                 | 16   
+Top                  | 16   
+discovered           | 16   
+existing             | 16   
+mode                 | 16   
+rules                | 16   
+topology             | 16   
+dense_crossing       | 14   
+star_with_tail       | 14   
+barb                 | 10   
+radial_fork          | 9    
+branch_chain         | 9    
+branch_ratio         | 8    
+leaf_ratio           | 8    
+endpoint_hub_ratio   | 8    
+acute_ratio          | 8    
+cross                | 7    
+arrow_like           | 6    
+intersection_density | 6    
+grid_ladder          | 6    
+cycle_with_chord     | 5    
+tree_like            | 5    
+fork_with_tail       | 5    
+theta_graph          | 4    
+degree2_ratio        | 4    
+
+============================================================================================
+03 Feature extraction summary
+============================================================================================
+good    : feature_rows=   542
+  sample_id=󰀀 motifs=['relhist:E4_T0_X1_C0', 'capacity:Sb1_CC2_C0', 'role:maxD3_B1_portb3', 'orient:axisb0_diagb3_curveb3', 'field:spineb0_enclb0_interb1'] source=/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebac
+bad     : feature_rows=  3959
+  sample_id=󰇰 motifs=['relhist:E1_T0_X0_C0', 'capacity:Sb0_CC2_C0', 'role:maxD1_B0_portb0', 'orient:axisb0_diagb3_curveb3', 'field:spineb0_enclb0_interb0'] source=/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebac
+cleaned : feature_rows=   364
+  sample_id=󰃱 motifs=['relhist:E4_T0_X0_C4', 'capacity:Sb1_CC1_C4', 'role:maxD4_B3_portb4', 'orient:axisb0_diagb3_curveb3', 'field:spineb0_enclb3_interb0'] source=/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/Char_Glyph_v0/annotation_tool/pcg_filebac
+manual  : feature_rows=   128
+  sample_id=ה motifs=['relhist:E2_T0_X0_C0', 'capacity:Sb0_CC2_C0', 'role:maxD2_B0_portb1', 'orient:axisb2_diagb0_curveb1', 'field:spineb2_enclb0_interb0'] source=/Users/cuijiaxing03/BST/Babel_Simulater/dataset_analyse_p0/AI_VECTOR_ROUTER_With_topo/annotations_to
+
+============================================================================================
+04 Key numeric distribution by label
+============================================================================================
+stroke_count | good: mean=5.969 med=6.000 p25=5.000 p75=7.000 | bad: mean=5.879 med=6.000 p25=4.000 p75=7.000 | cleaned: mean=5.541 med=6.000 p25=5.000 p75=6.000 | manual: mean=3.383 med=3.000 p25=3.000 p75=4.000
+connected_components | good: mean=1.330 med=1.000 p25=1.000 p75=2.000 | bad: mean=1.687 med=2.000 p25=1.000 p75=2.000 | cleaned: mean=1.379 med=1.000 p25=1.000 p75=2.000 | manual: mean=1.031 med=1.000 p25=1.000 p75=1.000
+cycle_count | good: mean=0.839 med=1.000 p25=0.000 p75=1.000 | bad: mean=0.649 med=0.000 p25=0.000 p75=1.000 | cleaned: mean=2.316 med=2.000 p25=0.000 p75=3.000 | manual: mean=0.180 med=0.000 p25=0.000 p75=0.000
+topology_event_count | good: mean=7.637 med=7.000 p25=5.000 p75=10.000 | bad: mean=6.318 med=6.000 p25=3.000 p75=8.000 | cleaned: mean=6.481 med=6.000 p25=4.000 p75=8.000 | manual: mean=2.633 med=2.000 p25=2.000 p75=4.000
+E2E_count | good: mean=6.446 med=6.000 p25=3.000 p75=8.000 | bad: mean=5.640 med=5.000 p25=3.000 p75=7.000 | cleaned: mean=5.036 med=4.000 p25=3.000 p75=7.000 | manual: mean=2.086 med=2.000 p25=1.000 p75=3.000
+T_count | good: mean=0.253 med=0.000 p25=0.000 p75=0.000 | bad: mean=0.153 med=0.000 p25=0.000 p75=0.000 | cleaned: mean=0.527 med=0.000 p25=0.000 p75=1.000 | manual: mean=0.469 med=0.000 p25=0.000 p75=1.000
+X_count | good: mean=0.937 med=1.000 p25=0.000 p75=1.000 | bad: mean=0.525 med=0.000 p25=0.000 p75=1.000 | cleaned: mean=0.918 med=1.000 p25=0.000 p75=1.000 | manual: mean=0.078 med=0.000 p25=0.000 p75=0.000
+axis_ratio | good: mean=0.268 med=0.250 p25=0.125 p75=0.375 | bad: mean=0.254 med=0.200 p25=0.125 p75=0.375 | cleaned: mean=0.223 med=0.200 p25=0.125 p75=0.333 | manual: mean=0.568 med=0.600 p25=0.333 p75=0.750
+diagonal_ratio | good: mean=0.732 med=0.750 p25=0.625 p75=0.875 | bad: mean=0.744 med=0.778 p25=0.625 p75=0.875 | cleaned: mean=0.777 med=0.800 p25=0.667 p75=0.875 | manual: mean=0.432 med=0.500 p25=0.250 p75=0.667
+curve_ratio | good: mean=0.775 med=1.000 p25=1.000 p75=1.000 | bad: mean=0.651 med=1.000 p25=0.000 p75=1.000 | cleaned: mean=0.866 med=1.000 p25=1.000 p75=1.000 | manual: mean=0.495 med=0.500 p25=0.250 p75=0.750
+spine_score | good: mean=0.294 med=0.280 p25=0.212 p75=0.381 | bad: mean=0.259 med=0.250 p25=0.175 p75=0.338 | cleaned: mean=0.278 med=0.270 p25=0.210 p75=0.340 | manual: mean=0.419 med=0.450 p25=0.270 p75=0.500
+enclosure_score | good: mean=0.377 med=0.375 p25=0.000 p75=0.600 | bad: mean=0.298 med=0.000 p25=0.000 p75=0.600 | cleaned: mean=0.649 med=1.000 p25=0.000 p75=1.000 | manual: mean=0.114 med=0.000 p25=0.000 p75=0.000
+interlock_score | good: mean=0.203 med=0.167 p25=0.000 p75=0.333 | bad: mean=0.105 med=0.000 p25=0.000 p75=0.167 | cleaned: mean=0.264 med=0.200 p25=0.000 p75=0.400 | manual: mean=0.161 med=0.000 p25=0.000 p75=0.333
+orbit_score | good: mean=0.386 med=0.383 p25=0.150 p75=0.567 | bad: mean=0.259 med=0.212 p25=0.000 p75=0.460 | cleaned: mean=0.516 med=0.500 p25=0.171 p75=0.850 | manual: mean=0.070 med=0.000 p25=0.000 p75=0.000
+fragmentation_risk | good: mean=0.091 med=0.083 p25=0.000 p75=0.125 | bad: mean=0.047 med=0.000 p25=0.000 p75=0.083 | cleaned: mean=0.108 med=0.100 p25=0.000 p75=0.167 | manual: mean=0.046 med=0.000 p25=0.000 p75=0.083
+
+============================================================================================
+05 Good vs Bad feature deltas
+============================================================================================
+feature              | good_mean            | bad_mean             | delta                 | norm_delta            | good_median         | bad_median         
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+T_count              | 0.2528               | 0.1526               | 0.1002                | 100203.7489           | 0.0000              | 0.0000             
+T_ratio              | 0.0418               | 0.0228               | 0.0189                | 18938.4264            | 0.0000              | 0.0000             
+fragmentation_risk   | 0.0908               | 0.0465               | 0.0443                | 0.4251                | 0.0833              | 0.0000             
+X_count              | 0.9373               | 0.5254               | 0.4119                | 0.4119                | 1.0000              | 0.0000             
+interlock_score      | 0.2031               | 0.1047               | 0.0984                | 0.3936                | 0.1667              | 0.0000             
+max_degree           | 3.5018               | 2.9293               | 0.5726                | 0.3817                | 3.0000              | 3.0000             
+X_ratio              | 0.1587               | 0.0891               | 0.0696                | 0.3715                | 0.1111              | 0.0000             
+connected_components | 1.3303               | 1.6865               | -0.3563               | -0.3563               | 1.0000              | 2.0000             
+mean_length          | 113.6578             | 102.1115             | 11.5464               | 0.3373                | 109.4186            | 100.4852           
+min_length           | 76.5131              | 64.0233              | 12.4898               | 0.3199                | 74.3868             | 60.4707            
+orbit_score          | 0.3860               | 0.2586               | 0.1275                | 0.2908                | 0.3833              | 0.2125             
+branch_ratio         | 0.4372               | 0.2842               | 0.1529                | 0.2855                | 0.4286              | 0.1667             
+E2E_ratio            | 0.7995               | 0.8742               | -0.0747               | -0.2801               | 0.8571              | 1.0000             
+topology_event_count | 7.6365               | 6.3175               | 1.3190                | 0.2638                | 7.0000              | 6.0000             
+aspect               | 1.0515               | 1.1712               | -0.1197               | -0.2616               | 1.0043              | 1.0630             
+leaf_ratio           | 0.2482               | 0.3607               | -0.1125               | -0.2555               | 0.2000              | 0.2857             
+curve_ratio          | 0.7750               | 0.6511               | 0.1238                | 0.2477                | 1.0000              | 1.0000             
+spine_score          | 0.2942               | 0.2592               | 0.0350                | 0.2113                | 0.2800              | 0.2500             
+port_count_proxy     | 15.9114              | 13.3190              | 2.5924                | 0.2074                | 14.0000             | 11.0000            
+cycle_count          | 0.8395               | 0.6489               | 0.1906                | 0.1906                | 1.0000              | 0.0000             
+E2E_count            | 6.4465               | 5.6396               | 0.8069                | 0.1793                | 6.0000              | 5.0000             
+bbox_area            | 36442.3193           | 41297.9744           | -4855.6551            | -0.1787               | 33898.0755          | 39511.6062         
+mean_curvature       | 0.1390               | 0.1268               | 0.0122                | 0.1399                | 0.1546              | 0.1504             
+enclosure_score      | 0.3766               | 0.2982               | 0.0784                | 0.1307                | 0.3750              | 0.0000             
+horizontal_ratio     | 0.1347               | 0.1230               | 0.0117                | 0.0586                | 0.1429              | 0.0000             
+axis_ratio           | 0.2679               | 0.2537               | 0.0141                | 0.0565                | 0.2500              | 0.2000             
+diagonal_ratio       | 0.7319               | 0.7441               | -0.0122               | -0.0487               | 0.7500              | 0.7778             
+stroke_count         | 5.9686               | 5.8790               | 0.0896                | 0.0358                | 6.0000              | 6.0000             
+vertical_ratio       | 0.1332               | 0.1308               | 0.0024                | 0.0120                | 0.1250              | 0.1250             
+
+Interpretation: large delta means Good and Bad differ; but if both means are high, this is not a sufficient rule. Check shared motifs below.
+
+============================================================================================
+05B Bad subtype clustering / failure mode decomposition
+============================================================================================
+bad_subtype                    | bad_hits | bad_support          | good_support         | bad_minus_good        | description                                          
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+bad_trivial_e2e_chain          | 1484     | 0.3748               | 0.1347               | 0.2402                | 纯 E2E 链式结构：有拓扑，但构成过浅，通常缺少 seal/orbit/interlock 上下文。  
+bad_floating_or_multicomponent | 2007     | 0.5069               | 0.2675               | 0.2394                | 多连通块 / 漂浮部件：通常表示符文线没有通过 port/interlock 接回主结构。        
+bad_short_or_fragmented        | 2198     | 0.5552               | 0.3745               | 0.1807                | 短线/碎片风险：适合作为 quality gate，不适合作为正向拓扑规则。               
+bad_unbalanced_multicomponent  | 834      | 0.2107               | 0.0590               | 0.1516                | 多部件不平衡：可能需要提高 port coupling 或使用 component-level 组合约束。
+bad_no_structural_field        | 657      | 0.1660               | 0.0424               | 0.1235                | 缺少结构场：不是坏在某个 motif，而是没有形成可解释构造中心。                    
+bad_low_context_cycle          | 275      | 0.0695               | 0.0203               | 0.0492                | 低上下文 cycle：有环，但没有 spine/port/interlock 支撑，像孤立框或无意义闭合。
+bad_overdense_cross_fragment   | 27       | 0.0068               | 0.0055               | 0.0013                | 高交叉且碎片风险高：说明 interlock/weave 可能不是从安全端口发生。            
+
+Interpretation: Bad samples are structured negatives. These subtypes should become separate negative contexts, not one mixed Bad label.
+
+============================================================================================
+06 Motif support: Good-enriched / Bad-enriched / Shared
+============================================================================================
+
+----------------------------------------------------------------------------------------
+06A Good-enriched motifs: likely positive ingredients
+----------------------------------------------------------------------------------------
+motif                          | good_support         | bad_support           | manual_support | good_minus_bad      
+---------------------------------------------------------------------------------------------------------------------
+proxy:orbit_or_seal_field      | 0.4225               | 0.2528                | 0.0469         | 0.1697              
+capacity:Sb1_CC1_C1            | 0.1993               | 0.1076                | 0.0391         | 0.0917              
+orient:axisb0_diagb3_curveb3   | 0.4151               | 0.3392                | 0.0703         | 0.0759              
+proxy:nested_or_multi_cycle    | 0.2103               | 0.1367                | 0.0234         | 0.0737              
+capacity:Sb1_CC1_C2            | 0.1218               | 0.0487                | 0.0078         | 0.0730              
+role:maxD5_B4_portb4           | 0.1956               | 0.1273                | 0.0000         | 0.0683              
+orient:axisb1_diagb2_curveb3   | 0.2011               | 0.1372                | 0.0391         | 0.0640              
+role:maxD4_B4_portb4           | 0.1587               | 0.1015                | 0.0078         | 0.0571              
+proxy:vertical_spine_branching | 0.1808               | 0.1250                | 0.0703         | 0.0558              
+relhist:E4_T0_X1_C2            | 0.0775               | 0.0245                | 0.0000         | 0.0530              
+field:spineb1_enclb3_interb1   | 0.0775               | 0.0265                | 0.0156         | 0.0510              
+relhist:E4_T0_X1_C1            | 0.0923               | 0.0419                | 0.0078         | 0.0503              
+relhist:E4_T0_X1_C0            | 0.0738               | 0.0258                | 0.0000         | 0.0480              
+field:spineb1_enclb0_interb1   | 0.0775               | 0.0306                | 0.1328         | 0.0469              
+capacity:Sb0_CC1_C0            | 0.1144               | 0.0730                | 0.7188         | 0.0414              
+field:spineb0_enclb0_interb1   | 0.0941               | 0.0551                | 0.0391         | 0.0390              
+proxy:interlocked_ports        | 0.0812               | 0.0457                | 0.0547         | 0.0355              
+role:maxD2_B0_portb0           | 0.0517               | 0.0189                | 0.0312         | 0.0327              
+orient:axisb3_diagb0_curveb0   | 0.0535               | 0.0212                | 0.0781         | 0.0323              
+field:spineb1_enclb2_interb1   | 0.0498               | 0.0179                | 0.0078         | 0.0319              
+capacity:Sb1_CC1_C0            | 0.1255               | 0.0960                | 0.1016         | 0.0295              
+relhist:E2_T0_X1_C0            | 0.0424               | 0.0152                | 0.0000         | 0.0273              
+role:maxD3_B1_portb2           | 0.0406               | 0.0139                | 0.0156         | 0.0267              
+role:maxD3_B3_portb4           | 0.0554               | 0.0303                | 0.0078         | 0.0250              
+proxy:ring_core_spine_ports    | 0.0517               | 0.0301                | 0.0469         | 0.0216              
+field:spineb0_enclb0_interb2   | 0.0295               | 0.0083                | 0.0156         | 0.0212              
+role:maxD3_B1_portb1           | 0.0258               | 0.0063                | 0.0078         | 0.0195              
+relhist:E4_T1_X1_C0            | 0.0185               | 0.0018                | 0.0000         | 0.0167              
+field:spineb1_enclb0_interb2   | 0.0240               | 0.0076                | 0.0078         | 0.0164              
+capacity:Sb1_CC1_C3            | 0.0221               | 0.0066                | 0.0000         | 0.0156              
+
+----------------------------------------------------------------------------------------
+06B Bad-enriched motifs: structures that often fail or need constraints
+----------------------------------------------------------------------------------------
+motif                                   | good_support          | bad_support          | manual_support | bad_minus_good      
+------------------------------------------------------------------------------------------------------------------------------
+proxy:multi_component_or_floating       | 0.2675                | 0.5069               | 0.0312         | 0.2394              
+field:spineb0_enclb0_interb0            | 0.0978                | 0.2561               | 0.1484         | 0.1583              
+relhist:E4_T0_X0_C0                     | 0.0886                | 0.1998               | 0.1250         | 0.1112              
+role:maxD2_B0_portb2                    | 0.0720                | 0.1687               | 0.1875         | 0.0968              
+orient:axisb0_diagb3_curveb0            | 0.0812                | 0.1594               | 0.0312         | 0.0782              
+field:spineb1_enclb0_interb0            | 0.0720                | 0.1349               | 0.1797         | 0.0629              
+role:maxD2_B0_portb3                    | 0.0166                | 0.0745               | 0.0156         | 0.0579              
+role:maxD1_B0_portb0                    | 0.0092                | 0.0647               | 0.1797         | 0.0554              
+capacity:Sb0_CC3_C0                     | 0.0000                | 0.0535               | 0.0000         | 0.0535              
+relhist:E2_T0_X0_C0                     | 0.0129                | 0.0631               | 0.1719         | 0.0502              
+relhist:E4_T0_X0_C1                     | 0.1550                | 0.2016               | 0.0469         | 0.0466              
+relhist:E1_T0_X0_C0                     | 0.0037                | 0.0500               | 0.1484         | 0.0463              
+capacity:Sb0_CC2_C0                     | 0.0240                | 0.0685               | 0.0312         | 0.0445              
+orient:axisb0_diagb2_curveb0            | 0.0055                | 0.0392               | 0.0000         | 0.0336              
+relhist:E3_T0_X0_C0                     | 0.0295                | 0.0619               | 0.0625         | 0.0324              
+field:spineb0_enclb2_interb0            | 0.0406                | 0.0715               | 0.0000         | 0.0309              
+capacity:Sb1_CC3_C0                     | 0.0351                | 0.0649               | 0.0000         | 0.0299              
+role:maxD1_B0_portb1                    | 0.0092                | 0.0386               | 0.0078         | 0.0294              
+capacity:Sb1_CC2_C1                     | 0.0424                | 0.0707               | 0.0000         | 0.0283              
+orient:axisb1_diagb2_curveb0            | 0.0461                | 0.0715               | 0.0312         | 0.0254              
+proxy:axis_skeleton_with_curve_residual | 0.0277                | 0.0520               | 0.3672         | 0.0244              
+relhist:E3_T0_X0_C1                     | 0.0000                | 0.0227               | 0.0000         | 0.0227              
+relhist:E4_T0_X0_C2                     | 0.0111                | 0.0290               | 0.0000         | 0.0180              
+role:maxD2_B0_portb4                    | 0.0000                | 0.0179               | 0.0000         | 0.0179              
+role:maxD3_B2_portb4                    | 0.0387                | 0.0561               | 0.0000         | 0.0173              
+capacity:Sb1_CC2_C0                     | 0.0867                | 0.1038               | 0.0000         | 0.0171              
+field:spineb0_enclb3_interb0            | 0.0166                | 0.0333               | 0.0078         | 0.0167              
+capacity:Sb0_CC1_C1                     | 0.0351                | 0.0518               | 0.0859         | 0.0167              
+role:maxD0_B0_portb0                    | 0.0000                | 0.0139               | 0.0156         | 0.0139              
+relhist:E0_T0_X0_C0                     | 0.0000                | 0.0139               | 0.0156         | 0.0139              
+
+----------------------------------------------------------------------------------------
+06C Shared motifs: exist in both Good and Bad, so they are context-dependent, not sufficient
+----------------------------------------------------------------------------------------
+motif                             | good_support         | bad_support          | manual_support | shared_strength     
+-----------------------------------------------------------------------------------------------------------------------
+orient:axisb0_diagb3_curveb3      | 0.4151               | 0.3392               | 0.0703         | 0.3392              
+proxy:multi_component_or_floating | 0.2675               | 0.5069               | 0.0312         | 0.2675              
+proxy:orbit_or_seal_field         | 0.4225               | 0.2528               | 0.0469         | 0.2528              
+relhist:E4_T0_X0_C1               | 0.1550               | 0.2016               | 0.0469         | 0.1550              
+orient:axisb1_diagb2_curveb3      | 0.2011               | 0.1372               | 0.0391         | 0.1372              
+proxy:nested_or_multi_cycle       | 0.2103               | 0.1367               | 0.0234         | 0.1367              
+role:maxD5_B4_portb4              | 0.1956               | 0.1273               | 0.0000         | 0.1273              
+proxy:vertical_spine_branching    | 0.1808               | 0.1250               | 0.0703         | 0.1250              
+capacity:Sb1_CC1_C1               | 0.1993               | 0.1076               | 0.0391         | 0.1076              
+role:maxD4_B4_portb4              | 0.1587               | 0.1015               | 0.0078         | 0.1015              
+field:spineb0_enclb0_interb0      | 0.0978               | 0.2561               | 0.1484         | 0.0978              
+capacity:Sb1_CC1_C0               | 0.1255               | 0.0960               | 0.1016         | 0.0960              
+relhist:E4_T0_X0_C0               | 0.0886               | 0.1998               | 0.1250         | 0.0886              
+capacity:Sb1_CC2_C0               | 0.0867               | 0.1038               | 0.0000         | 0.0867              
+orient:axisb0_diagb3_curveb0      | 0.0812               | 0.1594               | 0.0312         | 0.0812              
+orient:axisb0_diagb2_curveb3      | 0.0830               | 0.0781               | 0.0312         | 0.0781              
+capacity:Sb0_CC1_C0               | 0.1144               | 0.0730               | 0.7188         | 0.0730              
+role:maxD2_B0_portb2              | 0.0720               | 0.1687               | 0.1875         | 0.0720              
+field:spineb1_enclb0_interb0      | 0.0720               | 0.1349               | 0.1797         | 0.0720              
+field:spineb1_enclb2_interb0      | 0.0720               | 0.0707               | 0.0234         | 0.0707              
+field:spineb0_enclb0_interb1      | 0.0941               | 0.0551               | 0.0391         | 0.0551              
+role:maxD2_B0_portb1              | 0.0590               | 0.0538               | 0.4375         | 0.0538              
+field:spineb1_enclb3_interb0      | 0.0498               | 0.0548               | 0.0078         | 0.0498              
+capacity:Sb1_CC1_C2               | 0.1218               | 0.0487               | 0.0078         | 0.0487              
+orient:axisb1_diagb2_curveb0      | 0.0461               | 0.0715               | 0.0312         | 0.0461              
+proxy:interlocked_ports           | 0.0812               | 0.0457               | 0.0547         | 0.0457              
+capacity:Sb1_CC2_C1               | 0.0424               | 0.0707               | 0.0000         | 0.0424              
+relhist:E4_T0_X1_C1               | 0.0923               | 0.0419               | 0.0078         | 0.0419              
+orient:axisb1_diagb1_curveb3      | 0.0498               | 0.0414               | 0.0469         | 0.0414              
+role:maxD4_B3_portb4              | 0.0554               | 0.0409               | 0.0078         | 0.0409              
+
+----------------------------------------------------------------------------------------
+06D Manual-aligned motifs: closer to human annotation distribution
+----------------------------------------------------------------------------------------
+motif                                   | good_support          | bad_support           | manual_support | manual_alignment
+---------------------------------------------------------------------------------------------------------------------------
+capacity:Sb0_CC1_C0                     | 0.1144                | 0.0730                | 0.7188         | 0.7188          
+role:maxD2_B0_portb1                    | 0.0590                | 0.0538                | 0.4375         | 0.4375          
+proxy:axis_skeleton_with_curve_residual | 0.0277                | 0.0520                | 0.3672         | 0.3672          
+role:maxD2_B0_portb2                    | 0.0720                | 0.1687                | 0.1875         | 0.1875          
+field:spineb1_enclb0_interb0            | 0.0720                | 0.1349                | 0.1797         | 0.1797          
+role:maxD1_B0_portb0                    | 0.0092                | 0.0647                | 0.1797         | 0.1797          
+relhist:E2_T0_X0_C0                     | 0.0129                | 0.0631                | 0.1719         | 0.1719          
+relhist:E1_T1_X0_C0                     | 0.0018                | 0.0038                | 0.1641         | 0.1641          
+field:spineb2_enclb0_interb0            | 0.0074                | 0.0174                | 0.1562         | 0.1562          
+field:spineb0_enclb0_interb0            | 0.0978                | 0.2561                | 0.1484         | 0.1484          
+relhist:E1_T0_X0_C0                     | 0.0037                | 0.0500                | 0.1484         | 0.1484          
+field:spineb1_enclb0_interb1            | 0.0775                | 0.0306                | 0.1328         | 0.1328          
+relhist:E4_T0_X0_C0                     | 0.0886                | 0.1998                | 0.1250         | 0.1250          
+orient:axisb1_diagb1_curveb2            | 0.0018                | 0.0005                | 0.1094         | 0.1094          
+capacity:Sb1_CC1_C0                     | 0.1255                | 0.0960                | 0.1016         | 0.1016          
+capacity:Sb0_CC1_C1                     | 0.0351                | 0.0518                | 0.0859         | 0.0859          
+orient:axisb2_diagb1_curveb1            | 0.0018                | 0.0010                | 0.0859         | 0.0859          
+orient:axisb3_diagb0_curveb0            | 0.0535                | 0.0212                | 0.0781         | 0.0781          
+relhist:E2_T1_X0_C0                     | 0.0037                | 0.0030                | 0.0781         | 0.0781          
+orient:axisb3_diagb0_curveb1            | 0.0000                | 0.0005                | 0.0781         | 0.0781          
+orient:axisb0_diagb3_curveb3            | 0.4151                | 0.3392                | 0.0703         | 0.0703          
+proxy:vertical_spine_branching          | 0.1808                | 0.1250                | 0.0703         | 0.0703          
+orient:axisb1_diagb2_curveb2            | 0.0000                | 0.0008                | 0.0703         | 0.0703          
+relhist:E3_T0_X0_C0                     | 0.0295                | 0.0619                | 0.0625         | 0.0625          
+proxy:interlocked_ports                 | 0.0812                | 0.0457                | 0.0547         | 0.0547          
+field:spineb2_enclb0_interb1            | 0.0148                | 0.0028                | 0.0547         | 0.0547          
+proxy:orbit_or_seal_field               | 0.4225                | 0.2528                | 0.0469         | 0.0469          
+relhist:E4_T0_X0_C1                     | 0.1550                | 0.2016                | 0.0469         | 0.0469          
+role:maxD3_B1_portb3                    | 0.0535                | 0.0381                | 0.0469         | 0.0469          
+proxy:ring_core_spine_ports             | 0.0517                | 0.0301                | 0.0469         | 0.0469          
+
+============================================================================================
+07 V5 grammar-level rule mining: gates / ingredients / failure modes / rule prototypes
+============================================================================================
+V5 design:
+  - quality gates are not treated as topology rules; they are only context / filters.
+  - positive ingredients are topology ingredients, not sufficient rules by themselves.
+  - bad failure rules explain structured negative cases.
+  - grammar-level independent rules require two ingredients or a specific ingredient plus structural context; old rules are used only for de-dup/orthogonality.
+
+----------------------------------------------------------------------------------------
+07A Quality gate candidates: useful filters, not independent topology rules
+----------------------------------------------------------------------------------------
+score               | predicate                           | role         | good_support        | bad_support         | cleaned_support     | manual_support | precision_vs_bad_support | orthogonality      | nearest_old_rule_by_token | max_old_token_jaccard
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.3816              | min_length>=86.9565                 | quality_gate | 0.3450              | 0.2069              | 0.3626              | 0.8672         | 0.1859                   | 1.0000             | None                      | 0.0000               
+0.3762              | connected_components<=1             | quality_gate | 0.7325              | 0.4931              | 0.6758              | 0.9688         | 0.1690                   | 1.0000             | None                      | 0.0000               
+0.3694              | min_length>=63.6697                 | quality_gate | 0.6273              | 0.4483              | 0.7198              | 0.9297         | 0.1608                   | 1.0000             | None                      | 0.0000               
+0.3664              | fragmentation_risk>=0.1             | quality_gate | 0.4373              | 0.2175              | 0.5082              | 0.1719         | 0.2158                   | 0.9600             | auto_pattern_000          | 0.0400               
+0.3632              | mean_length>=103.486                | quality_gate | 0.5959              | 0.4539              | 0.6896              | 0.9766         | 0.1524                   | 1.0000             | None                      | 0.0000               
+0.3612              | mean_length>=121.865                | quality_gate | 0.3007              | 0.2079              | 0.3764              | 0.9766         | 0.1653                   | 1.0000             | None                      | 0.0000               
+0.3381              | aspect<=1.04216                     | quality_gate | 0.5609              | 0.4761              | 0.5192              | 0.9297         | 0.1389                   | 1.0000             | None                      | 0.0000               
+0.3044              | bbox_area>=38910.7                  | quality_gate | 0.4170              | 0.5115              | 0.3819              | 0.8359         | 0.1004                   | 1.0000             | None                      | 0.0000               
+0.3039              | leaf_ratio>=0.25                    | quality_gate | 0.4410              | 0.5908              | 0.4973              | 0.8594         | 0.0927                   | 0.9200             | auto_pattern_003          | 0.0800               
+0.3030              | aspect<=0.836375                    | quality_gate | 0.2620              | 0.2309              | 0.2390              | 0.8203         | 0.1345                   | 0.9600             | auto_pattern_000          | 0.0400               
+0.2965              | min_length>=46.5802                 | quality_gate | 0.8745              | 0.7090              | 0.9258              | 0.9844         | 0.1445                   | 1.0000             | None                      | 0.0000               
+0.2868              | stroke_count<=6                     | quality_gate | 0.6328              | 0.6279              | 0.7500              | 1.0000         | 0.1212                   | 1.0000             | None                      | 0.0000               
+0.2791              | mean_length>=86.0223                | quality_gate | 0.8413              | 0.7148              | 0.9066              | 1.0000         | 0.1388                   | 1.0000             | None                      | 0.0000               
+0.2764              | bbox_area_between[25587.5,53215.1]  | quality_gate | 0.5590              | 0.4920              | 0.5357              | 0.3984         | 0.1346                   | 1.0000             | None                      | 0.0000               
+0.2732              | connected_components<=2             | quality_gate | 0.9391              | 0.8237              | 0.9478              | 1.0000         | 0.1350                   | 1.0000             | None                      | 0.0000               
+0.2732              | connected_components_between[1,2]   | quality_gate | 0.9391              | 0.8237              | 0.9478              | 1.0000         | 0.1350                   | 1.0000             | None                      | 0.0000               
+0.2728              | leaf_ratio<=0                       | quality_gate | 0.3376              | 0.2460              | 0.2940              | 0.1094         | 0.1582                   | 0.9167             | auto_pattern_003          | 0.0833               
+0.2710              | stroke_count<=4                     | quality_gate | 0.1771              | 0.2559              | 0.2335              | 0.8516         | 0.0866                   | 1.0000             | None                      | 0.0000               
+0.2707              | leaf_ratio<=0.25                    | quality_gate | 0.6273              | 0.4893              | 0.5632              | 0.1953         | 0.1493                   | 0.9200             | auto_pattern_003          | 0.0800               
+0.2658              | aspect<=1.33505                     | quality_gate | 0.8321              | 0.7249              | 0.8269              | 0.9609         | 0.1358                   | 1.0000             | None                      | 0.0000               
+0.2608              | bbox_area<=38910.7                  | quality_gate | 0.5830              | 0.4885              | 0.6181              | 0.1641         | 0.1404                   | 1.0000             | None                      | 0.0000               
+0.2596              | fragmentation_risk_between[0,0.1]   | quality_gate | 0.6384              | 0.8136              | 0.5659              | 0.8438         | 0.0970                   | 0.9615             | auto_pattern_000          | 0.0385               
+0.2595              | fragmentation_risk<=0.1             | quality_gate | 0.6384              | 0.8136              | 0.5659              | 0.8438         | 0.0970                   | 0.9600             | auto_pattern_000          | 0.0400               
+0.2580              | bbox_area>=25587.5                  | quality_gate | 0.7066              | 0.7560              | 0.6813              | 0.9375         | 0.1134                   | 1.0000             | None                      | 0.0000               
+0.2558              | leaf_ratio>=0.5                     | quality_gate | 0.2066              | 0.3142              | 0.2692              | 0.7109         | 0.0826                   | 0.9200             | auto_pattern_003          | 0.0800               
+0.2515              | fragmentation_risk<=0               | quality_gate | 0.3026              | 0.6454              | 0.2610              | 0.5781         | 0.0603                   | 0.9583             | auto_pattern_000          | 0.0417               
+0.2506              | aspect_between[0.836375,1.33505]    | quality_gate | 0.5701              | 0.4941              | 0.5879              | 0.1406         | 0.1364                   | 0.9643             | auto_pattern_000          | 0.0357               
+0.2432              | bbox_area<=25587.5                  | quality_gate | 0.2934              | 0.2440              | 0.3187              | 0.0625         | 0.1413                   | 1.0000             | None                      | 0.0000               
+0.2370              | stroke_count<=7                     | quality_gate | 0.8376              | 0.7974              | 0.9286              | 1.0000         | 0.1257                   | 1.0000             | None                      | 0.0000               
+0.2354              | min_length_between[46.5802,86.9565] | quality_gate | 0.5295              | 0.5027              | 0.5632              | 0.1172         | 0.1260                   | 1.0000             | None                      | 0.0000               
+
+----------------------------------------------------------------------------------------
+07B Strict positive ingredient candidates: non-trivial topology ingredients, not sufficient alone
+----------------------------------------------------------------------------------------
+score               | predicate                            | role                       | kind                 | good_support         | bad_support          | cleaned_support       | manual_support | precision_vs_bad_support | orthogonality | nearest_old_rule_by_token | max_old_token_jaccard
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.4595              | motif:proxy:orbit_or_seal_field      | strict_positive_ingredient | orbit_seal           | 0.4225               | 0.2528               | 0.5192                | 0.0469         | 0.1862                   | 1.0000        | None                      | 0.0000               
+0.3978              | motif:proxy:nested_or_multi_cycle    | strict_positive_ingredient | nested_portal        | 0.2103               | 0.1367               | 0.5357                | 0.0234         | 0.1740                   | 1.0000        | None                      | 0.0000               
+0.3922              | port_count_proxy>=18                 | strict_positive_ingredient | semantic_topology    | 0.3819               | 0.2708               | 0.2610                | 0.0078         | 0.1618                   | 1.0000        | None                      | 0.0000               
+0.3384              | motif:capacity:Sb1_CC1_C1            | strict_positive_ingredient | semantic_topology    | 0.1993               | 0.1076               | 0.0385                | 0.0391         | 0.2022                   | 1.0000        | None                      | 0.0000               
+0.3371              | motif:role:maxD5_B4_portb4           | strict_positive_ingredient | role_port_motif      | 0.1956               | 0.1273               | 0.1401                | 0.0000         | 0.1738                   | 1.0000        | None                      | 0.0000               
+0.3368              | motif:capacity:Sb1_CC1_C2            | strict_positive_ingredient | semantic_topology    | 0.1218               | 0.0487               | 0.0934                | 0.0078         | 0.2548                   | 1.0000        | None                      | 0.0000               
+0.3323              | motif:field:spineb1_enclb3_interb1   | strict_positive_ingredient | enclosure_field      | 0.0775               | 0.0265               | 0.1126                | 0.0156         | 0.2857                   | 1.0000        | None                      | 0.0000               
+0.3299              | motif:proxy:vertical_spine_branching | strict_positive_ingredient | spine_branch         | 0.1808               | 0.1250               | 0.1126                | 0.0703         | 0.1653                   | 1.0000        | None                      | 0.0000               
+0.3266              | motif:role:maxD4_B4_portb4           | strict_positive_ingredient | role_port_motif      | 0.1587               | 0.1015               | 0.1209                | 0.0078         | 0.1762                   | 1.0000        | None                      | 0.0000               
+0.3246              | motif:relhist:E4_T0_X1_C2            | strict_positive_ingredient | relation_motif       | 0.0775               | 0.0245               | 0.0385                | 0.0000         | 0.3022                   | 1.0000        | None                      | 0.0000               
+0.3238              | motif:field:spineb1_enclb0_interb1   | strict_positive_ingredient | enclosure_field      | 0.0775               | 0.0306               | 0.0467                | 0.1328         | 0.2577                   | 1.0000        | None                      | 0.0000               
+0.3205              | motif:proxy:interlocked_ports        | strict_positive_ingredient | interlock_port       | 0.0812               | 0.0457               | 0.1593                | 0.0547         | 0.1956                   | 1.0000        | None                      | 0.0000               
+0.3157              | motif:relhist:E4_T0_X1_C0            | strict_positive_ingredient | relation_motif       | 0.0738               | 0.0258               | 0.0165                | 0.0000         | 0.2817                   | 1.0000        | None                      | 0.0000               
+0.3132              | motif:relhist:E4_T0_X1_C1            | strict_positive_ingredient | relation_motif       | 0.0923               | 0.0419               | 0.0357                | 0.0078         | 0.2315                   | 1.0000        | None                      | 0.0000               
+0.2942              | motif:role:maxD3_B3_portb4           | strict_positive_ingredient | role_port_motif      | 0.0554               | 0.0303               | 0.0357                | 0.0078         | 0.2000                   | 1.0000        | None                      | 0.0000               
+0.2929              | motif:proxy:ring_core_spine_ports    | strict_positive_ingredient | ring_core_spine_port | 0.0517               | 0.0301               | 0.0330                | 0.0469         | 0.1905                   | 1.0000        | None                      | 0.0000               
+0.2905              | motif:role:maxD3_B1_portb3           | strict_positive_ingredient | role_port_motif      | 0.0535               | 0.0381               | 0.0659                | 0.0469         | 0.1611                   | 1.0000        | None                      | 0.0000               
+0.2860              | motif:role:maxD4_B3_portb4           | strict_positive_ingredient | role_port_motif      | 0.0554               | 0.0409               | 0.0577                | 0.0078         | 0.1562                   | 1.0000        | None                      | 0.0000               
+0.2856              | motif:relhist:E4_T0_X0_C1            | strict_positive_ingredient | relation_motif       | 0.1550               | 0.2016               | 0.0495                | 0.0469         | 0.0952                   | 1.0000        | None                      | 0.0000               
+0.2724              | motif:field:spineb1_enclb2_interb0   | strict_positive_ingredient | enclosure_field      | 0.0720               | 0.0707               | 0.0110                | 0.0234         | 0.1223                   | 1.0000        | None                      | 0.0000               
+0.2447              | motif:field:spineb1_enclb2_interb1   | strict_positive_ingredient | enclosure_field      | 0.0498               | 0.0179               | 0.0330                | 0.0078         | 0.2755                   | 1.0000        | None                      | 0.0000               
+0.2399              | motif:relhist:E2_T0_X1_C0            | strict_positive_ingredient | relation_motif       | 0.0424               | 0.0152               | 0.0522                | 0.0000         | 0.2771                   | 1.0000        | None                      | 0.0000               
+0.2179              | motif:field:spineb1_enclb3_interb0   | strict_positive_ingredient | enclosure_field      | 0.0498               | 0.0548               | 0.1264                | 0.0078         | 0.1107                   | 1.0000        | None                      | 0.0000               
+0.2144              | motif:role:maxD3_B2_portb3           | strict_positive_ingredient | role_port_motif      | 0.0480               | 0.0407               | 0.0549                | 0.0156         | 0.1390                   | 1.0000        | None                      | 0.0000               
+0.2087              | motif:relhist:E4_T0_X2_C2            | strict_positive_ingredient | relation_motif       | 0.0351               | 0.0217               | 0.0275                | 0.0000         | 0.1810                   | 1.0000        | None                      | 0.0000               
+0.2045              | motif:field:spineb1_enclb3_interb2   | strict_positive_ingredient | enclosure_field      | 0.0240               | 0.0167               | 0.0852                | 0.0234         | 0.1646                   | 1.0000        | None                      | 0.0000               
+0.1958              | motif:capacity:Sb0_CC1_C1            | strict_positive_ingredient | semantic_topology    | 0.0351               | 0.0518               | 0.0522                | 0.0859         | 0.0848                   | 1.0000        | None                      | 0.0000               
+0.1955              | motif:capacity:Sb2_CC1_C1            | strict_positive_ingredient | semantic_topology    | 0.0387               | 0.0359               | 0.0027                | 0.0000         | 0.1288                   | 1.0000        | None                      | 0.0000               
+0.1951              | motif:role:maxD3_B4_portb4           | strict_positive_ingredient | role_port_motif      | 0.0332               | 0.0301               | 0.0275                | 0.0000         | 0.1314                   | 1.0000        | None                      | 0.0000               
+0.1912              | motif:role:maxD3_B2_portb4           | strict_positive_ingredient | role_port_motif      | 0.0387               | 0.0561               | 0.0330                | 0.0000         | 0.0864                   | 1.0000        | None                      | 0.0000               
+
+----------------------------------------------------------------------------------------
+07C Bad failure rules: structured negatives / constraints
+----------------------------------------------------------------------------------------
+score                 | failure_name                            | role                   | good_support          | bad_support          | bad_minus_good        | cleaned_support       | manual_support | description                                                                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.3155                | bad_floating_or_multicomponent          | bad_failure_rule       | 0.2675                | 0.5069               | 0.2394                | 0.3242                | 0.0312         | 多连通块 / 漂浮部件：通常表示符文线没有通过 port/interlock 接回主结构。                                   
+0.2964                | bad_trivial_e2e_chain                   | bad_failure_rule       | 0.1347                | 0.3748               | 0.2402                | 0.0467                | 0.5078         | 纯 E2E 链式结构：有拓扑，但构成过浅，通常缺少 seal/orbit/interlock 上下文。                             
+0.2901                | motif:proxy:multi_component_or_floating | bad_failure_ingredient | 0.2675                | 0.5069               | 0.2394                | 0.3242                | 0.0312         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.2639                | bad_short_or_fragmented                 | bad_failure_rule       | 0.3745                | 0.5552               | 0.1807                | 0.2857                | 0.0781         | 短线/碎片风险：适合作为 quality gate，不适合作为正向拓扑规则。                                          
+0.1840                | motif:field:spineb0_enclb0_interb0      | bad_failure_ingredient | 0.0978                | 0.2561               | 0.1583                | 0.0440                | 0.1484         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.1832                | bad_unbalanced_multicomponent           | bad_failure_rule       | 0.0590                | 0.2107               | 0.1516                | 0.0495                | 0.0234         | 多部件不平衡：可能需要提高 port coupling 或使用 component-level 组合约束。                           
+0.1484                | bad_no_structural_field                 | bad_failure_rule       | 0.0424                | 0.1660               | 0.1235                | 0.0302                | 0.0625         | 缺少结构场：不是坏在某个 motif，而是没有形成可解释构造中心。                                               
+0.0941                | motif:orient:axisb0_diagb3_curveb0      | bad_failure_ingredient | 0.0812                | 0.1594               | 0.0782                | 0.0742                | 0.0312         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.0596                | bad_low_context_cycle                   | bad_failure_rule       | 0.0203                | 0.0695               | 0.0492                | 0.0549                | 0.0078         | 低上下文 cycle：有环，但没有 spine/port/interlock 支撑，像孤立框或无意义闭合。                           
+0.0589                | motif:capacity:Sb0_CC3_C0               | bad_failure_ingredient | 0.0000                | 0.0535               | 0.0535                | 0.0000                | 0.0000         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.0565                | motif:relhist:E2_T0_X0_C0               | bad_failure_ingredient | 0.0129                | 0.0631               | 0.0502                | 0.0247                | 0.1719         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.0513                | motif:relhist:E1_T0_X0_C0               | bad_failure_ingredient | 0.0037                | 0.0500               | 0.0463                | 0.0055                | 0.1484         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.0375                | motif:orient:axisb0_diagb2_curveb0      | bad_failure_ingredient | 0.0055                | 0.0392               | 0.0336                | 0.0055                | 0.0000         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.0364                | motif:capacity:Sb1_CC3_C0               | bad_failure_ingredient | 0.0351                | 0.0649               | 0.0299                | 0.0302                | 0.0000         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.0325                | motif:orient:axisb1_diagb2_curveb0      | bad_failure_ingredient | 0.0461                | 0.0715               | 0.0254                | 0.0440                | 0.0312         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.0159                | motif:capacity:Sb1_CC3_C1               | bad_failure_ingredient | 0.0111                | 0.0245               | 0.0134                | 0.0110                | 0.0000         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.0143                | motif:orient:axisb1_diagb1_curveb0      | bad_failure_ingredient | 0.0129                | 0.0248               | 0.0118                | 0.0027                | 0.0156         | Bad-enriched motif/field ingredient; use as negative context, not as positive...
+0.0023                | bad_overdense_cross_fragment            | bad_failure_rule       | 0.0055                | 0.0068               | 0.0013                | 0.0137                | 0.0000         | 高交叉且碎片风险高：说明 interlock/weave 可能不是从安全端口发生。                                       
+
+----------------------------------------------------------------------------------------
+07D Grammar-level independent rule prototypes: review-first, possible new rule cache entries
+----------------------------------------------------------------------------------------
+score               | rule_name                                                                        | role                           | rule_family                                              | good_support         | bad_support          | cleaned_support       | manual_support | precision_vs_bad_support | generality_score   | non_triviality_score | orthogonality      | nearest_old_rule_by_token | max_old_token_jaccard
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.4708              | port_count_proxy>=18 AND motif:relhist:E4_T0_X1_C2 AND stroke_count<=7           | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0664               | 0.0119               | 0.0000                | 0.0000         | 0.4337                   | 0.6644             | 0.7496               | 1.0000             | None                      | 0.0000               
+0.4638              | port_count_proxy>=18 AND motif:relhist:E4_T0_X1_C2 AND connected_components<=1   | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0701               | 0.0147               | 0.0000                | 0.0000         | 0.3958                   | 0.6676             | 0.7496               | 1.0000             | None                      | 0.0000               
+0.4638              | port_count_proxy>=18 AND motif:relhist:E4_T0_X1_C2 AND NOT_bad_floating_or_mu... | grammar_level_independent_rule | two_strict_ingredients_plus_bad_avoid                    | 0.0701               | 0.0147               | 0.0000                | 0.0000         | 0.3958                   | 0.6676             | 0.7496               | 1.0000             | None                      | 0.0000               
+0.4632              | port_count_proxy>=18 AND motif:relhist:E4_T0_X1_C2 AND leaf_ratio<=0             | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0572               | 0.0093               | 0.0000                | 0.0000         | 0.4559                   | 0.6563             | 0.7496               | 0.9333             | auto_pattern_003          | 0.0667               
+0.4575              | motif:proxy:nested_or_multi_cycle AND motif:relhist:E4_T0_X1_C2 AND connected... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0756               | 0.0169               | 0.0275                | 0.0000         | 0.3796                   | 0.6724             | 0.7958               | 1.0000             | None                      | 0.0000               
+0.4575              | motif:proxy:nested_or_multi_cycle AND motif:relhist:E4_T0_X1_C2 AND NOT_bad_f... | grammar_level_independent_rule | two_strict_ingredients_plus_bad_avoid                    | 0.0756               | 0.0169               | 0.0275                | 0.0000         | 0.3796                   | 0.6724             | 0.7958               | 1.0000             | None                      | 0.0000               
+0.4569              | motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND str... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.1605               | 0.0700               | 0.4615                | 0.0234         | 0.2390                   | 0.7467             | 0.7617               | 1.0000             | None                      | 0.0000               
+0.4569              | port_count_proxy>=18 AND motif:proxy:orbit_or_seal_field AND stroke_count<=7     | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.2159               | 0.0940               | 0.2253                | 0.0078         | 0.2393                   | 0.7951             | 0.7155               | 1.0000             | None                      | 0.0000               
+0.4565              | motif:proxy:nested_or_multi_cycle AND X_count>=1 AND stroke_count<=7             | grammar_level_independent_rule | specific_ingredient_plus_structural_context_plus_quality | 0.1494               | 0.0487               | 0.2857                | 0.0000         | 0.2956                   | 0.7370             | 0.6324               | 1.0000             | None                      | 0.0000               
+0.4565              | motif:role:maxD4_B4_portb4 AND X_count>=1 AND stroke_count<=6                    | grammar_level_independent_rule | specific_ingredient_plus_structural_context_plus_quality | 0.0720               | 0.0116               | 0.0412                | 0.0000         | 0.4588                   | 0.6692             | 0.6016               | 1.0000             | None                      | 0.0000               
+0.4554              | motif:capacity:Sb1_CC1_C2 AND motif:relhist:E4_T0_X1_C2 AND stroke_count<=7      | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0683               | 0.0131               | 0.0192                | 0.0000         | 0.4157                   | 0.6660             | 0.7496               | 1.0000             | None                      | 0.0000               
+0.4554              | motif:capacity:Sb1_CC1_C2 AND motif:relhist:E4_T0_X1_C2 AND connected_compone... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0683               | 0.0131               | 0.0192                | 0.0000         | 0.4157                   | 0.6660             | 0.7496               | 1.0000             | None                      | 0.0000               
+0.4554              | motif:capacity:Sb1_CC1_C2 AND motif:relhist:E4_T0_X1_C2 AND NOT_bad_floating_... | grammar_level_independent_rule | two_strict_ingredients_plus_bad_avoid                    | 0.0683               | 0.0131               | 0.0192                | 0.0000         | 0.4157                   | 0.6660             | 0.7496               | 1.0000             | None                      | 0.0000               
+0.4552              | port_count_proxy>=18 AND motif:proxy:nested_or_multi_cycle AND stroke_count<=7   | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.1199               | 0.0470               | 0.2253                | 0.0000         | 0.2590                   | 0.7112             | 0.7562               | 1.0000             | None                      | 0.0000               
+0.4543              | motif:proxy:nested_or_multi_cycle AND motif:relhist:E4_T0_X1_C2 AND stroke_co... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0720               | 0.0169               | 0.0330                | 0.0000         | 0.3679                   | 0.6692             | 0.7958               | 1.0000             | None                      | 0.0000               
+0.4518              | motif:proxy:orbit_or_seal_field AND motif:relhist:E4_T0_X1_C2 AND connected_c... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0756               | 0.0167               | 0.0275                | 0.0000         | 0.3832                   | 0.6724             | 0.7551               | 1.0000             | None                      | 0.0000               
+0.4518              | motif:proxy:orbit_or_seal_field AND motif:relhist:E4_T0_X1_C2 AND NOT_bad_flo... | grammar_level_independent_rule | two_strict_ingredients_plus_bad_avoid                    | 0.0756               | 0.0167               | 0.0275                | 0.0000         | 0.3832                   | 0.6724             | 0.7551               | 1.0000             | None                      | 0.0000               
+0.4510              | motif:capacity:Sb1_CC1_C2 AND motif:relhist:E4_T0_X1_C2 AND leaf_ratio<=0        | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0554               | 0.0088               | 0.0055                | 0.0000         | 0.4615                   | 0.6547             | 0.7496               | 0.9355             | auto_pattern_003          | 0.0645               
+0.4508              | motif:proxy:orbit_or_seal_field AND motif:relhist:E4_T0_X1_C2 AND stroke_coun... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0720               | 0.0159               | 0.0302                | 0.0000         | 0.3824                   | 0.6692             | 0.7551               | 1.0000             | None                      | 0.0000               
+0.4508              | motif:proxy:nested_or_multi_cycle AND max_degree>=3 AND stroke_count<=7          | grammar_level_independent_rule | specific_ingredient_plus_structural_context_plus_quality | 0.1642               | 0.0717               | 0.4753                | 0.0234         | 0.2386                   | 0.7499             | 0.6324               | 1.0000             | None                      | 0.0000               
+0.4507              | motif:proxy:nested_or_multi_cycle AND motif:relhist:E4_T0_X1_C2 AND leaf_rati... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0627               | 0.0124               | 0.0165                | 0.0000         | 0.4096                   | 0.6611             | 0.7958               | 0.9355             | auto_pattern_003          | 0.0645               
+0.4483              | motif:proxy:orbit_or_seal_field AND motif:relhist:E4_T0_X1_C2 AND leaf_ratio<=0  | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0627               | 0.0114               | 0.0137                | 0.0000         | 0.4304                   | 0.6611             | 0.7551               | 0.9355             | auto_pattern_003          | 0.0645               
+0.4476              | motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND con... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.1882               | 0.0947               | 0.4341                | 0.0234         | 0.2138                   | 0.7709             | 0.7617               | 1.0000             | None                      | 0.0000               
+0.4476              | motif:proxy:orbit_or_seal_field AND motif:proxy:nested_or_multi_cycle AND NOT... | grammar_level_independent_rule | two_strict_ingredients_plus_bad_avoid                    | 0.1882               | 0.0947               | 0.4341                | 0.0234         | 0.2138                   | 0.7709             | 0.7617               | 1.0000             | None                      | 0.0000               
+0.4473              | motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND ... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0664               | 0.0187               | 0.0934                | 0.0000         | 0.3273                   | 0.6644             | 0.7958               | 1.0000             | None                      | 0.0000               
+0.4473              | motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND ... | grammar_level_independent_rule | two_strict_ingredients_plus_bad_avoid                    | 0.0664               | 0.0187               | 0.0934                | 0.0000         | 0.3273                   | 0.6644             | 0.7958               | 1.0000             | None                      | 0.0000               
+0.4472              | motif:proxy:nested_or_multi_cycle AND cycle_count>=1 AND stroke_count<=7         | grammar_level_independent_rule | specific_ingredient_plus_structural_context_plus_quality | 0.1642               | 0.0755               | 0.4808                | 0.0234         | 0.2294                   | 0.7499             | 0.6324               | 1.0000             | None                      | 0.0000               
+0.4469              | motif:relhist:E4_T0_X1_C2 AND topology_event_count>=8 AND stroke_count<=7        | grammar_level_independent_rule | specific_ingredient_plus_structural_context_plus_quality | 0.0664               | 0.0126               | 0.0027                | 0.0000         | 0.4186                   | 0.6644             | 0.6192               | 1.0000             | None                      | 0.0000               
+0.4462              | motif:proxy:nested_or_multi_cycle AND motif:field:spineb1_enclb3_interb1 AND ... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0590               | 0.0131               | 0.0604                | 0.0000         | 0.3810                   | 0.6579             | 0.7958               | 0.9355             | auto_pattern_003          | 0.0645               
+0.4445              | motif:proxy:orbit_or_seal_field AND motif:field:spineb1_enclb3_interb1 AND st... | grammar_level_independent_rule | two_strict_ingredients_plus_quality                      | 0.0664               | 0.0174               | 0.0962                | 0.0000         | 0.3429                   | 0.6644             | 0.7551               | 1.0000             | None                      | 0.0000               
+
+============================================================================================
+08 Design hints for next model/rule miner
+============================================================================================
+1. Orthogonal rule discovery should read old rules, but only for duplicate suppression:
+   candidate_rule_features vs old_rule_features -> graph/token similarity -> reject if too close.
+2. Bad samples should not be treated as topology-empty negatives.
+   Shared motifs show which structures need contextual constraints rather than direct rejection.
+3. Good-enriched motifs are positive ingredients; Bad-enriched motifs are failure modes; Shared motifs are neutral primitives.
+4. The next real miner should replace proxy motifs with canonical attributed subgraph mining:
+   stroke node + E2E/T/X edge + cycle/port attributes + angle/position/curvature buckets.
+5. The final independent rule score should combine:
+   Good coverage + Bad contrast + Manual alignment + MDL/generalization + Orthogonality-to-old-rules + Non-triviality.
